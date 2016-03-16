@@ -10,7 +10,7 @@
  */
 
 // Exit if accessed directly
-if ( !defined( 'ABSPATH' ) ) exit;
+if ( ! defined( 'ABSPATH' ) ) exit;
 
 /**
  * Builds the Cart by providing hooks and calling all the hooks for the Cart
@@ -78,7 +78,7 @@ function edd_get_cart_item_template( $cart_key, $item, $ajax = false ) {
 
 	$remove_url = edd_remove_item_url( $cart_key );
 	$title      = get_the_title( $id );
-	$options    = !empty( $item['options'] ) ? $item['options'] : array();
+	$options    = ! empty( $item['options'] ) ? $item['options'] : array();
 	$quantity   = edd_get_cart_item_quantity( $id, $options );
 	$price      = edd_get_cart_item_price( $id, $options );
 
