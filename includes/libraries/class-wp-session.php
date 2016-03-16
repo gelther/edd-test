@@ -237,7 +237,7 @@ final class WP_Session extends Recursive_ArrayAccess implements Iterator, Counta
 	 * @return bool
 	 */
 	public function session_started() {
-		return !!self::$instance;
+		return ! ! self::$instance;
 	}
 
 	/**
