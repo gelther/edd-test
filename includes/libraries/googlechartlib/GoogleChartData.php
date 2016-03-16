@@ -681,7 +681,7 @@ class GoogleChartData
 	 */
 	public function createTrendData()
 	{
-		if(!$this->hasValues())
+		if(! $this->hasValues())
 			return null;
 
 		list($slope, $intercept) = self::calculateLinearRegression(array_values($this->values));
@@ -706,7 +706,7 @@ class GoogleChartData
 	 */
 	public function createTrendMarker()
 	{
-		if(!$this->hasValues())
+		if(! $this->hasValues())
 			return null;
 
 		$marker = new GoogleChartLineMarker();
