@@ -192,7 +192,7 @@ class FPDF {
 	}
 
 	function SetDisplayMode( $zoom, $layout = 'default' ) {
-		if ( $zoom == 'fullpage' || $zoom == 'fullwidth' || $zoom == 'real' || $zoom == 'default' || !is_string( $zoom ) )
+		if ( $zoom == 'fullpage' || $zoom == 'fullwidth' || $zoom == 'real' || $zoom == 'default' || ! is_string( $zoom ) )
 			$this->ZoomMode = $zoom;
 		else
 			$this->Error( 'Incorrect zoom display mode: ' . $zoom );
@@ -392,15 +392,15 @@ class FPDF {
 			return;
 		$info      = $this->_loadfont( $file );
 		$info['i'] = count( $this->fonts ) + 1;
-		if ( !empty( $info['diff'] ) ) {
+		if ( ! empty( $info['diff'] ) ) {
 			$n = array_search( $info['diff'], $this->diffs );
-			if ( !$n ) {
+			if ( ! $n ) {
 				$n               = count( $this->diffs ) + 1;
 				$this->diffs[$n] = $info['diff'];
 			}
 			$info['diffn'] = $n;
 		}
-		if ( !empty( $info['file'] ) ) {
+		if ( ! empty( $info['file'] ) ) {
 			if ( $info['type'] == 'TrueType' )
 				$this->FontFiles[$info['file']] = array(
 					 'length1' => $info['originalsize']
@@ -432,14 +432,14 @@ class FPDF {
 		if ( $this->FontFamily == $family && $this->FontStyle == $style && $this->FontSizePt == $size )
 			return;
 		$fontkey = $family . $style;
-		if ( !isset( $this->fonts[$fontkey] ) ) {
+		if ( ! isset( $this->fonts[$fontkey] ) ) {
 			if ( $family == 'arial' )
 				$family = 'helvetica';
 			if ( in_array( $family, $this->CoreFonts ) ) {
 				if ( $family == 'symbol' || $family == 'zapfdingbats' )
 					$style = '';
 				$fontkey = $family . $style;
-				if ( !isset( $this->fonts[$fontkey] ) )
+				if ( ! isset( $this->fonts[$fontkey] ) )
 					$this->AddFont( $family, $style );
 			} else
 				$this->Error( 'Undefined font: ' . $family . ' ' . $style );
@@ -507,7 +507,7 @@ class FPDF {
 
 	function Cell( $w, $h = 0, $txt = '', $border = 0, $ln = 0, $align = '', $fill = false, $link = '' ) {
 		$k = $this->k;
-		if ( $this->y + $h > $this->PageBreakTrigger && !$this->InHeader && !$this->InFooter && $this->AcceptPageBreak() ) {
+		if ( $this->y + $h > $this->PageBreakTrigger && ! $this->InHeader && ! $this->InFooter && $this->AcceptPageBreak() ) {
 			$x  = $this->x;
 			$ws = $this->ws;
 			if ( $ws > 0 ) {
@@ -736,10 +736,10 @@ class FPDF {
 	}
 
 	function Image( $file, $x = null, $y = null, $w = 0, $h = 0, $type = '', $link = '' ) {
-		if ( !isset( $this->images[$file] ) ) {
+		if ( ! isset( $this->images[$file] ) ) {
 			if ( $type == '' ) {
 				$pos = strrpos( $file, '.' );
-				if ( !$pos )
+				if ( ! $pos )
 					$this->Error( 'Image file has no extension and no type was specified: ' . $file );
 				$type = substr( $file, $pos + 1 );
 			}
@@ -747,7 +747,7 @@ class FPDF {
 			if ( $type == 'jpeg' )
 				$type = 'jpg';
 			$mtd = '_parse' . $type;
-			if ( !method_exists( $this, $mtd ) )
+			if ( ! method_exists( $this, $mtd ) )
 				$this->Error( 'Unsupported image type: ' . $type );
 			$info                = $this->$mtd( $file );
 			$info['i']           = count( $this->images ) + 1;
@@ -769,7 +769,7 @@ class FPDF {
 			$h = $w * $info['h'] / $info['w'];
 
 		if ( $y === null ) {
-			if ( $this->y + $h > $this->PageBreakTrigger && !$this->InHeader && !$this->InFooter && $this->AcceptPageBreak() ) {
+			if ( $this->y + $h > $this->PageBreakTrigger && ! $this->InHeader && ! $this->InFooter && $this->AcceptPageBreak() ) {
 				$x2 = $this->x;
 				$this->AddPage( $this->CurOrientation, $this->CurPageSize );
 				$this->x = $x2;
@@ -845,7 +845,7 @@ class FPDF {
 				break;
 			case 'F':
 				$f = fopen( $name, 'wb' );
-				if ( !$f )
+				if ( ! $f )
 					$this->Error( 'Unable to create output file: ' . $name );
 				fwrite( $f, $this->buffer, strlen( $this->buffer ) );
 				fclose( $f );
@@ -883,7 +883,7 @@ class FPDF {
 	function _getpagesize( $size ) {
 		if ( is_string( $size ) ) {
 			$size = strtolower( $size );
-			if ( !isset( $this->StdPageSizes[$size] ) )
+			if ( ! isset( $this->StdPageSizes[$size] ) )
 				$this->Error( 'Unknown page size: ' . $size );
 			$a = $this->StdPageSizes[$size];
 			return array(
@@ -944,7 +944,7 @@ class FPDF {
 	function _loadfont( $font ) {
 		include( $this->fontpath . $font );
 		$a = get_defined_vars();
-		if ( !isset( $a['name'] ) )
+		if ( ! isset( $a['name'] ) )
 			$this->Error( 'Could not include font definition file' );
 		return $a;
 	}
@@ -992,11 +992,11 @@ class FPDF {
 
 	function _parsejpg( $file ) {
 		$a = getimagesize( $file );
-		if ( !$a )
+		if ( ! $a )
 			$this->Error( 'Missing or incorrect image file: ' . $file );
 		if ( $a[2] != 2 )
 			$this->Error( 'Not a JPEG file: ' . $file );
-		if ( !isset( $a['channels'] ) || $a['channels'] == 3 )
+		if ( ! isset( $a['channels'] ) || $a['channels'] == 3 )
 			$colspace = 'DeviceRGB';
 		elseif ( $a['channels'] == 4 )
 			$colspace = 'DeviceCMYK';
@@ -1016,7 +1016,7 @@ class FPDF {
 
 	function _parsepng( $file ) {
 		$f = fopen( $file, 'rb' );
-		if ( !$f )
+		if ( ! $f )
 			$this->Error( 'Can\'t open image file: ' . $file );
 		$info = $this->_parsepngstream( $f, $file );
 		fclose( $f );
@@ -1104,7 +1104,7 @@ class FPDF {
 			'trns' => $trns
 		);
 		if ( $ct >= 4 ) {
-			if ( !function_exists( 'gzuncompress' ) )
+			if ( ! function_exists( 'gzuncompress' ) )
 				$this->Error( 'Zlib not available, can\'t handle alpha channel: ' . $file );
 			$data  = gzuncompress( $data );
 			$color = '';
@@ -1142,7 +1142,7 @@ class FPDF {
 
 	function _readstream( $f, $n ) {
 		$res = '';
-		while ( $n > 0 && !feof( $f ) ) {
+		while ( $n > 0 && ! feof( $f ) ) {
 			$s = fread( $f, $n );
 			if ( $s === false )
 				$this->Error( 'Error while reading stream' );
@@ -1160,12 +1160,12 @@ class FPDF {
 	}
 
 	function _parsegif( $file ) {
-		if ( !function_exists( 'imagepng' ) )
+		if ( ! function_exists( 'imagepng' ) )
 			$this->Error( 'GD extension is required for GIF support' );
-		if ( !function_exists( 'imagecreatefromgif' ) )
+		if ( ! function_exists( 'imagecreatefromgif' ) )
 			$this->Error( 'GD has no GIF read support' );
 		$im = imagecreatefromgif( $file );
-		if ( !$im )
+		if ( ! $im )
 			$this->Error( 'Missing or incorrect image file: ' . $file );
 		imageinterlace( $im, 0 );
 		$f = @fopen( 'php://temp', 'rb+' );
@@ -1180,9 +1180,9 @@ class FPDF {
 			fclose( $f );
 		} else {
 			$tmp = tempnam( '.', 'gif' );
-			if ( !$tmp )
+			if ( ! $tmp )
 				$this->Error( 'Unable to create a temporary file' );
-			if ( !imagepng( $im, $tmp ) )
+			if ( ! imagepng( $im, $tmp ) )
 				$this->Error( 'Error while saving to temporary file' );
 			imagedestroy( $im );
 			$info = $this->_parsepng( $tmp );
@@ -1213,7 +1213,7 @@ class FPDF {
 	function _putpages()
 	{
 		$nb = $this->page;
-		if ( !empty( $this->AliasNbPages ) ) {
+		if ( ! empty( $this->AliasNbPages ) ) {
 			for ( $n = 1; $n <= $nb; $n++ )
 				$this->pages[$n] = str_replace( $this->AliasNbPages, $nb, $this->pages[$n] );
 		}
@@ -1281,10 +1281,10 @@ class FPDF {
 			$this->_newobj();
 			$this->FontFiles[$file]['n'] = $this->n;
 			$font                        = file_get_contents( $this->fontpath . $file, true );
-			if ( !$font )
+			if ( ! $font )
 				$this->Error( 'Font file not found: ' . $file );
 			$compressed = ( substr( $file, -2 ) == '.z' );
-			if ( !$compressed && isset( $info['length2'] ) )
+			if ( ! $compressed && isset( $info['length2'] ) )
 				$font = substr( $font, 6, $info['length1'] ) . substr( $font, 6 + $info['length1'] + 6, $info['length2'] );
 			$this->_out( '<</Length ' . strlen( $font ) );
 			if ( $compressed )
@@ -1334,13 +1334,13 @@ class FPDF {
 				$s = '<</Type /FontDescriptor /FontName /' . $name;
 				foreach ( $font['desc'] as $k => $v )
 					$s .= ' /' . $k . ' ' . $v;
-				if ( !empty( $font['file'] ) )
+				if ( ! empty( $font['file'] ) )
 					$s .= ' /FontFile' . ( $type == 'Type1' ? '' : '2' ) . ' ' . $this->FontFiles[$font['file']]['n'] . ' 0 R';
 				$this->_out( $s . '>>' );
 				$this->_out( 'endobj' );
 			} else {
 				$mtd = '_put' . strtolower( $type );
-				if ( !method_exists( $this, $mtd ) )
+				if ( ! method_exists( $this, $mtd ) )
 					$this->Error( 'Unsupported font type: ' . $type );
 				$this->$mtd( $font );
 			}
@@ -1437,15 +1437,15 @@ class FPDF {
 
 	function _putinfo() {
 		$this->_out( '/Producer ' . $this->_textstring( 'Easy Digital Downloads' ) );
-		if ( !empty( $this->title ) )
+		if ( ! empty( $this->title ) )
 			$this->_out( '/Title ' . $this->_textstring( $this->title ) );
-		if ( !empty( $this->subject ) )
+		if ( ! empty( $this->subject ) )
 			$this->_out( '/Subject ' . $this->_textstring( $this->subject ) );
-		if ( !empty( $this->author ) )
+		if ( ! empty( $this->author ) )
 			$this->_out( '/Author ' . $this->_textstring( $this->author ) );
-		if ( !empty( $this->keywords ) )
+		if ( ! empty( $this->keywords ) )
 			$this->_out( '/Keywords ' . $this->_textstring( $this->keywords ) );
-		if ( !empty( $this->creator ) )
+		if ( ! empty( $this->creator ) )
 			$this->_out( '/Creator ' . $this->_textstring( $this->creator ) );
 		$this->_out( '/CreationDate ' . $this->_textstring( 'D:' . @date( 'YmdHis' ) ) );
 	}
@@ -1459,7 +1459,7 @@ class FPDF {
 			$this->_out( '/OpenAction [3 0 R /FitH null]' );
 		elseif ( $this->ZoomMode == 'real' )
 			$this->_out( '/OpenAction [3 0 R /XYZ null null 1]' );
-		elseif ( !is_string( $this->ZoomMode ) )
+		elseif ( ! is_string( $this->ZoomMode ) )
 			$this->_out( '/OpenAction [3 0 R /XYZ null null ' . sprintf( '%.2F', $this->ZoomMode / 100 ) . ']' );
 		if ( $this->LayoutMode == 'single' )
 			$this->_out( '/PageLayout /SinglePage' );
