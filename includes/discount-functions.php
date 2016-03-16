@@ -10,7 +10,7 @@
  */
 
 // Exit if accessed directly
-if ( !defined( 'ABSPATH' ) ) exit;
+if ( ! defined( 'ABSPATH' ) ) exit;
 
 
 /**
@@ -904,8 +904,8 @@ function edd_is_discount_valid( $code = '', $user = '', $set_error = true ) {
 			if (
 				edd_is_discount_active( $discount_id ) &&
 				edd_is_discount_started( $discount_id ) &&
-				!edd_is_discount_maxed_out( $discount_id ) &&
-				!edd_is_discount_used( $code, $user, $discount_id ) &&
+				! edd_is_discount_maxed_out( $discount_id ) &&
+				! edd_is_discount_used( $code, $user, $discount_id ) &&
 				edd_discount_is_min_met( $discount_id ) &&
 				edd_discount_product_reqs_met( $discount_id )
 			) {
