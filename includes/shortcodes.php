@@ -747,7 +747,7 @@ add_shortcode( 'edd_profile_editor', 'edd_profile_editor_shortcode' );
  */
 function edd_process_profile_editor_updates( $data ) {
 	// Profile field change request
-	if ( empty( $_POST['edd_profile_editor_submit'] ) && !is_user_logged_in() ) {
+	if ( empty( $_POST['edd_profile_editor_submit'] ) && ! is_user_logged_in() ) {
 		return false;
 	}
 
