@@ -116,7 +116,7 @@ class IpnHandler implements IpnHandlerInterface
     private function validateHeaders()
     {
         // Quickly check that this is a sns message
-        if (!array_key_exists('x-amz-sns-message-type', $this->headers)) {
+        if (! array_key_exists('x-amz-sns-message-type', $this->headers)) {
             throw new \Exception("Error with message - header " . "does not contain x-amz-sns-message-type header");
         }
 
@@ -195,7 +195,7 @@ class IpnHandler implements IpnHandlerInterface
                     $value = $this->getField($fieldName);
                 }
 
-                if (!is_null($value)) {
+                if (! is_null($value)) {
                     array_push($signatureFields, $fieldName);
                     array_push($signatureFields, $value);
                 }
@@ -229,7 +229,7 @@ class IpnHandler implements IpnHandlerInterface
         $this->certificate = $this->getCertificate($certificatePath);
 
         $result = $this->verifySignatureIsCorrectFromCertificate($signature);
-        if (!$result) {
+        if (! $result) {
             throw new \Exception("Unable to match signature from remote server: signature of " . $this->getCertificate($certificatePath) . " , SigningCertURL of " . $this->getMandatoryField("SigningCertURL") . " , SignatureOf " . $this->getMandatoryField("Signature"));
         }
     }
