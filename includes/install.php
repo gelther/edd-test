@@ -59,7 +59,7 @@ register_activation_hook( EDD_PLUGIN_FILE, 'edd_install' );
 function edd_run_install() {
 	global $wpdb, $edd_options, $wp_version;
 
-	if( ! function_exists( 'edd_create_protection_files' ) ) {
+	if ( ! function_exists( 'edd_create_protection_files' ) ) {
 		require_once EDD_PLUGIN_DIR . 'includes/admin/upload-functions.php';
 	}
 
@@ -146,19 +146,19 @@ function edd_run_install() {
 	}
 
 	// Populate some default values
-	foreach( edd_get_registered_settings() as $tab => $sections ) {
-		foreach( $sections as $section => $settings ) {
+	foreach ( edd_get_registered_settings() as $tab => $sections ) {
+		foreach ( $sections as $section => $settings ) {
 
 			// Check for backwards compatibility
 			$tab_sections = edd_get_settings_tab_sections( $tab );
-			if( ! is_array( $tab_sections ) || ! array_key_exists( $section, $tab_sections ) ) {
+			if ( ! is_array( $tab_sections ) || ! array_key_exists( $section, $tab_sections ) ) {
 				$section = 'main';
 				$settings = $sections;
 			}
 
 			foreach ( $settings as $option ) {
 
-				if( 'checkbox' == $option['type'] && ! empty( $option['std'] ) ) {
+				if ( 'checkbox' == $option['type'] && ! empty( $option['std'] ) ) {
 					$options[ $option['id'] ] = '1';
 				}
 
@@ -318,11 +318,11 @@ function edd_install_roles_on_network() {
 
 	global $wp_roles;
 
-	if( ! is_object( $wp_roles ) ) {
+	if ( ! is_object( $wp_roles ) ) {
 		return;
 	}
 
-	if( ! in_array( 'shop_manager', $wp_roles->roles ) ) {
+	if ( ! in_array( 'shop_manager', $wp_roles->roles ) ) {
 
 		// Create EDD shop roles
 		$roles = new EDD_Roles;
