@@ -61,7 +61,7 @@ class EDD_Batch_Payments_Export extends EDD_Batch_Export {
 			'status'   => __( 'Status', 'easy-digital-downloads' )
 		);
 
-		if ( ! edd_use_skus() ){
+		if ( ! edd_use_skus() ) {
 			unset( $cols['skus'] );
 		}
 		if ( ! edd_get_option( 'enable_sequential' ) ) {
