@@ -88,7 +88,7 @@ add_action( 'wp_before_admin_bar_render', 'edd_maybe_remove_adminbar_profile_lin
  */
 function edd_maybe_remove_menu_profile_links() {
 
-	if( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
+	if ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
 		return;
 	}
 
@@ -98,7 +98,7 @@ function edd_maybe_remove_menu_profile_links() {
 
 	if ( edd_user_pending_verification() ) {
 
-		if( defined( 'IS_PROFILE_PAGE' ) && true === IS_PROFILE_PAGE ) {
+		if ( defined( 'IS_PROFILE_PAGE' ) && true === IS_PROFILE_PAGE ) {
 			$url     = esc_url( edd_get_user_verification_request_url() );
 			$message = sprintf( __( 'Your account is pending verification. Please click the link in your email to activate your account. No email? <a href="%s">Click here</a> to send a new activation code.', 'easy-digital-downloads' ), $url );
 			$title   = __( 'Account Pending Verification', 'easy-digital-downloads' );
