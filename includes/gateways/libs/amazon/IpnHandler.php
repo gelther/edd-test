@@ -34,7 +34,7 @@ class IpnHandler implements IpnHandlerInterface
         $this->headers = array_change_key_case($headers, CASE_LOWER);
         $this->body = $body;
 
-        if ($ipnConfig != null) {
+        if ( $ipnConfig != null ) {
             $this->checkConfigKeys($ipnConfig);
         }
 
@@ -66,8 +66,8 @@ class IpnHandler implements IpnHandlerInterface
         $ipnConfig = array_change_key_case($ipnConfig, CASE_LOWER);
 	$ipnConfig = trimArray($ipnConfig);
 
-        foreach ($ipnConfig as $key => $value) {
-            if (array_key_exists($key, $this->ipnConfig)) {
+        foreach ( $ipnConfig as $key => $value ) {
+            if ( array_key_exists($key, $this->ipnConfig) ) {
                 $this->ipnConfig[$key] = $value;
             } else {
                 throw new \Exception('Key ' . $key . ' is either not part of the configuration or has incorrect Key name.
@@ -82,7 +82,7 @@ class IpnHandler implements IpnHandlerInterface
 
     public function __set($name, $value)
     {
-        if (array_key_exists(strtolower($name), $this->ipnConfig)) {
+        if ( array_key_exists(strtolower($name), $this->ipnConfig) ) {
             $this->ipnConfig[$name] = $value;
         } else {
             throw new \Exception("Key " . $name . " is not part of the configuration", 1);
@@ -95,7 +95,7 @@ class IpnHandler implements IpnHandlerInterface
 
     public function __get($name)
     {
-        if (array_key_exists(strtolower($name), $this->ipnConfig)) {
+        if ( array_key_exists(strtolower($name), $this->ipnConfig) ) {
             return $this->ipnConfig[$name];
         } else {
             throw new \Exception("Key " . $name . " was not found in the configuration", 1);
@@ -106,7 +106,7 @@ class IpnHandler implements IpnHandlerInterface
 
     private function trimArray($array)
     {
-	foreach ($array as $key => $value)
+	foreach ( $array as $key => $value )
 	{
 	    $array[$key] = trim($value);
 	}
@@ -116,11 +116,11 @@ class IpnHandler implements IpnHandlerInterface
     private function validateHeaders()
     {
         // Quickly check that this is a sns message
-        if (! array_key_exists('x-amz-sns-message-type', $this->headers)) {
+        if ( ! array_key_exists('x-amz-sns-message-type', $this->headers) ) {
             throw new \Exception("Error with message - header " . "does not contain x-amz-sns-message-type header");
         }
 
-        if ($this->headers['x-amz-sns-message-type'] !== 'Notification') {
+        if ( $this->headers['x-amz-sns-message-type'] !== 'Notification' ) {
             throw new \Exception("Error with message - header x-amz-sns-message-type is not " . "Notification, is " . $this->headers['x-amz-sns-message-type']);
         }
     }
@@ -131,7 +131,7 @@ class IpnHandler implements IpnHandlerInterface
 
         $json_error = json_last_error();
 
-        if ($json_error != 0) {
+        if ( $json_error != 0 ) {
             $errorMsg = "Error with message - content is not in json format" . $this->getErrorMessageForJsonError($json_error) . " " . $this->snsMessage;
             throw new \Exception($errorMsg);
         }
@@ -146,7 +146,7 @@ class IpnHandler implements IpnHandlerInterface
 
     private function getErrorMessageForJsonError($json_error)
     {
-        switch ($json_error) {
+        switch ( $json_error ) {
             case JSON_ERROR_DEPTH:
                 return " - maximum stack depth exceeded.";
                 break;
@@ -175,11 +175,11 @@ class IpnHandler implements IpnHandlerInterface
     private function checkForCorrectMessageType()
     {
         $type = $this->getMandatoryField("Type");
-        if (strcasecmp($type, "Notification") != 0) {
+        if ( strcasecmp($type, "Notification") != 0 ) {
             throw new \Exception("Error with SNS Notification - unexpected message with Type of " . $type);
         }
 
-        if (strcmp($this->getMandatoryField("Type"), "Notification") != 0) {
+        if ( strcmp($this->getMandatoryField("Type"), "Notification") != 0 ) {
             throw new \Exception("Error with signature verification - unable to verify " . $this->getMandatoryField("Type") . " message");
         } else {
 
@@ -188,14 +188,14 @@ class IpnHandler implements IpnHandlerInterface
 
             // Extract the key value pairs and sort in byte order
             $signatureFields = array();
-            foreach ($this->fields as $fieldName => $mandatoryField) {
-                if ($mandatoryField) {
+            foreach ( $this->fields as $fieldName => $mandatoryField ) {
+                if ( $mandatoryField ) {
                     $value = $this->getMandatoryField($fieldName);
                 } else {
                     $value = $this->getField($fieldName);
                 }
 
-                if (! is_null($value)) {
+                if ( ! is_null($value) ) {
                     array_push($signatureFields, $fieldName);
                     array_push($signatureFields, $value);
                 }
@@ -229,7 +229,7 @@ class IpnHandler implements IpnHandlerInterface
         $this->certificate = $this->getCertificate($certificatePath);
 
         $result = $this->verifySignatureIsCorrectFromCertificate($signature);
-        if (! $result) {
+        if ( ! $result ) {
             throw new \Exception("Unable to match signature from remote server: signature of " . $this->getCertificate($certificatePath) . " , SigningCertURL of " . $this->getMandatoryField("SigningCertURL") . " , SignatureOf " . $this->getMandatoryField("Signature"));
         }
     }
@@ -259,7 +259,7 @@ class IpnHandler implements IpnHandlerInterface
     {
         $certKey = openssl_get_publickey($this->certificate);
 
-        if ($certKey === False) {
+        if ( $certKey === False ) {
             throw new \Exception("Unable to extract public key from cert");
         }
 
@@ -267,14 +267,14 @@ class IpnHandler implements IpnHandlerInterface
             $certInfo    = openssl_x509_parse($this->certificate, true);
             $certSubject = $certInfo["subject"];
 
-            if (is_null($certSubject)) {
+            if ( is_null($certSubject) ) {
                 throw new \Exception("Error with certificate - subject cannot be found");
             }
         } catch (\Exception $ex) {
             throw new \Exception("Unable to verify certificate - error with the certificate subject", null, $ex);
         }
 
-        if (strcmp($certSubject["CN"], $this->expectedCnName)) {
+        if ( strcmp($certSubject["CN"], $this->expectedCnName) ) {
             throw new \Exception("Unable to verify certificate issued by Amazon - error with certificate subject");
         }
 
@@ -301,7 +301,7 @@ class IpnHandler implements IpnHandlerInterface
     private function getMandatoryField($fieldName)
     {
         $value = $this->getField($fieldName);
-        if (is_null($value)) {
+        if ( is_null($value) ) {
             throw new \Exception("Error with json message - mandatory field " . $fieldName . " cannot be found");
         }
         return $value;
@@ -316,7 +316,7 @@ class IpnHandler implements IpnHandlerInterface
 
     private function getField($fieldName)
     {
-        if (array_key_exists($fieldName, $this->snsMessage)) {
+        if ( array_key_exists($fieldName, $this->snsMessage) ) {
             return $this->snsMessage[$fieldName];
         } else {
             return null;

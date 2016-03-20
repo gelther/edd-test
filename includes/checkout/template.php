@@ -528,7 +528,7 @@ function edd_get_login_fields() {
 				<p id="edd-new-account-wrap">
 					<?php _e( 'Need to create an account?', 'easy-digital-downloads' ); ?>
 					<a href="<?php echo esc_url( remove_query_arg('login') ); ?>" class="edd_checkout_register_login" data-action="checkout_register">
-						<?php _e( 'Register', 'easy-digital-downloads' ); if(! edd_no_guest_checkout()) { echo ' ' . __( 'or checkout as a guest.', 'easy-digital-downloads' ); } ?>
+						<?php _e( 'Register', 'easy-digital-downloads' ); if( ! edd_no_guest_checkout() ) { echo ' ' . __( 'or checkout as a guest.', 'easy-digital-downloads' ); } ?>
 					</a>
 				</p>
 			<?php } ?>

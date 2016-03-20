@@ -210,7 +210,7 @@ function edd_add_download_filters() {
 	global $typenow;
 
 	// Checks if the current post type is 'download'
-	if ( $typenow == 'download') {
+	if ( $typenow == 'download' ) {
 		$terms = get_terms( 'download_category' );
 		if ( count( $terms ) > 0 ) {
 			echo "<select name='download_category' id='download_category' class='postform'>";
@@ -224,7 +224,7 @@ function edd_add_download_filters() {
 		}
 
 		$terms = get_terms( 'download_tag' );
-		if ( count( $terms ) > 0) {
+		if ( count( $terms ) > 0 ) {
 			echo "<select name='download_tag' id='download_tag' class='postform'>";
 				$tag_labels = edd_get_taxonomy_labels( 'download_tag' );
 				echo "<option value=''>" . sprintf( __( 'Show all %s', 'easy-digital-downloads' ), strtolower( $tag_labels['name'] ) ) . "</option>";

@@ -37,7 +37,7 @@ add_action('wp_dashboard_setup', 'edd_register_dashboard_widgets', 10 );
  * @since 1.2.2
  * @return void
  */
-function edd_dashboard_sales_widget( ) {
+function edd_dashboard_sales_widget() {
 	echo '<p><img src=" ' . esc_attr( set_url_scheme( EDD_PLUGIN_URL . 'assets/images/loading.gif', 'relative' ) ) . '"/></p>';
 }
 
@@ -47,7 +47,7 @@ function edd_dashboard_sales_widget( ) {
  * @since 2.1
  * @return void
  */
-function edd_load_dashboard_sales_widget( ) {
+function edd_load_dashboard_sales_widget() {
 
 	if ( ! current_user_can( apply_filters( 'edd_dashboard_stats_cap', 'view_shop_reports' ) ) ) {
 		die();

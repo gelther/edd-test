@@ -359,7 +359,7 @@ function edd_load_head_styles() {
 		file_exists( $child_theme_style_sheet ) ||
 		file_exists( $child_theme_style_sheet_2 ) ||
 		file_exists( $parent_theme_style_sheet ) ||
-		file_exists( $parent_theme_style_sheet_2 )
+		file_exists( $parent_theme_style_sheet_2 ) 
 	) {
 		$has_css_template = apply_filters( 'edd_load_head_styles', true );
 	}

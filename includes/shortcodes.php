@@ -51,7 +51,7 @@ function edd_download_shortcode( $atts, $content = null ) {
 	}
 
 	// Override color if color == inherit
-	if( isset( $atts['color'] )	) {
+	if( isset( $atts['color'] ) ) {
 		$atts['color'] = ( $atts['color'] == 'inherit' ) ? '' : $atts['color'];
 	}
 
