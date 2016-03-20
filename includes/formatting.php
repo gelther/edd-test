@@ -136,8 +136,8 @@ function edd_currency_filter( $price = '', $currency = '' ) {
 
 	$symbol = edd_currency_symbol( $currency );
 
-	if ( $position == 'before' ):
-		switch ( $currency ):
+	if ( $position == 'before' ) :
+		switch ( $currency ) :
 			case 'GBP' :
 			case 'BRL' :
 			case 'EUR' :
