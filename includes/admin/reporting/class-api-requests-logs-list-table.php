@@ -142,7 +142,7 @@ class EDD_API_Request_Log_Table extends WP_List_Table {
 			$error   = get_post_field( 'post_content', $item['ID'] );
 			echo '<p><strong>' . __( 'API Request:', 'easy-digital-downloads' ) . '</strong></p>';
 			echo '<div>' . $request . '</div>';
-			if( ! empty( $error ) ) {
+			if ( ! empty( $error ) ) {
 				echo '<p><strong>' . __( 'Error', 'easy-digital-downloads' ) . '</strong></p>';
 				echo '<div>' . esc_html( $error ) . '</div>';
 			}
@@ -190,15 +190,15 @@ class EDD_API_Request_Log_Table extends WP_List_Table {
 				// This is an email search
 				$userdata = get_user_by( 'email', $search );
 
-				if( $userdata ) {
+				if ( $userdata ) {
 					$search = $userdata->ID;
 				}
 
 				$key = '_edd_log_user';
-			} elseif( strlen( $search ) == 32 ) {
+			} elseif ( strlen( $search ) == 32 ) {
 				// Look for an API key
 				$key = '_edd_log_key';
-			} elseif( stristr( $search, 'token:' ) ) {
+			} elseif ( stristr( $search, 'token:' ) ) {
 				// Look for an API token
 				$search = str_ireplace( 'token:', '', $search );
 				$key = '_edd_log_token';
@@ -206,7 +206,7 @@ class EDD_API_Request_Log_Table extends WP_List_Table {
 				// This is (probably) a user ID search
 				$userdata = get_userdata( $search );
 
-				if( $userdata ) {
+				if ( $userdata ) {
 					$search = $userdata->ID;
 				}
 
