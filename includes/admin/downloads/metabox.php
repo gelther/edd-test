@@ -122,7 +122,7 @@ function edd_download_meta_box_save( $post_id, $post ) {
 				$new_limit    = apply_filters( 'edd_metabox_save_' . $field, $_POST[ $field ] );
 
 				// Only update the new limit if it is not the same as the global limit
-				if( $global_limit == $new_limit ) {
+				if ( $global_limit == $new_limit ) {
 
 					delete_post_meta( $post_id, '_edd_download_limit' );
 
@@ -181,7 +181,7 @@ function edd_sanitize_bundled_products_save( $products = array() ) {
 
 	$self = array_search( $post->ID, $products );
 
-	if( $self !== false )
+	if ( $self !== false )
 		unset( $products[ $self ] );
 
 	return array_values( array_unique( $products ) );
@@ -430,7 +430,7 @@ function edd_render_price_row( $key, $args = array(), $post_id, $index ) {
 			);
 		?>
 
-		<?php if( $currency_position == 'before' ) : ?>
+		<?php if ( $currency_position == 'before' ) : ?>
 			<span><?php echo edd_currency_filter( '' ); ?></span>
 			<?php echo EDD()->html->text( $price_args ); ?>
 		<?php else : ?>
@@ -772,7 +772,7 @@ add_filter( 'media_view_strings', 'edd_download_media_strings', 10, 1 );
  * @return void
  */
 function edd_render_download_limit_row( $post_id ) {
-	if( ! current_user_can( 'manage_shop_settings' ) ) {
+	if ( ! current_user_can( 'manage_shop_settings' ) ) {
 		return;
 	}
 
@@ -804,7 +804,7 @@ add_action( 'edd_meta_box_settings_fields', 'edd_render_download_limit_row', 20 
  * @return void
  */
 function edd_render_dowwn_tax_options( $post_id = 0 ) {
-	if( ! current_user_can( 'manage_shop_settings' ) || ! edd_use_taxes() ) {
+	if ( ! current_user_can( 'manage_shop_settings' ) || ! edd_use_taxes() ) {
 		return;
 	}
 
@@ -832,7 +832,7 @@ add_action( 'edd_meta_box_settings_fields', 'edd_render_dowwn_tax_options', 30 )
 function edd_render_meta_box_shortcode() {
 	global $post;
 
-	if( $post->post_type != 'download' ) {
+	if ( $post->post_type != 'download' ) {
 		return;
 	}
 
@@ -856,7 +856,7 @@ add_action( 'edd_meta_box_settings_fields', 'edd_render_meta_box_shortcode', 35 
  * @return void
  */
 function edd_render_accounting_options( $post_id ) {
-	if( ! edd_use_skus() ) {
+	if ( ! edd_use_skus() ) {
 		return;
 	}
 
@@ -899,7 +899,7 @@ function edd_render_disable_button( $post_id ) {
 			<?php _e( 'Disable the automatic output of the purchase button', 'easy-digital-downloads' ); ?>
 		</label>
 	</p>
-	<?php if( edd_shop_supports_buy_now() ) : ?>
+	<?php if ( edd_shop_supports_buy_now() ) : ?>
 	<p>
 		<label for="_edd_button_behavior">
 			<?php echo EDD()->html->select( array(
@@ -967,7 +967,7 @@ add_action( 'edd_product_notes_meta_box_fields', 'edd_render_product_notes_field
 function edd_render_stats_meta_box() {
 	global $post;
 
-	if( ! current_user_can( 'view_product_stats', $post->ID ) ) {
+	if ( ! current_user_can( 'view_product_stats', $post->ID ) ) {
 		return;
 	}
 
