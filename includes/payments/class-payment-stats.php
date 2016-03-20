@@ -40,21 +40,21 @@ class EDD_Payment_Stats extends EDD_Stats {
 		$this->setup_dates( $start_date, $end_date );
 
 		// Make sure start date is valid
-		if( is_wp_error( $this->start_date ) )
+		if ( is_wp_error( $this->start_date ) )
 			return $this->start_date;
 
 		// Make sure end date is valid
-		if( is_wp_error( $this->end_date ) )
+		if ( is_wp_error( $this->end_date ) )
 			return $this->end_date;
 
-		if( empty( $download_id ) ) {
+		if ( empty( $download_id ) ) {
 
 			// Global sale stats
 			add_filter( 'edd_count_payments_where', array( $this, 'count_where' ) );
 
-			if( is_array( $status ) ) {
+			if ( is_array( $status ) ) {
 				$count = 0;
-				foreach( $status as $payment_status ) {
+				foreach ( $status as $payment_status ) {
 					$count += edd_count_payments()->$payment_status;
 				}
 			} else {
@@ -99,11 +99,11 @@ class EDD_Payment_Stats extends EDD_Stats {
 		$this->setup_dates( $start_date, $end_date );
 
 		// Make sure start date is valid
-		if( is_wp_error( $this->start_date ) )
+		if ( is_wp_error( $this->start_date ) )
 			return $this->start_date;
 
 		// Make sure end date is valid
-		if( is_wp_error( $this->end_date ) )
+		if ( is_wp_error( $this->end_date ) )
 			return $this->end_date;
 
 		$earnings = false;
@@ -132,7 +132,7 @@ class EDD_Payment_Stats extends EDD_Stats {
 
 			$earnings = get_transient( $key );
 
-			if( false === $earnings ) {
+			if ( false === $earnings ) {
 				$sales    = get_posts( $args );
 				$earnings = 0;
 
@@ -176,21 +176,21 @@ class EDD_Payment_Stats extends EDD_Stats {
 			$key      = 'edd_stats_' . substr( md5( serialize( $args ) ), 0, 15 );
 
 			$earnings = get_transient( $key );
-			if( false === $earnings ) {
+			if ( false === $earnings ) {
 
 				$log_ids  = $edd_logs->get_connected_logs( $args, 'sale' );
 				$earnings = 0;
 
-				if( $log_ids ) {
+				if ( $log_ids ) {
 					$log_ids     = implode( ',', array_map('intval', $log_ids ) );
 					$payment_ids = $wpdb->get_col( "SELECT DISTINCT meta_value FROM $wpdb->postmeta WHERE meta_key = '_edd_log_payment_id' AND post_id IN ($log_ids);" );
 
-					foreach( $payment_ids as $payment_id ) {
+					foreach ( $payment_ids as $payment_id ) {
 						$items = edd_get_payment_meta_cart_details( $payment_id );
 
-						foreach( $items as $cart_key => $item ) {
+						foreach ( $items as $cart_key => $item ) {
 
-							if( $item['id'] != $download_id ) {
+							if ( $item['id'] != $download_id ) {
 								continue;
 							}
 
