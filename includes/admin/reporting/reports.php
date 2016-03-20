@@ -93,7 +93,7 @@ function edd_get_reporting_view( $default = 'earnings' ) {
  */
 function edd_reports_tab_reports() {
 
-	if( ! current_user_can( 'view_shop_reports' ) ) {
+	if ( ! current_user_can( 'view_shop_reports' ) ) {
 		wp_die( __( 'You do not have permission to access this report', 'easy-digital-downloads' ), __( 'Error', 'easy-digital-downloads' ), array( 'response' => 403 ) );
 	}
 
@@ -116,7 +116,7 @@ add_action( 'edd_reports_tab_reports', 'edd_reports_tab_reports' );
  */
 function edd_report_views() {
 
-	if( ! current_user_can( 'view_shop_reports' ) ) {
+	if ( ! current_user_can( 'view_shop_reports' ) ) {
 		return;
 	}
 
@@ -151,11 +151,11 @@ function edd_report_views() {
  */
 function edd_reports_downloads_table() {
 
-	if( ! current_user_can( 'view_shop_reports' ) ) {
+	if ( ! current_user_can( 'view_shop_reports' ) ) {
 		return;
 	}
 
-	if( isset( $_GET['download-id'] ) )
+	if ( isset( $_GET['download-id'] ) )
 		return;
 
 	include( dirname( __FILE__ ) . '/class-download-reports-table.php' );
@@ -174,11 +174,11 @@ add_action( 'edd_reports_view_downloads', 'edd_reports_downloads_table' );
  */
 function edd_reports_download_details() {
 
-	if( ! current_user_can( 'view_shop_reports' ) ) {
+	if ( ! current_user_can( 'view_shop_reports' ) ) {
 		return;
 	}
 
-	if( ! isset( $_GET['download-id'] ) )
+	if ( ! isset( $_GET['download-id'] ) )
 		return;
 ?>
 	<div class="tablenav top">
@@ -205,7 +205,7 @@ add_action( 'edd_reports_view_downloads', 'edd_reports_download_details' );
  */
 function edd_reports_gateways_table() {
 
-	if( ! current_user_can( 'view_shop_reports' ) ) {
+	if ( ! current_user_can( 'view_shop_reports' ) ) {
 		return;
 	}
 
@@ -226,7 +226,7 @@ add_action( 'edd_reports_view_gateways', 'edd_reports_gateways_table' );
  */
 function edd_reports_earnings() {
 
-	if( ! current_user_can( 'view_shop_reports' ) ) {
+	if ( ! current_user_can( 'view_shop_reports' ) ) {
 		return;
 	}
 	?>
@@ -245,7 +245,7 @@ add_action( 'edd_reports_view_earnings', 'edd_reports_earnings' );
  * @since  2.4
  */
 function edd_reports_categories() {
-	if( ! current_user_can( 'view_shop_reports' ) ) {
+	if ( ! current_user_can( 'view_shop_reports' ) ) {
 		return;
 	}
 
@@ -296,7 +296,7 @@ add_action( 'edd_reports_view_categories', 'edd_reports_categories' );
  */
 function edd_reports_taxes() {
 
-	if( ! current_user_can( 'view_shop_reports' ) ) {
+	if ( ! current_user_can( 'view_shop_reports' ) ) {
 		return;
 	}
 
@@ -338,7 +338,7 @@ add_action( 'edd_reports_view_taxes', 'edd_reports_taxes' );
  */
 function edd_reports_tab_export() {
 
-	if( ! current_user_can( 'view_shop_reports' ) ) {
+	if ( ! current_user_can( 'view_shop_reports' ) ) {
 		return;
 	}
 	?>
@@ -385,7 +385,7 @@ function edd_reports_tab_export() {
 									<option value="any"><?php _e( 'All Statuses', 'easy-digital-downloads' ); ?></option>
 									<?php
 									$statuses = edd_get_payment_statuses();
-									foreach( $statuses as $status => $label ) {
+									foreach ( $statuses as $status => $label ) {
 										echo '<option value="' . $status . '">' . $label . '</option>';
 									}
 									?>
@@ -457,7 +457,7 @@ add_action( 'edd_reports_tab_export', 'edd_reports_tab_export' );
  */
 function edd_reports_tab_logs() {
 
-	if( ! current_user_can( 'view_shop_reports' ) ) {
+	if ( ! current_user_can( 'view_shop_reports' ) ) {
 		return;
 	}
 
