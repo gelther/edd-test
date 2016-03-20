@@ -109,11 +109,11 @@ function edd_admin_email_notice( $payment_id = 0, $payment_data = array() ) {
 
 	$payment_id = absint( $payment_id );
 
-	if( empty( $payment_id ) ) {
+	if ( empty( $payment_id ) ) {
 		return;
 	}
 
-	if( ! edd_get_payment_by( 'id', $payment_id ) ) {
+	if ( ! edd_get_payment_by( 'id', $payment_id ) ) {
 		return;
 	}
 
