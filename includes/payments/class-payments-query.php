@@ -183,7 +183,7 @@ class EDD_Payments_Query extends EDD_Stats {
 	 * @return void
 	 */
 	public function date_filter_pre() {
-		if( ! ( $this->args['start_date'] || $this->args['end_date'] ) ) {
+		if ( ! ( $this->args['start_date'] || $this->args['end_date'] ) ) {
 			return;
 		}
 
@@ -249,7 +249,7 @@ class EDD_Payments_Query extends EDD_Stats {
 	 */
 	public function per_page() {
 
-		if( ! isset( $this->args['number'] ) ){
+		if ( ! isset( $this->args['number'] ) ){
 			return;
 		}
 
@@ -331,13 +331,13 @@ class EDD_Payments_Query extends EDD_Stats {
 	 */
 	public function search() {
 
-		if( ! isset( $this->args['s'] ) ) {
+		if ( ! isset( $this->args['s'] ) ) {
 			return;
 		}
 
 		$search = trim( $this->args['s'] );
 
-		if( empty( $search ) ) {
+		if ( empty( $search ) ) {
 			return;
 		}
 
@@ -348,7 +348,7 @@ class EDD_Payments_Query extends EDD_Stats {
 
 			$notes = edd_get_payment_notes( 0, $search );
 
-			if( ! empty( $notes ) ) {
+			if ( ! empty( $notes ) ) {
 
 				$payment_ids = wp_list_pluck( (array) $notes, 'comment_post_ID' );
 
@@ -378,7 +378,7 @@ class EDD_Payments_Query extends EDD_Stats {
 
 			$this->__set( 'meta_query', $search_meta );
 
-			if( edd_get_option( 'enable_sequential' ) ) {
+			if ( edd_get_option( 'enable_sequential' ) ) {
 
 				$search_meta = array(
 					'key'     => '_edd_payment_number',
@@ -415,7 +415,7 @@ class EDD_Payments_Query extends EDD_Stats {
 
 			$post = get_post( $search );
 
-			if( is_object( $post ) && $post->post_type == 'edd_payment' ) {
+			if ( is_object( $post ) && $post->post_type == 'edd_payment' ) {
 
 				$arr   = array();
 				$arr[] = $search;
