@@ -13,7 +13,7 @@
 
 
 // Exit if accessed directly
-if( ! defined( 'ABSPATH' ) ) exit;
+if ( ! defined( 'ABSPATH' ) ) exit;
 
 
 /**
@@ -310,7 +310,7 @@ final class EDD_Payment {
 	 */
 	public function __construct( $payment_id = false ) {
 
-		if( empty( $payment_id ) ) {
+		if ( empty( $payment_id ) ) {
 			return false;
 		}
 
@@ -359,7 +359,7 @@ final class EDD_Payment {
 			$this->pending[ $key ] = $value;
 		}
 
-		if( '_ID' !== $key ) {
+		if ( '_ID' !== $key ) {
 			$this->$key = $value;
 		}
 	}
@@ -395,11 +395,11 @@ final class EDD_Payment {
 
 		$payment = get_post( $payment_id );
 
-		if( ! $payment || is_wp_error( $payment ) ) {
+		if ( ! $payment || is_wp_error( $payment ) ) {
 			return false;
 		}
 
-		if( 'edd_payment' !== $payment->post_type ) {
+		if ( 'edd_payment' !== $payment->post_type ) {
 			return false;
 		}
 
@@ -566,7 +566,7 @@ final class EDD_Payment {
 			$this->payment_meta = apply_filters( 'edd_payment_meta', $this->payment_meta, $payment_data );
 			if ( ! empty( $this->payment_meta['fees'] ) ) {
 				$this->fees = array_merge( $this->fees, $this->payment_meta['fees'] );
-				foreach( $this->fees as $fee ) {
+				foreach ( $this->fees as $fee ) {
 					$this->increase_fees( $fee['amount'] );
 				}
 			}
@@ -599,7 +599,7 @@ final class EDD_Payment {
 
 		}
 
-		if( $this->ID !== $this->_ID ) {
+		if ( $this->ID !== $this->_ID ) {
 			$this->ID = $this->_ID;
 		}
 
@@ -610,12 +610,12 @@ final class EDD_Payment {
 			$total_decrease = 0;
 
 			foreach ( $this->pending as $key => $value ) {
-				switch( $key ) {
+				switch ( $key ) {
 					case 'downloads':
 						// Update totals for pending downloads
 						foreach ( $this->pending[ $key ] as $item ) {
 
-							switch( $item['action'] ) {
+							switch ( $item['action'] ) {
 
 								case 'add':
 									$price = $item['price'];
@@ -691,7 +691,7 @@ final class EDD_Payment {
 
 						foreach ( $this->pending[ $key ] as $fee ) {
 
-							switch( $fee['action'] ) {
+							switch ( $fee['action'] ) {
 
 								case 'add':
 									$total_increase += $fee['amount'];
@@ -871,7 +871,7 @@ final class EDD_Payment {
 		$download = new EDD_Download( $download_id );
 
 		// Bail if this post isn't a download
-		if( ! $download || $download->post_type !== 'download' ) {
+		if ( ! $download || $download->post_type !== 'download' ) {
 			return false;
 		}
 
@@ -888,14 +888,14 @@ final class EDD_Payment {
 		$args = wp_parse_args( apply_filters( 'edd_payment_add_download_args', $args, $download->ID ), $defaults );
 
 		// Allow overriding the price
-		if( false !== $args['item_price'] ) {
+		if ( false !== $args['item_price'] ) {
 			$item_price = $args['item_price'];
 		} else {
 			// Deal with variable pricing
-			if( edd_has_variable_prices( $download->ID ) ) {
+			if ( edd_has_variable_prices( $download->ID ) ) {
 				$prices = get_post_meta( $download->ID, 'edd_variable_prices', true );
 
-				if( $args['price_id'] && array_key_exists( $args['price_id'], (array) $prices ) ) {
+				if ( $args['price_id'] && array_key_exists( $args['price_id'], (array) $prices ) ) {
 					$item_price = $prices[$args['price_id']]['amount'];
 				} else {
 					$item_price       = edd_get_lowest_price_option( $download->ID );
@@ -941,7 +941,7 @@ final class EDD_Payment {
 		$total      = $subtotal - $discount + $tax;
 
 		// Do not allow totals to go negative
-		if( $total < 0 ) {
+		if ( $total < 0 ) {
 			$total = 0;
 		}
 
@@ -1000,7 +1000,7 @@ final class EDD_Payment {
 		$download = new EDD_Download( $download_id );
 
 		// Bail if this post isn't a download
-		if( ! $download || $download->post_type !== 'download' ) {
+		if ( ! $download || $download->post_type !== 'download' ) {
 			return false;
 		}
 
@@ -1268,7 +1268,7 @@ final class EDD_Payment {
 
 			foreach ( $this->fees as $fee_id => $fee ) {
 
-				if( 'all' != $type && ! empty( $fee['type'] ) && $type != $fee['type'] ) {
+				if ( 'all' != $type && ! empty( $fee['type'] ) && $type != $fee['type'] ) {
 					continue;
 				}
 
@@ -1290,7 +1290,7 @@ final class EDD_Payment {
 	 */
 	public function add_note( $note = false ) {
 		// Bail if no note specified
-		if( ! $note ) {
+		if ( ! $note ) {
 			return false;
 		}
 
@@ -1439,7 +1439,7 @@ final class EDD_Payment {
 			$this->status_nicename = array_key_exists( $status, $all_payment_statuses ) ? $all_payment_statuses[ $status ] : ucfirst( $status );
 
 			// Process any specific status functions
-			switch( $status ) {
+			switch ( $status ) {
 				case 'refunded':
 					$this->process_refund();
 					break;
@@ -1716,7 +1716,7 @@ final class EDD_Payment {
 	private function setup_completed_date() {
 		$payment = get_post( $this->ID );
 
-		if( 'pending' == $payment->post_status || 'preapproved' == $payment->post_status ) {
+		if ( 'pending' == $payment->post_status || 'preapproved' == $payment->post_status ) {
 			return false; // This payment was never completed
 		}
 
@@ -1934,7 +1934,7 @@ final class EDD_Payment {
 	private function setup_email() {
 		$email = $this->get_meta( '_edd_payment_user_email', true );
 
-		if( empty( $email ) ) {
+		if ( empty( $email ) ) {
 			$email = EDD()->customers->get_column( 'email', $this->customer_id );
 		}
 
