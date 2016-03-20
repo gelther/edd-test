@@ -92,7 +92,7 @@ function edd_delete_option( $key = '' ) {
 	$options = get_option( 'edd_settings' );
 
 	// Next let's try to update the value
-	if( isset( $options[ $key ] ) ) {
+	if ( isset( $options[ $key ] ) ) {
 
 		unset( $options[ $key ] );
 
@@ -121,7 +121,7 @@ function edd_get_settings() {
 
 	$settings = get_option( 'edd_settings' );
 
-	if( empty( $settings ) ) {
+	if ( empty( $settings ) ) {
 
 		// Update old settings with new single option
 
@@ -968,11 +968,11 @@ function edd_settings_sanitize_misc_file_downloads( $input ) {
 
 	global $edd_options;
 
-	if( ! current_user_can( 'manage_shop_settings' ) ) {
+	if ( ! current_user_can( 'manage_shop_settings' ) ) {
 		return $input;
 	}
 
-	if( edd_get_file_download_method() != $input['download_method'] || ! edd_htaccess_exists() ) {
+	if ( edd_get_file_download_method() != $input['download_method'] || ! edd_htaccess_exists() ) {
 		// Force the .htaccess files to be updated if the Download method was changed.
 		edd_create_protection_files( true, $input['download_method'] );
 	}
@@ -992,11 +992,11 @@ function edd_settings_sanitize_misc_accounting( $input ) {
 
 	global $edd_options;
 
-	if( ! current_user_can( 'manage_shop_settings' ) ) {
+	if ( ! current_user_can( 'manage_shop_settings' ) ) {
 		return $input;
 	}
 
-	if( ! empty( $input['enable_sequential'] ) && ! edd_get_option( 'enable_sequential' ) ) {
+	if ( ! empty( $input['enable_sequential'] ) && ! edd_get_option( 'enable_sequential' ) ) {
 
 		// Shows an admin notice about upgrading previous order numbers
 		EDD()->session->set( 'upgrade_sequential', '1' );
@@ -1019,7 +1019,7 @@ add_filter( 'edd_settings_misc-accounting_sanitize', 'edd_settings_sanitize_misc
  */
 function edd_settings_sanitize_taxes( $input ) {
 
-	if( ! current_user_can( 'manage_shop_settings' ) ) {
+	if ( ! current_user_can( 'manage_shop_settings' ) ) {
 		return $input;
 	}
 
@@ -1060,10 +1060,10 @@ function edd_get_settings_tabs() {
 	$tabs['styles']   = __( 'Styles', 'easy-digital-downloads' );
 	$tabs['taxes']    = __( 'Taxes', 'easy-digital-downloads' );
 
-	if( ! empty( $settings['extensions'] ) ) {
+	if ( ! empty( $settings['extensions'] ) ) {
 		$tabs['extensions'] = __( 'Extensions', 'easy-digital-downloads' );
 	}
-	if( ! empty( $settings['licenses'] ) ) {
+	if ( ! empty( $settings['licenses'] ) ) {
 		$tabs['licenses'] = __( 'Licenses', 'easy-digital-downloads' );
 	}
 
@@ -1083,7 +1083,7 @@ function edd_get_settings_tab_sections( $tab = false ) {
 	$tabs     = false;
 	$sections = edd_get_registered_settings_sections();
 
-	if( $tab && ! empty( $sections[ $tab ] ) ) {
+	if ( $tab && ! empty( $sections[ $tab ] ) ) {
 		$tabs = $sections[ $tab ];
 	} else if ( $tab ) {
 		$tabs = false;
@@ -1160,7 +1160,7 @@ function edd_get_pages( $force = false ) {
 
 	$pages_options = array( '' => '' ); // Blank option
 
-	if( ( ! isset( $_GET['page'] ) || 'edd-settings' != $_GET['page'] ) && ! $force ) {
+	if ( ( ! isset( $_GET['page'] ) || 'edd-settings' != $_GET['page'] ) && ! $force ) {
 		return $pages_options;
 	}
 
@@ -1227,8 +1227,8 @@ function edd_multicheck_callback( $args ) {
 	global $edd_options;
 
 	if ( ! empty( $args['options'] ) ) {
-		foreach( $args['options'] as $key => $option ):
-			if( isset( $edd_options[$args['id']][$key] ) ) { $enabled = $option; } else { $enabled = NULL; }
+		foreach ( $args['options'] as $key => $option ):
+			if ( isset( $edd_options[$args['id']][$key] ) ) { $enabled = $option; } else { $enabled = NULL; }
 			echo '<input name="edd_settings[' . edd_sanitize_key( $args['id'] ) . '][' . edd_sanitize_key( $key ) . ']" id="edd_settings[' . edd_sanitize_key( $args['id'] ) . '][' . edd_sanitize_key( $key ) . ']" type="checkbox" value="' . esc_attr( $option ) . '" ' . checked($option, $enabled, false) . '/>&nbsp;';
 			echo '<label for="edd_settings[' . edd_sanitize_key( $args['id'] ) . '][' . edd_sanitize_key( $key ) . ']">' . wp_kses_post( $option ) . '</label><br/>';
 		endforeach;
@@ -1248,9 +1248,9 @@ function edd_payment_icons_callback( $args ) {
 	global $edd_options;
 
 	if ( ! empty( $args['options'] ) ) {
-		foreach( $args['options'] as $key => $option ) {
+		foreach ( $args['options'] as $key => $option ) {
 
-			if( isset( $edd_options[$args['id']][$key] ) ) {
+			if ( isset( $edd_options[$args['id']][$key] ) ) {
 				$enabled = $option;
 			} else {
 				$enabled = NULL;
@@ -1260,7 +1260,7 @@ function edd_payment_icons_callback( $args ) {
 
 				echo '<input name="edd_settings[' . edd_sanitize_key( $args['id'] ) . '][' . edd_sanitize_key( $key ) . ']" id="edd_settings[' . edd_sanitize_key( $args['id'] ) . '][' . edd_sanitize_key( $key ) . ']" type="checkbox" value="' . esc_attr( $option ) . '" ' . checked( $option, $enabled, false ) . '/>&nbsp;';
 
-				if( edd_string_is_image_url( $key ) ) {
+				if ( edd_string_is_image_url( $key ) ) {
 
 					echo '<img class="payment-icon" src="' . esc_url( $key ) . '" style="width:32px;height:24px;position:relative;top:6px;margin-right:5px;"/>';
 
@@ -1268,7 +1268,7 @@ function edd_payment_icons_callback( $args ) {
 
 					$card = strtolower( str_replace( ' ', '', $option ) );
 
-					if( has_filter( 'edd_accepted_payment_' . $card . '_image' ) ) {
+					if ( has_filter( 'edd_accepted_payment_' . $card . '_image' ) ) {
 
 						$image = apply_filters( 'edd_accepted_payment_' . $card . '_image', '' );
 
@@ -1277,7 +1277,7 @@ function edd_payment_icons_callback( $args ) {
 						$image       = edd_locate_template( 'images' . DIRECTORY_SEPARATOR . 'icons' . DIRECTORY_SEPARATOR . $card . '.gif', false );
 						$content_dir = WP_CONTENT_DIR;
 
-						if( function_exists( 'wp_normalize_path' ) ) {
+						if ( function_exists( 'wp_normalize_path' ) ) {
 
 							// Replaces backslashes with forward slashes for Windows systems
 							$image = wp_normalize_path( $image );
@@ -1318,7 +1318,7 @@ function edd_radio_callback( $args ) {
 
 		if ( isset( $edd_options[ $args['id'] ] ) && $edd_options[ $args['id'] ] == $key )
 			$checked = true;
-		elseif( isset( $args['std'] ) && $args['std'] == $key && ! isset( $edd_options[ $args['id'] ] ) )
+		elseif ( isset( $args['std'] ) && $args['std'] == $key && ! isset( $edd_options[ $args['id'] ] ) )
 			$checked = true;
 
 		echo '<input name="edd_settings[' . edd_sanitize_key( $args['id'] ) . ']" id="edd_settings[' . edd_sanitize_key( $args['id'] ) . '][' . edd_sanitize_key( $key ) . ']" type="radio" value="' . edd_sanitize_key( $key ) . '" ' . checked(true, $checked, false) . '/>&nbsp;';
@@ -1608,7 +1608,7 @@ function edd_rich_editor_callback( $args ) {
 	if ( isset( $edd_options[ $args['id'] ] ) ) {
 		$value = $edd_options[ $args['id'] ];
 
-		if( empty( $args['allow_blank'] ) && empty( $value ) ) {
+		if ( empty( $args['allow_blank'] ) && empty( $value ) ) {
 			$value = isset( $args['std'] ) ? $args['std'] : '';
 		}
 	} else {
@@ -1746,8 +1746,8 @@ function edd_tax_rates_callback($args) {
 				<th scope="col"><?php _e( 'Remove', 'easy-digital-downloads' ); ?></th>
 			</tr>
 		</thead>
-		<?php if( ! empty( $rates ) ) : ?>
-			<?php foreach( $rates as $key => $rate ) : ?>
+		<?php if ( ! empty( $rates ) ) : ?>
+			<?php foreach ( $rates as $key => $rate ) : ?>
 			<tr>
 				<td class="edd_tax_country">
 					<?php
@@ -1766,7 +1766,7 @@ function edd_tax_rates_callback($args) {
 				<td class="edd_tax_state">
 					<?php
 					$states = edd_get_shop_states( $rate['country'] );
-					if( ! empty( $states ) ) {
+					if ( ! empty( $states ) ) {
 						echo EDD()->html->select( array(
 							'options'          => $states,
 							'name'             => 'tax_rates[' . edd_sanitize_key( $key ) . '][state]',
@@ -1861,12 +1861,12 @@ if ( ! function_exists( 'edd_license_key_callback' ) ) {
 			$value = isset( $args['std'] ) ? $args['std'] : '';
 		}
 
-		if( ! empty( $license ) && is_object( $license ) ) {
+		if ( ! empty( $license ) && is_object( $license ) ) {
 
 			// activate_license 'invalid' on anything other than valid, so if there was an error capture it
 			if ( false === $license->success ) {
 
-				switch( $license->error ) {
+				switch ( $license->error ) {
 
 					case 'expired' :
 
@@ -1929,7 +1929,7 @@ if ( ! function_exists( 'edd_license_key_callback' ) ) {
 
 			} else {
 
-				switch( $license->license ) {
+				switch ( $license->license ) {
 
 					case 'valid' :
 					default:
@@ -1939,13 +1939,13 @@ if ( ! function_exists( 'edd_license_key_callback' ) ) {
 						$now        = current_time( 'timestamp' );
 						$expiration = strtotime( $license->expires, current_time( 'timestamp' ) );
 
-						if( 'lifetime' === $license->expires ) {
+						if ( 'lifetime' === $license->expires ) {
 
 							$messages[] = __( 'License key never expires.', 'easy-digital-downloads' );
 
 							$license_status = 'license-lifetime-notice';
 
-						} elseif( $expiration > $now && $expiration - $now < ( DAY_IN_SECONDS * 30 ) ) {
+						} elseif ( $expiration > $now && $expiration - $now < ( DAY_IN_SECONDS * 30 ) ) {
 
 							$messages[] = sprintf(
 								__( 'Your license key expires soon! It expires on %s. <a href="%s" target="_blank" title="Renew license">Renew your license key</a>.', 'easy-digital-downloads' ),
@@ -1986,7 +1986,7 @@ if ( ! function_exists( 'edd_license_key_callback' ) ) {
 		$html .= '<label for="edd_settings[' . edd_sanitize_key( $args['id'] ) . ']"> '  . wp_kses_post( $args['desc'] ) . '</label>';
 
 		if ( ! empty( $messages ) ) {
-			foreach( $messages as $message ) {
+			foreach ( $messages as $message ) {
 
 				$html .= '<div class="edd-license-data edd-license-' . $class . '">';
 					$html .= '<p>' . $message . '</p>';
