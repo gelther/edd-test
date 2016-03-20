@@ -180,13 +180,13 @@ class EDD_Register_Meta {
 		$files = $this->remove_blank_rows( $files );
 
 		// Clean up filenames to ensure whitespaces are stripped
-		foreach( $files as $id => $file ) {
+		foreach ( $files as $id => $file ) {
 
-			if( ! empty( $files[ $id ]['file'] ) ) {
+			if ( ! empty( $files[ $id ]['file'] ) ) {
 				$files[ $id ]['file'] = trim( $file['file'] );
 			}
 
-			if( ! empty( $files[ $id ]['name'] ) ) {
+			if ( ! empty( $files[ $id ]['name'] ) ) {
 				$files[ $id ]['name'] = trim( $file['name'] );
 			}
 		}
