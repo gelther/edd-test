@@ -57,11 +57,11 @@ class HttpCurl implements HttpCurlInterface
         curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 2);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
-        if (!is_null($this->config['cabundle_file'])) {
+        if (! is_null($this->config['cabundle_file'])) {
             curl_setopt($ch, CURLOPT_CAINFO, $this->config['cabundle_file']);
         }
 
-        if (!empty($userAgent))
+        if (! empty($userAgent))
             curl_setopt($ch, CURLOPT_USERAGENT, $userAgent);
 
         if ($this->config['proxy_host'] != null && $this->config['proxy_port'] != -1) {
@@ -118,7 +118,7 @@ class HttpCurl implements HttpCurlInterface
     private function execute($ch)
     {
         $response = '';
-        if (!$response = curl_exec($ch)) {
+        if (! $response = curl_exec($ch)) {
             $error_msg = "Unable to post request, underlying exception of " . curl_error($ch);
             curl_close($ch);
             throw new \Exception($error_msg);
