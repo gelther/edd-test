@@ -62,7 +62,7 @@ function edd_admin_footer_for_thickbox() {
                     text = jQuery('#edd-text').val() || '<?php _e( "Purchase", "easy-digital-downloads" ); ?>';
 
                 // Return early if no download is selected
-                if ('' === id) {
+                if ( '' === id ) {
                     alert('<?php _e( "You must choose a download", "easy-digital-downloads" ); ?>');
                     return;
                 }
@@ -78,7 +78,7 @@ function edd_admin_footer_for_thickbox() {
             }
             jQuery(document).ready(function ($) {
                 $('#select-edd-style').change(function () {
-                    if ($(this).val() === 'button') {
+                    if ( $(this).val() === 'button' ) {
                         $('#edd-color-choice').slideDown();
                     } else {
                         $('#edd-color-choice').slideUp();
