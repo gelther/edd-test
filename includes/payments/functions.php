@@ -379,7 +379,7 @@ function edd_count_payments( $args = array() ) {
 
 	$args = wp_parse_args( $args, $defaults );
 
-	$select = "SELECT p.post_status,count( * ) AS num_posts";
+	$select = 'SELECT p.post_status,count( * ) AS num_posts';
 	$join = '';
 	$where = "WHERE p.post_type = 'edd_payment'";
 
@@ -413,9 +413,9 @@ function edd_count_payments( $args = array() ) {
 
 
 			$join = "LEFT JOIN $wpdb->postmeta m ON (p.ID = m.post_id)";
-			$where .= $wpdb->prepare( "
+			$where .= $wpdb->prepare( '
 				AND m.meta_key = %s
-				AND m.meta_value = %s",
+				AND m.meta_value = %s',
 				$field,
 				$args['s']
 			);
@@ -425,11 +425,11 @@ function edd_count_payments( $args = array() ) {
 			$search = str_replace( '#:', '', $args['s'] );
 			$search = str_replace( '#', '', $search );
 
-			$select = "SELECT p2.post_status,count( * ) AS num_posts ";
+			$select = 'SELECT p2.post_status,count( * ) AS num_posts ';
 			$join   = "LEFT JOIN $wpdb->postmeta m ON m.meta_key = '_edd_log_payment_id' AND m.post_id = p.ID ";
 			$join  .= "INNER JOIN $wpdb->posts p2 ON m.meta_value = p2.ID ";
 			$where  = "WHERE p.post_type = 'edd_log' ";
-			$where .= $wpdb->prepare( "AND p.post_parent = %d} ", $search );
+			$where .= $wpdb->prepare( 'AND p.post_parent = %d} ', $search );
 
 		} elseif ( is_numeric( $args['s'] ) ) {
 
@@ -456,14 +456,14 @@ function edd_count_payments( $args = array() ) {
 			$search = $wpdb->esc_like( $args['s'] );
 			$search = '%' . $search . '%';
 
-			$where .= $wpdb->prepare( "AND ((p.post_title LIKE %s) OR (p.post_content LIKE %s))", $search, $search );
+			$where .= $wpdb->prepare( 'AND ((p.post_title LIKE %s) OR (p.post_content LIKE %s))', $search, $search );
 		}
 
 	}
 
 	if ( ! empty( $args['download'] ) && is_numeric( $args['download'] ) ) {
 
-		$where .= $wpdb->prepare( " AND p.post_parent = %d", $args['download'] );
+		$where .= $wpdb->prepare( ' AND p.post_parent = %d', $args['download'] );
 
 	}
 
@@ -1633,7 +1633,7 @@ add_filter( 'comments_clauses', 'edd_hide_payment_notes_pre_41', 10, 2 );
 function edd_hide_payment_notes_from_feeds( $where, $wp_comment_query ) {
     global $wpdb;
 
-	$where .= $wpdb->prepare( " AND comment_type != %s", 'edd_payment_note' );
+	$where .= $wpdb->prepare( ' AND comment_type != %s', 'edd_payment_note' );
 	return $where;
 }
 add_filter( 'comment_feed_where', 'edd_hide_payment_notes_from_feeds', 10, 2 );
@@ -1668,7 +1668,7 @@ function edd_remove_payment_notes_in_comment_counts( $stats, $post_id ) {
 	$where = 'WHERE comment_type != "edd_payment_note"';
 
 	if ( $post_id > 0 )
-		$where .= $wpdb->prepare( " AND comment_post_ID = %d", $post_id );
+		$where .= $wpdb->prepare( ' AND comment_post_ID = %d', $post_id );
 
 	$count = $wpdb->get_results( "SELECT comment_approved, COUNT( * ) AS num_comments FROM {$wpdb->comments} {$where} GROUP BY comment_approved", ARRAY_A );
 
