@@ -732,11 +732,11 @@ function edd_v226_upgrade_payments_price_logs_db() {
 			}
 			if ( ! empty( $mapped_logs ) ) {
 				$update  = "UPDATE $wpdb->postmeta SET meta_value = ";
-				$case    = "CASE post_id ";
+				$case    = 'CASE post_id ';
 				foreach ( $mapped_logs as $post_id => $value ) {
 					$case .= "WHEN $post_id THEN $value ";
 				}
-				$case   .= "END ";
+				$case   .= 'END ';
 				$log_ids = implode( ',', array_keys( $mapped_logs ) );
 				$where   = "WHERE post_id IN ($log_ids) AND meta_key = '_edd_log_price_id'";
 				$sql     = $update . $case . $where;
