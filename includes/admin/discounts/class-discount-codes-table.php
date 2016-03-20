@@ -119,9 +119,9 @@ class EDD_Discount_Codes_Table extends WP_List_Table {
 		$base           = admin_url('edit.php?post_type=download&page=edd-discounts');
 
 		$current        = isset( $_GET['status'] ) ? $_GET['status'] : '';
-		$total_count    = '&nbsp;<span class="count">(' . $this->total_count    . ')</span>';
+		$total_count    = '&nbsp;<span class="count">(' . $this->total_count . ')</span>';
 		$active_count   = '&nbsp;<span class="count">(' . $this->active_count . ')</span>';
-		$inactive_count = '&nbsp;<span class="count">(' . $this->inactive_count  . ')</span>';
+		$inactive_count = '&nbsp;<span class="count">(' . $this->inactive_count . ')</span>';
 
 		$views = array(
 			'all'      => sprintf( '<a href="%s"%s>%s</a>', remove_query_arg( 'status', $base ), $current === 'all' || $current == '' ? ' class="current"' : '', __('All', 'easy-digital-downloads') . $total_count ),
