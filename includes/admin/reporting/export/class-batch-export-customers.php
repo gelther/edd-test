@@ -74,7 +74,7 @@ class EDD_Batch_Customers_Export extends EDD_Batch_Export {
 				'paged'          => $this->step
 			);
 
-			if( null !== $this->price_id ) {
+			if ( null !== $this->price_id ) {
 				$args['meta_query'] = array(
 					array(
 						'key'   => '_edd_log_price_id',
@@ -139,11 +139,11 @@ class EDD_Batch_Customers_Export extends EDD_Batch_Export {
 		$percentage = 0;
 
 		// We can't count the number when getting them for a specific download
-		if( empty( $this->download ) ) {
+		if ( empty( $this->download ) ) {
 
 			$total = EDD()->customers->count();
 
-			if( $total > 0 ) {
+			if ( $total > 0 ) {
 
 				$percentage = ( ( 30 * $this->step ) / $total ) * 100;
 
@@ -151,7 +151,7 @@ class EDD_Batch_Customers_Export extends EDD_Batch_Export {
 
 		}
 
-		if( $percentage > 100 ) {
+		if ( $percentage > 100 ) {
 			$percentage = 100;
 		}
 
