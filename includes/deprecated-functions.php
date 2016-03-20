@@ -214,7 +214,7 @@ function edd_show_has_purchased_item_message() {
 
 	global $user_ID, $post;
 
-	if( ! isset( $post->ID ) )
+	if ( ! isset( $post->ID ) )
 		return;
 
 	if ( edd_has_user_purchased( $user_ID, $post->ID ) ) {
@@ -270,7 +270,7 @@ function edd_get_cart_amount( $add_taxes = true, $local_override = false ) {
 			$amount = edd_get_discounted_amount( $posted_discount, $amount );
 		}
 
-		if( ! empty( $discounts ) ) {
+		if ( ! empty( $discounts ) ) {
 			// Apply the discounted amount from discounts already applied
 			$amount -= edd_get_cart_discounted_amount();
 		}
@@ -281,7 +281,7 @@ function edd_get_cart_amount( $add_taxes = true, $local_override = false ) {
 		$amount += $tax;
 	}
 
-	if( $amount < 0 )
+	if ( $amount < 0 )
 		$amount = 0.00;
 
 	return apply_filters( 'edd_get_cart_amount', $amount, $add_taxes, $local_override );
