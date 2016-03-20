@@ -78,7 +78,7 @@ class ResponseParser implements ResponseInterface
         }
         $data->registerXPathNamespace('GetBA', $namespace);
         foreach ( $data->xpath('//GetBA:BillingAgreementStatus') as $value ) {
-            $baStatus = json_decode(json_encode((array)$value), TRUE);
+            $baStatus = json_decode(json_encode((array)$value), true);
         }
 
         return $baStatus ;
