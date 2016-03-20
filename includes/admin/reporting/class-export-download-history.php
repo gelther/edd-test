@@ -48,7 +48,7 @@ class EDD_Download_History_Export extends EDD_Export {
 		nocache_headers();
 		header( 'Content-Type: text/csv; charset=utf-8' );
 		header( 'Content-Disposition: attachment; filename=' . apply_filters( 'edd_download_history_export_filename', 'edd-export-' . $this->export_type . '-' . $month . '-' . $year ) . '.csv' );
-		header( "Expires: 0" );
+		header( 'Expires: 0' );
 	}
 
 
