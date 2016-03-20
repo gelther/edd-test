@@ -67,7 +67,7 @@ function edd_admin_footer_for_thickbox() {
                     return;
                 }
 
-                if( '2' == direct ) {
+                if ( '2' == direct ) {
                 	direct = ' direct="true"';
                 } else {
                 	direct = '';
@@ -93,7 +93,7 @@ function edd_admin_footer_for_thickbox() {
 				<div>
 					<?php echo EDD()->html->product_dropdown( array( 'chosen' => true )); ?>
 				</div>
-				<?php if( edd_shop_supports_buy_now() ) : ?>
+				<?php if ( edd_shop_supports_buy_now() ) : ?>
 					<div>
 						<select id="select-edd-direct" style="clear: both; display: block; margin-bottom: 1em; margin-top: 1em;">
 							<option value="0"><?php _e( 'Choose the button behavior', 'easy-digital-downloads' ); ?></option>
@@ -115,7 +115,7 @@ function edd_admin_footer_for_thickbox() {
 				</div>
 				<?php
 				$colors = edd_get_button_colors();
-				if( $colors ) { ?>
+				if ( $colors ) { ?>
 				<div id="edd-color-choice" style="display: none;">
 					<select id="select-edd-color" style="clear: both; display: block; margin-bottom: 1em;">
 						<option value=""><?php _e('Choose a button color','easy-digital-downloads' ); ?></option>
