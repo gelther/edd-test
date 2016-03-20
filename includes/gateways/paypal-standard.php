@@ -223,7 +223,7 @@ function edd_process_paypal_ipn() {
 	// Verify there is a post_data
 	if ( $post_data || strlen( $post_data ) > 0 ) {
 		// Append the data
-		$encoded_data .= $arg_separator.$post_data;
+		$encoded_data .= $arg_separator . $post_data;
 	} else {
 		// Check if POST is empty
 		if ( empty( $_POST ) ) {
@@ -233,7 +233,7 @@ function edd_process_paypal_ipn() {
 			// Loop through each POST
 			foreach ( $_POST as $key => $value ) {
 				// Encode the value and append the data
-				$encoded_data .= $arg_separator."$key=" . urlencode( $value );
+				$encoded_data .= $arg_separator . "$key=" . urlencode( $value );
 			}
 		}
 	}
