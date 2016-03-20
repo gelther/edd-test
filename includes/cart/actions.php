@@ -140,7 +140,7 @@ add_action( 'edd_purchase_collection', 'edd_process_collection_purchase' );
  */
 function edd_process_cart_update( $data ) {
 
-	foreach( $data['edd-cart-downloads'] as $key => $cart_download_id ) {
+	foreach ( $data['edd-cart-downloads'] as $key => $cart_download_id ) {
 		$options  = json_decode( stripslashes( $data['edd-cart-download-' . $key . '-options'] ), true );
 		$quantity = absint( $data['edd-cart-download-' . $key . '-quantity'] );
 		edd_set_cart_item_quantity( $cart_download_id, $quantity, $options );
@@ -158,7 +158,7 @@ add_action( 'edd_update_cart', 'edd_process_cart_update' );
 function edd_process_cart_save( $data ) {
 
 	$cart = edd_save_cart();
-	if( ! $cart ) {
+	if ( ! $cart ) {
 		wp_redirect( edd_get_checkout_uri() ); exit;
 	}
 
@@ -174,7 +174,7 @@ add_action( 'edd_save_cart', 'edd_process_cart_save' );
 function edd_process_cart_restore( $data ) {
 
 	$cart = edd_restore_cart();
-	if( ! is_wp_error( $cart ) ) {
+	if ( ! is_wp_error( $cart ) ) {
 		wp_redirect( edd_get_checkout_uri() ); exit;
 	}
 
