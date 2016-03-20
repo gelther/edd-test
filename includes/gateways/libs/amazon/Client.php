@@ -80,15 +80,15 @@ class Client implements ClientInterface
 
 	public function __construct($config = null)
 	{
-		if (! is_null($config)) {
+		if ( ! is_null($config) ) {
 
-			if (is_array($config)) {
+			if ( is_array($config) ) {
 				$configArray = $config;
-			} elseif (! is_array($config)) {
+			} elseif ( ! is_array($config) ) {
 		$configArray = $this->checkIfFileExists($config);
 		}
 
-		if (is_array($configArray)) {
+		if ( is_array($configArray) ) {
 				$this->checkConfigKeys($configArray);
 			} else {
 				throw new \Exception('$config is of the incorrect type ' . gettype($configArray) . ' and should be of the type array');
@@ -102,14 +102,14 @@ class Client implements ClientInterface
 
 	private function checkIfFileExists($config)
 	{
-	if(file_exists($config))
+	if( file_exists($config) )
 	{
 		$jsonString  = file_get_contents($config);
 		$configArray = json_decode($jsonString, true);
 
 		$jsonError = json_last_error();
 
-		if ($jsonError != 0) {
+		if ( $jsonError != 0 ) {
 		$errorMsg = "Error with message - content is not in json format" . $this->getErrorMessageForJsonError($jsonError) . " " . $configArray;
 		throw new \Exception($errorMsg);
 		}
@@ -130,8 +130,8 @@ class Client implements ClientInterface
 		$config = array_change_key_case($config, CASE_LOWER);
 	$config = $this->trimArray($config);
 
-		foreach ($config as $key => $value) {
-			if (array_key_exists($key, $this->config)) {
+		foreach ( $config as $key => $value ) {
+			if ( array_key_exists($key, $this->config) ) {
 				$this->config[$key] = $value;
 			} else {
 				throw new \Exception('Key ' . $key . ' is either not part of the configuration or has incorrect Key name.
@@ -149,7 +149,7 @@ class Client implements ClientInterface
 
 	private function getErrorMessageForJsonError($jsonError)
 	{
-		switch ($jsonError) {
+		switch ( $jsonError ) {
 			case JSON_ERROR_DEPTH:
 				return " - maximum stack depth exceeded.";
 				break;
@@ -174,7 +174,7 @@ class Client implements ClientInterface
 
 	public function setSandbox($value)
 	{
-		if (is_bool($value)) {
+		if ( is_bool($value) ) {
 			$this->config['sandbox'] = $value;
 		} else {
 			throw new \Exception($value . ' is of type ' . gettype($value) . ' and should be a boolean value');
@@ -187,7 +187,7 @@ class Client implements ClientInterface
 
 	public function setClientId($value)
 	{
-		if (! empty($value)) {
+		if ( ! empty($value) ) {
 			$this->config['client_id'] = $value;
 		} else {
 			throw new \Exception('setter value for client ID provided is empty');
@@ -206,16 +206,16 @@ class Client implements ClientInterface
 	{
 	$proxy = $this->trimArray($proxy);
 
-		if (! empty($proxy['proxy_user_host']))
+		if ( ! empty($proxy['proxy_user_host']) )
 		$this->config['proxy_user_host'] = $proxy['proxy_user_host'];
 
-		if (! empty($proxy['proxy_user_port']))
+		if ( ! empty($proxy['proxy_user_port']) )
 			$this->config['proxy_user_port'] = $proxy['proxy_user_port'];
 
-		if (! empty($proxy['proxy_user_name']))
+		if ( ! empty($proxy['proxy_user_name']) )
 			$this->config['proxy_user_name'] = $proxy['proxy_user_name'];
 
-		if (! empty($proxy['proxy_user_password']))
+		if ( ! empty($proxy['proxy_user_password']) )
 			$this->config['proxy_user_password'] = $proxy['proxy_user_password'];
 	}
 
@@ -234,7 +234,7 @@ class Client implements ClientInterface
 
 	public function __get($name)
 	{
-		if (array_key_exists(strtolower($name), $this->config)) {
+		if ( array_key_exists(strtolower($name), $this->config) ) {
 			return $this->config[strtolower($name)];
 		} else {
 			throw new \Exception('Key ' . $name . ' is either not a part of the configuration array config or the' . $name . 'does not match the key name in the config array', 1);
@@ -254,7 +254,7 @@ class Client implements ClientInterface
 
 	private function trimArray($array)
 	{
-	foreach ($array as $key => $value)
+	foreach ( $array as $key => $value )
 	{
 		$array[$key] = trim($value);
 	}
@@ -272,7 +272,7 @@ class Client implements ClientInterface
 		// Get the correct Profile Endpoint URL based off the country/region provided in the config['region']
 		$this->profileEndpointUrl();
 
-		if (empty($accessToken)) {
+		if ( empty($accessToken) ) {
 			throw new \InvalidArgumentException('Access Token is a required parameter and is not set');
 		}
 
@@ -285,7 +285,7 @@ class Client implements ClientInterface
 		$response = $httpCurlRequest->httpGet($url);
 		$data 	  = json_decode($response);
 
-		if ($data->aud != $this->config['client_id']) {
+		if ( $data->aud != $this->config['client_id'] ) {
 			// The access token does not belong to us
 			throw new \Exception('The Access token entered is incorrect');
 		}
@@ -312,25 +312,25 @@ class Client implements ClientInterface
 	/* For loop to take all the non empty parameters in the $requestParameters and add it into the $parameters array,
 	 * if the keys are matched from $requestParameters array with the $fieldMappings array
 	 */
-		foreach ($requestParameters as $param => $value) {
+		foreach ( $requestParameters as $param => $value ) {
 
-		if(! is_array($value)) {
+		if( ! is_array($value) ) {
 		$value = trim($value);
 		}
 
-			if (array_key_exists($param, $fieldMappings) && $value!='') {
+			if ( array_key_exists($param, $fieldMappings) && $value!='' ) {
 
-		if(is_array($value)) {
+		if( is_array($value) ) {
 			// If the parameter is a provider_credit_details or provider_credit_reversal_details, call the respective functions to set the values
-			if($param === 'provider_credit_details') {
+			if( $param === 'provider_credit_details' ) {
 			$parameters = $this->setProviderCreditDetails($parameters,$value);
-			} elseif ($param === 'provider_credit_reversal_details') {
+			} elseif ( $param === 'provider_credit_reversal_details' ) {
 			$parameters = $this->setProviderCreditReversalDetails($parameters,$value);
 			}
 
 		} else{
 			// For variables that are boolean values, strtolower them
-			if($this->checkIfBool($value))
+			if( $this->checkIfBool($value) )
 			{
 			$value = strtolower($value);
 			}
@@ -379,16 +379,16 @@ class Client implements ClientInterface
 
 	private function setDefaultValues($parameters, $fieldMappings, $requestParameters)
 	{
-		if (empty($requestParameters['merchant_id']))
+		if ( empty($requestParameters['merchant_id']) )
 			$parameters['SellerId'] = $this->config['merchant_id'];
 
-		if (array_key_exists('platform_id', $fieldMappings)) {
-		if (empty($requestParameters['platform_id']) && ! empty($this->config['platform_id']))
+		if ( array_key_exists('platform_id', $fieldMappings) ) {
+		if ( empty($requestParameters['platform_id']) && ! empty($this->config['platform_id']) )
 			$parameters[$fieldMappings['platform_id']] = $this->config['platform_id'];
 	}
 
-		if (array_key_exists('currency_code', $fieldMappings)) {
-			if (! empty($requestParameters['currency_code'])) {
+		if ( array_key_exists('currency_code', $fieldMappings) ) {
+			if ( ! empty($requestParameters['currency_code']) ) {
 		$parameters[$fieldMappings['currency_code']] = strtoupper($requestParameters['currency_code']);
 			} else {
 				$parameters[$fieldMappings['currency_code']] = strtoupper($this->config['currency_code']);
@@ -415,20 +415,20 @@ class Client implements ClientInterface
 			'currency_code' => 'CreditAmount.CurrencyCode'
 		);
 
-	foreach ($providerCreditInfo as $key => $value)
+	foreach ( $providerCreditInfo as $key => $value )
 	 {
 		$value = array_change_key_case($value, CASE_LOWER);
 		$providerIndex = $providerIndex + 1;
 
-		foreach ($value as $param => $val)
+		foreach ( $value as $param => $val )
 		{
-		if (array_key_exists($param, $fieldMappings) && trim($val)!='') {
+		if ( array_key_exists($param, $fieldMappings) && trim($val)!='' ) {
 			$parameters[$providerString.$providerIndex. '.' .$fieldMappings[$param]] = $val;
 		}
 		}
 
 		// If currency code is not entered take it from the config array
-		if(empty($parameters[$providerString.$providerIndex. '.' .$fieldMappings['currency_code']]))
+		if( empty($parameters[$providerString.$providerIndex. '.' .$fieldMappings['currency_code']]) )
 		{
 		$parameters[$providerString.$providerIndex. '.' .$fieldMappings['currency_code']] = strtoupper($this->config['currency_code']);
 		}
@@ -454,20 +454,20 @@ class Client implements ClientInterface
 			'currency_code' 		=> 'CreditReversalAmount.CurrencyCode'
 		);
 
-	foreach ($providerCreditInfo as $key => $value)
+	foreach ( $providerCreditInfo as $key => $value )
 	{
 		$value = array_change_key_case($value, CASE_LOWER);
 		$providerIndex = $providerIndex + 1;
 
-		foreach ($value as $param => $val)
+		foreach ( $value as $param => $val )
 		{
-		if (array_key_exists($param, $fieldMappings) && trim($val)!='') {
+		if ( array_key_exists($param, $fieldMappings) && trim($val)!='' ) {
 			$parameters[$providerString.$providerIndex. '.' .$fieldMappings[$param]] = $val;
 		}
 		}
 
 		// If currency code is not entered take it from the config array
-		if(empty($parameters[$providerString.$providerIndex. '.' .$fieldMappings['currency_code']]))
+		if( empty($parameters[$providerString.$providerIndex. '.' .$fieldMappings['currency_code']]) )
 		{
 		$parameters[$providerString.$providerIndex. '.' .$fieldMappings['currency_code']] = strtoupper($this->config['currency_code']);
 		}
@@ -1131,15 +1131,15 @@ class Client implements ClientInterface
 
 		$chargeType = '';
 
-	if (! empty($requestParameters['amazon_order_reference_id']))
+	if ( ! empty($requestParameters['amazon_order_reference_id']) )
 	{
 		$chargeType = 'OrderReference';
 
-	} elseif(! empty($requestParameters['amazon_billing_agreement_id'])) {
+	} elseif( ! empty($requestParameters['amazon_billing_agreement_id']) ) {
 		$chargeType = 'BillingAgreement';
 
-	} elseif (! empty($requestParameters['amazon_reference_id'])) {
-			switch (substr(strtoupper($requestParameters['amazon_reference_id']), 0, 1)) {
+	} elseif ( ! empty($requestParameters['amazon_reference_id']) ) {
+			switch ( substr(strtoupper($requestParameters['amazon_reference_id']), 0, 1) ) {
 				case 'P':
 				case 'S':
 					$chargeType = 'OrderReference';
@@ -1183,13 +1183,13 @@ class Client implements ClientInterface
 
 	private function makeChargeCalls($chargeType, $setParameters, $confirmParameters, $authorizeParameters)
 	{
-	switch ($chargeType) {
+	switch ( $chargeType ) {
 			case 'OrderReference':
 				$response = $this->setOrderReferenceDetails($setParameters);
-				if ($this->success) {
+				if ( $this->success ) {
 					$this->confirmOrderReference($confirmParameters);
 				}
-				if ($this->success) {
+				if ( $this->success ) {
 					$response = $this->Authorize($authorizeParameters);
 				}
 				return $response;
@@ -1199,16 +1199,16 @@ class Client implements ClientInterface
 				// Call the function GetBillingAgreementDetailsStatus in ResponseParser.php providing it the XML response
 				// $baStatus is an aray containing the State of the Billing Agreement
 				$baStatus = $responseObj->getBillingAgreementDetailsStatus($responseObj->toXml());
-				if ($baStatus['State'] != 'Open') {
+				if ( $baStatus['State'] != 'Open' ) {
 					$response = $this->SetBillingAgreementDetails($setParameters);
-					if ($this->success) {
+					if ( $this->success ) {
 						$response = $this->ConfirmBillingAgreement($confirmParameters);
 					}
 				}
 				// Check the Billing Agreement status again before making the Authorization.
 				$responseObj = $this->getBillingAgreementDetails($setParameters);
 				$baStatus = $responseObj->GetBillingAgreementDetailsStatus($responseObj->toXml());
-				if ($this->success && $baStatus['State'] === 'Open') {
+				if ( $this->success && $baStatus['State'] === 'Open' ) {
 					$response = $this->AuthorizeOnBillingAgreement($authorizeParameters);
 				}
 			return $response;
@@ -1359,7 +1359,7 @@ class Client implements ClientInterface
 		$signatureVersion = $parameters['SignatureVersion'];
 		$algorithm        = "HmacSHA1";
 		$stringToSign     = null;
-		if (2 === $signatureVersion) {
+		if ( 2 === $signatureVersion ) {
 			$algorithm                     = "HmacSHA256";
 			$parameters['SignatureMethod'] = $algorithm;
 			$stringToSign                  = $this->calculateStringToSignV2($parameters);
@@ -1392,7 +1392,7 @@ class Client implements ClientInterface
 	private function getParametersAsString(array $parameters)
 	{
 		$queryParameters = array();
-		foreach ($parameters as $key => $value) {
+		foreach ( $parameters as $key => $value ) {
 			$queryParameters[] = $key . '=' . $this->urlEncode($value);
 		}
 
@@ -1408,9 +1408,9 @@ class Client implements ClientInterface
 
 	private function sign($data, $algorithm)
 	{
-		if ($algorithm === 'HmacSHA1') {
+		if ( $algorithm === 'HmacSHA1' ) {
 			$hash = 'sha1';
-		} else if ($algorithm === 'HmacSHA256') {
+		} else if ( $algorithm === 'HmacSHA256' ) {
 			$hash = 'sha256';
 		} else {
 			throw new \Exception("Non-supported signing method specified");
@@ -1460,13 +1460,13 @@ class Client implements ClientInterface
 
 			$statusCode = $response['Status'];
 
-			if ($statusCode == 200) {
+			if ( $statusCode == 200 ) {
 						$shouldRetry    = false;
 						$this->success = true;
-					} elseif ($statusCode == 500 || $statusCode == 503) {
+					} elseif ( $statusCode == 500 || $statusCode == 503 ) {
 
 			$shouldRetry = true;
-						if ($shouldRetry && strtolower($this->config['handle_throttle'])) {
+						if ( $shouldRetry && strtolower($this->config['handle_throttle']) ) {
 							$this->pauseOnRetry(++$retries, $statusCode);
 						}
 					} else {
@@ -1475,7 +1475,7 @@ class Client implements ClientInterface
 				} catch (\Exception $e) {
 					throw $e;
 				}
-			} while ($shouldRetry);
+			} while ( $shouldRetry );
 		} catch (\Exception $se) {
 			throw $se;
 		}
@@ -1490,7 +1490,7 @@ class Client implements ClientInterface
 
 	private function pauseOnRetry($retries, $status)
 	{
-		if ($retries <= self::MAX_ERROR_RETRY) {
+		if ( $retries <= self::MAX_ERROR_RETRY ) {
 			$delay = (int) (pow(4, $retries) * 100000);
 			usleep($delay);
 		} else {
@@ -1504,9 +1504,9 @@ class Client implements ClientInterface
 	{
 		$this->modePath = strtolower($this->config['sandbox']) ? 'OffAmazonPayments_Sandbox' : 'OffAmazonPayments';
 
-		if (! empty($this->config['region'])) {
+		if ( ! empty($this->config['region']) ) {
 			$region = strtolower($this->config['region']);
-			if (array_key_exists($region, $this->regionMappings)) {
+			if ( array_key_exists($region, $this->regionMappings) ) {
 				$this->mwsEndpointUrl  = $this->mwsServiceUrls[$this->regionMappings[$region]];
 				$this->mwsServiceUrl   = 'https://' . $this->mwsEndpointUrl . '/' . $this->modePath . '/' . self::SERVICE_VERSION;
 				$this->mwsEndpointPath = '/' . $this->modePath . '/' . self::SERVICE_VERSION;
@@ -1522,12 +1522,12 @@ class Client implements ClientInterface
 
 	private function profileEndpointUrl()
 	{
-		if (! empty($this->config['region'])) {
+		if ( ! empty($this->config['region']) ) {
 			$region = strtolower($this->config['region']);
 
-		if (array_key_exists($region, $this->sandboxProfileEndpoint) && $this->config['sandbox'] ) {
+		if ( array_key_exists($region, $this->sandboxProfileEndpoint) && $this->config['sandbox'] ) {
 				$this->profileEndpoint = $this->sandboxProfileEndpoint[$region];
-		} elseif (array_key_exists($region, $this->liveProfileEndpoint)) {
+		} elseif ( array_key_exists($region, $this->liveProfileEndpoint) ) {
 		$this->profileEndpoint = $this->liveProfileEndpoint[$region];
 		} else{
 		throw new \Exception($region . ' is not a valid region');
