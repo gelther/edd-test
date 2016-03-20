@@ -1104,7 +1104,7 @@ function edd_save_cart() {
 	$messages['edd_cart_save_successful'] = sprintf(
 		'<strong>%1$s</strong>: %2$s',
 		__( 'Success', 'easy-digital-downloads' ),
-		__( 'Cart saved successfully. You can restore your cart using this URL:', 'easy-digital-downloads' ) . ' ' . '<a href="' .  edd_get_checkout_uri() . '?edd_action=restore_cart&edd_cart_token=' . $token . '">' .  edd_get_checkout_uri() . '?edd_action=restore_cart&edd_cart_token=' . $token . '</a>'
+		__( 'Cart saved successfully. You can restore your cart using this URL:', 'easy-digital-downloads' ) . ' ' . '<a href="' . edd_get_checkout_uri() . '?edd_action=restore_cart&edd_cart_token=' . $token . '">' . edd_get_checkout_uri() . '?edd_action=restore_cart&edd_cart_token=' . $token . '</a>'
 	);
 
 	EDD()->session->set( 'edd_cart_messages', $messages );
