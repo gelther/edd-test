@@ -152,15 +152,15 @@ class EDD_Download {
 	 */
 	private function setup_download( $download ) {
 
-		if( ! is_object( $download ) ) {
+		if ( ! is_object( $download ) ) {
 			return false;
 		}
 
-		if( ! is_a( $download, 'WP_Post' ) ) {
+		if ( ! is_a( $download, 'WP_Post' ) ) {
 			return false;
 		}
 
-		if( 'download' !== $download->post_type ) {
+		if ( 'download' !== $download->post_type ) {
 			return false;
 		}
 
@@ -187,7 +187,7 @@ class EDD_Download {
 	 */
 	public function __get( $key ) {
 
-		if( method_exists( $this, 'get_' . $key ) ) {
+		if ( method_exists( $this, 'get_' . $key ) ) {
 
 			return call_user_func( array( $this, 'get_' . $key ) );
 
@@ -298,7 +298,7 @@ class EDD_Download {
 	 */
 	public function get_prices() {
 
-		if( ! isset( $this->prices ) ) {
+		if ( ! isset( $this->prices ) ) {
 
 			$this->prices = get_post_meta( $this->ID, 'edd_variable_prices', true );
 
@@ -369,12 +369,12 @@ class EDD_Download {
 	 */
 	public function get_files( $variable_price_id = null ) {
 
-		if( ! isset( $this->files ) ) {
+		if ( ! isset( $this->files ) ) {
 
 			$this->files = array();
 
 			// Bundled products are not allowed to have files
-			if( $this->is_bundled_download() ) {
+			if ( $this->is_bundled_download() ) {
 				return $this->files;
 			}
 
@@ -421,7 +421,7 @@ class EDD_Download {
 	 */
 	public function get_file_download_limit() {
 
-		if( ! isset( $this->file_download_limit ) ) {
+		if ( ! isset( $this->file_download_limit ) ) {
 
 			$ret    = 0;
 			$limit  = get_post_meta( $this->ID, '_edd_download_limit', true );
@@ -470,11 +470,11 @@ class EDD_Download {
 	 */
 	public function get_type() {
 
-		if( ! isset( $this->type ) ) {
+		if ( ! isset( $this->type ) ) {
 
 			$this->type = get_post_meta( $this->ID, '_edd_product_type', true );
 
-			if( empty( $this->type ) ) {
+			if ( empty( $this->type ) ) {
 				$this->type = 'default';
 			}
 
@@ -502,7 +502,7 @@ class EDD_Download {
 	 */
 	public function get_bundled_downloads() {
 
-		if( ! isset( $this->bundled_downloads ) ) {
+		if ( ! isset( $this->bundled_downloads ) ) {
 
 			$this->bundled_downloads = (array) get_post_meta( $this->ID, '_edd_bundled_products', true );
 
@@ -520,7 +520,7 @@ class EDD_Download {
 	 */
 	public function get_notes() {
 
-		if( ! isset( $this->notes ) ) {
+		if ( ! isset( $this->notes ) ) {
 
 			$this->notes = get_post_meta( $this->ID, 'edd_product_notes', true );
 
@@ -538,7 +538,7 @@ class EDD_Download {
 	 */
 	public function get_sku() {
 
-		if( ! isset( $this->sku ) ) {
+		if ( ! isset( $this->sku ) ) {
 
 			$this->sku = get_post_meta( $this->ID, 'edd_sku', true );
 
@@ -560,11 +560,11 @@ class EDD_Download {
 	 */
 	public function get_button_behavior() {
 
-		if( ! isset( $this->button_behavior ) ) {
+		if ( ! isset( $this->button_behavior ) ) {
 
 			$this->button_behavior = get_post_meta( $this->ID, '_edd_button_behavior', true );
 
-			if( empty( $this->button_behavior ) || ! edd_shop_supports_buy_now() ) {
+			if ( empty( $this->button_behavior ) || ! edd_shop_supports_buy_now() ) {
 
 				$this->button_behavior = 'add_to_cart';
 
@@ -584,7 +584,7 @@ class EDD_Download {
 	 */
 	public function get_sales() {
 
-		if( ! isset( $this->sales ) ) {
+		if ( ! isset( $this->sales ) ) {
 
 			if ( '' == get_post_meta( $this->ID, '_edd_download_sales', true ) ) {
 				add_post_meta( $this->ID, '_edd_download_sales', 0 );
@@ -758,13 +758,13 @@ class EDD_Download {
 				$price = 0;
 			}
 
-		} elseif( ! $variable_pricing ) {
+		} elseif ( ! $variable_pricing ) {
 
 			$price = get_post_meta( $this->ID, 'edd_price', true );
 
 		}
 
-		if( isset( $price ) && (float) $price == 0 ) {
+		if ( isset( $price ) && (float) $price == 0 ) {
 			$is_free = true;
 		}
 
