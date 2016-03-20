@@ -813,7 +813,7 @@ final class EDD_Payment {
 					$customer->decrease_value( $total_change );
 					edd_decrease_total_earnings( $total_change );
 
-				} else if (  $total_change > 0 ) {
+				} else if ( $total_change > 0 ) {
 
 					// Increase the customer's purchase stats
 					$customer->increase_value( $total_change );
