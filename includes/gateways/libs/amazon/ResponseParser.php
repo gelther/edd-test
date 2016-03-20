@@ -73,7 +73,7 @@ class ResponseParser implements ResponseInterface
     {
        $data= new \SimpleXMLElement($response);
         $namespaces = $data->getNamespaces(true);
-        foreach( $namespaces as $key=>$value ){
+        foreach ( $namespaces as $key=>$value ){
             $namespace = $value;
         }
         $data->registerXPathNamespace('GetBA', $namespace);
