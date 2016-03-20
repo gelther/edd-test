@@ -99,7 +99,7 @@ function edd_get_cart_item_template( $cart_key, $item, $ajax = false ) {
 	$item = str_replace( '{item_quantity}', absint( $quantity ), $item );
 	$item = str_replace( '{remove_url}', $remove_url, $item );
   	$subtotal = '';
-  	if ( $ajax ){
+  	if ( $ajax ) {
    	 $subtotal = edd_currency_filter( edd_format_amount( edd_get_cart_subtotal() ) ) ;
   	}
  	$item = str_replace( '{subtotal}', $subtotal, $item );
