@@ -67,7 +67,7 @@ function edd_create_protection_files( $force = false, $method = false ) {
 				// Update the .htaccess rules if they don't match
 				@file_put_contents( $upload_path . '/.htaccess', $rules );
 			}
-		} elseif( wp_is_writable( $upload_path ) ) {
+		} elseif ( wp_is_writable( $upload_path ) ) {
 			// Create the file if it doesn't exist
 			@file_put_contents( $upload_path . '/.htaccess', $rules );
 		}
@@ -137,10 +137,10 @@ function edd_scan_folders( $path = '', $return = array() ) {
  */
 function edd_get_htaccess_rules( $method = false ) {
 
-	if( empty( $method ) )
+	if ( empty( $method ) )
 		$method = edd_get_file_download_method();
 
-	switch( $method ) :
+	switch ( $method ) :
 
 		case 'redirect' :
 			// Prevent directory browsing
@@ -166,7 +166,7 @@ function edd_get_htaccess_rules( $method = false ) {
 
 
 // For installs on pre WP 3.6
-if( ! function_exists( 'wp_is_writable' ) ) {
+if ( ! function_exists( 'wp_is_writable' ) ) {
 
 	/**
 	 * Determine if a directory is writable.
