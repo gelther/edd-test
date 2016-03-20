@@ -81,10 +81,10 @@ function edd_view_order_details_title( $admin_title, $title ) {
 	if ( 'download_page_edd-payment-history' != get_current_screen()->base )
 		return $admin_title;
 
-	if( ! isset( $_GET['edd-action'] ) )
+	if ( ! isset( $_GET['edd-action'] ) )
 		return $admin_title;
 
-	switch( $_GET['edd-action'] ) :
+	switch ( $_GET['edd-action'] ) :
 
 		case 'view-order-details' :
 			$title = __( 'View Order Details', 'easy-digital-downloads' ) . ' - ' . $admin_title;
@@ -114,10 +114,10 @@ add_filter( 'admin_title', 'edd_view_order_details_title', 10, 2 );
 function edd_override_edit_post_for_payment_link( $url, $post_id = 0, $context ) {
 
 	$post = get_post( $post_id );
-	if( ! $post )
+	if ( ! $post )
 		return $url;
 
-	if( 'edd_payment' != $post->post_type )
+	if ( 'edd_payment' != $post->post_type )
 		return $url;
 
 	$url = admin_url( 'edit.php?post_type=download&page=edd-payment-history&view=view-order-details&id=' . $post_id );
