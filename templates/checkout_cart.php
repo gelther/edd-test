@@ -34,7 +34,7 @@ global $post; ?>
 						?>
 					</td>
 					<td class="edd_cart_item_price">
-						<?php 
+						<?php
 						echo edd_cart_item_price( $item['id'], $item['options'] );
 						do_action( 'edd_checkout_cart_item_price_after', $item );
 						?>
