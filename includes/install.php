@@ -146,7 +146,7 @@ function edd_run_install() {
 	}
 
 	// Populate some default values
-	foreach( edd_get_registered_settings() as $tab => $sections ) {	
+	foreach( edd_get_registered_settings() as $tab => $sections ) {
 		foreach( $sections as $section => $settings ) {
 
 			// Check for backwards compatibility
