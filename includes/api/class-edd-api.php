@@ -1168,7 +1168,7 @@ class EDD_API {
 
 					$sales['totals'] = $total;
 				} else {
-					if( $args['date'] == 'this_quarter' || $args['date'] == 'last_quarter'  ) {
+					if( $args['date'] == 'this_quarter' || $args['date'] == 'last_quarter' ) {
 						$sales_count = 0;
 
 						// Loop through the months
@@ -1277,7 +1277,7 @@ class EDD_API {
 
 					$earnings['totals'] = $total;
 				} else {
-					if ( $args['date'] == 'this_quarter' || $args['date'] == 'last_quarter'  ) {
+					if ( $args['date'] == 'this_quarter' || $args['date'] == 'last_quarter' ) {
 						$earnings_count = (float) 0.00;
 
 						// Loop through the months
