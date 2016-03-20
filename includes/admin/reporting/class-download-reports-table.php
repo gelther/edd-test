@@ -84,7 +84,7 @@ class EDD_Download_Reports_Table extends WP_List_Table {
 	 * @return string Column Name
 	 */
 	public function column_default( $item, $column_name ) {
-		switch ( $column_name ){
+		switch ( $column_name ) {
 			case 'earnings' :
 				return edd_currency_filter( edd_format_amount( $item[ $column_name ] ) );
 			case 'average_sales' :
