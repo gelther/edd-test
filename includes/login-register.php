@@ -173,7 +173,7 @@ function edd_process_register_form( $data ) {
 	// Check for errors and redirect if none present
 	$errors = edd_get_errors();
 
-	if (  empty( $errors ) ) {
+	if ( empty( $errors ) ) {
 
 		$redirect = apply_filters( 'edd_register_redirect', $data['edd_redirect'] );
 
