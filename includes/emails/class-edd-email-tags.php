@@ -115,7 +115,7 @@ class EDD_Email_Template_Tags {
 
 		$this->payment_id = $payment_id;
 
-		$new_content = preg_replace_callback( "/{([A-z0-9\-\_]+)}/s", array( $this, 'do_tag' ), $content );
+		$new_content = preg_replace_callback( '/{([A-z0-9\-\_]+)}/s', array( $this, 'do_tag' ), $content );
 
 		$this->payment_id = null;
 
@@ -404,15 +404,15 @@ function edd_email_tag_download_list( $payment_id ) {
 				$title = '<strong>' . get_the_title( $item['id'] ) . '</strong>';
 
 				if ( ! empty( $quantity ) && $quantity > 1 ) {
-					$title .= "&nbsp;&ndash;&nbsp;" . __( 'Quantity', 'easy-digital-downloads' ) . ': ' . $quantity;
+					$title .= '&nbsp;&ndash;&nbsp;' . __( 'Quantity', 'easy-digital-downloads' ) . ': ' . $quantity;
 				}
 
 				if ( ! empty( $sku ) ) {
-					$title .= "&nbsp;&ndash;&nbsp;" . __( 'SKU', 'easy-digital-downloads' ) . ': ' . $sku;
+					$title .= '&nbsp;&ndash;&nbsp;' . __( 'SKU', 'easy-digital-downloads' ) . ': ' . $sku;
 				}
 
 				if ( $price_id !== null ) {
-					$title .= "&nbsp;&ndash;&nbsp;" . edd_get_price_option_name( $item['id'], $price_id, $payment_id );
+					$title .= '&nbsp;&ndash;&nbsp;' . edd_get_price_option_name( $item['id'], $price_id, $payment_id );
 				}
 
 				$download_list .= '<li>' . apply_filters( 'edd_email_receipt_download_title', $title, $item, $price_id, $payment_id ) . '<br/>';
