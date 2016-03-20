@@ -54,7 +54,7 @@ class EDD_HTML_Elements {
 		);
 
 		// Maybe disable bundles
-		if( ! $args['bundles'] ) {
+		if ( ! $args['bundles'] ) {
 			$product_args['meta_query'] = array(
 				'relation'       => 'AND',
 				array(
@@ -79,9 +79,9 @@ class EDD_HTML_Elements {
 		}
 
 		// This ensures that any selected products are included in the drop down
-		if( is_array( $args['selected'] ) ) {
-			foreach( $args['selected'] as $item ) {
-				if( ! in_array( $item, $options ) ) {
+		if ( is_array( $args['selected'] ) ) {
+			foreach ( $args['selected'] as $item ) {
+				if ( ! in_array( $item, $options ) ) {
 					$options[$item] = get_the_title( $item );
 				}
 			}
@@ -91,7 +91,7 @@ class EDD_HTML_Elements {
 			}
 		}
 
-		if( ! $args['bundles'] ) {
+		if ( ! $args['bundles'] ) {
 			$args['class'] .= ' no-bundles';
 		}
 
@@ -151,15 +151,15 @@ class EDD_HTML_Elements {
 			$options[0] = __( 'No customers found', 'easy-digital-downloads' );
 		}
 
-		if( ! empty( $args['selected'] ) ) {
+		if ( ! empty( $args['selected'] ) ) {
 
 			// If a selected customer has been specified, we need to ensure it's in the initial list of customers displayed
 
-			if( ! array_key_exists( $args['selected'], $options ) ) {
+			if ( ! array_key_exists( $args['selected'], $options ) ) {
 
 				$customer = new EDD_Customer( $args['selected'] );
 
-				if( $customer ) {
+				if ( $customer ) {
 
 					$options[ absint( $args['selected'] ) ] = esc_html( $customer->name . ' (' . $customer->email . ')' );
 
@@ -347,17 +347,17 @@ class EDD_HTML_Elements {
 			$data_elements .= ' data-' . esc_attr( $key ) . '="' . esc_attr( $value ) . '"';
 		}
 
-		if( $args['multiple'] ) {
+		if ( $args['multiple'] ) {
 			$multiple = ' MULTIPLE';
 		} else {
 			$multiple = '';
 		}
 
-		if( $args['chosen'] ) {
+		if ( $args['chosen'] ) {
 			$args['class'] .= ' edd-select-chosen';
 		}
 
-		if( $args['placeholder'] ) {
+		if ( $args['placeholder'] ) {
 			$placeholder = $args['placeholder'];
 		} else {
 			$placeholder = '';
@@ -367,7 +367,7 @@ class EDD_HTML_Elements {
 		$output = '<select name="' . esc_attr( $args['name'] ) . '" id="' . esc_attr( edd_sanitize_key( str_replace( '-', '_', $args['id'] ) ) ) . '" class="edd-select ' . $class . '"' . $multiple . ' data-placeholder="' . $placeholder . '"'. $data_elements . '>';
 
 		if ( $args['show_option_all'] ) {
-			if( $args['multiple'] ) {
+			if ( $args['multiple'] ) {
 				$selected = selected( true, in_array( 0, $args['selected'] ), false );
 			} else {
 				$selected = selected( $args['selected'], 0, false );
@@ -378,7 +378,7 @@ class EDD_HTML_Elements {
 		if ( ! empty( $args['options'] ) ) {
 
 			if ( $args['show_option_none'] ) {
-				if( $args['multiple'] ) {
+				if ( $args['multiple'] ) {
 					$selected = selected( true, in_array( -1, $args['selected'] ), false );
 				} else {
 					$selected = selected( $args['selected'], -1, false );
@@ -386,9 +386,9 @@ class EDD_HTML_Elements {
 				$output .= '<option value="-1"' . $selected . '>' . esc_html( $args['show_option_none'] ) . '</option>';
 			}
 
-			foreach( $args['options'] as $key => $option ) {
+			foreach ( $args['options'] as $key => $option ) {
 
-				if( $args['multiple'] && is_array( $args['selected'] ) ) {
+				if ( $args['multiple'] && is_array( $args['selected'] ) ) {
 					$selected = selected( true, in_array( $key, $args['selected'], true ), false );
 				} else {
 					$selected = selected( $args['selected'], $key, false );
@@ -474,7 +474,7 @@ class EDD_HTML_Elements {
 
 		$class = implode( ' ', array_map( 'sanitize_html_class', explode( ' ', $args['class'] ) ) );
 		$disabled = '';
-		if( $args['disabled'] ) {
+		if ( $args['disabled'] ) {
 			$disabled = ' disabled="disabled"';
 		}
 
@@ -509,9 +509,9 @@ class EDD_HTML_Elements {
 	 */
 	public function date_field( $args = array() ) {
 
-		if( empty( $args['class'] ) ) {
+		if ( empty( $args['class'] ) ) {
 			$args['class'] = 'edd_datepicker';
-		} elseif( ! strpos( $args['class'], 'edd_datepicker' ) ) {
+		} elseif ( ! strpos( $args['class'], 'edd_datepicker' ) ) {
 			$args['class'] .= ' edd_datepicker';
 		}
 
@@ -540,7 +540,7 @@ class EDD_HTML_Elements {
 
 		$class = implode( ' ', array_map( 'sanitize_html_class', explode( ' ', $args['class'] ) ) );
 		$disabled = '';
-		if( $args['disabled'] ) {
+		if ( $args['disabled'] ) {
 			$disabled = ' disabled="disabled"';
 		}
 
