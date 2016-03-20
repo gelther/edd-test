@@ -72,13 +72,13 @@ class EDD_Customers_Export extends EDD_Export {
 
 			$cols = array();
 
-			if( 'emails' != $_POST['edd_export_option'] ) {
+			if ( 'emails' != $_POST['edd_export_option'] ) {
 				$cols['name'] = __( 'Name',   'easy-digital-downloads' );
 			}
 
 			$cols['email'] = __( 'Email',   'easy-digital-downloads' );
 
-			if( 'full' == $_POST['edd_export_option'] ) {
+			if ( 'full' == $_POST['edd_export_option'] ) {
 				$cols['purchases'] = __( 'Total Purchases',   'easy-digital-downloads' );
 				$cols['amount']    = __( 'Total Purchased', 'easy-digital-downloads' ) . ' (' . html_entity_decode( edd_currency_filter( '' ) ) . ')';
 			}
@@ -114,7 +114,7 @@ class EDD_Customers_Export extends EDD_Export {
 				'nopaging'    => true
 			);
 
-			if( isset( $_POST['edd_price_option'] ) ) {
+			if ( isset( $_POST['edd_price_option'] ) ) {
 				$args['meta_query'] = array(
 					array(
 						'key'   => '_edd_log_price_id',
@@ -147,13 +147,13 @@ class EDD_Customers_Export extends EDD_Export {
 
 			foreach ( $customers as $customer ) {
 
-				if( 'emails' != $_POST['edd_export_option'] ) {
+				if ( 'emails' != $_POST['edd_export_option'] ) {
 					$data[$i]['name'] = $customer->name;
 				}
 
 				$data[$i]['email'] = $customer->email;
 
-				if( 'full' == $_POST['edd_export_option'] ) {
+				if ( 'full' == $_POST['edd_export_option'] ) {
 
 					$data[$i]['purchases'] = $customer->purchase_count;
 					$data[$i]['amount']    = edd_format_amount( $customer->purchase_value );
