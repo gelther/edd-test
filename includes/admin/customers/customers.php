@@ -176,7 +176,7 @@ function edd_customers_view( $customer ) {
 
 				<div class="avatar-wrap left" id="customer-avatar">
 					<?php echo get_avatar( $customer->email ); ?><br />
-					<?php if ( current_user_can( $customer_edit_role ) ): ?>
+					<?php if ( current_user_can( $customer_edit_role ) ) : ?>
 						<span class="info-item editable customer-edit-link"><a title="<?php _e( 'Edit Customer', 'easy-digital-downloads' ); ?>" href="#" id="edit-customer"><?php _e( 'Edit Customer', 'easy-digital-downloads' ); ?></a></span>
 					<?php endif; ?>
 				</div>
