@@ -73,11 +73,11 @@ class ResponseParser implements ResponseInterface
     {
        $data= new \SimpleXMLElement($response);
         $namespaces = $data->getNamespaces(true);
-        foreach($namespaces as $key=>$value){
+        foreach( $namespaces as $key=>$value ){
             $namespace = $value;
         }
         $data->registerXPathNamespace('GetBA', $namespace);
-        foreach ($data->xpath('//GetBA:BillingAgreementStatus') as $value) {
+        foreach ( $data->xpath('//GetBA:BillingAgreementStatus') as $value ) {
             $baStatus = json_decode(json_encode((array)$value), TRUE);
         }
 
