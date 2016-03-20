@@ -56,7 +56,7 @@ function edd_checkout_form() {
 				<?php do_action( 'edd_after_purchase_form' ); ?>
 			</div><!--end #edd_checkout_form_wrap-->
 		<?php
-		else:
+		else :
 			/**
 			 * Fires off when there is nothing in the cart
 			 *
