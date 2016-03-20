@@ -1001,41 +1001,41 @@ function edd_check_purchase_email( $valid_data, $posted ) {
 	$is_banned = false;
 	$banned    = edd_get_banned_emails();
 
-	if( empty( $banned ) ) {
+	if ( empty( $banned ) ) {
 		return;
 	}
 
-	if( is_user_logged_in() ) {
+	if ( is_user_logged_in() ) {
 
 		// The user is logged in, check that their account email is not banned
 		$user_data = get_userdata( get_current_user_id() );
-		if( edd_is_email_banned( $user_data->user_email ) ) {
+		if ( edd_is_email_banned( $user_data->user_email ) ) {
 
 			$is_banned = true;
 		}
 
-		if( edd_is_email_banned( $posted['edd_email'] ) ) {
+		if ( edd_is_email_banned( $posted['edd_email'] ) ) {
 			$is_banned = true;
 		}
 
-	} elseif( isset( $posted['edd-purchase-var'] ) && $posted['edd-purchase-var'] == 'needs-to-login' ) {
+	} elseif ( isset( $posted['edd-purchase-var'] ) && $posted['edd-purchase-var'] == 'needs-to-login' ) {
 
 		// The user is logging in, check that their email is not banned
 		$user_data = get_user_by( 'login', $posted['edd_user_login'] );
-		if( $user_data && edd_is_email_banned( $user_data->user_email ) ) {
+		if ( $user_data && edd_is_email_banned( $user_data->user_email ) ) {
 			$is_banned = true;
 		}
 
 	} else {
 
 		// Guest purchase, check that the email is not banned
-		if( edd_is_email_banned( $posted['edd_email'] ) ) {
+		if ( edd_is_email_banned( $posted['edd_email'] ) ) {
 			$is_banned = true;
 		}
 
 	}
 
-	if( $is_banned ) {
+	if ( $is_banned ) {
 		// Set an error and give the customer a general error (don't alert them that they were banned)
 		edd_set_error( 'email_banned', __( 'An internal error has occurred, please try again or contact support.', 'easy-digital-downloads' ) );
 	}
@@ -1055,7 +1055,7 @@ function edd_process_straight_to_gateway( $data ) {
 	$options     = isset( $data['edd_options'] ) ? $data['edd_options'] : array();
 	$quantity    = isset( $data['edd_download_quantity'] ) ? $data['edd_download_quantity'] : 1;
 
-	if( empty( $download_id ) || ! edd_get_download( $download_id ) ) {
+	if ( empty( $download_id ) || ! edd_get_download( $download_id ) ) {
 		return;
 	}
 
