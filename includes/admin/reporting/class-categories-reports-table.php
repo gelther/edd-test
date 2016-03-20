@@ -10,11 +10,11 @@
  * @since       2.4
  */
 // Exit if accessed directly
-if ( !defined( 'ABSPATH' ) )
+if ( ! defined( 'ABSPATH' ) )
 	exit;
 
 // Load WP_List_Table if not loaded
-if ( !class_exists( 'WP_List_Table' ) ) {
+if ( ! class_exists( 'WP_List_Table' ) ) {
 	require_once ABSPATH . 'wp-admin/includes/class-wp-list-table.php';
 }
 
@@ -132,7 +132,7 @@ class EDD_Categories_Reports_Table extends WP_List_Table {
 		 */
 		$dates = edd_get_report_dates();
 
-		if ( !empty( $dates[ 'year' ] ) ) {
+		if ( ! empty( $dates[ 'year' ] ) ) {
 			$date = new DateTime();
 			$date->setDate( $dates[ 'year' ], $dates[ 'm_start' ], $dates[ 'day' ] );
 			$start_date = $date->format( 'Y-m-d' );
@@ -170,7 +170,7 @@ class EDD_Categories_Reports_Table extends WP_List_Table {
 				);
 
 				$child_terms = get_terms( 'download_category', $child_args );
-				if ( !empty( $child_terms ) ) {
+				if ( ! empty( $child_terms ) ) {
 
 					foreach ( $child_terms as $child_term ) {
 						$category_slugs[] = $child_term->slug;
@@ -233,7 +233,7 @@ class EDD_Categories_Reports_Table extends WP_List_Table {
 					'is_child'           => false,
 				);
 
-				if ( !empty( $child_terms ) ) {
+				if ( ! empty( $child_terms ) ) {
 
 					foreach ( $child_terms as $child_term ) {
 						$child_args = array(
@@ -314,7 +314,7 @@ class EDD_Categories_Reports_Table extends WP_List_Table {
 		foreach ( $this->items as $item ) {
 			$total_sales += $item['total_sales_raw'];
 
-			if ( !empty( $item[ 'is_child' ] ) || empty( $item[ 'total_sales_raw' ] ) ) {
+			if ( ! empty( $item[ 'is_child' ] ) || empty( $item[ 'total_sales_raw' ] ) ) {
 				continue;
 			}
 
