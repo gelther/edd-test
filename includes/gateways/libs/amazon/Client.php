@@ -80,11 +80,11 @@ class Client implements ClientInterface
 
 	public function __construct($config = null)
 	{
-		if (!is_null($config)) {
+		if (! is_null($config)) {
 
 			if (is_array($config)) {
 				$configArray = $config;
-			} elseif (!is_array($config)) {
+			} elseif (! is_array($config)) {
 		$configArray = $this->checkIfFileExists($config);
 		}
 
@@ -187,7 +187,7 @@ class Client implements ClientInterface
 
 	public function setClientId($value)
 	{
-		if (!empty($value)) {
+		if (! empty($value)) {
 			$this->config['client_id'] = $value;
 		} else {
 			throw new \Exception('setter value for client ID provided is empty');
@@ -206,16 +206,16 @@ class Client implements ClientInterface
 	{
 	$proxy = $this->trimArray($proxy);
 
-		if (!empty($proxy['proxy_user_host']))
+		if (! empty($proxy['proxy_user_host']))
 		$this->config['proxy_user_host'] = $proxy['proxy_user_host'];
 
-		if (!empty($proxy['proxy_user_port']))
+		if (! empty($proxy['proxy_user_port']))
 			$this->config['proxy_user_port'] = $proxy['proxy_user_port'];
 
-		if (!empty($proxy['proxy_user_name']))
+		if (! empty($proxy['proxy_user_name']))
 			$this->config['proxy_user_name'] = $proxy['proxy_user_name'];
 
-		if (!empty($proxy['proxy_user_password']))
+		if (! empty($proxy['proxy_user_password']))
 			$this->config['proxy_user_password'] = $proxy['proxy_user_password'];
 	}
 
@@ -314,7 +314,7 @@ class Client implements ClientInterface
 	 */
 		foreach ($requestParameters as $param => $value) {
 
-		if(!is_array($value)) {
+		if(! is_array($value)) {
 		$value = trim($value);
 		}
 
@@ -383,12 +383,12 @@ class Client implements ClientInterface
 			$parameters['SellerId'] = $this->config['merchant_id'];
 
 		if (array_key_exists('platform_id', $fieldMappings)) {
-		if (empty($requestParameters['platform_id']) && !empty($this->config['platform_id']))
+		if (empty($requestParameters['platform_id']) && ! empty($this->config['platform_id']))
 			$parameters[$fieldMappings['platform_id']] = $this->config['platform_id'];
 	}
 
 		if (array_key_exists('currency_code', $fieldMappings)) {
-			if (!empty($requestParameters['currency_code'])) {
+			if (! empty($requestParameters['currency_code'])) {
 		$parameters[$fieldMappings['currency_code']] = strtoupper($requestParameters['currency_code']);
 			} else {
 				$parameters[$fieldMappings['currency_code']] = strtoupper($this->config['currency_code']);
@@ -1131,14 +1131,14 @@ class Client implements ClientInterface
 
 		$chargeType = '';
 
-	if (!empty($requestParameters['amazon_order_reference_id']))
+	if (! empty($requestParameters['amazon_order_reference_id']))
 	{
 		$chargeType = 'OrderReference';
 
-	} elseif(!empty($requestParameters['amazon_billing_agreement_id'])) {
+	} elseif(! empty($requestParameters['amazon_billing_agreement_id'])) {
 		$chargeType = 'BillingAgreement';
 
-	} elseif (!empty($requestParameters['amazon_reference_id'])) {
+	} elseif (! empty($requestParameters['amazon_reference_id'])) {
 			switch (substr(strtoupper($requestParameters['amazon_reference_id']), 0, 1)) {
 				case 'P':
 				case 'S':
@@ -1162,16 +1162,16 @@ class Client implements ClientInterface
 		}
 
 	// Set the other parameters if the values are present
-		$setParameters['amount'] = !empty($requestParameters['charge_amount']) ? $requestParameters['charge_amount'] : '';
-		$authorizeParameters['authorization_amount'] = !empty($requestParameters['charge_amount']) ? $requestParameters['charge_amount'] : '';
+		$setParameters['amount'] = ! empty($requestParameters['charge_amount']) ? $requestParameters['charge_amount'] : '';
+		$authorizeParameters['authorization_amount'] = ! empty($requestParameters['charge_amount']) ? $requestParameters['charge_amount'] : '';
 
-		$setParameters['seller_note'] = !empty($requestParameters['charge_note']) ? $requestParameters['charge_note'] : '';
-		$authorizeParameters['seller_authorization_note'] = !empty($requestParameters['charge_note']) ? $requestParameters['charge_note'] : '';
-		$authorizeParameters['seller_note'] = !empty($requestParameters['charge_note']) ? $requestParameters['charge_note'] : '';
+		$setParameters['seller_note'] = ! empty($requestParameters['charge_note']) ? $requestParameters['charge_note'] : '';
+		$authorizeParameters['seller_authorization_note'] = ! empty($requestParameters['charge_note']) ? $requestParameters['charge_note'] : '';
+		$authorizeParameters['seller_note'] = ! empty($requestParameters['charge_note']) ? $requestParameters['charge_note'] : '';
 
-		$setParameters['seller_order_id'] = !empty($requestParameters['charge_order_id']) ? $requestParameters['charge_order_id'] : '';
-		$setParameters['seller_billing_agreement_id'] = !empty($requestParameters['charge_order_id']) ? $requestParameters['charge_order_id'] : '';
-		$authorizeParameters['seller_order_id'] = !empty($requestParameters['charge_order_id']) ? $requestParameters['charge_order_id'] : '';
+		$setParameters['seller_order_id'] = ! empty($requestParameters['charge_order_id']) ? $requestParameters['charge_order_id'] : '';
+		$setParameters['seller_billing_agreement_id'] = ! empty($requestParameters['charge_order_id']) ? $requestParameters['charge_order_id'] : '';
+		$authorizeParameters['seller_order_id'] = ! empty($requestParameters['charge_order_id']) ? $requestParameters['charge_order_id'] : '';
 
 		$authorizeParameters['capture_now'] = 'true';
 
@@ -1504,7 +1504,7 @@ class Client implements ClientInterface
 	{
 		$this->modePath = strtolower($this->config['sandbox']) ? 'OffAmazonPayments_Sandbox' : 'OffAmazonPayments';
 
-		if (!empty($this->config['region'])) {
+		if (! empty($this->config['region'])) {
 			$region = strtolower($this->config['region']);
 			if (array_key_exists($region, $this->regionMappings)) {
 				$this->mwsEndpointUrl  = $this->mwsServiceUrls[$this->regionMappings[$region]];
@@ -1522,7 +1522,7 @@ class Client implements ClientInterface
 
 	private function profileEndpointUrl()
 	{
-		if (!empty($this->config['region'])) {
+		if (! empty($this->config['region'])) {
 			$region = strtolower($this->config['region']);
 
 		if (array_key_exists($region, $this->sandboxProfileEndpoint) && $this->config['sandbox'] ) {

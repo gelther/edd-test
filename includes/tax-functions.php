@@ -14,7 +14,7 @@
 */
 
 // Exit if accessed directly
-if ( !defined( 'ABSPATH' ) ) exit;
+if ( ! defined( 'ABSPATH' ) ) exit;
 
 /**
  * Checks if taxes are enabled by using the option set from the EDD Settings.

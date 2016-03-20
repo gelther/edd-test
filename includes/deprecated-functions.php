@@ -214,7 +214,7 @@ function edd_show_has_purchased_item_message() {
 
 	global $user_ID, $post;
 
-	if( !isset( $post->ID ) )
+	if( ! isset( $post->ID ) )
 		return;
 
 	if ( edd_has_user_purchased( $user_ID, $post->ID ) ) {

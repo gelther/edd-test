@@ -39,7 +39,7 @@ class EDD_Register_Meta {
 	 */
 	static public function instance() {
 
-		if ( !self::$instance ) {
+		if ( ! self::$instance ) {
 			self::$instance = new EDD_Register_Meta();
 		}
 

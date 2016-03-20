@@ -470,7 +470,7 @@ add_action( 'edd_tools_tab_system_info', 'edd_tools_sysinfo_display' );
 function edd_tools_sysinfo_get() {
 	global $wpdb;
 
-	if( !class_exists( 'Browser' ) )
+	if( ! class_exists( 'Browser' ) )
 		require_once EDD_PLUGIN_DIR . 'includes/libraries/browser.php';
 
 	$browser = new Browser();
@@ -537,7 +537,7 @@ function edd_tools_sysinfo_get() {
 
 	$response = wp_remote_post( 'https://www.paypal.com/cgi-bin/webscr', $params );
 
-	if( !is_wp_error( $response ) && $response['response']['code'] >= 200 && $response['response']['code'] < 300 ) {
+	if( ! is_wp_error( $response ) && $response['response']['code'] >= 200 && $response['response']['code'] < 300 ) {
 		$WP_REMOTE_POST = 'wp_remote_post() works';
 	} else {
 		$WP_REMOTE_POST = 'wp_remote_post() does not work';
@@ -576,10 +576,10 @@ function edd_tools_sysinfo_get() {
 	$failure_page  = edd_get_option( 'failure_page', '' );
 
 	$return .= "\n" . '-- EDD Page Configuration' . "\n\n";
-	$return .= 'Checkout:                 ' . ( !empty( $purchase_page ) ? "Valid\n" : "Invalid\n" );
-	$return .= 'Checkout Page:            ' . ( !empty( $purchase_page ) ? get_permalink( $purchase_page ) . "\n" : "Unset\n" );
-	$return .= 'Success Page:             ' . ( !empty( $success_page ) ? get_permalink( $success_page ) . "\n" : "Unset\n" );
-	$return .= 'Failure Page:             ' . ( !empty( $failure_page ) ? get_permalink( $failure_page ) . "\n" : "Unset\n" );
+	$return .= 'Checkout:                 ' . ( ! empty( $purchase_page ) ? "Valid\n" : "Invalid\n" );
+	$return .= 'Checkout Page:            ' . ( ! empty( $purchase_page ) ? get_permalink( $purchase_page ) . "\n" : "Unset\n" );
+	$return .= 'Success Page:             ' . ( ! empty( $success_page ) ? get_permalink( $success_page ) . "\n" : "Unset\n" );
+	$return .= 'Failure Page:             ' . ( ! empty( $failure_page ) ? get_permalink( $failure_page ) . "\n" : "Unset\n" );
 	$return .= 'Downloads Slug:           ' . ( defined( 'EDD_SLUG' ) ? '/' . EDD_SLUG . "\n" : "/downloads\n" );
 
 	$return  = apply_filters( 'edd_sysinfo_after_edd_pages', $return );
@@ -619,7 +619,7 @@ function edd_tools_sysinfo_get() {
 	$return .= 'Prices Include Tax:       ' . ( edd_prices_include_tax() ? "Yes\n" : "No\n" );
 
 	$rates = edd_get_tax_rates();
-	if( !empty( $rates ) ) {
+	if( ! empty( $rates ) ) {
 		$return .= 'Country / State Rates:    ' . "\n";
 		foreach( $rates as $rate ) {
 			$return .= '                          Country: ' . $rate['country'] . ', State: ' . $rate['state'] . ', Rate: ' . $rate['rate'] . "\n";
@@ -663,7 +663,7 @@ function edd_tools_sysinfo_get() {
 	$active_plugins = get_option( 'active_plugins', array() );
 
 	foreach( $plugins as $plugin_path => $plugin ) {
-		if( !in_array( $plugin_path, $active_plugins ) )
+		if( ! in_array( $plugin_path, $active_plugins ) )
 			continue;
 
 		$update = ( array_key_exists( $plugin_path, $updates ) ) ? ' (needs update - ' . $updates[$plugin_path]->update->new_version . ')' : '';
@@ -695,7 +695,7 @@ function edd_tools_sysinfo_get() {
 		foreach( $plugins as $plugin_path ) {
 			$plugin_base = plugin_basename( $plugin_path );
 
-			if( !array_key_exists( $plugin_base, $active_plugins ) )
+			if( ! array_key_exists( $plugin_base, $active_plugins ) )
 				continue;
 
 			$update = ( array_key_exists( $plugin_path, $updates ) ) ? ' (needs update - ' . $updates[$plugin_path]->update->new_version . ')' : '';

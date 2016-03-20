@@ -174,7 +174,7 @@ function edd_get_label_plural( $lowercase = false ) {
  */
 function edd_change_default_title( $title ) {
 	 // If a frontend plugin uses this filter (check extensions before changing this function)
-	 if ( !is_admin() ) {
+	 if ( ! is_admin() ) {
 		$label = edd_get_label_singular();
 		$title = sprintf( __( 'Enter %s name here', 'easy-digital-downloads' ), $label );
 		return $title;
