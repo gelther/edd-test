@@ -6,7 +6,7 @@ global $edd_receipt_args;
 
 $payment   = get_post( $edd_receipt_args['id'] );
 
-if( empty( $payment ) ) : ?>
+if ( empty( $payment ) ) : ?>
 
 	<div class="edd_errors edd-alert edd-alert-error">
 		<?php _e( 'The specified receipt ID appears to be invalid', 'easy-digital-downloads' ); ?>
@@ -66,7 +66,7 @@ $status    = edd_get_payment_status( $payment, true );
 			<td><strong><?php _e( 'Fees', 'easy-digital-downloads' ); ?>:</strong></td>
 			<td>
 				<ul class="edd_receipt_fees">
-				<?php foreach( $fees as $fee ) : ?>
+				<?php foreach ( $fees as $fee ) : ?>
 					<li>
 						<span class="edd_fee_label"><?php echo esc_html( $fee['label'] ); ?></span>
 						<span class="edd_fee_sep">&nbsp;&ndash;&nbsp;</span>
@@ -85,7 +85,7 @@ $status    = edd_get_payment_status( $payment, true );
 			</tr>
 		<?php endif; ?>
 
-		<?php if( edd_use_taxes() ) : ?>
+		<?php if ( edd_use_taxes() ) : ?>
 			<tr>
 				<td><strong><?php _e( 'Tax', 'easy-digital-downloads' ); ?></strong></td>
 				<td><?php echo edd_payment_tax( $payment->ID ); ?></td>
@@ -131,14 +131,14 @@ $status    = edd_get_payment_status( $payment, true );
 		</thead>
 
 		<tbody>
-		<?php if( $cart ) : ?>
+		<?php if ( $cart ) : ?>
 			<?php foreach ( $cart as $key => $item ) : ?>
 
-				<?php if( ! apply_filters( 'edd_user_can_view_receipt_item', true, $item ) ) : ?>
+				<?php if ( ! apply_filters( 'edd_user_can_view_receipt_item', true, $item ) ) : ?>
 					<?php continue; // Skip this item if can't view it ?>
 				<?php endif; ?>
 
-				<?php if( empty( $item['in_bundle'] ) ) : ?>
+				<?php if ( empty( $item['in_bundle'] ) ) : ?>
 				<tr>
 					<td>
 
@@ -149,7 +149,7 @@ $status    = edd_get_payment_status( $payment, true );
 
 						<div class="edd_purchase_receipt_product_name">
 							<?php echo esc_html( $item['name'] ); ?>
-							<?php if( edd_has_variable_prices( $item['id'] ) && ! is_null( $price_id ) ) : ?>
+							<?php if ( edd_has_variable_prices( $item['id'] ) && ! is_null( $price_id ) ) : ?>
 							<span class="edd_purchase_receipt_price_name">&nbsp;&ndash;&nbsp;<?php echo edd_get_price_option_name( $item['id'], $price_id, $payment->ID ); ?></span>
 							<?php endif; ?>
 						</div>
@@ -159,7 +159,7 @@ $status    = edd_get_payment_status( $payment, true );
 						<?php endif; ?>
 
 						<?php
-						if( edd_is_payment_complete( $payment->ID ) && edd_receipt_show_download_files( $item['id'], $edd_receipt_args, $item ) ) : ?>
+						if ( edd_is_payment_complete( $payment->ID ) && edd_receipt_show_download_files( $item['id'], $edd_receipt_args, $item ) ) : ?>
 						<ul class="edd_purchase_receipt_files">
 							<?php
 							if ( ! empty( $download_files ) && is_array( $download_files ) ) :
@@ -175,18 +175,18 @@ $status    = edd_get_payment_status( $payment, true );
 									do_action( 'edd_receipt_files', $filekey, $file, $item['id'], $payment->ID, $meta );
 								endforeach;
 
-							elseif( edd_is_bundled_product( $item['id'] ) ) :
+							elseif ( edd_is_bundled_product( $item['id'] ) ) :
 
 								$bundled_products = edd_get_bundled_products( $item['id'] );
 
-								foreach( $bundled_products as $bundle_item ) : ?>
+								foreach ( $bundled_products as $bundle_item ) : ?>
 									<li class="edd_bundled_product">
 										<span class="edd_bundled_product_name"><?php echo get_the_title( $bundle_item ); ?></span>
 										<ul class="edd_bundled_product_files">
 											<?php
 											$download_files = edd_get_download_files( $bundle_item );
 
-											if( $download_files && is_array( $download_files ) ) :
+											if ( $download_files && is_array( $download_files ) ) :
 
 												foreach ( $download_files as $filekey => $file ) :
 
@@ -221,7 +221,7 @@ $status    = edd_get_payment_status( $payment, true );
 						<td><?php echo $item['quantity']; ?></td>
 					<?php } ?>
 					<td>
-						<?php if( empty( $item['in_bundle'] ) ) : // Only show price when product is not part of a bundle ?>
+						<?php if ( empty( $item['in_bundle'] ) ) : // Only show price when product is not part of a bundle ?>
 							<?php echo edd_currency_filter( edd_format_amount( $item[ 'price' ] ) ); ?>
 						<?php endif; ?>
 					</td>
@@ -230,7 +230,7 @@ $status    = edd_get_payment_status( $payment, true );
 			<?php endforeach; ?>
 		<?php endif; ?>
 		<?php if ( ( $fees = edd_get_payment_fees( $payment->ID, 'item' ) ) ) : ?>
-			<?php foreach( $fees as $fee ) : ?>
+			<?php foreach ( $fees as $fee ) : ?>
 				<tr>
 					<td class="edd_fee_label"><?php echo esc_html( $fee['label'] ); ?></td>
 					<?php if ( edd_item_quantities_enabled() ) : ?>
