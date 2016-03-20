@@ -56,7 +56,7 @@ class EDD_Notices {
 			$notices['updated']['edd-payment-history-test-mode'] = sprintf( __( 'Note: Test Mode is enabled, only test payments are shown below. <a href="%s">Settings</a>.', 'easy-digital-downloads' ), admin_url( 'edit.php?post_type=download&page=edd-settings' ) );
 		}
 
-		if( stristr( $_SERVER['SERVER_SOFTWARE'], 'nginx' ) && ! get_user_meta( get_current_user_id(), '_edd_nginx_redirect_dismissed', true ) && current_user_can( 'manage_shop_settings' ) ) {
+		if ( stristr( $_SERVER['SERVER_SOFTWARE'], 'nginx' ) && ! get_user_meta( get_current_user_id(), '_edd_nginx_redirect_dismissed', true ) && current_user_can( 'manage_shop_settings' ) ) {
 
 			ob_start();
 			?>
@@ -70,8 +70,8 @@ class EDD_Notices {
 			echo ob_get_clean();
 		}
 
-		if( ! edd_htaccess_exists() && ! get_user_meta( get_current_user_id(), '_edd_htaccess_missing_dismissed', true ) && current_user_can( 'manage_shop_settings' ) ) {
-			if( ! stristr( $_SERVER['SERVER_SOFTWARE'], 'apache' ) ) {
+		if ( ! edd_htaccess_exists() && ! get_user_meta( get_current_user_id(), '_edd_htaccess_missing_dismissed', true ) && current_user_can( 'manage_shop_settings' ) ) {
+			if ( ! stristr( $_SERVER['SERVER_SOFTWARE'], 'apache' ) ) {
 				return; // Bail if we aren't using Apache... nginx doesn't use htaccess!
 			}
 
@@ -112,8 +112,8 @@ class EDD_Notices {
 
 		if ( isset( $_GET['edd-message'] ) ) {
 			// Shop discounts errors
-			if( current_user_can( 'manage_shop_discounts' ) ) {
-				switch( $_GET['edd-message'] ) {
+			if ( current_user_can( 'manage_shop_discounts' ) ) {
+				switch ( $_GET['edd-message'] ) {
 					case 'discount_added' :
 						$notices['updated']['edd-discount-added'] = __( 'Discount code added.', 'easy-digital-downloads' );
 						break;
@@ -133,8 +133,8 @@ class EDD_Notices {
 			}
 
 			// Shop reports errors
-			if( current_user_can( 'view_shop_reports' ) ) {
-				switch( $_GET['edd-message'] ) {
+			if ( current_user_can( 'view_shop_reports' ) ) {
+				switch ( $_GET['edd-message'] ) {
 					case 'payment_deleted' :
 						$notices['updated']['edd-payment-deleted'] = __( 'The payment has been deleted.', 'easy-digital-downloads' );
 						break;
@@ -148,8 +148,8 @@ class EDD_Notices {
 			}
 
 			// Shop settings errors
-			if( current_user_can( 'manage_shop_settings' ) ) {
-				switch( $_GET['edd-message'] ) {
+			if ( current_user_can( 'manage_shop_settings' ) ) {
+				switch ( $_GET['edd-message'] ) {
 					case 'settings-imported' :
 						$notices['updated']['edd-settings-imported'] = __( 'The settings have been imported.', 'easy-digital-downloads' );
 						break;
@@ -169,8 +169,8 @@ class EDD_Notices {
 			}
 
 			// Shop payments errors
-			if( current_user_can( 'edit_shop_payments' ) ) {
-				switch( $_GET['edd-message'] ) {
+			if ( current_user_can( 'edit_shop_payments' ) ) {
+				switch ( $_GET['edd-message'] ) {
 					case 'note-added' :
 						$notices['updated']['edd-note-added'] = __( 'The payment note has been added successfully.', 'easy-digital-downloads' );
 						break;
@@ -182,7 +182,7 @@ class EDD_Notices {
 
 			// Customer Notices
 			if ( current_user_can( 'edit_shop_payments' ) ) {
-				switch( $_GET['edd-message'] ) {
+				switch ( $_GET['edd-message'] ) {
 					case 'customer-deleted' :
 						$notices['updated']['edd-customer-deleted'] = __( 'Customer successfully deleted', 'easy-digital-downloads' );
 						break;
@@ -195,13 +195,13 @@ class EDD_Notices {
 		}
 
 		if ( count( $notices['updated'] ) > 0 ) {
-			foreach( $notices['updated'] as $notice => $message ) {
+			foreach ( $notices['updated'] as $notice => $message ) {
 				add_settings_error( 'edd-notices', $notice, $message, 'updated' );
 			}
 		}
 
 		if ( count( $notices['error'] ) > 0 ) {
-			foreach( $notices['error'] as $notice => $message ) {
+			foreach ( $notices['error'] as $notice => $message ) {
 				add_settings_error( 'edd-notices', $notice, $message, 'error' );
 			}
 		}
@@ -216,7 +216,7 @@ class EDD_Notices {
 	 * @return void
 	 */
 	function dismiss_notices() {
-		if( isset( $_GET['edd_notice'] ) ) {
+		if ( isset( $_GET['edd_notice'] ) ) {
 			update_user_meta( get_current_user_id(), '_edd_' . $_GET['edd_notice'] . '_dismissed', 1 );
 			wp_redirect( remove_query_arg( array( 'edd_action', 'edd_notice' ) ) );
 			exit;
