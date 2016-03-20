@@ -328,7 +328,7 @@ function edd_save_bulk_edit() {
 		$price = isset( $_POST['price'] ) ? strip_tags( stripslashes( $_POST['price'] ) ) : 0;
 		foreach ( $post_ids as $post_id ) {
 
-			if( ! current_user_can( 'edit_post', $post_id ) ) {
+			if ( ! current_user_can( 'edit_post', $post_id ) ) {
 				continue;
 			}
 
