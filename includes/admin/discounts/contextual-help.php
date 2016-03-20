@@ -48,7 +48,7 @@ function edd_discounts_contextual_help() {
 		'content'	=>
 			'<p>' . __( 'You can create any number of discount codes easily from this page.', 'easy-digital-downloads' ) . '</p>' .
 			'<p>' . __( 'Discount codes have several options:', 'easy-digital-downloads' ) . '</p>' .
-			'<ul>'.
+			'<ul>' .
 				'<li>' . __( '<strong>Name</strong> - this is the name given to the discount. Used primarily for administrative purposes.', 'easy-digital-downloads' ) . '</li>' .
 				'<li>' . __( '<strong>Code</strong> - this is the unique code that customers will enter during checkout to redeem the code.', 'easy-digital-downloads' ) . '</li>' .
 				'<li>' . __( '<strong>Type</strong> - this is the type of discount this code awards.', 'easy-digital-downloads' ) . '</li>' .

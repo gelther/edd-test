@@ -138,7 +138,7 @@ function edd_generate_pdf( $data ) {
 	$image = str_replace( ' ', '%20', $image );
 
 	$pdf->SetX( 25 );
-	$pdf->Image( $image .'&file=.png' );
+	$pdf->Image( $image . '&file=.png' );
 	$pdf->Ln( 7 );
 	$pdf->Output( apply_filters( 'edd_sales_earnings_pdf_export_filename', 'edd-report-' . date_i18n('Y-m-d') ) . '.pdf', 'D' );
 }

@@ -423,14 +423,14 @@ class Client implements ClientInterface
 		foreach ( $value as $param => $val )
 		{
 		if ( array_key_exists($param, $fieldMappings) && trim($val)!='' ) {
-			$parameters[$providerString.$providerIndex. '.' .$fieldMappings[$param]] = $val;
+			$parameters[$providerString . $providerIndex . '.' . $fieldMappings[$param]] = $val;
 		}
 		}
 
 		// If currency code is not entered take it from the config array
-		if ( empty($parameters[$providerString.$providerIndex. '.' .$fieldMappings['currency_code']]) )
+		if ( empty($parameters[$providerString . $providerIndex . '.' . $fieldMappings['currency_code']]) )
 		{
-		$parameters[$providerString.$providerIndex. '.' .$fieldMappings['currency_code']] = strtoupper($this->config['currency_code']);
+		$parameters[$providerString . $providerIndex . '.' . $fieldMappings['currency_code']] = strtoupper($this->config['currency_code']);
 		}
 	}
 
@@ -462,14 +462,14 @@ class Client implements ClientInterface
 		foreach ( $value as $param => $val )
 		{
 		if ( array_key_exists($param, $fieldMappings) && trim($val)!='' ) {
-			$parameters[$providerString.$providerIndex. '.' .$fieldMappings[$param]] = $val;
+			$parameters[$providerString . $providerIndex . '.' . $fieldMappings[$param]] = $val;
 		}
 		}
 
 		// If currency code is not entered take it from the config array
-		if ( empty($parameters[$providerString.$providerIndex. '.' .$fieldMappings['currency_code']]) )
+		if ( empty($parameters[$providerString . $providerIndex . '.' . $fieldMappings['currency_code']]) )
 		{
-		$parameters[$providerString.$providerIndex. '.' .$fieldMappings['currency_code']] = strtoupper($this->config['currency_code']);
+		$parameters[$providerString . $providerIndex . '.' . $fieldMappings['currency_code']] = strtoupper($this->config['currency_code']);
 		}
 	}
 
@@ -1494,7 +1494,7 @@ class Client implements ClientInterface
 			$delay = (int) (pow(4, $retries) * 100000);
 			usleep($delay);
 		} else {
-			throw new \Exception('Error Code: '. $status.PHP_EOL.'Maximum number of retry attempts - '. $retries .' reached');
+			throw new \Exception('Error Code: ' . $status . PHP_EOL . 'Maximum number of retry attempts - ' . $retries . ' reached');
 		}
 	}
 

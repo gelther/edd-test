@@ -537,7 +537,7 @@ $currency_code  = $payment->currency;
 										else :
 											$no_notes_display = '';
 										endif;
-										echo '<p class="edd-no-payment-notes"' . $no_notes_display . '>'. __( 'No payment notes', 'easy-digital-downloads' ) . '</p>';
+										echo '<p class="edd-no-payment-notes"' . $no_notes_display . '>' . __( 'No payment notes', 'easy-digital-downloads' ) . '</p>';
 										?>
 									</div>
 									<textarea name="edd-payment-note" id="edd-payment-note" class="large-text"></textarea>

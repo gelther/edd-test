@@ -187,13 +187,13 @@ class EDD_Payment_History_Table extends WP_List_Table {
 	public function get_views() {
 
 		$current         = isset( $_GET['status'] ) ? $_GET['status'] : '';
-		$total_count     = '&nbsp;<span class="count">(' . $this->total_count    . ')</span>';
+		$total_count     = '&nbsp;<span class="count">(' . $this->total_count . ')</span>';
 		$complete_count  = '&nbsp;<span class="count">(' . $this->complete_count . ')</span>';
-		$pending_count   = '&nbsp;<span class="count">(' . $this->pending_count  . ')</span>';
+		$pending_count   = '&nbsp;<span class="count">(' . $this->pending_count . ')</span>';
 		$refunded_count  = '&nbsp;<span class="count">(' . $this->refunded_count . ')</span>';
-		$failed_count    = '&nbsp;<span class="count">(' . $this->failed_count   . ')</span>';
+		$failed_count    = '&nbsp;<span class="count">(' . $this->failed_count . ')</span>';
 		$abandoned_count = '&nbsp;<span class="count">(' . $this->abandoned_count . ')</span>';
-		$revoked_count   = '&nbsp;<span class="count">(' . $this->revoked_count   . ')</span>';
+		$revoked_count   = '&nbsp;<span class="count">(' . $this->revoked_count . ')</span>';
 
 		$views = array(
 			'all'       => sprintf( '<a href="%s"%s>%s</a>', remove_query_arg( array( 'status', 'paged' ) ), $current === 'all' || $current == '' ? ' class="current"' : '', __('All','easy-digital-downloads' ) . $total_count ),

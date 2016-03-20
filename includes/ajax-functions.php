@@ -588,7 +588,7 @@ function edd_ajax_customer_search() {
 
 			$results[] = array(
 				'id'   => $customer->id,
-				'name' => $customer->name . '(' .  $customer->email . ')'
+				'name' => $customer->name . '(' . $customer->email . ')'
 			);
 		}
 
@@ -642,7 +642,7 @@ function edd_check_for_download_price_variations() {
 				}
 
 				foreach ( $variable_prices as $key => $price ) {
-					$ajax_response .= '<option value="' . esc_attr( $key ) . '">' . esc_html( $price['name'] )  . '</option>';
+					$ajax_response .= '<option value="' . esc_attr( $key ) . '">' . esc_html( $price['name'] ) . '</option>';
 				}
 			$ajax_response .= '</select>';
 			echo $ajax_response;
