@@ -203,11 +203,11 @@ class EDD_Roles {
 	 */
 	public function meta_caps( $caps, $cap, $user_id, $args ) {
 
-		switch( $cap ) {
+		switch ( $cap ) {
 
 			case 'view_product_stats' :
 
-				if( empty( $args[0] ) ) {
+				if ( empty( $args[0] ) ) {
 					break;
 				}
 
@@ -216,7 +216,7 @@ class EDD_Roles {
 					break;
 				}
 
-				if( user_can( $user_id, 'view_shop_reports' ) || $user_id == $download->post_author ) {
+				if ( user_can( $user_id, 'view_shop_reports' ) || $user_id == $download->post_author ) {
 					$caps = array();
 				}
 
