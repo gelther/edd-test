@@ -354,7 +354,7 @@ function edd_get_chosen_gateway() {
 	if ( ! empty ( $chosen ) ) {
 		$enabled_gateway = urldecode( $chosen );
 	} else if ( count( $gateways ) >= 1 && ! $chosen ) {
-		foreach ( $gateways as $gateway_id => $gateway ):
+		foreach ( $gateways as $gateway_id => $gateway ) :
 			$enabled_gateway = $gateway_id;
 			if ( edd_get_cart_subtotal() <= 0 ) {
 				$enabled_gateway = 'manual'; // This allows a free download by filling in the info
