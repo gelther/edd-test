@@ -95,13 +95,13 @@ add_action( 'pre_get_posts', 'edd_unset_discount_query_arg', 999999 );
  */
 function edd_prevent_canonical_redirect( $redirect_url, $requested_url ) {
 
-	if( ! is_front_page() ) {
+	if ( ! is_front_page() ) {
 		return $redirect_url;
 	}
 
 	$discount = get_query_var( 'discount' );
 
-	if( ! empty( $discount ) || false !== strpos( $requested_url, 'discount' ) ) {
+	if ( ! empty( $discount ) || false !== strpos( $requested_url, 'discount' ) ) {
 
 		$redirect_url = $requested_url;
 
@@ -122,21 +122,21 @@ function edd_refresh_permalinks_on_bad_404() {
 
 	global $wp;
 
-	if( ! is_404() ) {
+	if ( ! is_404() ) {
 		return;
 	}
 
-	if( isset( $_GET['edd-flush'] ) ) {
+	if ( isset( $_GET['edd-flush'] ) ) {
 		return;
 	}
 
-	if( false === get_transient( 'edd_refresh_404_permalinks' ) ) {
+	if ( false === get_transient( 'edd_refresh_404_permalinks' ) ) {
 
 		$slug  = defined( 'EDD_SLUG' ) ? EDD_SLUG : 'downloads';
 
 		$parts = explode( '/', $wp->request );
 
-		if( $slug !== $parts[0] ) {
+		if ( $slug !== $parts[0] ) {
 			return;
 		}
 
