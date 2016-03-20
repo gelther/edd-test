@@ -250,7 +250,7 @@ class EDD_Discount_Codes_Table extends WP_List_Table {
 	 * @return string Displays the discount status
 	 */
 	function column_status( $item ) {
-		switch ( $item['status'] ){
+		switch ( $item['status'] ) {
 			case 'expired' :
 				$status = __( 'Expired', 'easy-digital-downloads' );
 				break;

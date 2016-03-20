@@ -79,7 +79,7 @@ class EDD_License {
 	 * @return  void
 	 */
 	private function includes() {
-		if ( ! class_exists( 'EDD_SL_Plugin_Updater' ) )  {
+		if ( ! class_exists( 'EDD_SL_Plugin_Updater' ) ) {
 			require_once 'EDD_SL_Plugin_Updater.php';
 		}
 	}

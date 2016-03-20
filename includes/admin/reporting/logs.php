@@ -165,7 +165,7 @@ function edd_log_views() {
 	<form id="edd-logs-filter" method="get" action="edit.php">
 		<select id="edd-logs-view" name="view">
 			<option value="-1"><?php _e( 'Log Type', 'easy-digital-downloads' ); ?></option>
-			<?php foreach ( $views as $view_id => $label ): ?>
+			<?php foreach ( $views as $view_id => $label ) : ?>
 				<option value="<?php echo esc_attr( $view_id ); ?>" <?php selected( $view_id, $current_view ); ?>><?php echo $label; ?></option>
 			<?php endforeach; ?>
 		</select>

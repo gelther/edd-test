@@ -564,7 +564,7 @@ function edd_detect_cc_type( $number ) {
 		return false;
 	}
 
-	foreach ( $card_types as $card_type ){
+	foreach ( $card_types as $card_type ) {
 
 		if ( preg_match( $card_type['pattern'], $number ) ) {
 

@@ -106,8 +106,7 @@ class IpnHandler implements IpnHandlerInterface
 
     private function trimArray($array)
     {
-	foreach ( $array as $key => $value )
-	{
+	foreach ( $array as $key => $value ) {
 	    $array[$key] = trim($value);
 	}
 	return $array;

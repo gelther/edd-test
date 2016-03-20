@@ -4,19 +4,19 @@
  */
 global $current_user;
 
-if ( is_user_logged_in() ):
+if ( is_user_logged_in() ) :
 	$user_id      = get_current_user_id();
 	$first_name   = get_user_meta( $user_id, 'first_name', true );
 	$last_name    = get_user_meta( $user_id, 'last_name', true );
 	$display_name = $current_user->display_name;
 	$address      = edd_get_customer_address( $user_id );
 
-	if ( edd_is_cart_saved() ): ?>
+	if ( edd_is_cart_saved() ) : ?>
 		<?php $restore_url = add_query_arg( array( 'edd_action' => 'restore_cart', 'edd_cart_token' => edd_get_cart_token() ), edd_get_checkout_uri() ); ?>
 		<div class="edd_success edd-alert edd-alert-success"><strong><?php _e( 'Saved cart','easy-digital-downloads' ); ?>:</strong> <?php printf( __( 'You have a saved cart, <a href="%s">click here</a> to restore it.', 'easy-digital-downloads' ), esc_url( $restore_url ) ); ?></div>
 	<?php endif; ?>
 
-	<?php if ( isset( $_GET['updated'] ) && $_GET['updated'] == true && ! edd_get_errors() ): ?>
+	<?php if ( isset( $_GET['updated'] ) && $_GET['updated'] == true && ! edd_get_errors() ) : ?>
 		<div class="edd_success edd-alert edd-alert-success"><strong><?php _e( 'Success','easy-digital-downloads' ); ?>:</strong> <?php _e( 'Your profile has been edited successfully.', 'easy-digital-downloads' ); ?></div>
 	<?php endif; ?>
 
@@ -37,14 +37,14 @@ if ( is_user_logged_in() ):
 			<p id="edd_profile_display_name_wrap">
 				<label for="edd_display_name"><?php _e( 'Display Name', 'easy-digital-downloads' ); ?></label>
 				<select name="edd_display_name" id="edd_display_name" class="select edd-select">
-					<?php if ( ! empty( $current_user->first_name ) ): ?>
+					<?php if ( ! empty( $current_user->first_name ) ) : ?>
 					<option <?php selected( $display_name, $current_user->first_name ); ?> value="<?php echo esc_attr( $current_user->first_name ); ?>"><?php echo esc_html( $current_user->first_name ); ?></option>
 					<?php endif; ?>
 					<option <?php selected( $display_name, $current_user->user_nicename ); ?> value="<?php echo esc_attr( $current_user->user_nicename ); ?>"><?php echo esc_html( $current_user->user_nicename ); ?></option>
-					<?php if ( ! empty( $current_user->last_name ) ): ?>
+					<?php if ( ! empty( $current_user->last_name ) ) : ?>
 					<option <?php selected( $display_name, $current_user->last_name ); ?> value="<?php echo esc_attr( $current_user->last_name ); ?>"><?php echo esc_html( $current_user->last_name ); ?></option>
 					<?php endif; ?>
-					<?php if ( ! empty( $current_user->first_name ) && ! empty( $current_user->last_name ) ): ?>
+					<?php if ( ! empty( $current_user->first_name ) && ! empty( $current_user->last_name ) ) : ?>
 					<option <?php selected( $display_name, $current_user->first_name . ' ' . $current_user->last_name ); ?> value="<?php echo esc_attr( $current_user->first_name . ' ' . $current_user->last_name ); ?>"><?php echo esc_html( $current_user->first_name . ' ' . $current_user->last_name ); ?></option>
 					<option <?php selected( $display_name, $current_user->last_name . ' ' . $current_user->first_name ); ?> value="<?php echo esc_attr( $current_user->last_name . ' ' . $current_user->first_name ); ?>"><?php echo esc_html( $current_user->last_name . ' ' . $current_user->first_name ); ?></option>
 					<?php endif; ?>
