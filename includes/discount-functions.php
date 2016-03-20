@@ -67,7 +67,7 @@ function edd_has_active_discounts() {
 
 	$discounts  = edd_get_discounts();
 
-	if ( $discounts) {
+	if ( $discounts ) {
 		foreach ( $discounts as $discount ) {
 			if ( edd_is_discount_active( $discount->ID ) ) {
 				$has_active = true;
@@ -901,13 +901,13 @@ function edd_is_discount_valid( $code = '', $user = '', $set_error = true ) {
 	if( edd_get_cart_contents() ) {
 
 		if ( $discount_id ) {
-			if (
+			if ( 
 				edd_is_discount_active( $discount_id ) &&
 				edd_is_discount_started( $discount_id ) &&
 				! edd_is_discount_maxed_out( $discount_id ) &&
 				! edd_is_discount_used( $code, $user, $discount_id ) &&
 				edd_discount_is_min_met( $discount_id ) &&
-				edd_discount_product_reqs_met( $discount_id )
+				edd_discount_product_reqs_met( $discount_id ) 
 			) {
 				$return = true;
 			}
