@@ -74,7 +74,7 @@ if ( is_user_logged_in() ):
 				<br/>
 				<label for="edd_address_country"><?php _e( 'Country', 'easy-digital-downloads' ); ?></label>
 				<select name="edd_address_country" id="edd_address_country" class="select edd-select">
-					<?php foreach( edd_get_country_list() as $key => $country ) : ?>
+					<?php foreach ( edd_get_country_list() as $key => $country ) : ?>
 					<option value="<?php echo $key; ?>"<?php selected( $address['country'], $key ); ?>><?php echo esc_html( $country ); ?></option>
 					<?php endforeach; ?>
 				</select>
