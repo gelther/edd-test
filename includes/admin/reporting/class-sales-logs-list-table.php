@@ -78,7 +78,7 @@ class EDD_Sales_Log_Table extends WP_List_Table {
 		$return   = '';
 		$currency = $item['currency'];
 
-		switch ( $column_name ){
+		switch ( $column_name ) {
 			case 'download' :
 				$return = '<a href="' . add_query_arg( 'download', $item[ $column_name ] ) . '" >' . get_the_title( $item[ $column_name ] ) . '</a>';
 				break;
