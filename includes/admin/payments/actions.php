@@ -21,7 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 */
 function edd_update_payment_details( $data ) {
 
-	if( ! current_user_can( 'edit_shop_payments', $data['edd_payment_id'] ) ) {
+	if ( ! current_user_can( 'edit_shop_payments', $data['edd_payment_id'] ) ) {
 		wp_die( __( 'You do not have permission to edit this payment record', 'easy-digital-downloads' ), __( 'Error', 'easy-digital-downloads' ), array( 'response' => 403 ) );
 	}
 
@@ -196,7 +196,7 @@ function edd_update_payment_details( $data ) {
 	$names      = explode( ' ', $names );
 	$first_name = ! empty( $names[0] ) ? $names[0] : '';
 	$last_name  = '';
-	if( ! empty( $names[1] ) ) {
+	if ( ! empty( $names[1] ) ) {
 		unset( $names[0] );
 		$last_name = implode( ' ', $names );
 	}
@@ -208,7 +208,7 @@ function edd_update_payment_details( $data ) {
 		$customer->attach_payment( $payment_id, false );
 
 		// If purchase was completed and not ever refunded, adjust stats of customers
-		if( 'revoked' == $status || 'publish' == $status ) {
+		if ( 'revoked' == $status || 'publish' == $status ) {
 
 			$previous_customer->decrease_purchase_count();
 			$previous_customer->decrease_value( $new_total );
@@ -281,7 +281,7 @@ function edd_trigger_purchase_delete( $data ) {
 
 		$payment_id = absint( $data['purchase_id'] );
 
-		if( ! current_user_can( 'edit_shop_payments', $payment_id ) ) {
+		if ( ! current_user_can( 'edit_shop_payments', $payment_id ) ) {
 			wp_die( __( 'You do not have permission to edit this payment record', 'easy-digital-downloads' ), __( 'Error', 'easy-digital-downloads' ), array( 'response' => 403 ) );
 		}
 
@@ -297,14 +297,14 @@ function edd_ajax_store_payment_note() {
 	$payment_id = absint( $_POST['payment_id'] );
 	$note       = wp_kses( $_POST['note'], array() );
 
-	if( ! current_user_can( 'edit_shop_payments', $payment_id ) ) {
+	if ( ! current_user_can( 'edit_shop_payments', $payment_id ) ) {
 		wp_die( __( 'You do not have permission to edit this payment record', 'easy-digital-downloads' ), __( 'Error', 'easy-digital-downloads' ), array( 'response' => 403 ) );
 	}
 
-	if( empty( $payment_id ) )
+	if ( empty( $payment_id ) )
 		die( '-1' );
 
-	if( empty( $note ) )
+	if ( empty( $note ) )
 		die( '-1' );
 
 	$note_id = edd_insert_payment_note( $payment_id, $note );
@@ -321,10 +321,10 @@ add_action( 'wp_ajax_edd_insert_payment_note', 'edd_ajax_store_payment_note' );
 */
 function edd_trigger_payment_note_deletion( $data ) {
 
-	if( ! wp_verify_nonce( $data['_wpnonce'], 'edd_delete_payment_note_' . $data['note_id'] ) )
+	if ( ! wp_verify_nonce( $data['_wpnonce'], 'edd_delete_payment_note_' . $data['note_id'] ) )
 		return;
 
-	if( ! current_user_can( 'edit_shop_payments', $data['payment_id'] ) ) {
+	if ( ! current_user_can( 'edit_shop_payments', $data['payment_id'] ) ) {
 		wp_die( __( 'You do not have permission to edit this payment record', 'easy-digital-downloads' ), __( 'Error', 'easy-digital-downloads' ), array( 'response' => 403 ) );
 	}
 
@@ -344,11 +344,11 @@ add_action( 'edd_delete_payment_note', 'edd_trigger_payment_note_deletion' );
 */
 function edd_ajax_delete_payment_note() {
 
-	if( ! current_user_can( 'edit_shop_payments', $_POST['payment_id'] ) ) {
+	if ( ! current_user_can( 'edit_shop_payments', $_POST['payment_id'] ) ) {
 		wp_die( __( 'You do not have permission to edit this payment record', 'easy-digital-downloads' ), __( 'Error', 'easy-digital-downloads' ), array( 'response' => 403 ) );
 	}
 
-	if( edd_delete_payment_note( $_POST['note_id'], $_POST['payment_id'] ) ) {
+	if ( edd_delete_payment_note( $_POST['note_id'], $_POST['payment_id'] ) ) {
 		die( '1' );
 	} else {
 		die( '-1' );
@@ -374,10 +374,10 @@ function edd_ajax_generate_file_download_link() {
 	$download_id = absint( $_POST['download_id'] );
 	$price_id    = absint( $_POST['price_id'] );
 
-	if( empty( $payment_id ) )
+	if ( empty( $payment_id ) )
 		die( '-2' );
 
-	if( empty( $download_id ) )
+	if ( empty( $download_id ) )
 		die( '-3' );
 
 	$payment_key = edd_get_payment_key( $payment_id );
@@ -390,13 +390,13 @@ function edd_ajax_generate_file_download_link() {
 	}
 
 	$files = edd_get_download_files( $download_id, $price_id );
-	if( ! $files ) {
+	if ( ! $files ) {
 		die( '-4' );
 	}
 
 	$file_urls = '';
 
-	foreach( $files as $file_key => $file ) {
+	foreach ( $files as $file_key => $file ) {
 
 		$file_urls .= edd_get_download_file_url( $payment_key, $email, $file_key, $download_id, $price_id );
 		$file_urls .= "\n\n";
