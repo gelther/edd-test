@@ -178,11 +178,11 @@ class EDD_Tools_Recount_Download_Stats extends EDD_Batch_Export {
 
 		$percentage = 100;
 
-		if( $total > 0 ) {
+		if ( $total > 0 ) {
 			$percentage = ( ( $this->per_step * $this->step ) / $total ) * 100;
 		}
 
-		if( $percentage > 100 ) {
+		if ( $percentage > 100 ) {
 			$percentage = 100;
 		}
 
@@ -213,7 +213,7 @@ class EDD_Tools_Recount_Download_Stats extends EDD_Batch_Export {
 
 		$had_data = $this->get_data();
 
-		if( $had_data ) {
+		if ( $had_data ) {
 			$this->done = false;
 			return true;
 		} else {
