@@ -26,7 +26,7 @@ function edd_add_discount( $data ) {
 		return;
 	}
 
-	if( ! current_user_can( 'manage_shop_discounts' ) ) {
+	if ( ! current_user_can( 'manage_shop_discounts' ) ) {
 		wp_die( __( 'You do not have permission to create discount codes', 'easy-digital-downloads' ), __( 'Error', 'easy-digital-downloads' ), array( 'response' => 403 ) );
 	}
 
@@ -88,7 +88,7 @@ function edd_edit_discount( $data ) {
 		return;
 	}
 
-	if( ! current_user_can( 'manage_shop_discounts' ) ) {
+	if ( ! current_user_can( 'manage_shop_discounts' ) ) {
 		wp_die( __( 'You do not have permission to edit discount codes', 'easy-digital-downloads' ), __( 'Error', 'easy-digital-downloads' ), array( 'response' => 403 ) );
 	}
 
@@ -144,7 +144,7 @@ function edd_delete_discount( $data ) {
 		wp_die( __( 'Trying to cheat or something?', 'easy-digital-downloads' ), __( 'Error', 'easy-digital-downloads' ), array( 'response' => 403 ) );
 	}
 
-	if( ! current_user_can( 'manage_shop_discounts' ) ) {
+	if ( ! current_user_can( 'manage_shop_discounts' ) ) {
 		wp_die( __( 'You do not have permission to delete discount codes', 'easy-digital-downloads' ), __( 'Error', 'easy-digital-downloads' ), array( 'response' => 403 ) );
 	}
 
@@ -169,7 +169,7 @@ function edd_activate_discount( $data ) {
 		wp_die( __( 'Trying to cheat or something?', 'easy-digital-downloads' ), __( 'Error', 'easy-digital-downloads' ), array( 'response' => 403 ) );
 	}
 
-	if( ! current_user_can( 'manage_shop_discounts' ) ) {
+	if ( ! current_user_can( 'manage_shop_discounts' ) ) {
 		wp_die( __( 'You do not have permission to edit discount codes', 'easy-digital-downloads' ), __( 'Error', 'easy-digital-downloads' ), array( 'response' => 403 ) );
 	}
 
@@ -194,7 +194,7 @@ function edd_deactivate_discount( $data ) {
 		wp_die( __( 'Trying to cheat or something?', 'easy-digital-downloads' ), __( 'Error', 'easy-digital-downloads' ), array( 'response' => 403 ) );
 	}
 
-	if( ! current_user_can( 'manage_shop_discounts' ) ) {
+	if ( ! current_user_can( 'manage_shop_discounts' ) ) {
 		wp_die( __( 'You do not have permission to create discount codes', 'easy-digital-downloads' ), array( 'response' => 403 ) );
 	}
 
