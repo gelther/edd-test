@@ -128,7 +128,7 @@ function edd_admin_email_notice( $payment_id = 0, $payment_data = array() ) {
 	$subject     = edd_do_email_tags( $subject, $payment_id );
 
 	$headers     = 'From: ' . stripslashes_deep( html_entity_decode( $from_name, ENT_COMPAT, 'UTF-8' ) ) . " <$from_email>\r\n";
-	$headers    .= 'Reply-To: '. $from_email . "\r\n";
+	$headers    .= 'Reply-To: ' . $from_email . "\r\n";
 	//$headers  .= "MIME-Version: 1.0\r\n";
 	$headers    .= "Content-Type: text/html; charset=utf-8\r\n";
 	$headers     = apply_filters( 'edd_admin_sale_notification_headers', $headers, $payment_id, $payment_data );
