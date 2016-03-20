@@ -23,7 +23,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  */
 function edd_process_download() {
 
-	if( ! isset( $_GET['download_id'] ) && isset( $_GET['download'] ) ) {
+	if ( ! isset( $_GET['download_id'] ) && isset( $_GET['download'] ) ) {
 		$_GET['download_id'] = $_GET['download'];
 	}
 
@@ -80,15 +80,15 @@ function edd_process_download() {
 		 * If we have an attachment ID stored, use get_attached_file() to retrieve absolute URL
 		 * If this fails or returns a relative path, we fail back to our own absolute URL detection
 		 */
-		if( $attachment_id && 'attachment' == get_post_type( $attachment_id ) && 'redirect' != $method ) {
+		if ( $attachment_id && 'attachment' == get_post_type( $attachment_id ) && 'redirect' != $method ) {
 			$attached_file = get_attached_file( $attachment_id, false );
-			if( $attached_file ) {
+			if ( $attached_file ) {
 				$requested_file = $attached_file;
 			}
 		}
 
 		// If we didn't find a file from the attachment, grab the given URL
-		if( ! isset( $requested_file ) ) {
+		if ( ! isset( $requested_file ) ) {
 			$requested_file = isset( $download_files[ $args['file_key'] ]['file'] ) ? $download_files[ $args['file_key'] ]['file'] : '';
 		}
 
@@ -116,7 +116,7 @@ function edd_process_download() {
 		}
 
 		@session_write_close();
-		if( function_exists( 'apache_setenv' ) ) {
+		if ( function_exists( 'apache_setenv' ) ) {
 			@apache_setenv('no-gzip', 1);
 		}
 		@ini_set( 'zlib.output_compression', 'Off' );
@@ -130,7 +130,7 @@ function edd_process_download() {
 		header("Content-Disposition: attachment; filename=\"" . apply_filters( 'edd_requested_file_name', basename( $requested_file ) ) . "\"");
 		header('Content-Transfer-Encoding: binary');
 
-		if( 'x_sendfile' == $method && ( ! function_exists( 'apache_get_modules' ) || ! in_array( 'mod_xsendfile', apache_get_modules() ) ) ) {
+		if ( 'x_sendfile' == $method && ( ! function_exists( 'apache_get_modules' ) || ! in_array( 'mod_xsendfile', apache_get_modules() ) ) ) {
 			// If X-Sendfile is selected but is not supported, fallback to Direct
 			$method = 'direct';
 		}
@@ -148,7 +148,7 @@ function edd_process_download() {
 
 		}
 
-		switch( $method ) :
+		switch ( $method ) :
 
 			case 'redirect' :
 
@@ -168,7 +168,7 @@ function edd_process_download() {
 					$direct    = true;
 					$file_path = $requested_file;
 
-				} else if( defined( 'UPLOADS' ) && strpos( $requested_file, UPLOADS ) !== false ) {
+				} else if ( defined( 'UPLOADS' ) && strpos( $requested_file, UPLOADS ) !== false ) {
 
 					/**
 					 * This is a local file given by URL so we need to figure out the path
@@ -179,14 +179,14 @@ function edd_process_download() {
 					$file_path  = realpath( ABSPATH . $file_path );
 					$direct     = true;
 
-				} else if( strpos( $requested_file, content_url() ) !== false ) {
+				} else if ( strpos( $requested_file, content_url() ) !== false ) {
 
 					/** This is a local file given by URL so we need to figure out the path */
 					$file_path  = str_replace( content_url(), WP_CONTENT_DIR, $requested_file );
 					$file_path  = realpath( $file_path );
 					$direct     = true;
 
-				} else if( strpos( $requested_file, set_url_scheme( content_url(), 'https' ) ) !== false ) {
+				} else if ( strpos( $requested_file, set_url_scheme( content_url(), 'https' ) ) !== false ) {
 
 					/** This is a local file given by an HTTPS URL so we need to figure out the path */
 					$file_path  = str_replace( set_url_scheme( content_url(), 'https' ), WP_CONTENT_DIR, $requested_file );
@@ -215,7 +215,7 @@ function edd_process_download() {
 
 				}
 
-				if( $direct ) {
+				if ( $direct ) {
 
 					edd_deliver_download( $file_path );
 
@@ -258,7 +258,7 @@ function edd_deliver_download( $file = '', $redirect = false ) {
 	 * The symlink is deleted after it is used
 	 */
 
-	if( edd_symlink_file_downloads() ) {
+	if ( edd_symlink_file_downloads() ) {
 
 		// Generate a symbolic link
 		$ext       = edd_get_file_extension( $file );
@@ -278,20 +278,20 @@ function edd_deliver_download( $file = '', $redirect = false ) {
 		}
 
 		// Make sure the symlink doesn't already exist before we create it
-		if( ! file_exists( $path ) ) {
+		if ( ! file_exists( $path ) ) {
 			$link = symlink( $file, $path );
 		} else {
 			$link = true;
 		}
 
-		if( $link ) {
+		if ( $link ) {
 			// Send the browser to the file
 			header( 'Location: ' . $url );
 		} else {
 			edd_readfile_chunked( $file );
 		}
 
-	} elseif( $redirect ) {
+	} elseif ( $redirect ) {
 
 		header( 'Location: ' . $file );
 
@@ -313,7 +313,7 @@ function edd_deliver_download( $file = '', $redirect = false ) {
  * @return   string
  */
 function edd_get_file_ctype( $extension ) {
-	switch( $extension ):
+	switch ( $extension ):
 		case 'ac'       : $ctype = 'application/pkix-attr-cert'; break;
 		case 'adp'      : $ctype = 'audio/adpcm'; break;
 		case 'ai'       : $ctype = 'application/postscript'; break;
@@ -607,7 +607,7 @@ function edd_get_file_ctype( $extension ) {
 		default         : $ctype = 'application/force-download';
 	endswitch;
 
-	if( wp_is_mobile() ) {
+	if ( wp_is_mobile() ) {
 		$ctype = 'application/octet-stream';
 	}
 
