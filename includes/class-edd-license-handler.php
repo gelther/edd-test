@@ -40,7 +40,7 @@ class EDD_License {
 
 		$this->file           = $_file;
 
-		if( is_numeric( $_item ) ) {
+		if ( is_numeric( $_item ) ) {
 			$this->item_id    = absint( $_item );
 		} else {
 			$this->item_name  = $_item;
@@ -61,7 +61,7 @@ class EDD_License {
 		if ( ! empty( $_optname ) ) {
 			$opt = edd_get_option( $_optname, false );
 
-			if( isset( $opt ) && empty( $this->license ) ) {
+			if ( isset( $opt ) && empty( $this->license ) ) {
 				$this->license = trim( $opt );
 			}
 		}
@@ -134,7 +134,7 @@ class EDD_License {
 			'author'    => $this->author
 		);
 
-		if( ! empty( $this->item_id ) ) {
+		if ( ! empty( $this->item_id ) ) {
 			$args['item_id']   = $this->item_id;
 		} else {
 			$args['item_name'] = $this->item_name;
@@ -184,11 +184,11 @@ class EDD_License {
 
 		static $has_ran;
 
-		if( 'licenses' !== $active_tab ) {
+		if ( 'licenses' !== $active_tab ) {
 			return;
 		}
 
-		if( ! empty( $has_ran ) ) {
+		if ( ! empty( $has_ran ) ) {
 			return;
 		}
 
@@ -233,7 +233,7 @@ class EDD_License {
 		}
 
 		foreach ( $_POST as $key => $value ) {
-			if( false !== strpos( $key, 'license_key_deactivate' ) ) {
+			if ( false !== strpos( $key, 'license_key_deactivate' ) ) {
 				// Don't activate a key when deactivating a different key
 				return;
 			}
@@ -247,7 +247,7 @@ class EDD_License {
 
 		$license = sanitize_text_field( $_POST['edd_settings'][ $this->item_shortname . '_license_key'] );
 
-		if( empty( $license ) ) {
+		if ( empty( $license ) ) {
 			return;
 		}
 
@@ -299,13 +299,13 @@ class EDD_License {
 		if ( ! isset( $_POST['edd_settings'][ $this->item_shortname . '_license_key'] ) )
 			return;
 
-		if( ! wp_verify_nonce( $_REQUEST[ $this->item_shortname . '_license_key-nonce'], $this->item_shortname . '_license_key-nonce' ) ) {
+		if ( ! wp_verify_nonce( $_REQUEST[ $this->item_shortname . '_license_key-nonce'], $this->item_shortname . '_license_key-nonce' ) ) {
 
 			wp_die( __( 'Nonce verification failed', 'easy-digital-downloads' ), __( 'Error', 'easy-digital-downloads' ), array( 'response' => 403 ) );
 
 		}
 
-		if( ! current_user_can( 'manage_shop_settings' ) ) {
+		if ( ! current_user_can( 'manage_shop_settings' ) ) {
 			return;
 		}
 
@@ -353,11 +353,11 @@ class EDD_License {
 	 */
 	public function weekly_license_check() {
 
-		if( ! empty( $_POST['edd_settings'] ) ) {
+		if ( ! empty( $_POST['edd_settings'] ) ) {
 			return; // Don't fire when saving settings
 		}
 
-		if( empty( $this->license ) ) {
+		if ( empty( $this->license ) ) {
 			return;
 		}
 
@@ -401,11 +401,11 @@ class EDD_License {
 
 		static $showed_invalid_message;
 
-		if( empty( $this->license ) ) {
+		if ( empty( $this->license ) ) {
 			return;
 		}
 
-		if( ! current_user_can( 'manage_shop_settings' ) ) {
+		if ( ! current_user_can( 'manage_shop_settings' ) ) {
 			return;
 		}
 
@@ -413,9 +413,9 @@ class EDD_License {
 
 		$license = get_option( $this->item_shortname . '_license_active' );
 
-		if( is_object( $license ) && 'valid' !== $license->license && empty( $showed_invalid_message ) ) {
+		if ( is_object( $license ) && 'valid' !== $license->license && empty( $showed_invalid_message ) ) {
 
-			if( empty( $_GET['tab'] ) || 'licenses' !== $_GET['tab'] ) {
+			if ( empty( $_GET['tab'] ) || 'licenses' !== $_GET['tab'] ) {
 
 				$messages[] = sprintf(
 					__( 'You have invalid or expired license keys for Easy Digital Downloads. Please go to the <a href="%s" title="Go to Licenses page">Licenses page</a> to correct this issue.', 'easy-digital-downloads' ),
@@ -428,9 +428,9 @@ class EDD_License {
 
 		}
 
-		if( ! empty( $messages ) ) {
+		if ( ! empty( $messages ) ) {
 
-			foreach( $messages as $message ) {
+			foreach ( $messages as $message ) {
 
 				echo '<div class="error">';
 					echo '<p>' . $message . '</p>';
@@ -455,7 +455,7 @@ class EDD_License {
 
 		$license = get_option( $this->item_shortname . '_license_active' );
 
-		if( ( ! is_object( $license ) || 'valid' !== $license->license ) && empty( $showed_imissing_key_message[ $this->item_shortname ] ) ) {
+		if ( ( ! is_object( $license ) || 'valid' !== $license->license ) && empty( $showed_imissing_key_message[ $this->item_shortname ] ) ) {
 
 			echo '&nbsp;<strong><a href="' . esc_url( admin_url( 'edit.php?post_type=download&page=edd-settings&tab=licenses' ) ) . '">' . __( 'Enter valid license key for automatic updates.', 'easy-digital-downloads' ) . '</a></strong>';
 			$showed_imissing_key_message[ $this->item_shortname ] = true;

@@ -102,7 +102,7 @@ function edd_email_preview_template_tags( $message ) {
  * @since 1.0.8.2
  */
 function edd_email_template_preview() {
-	if( ! current_user_can( 'manage_shop_settings' ) ) {
+	if ( ! current_user_can( 'manage_shop_settings' ) ) {
 		return;
 	}
 
@@ -123,15 +123,15 @@ add_action( 'edd_email_settings', 'edd_email_template_preview' );
  */
 function edd_display_email_template_preview() {
 
-	if( empty( $_GET['edd_action'] ) ) {
+	if ( empty( $_GET['edd_action'] ) ) {
 		return;
 	}
 
-	if( 'preview_email' !== $_GET['edd_action'] ) {
+	if ( 'preview_email' !== $_GET['edd_action'] ) {
 		return;
 	}
 
-	if( ! current_user_can( 'manage_shop_settings' ) ) {
+	if ( ! current_user_can( 'manage_shop_settings' ) ) {
 		return;
 	}
 
@@ -182,10 +182,10 @@ function edd_get_sale_notification_body_content( $payment_id = 0, $payment_data 
 	$user_info = maybe_unserialize( $payment_data['user_info'] );
 	$email = edd_get_payment_user_email( $payment_id );
 
-	if( isset( $user_info['id'] ) && $user_info['id'] > 0 ) {
+	if ( isset( $user_info['id'] ) && $user_info['id'] > 0 ) {
 		$user_data = get_userdata( $user_info['id'] );
 		$name = $user_data->display_name;
-	} elseif( isset( $user_info['first_name'] ) && isset( $user_info['last_name'] ) ) {
+	} elseif ( isset( $user_info['first_name'] ) && isset( $user_info['last_name'] ) ) {
 		$name = $user_info['first_name'] . ' ' . $user_info['last_name'];
 	} else {
 		$name = $email;
@@ -194,12 +194,12 @@ function edd_get_sale_notification_body_content( $payment_id = 0, $payment_data 
 	$download_list = '';
 	$downloads = maybe_unserialize( $payment_data['downloads'] );
 
-	if( is_array( $downloads ) ) {
-		foreach( $downloads as $download ) {
+	if ( is_array( $downloads ) ) {
+		foreach ( $downloads as $download ) {
 			$id = isset( $payment_data['cart_details'] ) ? $download['id'] : $download;
 			$title = get_the_title( $id );
-			if( isset( $download['options'] ) ) {
-				if( isset( $download['options']['price_id'] ) ) {
+			if ( isset( $download['options'] ) ) {
+				if ( isset( $download['options']['price_id'] ) ) {
 					$title .= ' - ' . edd_get_price_option_name( $id, $download['options']['price_id'], $payment_id );
 				}
 			}

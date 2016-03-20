@@ -46,9 +46,9 @@ function edd_get_cart_content_details() {
 	$details = array();
 	$length  = count( $cart_items ) - 1;
 
-	foreach( $cart_items as $key => $item ) {
+	foreach ( $cart_items as $key => $item ) {
 
-		if( $key >= $length ) {
+		if ( $key >= $length ) {
 			$edd_is_last_cart_item = true;
 		}
 
@@ -62,14 +62,14 @@ function edd_get_cart_content_details() {
 		$subtotal   = $item_price * $quantity;
 		$tax        = edd_get_cart_item_tax( $item['id'], $item['options'], $subtotal - $discount );
 
-		if( edd_prices_include_tax() ) {
+		if ( edd_prices_include_tax() ) {
 			$subtotal -= round( $tax, edd_currency_decimal_filter() );
 		}
 
 		$total      = $subtotal - $discount + $tax;
 
 		// Do not allow totals to go negatve
-		if( $total < 0 ) {
+		if ( $total < 0 ) {
 			$total = 0;
 		}
 
@@ -86,7 +86,7 @@ function edd_get_cart_content_details() {
 			'price'       => round( $total, edd_currency_decimal_filter() )
 		);
 
-		if( $edd_is_last_cart_item ) {
+		if ( $edd_is_last_cart_item ) {
 
 			$edd_is_last_cart_item   = false;
 			$edd_flat_discount_total = 0.00;
@@ -132,7 +132,7 @@ function edd_get_cart_quantity() {
 function edd_add_to_cart( $download_id, $options = array() ) {
 	$download = get_post( $download_id );
 
-	if( 'download' != $download->post_type )
+	if ( 'download' != $download->post_type )
 		return; // Not a download product
 
 	if ( ! current_user_can( 'edit_post', $download->ID ) && $download->post_status != 'publish' ) {
@@ -148,7 +148,7 @@ function edd_add_to_cart( $download_id, $options = array() ) {
 		$options['price_id'] = '0';
 	}
 
-	if( isset( $options['quantity'] ) ) {
+	if ( isset( $options['quantity'] ) ) {
 		if ( is_array( $options['quantity'] ) ) {
 
 			$quantity = array();
@@ -190,9 +190,9 @@ function edd_add_to_cart( $download_id, $options = array() ) {
 	} else {
 
 		// Sanitize price IDs
-		foreach( $options as $key => $option ) {
+		foreach ( $options as $key => $option ) {
 
-			if( 'price_id' == $key ) {
+			if ( 'price_id' == $key ) {
 				$options[ $key ] = preg_replace( '/[^0-9\.-]/', '', $option );
 			}
 
@@ -214,7 +214,7 @@ function edd_add_to_cart( $download_id, $options = array() ) {
 		if ( ! isset( $to_add['id'] ) || empty( $to_add['id'] ) )
 			return;
 
-		if( edd_item_in_cart( $to_add['id'], $to_add['options'] ) && edd_item_quantities_enabled() ) {
+		if ( edd_item_in_cart( $to_add['id'], $to_add['options'] ) && edd_item_quantities_enabled() ) {
 
 			$key = edd_get_item_position_in_cart( $to_add['id'], $to_add['options'] );
 
@@ -359,7 +359,7 @@ function edd_set_cart_item_quantity( $download_id = 0, $quantity = 1, $options =
 	$cart = edd_get_cart_contents();
 	$key  = edd_get_item_position_in_cart( $download_id, $options );
 
-	if( $quantity < 1 ) {
+	if ( $quantity < 1 ) {
 		$quantity = 1;
 	}
 
@@ -382,7 +382,7 @@ function edd_get_cart_item_quantity( $download_id = 0, $options = array() ) {
 	$cart     = edd_get_cart_contents();
 	$key      = edd_get_item_position_in_cart( $download_id, $options );
 	$quantity = isset( $cart[ $key ]['quantity'] ) && edd_item_quantities_enabled() ? $cart[ $key ]['quantity'] : 1;
-	if( $quantity < 1 )
+	if ( $quantity < 1 )
 		$quantity = 1;
 	return apply_filters( 'edd_get_cart_item_quantity', $quantity, $download_id, $options );
 }
@@ -404,21 +404,21 @@ function edd_cart_item_price( $item_id = 0, $options = array() ) {
 
 	if ( ! edd_is_free_download( $item_id, $price_id ) && ! edd_download_is_tax_exclusive( $item_id ) ) {
 
-		if( edd_prices_show_tax_on_checkout() && ! edd_prices_include_tax() ) {
+		if ( edd_prices_show_tax_on_checkout() && ! edd_prices_include_tax() ) {
 
 			$price += edd_get_cart_item_tax( $item_id, $options, $price );
 
-		} if( ! edd_prices_show_tax_on_checkout() && edd_prices_include_tax() ) {
+		} if ( ! edd_prices_show_tax_on_checkout() && edd_prices_include_tax() ) {
 
 			$price -= edd_get_cart_item_tax( $item_id, $options, $price );
 
 		}
 
-		if( edd_display_tax_rate() ) {
+		if ( edd_display_tax_rate() ) {
 
 			$label = '&nbsp;&ndash;&nbsp;';
 
-			if( edd_prices_show_tax_on_checkout() ) {
+			if ( edd_prices_show_tax_on_checkout() ) {
 				$label .= sprintf( __( 'includes %s tax', 'easy-digital-downloads' ), edd_get_formatted_tax_rate() );
 			} else {
 				$label .= sprintf( __( 'excludes %s tax', 'easy-digital-downloads' ), edd_get_formatted_tax_rate() );
@@ -458,7 +458,7 @@ function edd_get_cart_item_price( $download_id = 0, $options = array() ) {
 
 		if ( $prices ) {
 
-			if( ! empty( $options ) ) {
+			if ( ! empty( $options ) ) {
 
 				$price = isset( $prices[ $options['price_id'] ] ) ? $prices[ $options['price_id'] ]['amount'] : false;
 
@@ -472,7 +472,7 @@ function edd_get_cart_item_price( $download_id = 0, $options = array() ) {
 
 	}
 
-	if( ! $variable_prices || false === $price ) {
+	if ( ! $variable_prices || false === $price ) {
 		// Get the standard Download price if not using variable prices
 		$price = edd_get_download_price( $download_id );
 	}
@@ -507,7 +507,7 @@ function edd_get_cart_item_final_price( $item_key = 0 ) {
 function edd_get_cart_item_tax( $download_id = 0, $options = array(), $subtotal = '' ) {
 
 	$tax = 0;
-	if( ! edd_download_is_tax_exclusive( $download_id ) ) {
+	if ( ! edd_download_is_tax_exclusive( $download_id ) ) {
 
 		$country = ! empty( $_POST['billing_country'] ) ? $_POST['billing_country'] : false;
 		$state   = ! empty( $_POST['card_state'] )      ? $_POST['card_state']      : false;
@@ -533,11 +533,11 @@ function edd_get_cart_item_tax( $download_id = 0, $options = array(), $subtotal 
  */
 function edd_get_price_name( $download_id = 0, $options = array() ) {
 	$return = false;
-	if( edd_has_variable_prices( $download_id ) && ! empty( $options ) ) {
+	if ( edd_has_variable_prices( $download_id ) && ! empty( $options ) ) {
 		$prices = edd_get_variable_prices( $download_id );
 		$name   = false;
-		if( $prices ) {
-			if( isset( $prices[ $options['price_id'] ] ) )
+		if ( $prices ) {
+			if ( isset( $prices[ $options['price_id'] ] ) )
 				$name = $prices[ $options['price_id'] ]['name'];
 		}
 		$return = $name;
@@ -554,7 +554,7 @@ function edd_get_price_name( $download_id = 0, $options = array() ) {
  * @return int Price id
  */
 function edd_get_cart_item_price_id( $item = array() ) {
-	if( isset( $item['item_number'] ) ) {
+	if ( isset( $item['item_number'] ) ) {
 		$price_id = isset( $item['item_number']['options']['price_id'] ) ? $item['item_number']['options']['price_id'] : null;
 	} else {
 		$price_id = isset( $item['options']['price_id'] ) ? $item['options']['price_id'] : null;
@@ -587,7 +587,7 @@ function edd_get_cart_item_name( $item = array() ) {
 
 	$item_title = get_the_title( $item['id'] );
 
-	if( empty( $item_title ) ) {
+	if ( empty( $item_title ) ) {
 		$item_title = $item['id'];
 	}
 
@@ -644,11 +644,11 @@ function edd_get_cart_discountable_subtotal( $code_id ) {
 
 	$excluded_products = edd_get_discount_excluded_products( $code_id );
 
-	if( $cart_items ) {
+	if ( $cart_items ) {
 
-		foreach( $cart_items as $item ) {
+		foreach ( $cart_items as $item ) {
 
-			if( ! in_array( $item['id'], $excluded_products ) ) {
+			if ( ! in_array( $item['id'], $excluded_products ) ) {
 				$items[] =  $item;
 			}
 		}
@@ -668,17 +668,17 @@ function edd_get_cart_discountable_subtotal( $code_id ) {
 function edd_get_cart_items_subtotal( $items ) {
 	$subtotal = 0.00;
 
-	if( is_array( $items ) && ! empty( $items ) ) {
+	if ( is_array( $items ) && ! empty( $items ) ) {
 
 		$prices = wp_list_pluck( $items, 'subtotal' );
 
-		if( is_array( $prices ) ) {
+		if ( is_array( $prices ) ) {
 			$subtotal = array_sum( $prices );
 		} else {
 			$subtotal = 0.00;
 		}
 
-		if( $subtotal < 0 ) {
+		if ( $subtotal < 0 ) {
 			$subtotal = 0.00;
 		}
 
@@ -702,7 +702,7 @@ function edd_get_cart_total( $discounts = false ) {
 	$fees      = (float) edd_get_cart_fee_total();
 	$total     = $subtotal - $discounts + $cart_tax + $fees;
 
-	if( $total < 0 )
+	if ( $total < 0 )
 		$total = 0.00;
 
 	return (float) apply_filters( 'edd_get_cart_total', $total );
@@ -786,11 +786,11 @@ function edd_get_cart_fee_tax() {
 	$tax  = 0;
 	$fees = edd_get_cart_fees();
 
-	if( $fees ) {
+	if ( $fees ) {
 
 		foreach ( $fees as $fee_id => $fee ) {
 
-			if( ! empty( $fee['no_tax'] ) ) {
+			if ( ! empty( $fee['no_tax'] ) ) {
 				continue;
 			}
 
@@ -848,11 +848,11 @@ function edd_get_cart_tax() {
 	$cart_tax = 0;
 	$items    = edd_get_cart_content_details();
 
-	if( $items ) {
+	if ( $items ) {
 
 		$taxes = wp_list_pluck( $items, 'tax' );
 
-		if( is_array( $taxes ) ) {
+		if ( is_array( $taxes ) ) {
 			$cart_tax = array_sum( $taxes );
 		}
 
@@ -900,7 +900,7 @@ function edd_cart_tax( $echo = false ) {
 function edd_add_collection_to_cart( $taxonomy, $terms ) {
 	if ( ! is_string( $taxonomy ) ) return false;
 
-	if( is_numeric( $terms ) ) {
+	if ( is_numeric( $terms ) ) {
 		$terms = get_term( $terms, $taxonomy );
 		$terms = $terms->slug;
 	}
@@ -1035,7 +1035,7 @@ function edd_is_cart_saving_disabled() {
  * @return bool
  */
 function edd_is_cart_saved() {
-	if( edd_is_cart_saving_disabled() )
+	if ( edd_is_cart_saving_disabled() )
 		return false;
 
 	if ( is_user_logged_in() ) {
@@ -1043,7 +1043,7 @@ function edd_is_cart_saved() {
 		$saved_cart = get_user_meta( get_current_user_id(), 'edd_saved_cart', true );
 
 		// Check that a cart exists
-		if( ! $saved_cart )
+		if ( ! $saved_cart )
 			return false;
 
 		// Check that the saved cart is not the same as the current cart
@@ -1109,7 +1109,7 @@ function edd_save_cart() {
 
 	EDD()->session->set( 'edd_cart_messages', $messages );
 
-	if( $cart ) {
+	if ( $cart ) {
 		return true;
 	}
 
@@ -1188,7 +1188,7 @@ function edd_get_cart_token() {
 
 	$user_id = get_current_user_id();
 
-	if( is_user_logged_in() ) {
+	if ( is_user_logged_in() ) {
 		$token = get_user_meta( $user_id, 'edd_cart_token', true );
 	} else {
 		$token = isset( $_COOKIE['edd_cart_token'] ) ? $_COOKIE['edd_cart_token'] : false;

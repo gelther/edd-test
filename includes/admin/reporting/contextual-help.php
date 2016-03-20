@@ -54,7 +54,7 @@ function edd_reporting_contextual_help() {
 			'<p>' . __( '<strong>Download History</strong> - This report exports all of the downloads you have received in the current month into a CSV. It exports the date the file was downloaded, the customer it was downloaded by, their IP address, the name of the product and the file they downloaded.', 'easy-digital-downloads' ) . '</p>'
 	) );
 
-	if( ! empty( $_GET['tab'] ) && 'logs' == $_GET['tab'] ) {
+	if ( ! empty( $_GET['tab'] ) && 'logs' == $_GET['tab'] ) {
 		$screen->add_help_tab( array(
 			'id'	    => 'edd-reports-log-search',
 			'title'	    => __( 'Search File Downloads', 'easy-digital-downloads' ),

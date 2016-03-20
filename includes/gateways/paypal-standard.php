@@ -30,7 +30,7 @@ add_action( 'edd_paypal_cc_form', '__return_false' );
  * @return void
  */
 function edd_process_paypal_purchase( $purchase_data ) {
-	if( ! wp_verify_nonce( $purchase_data['gateway_nonce'], 'edd-gateway' ) ) {
+	if ( ! wp_verify_nonce( $purchase_data['gateway_nonce'], 'edd-gateway' ) ) {
 		wp_die( __( 'Nonce verification has failed', 'easy-digital-downloads' ), __( 'Error', 'easy-digital-downloads' ), array( 'response' => 403 ) );
 	}
 
@@ -108,12 +108,12 @@ function edd_process_paypal_purchase( $purchase_data ) {
 
 		// Add cart items
 		$i = 1;
-		if( is_array( $purchase_data['cart_details'] ) && ! empty( $purchase_data['cart_details'] ) ) {
+		if ( is_array( $purchase_data['cart_details'] ) && ! empty( $purchase_data['cart_details'] ) ) {
 			foreach ( $purchase_data['cart_details'] as $item ) {
 
 				$item_amount = round( ( $item['subtotal'] / $item['quantity'] ) - ( $item['discount'] / $item['quantity'] ), 2 );
 
-				if( $item_amount <= 0 ) {
+				if ( $item_amount <= 0 ) {
 					$item_amount = 0;
 				}
 
@@ -330,7 +330,7 @@ function edd_process_paypal_web_accept_and_cart( $data, $payment_id ) {
 		return;
 	}
 
-	if( empty( $payment_id ) ) {
+	if ( empty( $payment_id ) ) {
 		return;
 	}
 
@@ -433,7 +433,7 @@ function edd_process_paypal_web_accept_and_cart( $data, $payment_id ) {
 
 			$note = '';
 
-			switch( strtolower( $data['pending_reason'] ) ) {
+			switch ( strtolower( $data['pending_reason'] ) ) {
 
 				case 'echeck' :
 
@@ -492,7 +492,7 @@ function edd_process_paypal_web_accept_and_cart( $data, $payment_id ) {
 
 			}
 
-			if( ! empty( $note ) ) {
+			if ( ! empty( $note ) ) {
 
 				edd_insert_payment_note( $payment_id, $note );
 
@@ -514,7 +514,7 @@ function edd_process_paypal_refund( $data, $payment_id = 0 ) {
 
 	// Collect payment details
 
-	if( empty( $payment_id ) ) {
+	if ( empty( $payment_id ) ) {
 		return;
 	}
 

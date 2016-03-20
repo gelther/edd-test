@@ -58,7 +58,7 @@ class EDD_Cache_Helper {
 		}
 
 		if ( is_array( $page_uris ) ) {
-			foreach( $page_uris as $uri ) {
+			foreach ( $page_uris as $uri ) {
 				if ( strstr( $_SERVER['REQUEST_URI'], $uri ) ) {
 					$this->nocache();
 					break;
@@ -66,7 +66,7 @@ class EDD_Cache_Helper {
 			}
 		}
 
-		if( function_exists( 'wp_suspend_cache_addition' ) ) {
+		if ( function_exists( 'wp_suspend_cache_addition' ) ) {
 
 			add_action('edd_pre_update_discount',         array( $this, 'w3tc_suspend_cache_addition_pre' ) );
 			add_action('edd_pre_insert_discount',         array( $this, 'w3tc_suspend_cache_addition_pre' ) );

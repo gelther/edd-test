@@ -29,7 +29,7 @@ add_action( 'edd_manual_cc_form', '__return_false' );
  * @return void
 */
 function edd_manual_payment( $purchase_data ) {
-	if( ! wp_verify_nonce( $purchase_data['gateway_nonce'], 'edd-gateway' ) ) {
+	if ( ! wp_verify_nonce( $purchase_data['gateway_nonce'], 'edd-gateway' ) ) {
 		wp_die( __( 'Nonce verification has failed', 'easy-digital-downloads' ), __( 'Error', 'easy-digital-downloads' ), array( 'response' => 403 ) );
 	}
 

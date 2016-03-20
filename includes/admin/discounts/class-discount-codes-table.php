@@ -212,9 +212,9 @@ class EDD_Discount_Codes_Table extends WP_List_Table {
 
 		$row_actions['edit'] = '<a href="' . add_query_arg( array( 'edd-action' => 'edit_discount', 'discount' => $discount->ID ) ) . '">' . __( 'Edit', 'easy-digital-downloads' ) . '</a>';
 
-		if( strtolower( $item['status'] ) == 'active' ) {
+		if ( strtolower( $item['status'] ) == 'active' ) {
 			$row_actions['deactivate'] = '<a href="' . esc_url( wp_nonce_url( add_query_arg( array( 'edd-action' => 'deactivate_discount', 'discount' => $discount->ID ) ), 'edd_discount_nonce' ) ) . '">' . __( 'Deactivate', 'easy-digital-downloads' ) . '</a>';
-		} elseif( strtolower( $item['status'] ) == 'inactive' ) {
+		} elseif ( strtolower( $item['status'] ) == 'inactive' ) {
 			$row_actions['activate'] = '<a href="' . esc_url( wp_nonce_url( add_query_arg( array( 'edd-action' => 'activate_discount', 'discount' => $discount->ID ) ), 'edd_discount_nonce' ) ) . '">' . __( 'Activate', 'easy-digital-downloads' ) . '</a>';
 		}
 
@@ -250,7 +250,7 @@ class EDD_Discount_Codes_Table extends WP_List_Table {
 	 * @return string Displays the discount status
 	 */
 	function column_status( $item ) {
-		switch( $item['status'] ){
+		switch ( $item['status'] ){
 			case 'expired' :
 				$status = __( 'Expired', 'easy-digital-downloads' );
 				break;
@@ -301,11 +301,11 @@ class EDD_Discount_Codes_Table extends WP_List_Table {
 	 */
 	public function process_bulk_action() {
 
-		if( empty( $_REQUEST['_wpnonce'] ) ) {
+		if ( empty( $_REQUEST['_wpnonce'] ) ) {
 			return;
 		}
 
-		if( ! wp_verify_nonce( $_REQUEST['_wpnonce'], 'bulk-discounts' ) ) {
+		if ( ! wp_verify_nonce( $_REQUEST['_wpnonce'], 'bulk-discounts' ) ) {
 			return;
 		}
 
@@ -371,7 +371,7 @@ class EDD_Discount_Codes_Table extends WP_List_Table {
 			's'              => $search
 		);
 
-		if( array_key_exists( $orderby, $this->get_sortable_columns() ) && 'name' != $orderby ) {
+		if ( array_key_exists( $orderby, $this->get_sortable_columns() ) && 'name' != $orderby ) {
 
 			$args['orderby']  = 'meta_value';
 			$args['meta_key'] = '_edd_discount_' . $orderby;
@@ -447,7 +447,7 @@ class EDD_Discount_Codes_Table extends WP_List_Table {
 
 		$status = isset( $_GET['status'] ) ? $_GET['status'] : 'any';
 
-		switch( $status ) {
+		switch ( $status ) {
 			case 'active':
 				$total_items = $this->active_count;
 				break;

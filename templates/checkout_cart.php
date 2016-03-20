@@ -40,7 +40,7 @@ global $post; ?>
 						?>
 					</td>
 					<td class="edd_cart_actions">
-						<?php if( edd_item_quantities_enabled() ) : ?>
+						<?php if ( edd_item_quantities_enabled() ) : ?>
 							<input type="number" min="1" step="1" name="edd-cart-download-<?php echo $key; ?>-quantity" data-key="<?php echo $key; ?>" class="edd-input edd-item-quantity" value="<?php echo edd_get_cart_item_quantity( $item['id'], $item['options'] ); ?>"/>
 							<input type="hidden" name="edd-cart-downloads[]" value="<?php echo $item['id']; ?>"/>
 							<input type="hidden" name="edd-cart-download-<?php echo $key; ?>-options" value="<?php echo esc_attr( json_encode( $item['options'] ) ); ?>"/>
@@ -54,8 +54,8 @@ global $post; ?>
 		<?php endif; ?>
 		<?php do_action( 'edd_cart_items_middle' ); ?>
 		<!-- Show any cart fees, both positive and negative fees -->
-		<?php if( edd_cart_has_fees() ) : ?>
-			<?php foreach( edd_get_cart_fees() as $fee_id => $fee ) : ?>
+		<?php if ( edd_cart_has_fees() ) : ?>
+			<?php foreach ( edd_get_cart_fees() as $fee_id => $fee ) : ?>
 				<tr class="edd_cart_fee" id="edd_cart_fee_<?php echo $fee_id; ?>">
 
 					<?php do_action( 'edd_cart_fee_rows_before', $fee_id, $fee ); ?>
@@ -63,7 +63,7 @@ global $post; ?>
 					<td class="edd_cart_fee_label"><?php echo esc_html( $fee['label'] ); ?></td>
 					<td class="edd_cart_fee_amount"><?php echo esc_html( edd_currency_filter( edd_format_amount( $fee['amount'] ) ) ); ?></td>
 					<td>
-						<?php if( ! empty( $fee['type'] ) && 'item' == $fee['type'] ) : ?>
+						<?php if ( ! empty( $fee['type'] ) && 'item' == $fee['type'] ) : ?>
 							<a href="<?php echo esc_url( edd_remove_cart_fee_url( $fee_id ) ); ?>"><?php _e( 'Remove', 'easy-digital-downloads' ); ?></a>
 						<?php endif; ?>
 
@@ -79,7 +79,7 @@ global $post; ?>
 	</tbody>
 	<tfoot>
 
-		<?php if( has_action( 'edd_cart_footer_buttons' ) ) : ?>
+		<?php if ( has_action( 'edd_cart_footer_buttons' ) ) : ?>
 			<tr class="edd_cart_footer_row<?php if ( edd_is_cart_saving_disabled() ) { echo ' edd-no-js'; } ?>">
 				<th colspan="<?php echo edd_checkout_cart_columns(); ?>">
 					<?php do_action( 'edd_cart_footer_buttons' ); ?>
@@ -87,7 +87,7 @@ global $post; ?>
 			</tr>
 		<?php endif; ?>
 
-		<?php if( edd_use_taxes() && ! edd_prices_include_tax() ) : ?>
+		<?php if ( edd_use_taxes() && ! edd_prices_include_tax() ) : ?>
 			<tr class="edd_cart_footer_row edd_cart_subtotal_row"<?php if ( ! edd_is_cart_taxed() ) echo ' style="display:none;"'; ?>>
 				<?php do_action( 'edd_checkout_table_subtotal_first' ); ?>
 				<th colspan="<?php echo edd_checkout_cart_columns(); ?>" class="edd_cart_subtotal">
@@ -97,7 +97,7 @@ global $post; ?>
 			</tr>
 		<?php endif; ?>
 
-		<tr class="edd_cart_footer_row edd_cart_discount_row" <?php if( ! edd_cart_has_discounts() )  echo ' style="display:none;"'; ?>>
+		<tr class="edd_cart_footer_row edd_cart_discount_row" <?php if ( ! edd_cart_has_discounts() )  echo ' style="display:none;"'; ?>>
 			<?php do_action( 'edd_checkout_table_discount_first' ); ?>
 			<th colspan="<?php echo edd_checkout_cart_columns(); ?>" class="edd_cart_discount">
 				<?php edd_cart_discounts_html(); ?>
@@ -105,8 +105,8 @@ global $post; ?>
 			<?php do_action( 'edd_checkout_table_discount_last' ); ?>
 		</tr>
 
-		<?php if( edd_use_taxes() ) : ?>
-			<tr class="edd_cart_footer_row edd_cart_tax_row"<?php if( ! edd_is_cart_taxed() ) echo ' style="display:none;"'; ?>>
+		<?php if ( edd_use_taxes() ) : ?>
+			<tr class="edd_cart_footer_row edd_cart_tax_row"<?php if ( ! edd_is_cart_taxed() ) echo ' style="display:none;"'; ?>>
 				<?php do_action( 'edd_checkout_table_tax_first' ); ?>
 				<th colspan="<?php echo edd_checkout_cart_columns(); ?>" class="edd_cart_tax">
 					<?php _e( 'Tax', 'easy-digital-downloads' ); ?>:&nbsp;<span class="edd_cart_tax_amount" data-tax="<?php echo edd_get_cart_tax( false ); ?>"><?php echo esc_html( edd_cart_tax() ); ?></span>

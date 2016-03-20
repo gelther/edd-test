@@ -97,14 +97,14 @@ class EDD_Batch_Downloads_Export extends EDD_Batch_Export {
 
 				$row = array();
 
-				foreach( $this->csv_cols() as $key => $value ) {
+				foreach ( $this->csv_cols() as $key => $value ) {
 
 					// Setup default value
 					$row[ $key ] = '';
 
-					if( in_array( $key, $meta ) ) {
+					if ( in_array( $key, $meta ) ) {
 
-						switch( $key ) {
+						switch ( $key ) {
 
 							case '_thumbnail_id' :
 
@@ -115,10 +115,10 @@ class EDD_Batch_Downloads_Export extends EDD_Batch_Export {
 
 							case 'edd_price' :
 
-								if( edd_has_variable_prices( $download->ID ) ) {
+								if ( edd_has_variable_prices( $download->ID ) ) {
 
 									$prices = array();
-									foreach( edd_get_variable_prices( $download->ID ) as $price ) {
+									foreach ( edd_get_variable_prices( $download->ID ) as $price ) {
 										$prices[] = $price['name'] . ': ' . $price['amount'];
 									}
 
@@ -136,7 +136,7 @@ class EDD_Batch_Downloads_Export extends EDD_Batch_Export {
 
 
 								$files = array();
-								foreach( edd_get_download_files( $download->ID ) as $file ) {
+								foreach ( edd_get_download_files( $download->ID ) as $file ) {
 									$files[] = $file['file'];
 								}
 
@@ -152,9 +152,9 @@ class EDD_Batch_Downloads_Export extends EDD_Batch_Export {
 
 						}
 
-					} elseif( isset( $download->$key ) ) {
+					} elseif ( isset( $download->$key ) ) {
 
-						switch( $key ) {
+						switch ( $key ) {
 
 							case 'post_author' :
 
@@ -169,19 +169,19 @@ class EDD_Batch_Downloads_Export extends EDD_Batch_Export {
 								break;
 						}
 
-					} elseif( 'tags' == $key ) {
+					} elseif ( 'tags' == $key ) {
 
 						$terms = get_the_terms( $download->ID, 'download_tag' );
-						if( $terms ) {
+						if ( $terms ) {
 							$terms = wp_list_pluck( $terms, 'name' );
 							$row[ $key ] = implode( ' | ', $terms );
 						}
 
 
-					} elseif( 'categories' == $key ) {
+					} elseif ( 'categories' == $key ) {
 
 						$terms = get_the_terms( $download->ID, 'download_category' );
-						if( $terms ) {
+						if ( $terms ) {
 							$terms = wp_list_pluck( $terms, 'name' );
 							$row[ $key ] = implode( ' | ', $terms );
 						}
@@ -223,11 +223,11 @@ class EDD_Batch_Downloads_Export extends EDD_Batch_Export {
 		$total      = (int) $downloads->post_count;
 		$percentage = 100;
 
-		if( $total > 0 ) {
+		if ( $total > 0 ) {
 			$percentage = ( ( 30 * $this->step ) / $total ) * 100;
 		}
 
-		if( $percentage > 100 ) {
+		if ( $percentage > 100 ) {
 			$percentage = 100;
 		}
 

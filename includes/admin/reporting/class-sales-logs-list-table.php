@@ -186,7 +186,7 @@ class EDD_Sales_Log_Table extends WP_List_Table {
 
 		$meta_query = array();
 
-		if( $user ) {
+		if ( $user ) {
 			// Show only logs from a specific user
 			$meta_query[] = array(
 				'key'   => '_edd_log_user_id',

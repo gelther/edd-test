@@ -165,7 +165,7 @@ class EDD_Customer {
 	 */
 	public function __get( $key ) {
 
-		if( method_exists( $this, 'get_' . $key ) ) {
+		if ( method_exists( $this, 'get_' . $key ) ) {
 
 			return call_user_func( array( $this, 'get_' . $key ) );
 
@@ -270,13 +270,13 @@ class EDD_Customer {
 	 */
 	public function attach_payment( $payment_id = 0, $update_stats = true ) {
 
-		if( empty( $payment_id ) ) {
+		if ( empty( $payment_id ) ) {
 			return false;
 		}
 
 		$payment = new EDD_Payment( $payment_id );
 
-		if( empty( $this->payment_ids ) ) {
+		if ( empty( $this->payment_ids ) ) {
 
 			$new_payment_ids = $payment->ID;
 
@@ -330,7 +330,7 @@ class EDD_Customer {
 	 */
 	public function remove_payment( $payment_id = 0, $update_stats = true ) {
 
-		if( empty( $payment_id ) ) {
+		if ( empty( $payment_id ) ) {
 			return false;
 		}
 
@@ -342,7 +342,7 @@ class EDD_Customer {
 
 		$new_payment_ids = '';
 
-		if( ! empty( $this->payment_ids ) ) {
+		if ( ! empty( $this->payment_ids ) ) {
 
 			$payment_ids = array_map( 'absint', explode( ',', $this->payment_ids ) );
 
@@ -426,7 +426,7 @@ class EDD_Customer {
 
 		$new_total = (int) $this->purchase_count - (int) $count;
 
-		if( $new_total < 0 ) {
+		if ( $new_total < 0 ) {
 			$new_total = 0;
 		}
 
@@ -474,7 +474,7 @@ class EDD_Customer {
 
 		$new_value = floatval( $this->purchase_value ) - $value;
 
-		if( $new_value < 0 ) {
+		if ( $new_value < 0 ) {
 			$new_value = 0.00;
 		}
 
@@ -542,7 +542,7 @@ class EDD_Customer {
 
 		$notes = $this->get_raw_notes();
 
-		if( empty( $notes ) ) {
+		if ( empty( $notes ) ) {
 			$notes = '';
 		}
 
@@ -598,7 +598,7 @@ class EDD_Customer {
 				continue;
 			}
 
-			switch( $type ) {
+			switch ( $type ) {
 
 				case '%s':
 					if ( 'email' == $key ) {

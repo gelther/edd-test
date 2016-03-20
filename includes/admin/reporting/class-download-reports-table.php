@@ -84,7 +84,7 @@ class EDD_Download_Reports_Table extends WP_List_Table {
 	 * @return string Column Name
 	 */
 	public function column_default( $item, $column_name ) {
-		switch( $column_name ){
+		switch ( $column_name ){
 			case 'earnings' :
 				return edd_currency_filter( edd_format_amount( $item[ $column_name ] ) );
 			case 'average_sales' :
@@ -167,7 +167,7 @@ class EDD_Download_Reports_Table extends WP_List_Table {
 	public function get_total_downloads() {
 		$total  = 0;
 		$counts = wp_count_posts( 'download', 'readable' );
-		foreach( $counts as $status => $count ) {
+		foreach ( $counts as $status => $count ) {
 			$total += $count;
 		}
 		return $total;
@@ -194,7 +194,7 @@ class EDD_Download_Reports_Table extends WP_List_Table {
 	 * @return void
 	 */
 	public function category_filter() {
-		if( get_terms( 'download_category' ) ) {
+		if ( get_terms( 'download_category' ) ) {
 			echo EDD()->html->category_dropdown( 'category', $this->get_category() );
 		}
 	}
@@ -223,7 +223,7 @@ class EDD_Download_Reports_Table extends WP_List_Table {
 			'suppress_filters' => true,
 		);
 
-		if( ! empty( $category ) ) {
+		if ( ! empty( $category ) ) {
 			$args['tax_query'] = array(
 				array(
 					'taxonomy' => 'download_category',

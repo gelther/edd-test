@@ -27,7 +27,7 @@ include_once( 'easy-digital-downloads.php' );
 
 global $wpdb, $wp_roles;
 
-if( edd_get_option( 'uninstall_on_delete' ) ) {
+if ( edd_get_option( 'uninstall_on_delete' ) ) {
 
 	/** Delete All the Custom Post Types */
 	$edd_taxonomies = array( 'download_category', 'download_tag', 'edd_log_type', );

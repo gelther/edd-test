@@ -30,16 +30,16 @@ function edd_sanitize_amount( $amount ) {
 	if ( $decimal_sep == ',' && false !== ( $found = strpos( $amount, $decimal_sep ) ) ) {
 		if ( ( $thousands_sep == '.' || $thousands_sep == ' ' ) && false !== ( $found = strpos( $amount, $thousands_sep ) ) ) {
 			$amount = str_replace( $thousands_sep, '', $amount );
-		} elseif( empty( $thousands_sep ) && false !== ( $found = strpos( $amount, '.' ) ) ) {
+		} elseif ( empty( $thousands_sep ) && false !== ( $found = strpos( $amount, '.' ) ) ) {
 			$amount = str_replace( '.', '', $amount );
 		}
 
 		$amount = str_replace( $decimal_sep, '.', $amount );
-	} elseif( $thousands_sep == ',' && false !== ( $found = strpos( $amount, $thousands_sep ) ) ) {
+	} elseif ( $thousands_sep == ',' && false !== ( $found = strpos( $amount, $thousands_sep ) ) ) {
 		$amount = str_replace( $thousands_sep, '', $amount );
 	}
 
-	if( $amount < 0 ) {
+	if ( $amount < 0 ) {
 		$is_negative = true;
 	}
 
@@ -56,7 +56,7 @@ function edd_sanitize_amount( $amount ) {
 	$decimals = apply_filters( 'edd_sanitize_amount_decimals', 2, $amount );
 	$amount   = number_format( (double) $amount, $decimals, '.', '' );
 
-	if( $is_negative ) {
+	if ( $is_negative ) {
 		$amount *= -1;
 	}
 
@@ -120,7 +120,7 @@ function edd_format_amount( $amount, $decimals = true ) {
  * @return array $currency Currencies displayed correctly
  */
 function edd_currency_filter( $price = '', $currency = '' ) {
-	if( empty( $currency ) ) {
+	if ( empty( $currency ) ) {
 
 		$currency = edd_get_currency();
 
@@ -130,7 +130,7 @@ function edd_currency_filter( $price = '', $currency = '' ) {
 
 	$negative = $price < 0;
 
-	if( $negative ) {
+	if ( $negative ) {
 		$price = substr( $price, 1 ); // Remove proceeding "-" -
 	}
 
@@ -177,7 +177,7 @@ function edd_currency_filter( $price = '', $currency = '' ) {
 		$formatted = apply_filters( 'edd_' . strtolower( $currency ) . '_currency_filter_after', $formatted, $currency, $price );
 	endif;
 
-	if( $negative ) {
+	if ( $negative ) {
 		// Prepend the mins sign before the currency sign
 		$formatted = '-' . $formatted;
 	}

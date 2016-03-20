@@ -69,7 +69,7 @@ class EDD_Batch_File_Downloads_Export extends EDD_Batch_Export {
 			'paged'          => $this->step
 		);
 
-		if( ! empty( $this->start ) || ! empty( $this->end ) ) {
+		if ( ! empty( $this->start ) || ! empty( $this->end ) ) {
 
 			$args['date_query'] = array(
 				array(
@@ -146,11 +146,11 @@ class EDD_Batch_File_Downloads_Export extends EDD_Batch_Export {
 		$total      = (int) $logs->post_count;
 		$percentage = 100;
 
-		if( $total > 0 ) {
+		if ( $total > 0 ) {
 			$percentage = ( ( 30 * $this->step ) / $total ) * 100;
 		}
 
-		if( $percentage > 100 ) {
+		if ( $percentage > 100 ) {
 			$percentage = 100;
 		}
 

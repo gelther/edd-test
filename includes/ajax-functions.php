@@ -77,19 +77,19 @@ function edd_test_ajax_works() {
 
 	} else {
 
-		if( empty( $ajax['response'] ) ) {
+		if ( empty( $ajax['response'] ) ) {
 			$works = false;
 		}
 
-		if( empty( $ajax['response']['code'] ) || 200 !== (int) $ajax['response']['code'] ) {
+		if ( empty( $ajax['response']['code'] ) || 200 !== (int) $ajax['response']['code'] ) {
 			$works = false;
 		}
 
-		if( empty( $ajax['response']['message'] ) || 'OK' !== $ajax['response']['message'] ) {
+		if ( empty( $ajax['response']['message'] ) || 'OK' !== $ajax['response']['message'] ) {
 			$works = false;
 		}
 
-		if( ! isset( $ajax['body'] ) || 0 !== (int) $ajax['body'] ) {
+		if ( ! isset( $ajax['body'] ) || 0 !== (int) $ajax['body'] ) {
 			$works = false;
 		}
 
@@ -184,13 +184,13 @@ function edd_ajax_add_to_cart() {
 
 		foreach ( $to_add as $options ) {
 
-			if( $_POST['download_id'] == $options['price_id'] ) {
+			if ( $_POST['download_id'] == $options['price_id'] ) {
 				$options = array();
 			}
 
 			parse_str( $_POST['post_data'], $post_data );
 
-			if( isset( $options['price_id'] ) && isset( $post_data['edd_download_quantity_' . $options['price_id'] ] ) ) {
+			if ( isset( $options['price_id'] ) && isset( $post_data['edd_download_quantity_' . $options['price_id'] ] ) ) {
 
 				$options['quantity'] = absint( $post_data['edd_download_quantity_' . $options['price_id'] ] );
 
@@ -451,12 +451,12 @@ add_action( 'wp_ajax_nopriv_edd_recalculate_taxes', 'edd_ajax_recalculate_taxes'
  * @return void
  */
 function edd_ajax_get_states_field() {
-	if( empty( $_POST['country'] ) ) {
+	if ( empty( $_POST['country'] ) ) {
 		$_POST['country'] = edd_get_shop_country();
 	}
 	$states = edd_get_shop_states( $_POST['country'] );
 
-	if( ! empty( $states ) ) {
+	if ( ! empty( $states ) ) {
 
 		$args = array(
 			'name'    => $_POST['field_name'],
@@ -494,7 +494,7 @@ function edd_ajax_download_search() {
 	$excludes = ( isset( $_GET['current_id'] ) ? (array) $_GET['current_id'] : array() );
 
 	$no_bundles = isset( $_GET['no_bundles'] ) ? filter_var( $_GET['no_bundles'], FILTER_VALIDATE_BOOLEAN ) : false;
-	if( true === $no_bundles ) {
+	if ( true === $no_bundles ) {
 		$bundles  = $wpdb->get_results( "SELECT post_id FROM $wpdb->postmeta WHERE meta_key = '_edd_product_type' AND meta_value = 'bundle';", ARRAY_A );
 		$bundles  = wp_list_pluck( $bundles, 'post_id' );
 		$excludes = array_merge( $excludes, $bundles );
@@ -512,12 +512,12 @@ function edd_ajax_download_search() {
 	$where = "WHERE `post_type` = 'download' and `post_title` LIKE '%s' ";
 
 	// If we have items to exclude, exclude them
-	if( ! empty( $exclude ) ) {
+	if ( ! empty( $exclude ) ) {
 		$where .= 'AND `ID` NOT IN (' . $exclude . ') ';
 	}
 
 	// If the user can't edit products, limit to just published items
-	if( ! current_user_can( 'edit_products' ) ) {
+	if ( ! current_user_can( 'edit_products' ) ) {
 		$where .= "AND `post_status` = 'publish' ";
 	}
 
@@ -530,9 +530,9 @@ function edd_ajax_download_search() {
 
 	$items = $wpdb->get_results( $prepared_statement );
 
-	if( $items ) {
+	if ( $items ) {
 
-		foreach( $items as $item ) {
+		foreach ( $items as $item ) {
 
 			$results[] = array(
 				'id'   => $item->ID,
@@ -582,9 +582,9 @@ function edd_ajax_customer_search() {
 		$customers = $wpdb->get_results( $select . $where . $limit );
 	}
 
-	if( $customers ) {
+	if ( $customers ) {
 
-		foreach( $customers as $customer ) {
+		foreach ( $customers as $customer ) {
 
 			$results[] = array(
 				'id'   => $customer->id,
@@ -620,14 +620,14 @@ add_action( 'wp_ajax_edd_customer_search', 'edd_ajax_customer_search' );
  * @return void
  */
 function edd_check_for_download_price_variations() {
-	if( ! current_user_can( 'edit_products' ) ) {
+	if ( ! current_user_can( 'edit_products' ) ) {
 		die( '-1' );
 	}
 
 	$download_id = intval( $_POST['download_id'] );
 	$download    = get_post( $download_id );
 
-	if( 'download' != $download->post_type ) {
+	if ( 'download' != $download->post_type ) {
 		die( '-2' );
 	}
 
@@ -637,7 +637,7 @@ function edd_check_for_download_price_variations() {
 		if ( $variable_prices ) {
 			$ajax_response = '<select class="edd_price_options_select edd-select edd-select" name="edd_price_option">';
 
-				if( isset( $_POST['all_prices'] ) ) {
+				if ( isset( $_POST['all_prices'] ) ) {
 					$ajax_response .= '<option value="">' . __( 'All Prices', 'easy-digital-downloads' ) . '</option>';
 				}
 
@@ -663,7 +663,7 @@ add_action( 'wp_ajax_edd_check_for_download_price_variations', 'edd_check_for_do
  */
 function edd_ajax_search_users() {
 
-	if( current_user_can( 'manage_shop_settings' ) ) {
+	if ( current_user_can( 'manage_shop_settings' ) ) {
 
 		$search_query = trim( $_POST['user_name'] );
 		$exclude      = trim( $_POST['exclude'] );
@@ -683,8 +683,8 @@ function edd_ajax_search_users() {
 		$found_users = apply_filters( 'edd_ajax_found_users', get_users( $get_users_args ), $search_query );
 
 		$user_list = '<ul>';
-		if( $found_users ) {
-			foreach( $found_users as $user ) {
+		if ( $found_users ) {
+			foreach ( $found_users as $user ) {
 				$user_list .= '<li><a href="#" data-userid="' . esc_attr( $user->ID ) . '" data-login="' . esc_attr( $user->user_login ) . '">' . esc_html( $user->user_login ) . '</a></li>';
 			}
 		} else {

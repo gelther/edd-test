@@ -62,7 +62,7 @@ function edd_options_page() {
 	<div class="wrap">
 		<h1 class="nav-tab-wrapper">
 			<?php
-			foreach( edd_get_settings_tabs() as $tab_id => $tab_name ) {
+			foreach ( edd_get_settings_tabs() as $tab_id => $tab_name ) {
 
 				$tab_url = add_query_arg( array(
 					'settings-updated' => false,
@@ -86,7 +86,7 @@ function edd_options_page() {
 		$number = 0;
 		if ( $number_of_sections > 1 ) {
 			echo '<div><ul class="subsubsub">';
-			foreach( $sections as $section_id => $section_name ) {
+			foreach ( $sections as $section_id => $section_name ) {
 				echo '<li>';
 				$number++;
 				$tab_url = add_query_arg( array(

@@ -163,7 +163,7 @@ add_action( 'admin_notices', 'edd_show_upgrade_notices' );
 */
 function edd_trigger_upgrades() {
 
-	if( ! current_user_can( 'manage_shop_settings' ) ) {
+	if ( ! current_user_can( 'manage_shop_settings' ) ) {
 		wp_die( __( 'You do not have permission to do shop upgrades', 'easy-digital-downloads' ), __( 'Error', 'easy-digital-downloads' ), array( 'response' => 403 ) );
 	}
 
@@ -362,7 +362,7 @@ function edd_v14_upgrades() {
 	$success_page = get_post( $edd_options['success_page'] );
 
 	// Check for the [edd_receipt] short code and add it if not present
-	if( strpos( $success_page->post_content, '[edd_receipt' ) === false ) {
+	if ( strpos( $success_page->post_content, '[edd_receipt' ) === false ) {
 		$page_content = $success_page->post_content .= "\n[edd_receipt]";
 		wp_update_post( array( 'ID' => $edd_options['success_page'], 'post_content' => $page_content ) );
 	}
@@ -415,7 +415,7 @@ function edd_v15_upgrades() {
 	$tax_options['checkout_include_tax'] = 'no';
 
 	// Check if prices are displayed with taxes
-	if( isset( $tax_options['taxes_on_prices'] ) ) {
+	if ( isset( $tax_options['taxes_on_prices'] ) ) {
 		$tax_options['prices_include_tax'] = 'yes';
 	} else {
 		$tax_options['prices_include_tax'] = 'no';
@@ -444,21 +444,21 @@ function edd_v20_upgrades() {
 	}
 
 	// Upgrade for the anti-behavior fix - #2188
-	if( ! empty( $edd_options['disable_ajax_cart'] ) ) {
+	if ( ! empty( $edd_options['disable_ajax_cart'] ) ) {
 		unset( $edd_options['enable_ajax_cart'] );
 	} else {
 		$edd_options['enable_ajax_cart'] = '1';
 	}
 
 	// Upgrade for the anti-behavior fix - #2188
-	if( ! empty( $edd_options['disable_cart_saving'] ) ) {
+	if ( ! empty( $edd_options['disable_cart_saving'] ) ) {
 		unset( $edd_options['enable_cart_saving'] );
 	} else {
 		$edd_options['enable_cart_saving'] = '1';
 	}
 
 	// Properly set the register / login form options based on whether they were enabled previously - #2076
-	if( ! empty( $edd_options['show_register_form'] ) ) {
+	if ( ! empty( $edd_options['show_register_form'] ) ) {
 		$edd_options['show_register_form'] = 'both';
 	} else {
 		$edd_options['show_register_form'] = 'none';
@@ -479,7 +479,7 @@ function edd_v20_upgrades() {
  */
 function edd_v20_upgrade_sequential_payment_numbers() {
 
-	if( ! current_user_can( 'manage_shop_settings' ) ) {
+	if ( ! current_user_can( 'manage_shop_settings' ) ) {
 		wp_die( __( 'You do not have permission to do shop upgrades', 'easy-digital-downloads' ), __( 'Error', 'easy-digital-downloads' ), array( 'response' => 403 ) );
 	}
 
@@ -492,9 +492,9 @@ function edd_v20_upgrade_sequential_payment_numbers() {
 	$step   = isset( $_GET['step'] )  ? absint( $_GET['step'] )  : 1;
 	$total  = isset( $_GET['total'] ) ? absint( $_GET['total'] ) : false;
 
-	if( empty( $total ) || $total <= 1 ) {
+	if ( empty( $total ) || $total <= 1 ) {
 		$payments = edd_count_payments();
-		foreach( $payments as $status ) {
+		foreach ( $payments as $status ) {
 			$total += $status;
 		}
 	}
@@ -509,13 +509,13 @@ function edd_v20_upgrade_sequential_payment_numbers() {
 	$payments = new EDD_Payments_Query( $args );
 	$payments = $payments->get_payments();
 
-	if( $payments ) {
+	if ( $payments ) {
 
 		$prefix  = edd_get_option( 'sequential_prefix' );
 		$postfix = edd_get_option( 'sequential_postfix' );
 		$number  = ! empty( $_GET['custom'] ) ? absint( $_GET['custom'] ) : intval( edd_get_option( 'sequential_start', 1 ) );
 
-		foreach( $payments as $payment ) {
+		foreach ( $payments as $payment ) {
 
 			// Re-add the prefix and postfix
 			$payment_number = $prefix . $number . $postfix;
@@ -561,7 +561,7 @@ function edd_v21_upgrade_customers_db() {
 
 	global $wpdb;
 
-	if( ! current_user_can( 'manage_shop_settings' ) ) {
+	if ( ! current_user_can( 'manage_shop_settings' ) ) {
 		wp_die( __( 'You do not have permission to do shop upgrades', 'easy-digital-downloads' ), __( 'Error', 'easy-digital-downloads' ), array( 'response' => 403 ) );
 	}
 
@@ -571,7 +571,7 @@ function edd_v21_upgrade_customers_db() {
 		@set_time_limit(0);
 	}
 
-	if( ! get_option( 'edd_upgrade_customers_db_version' ) ) {
+	if ( ! get_option( 'edd_upgrade_customers_db_version' ) ) {
 		// Create the customers database on the first run
 		@EDD()->customers->create_table();
 	}
@@ -582,11 +582,11 @@ function edd_v21_upgrade_customers_db() {
 
 	$emails = $wpdb->get_col( $wpdb->prepare( "SELECT DISTINCT meta_value FROM $wpdb->postmeta WHERE meta_key = '_edd_payment_user_email' LIMIT %d,%d;", $offset, $number ) );
 
-	if( $emails ) {
+	if ( $emails ) {
 
-		foreach( $emails as $email ) {
+		foreach ( $emails as $email ) {
 
-			if( EDD()->customers->exists( $email ) ) {
+			if ( EDD()->customers->exists( $email ) ) {
 				continue; // Allow the upgrade routine to be safely re-run in the case of failure
 			}
 
@@ -601,15 +601,15 @@ function edd_v21_upgrade_customers_db() {
 			$payments = new EDD_Payments_Query( $args );
 			$payments = $payments->get_payments();
 
-			if( $payments ) {
+			if ( $payments ) {
 
 				$total_value = 0.00;
 				$total_count = 0;
 
-				foreach( $payments as $payment ) {
+				foreach ( $payments as $payment ) {
 
 					$status = get_post_status( $payment->ID );
-					if( 'revoked' == $status || 'publish' == $status ) {
+					if ( 'revoked' == $status || 'publish' == $status ) {
 
 						$total_value += $payment->total;
 						$total_count += 1;
@@ -634,7 +634,7 @@ function edd_v21_upgrade_customers_db() {
 
 				$customer_id = EDD()->customers->add( $args );
 
-				foreach( $ids as $id ) {
+				foreach ( $ids as $id ) {
 					update_post_meta( $id, '_edd_payment_customer_id', $customer_id );
 				}
 
@@ -672,7 +672,7 @@ add_action( 'edd_upgrade_customers_db', 'edd_v21_upgrade_customers_db' );
  */
 function edd_v226_upgrade_payments_price_logs_db() {
 	global $wpdb;
-	if( ! current_user_can( 'manage_shop_settings' ) ) {
+	if ( ! current_user_can( 'manage_shop_settings' ) ) {
 		wp_die( __( 'You do not have permission to do shop upgrades', 'easy-digital-downloads' ), __( 'Error', 'easy-digital-downloads' ), array( 'response' => 403 ) );
 	}
 	ignore_user_abort( true );
@@ -686,7 +686,7 @@ function edd_v226_upgrade_payments_price_logs_db() {
 		// Check if we have any variable price products on the first step
 		$sql = "SELECT ID FROM $wpdb->posts p LEFT JOIN $wpdb->postmeta m ON p.ID = m.post_id WHERE m.meta_key = '_variable_pricing' AND m.meta_value = 1 LIMIT 1";
 		$has_variable = $wpdb->get_col( $sql );
-		if( empty( $has_variable ) ) {
+		if ( empty( $has_variable ) ) {
 			// We had no variable priced products, so go ahead and just complete
 			update_option( 'edd_version', preg_replace( '/[^0-9.].*/', '', EDD_VERSION ) );
 			delete_option( 'edd_doing_upgrade' );
@@ -694,8 +694,8 @@ function edd_v226_upgrade_payments_price_logs_db() {
 		}
 	}
 	$payment_ids = $wpdb->get_col( $wpdb->prepare( "SELECT ID FROM $wpdb->posts WHERE post_type = 'edd_payment' ORDER BY post_date DESC LIMIT %d,%d;", $offset, $number ) );
-	if( ! empty( $payment_ids ) ) {
-		foreach( $payment_ids as $payment_id ) {
+	if ( ! empty( $payment_ids ) ) {
+		foreach ( $payment_ids as $payment_id ) {
 			$payment_downloads  = edd_get_payment_meta_downloads( $payment_id );
 			$variable_downloads = array();
 			if ( ! is_array( $payment_downloads ) ) {
@@ -717,7 +717,7 @@ function edd_v226_upgrade_payments_price_logs_db() {
 			$logs = $wpdb->get_results( "SELECT m.post_id AS log_id, p.post_parent AS download_id FROM $wpdb->postmeta m LEFT JOIN $wpdb->posts p ON m.post_id = p.ID WHERE meta_key = '_edd_log_payment_id' AND meta_value = $payment_id AND p.post_parent IN ($unique_download_ids)", ARRAY_A );
 			$mapped_logs = array();
 			// Go through each cart item
-			foreach( $variable_downloads as $cart_item ) {
+			foreach ( $variable_downloads as $cart_item ) {
 				// Itterate through the logs we found attached to this payment
 				foreach ( $logs as $key => $log ) {
 					// If this Log ID is associated with this download ID give it the price_id
@@ -769,7 +769,7 @@ add_action( 'edd_upgrade_payments_price_logs_db', 'edd_v226_upgrade_payments_pri
  */
 function edd_v23_upgrade_payment_taxes() {
 	global $wpdb;
-	if( ! current_user_can( 'manage_shop_settings' ) ) {
+	if ( ! current_user_can( 'manage_shop_settings' ) ) {
 		wp_die( __( 'You do not have permission to do shop upgrades', 'easy-digital-downloads' ), __( 'Error', 'easy-digital-downloads' ), array( 'response' => 403 ) );
 	}
 	ignore_user_abort( true );
@@ -786,7 +786,7 @@ function edd_v23_upgrade_payment_taxes() {
 		$sql = "SELECT ID FROM $wpdb->posts WHERE post_type = 'edd_payment' LIMIT 1";
 		$has_payments = $wpdb->get_col( $sql );
 
-		if( empty( $has_payments ) ) {
+		if ( empty( $has_payments ) ) {
 			// We had no payments, just complete
 			update_option( 'edd_version', preg_replace( '/[^0-9.].*/', '', EDD_VERSION ) );
 			edd_set_upgrade_complete( 'upgrade_payment_taxes' );
@@ -805,8 +805,8 @@ function edd_v23_upgrade_payment_taxes() {
 
 	$payment_ids = $wpdb->get_col( $wpdb->prepare( "SELECT ID FROM $wpdb->posts WHERE post_type = 'edd_payment' ORDER BY post_date DESC LIMIT %d,%d;", $offset, $number ) );
 
-	if( $payment_ids ) {
-		foreach( $payment_ids as $payment_id ) {
+	if ( $payment_ids ) {
+		foreach ( $payment_ids as $payment_id ) {
 
 			// Add the new _edd_payment_meta item
 			$payment_tax = edd_get_payment_tax( $payment_id );
@@ -843,7 +843,7 @@ add_action( 'edd_upgrade_payment_taxes', 'edd_v23_upgrade_payment_taxes' );
 function edd_v23_upgrade_customer_purchases() {
 	global $wpdb;
 
-	if( ! current_user_can( 'manage_shop_settings' ) ) {
+	if ( ! current_user_can( 'manage_shop_settings' ) ) {
 		wp_die( __( 'You do not have permission to do shop upgrades', 'easy-digital-downloads' ), __( 'Error', 'easy-digital-downloads' ), array( 'response' => 403 ) );
 	}
 
@@ -862,7 +862,7 @@ function edd_v23_upgrade_customer_purchases() {
 		$sql = "SELECT ID FROM $wpdb->posts WHERE post_type = 'edd_payment' LIMIT 1";
 		$has_payments = $wpdb->get_col( $sql );
 
-		if( empty( $has_payments ) ) {
+		if ( empty( $has_payments ) ) {
 			// We had no payments, just complete
 			update_option( 'edd_version', preg_replace( '/[^0-9.].*/', '', EDD_VERSION ) );
 			edd_set_upgrade_complete( 'upgrade_customer_payments_association' );
@@ -879,9 +879,9 @@ function edd_v23_upgrade_customer_purchases() {
 
 	$customers = EDD()->customers->get_customers( array( 'number' => $number, 'offset' => $offset ) );
 
-	if( ! empty( $customers ) ) {
+	if ( ! empty( $customers ) ) {
 
-		foreach( $customers as $customer ) {
+		foreach ( $customers as $customer ) {
 
 			// Get payments by email and user ID
 			$select = "SELECT ID FROM $wpdb->posts p ";
@@ -971,7 +971,7 @@ add_action( 'edd_upgrade_customer_payments_association', 'edd_v23_upgrade_custom
 function edd_upgrade_user_api_keys() {
 	global $wpdb;
 
-	if( ! current_user_can( 'manage_shop_settings' ) ) {
+	if ( ! current_user_can( 'manage_shop_settings' ) ) {
 		wp_die( __( 'You do not have permission to do shop upgrades', 'easy-digital-downloads' ), __( 'Error', 'easy-digital-downloads' ), array( 'response' => 403 ) );
 	}
 
@@ -990,7 +990,7 @@ function edd_upgrade_user_api_keys() {
 		$sql     = "SELECT user_id FROM $wpdb->usermeta WHERE meta_key = 'edd_user_public_key' LIMIT 1";
 		$has_key = $wpdb->get_col( $sql );
 
-		if( empty( $has_key ) ) {
+		if ( empty( $has_key ) ) {
 			// We had no key, just complete
 			update_option( 'edd_version', preg_replace( '/[^0-9.].*/', '', EDD_VERSION ) );
 			edd_set_upgrade_complete( 'upgrade_user_api_keys' );
@@ -1008,10 +1008,10 @@ function edd_upgrade_user_api_keys() {
 	$keys_sql   = $wpdb->prepare( "SELECT user_id, meta_key, meta_value FROM $wpdb->usermeta WHERE meta_key = 'edd_user_public_key' OR meta_key = 'edd_user_secret_key' ORDER BY user_id ASC LIMIT %d,%d;", $offset, $number );
 	$found_keys = $wpdb->get_results( $keys_sql );
 
-	if( ! empty( $found_keys ) ) {
+	if ( ! empty( $found_keys ) ) {
 
 
-		foreach( $found_keys as $key ) {
+		foreach ( $found_keys as $key ) {
 			$user_id    = $key->user_id;
 			$meta_key   = $key->meta_key;
 			$meta_value = $key->meta_value;
@@ -1056,7 +1056,7 @@ add_action( 'edd_upgrade_user_api_keys', 'edd_upgrade_user_api_keys' );
 function edd_remove_refunded_sale_logs() {
 	global $wpdb, $edd_logs;
 
-	if( ! current_user_can( 'manage_shop_settings' ) ) {
+	if ( ! current_user_can( 'manage_shop_settings' ) ) {
 		wp_die( __( 'You do not have permission to do shop upgrades', 'easy-digital-downloads' ), __( 'Error', 'easy-digital-downloads' ), array( 'response' => 403 ) );
 	}
 
@@ -1070,13 +1070,13 @@ function edd_remove_refunded_sale_logs() {
 	$total   = isset( $_GET['total'] ) ? absint( $_GET['total'] ) : edd_count_payments()->refunded;
 	$refunds = edd_get_payments( array( 'status' => 'refunded', 'number' => 20, 'page' => $step ) );
 
-	if( ! empty( $refunds ) ) {
+	if ( ! empty( $refunds ) ) {
 
 		// Refunded Payments found so process them
 
-		foreach( $refunds as $refund ) {
+		foreach ( $refunds as $refund ) {
 
-			if( 'refunded' !== $refund->post_status ) {
+			if ( 'refunded' !== $refund->post_status ) {
 				continue; // Just to be safe
 			}
 

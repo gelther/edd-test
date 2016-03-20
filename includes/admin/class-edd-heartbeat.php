@@ -46,12 +46,12 @@ class EDD_Heartbeat {
 	 */
 	public static function heartbeat_received( $response, $data ) {
 
-		if( ! current_user_can( 'view_shop_reports' ) ) {
+		if ( ! current_user_can( 'view_shop_reports' ) ) {
 			return $response; // Only modify heartbeat if current user can view show reports
 		}
 
 		// Make sure we only run our query if the edd_heartbeat key is present
-		if( ( isset( $data['edd_heartbeat'] ) ) && ( $data['edd_heartbeat'] == 'dashboard_summary' ) ) {
+		if ( ( isset( $data['edd_heartbeat'] ) ) && ( $data['edd_heartbeat'] == 'dashboard_summary' ) ) {
 
 			// Instantiate the stats class
 			$stats = new EDD_Payment_Stats;
@@ -81,7 +81,7 @@ class EDD_Heartbeat {
 	 */
 	public static function enqueue_scripts() {
 
-		if( ! current_user_can( 'view_shop_reports' ) ) {
+		if ( ! current_user_can( 'view_shop_reports' ) ) {
 			return; // Only load heartbeat if current user can view show reports
 		}
 
@@ -101,11 +101,11 @@ class EDD_Heartbeat {
 		global $pagenow;
 
 		// Only proceed if on the dashboard
-		if( 'index.php' != $pagenow ) {
+		if ( 'index.php' != $pagenow ) {
 			return;
 		}
 
-		if( ! current_user_can( 'view_shop_reports' ) ) {
+		if ( ! current_user_can( 'view_shop_reports' ) ) {
 			return; // Only load heartbeat if current user can view show reports
 		}
 

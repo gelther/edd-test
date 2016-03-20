@@ -75,7 +75,7 @@ class EDD_Tracking {
 		$data['email']  = get_bloginfo( 'admin_email' );
 
 		// Retrieve current plugin information
-		if( ! function_exists( 'get_plugins' ) ) {
+		if ( ! function_exists( 'get_plugins' ) ) {
 			include ABSPATH . '/wp-admin/includes/plugin.php';
 		}
 
@@ -105,12 +105,12 @@ class EDD_Tracking {
 	 */
 	public function send_checkin( $override = false ) {
 
-		if( ! $this->tracking_allowed() && ! $override )
+		if ( ! $this->tracking_allowed() && ! $override )
 			return;
 
 		// Send a maximum of once per week
 		$last_send = $this->get_last_send();
-		if( $last_send && $last_send > strtotime( '-1 week' ) )
+		if ( $last_send && $last_send > strtotime( '-1 week' ) )
 			return;
 
 		$this->setup_data();
@@ -140,7 +140,7 @@ class EDD_Tracking {
 	public function check_for_settings_optin( $input ) {
 		// Send an intial check in on settings save
 
-		if( isset( $input['allow_tracking'] ) ) {
+		if ( isset( $input['allow_tracking'] ) ) {
 			$this->send_checkin( true );
 		}
 
@@ -177,7 +177,7 @@ class EDD_Tracking {
 	public function check_for_optout( $data ) {
 
 		global $edd_options;
-		if( isset( $edd_options['allow_tracking'] ) ) {
+		if ( isset( $edd_options['allow_tracking'] ) ) {
 			unset( $edd_options['allow_tracking'] );
 			update_option( 'edd_settings', $edd_options );
 		}
@@ -219,19 +219,19 @@ class EDD_Tracking {
 
 		$hide_notice = get_option( 'edd_tracking_notice' );
 
-		if( $hide_notice ) {
+		if ( $hide_notice ) {
 			return;
 		}
 
-		if( edd_get_option( 'allow_tracking', false ) ) {
+		if ( edd_get_option( 'allow_tracking', false ) ) {
 			return;
 		}
 
-		if( ! current_user_can( 'manage_options' ) ) {
+		if ( ! current_user_can( 'manage_options' ) ) {
 			return;
 		}
 
-		if(
+		if (
 			stristr( network_site_url( '/' ), 'dev'       ) !== false ||
 			stristr( network_site_url( '/' ), 'localhost' ) !== false ||
 			stristr( network_site_url( '/' ), ':8888'     ) !== false // This is common with MAMP on OS X

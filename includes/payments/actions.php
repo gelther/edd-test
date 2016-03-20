@@ -54,7 +54,7 @@ function edd_complete_purchase( $payment_id, $new_status, $old_status ) {
 			$download_type = edd_get_download_type( $download['id'] );
 			$price_id      = isset( $download['item_number']['options']['price_id'] ) ? (int) $download['item_number']['options']['price_id'] : false;
 			// Increase earnings and fire actions once per quantity number
-			for( $i = 0; $i < $download['quantity']; $i++ ) {
+			for ( $i = 0; $i < $download['quantity']; $i++ ) {
 
 				// Ensure these actions only run once, ever
 				if ( empty( $completed_date ) ) {
@@ -92,9 +92,9 @@ function edd_complete_purchase( $payment_id, $new_status, $old_status ) {
 
 		$discounts = array_map( 'trim', explode( ',', $user_info['discount'] ) );
 
-		if( ! empty( $discounts ) ) {
+		if ( ! empty( $discounts ) ) {
 
-			foreach( $discounts as $code ) {
+			foreach ( $discounts as $code ) {
 
 				edd_increase_discount_usage( $code );
 
@@ -105,7 +105,7 @@ function edd_complete_purchase( $payment_id, $new_status, $old_status ) {
 
 
 	// Ensure this action only runs once ever
-	if( empty( $completed_date ) ) {
+	if ( empty( $completed_date ) ) {
 
 		// Save the completed date
 		$payment->completed_date = current_time( 'mysql' );
@@ -172,7 +172,7 @@ function edd_undo_purchase_on_refund( $payment_id, $new_status, $old_status ) {
 function edd_clear_user_history_cache( $payment_id, $new_status, $old_status ) {
 	$payment = new EDD_Payment( $payment_id );
 
-	if( ! empty( $payment->user_id ) ) {
+	if ( ! empty( $payment->user_id ) ) {
 		delete_transient( 'edd_user_' . $payment->user_id . '_purchases' );
 	}
 }
@@ -237,9 +237,9 @@ function edd_mark_abandoned_orders() {
 
 	remove_filter( 'posts_where', 'edd_filter_where_older_than_week' );
 
-	if( $payments ) {
-		foreach( $payments as $payment ) {
-			if( 'pending' === $payment->post_status ) {
+	if ( $payments ) {
+		foreach ( $payments as $payment ) {
+			if ( 'pending' === $payment->post_status ) {
 				$payment->status = 'abandoned';
 				$payment->save();
 			}
@@ -267,12 +267,12 @@ function edd_update_payment_backwards_compat( $meta_id, $object_id, $meta_key, $
 	}
 
 	global $wpdb;
-	switch( $meta_key ) {
+	switch ( $meta_key ) {
 
 		case '_edd_payment_meta':
 			$meta_value   = maybe_unserialize( $meta_value );
 
-			if( ! isset( $meta_value['tax'] ) ){
+			if ( ! isset( $meta_value['tax'] ) ){
 				return;
 			}
 

@@ -30,7 +30,7 @@ function edd_tools_page() {
 		<?php screen_icon(); ?>
 		<h1 class="nav-tab-wrapper">
 			<?php
-			foreach( edd_get_tools_tabs() as $tab_id => $tab_name ) {
+			foreach ( edd_get_tools_tabs() as $tab_id => $tab_name ) {
 
 				$tab_url = add_query_arg( array(
 					'tab' => $tab_id
@@ -82,7 +82,7 @@ function edd_get_tools_tabs() {
  */
 function edd_tools_banned_emails_display() {
 
-	if( ! current_user_can( 'manage_shop_settings' ) ) {
+	if ( ! current_user_can( 'manage_shop_settings' ) ) {
 		return;
 	}
 
@@ -120,7 +120,7 @@ add_action( 'edd_tools_tab_general', 'edd_tools_banned_emails_display' );
  */
 function edd_tools_recount_stats_display() {
 
-	if( ! current_user_can( 'manage_shop_settings' ) ) {
+	if ( ! current_user_can( 'manage_shop_settings' ) ) {
 		return;
 	}
 
@@ -189,7 +189,7 @@ add_action( 'edd_tools_tab_general', 'edd_tools_recount_stats_display' );
  */
 function edd_tools_clear_doing_upgrade_display() {
 
-	if( ! current_user_can( 'manage_shop_settings' ) || false === get_option( 'edd_doing_upgrade' ) ) {
+	if ( ! current_user_can( 'manage_shop_settings' ) || false === get_option( 'edd_doing_upgrade' ) ) {
 		return;
 	}
 
@@ -222,7 +222,7 @@ add_action( 'edd_tools_tab_general', 'edd_tools_clear_doing_upgrade_display' );
  */
 function edd_tools_api_keys_display() {
 
-	if( ! current_user_can( 'manage_shop_settings' ) ) {
+	if ( ! current_user_can( 'manage_shop_settings' ) ) {
 		return;
 	}
 
@@ -258,24 +258,24 @@ function edd_tools_banned_emails_save() {
 
 	global $edd_options;
 
-	if( ! wp_verify_nonce( $_POST['edd_banned_emails_nonce'], 'edd_banned_emails_nonce' ) ) {
+	if ( ! wp_verify_nonce( $_POST['edd_banned_emails_nonce'], 'edd_banned_emails_nonce' ) ) {
 		return;
 	}
 
-	if( ! current_user_can( 'manage_shop_settings' ) ) {
+	if ( ! current_user_can( 'manage_shop_settings' ) ) {
 		return;
 	}
 
-	if( ! empty( $_POST['banned_emails'] ) ) {
+	if ( ! empty( $_POST['banned_emails'] ) ) {
 
 		// Sanitize the input
 		$emails = array_map( 'trim', explode( "\n", $_POST['banned_emails'] ) );
 		$emails = array_unique( $emails );
 		$emails = array_map( 'sanitize_text_field', $emails );
 
-		foreach( $emails as $id => $email ) {
-			if( ! is_email( $email ) ) {
-				if( $email[0] != '@' ) {
+		foreach ( $emails as $id => $email ) {
+			if ( ! is_email( $email ) ) {
+				if ( $email[0] != '@' ) {
 					unset( $emails[$id] );
 				}
 			}
@@ -296,11 +296,11 @@ add_action( 'edd_save_banned_emails', 'edd_tools_banned_emails_save' );
  * @return      void
  */
 function edd_tools_clear_upgrade_notice() {
-	if( ! wp_verify_nonce( $_POST['edd_clear_upgrades_nonce'], 'edd_clear_upgrades_nonce' ) ) {
+	if ( ! wp_verify_nonce( $_POST['edd_clear_upgrades_nonce'], 'edd_clear_upgrades_nonce' ) ) {
 		return;
 	}
 
-	if( ! current_user_can( 'manage_shop_settings' ) ) {
+	if ( ! current_user_can( 'manage_shop_settings' ) ) {
 		return;
 	}
 
@@ -317,7 +317,7 @@ add_action( 'edd_clear_doing_upgrade', 'edd_tools_clear_upgrade_notice' );
  */
 function edd_tools_import_export_display() {
 
-	if( ! current_user_can( 'manage_shop_settings' ) ) {
+	if ( ! current_user_can( 'manage_shop_settings' ) ) {
 		return;
 	}
 
@@ -368,13 +368,13 @@ add_action( 'edd_tools_tab_import_export', 'edd_tools_import_export_display' );
  */
 function edd_tools_import_export_process_export() {
 
-	if( empty( $_POST['edd_export_nonce'] ) )
+	if ( empty( $_POST['edd_export_nonce'] ) )
 		return;
 
-	if( ! wp_verify_nonce( $_POST['edd_export_nonce'], 'edd_export_nonce' ) )
+	if ( ! wp_verify_nonce( $_POST['edd_export_nonce'], 'edd_export_nonce' ) )
 		return;
 
-	if( ! current_user_can( 'manage_shop_settings' ) )
+	if ( ! current_user_can( 'manage_shop_settings' ) )
 		return;
 
 	$settings = array();
@@ -404,22 +404,22 @@ add_action( 'edd_export_settings', 'edd_tools_import_export_process_export' );
  */
 function edd_tools_import_export_process_import() {
 
-	if( empty( $_POST['edd_import_nonce'] ) )
+	if ( empty( $_POST['edd_import_nonce'] ) )
 		return;
 
-	if( ! wp_verify_nonce( $_POST['edd_import_nonce'], 'edd_import_nonce' ) )
+	if ( ! wp_verify_nonce( $_POST['edd_import_nonce'], 'edd_import_nonce' ) )
 		return;
 
-	if( ! current_user_can( 'manage_shop_settings' ) )
+	if ( ! current_user_can( 'manage_shop_settings' ) )
 		return;
 
-	if( edd_get_file_extension( $_FILES['import_file']['name'] ) != 'json' ) {
+	if ( edd_get_file_extension( $_FILES['import_file']['name'] ) != 'json' ) {
 		wp_die( __( 'Please upload a valid .json file', 'easy-digital-downloads' ), __( 'Error', 'easy-digital-downloads' ), array( 'response' => 400 ) );
 	}
 
 	$import_file = $_FILES['import_file']['tmp_name'];
 
-	if( empty( $import_file ) ) {
+	if ( empty( $import_file ) ) {
 		wp_die( __( 'Please upload a file to import', 'easy-digital-downloads' ), __( 'Error', 'easy-digital-downloads' ), array( 'response' => 400 ) );
 	}
 
@@ -442,7 +442,7 @@ add_action( 'edd_import_settings', 'edd_tools_import_export_process_import' );
  */
 function edd_tools_sysinfo_display() {
 
-	if( ! current_user_can( 'manage_shop_settings' ) ) {
+	if ( ! current_user_can( 'manage_shop_settings' ) ) {
 		return;
 	}
 
@@ -470,7 +470,7 @@ add_action( 'edd_tools_tab_system_info', 'edd_tools_sysinfo_display' );
 function edd_tools_sysinfo_get() {
 	global $wpdb;
 
-	if( ! class_exists( 'Browser' ) )
+	if ( ! class_exists( 'Browser' ) )
 		require_once EDD_PLUGIN_DIR . 'includes/libraries/browser.php';
 
 	$browser = new Browser();
@@ -493,7 +493,7 @@ function edd_tools_sysinfo_get() {
 	$return  = apply_filters( 'edd_sysinfo_after_site_info', $return );
 
 	// Can we determine the site's host?
-	if( $host ) {
+	if ( $host ) {
 		$return .= "\n" . '-- Hosting Provider' . "\n\n";
 		$return .= 'Host:                     ' . $host . "\n";
 
@@ -515,7 +515,7 @@ function edd_tools_sysinfo_get() {
 	$return .= 'Show On Front:            ' . get_option( 'show_on_front' ) . "\n";
 
 	// Only show page specs if frontpage is set to 'page'
-	if( get_option( 'show_on_front' ) == 'page' ) {
+	if ( get_option( 'show_on_front' ) == 'page' ) {
 		$front_page_id = get_option( 'page_on_front' );
 		$blog_page_id = get_option( 'page_for_posts' );
 
@@ -537,7 +537,7 @@ function edd_tools_sysinfo_get() {
 
 	$response = wp_remote_post( 'https://www.paypal.com/cgi-bin/webscr', $params );
 
-	if( ! is_wp_error( $response ) && $response['response']['code'] >= 200 && $response['response']['code'] < 300 ) {
+	if ( ! is_wp_error( $response ) && $response['response']['code'] >= 200 && $response['response']['code'] < 300 ) {
 		$WP_REMOTE_POST = 'wp_remote_post() works';
 	} else {
 		$WP_REMOTE_POST = 'wp_remote_post() does not work';
@@ -588,9 +588,9 @@ function edd_tools_sysinfo_get() {
 	$return .= "\n" . '-- EDD Gateway Configuration' . "\n\n";
 
 	$active_gateways = edd_get_enabled_payment_gateways();
-	if( $active_gateways ) {
+	if ( $active_gateways ) {
 		$default_gateway_is_active = edd_is_gateway_active( edd_get_default_gateway() );
-		if( $default_gateway_is_active ) {
+		if ( $default_gateway_is_active ) {
 			$default_gateway = edd_get_default_gateway();
 			$default_gateway = $active_gateways[$default_gateway]['admin_label'];
 		} else {
@@ -598,7 +598,7 @@ function edd_tools_sysinfo_get() {
 		}
 
 		$gateways        = array();
-		foreach( $active_gateways as $gateway ) {
+		foreach ( $active_gateways as $gateway ) {
 			$gateways[] = $gateway['admin_label'];
 		}
 
@@ -619,9 +619,9 @@ function edd_tools_sysinfo_get() {
 	$return .= 'Prices Include Tax:       ' . ( edd_prices_include_tax() ? "Yes\n" : "No\n" );
 
 	$rates = edd_get_tax_rates();
-	if( ! empty( $rates ) ) {
+	if ( ! empty( $rates ) ) {
 		$return .= 'Country / State Rates:    ' . "\n";
-		foreach( $rates as $rate ) {
+		foreach ( $rates as $rate ) {
 			$return .= '                          Country: ' . $rate['country'] . ', State: ' . $rate['state'] . ', Rate: ' . $rate['rate'] . "\n";
 		}
 	}
@@ -630,10 +630,10 @@ function edd_tools_sysinfo_get() {
 
 	// EDD Templates
 	$dir = get_stylesheet_directory() . '/edd_templates/*';
-	if( is_dir( $dir ) && ( count( glob( "$dir/*" ) ) !== 0 ) ) {
+	if ( is_dir( $dir ) && ( count( glob( "$dir/*" ) ) !== 0 ) ) {
 		$return .= "\n" . '-- EDD Template Overrides' . "\n\n";
 
-		foreach( glob( $dir ) as $file ) {
+		foreach ( glob( $dir ) as $file ) {
 			$return .= 'Filename:                 ' . basename( $file ) . "\n";
 		}
 
@@ -646,10 +646,10 @@ function edd_tools_sysinfo_get() {
 	// Must-use plugins
 	// NOTE: MU plugins can't show updates!
 	$muplugins = get_mu_plugins();
-	if( count( $muplugins > 0 ) ) {
+	if ( count( $muplugins > 0 ) ) {
 		$return .= "\n" . '-- Must-Use Plugins' . "\n\n";
 
-		foreach( $muplugins as $plugin => $plugin_data ) {
+		foreach ( $muplugins as $plugin => $plugin_data ) {
 			$return .= $plugin_data['Name'] . ': ' . $plugin_data['Version'] . "\n";
 		}
 
@@ -662,8 +662,8 @@ function edd_tools_sysinfo_get() {
 	$plugins = get_plugins();
 	$active_plugins = get_option( 'active_plugins', array() );
 
-	foreach( $plugins as $plugin_path => $plugin ) {
-		if( ! in_array( $plugin_path, $active_plugins ) )
+	foreach ( $plugins as $plugin_path => $plugin ) {
+		if ( ! in_array( $plugin_path, $active_plugins ) )
 			continue;
 
 		$update = ( array_key_exists( $plugin_path, $updates ) ) ? ' (needs update - ' . $updates[$plugin_path]->update->new_version . ')' : '';
@@ -675,8 +675,8 @@ function edd_tools_sysinfo_get() {
 	// WordPress inactive plugins
 	$return .= "\n" . '-- WordPress Inactive Plugins' . "\n\n";
 
-	foreach( $plugins as $plugin_path => $plugin ) {
-		if( in_array( $plugin_path, $active_plugins ) )
+	foreach ( $plugins as $plugin_path => $plugin ) {
+		if ( in_array( $plugin_path, $active_plugins ) )
 			continue;
 
 		$update = ( array_key_exists( $plugin_path, $updates ) ) ? ' (needs update - ' . $updates[$plugin_path]->update->new_version . ')' : '';
@@ -685,17 +685,17 @@ function edd_tools_sysinfo_get() {
 
 	$return  = apply_filters( 'edd_sysinfo_after_wordpress_plugins_inactive', $return );
 
-	if( is_multisite() ) {
+	if ( is_multisite() ) {
 		// WordPress Multisite active plugins
 		$return .= "\n" . '-- Network Active Plugins' . "\n\n";
 
 		$plugins = wp_get_active_network_plugins();
 		$active_plugins = get_site_option( 'active_sitewide_plugins', array() );
 
-		foreach( $plugins as $plugin_path ) {
+		foreach ( $plugins as $plugin_path ) {
 			$plugin_base = plugin_basename( $plugin_path );
 
-			if( ! array_key_exists( $plugin_base, $active_plugins ) )
+			if ( ! array_key_exists( $plugin_base, $active_plugins ) )
 				continue;
 
 			$update = ( array_key_exists( $plugin_path, $updates ) ) ? ' (needs update - ' . $updates[$plugin_path]->update->new_version . ')' : '';
@@ -742,7 +742,7 @@ function edd_tools_sysinfo_get() {
 	$return .= 'Session:                  ' . ( isset( $_SESSION ) ? 'Enabled' : 'Disabled' ) . "\n";
 
 	// The rest of this is only relevant is session is enabled
-	if( isset( $_SESSION ) ) {
+	if ( isset( $_SESSION ) ) {
 		$return .= 'Session Name:             ' . esc_html( ini_get( 'session.name' ) ) . "\n";
 		$return .= 'Cookie Path:              ' . esc_html( ini_get( 'session.cookie_path' ) ) . "\n";
 		$return .= 'Save Path:                ' . esc_html( ini_get( 'session.save_path' ) ) . "\n";
@@ -766,7 +766,7 @@ function edd_tools_sysinfo_get() {
  */
 function edd_tools_sysinfo_download() {
 
-	if( ! current_user_can( 'manage_shop_settings' ) ) {
+	if ( ! current_user_can( 'manage_shop_settings' ) ) {
 		return;
 	}
 

@@ -223,7 +223,7 @@ function edd_customers_view( $customer ) {
 							$selected_country = $address['country'];
 
 							$countries = edd_get_country_list();
-							foreach( $countries as $country_code => $country ) {
+							foreach ( $countries as $country_code => $country ) {
 								echo '<option value="' . esc_attr( $country_code ) . '"' . selected( $country_code, $selected_country, false ) . '>' . $country . '</option>';
 							}
 							?>
@@ -234,10 +234,10 @@ function edd_customers_view( $customer ) {
 
 						$selected_state = isset( $address['state'] ) ? $address['state'] : $selected_state;
 
-						if( ! empty( $states ) ) : ?>
+						if ( ! empty( $states ) ) : ?>
 						<select data-key="state" name="customerinfo[state]" id="card_state" class="card_state edd-select info-item">
 							<?php
-								foreach( $states as $state_code => $state ) {
+								foreach ( $states as $state_code => $state ) {
 									echo '<option value="' . $state_code . '"' . selected( $state_code, $selected_state, false ) . '>' . $state . '</option>';
 								}
 							?>
@@ -271,7 +271,7 @@ function edd_customers_view( $customer ) {
 							'data'  => $data_atts,
 						);
 
-						if( ! empty( $user_id ) ) {
+						if ( ! empty( $user_id ) ) {
 							$userdata = get_userdata( $user_id );
 							$user_args['value'] = $userdata->user_login;
 						}
@@ -283,7 +283,7 @@ function edd_customers_view( $customer ) {
 
 					<span class="customer-user-id info-item editable">
 						<?php _e( 'User ID', 'easy-digital-downloads' ); ?>:&nbsp;
-						<?php if( intval( $customer->user_id ) > 0 ) : ?>
+						<?php if ( intval( $customer->user_id ) > 0 ) : ?>
 							<span data-key="user_id"><a href="<?php echo admin_url( 'user-edit.php?user_id=' . $customer->user_id ); ?>"><?php echo $customer->user_id; ?></a></span>
 						<?php else : ?>
 							<span data-key="user_id"><?php _e( 'none', 'easy-digital-downloads' ); ?></span>
@@ -459,7 +459,7 @@ function edd_customer_notes_view( $customer ) {
 
 		<div id="edd-customer-notes">
 		<?php if ( count( $customer_notes ) > 0 ) : ?>
-			<?php foreach( $customer_notes as $key => $note ) : ?>
+			<?php foreach ( $customer_notes as $key => $note ) : ?>
 				<div class="customer-note-wrapper dashboard-comment-wrap comment-item">
 					<span class="note-content-wrap">
 						<?php echo stripslashes( $note ); ?>

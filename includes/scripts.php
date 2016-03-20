@@ -117,13 +117,13 @@ function edd_register_styles() {
 	// Also look for the min version first, followed by non minified version, even if SCRIPT_DEBUG is not enabled.
 	// This allows users to copy just edd.css to their theme
 	if ( file_exists( $child_theme_style_sheet ) || ( ! empty( $suffix ) && ( $nonmin = file_exists( $child_theme_style_sheet_2 ) ) ) ) {
-		if( ! empty( $nonmin ) ) {
+		if ( ! empty( $nonmin ) ) {
 			$url = trailingslashit( get_stylesheet_directory_uri() ) . $templates_dir . 'edd.css';
 		} else {
 			$url = trailingslashit( get_stylesheet_directory_uri() ) . $templates_dir . $file;
 		}
 	} elseif ( file_exists( $parent_theme_style_sheet ) || ( ! empty( $suffix ) && ( $nonmin = file_exists( $parent_theme_style_sheet_2 ) ) ) ) {
-		if( ! empty( $nonmin ) ) {
+		if ( ! empty( $nonmin ) ) {
 			$url = trailingslashit( get_template_directory_uri() ) . $templates_dir . 'edd.css';
 		} else {
 			$url = trailingslashit( get_template_directory_uri() ) . $templates_dir . $file;
@@ -135,7 +135,7 @@ function edd_register_styles() {
 	wp_register_style( 'edd-styles', $url, array(), EDD_VERSION, 'all' );
 	wp_enqueue_style( 'edd-styles' );
 
-	if( edd_is_checkout() && is_ssl() ) {
+	if ( edd_is_checkout() && is_ssl() ) {
 		// Dashicons are used to show the padlock icon on the credit card form
 		wp_enqueue_style( 'dashicons' );
 	}
@@ -226,7 +226,7 @@ function edd_load_admin_scripts( $hook ) {
 	wp_register_script( 'colorbox', $js_dir . 'jquery.colorbox-min.js', array( 'jquery' ), '1.3.20' );
 	wp_enqueue_script( 'colorbox' );
 
-	if( function_exists( 'wp_enqueue_media' ) && version_compare( $wp_version, '3.5', '>=' ) ) {
+	if ( function_exists( 'wp_enqueue_media' ) && version_compare( $wp_version, '3.5', '>=' ) ) {
 		//call for new media manager
 		wp_enqueue_media();
 	}
@@ -271,7 +271,7 @@ function edd_admin_downloads_icon() {
 	$icon_cpt_2x_url = $images_url . 'edd-cpt-2x.png';
 	?>
 	<style type="text/css" media="screen">
-		<?php if( version_compare( $wp_version, '3.8-RC', '>=' ) || version_compare( $wp_version, '3.8', '>=' ) ) { ?>
+		<?php if ( version_compare( $wp_version, '3.8-RC', '>=' ) || version_compare( $wp_version, '3.8', '>=' ) ) { ?>
 			#adminmenu #menu-posts-download .wp-menu-image:before,
 			#dashboard_right_now .download-count:before {
 				content: '<?php echo $menu_icon; ?>';
@@ -299,7 +299,7 @@ function edd_admin_downloads_icon() {
 		only screen and (     -o-min-device-pixel-ratio: 3/2),
 		only screen and (        min-device-pixel-ratio: 1.5),
 		only screen and (        		 min-resolution: 1.5dppx) {
-			<?php if( version_compare( $wp_version, '3.7', '<=' ) ) { ?>
+			<?php if ( version_compare( $wp_version, '3.7', '<=' ) ) { ?>
 				#adminmenu #menu-posts-download div.wp-menu-image {
 					background-image: url(<?php echo $icon_2x_url; ?>);
 					background-position: 7px -18px;

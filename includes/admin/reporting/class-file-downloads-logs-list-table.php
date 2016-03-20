@@ -162,8 +162,8 @@ class EDD_File_Downloads_Log_Table extends WP_List_Table {
 	public function get_filtered_user() {
 		$ret = false;
 
-		if( isset( $_GET['user'] ) ) {
-			if( is_numeric( $_GET['user'] ) ) {
+		if ( isset( $_GET['user'] ) ) {
+			if ( is_numeric( $_GET['user'] ) ) {
 				$ret = absint( $_GET['user'] );
 			} else {
 				$ret = sanitize_text_field( $_GET['user'] );
@@ -222,7 +222,7 @@ class EDD_File_Downloads_Log_Table extends WP_List_Table {
 
 		if ( $user ) {
 			// Show only logs from a specific user
-			if( is_numeric( $user ) ) {
+			if ( is_numeric( $user ) ) {
 				$meta_query[] = array(
 					'key'   => '_edd_log_user_id',
 					'value' => $user,
@@ -391,7 +391,7 @@ class EDD_File_Downloads_Log_Table extends WP_List_Table {
 				$ip         = $meta['_edd_log_ip'][0];
 				$user_id    = isset( $user_info['id'] ) ? $user_info['id'] : false;
 
-				if( ! array_key_exists( $log->post_parent, $this->queried_files ) ) {
+				if ( ! array_key_exists( $log->post_parent, $this->queried_files ) ) {
 					$files   = maybe_unserialize( $wpdb->get_var( $wpdb->prepare( "SELECT meta_value from $wpdb->postmeta WHERE post_id = %d and meta_key = 'edd_download_files'", $log->post_parent ) ) );
 					$this->queried_files[ $log->post_parent ] = $files;
 				} else {

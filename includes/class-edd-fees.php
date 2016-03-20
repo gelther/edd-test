@@ -75,13 +75,13 @@ class EDD_Fees {
 
 			$args = wp_parse_args( $args, $defaults );
 
-			if( $args['type'] != 'fee' && $args['type'] != 'item' ) {
+			if ( $args['type'] != 'fee' && $args['type'] != 'item' ) {
 				$args['type'] = 'fee';
 			}
 
 		}
 
-		if( 'item' === $args['type'] && ! empty( $args['download_id'] ) ) {
+		if ( 'item' === $args['type'] && ! empty( $args['download_id'] ) ) {
 			unset( $args['download_id'] );
 		}
 
@@ -138,8 +138,8 @@ class EDD_Fees {
 	 */
 	public function has_fees( $type = 'fee' ) {
 
-		if( 'all' == $type || 'fee' == $type ) {
-			if( ! edd_get_cart_contents() ) {
+		if ( 'all' == $type || 'fee' == $type ) {
+			if ( ! edd_get_cart_contents() ) {
 				$type = 'item';
 			}
 
@@ -163,16 +163,16 @@ class EDD_Fees {
 
 		$fees = EDD()->session->get( 'edd_cart_fees' );
 
-		if( ! edd_get_cart_contents() ) {
+		if ( ! edd_get_cart_contents() ) {
 			// We can only get item type fees when the cart is empty
 			$type = 'item';
 		}
 
-		if( ! empty( $fees ) && ! empty( $type ) && 'all' !== $type ) {
+		if ( ! empty( $fees ) && ! empty( $type ) && 'all' !== $type ) {
 
-			foreach( $fees as $key => $fee ) {
+			foreach ( $fees as $key => $fee ) {
 
-				if( ! empty( $fee['type'] ) && $type != $fee['type'] ) {
+				if ( ! empty( $fee['type'] ) && $type != $fee['type'] ) {
 
 					unset( $fees[ $key ] );
 
@@ -182,12 +182,12 @@ class EDD_Fees {
 
 		}
 
-		if( ! empty( $fees ) && ! empty( $download_id ) ) {
+		if ( ! empty( $fees ) && ! empty( $download_id ) ) {
 
 			// Remove fees that don't belong to the specified Download
-			foreach( $fees as $key => $fee ) {
+			foreach ( $fees as $key => $fee ) {
 
-				if( (int) $download_id !== (int) $fee['download_id'] ) {
+				if ( (int) $download_id !== (int) $fee['download_id'] ) {
 
 					unset( $fees[ $key ] );
 
@@ -197,16 +197,16 @@ class EDD_Fees {
 
 		}
 
-		if( ! empty( $fees ) ) {
+		if ( ! empty( $fees ) ) {
 
 			// Remove fees that belong to a specific download but are not in the cart
-			foreach( $fees as $key => $fee ) {
+			foreach ( $fees as $key => $fee ) {
 
-				if( empty( $fee['download_id'] ) ) {
+				if ( empty( $fee['download_id'] ) ) {
 					continue;
 				}
 
-				if( ! edd_item_in_cart( $fee['download_id'] ) ) {
+				if ( ! edd_item_in_cart( $fee['download_id'] ) ) {
 
 					unset( $fees[ $key ] );
 

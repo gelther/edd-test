@@ -33,7 +33,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 function edd_get_payments( $args = array() ) {
 
 	// Fallback to post objects to ensure backwards compatibility
-	if( ! isset( $args['output'] ) ) {
+	if ( ! isset( $args['output'] ) ) {
 		$args['output'] = 'posts';
 	}
 
@@ -52,11 +52,11 @@ function edd_get_payments( $args = array() ) {
  */
 function edd_get_payment_by( $field = '', $value = '' ) {
 
-	if( empty( $field ) || empty( $value ) ) {
+	if ( empty( $field ) || empty( $value ) ) {
 		return false;
 	}
 
-	switch( strtolower( $field ) ) {
+	switch ( strtolower( $field ) ) {
 
 		case 'id':
 			$payment = new EDD_Payment( $value );
@@ -90,7 +90,7 @@ function edd_get_payment_by( $field = '', $value = '' ) {
 				'fields'         => 'ids',
 			) );
 
-			if( $payment ) {
+			if ( $payment ) {
 				$payment = new EDD_Payment( $payment[0] );
 			}
 
@@ -100,7 +100,7 @@ function edd_get_payment_by( $field = '', $value = '' ) {
 			return false;
 	}
 
-	if( $payment ) {
+	if ( $payment ) {
 		return $payment;
 	}
 
@@ -122,7 +122,7 @@ function edd_insert_payment( $payment_data = array() ) {
 
 	$payment = new EDD_Payment();
 
-	if( is_array( $payment_data['cart_details'] ) && ! empty( $payment_data['cart_details'] ) ) {
+	if ( is_array( $payment_data['cart_details'] ) && ! empty( $payment_data['cart_details'] ) ) {
 
 		foreach ( $payment_data['cart_details'] as $item ) {
 
@@ -233,13 +233,13 @@ function edd_delete_purchase( $payment_id = 0, $update_customer = true, $delete_
 
 	$customer = new EDD_Customer( $customer_id );
 
-	if( $status == 'revoked' || $status == 'publish' ) {
+	if ( $status == 'revoked' || $status == 'publish' ) {
 		// Only decrease earnings if they haven't already been decreased (or were never increased for this payment)
 		edd_decrease_total_earnings( $amount );
 		// Clear the This Month earnings (this_monththis_month is NOT a typo)
 		delete_transient( md5( 'edd_earnings_this_monththis_month' ) );
 
-		if( $customer->id && $update_customer ) {
+		if ( $customer->id && $update_customer ) {
 
 			// Decrement the stats for the customer
 			$customer->decrease_purchase_count();
@@ -250,7 +250,7 @@ function edd_delete_purchase( $payment_id = 0, $update_customer = true, $delete_
 
 	do_action( 'edd_payment_delete', $payment_id );
 
-	if( $customer->id && $update_customer ) {
+	if ( $customer->id && $update_customer ) {
 
 		// Remove the payment ID from the customer
 		$customer->remove_payment( $payment_id );
@@ -322,7 +322,7 @@ function edd_undo_purchase( $download_id = false, $payment_id ) {
 			$amount = isset( $item['price'] ) ? $item['price'] : false;
 
 			// Decrease earnings/sales and fire action once per quantity number
-			for( $i = 0; $i < $item['quantity']; $i++ ) {
+			for ( $i = 0; $i < $item['quantity']; $i++ ) {
 
 				// variable priced downloads
 				if ( false === $amount && edd_has_variable_prices( $item['id'] ) ) {
@@ -384,11 +384,11 @@ function edd_count_payments( $args = array() ) {
 	$where = "WHERE p.post_type = 'edd_payment'";
 
 	// Count payments for a specific user
-	if( ! empty( $args['user'] ) ) {
+	if ( ! empty( $args['user'] ) ) {
 
-		if( is_email( $args['user'] ) )
+		if ( is_email( $args['user'] ) )
 			$field = 'email';
-		elseif( is_numeric( $args['user'] ) )
+		elseif ( is_numeric( $args['user'] ) )
 			$field = 'id';
 		else
 			$field = '';
@@ -402,11 +402,11 @@ function edd_count_payments( $args = array() ) {
 		}
 
 	// Count payments for a search
-	} elseif( ! empty( $args['s'] ) ) {
+	} elseif ( ! empty( $args['s'] ) ) {
 
 		if ( is_email( $args['s'] ) || strlen( $args['s'] ) == 32 ) {
 
-			if( is_email( $args['s'] ) )
+			if ( is_email( $args['s'] ) )
 				$field = '_edd_payment_user_email';
 			else
 				$field = '_edd_payment_purchase_key';
@@ -529,7 +529,7 @@ function edd_count_payments( $args = array() ) {
 
 	$stats    = array();
 	$statuses = get_post_stati();
-	if( isset( $statuses['private'] ) && empty( $args['s'] ) ) {
+	if ( isset( $statuses['private'] ) && empty( $args['s'] ) ) {
 		unset( $statuses['private'] );
 	}
 
@@ -539,7 +539,7 @@ function edd_count_payments( $args = array() ) {
 
 	foreach ( (array) $count as $row ) {
 
-		if( 'private' == $row['post_status'] && empty( $args['s'] ) ) {
+		if ( 'private' == $row['post_status'] && empty( $args['s'] ) ) {
 			continue;
 		}
 
@@ -678,7 +678,7 @@ function edd_get_earnings_by_date( $day = null, $month_num, $year = null, $hour 
 	$key      = 'edd_stats_' . substr( md5( serialize( $args ) ), 0, 15 );
 	$earnings = get_transient( $key );
 
-	if( false === $earnings ) {
+	if ( false === $earnings ) {
 		$sales = get_posts( $args );
 		$earnings = 0;
 		if ( $sales ) {
@@ -752,7 +752,7 @@ function edd_get_sales_by_date( $day = null, $month_num = null, $year = null, $h
 	$key   = 'edd_stats_' . substr( md5( serialize( $args ) ), 0, 15 );
 	$count = get_transient( $key );
 
-	if( false === $count ) {
+	if ( false === $count ) {
 		$sales = new WP_Query( $args );
 		$count = (int) $sales->post_count;
 		// Cache the results for one hour
@@ -774,7 +774,7 @@ function edd_is_payment_complete( $payment_id = 0 ) {
 
 	$ret = false;
 
-	if( $payment->ID > 0 ) {
+	if ( $payment->ID > 0 ) {
 
 		if ( (int) $payment_id === (int) $payment->ID && 'publish' == $payment->status ) {
 			$ret = true;
@@ -807,13 +807,13 @@ function edd_get_total_earnings() {
 	$total = get_option( 'edd_earnings_total', false );
 
 	// If no total stored in DB, use old method of calculating total earnings
-	if( false === $total ) {
+	if ( false === $total ) {
 
 		global $wpdb;
 
 		$total = get_transient( 'edd_earnings_total' );
 
-		if( false === $total ) {
+		if ( false === $total ) {
 
 			$total = (float) 0;
 
@@ -834,11 +834,11 @@ function edd_get_total_earnings() {
 				 * first purchase
 				 */
 
-				if( did_action( 'edd_update_payment_status' ) ) {
+				if ( did_action( 'edd_update_payment_status' ) ) {
 					array_pop( $payments );
 				}
 
-				if( ! empty( $payments ) ) {
+				if ( ! empty( $payments ) ) {
 					$payments = implode( ',', $payments );
 					$total += $wpdb->get_var( "SELECT SUM(meta_value) FROM $wpdb->postmeta WHERE meta_key = '_edd_payment_total' AND post_id IN({$payments})" );
 				}
@@ -853,7 +853,7 @@ function edd_get_total_earnings() {
 		}
 	}
 
-	if( $total < 0 ) {
+	if ( $total < 0 ) {
 		$total = 0; // Don't ever show negative earnings
 	}
 
@@ -884,7 +884,7 @@ function edd_increase_total_earnings( $amount = 0 ) {
 function edd_decrease_total_earnings( $amount = 0 ) {
 	$total = edd_get_total_earnings();
 	$total -= $amount;
-	if( $total < 0 ) {
+	if ( $total < 0 ) {
 		$total = 0;
 	}
 	update_option( 'edd_earnings_total', $total );
@@ -968,7 +968,7 @@ function edd_get_payment_meta_cart_details( $payment_id, $include_bundle_files =
 
 			if ( $include_bundle_files ) {
 
-				if( 'bundle' != edd_get_download_type( $cart_item['id'] ) )
+				if ( 'bundle' != edd_get_download_type( $cart_item['id'] ) )
 					continue;
 
 				$products = edd_get_bundled_products( $cart_item['id'] );
@@ -1159,7 +1159,7 @@ function edd_get_payment_number( $payment_id = 0 ) {
  */
 function edd_format_payment_number( $number ) {
 
-	if( ! edd_get_option( 'enable_sequential' ) ) {
+	if ( ! edd_get_option( 'enable_sequential' ) ) {
 		return $number;
 	}
 
@@ -1186,7 +1186,7 @@ function edd_format_payment_number( $number ) {
  */
 function edd_get_next_payment_number() {
 
-	if( ! edd_get_option( 'enable_sequential' ) ) {
+	if ( ! edd_get_option( 'enable_sequential' ) ) {
 		return false;
 	}
 
@@ -1215,7 +1215,7 @@ function edd_get_next_payment_number() {
 
 		}
 
-		if( ! empty( $number ) && $number !== (int) $last_payment[0] ) {
+		if ( ! empty( $number ) && $number !== (int) $last_payment[0] ) {
 
 			$number = edd_remove_payment_prefix_postfix( $number );
 
@@ -1529,7 +1529,7 @@ function edd_insert_payment_note( $payment_id = 0, $note = '' ) {
  * @return bool True on success, false otherwise
  */
 function edd_delete_payment_note( $comment_id = 0, $payment_id = 0 ) {
-	if( empty( $comment_id ) )
+	if ( empty( $comment_id ) )
 		return false;
 
 	do_action( 'edd_pre_delete_payment_note', $comment_id, $payment_id );
@@ -1549,7 +1549,7 @@ function edd_delete_payment_note( $comment_id = 0, $payment_id = 0 ) {
  */
 function edd_get_payment_note_html( $note, $payment_id = 0 ) {
 
-	if( is_numeric( $note ) ) {
+	if ( is_numeric( $note ) ) {
 		$note = get_comment( $note );
 	}
 
@@ -1591,9 +1591,9 @@ function edd_get_payment_note_html( $note, $payment_id = 0 ) {
 function edd_hide_payment_notes( $query ) {
 	global $wp_version;
 
-	if( version_compare( floatval( $wp_version ), '4.1', '>=' ) ) {
+	if ( version_compare( floatval( $wp_version ), '4.1', '>=' ) ) {
 		$types = isset( $query->query_vars['type__not_in'] ) ? $query->query_vars['type__not_in'] : array();
-		if( ! is_array( $types ) ) {
+		if ( ! is_array( $types ) ) {
 			$types = array( $types );
 		}
 		$types[] = 'edd_payment_note';
@@ -1614,7 +1614,7 @@ add_action( 'pre_get_comments', 'edd_hide_payment_notes', 10 );
 function edd_hide_payment_notes_pre_41( $clauses, $wp_comment_query ) {
 	global $wpdb, $wp_version;
 
-	if( version_compare( floatval( $wp_version ), '4.1', '<' ) ) {
+	if ( version_compare( floatval( $wp_version ), '4.1', '<' ) ) {
 		$clauses['where'] .= ' AND comment_type != "edd_payment_note"';
 	}
 	return $clauses;
@@ -1651,7 +1651,7 @@ add_filter( 'comment_feed_where', 'edd_hide_payment_notes_from_feeds', 10, 2 );
 function edd_remove_payment_notes_in_comment_counts( $stats, $post_id ) {
 	global $wpdb, $pagenow;
 
-	if( 'index.php' != $pagenow ) {
+	if ( 'index.php' != $pagenow ) {
 		return $stats;
 	}
 

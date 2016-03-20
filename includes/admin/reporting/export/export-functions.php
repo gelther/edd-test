@@ -31,7 +31,7 @@ function edd_do_ajax_export() {
 	$_REQUEST = $form = (array) $form;
 
 
-	if( ! wp_verify_nonce( $_REQUEST['edd_ajax_export'], 'edd_ajax_export' ) ) {
+	if ( ! wp_verify_nonce( $_REQUEST['edd_ajax_export'], 'edd_ajax_export' ) ) {
 		die( '-2' );
 	}
 
@@ -41,7 +41,7 @@ function edd_do_ajax_export() {
 	$class    = sanitize_text_field( $form['edd-export-class'] );
 	$export   = new $class( $step );
 
-	if( ! $export->can_export() ) {
+	if ( ! $export->can_export() ) {
 		die( '-1' );
 	}
 
@@ -58,7 +58,7 @@ function edd_do_ajax_export() {
 
 	$percentage = $export->get_percentage_complete();
 
-	if( $ret ) {
+	if ( $ret ) {
 
 		$step += 1;
 		echo json_encode( array( 'step' => $step, 'percentage' => $percentage ) ); exit;

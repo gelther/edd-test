@@ -72,7 +72,7 @@ class EDD_Tools_Reset_Stats extends EDD_Batch_Export {
 
 			foreach ( $step_items as $item ) {
 
-				switch( $item['type'] ) {
+				switch ( $item['type'] ) {
 					case 'customer':
 						$step_ids['customers'][] = $item['id'];
 						break;
@@ -97,7 +97,7 @@ class EDD_Tools_Reset_Stats extends EDD_Batch_Export {
 
 				$ids = implode( ',', $ids );
 
-				switch( $type ) {
+				switch ( $type ) {
 					case 'customers':
 						$table_name = $wpdb->prefix . 'edd_customers';
 						$sql[] = "DELETE FROM $table_name WHERE id IN ($ids)";
@@ -149,11 +149,11 @@ class EDD_Tools_Reset_Stats extends EDD_Batch_Export {
 
 		$percentage = 100;
 
-		if( $total > 0 ) {
+		if ( $total > 0 ) {
 			$percentage = ( ( $this->per_step * $this->step ) / $total ) * 100;
 		}
 
-		if( $percentage > 100 ) {
+		if ( $percentage > 100 ) {
 			$percentage = 100;
 		}
 
@@ -182,7 +182,7 @@ class EDD_Tools_Reset_Stats extends EDD_Batch_Export {
 
 		$had_data = $this->get_data();
 
-		if( $had_data ) {
+		if ( $had_data ) {
 			$this->done = false;
 			return true;
 		} else {

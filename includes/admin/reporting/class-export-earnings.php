@@ -85,19 +85,19 @@ class EDD_Earnings_Export extends EDD_Export {
 		$year  = $start_year;
 		$stats = new EDD_Payment_Stats;
 
-		while( $year <= $end_year ) {
+		while ( $year <= $end_year ) {
 
-			if( $year == $start_year && $year == $end_year ) {
+			if ( $year == $start_year && $year == $end_year ) {
 
 				$m1 = $start_month;
 				$m2 = $end_month;
 
-			} elseif( $year == $start_year ) {
+			} elseif ( $year == $start_year ) {
 
 				$m1 = $start_month;
 				$m2 = 12;
 
-			} elseif( $year == $end_year ) {
+			} elseif ( $year == $end_year ) {
 
 				$m1 = 1;
 				$m2 = $end_month;
@@ -109,7 +109,7 @@ class EDD_Earnings_Export extends EDD_Export {
 
 			}
 
-			while( $m1 <= $m2 ) {
+			while ( $m1 <= $m2 ) {
 
 				$date1 = mktime( 0, 0, 0, $m1, 1, $year );
 				$date2 = mktime( 0, 0, 0, $m1, cal_days_in_month( CAL_GREGORIAN, $m1, $year ), $year );

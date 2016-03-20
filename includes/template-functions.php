@@ -79,11 +79,11 @@ function edd_get_purchase_link( $args = array() ) {
 
 	$download = new EDD_Download( $args['download_id'] );
 
-	if( empty( $download->ID ) ) {
+	if ( empty( $download->ID ) ) {
 		return false;
 	}
 
-	if( 'publish' !== $download->post_status && ! current_user_can( 'edit_product', $download->ID ) ) {
+	if ( 'publish' !== $download->post_status && ! current_user_can( 'edit_product', $download->ID ) ) {
 		return false; // Product not published or user doesn't have permission to view drafts
 	}
 
@@ -189,7 +189,7 @@ function edd_get_purchase_link( $args = array() ) {
 					</span>
 				</span>
 			<?php endif; ?>
-			<?php if( ! $download->is_free( $args['price_id'] ) ): ?>
+			<?php if ( ! $download->is_free( $args['price_id'] ) ): ?>
 				<?php if ( edd_display_tax_rate() && edd_prices_include_tax() ) {
 					echo '<span class="edd_purchase_tax_rate">' . sprintf( __( 'Includes %1$s&#37; tax', 'easy-digital-downloads' ), edd_get_tax_rate() * 100 ) . '</span>';
 				} elseif ( edd_display_tax_rate() && ! edd_prices_include_tax() ) {
@@ -202,13 +202,13 @@ function edd_get_purchase_link( $args = array() ) {
 		<?php if ( $variable_pricing && isset( $price_id ) && isset( $prices[$price_id] ) ): ?>
 			<input type="hidden" name="edd_options[price_id][]" id="edd_price_option_<?php echo $download->ID; ?>_1" class="edd_price_option_<?php echo $download->ID; ?>" value="<?php echo $price_id; ?>">
 		<?php endif; ?>
-		<?php if( ! empty( $args['direct'] ) && ! $download->is_free( $args['price_id'] ) ) { ?>
+		<?php if ( ! empty( $args['direct'] ) && ! $download->is_free( $args['price_id'] ) ) { ?>
 			<input type="hidden" name="edd_action" class="edd_action_input" value="straight_to_gateway">
 		<?php } else { ?>
 			<input type="hidden" name="edd_action" class="edd_action_input" value="add_to_cart">
 		<?php } ?>
 
-		<?php if( apply_filters( 'edd_download_redirect_to_checkout', edd_straight_to_checkout(), $download->ID, $args ) ) : ?>
+		<?php if ( apply_filters( 'edd_download_redirect_to_checkout', edd_straight_to_checkout(), $download->ID, $args ) ) : ?>
 			<input type="hidden" name="edd_redirect_to_checkout" id="edd_redirect_to_checkout" value="1">
 		<?php endif; ?>
 
@@ -291,7 +291,7 @@ add_action( 'edd_purchase_link_top', 'edd_purchase_variable_pricing', 10, 2 );
 function edd_download_purchase_form_quantity_field( $download_id = 0, $args = array() ) {
 
 	$options = array();
-	if( false !== $args['price_id'] ) {
+	if ( false !== $args['price_id'] ) {
 		$options['price_id'] = $args['price_id'];
 	}
 
@@ -338,11 +338,11 @@ add_action( 'edd_purchase_link_top', 'edd_download_purchase_form_quantity_field'
  */
 function edd_variable_price_quantity_field( $key, $price, $download_id ) {
 
-	if( ! edd_item_quantities_enabled() ) {
+	if ( ! edd_item_quantities_enabled() ) {
 		return;
 	}
 
-	if( ! edd_single_price_option_mode( $download_id ) ) {
+	if ( ! edd_single_price_option_mode( $download_id ) ) {
 		return;
 	}
 
@@ -631,15 +631,15 @@ function edd_locate_template( $template_names, $load = false, $require_once = tr
 		$template_name = ltrim( $template_name, '/' );
 
 		// try locating this template file by looping through the template paths
-		foreach( edd_get_theme_template_paths() as $template_path ) {
+		foreach ( edd_get_theme_template_paths() as $template_path ) {
 
-			if( file_exists( $template_path . $template_name ) ) {
+			if ( file_exists( $template_path . $template_name ) ) {
 				$located = $template_path . $template_name;
 				break;
 			}
 		}
 
-		if( $located ) {
+		if ( $located ) {
 			break;
 		}
 	}
@@ -710,7 +710,7 @@ function edd_add_schema_microdata() {
 function edd_microdata_title( $title, $id = 0 ) {
 	global $post;
 
-	if( ! edd_add_schema_microdata() || ! is_object( $post ) ) {
+	if ( ! edd_add_schema_microdata() || ! is_object( $post ) ) {
 		return $title;
 	}
 
@@ -735,7 +735,7 @@ function edd_microdata_wrapper_open( $query ) {
 
 	static $microdata_open = NULL;
 
-	if( ! edd_add_schema_microdata() || true === $microdata_open || ! is_object( $query ) ) {
+	if ( ! edd_add_schema_microdata() || true === $microdata_open || ! is_object( $query ) ) {
 		return;
 	}
 
@@ -760,7 +760,7 @@ function edd_microdata_wrapper_close() {
 
 	static $microdata_close = NULL;
 
-	if( ! edd_add_schema_microdata() || true === $microdata_close || ! is_object( $post ) ) {
+	if ( ! edd_add_schema_microdata() || true === $microdata_close || ! is_object( $post ) ) {
 		return;
 	}
 
@@ -785,7 +785,7 @@ function edd_microdata_description( $content ) {
 
 	static $microdata_description = NULL;
 
-	if( ! edd_add_schema_microdata() || true === $microdata_description || ! is_object( $post ) ) {
+	if ( ! edd_add_schema_microdata() || true === $microdata_description || ! is_object( $post ) ) {
 		return $content;
 	}
 
@@ -811,7 +811,7 @@ function edd_checkout_meta_tags() {
 	$pages[] = edd_get_option( 'failure_page' );
 	$pages[] = edd_get_option( 'purchase_history_page' );
 
-	if( ! edd_is_checkout() && ! is_page( $pages ) ) {
+	if ( ! edd_is_checkout() && ! is_page( $pages ) ) {
 		return;
 	}
 
@@ -852,27 +852,27 @@ function edd_is_purchase_history_page() {
 function edd_add_body_classes( $class ) {
 	$classes = (array) $class;
 
-	if( edd_is_checkout() ) {
+	if ( edd_is_checkout() ) {
 		$classes[] = 'edd-checkout';
 		$classes[] = 'edd-page';
 	}
 
-	if( edd_is_success_page() ) {
+	if ( edd_is_success_page() ) {
 		$classes[] = 'edd-success';
 		$classes[] = 'edd-page';
 	}
 
-	if( edd_is_failed_transaction_page() ) {
+	if ( edd_is_failed_transaction_page() ) {
 		$classes[] = 'edd-failed-transaction';
 		$classes[] = 'edd-page';
 	}
 
-	if( edd_is_purchase_history_page() ) {
+	if ( edd_is_purchase_history_page() ) {
 		$classes[] = 'edd-purchase-history';
 		$classes[] = 'edd-page';
 	}
 
-	if( edd_is_test_mode() ) {
+	if ( edd_is_test_mode() ) {
 		$classes[] = 'edd-test-mode';
 		$classes[] = 'edd-page';
 	}
@@ -891,33 +891,33 @@ add_filter( 'body_class', 'edd_add_body_classes' );
  * @return array Modified array of classes
  */
 function edd_add_download_post_classes( $classes, $class = '', $post_id = false ) {
-	if( ! $post_id || get_post_type( $post_id ) !== 'download' || is_admin() ) {
+	if ( ! $post_id || get_post_type( $post_id ) !== 'download' || is_admin() ) {
 		return $classes;
 	}
 
 	$download = edd_get_download( $post_id );
 
-	if( $download ) {
+	if ( $download ) {
 		$classes[] = 'edd-download';
 
 		// Add category slugs
 		$categories = get_the_terms( $post_id, 'download_category' );
-		if( ! empty( $categories ) ) {
-			foreach( $categories as $key => $value ) {
+		if ( ! empty( $categories ) ) {
+			foreach ( $categories as $key => $value ) {
 				$classes[] = 'edd-download-cat-' . $value->slug;
 			}
 		}
 
 		// Add tag slugs
 		$tags = get_the_terms( $post_id, 'download_tag' );
-		if( ! empty( $tags ) ) {
-			foreach( $tags as $key => $value ) {
+		if ( ! empty( $tags ) ) {
+			foreach ( $tags as $key => $value ) {
 				$classes[] = 'edd-download-tag-' . $value->slug;
 			}
 		}
 
 		// Add edd-download
-		if( is_singular( 'download' ) ) {
+		if ( is_singular( 'download' ) ) {
 			$classes[] = 'edd-download';
 		}
 	}

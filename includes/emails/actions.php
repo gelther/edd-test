@@ -41,11 +41,11 @@ function edd_resend_purchase_receipt( $data ) {
 
 	$purchase_id = absint( $data['purchase_id'] );
 
-	if( empty( $purchase_id ) ) {
+	if ( empty( $purchase_id ) ) {
 		return;
 	}
 
-	if( ! current_user_can( 'edit_shop_payments' ) ) {
+	if ( ! current_user_can( 'edit_shop_payments' ) ) {
 		wp_die( __( 'You do not have permission to edit this payment record', 'easy-digital-downloads' ), __( 'Error', 'easy-digital-downloads' ), array( 'response' => 403 ) );
 	}
 

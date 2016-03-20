@@ -26,13 +26,13 @@ function edd_is_checkout() {
 	$is_object_id_set = isset( $wp_query->queried_object_id );
 	$is_checkout      = is_page( edd_get_option( 'purchase_page' ) );
 
-	if( ! $is_object_set ) {
+	if ( ! $is_object_set ) {
 
 		unset( $wp_query->queried_object );
 
 	}
 
-	if( ! $is_object_id_set ) {
+	if ( ! $is_object_id_set ) {
 
 		unset( $wp_query->queried_object_id );
 
@@ -227,13 +227,13 @@ function edd_listen_for_failed_payments() {
 
 	$failed_page = edd_get_option( 'failure_page', 0 );
 
-	if( ! empty( $failed_page ) && is_page( $failed_page ) && ! empty( $_GET['payment-id'] ) ) {
+	if ( ! empty( $failed_page ) && is_page( $failed_page ) && ! empty( $_GET['payment-id'] ) ) {
 
 		$payment_id = absint( $_GET['payment-id'] );
 		$payment    = get_post( $payment_id );
 		$status     = edd_get_payment_status( $payment );
 
-		if( $status && 'pending' === strtolower( $status ) ) {
+		if ( $status && 'pending' === strtolower( $status ) ) {
 
 			edd_update_payment_status( $payment_id, 'failed' );
 
@@ -277,24 +277,24 @@ function edd_get_banned_emails() {
  */
 function edd_is_email_banned( $email = '' ) {
 
-	if( empty( $email ) ) {
+	if ( empty( $email ) ) {
 		return false;
 	}
 
 	$banned_emails = edd_get_banned_emails();
 
-	if( ! is_array( $banned_emails ) || empty( $banned_emails ) ) {
+	if ( ! is_array( $banned_emails ) || empty( $banned_emails ) ) {
 		return false;
 	}
 
-	foreach( $banned_emails as $banned_email ) {
-		if( is_email( $banned_email ) ) {
+	foreach ( $banned_emails as $banned_email ) {
+		if ( is_email( $banned_email ) ) {
 			$ret = ( $banned_email == trim( $email ) ? true : false );
 		} else {
 			$ret = ( stristr( trim( $email ), $banned_email ) ? true : false );
 		}
 
-		if( true === $ret ) {
+		if ( true === $ret ) {
 			break;
 		}
 	}
@@ -325,7 +325,7 @@ function edd_enforced_ssl_redirect_handler() {
 		return;
 	}
 
-	if( edd_is_checkout() && false !== strpos( edd_get_current_page_url(), 'https://' ) ) {
+	if ( edd_is_checkout() && false !== strpos( edd_get_current_page_url(), 'https://' ) ) {
 		return;
 	}
 
@@ -407,7 +407,7 @@ function edd_enforced_ssl_asset_filter( $content ) {
 			'ru',
 		);
 
-		if( ! in_array( $extension, $suffixes ) ) {
+		if ( ! in_array( $extension, $suffixes ) ) {
 
 			$content = str_replace( 'http:', 'https:', $content );
 

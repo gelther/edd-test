@@ -69,7 +69,7 @@ function edd_get_users_purchases( $user = 0, $number = 20, $pagination = false, 
 	$by_user_id = is_numeric( $user ) ? true : false;
 	$customer   = new EDD_Customer( $user, $by_user_id );
 
-	if( ! empty( $customer->payment_ids ) ) {
+	if ( ! empty( $customer->payment_ids ) ) {
 
 		unset( $args['user'] );
 		$args['post__in'] = array_map( 'absint', explode( ',', $customer->payment_ids ) );
@@ -181,7 +181,7 @@ function edd_get_users_purchased_products( $user = 0, $status = 'complete' ) {
  */
 function edd_has_user_purchased( $user_id, $downloads, $variable_price_id = null ) {
 
-	if( empty( $user_id ) ) {
+	if ( empty( $user_id ) ) {
 		return false;
 	}
 
@@ -268,7 +268,7 @@ function edd_get_purchase_stats_by_user( $user = '' ) {
 	$stats    = array();
 	$customer = EDD()->customers->get_customer_by( $field, $user );
 
-	if( $customer ) {
+	if ( $customer ) {
 
 		$customer = new EDD_Customer( $customer->id );
 
@@ -375,7 +375,7 @@ function edd_connect_existing_customer_to_new_user( $user_id ) {
 	// Update the user ID on the customer
 	$customer = new EDD_Customer( $email );
 
-	if( $customer->id > 0 ) {
+	if ( $customer->id > 0 ) {
 		$customer->update( array( 'user_id' => $user_id ) );
 	}
 }
@@ -398,15 +398,15 @@ function edd_add_past_purchases_to_new_user( $user_id ) {
 
 	$payments = edd_get_payments( array( 's' => $email ) );
 
-	if( $payments ) {
+	if ( $payments ) {
 
 		// Set a flag to force the account to be verified before purchase history can be accessed
 		edd_set_user_to_pending( $user_id );
 
 		edd_send_user_verification_email( $user_id );
 
-		foreach( $payments as $payment ) {
-			if( intval( edd_get_payment_user_id( $payment->ID ) ) > 0 ) {
+		foreach ( $payments as $payment ) {
+			if ( intval( edd_get_payment_user_id( $payment->ID ) ) > 0 ) {
 				continue; // This payment already associated with an account
 			}
 
@@ -445,28 +445,28 @@ function edd_count_total_customers() {
  * @return 		array - The customer's address, if any
  */
 function edd_get_customer_address( $user_id = 0 ) {
-	if( empty( $user_id ) ) {
+	if ( empty( $user_id ) ) {
 		$user_id = get_current_user_id();
 	}
 
 	$address = get_user_meta( $user_id, '_edd_user_address', true );
 
-	if( ! isset( $address['line1'] ) )
+	if ( ! isset( $address['line1'] ) )
 		$address['line1'] = '';
 
-	if( ! isset( $address['line2'] ) )
+	if ( ! isset( $address['line2'] ) )
 		$address['line2'] = '';
 
-	if( ! isset( $address['city'] ) )
+	if ( ! isset( $address['city'] ) )
 		$address['city'] = '';
 
-	if( ! isset( $address['zip'] ) )
+	if ( ! isset( $address['zip'] ) )
 		$address['zip'] = '';
 
-	if( ! isset( $address['country'] ) )
+	if ( ! isset( $address['country'] ) )
 		$address['country'] = '';
 
-	if( ! isset( $address['state'] ) )
+	if ( ! isset( $address['state'] ) )
 		$address['state'] = '';
 
 	return $address;
@@ -483,7 +483,7 @@ function edd_get_customer_address( $user_id = 0 ) {
  */
 function edd_new_user_notification( $user_id = 0, $user_data = array() ) {
 
-	if( empty( $user_id ) || empty( $user_data ) ) {
+	if ( empty( $user_id ) || empty( $user_data ) ) {
 		return;
 	}
 
@@ -573,7 +573,7 @@ function edd_set_user_to_verified( $user_id = 0 ) {
  */
 function edd_user_pending_verification( $user_id = 0 ) {
 
-	if( empty( $user_id ) ) {
+	if ( empty( $user_id ) ) {
 		$user_id = get_current_user_id();
 	}
 
@@ -597,7 +597,7 @@ function edd_user_pending_verification( $user_id = 0 ) {
  */
 function edd_get_user_verification_url( $user_id = 0 ) {
 
-	if( empty( $user_id ) ) {
+	if ( empty( $user_id ) ) {
 		return false;
 	}
 
@@ -623,7 +623,7 @@ function edd_get_user_verification_url( $user_id = 0 ) {
  */
 function edd_get_user_verification_request_url( $user_id = 0 ) {
 
-	if( empty( $user_id ) ) {
+	if ( empty( $user_id ) ) {
 		$user_id = get_current_user_id();
 	}
 
@@ -644,17 +644,17 @@ function edd_get_user_verification_request_url( $user_id = 0 ) {
  */
 function edd_send_user_verification_email( $user_id = 0 ) {
 
-	if( empty( $user_id ) ) {
+	if ( empty( $user_id ) ) {
 		return;
 	}
 
-	if( ! edd_user_pending_verification( $user_id ) ) {
+	if ( ! edd_user_pending_verification( $user_id ) ) {
 		return;
 	}
 
 	$user_data  = get_userdata( $user_id );
 
-	if( ! $user_data ) {
+	if ( ! $user_data ) {
 		return;
 	}
 
@@ -814,15 +814,15 @@ function edd_validate_user_verification_token( $url = '' ) {
  */
 function edd_process_user_verification_request() {
 
-	if( ! wp_verify_nonce( $_GET['_wpnonce'], 'edd-request-verification' ) ) {
+	if ( ! wp_verify_nonce( $_GET['_wpnonce'], 'edd-request-verification' ) ) {
 		wp_die( __( 'Nonce verification failed.', 'easy-digital-downloads' ), __( 'Error', 'easy-digital-downloads' ), array( 'response' => 403 ) );
 	}
 
-	if( ! is_user_logged_in() ) {
+	if ( ! is_user_logged_in() ) {
 		wp_die( __( 'You must be logged in to verify your account.', 'easy-digital-downloads' ), __( 'Notice', 'easy-digital-downloads' ), array( 'response' => 403 ) );
 	}
 
-	if( ! edd_user_pending_verification( get_current_user_id() ) ) {
+	if ( ! edd_user_pending_verification( get_current_user_id() ) ) {
 		wp_die( __( 'Your account has already been verified.', 'easy-digital-downloads' ), __( 'Notice', 'easy-digital-downloads' ), array( 'response' => 403 ) );
 	}
 
@@ -848,15 +848,15 @@ add_action( 'edd_send_verification_email', 'edd_process_user_verification_reques
  */
 function edd_process_user_account_verification() {
 
-	if( empty( $_GET['token'] ) ) {
+	if ( empty( $_GET['token'] ) ) {
 		return false;
 	}
 
-	if( empty( $_GET['user_id'] ) ) {
+	if ( empty( $_GET['user_id'] ) ) {
 		return false;
 	}
 
-	if( empty( $_GET['ttl'] ) ) {
+	if ( empty( $_GET['ttl'] ) ) {
 		return false;
 	}
 
@@ -864,7 +864,7 @@ function edd_process_user_account_verification() {
 	wp_parse_str( $parts['query'], $query_args );
 	$url = add_query_arg( $query_args, untrailingslashit( edd_get_user_verification_page() ) );
 
-	if( ! edd_validate_user_verification_token( $url ) ) {
+	if ( ! edd_validate_user_verification_token( $url ) ) {
 
 		do_action( 'edd_invalid_user_verification_token' );
 

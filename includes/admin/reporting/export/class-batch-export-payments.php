@@ -61,7 +61,7 @@ class EDD_Batch_Payments_Export extends EDD_Batch_Export {
 			'status'   => __( 'Status', 'easy-digital-downloads' )
 		);
 
-		if( ! edd_use_skus() ){
+		if ( ! edd_use_skus() ){
 			unset( $cols['skus'] );
 		}
 		if ( ! edd_get_option( 'enable_sequential' ) ) {
@@ -91,7 +91,7 @@ class EDD_Batch_Payments_Export extends EDD_Batch_Export {
 			'status'   => $this->status
 		);
 
-		if( ! empty( $this->start ) || ! empty( $this->end ) ) {
+		if ( ! empty( $this->start ) || ! empty( $this->end ) ) {
 
 			$args['date_query'] = array(
 				array(
@@ -107,7 +107,7 @@ class EDD_Batch_Payments_Export extends EDD_Batch_Export {
 
 		$payments = edd_get_payments( $args );
 
-		if( $payments ) {
+		if ( $payments ) {
 
 			foreach ( $payments as $payment ) {
 				$payment_meta   = edd_get_payment_meta( $payment->ID );
@@ -163,7 +163,7 @@ class EDD_Batch_Payments_Export extends EDD_Batch_Export {
 						if ( $key != ( count( $downloads ) -1 ) ) {
 							$products .= ' / ';
 
-							if( edd_use_skus() )
+							if ( edd_use_skus() )
 								$skus .= ' / ';
 						}
 					}
@@ -227,7 +227,7 @@ class EDD_Batch_Payments_Export extends EDD_Batch_Export {
 			'end-date'   => date( 'n/d/Y', strtotime( $this->end ) ),
 		);
 
-		if( 'any' == $status ) {
+		if ( 'any' == $status ) {
 
 			$total = array_sum( (array) edd_count_payments( $args ) );
 
@@ -239,11 +239,11 @@ class EDD_Batch_Payments_Export extends EDD_Batch_Export {
 
 		$percentage = 100;
 
-		if( $total > 0 ) {
+		if ( $total > 0 ) {
 			$percentage = ( ( 30 * $this->step ) / $total ) * 100;
 		}
 
-		if( $percentage > 100 ) {
+		if ( $percentage > 100 ) {
 			$percentage = 100;
 		}
 

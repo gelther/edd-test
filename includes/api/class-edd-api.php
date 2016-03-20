@@ -142,7 +142,7 @@ class EDD_API {
 			'v1' => 'EDD_API_V1',
 		);
 
-		foreach( $this->get_versions() as $version => $class ) {
+		foreach ( $this->get_versions() as $version => $class ) {
 			require_once EDD_PLUGIN_DIR . 'includes/api/class-edd-api-' . $version . '.php';
 		}
 
@@ -244,9 +244,9 @@ class EDD_API {
 
 		$version = get_option( 'edd_default_api_version' );
 
-		if( defined( 'EDD_API_VERSION' ) ) {
+		if ( defined( 'EDD_API_VERSION' ) ) {
 			$version = EDD_API_VERSION;
-		} elseif( ! $version ) {
+		} elseif ( ! $version ) {
 			$version = 'v1';
 		}
 
@@ -267,14 +267,14 @@ class EDD_API {
 
 		$version = $wp_query->query_vars['edd-api'];
 
-		if( strpos( $version, '/' ) ) {
+		if ( strpos( $version, '/' ) ) {
 
 			$version = explode( '/', $version );
 			$version = strtolower( $version[0] );
 
 			$wp_query->query_vars['edd-api'] = str_replace( $version . '/', '', $wp_query->query_vars['edd-api'] );
 
-			if( array_key_exists( $version, $this->versions ) ) {
+			if ( array_key_exists( $version, $this->versions ) ) {
 
 				$this->queried_version = $version;
 
@@ -359,7 +359,7 @@ class EDD_API {
 	public function get_user( $key = '' ) {
 		global $wpdb, $wp_query;
 
-		if( empty( $key ) ) {
+		if ( empty( $key ) ) {
 			$key = urldecode( $wp_query->query_vars['key'] );
 		}
 
@@ -529,11 +529,11 @@ class EDD_API {
 		$this->validate_request();
 
 		// Only proceed if no errors have been noted
-		if( ! $this->is_valid_request ) {
+		if ( ! $this->is_valid_request ) {
 			return;
 		}
 
-		if( ! defined( 'EDD_DOING_API' ) ) {
+		if ( ! defined( 'EDD_DOING_API' ) ) {
 			define( 'EDD_DOING_API', true );
 		}
 
@@ -541,7 +541,7 @@ class EDD_API {
 		$this->routes = new $this->versions[ $this->get_queried_version() ];
 		$this->routes->validate_request();
 
-		switch( $this->endpoint ) :
+		switch ( $this->endpoint ) :
 
 			case 'stats' :
 
@@ -687,7 +687,7 @@ class EDD_API {
 
 		$per_page = isset( $wp_query->query_vars['number'] ) ? $wp_query->query_vars['number'] : 10;
 
-		if( $per_page < 0 && $this->get_query_mode() == 'customers' ) {
+		if ( $per_page < 0 && $this->get_query_mode() == 'customers' ) {
 			$per_page = 99999999; // Customers query doesn't support -1
 		}
 
@@ -887,7 +887,7 @@ class EDD_API {
 
 		$customers = array();
 		$error = array();
-		if( ! user_can( $this->user_id, 'view_shop_sensitive_data' ) && ! $this->override ) {
+		if ( ! user_can( $this->user_id, 'view_shop_sensitive_data' ) && ! $this->override ) {
 			return $customers;
 		}
 
@@ -897,7 +897,7 @@ class EDD_API {
 		$per_page = $this->per_page();
 		$offset   = $per_page * ( $paged - 1 );
 
-		if( is_numeric( $customer ) ) {
+		if ( is_numeric( $customer ) ) {
 			$field = 'id';
 		} else {
 			$field = 'email';
@@ -906,14 +906,14 @@ class EDD_API {
 		$customer_query = EDD()->customers->get_customers( array( 'number' => $per_page, 'offset' => $offset, $field => $customer ) );
 		$customer_count = 0;
 
-		if( $customer_query ) {
+		if ( $customer_query ) {
 
 			foreach ( $customer_query as $customer_obj ) {
 
 				$names      = explode( ' ', $customer_obj->name );
 				$first_name = ! empty( $names[0] ) ? $names[0] : '';
 				$last_name  = '';
-				if( ! empty( $names[1] ) ) {
+				if ( ! empty( $names[1] ) ) {
 					unset( $names[0] );
 					$last_name = implode( ' ', $names );
 				}
@@ -949,7 +949,7 @@ class EDD_API {
 
 			}
 
-		} elseif( $customer ) {
+		} elseif ( $customer ) {
 
 			$error['error'] = sprintf( __( 'Customer %s not found!', 'easy-digital-downloads' ), $customer );
 			return $error;
@@ -1034,7 +1034,7 @@ class EDD_API {
 		$product['info']['category']                     = get_the_terms( $product_info, 'download_category' );
 		$product['info']['tags']                         = get_the_terms( $product_info, 'download_tag' );
 
-		if( user_can( $this->user_id, 'view_shop_reports' ) || $this->override ) {
+		if ( user_can( $this->user_id, 'view_shop_reports' ) || $this->override ) {
 			$product['stats']['total']['sales']              = edd_get_download_sales_stats( $product_info->ID );
 			$product['stats']['total']['earnings']           = edd_get_download_earnings_stats( $product_info->ID );
 			$product['stats']['monthly_average']['sales']    = edd_get_average_monthly_download_sales( $product_info->ID );
@@ -1049,7 +1049,7 @@ class EDD_API {
 			$product['pricing']['amount'] = edd_get_download_price( $product_info->ID );
 		}
 
-		if( user_can( $this->user_id, 'view_shop_sensitive_data' ) || $this->override ) {
+		if ( user_can( $this->user_id, 'view_shop_sensitive_data' ) || $this->override ) {
 			foreach ( edd_get_download_files( $product_info->ID ) as $file ) {
 				$product['files'][] = $file;
 			}
@@ -1094,7 +1094,7 @@ class EDD_API {
 		);
 		$error    = array();
 
-		if( ! user_can( $this->user_id, 'view_shop_reports' ) && ! $this->override ) {
+		if ( ! user_can( $this->user_id, 'view_shop_reports' ) && ! $this->override ) {
 			return $stats;
 		}
 
@@ -1102,11 +1102,11 @@ class EDD_API {
 			if ( $args['product'] == null ) {
 				if ( $args['date'] == null ) {
 					$sales = $this->get_default_sales_stats();
-				} elseif( $args['date'] === 'range' ) {
+				} elseif ( $args['date'] === 'range' ) {
 					// Return sales for a date range
 
 					// Ensure the end date is later than the start date
-					if( $args['enddate'] < $args['startdate'] ) {
+					if ( $args['enddate'] < $args['startdate'] ) {
 						$error['error'] = __( 'The end date must be later than the start date!', 'easy-digital-downloads' );
 					}
 
@@ -1119,15 +1119,15 @@ class EDD_API {
 
 					// Loop through the years
 					$y = $dates['year'];
-					while( $y <= $dates['year_end'] ) :
+					while ( $y <= $dates['year_end'] ) :
 
-						if( $dates['year'] == $dates['year_end'] ) {
+						if ( $dates['year'] == $dates['year_end'] ) {
 							$month_start = $dates['m_start'];
 							$month_end   = $dates['m_end'];
-						} elseif( $y == $dates['year'] && $dates['year_end'] > $dates['year'] ) {
+						} elseif ( $y == $dates['year'] && $dates['year_end'] > $dates['year'] ) {
 							$month_start = $dates['m_start'];
 							$month_end   = 12;
-						} elseif( $y == $dates['year_end'] ) {
+						} elseif ( $y == $dates['year_end'] ) {
 							$month_start = 1;
 							$month_end   = $dates['m_end'];
 						} else {
@@ -1138,13 +1138,13 @@ class EDD_API {
 						$i = $month_start;
 						while ( $i <= $month_end ) :
 
-							if( $i == $dates['m_start'] ) {
+							if ( $i == $dates['m_start'] ) {
 								$d = $dates['day_start'];
 							} else {
 								$d = 1;
 							}
 
-							if( $i == $dates['m_end'] ) {
+							if ( $i == $dates['m_end'] ) {
 								$num_of_days = $dates['day_end'];
 							} else {
 								$num_of_days 	= cal_days_in_month( CAL_GREGORIAN, $i, $y );
@@ -1168,13 +1168,13 @@ class EDD_API {
 
 					$sales['totals'] = $total;
 				} else {
-					if( $args['date'] == 'this_quarter' || $args['date'] == 'last_quarter' ) {
+					if ( $args['date'] == 'this_quarter' || $args['date'] == 'last_quarter' ) {
 						$sales_count = 0;
 
 						// Loop through the months
 						$month = $dates['m_start'];
 
-						while( $month <= $dates['m_end'] ) :
+						while ( $month <= $dates['m_end'] ) :
 							$sales_count += edd_get_sales_by_date( null, $month, $dates['year'] );
 							$month++;
 						endwhile;
@@ -1228,15 +1228,15 @@ class EDD_API {
 					if ( ! isset( $earnings['earnings'] ) ) {
 						$earnings['earnings'] = array();
 					}
-					while( $y <= $dates['year_end'] ) :
+					while ( $y <= $dates['year_end'] ) :
 
-						if( $dates['year'] == $dates['year_end'] ) {
+						if ( $dates['year'] == $dates['year_end'] ) {
 							$month_start = $dates['m_start'];
 							$month_end   = $dates['m_end'];
-						} elseif( $y == $dates['year'] && $dates['year_end'] > $dates['year'] ) {
+						} elseif ( $y == $dates['year'] && $dates['year_end'] > $dates['year'] ) {
 							$month_start = $dates['m_start'];
 							$month_end   = 12;
-						} elseif( $y == $dates['year_end'] ) {
+						} elseif ( $y == $dates['year_end'] ) {
 							$month_start = 1;
 							$month_end   = $dates['m_end'];
 						} else {
@@ -1247,12 +1247,12 @@ class EDD_API {
 						$i = $month_start;
 						while ( $i <= $month_end ) :
 
-							if( $i == $dates['m_start'] )
+							if ( $i == $dates['m_start'] )
 								$d = $dates['day_start'];
 							else
 								$d = 1;
 
-							if( $i == $dates['m_end'] ) {
+							if ( $i == $dates['m_end'] ) {
 								$num_of_days = $dates['day_end'];
 							} else {
 								$num_of_days = cal_days_in_month( CAL_GREGORIAN, $i, $y );
@@ -1346,17 +1346,17 @@ class EDD_API {
 
 		$sales = array();
 
-		if( ! user_can( $this->user_id, 'view_shop_reports' ) && ! $this->override ) {
+		if ( ! user_can( $this->user_id, 'view_shop_reports' ) && ! $this->override ) {
 			return $sales;
 		}
 
-		if( isset( $wp_query->query_vars['id'] ) ) {
+		if ( isset( $wp_query->query_vars['id'] ) ) {
 			$query   = array();
 			$query[] = new EDD_Payment( $wp_query->query_vars['id'] );
-		} elseif( isset( $wp_query->query_vars['purchasekey'] ) ) {
+		} elseif ( isset( $wp_query->query_vars['purchasekey'] ) ) {
 			$query   = array();
 			$query[] = edd_get_payment_by( 'key', $wp_query->query_vars['purchasekey'] );
-		} elseif( isset( $wp_query->query_vars['email'] ) ) {
+		} elseif ( isset( $wp_query->query_vars['email'] ) ) {
 			$query = edd_get_payments( array( 'fields' => 'ids', 'meta_key' => '_edd_payment_user_email', 'meta_value' => $wp_query->query_vars['email'], 'number' => $this->per_page(), 'page' => $this->get_paged(), 'status' => 'publish' ) );
 		} else {
 			$query = edd_get_payments( array( 'fields' => 'ids', 'number' => $this->per_page(), 'page' => $this->get_paged(), 'status' => 'publish' ) );
@@ -1394,7 +1394,7 @@ class EDD_API {
 					$price_id = isset( $item['item_number']['options']['price_id'] ) ? $item['item_number']['options']['price_id'] : null;
 					$quantity = isset( $item['quantity'] ) && $item['quantity'] > 0 ? $item['quantity'] : 1;
 
-					if( ! $price ) {
+					if ( ! $price ) {
 						// This function is only used on payments with near 1.0 cart data structure
 						$price = edd_get_download_final_price( $item_id, $user_info, null );
 					}
@@ -1435,7 +1435,7 @@ class EDD_API {
 
 		$discount_list = array();
 
-		if( ! user_can( $this->user_id, 'manage_shop_discounts' ) && ! $this->override ) {
+		if ( ! user_can( $this->user_id, 'manage_shop_discounts' ) && ! $this->override ) {
 			return $discount_list;
 		}
 		$error = array();
@@ -1574,7 +1574,7 @@ class EDD_API {
 			return $error;
 		}
 
-		foreach( $logs as $log ) {
+		foreach ( $logs as $log ) {
 			$item = array();
 
 			$log_meta   = get_post_custom( $log->ID );
@@ -1799,7 +1799,7 @@ class EDD_API {
 	 */
 	public function process_api_key( $args ) {
 
-		if( ! wp_verify_nonce( $_REQUEST['_wpnonce'], 'edd-api-nonce' ) ) {
+		if ( ! wp_verify_nonce( $_REQUEST['_wpnonce'], 'edd-api-nonce' ) ) {
 
 			wp_die( __( 'Nonce verification failed', 'easy-digital-downloads' ), __( 'Error', 'easy-digital-downloads' ), array( 'response' => 403 ) );
 
@@ -1809,7 +1809,7 @@ class EDD_API {
 			wp_die( sprintf( __( 'User ID Required', 'easy-digital-downloads' ), $process ), __( 'Error', 'easy-digital-downloads' ), array( 'response' => 401 ) );
 		}
 
-		if( is_numeric( $args['user_id'] ) ) {
+		if ( is_numeric( $args['user_id'] ) ) {
 			$user_id    = isset( $args['user_id'] ) ? absint( $args['user_id'] ) : get_current_user_id();
 		} else {
 			$userdata   = get_user_by( 'login', $args['user_id'] );
@@ -1817,15 +1817,15 @@ class EDD_API {
 		}
 		$process    = isset( $args['edd_api_process'] ) ? strtolower( $args['edd_api_process'] ) : false;
 
-		if( $user_id == get_current_user_id() && ! edd_get_option( 'allow_user_api_keys' ) && ! current_user_can( 'manage_shop_settings' ) ) {
+		if ( $user_id == get_current_user_id() && ! edd_get_option( 'allow_user_api_keys' ) && ! current_user_can( 'manage_shop_settings' ) ) {
 			wp_die( sprintf( __( 'You do not have permission to %s API keys for this user', 'easy-digital-downloads' ), $process ), __( 'Error', 'easy-digital-downloads' ), array( 'response' => 403 ) );
-		} elseif( ! current_user_can( 'manage_shop_settings' ) ) {
+		} elseif ( ! current_user_can( 'manage_shop_settings' ) ) {
 			wp_die( sprintf( __( 'You do not have permission to %s API keys for this user', 'easy-digital-downloads' ), $process ), __( 'Error', 'easy-digital-downloads' ), array( 'response' => 403 ) );
 		}
 
-		switch( $process ) {
+		switch ( $process ) {
 			case 'generate':
-				if( $this->generate_api_key( $user_id ) ) {
+				if ( $this->generate_api_key( $user_id ) ) {
 					delete_transient( 'edd-total-api-keys' );
 					wp_redirect( add_query_arg( 'edd-message', 'api-key-generated', 'edit.php?post_type=download&page=edd-tools&tab=api_keys' ) ); exit();
 				} else {
@@ -1858,13 +1858,13 @@ class EDD_API {
 	 */
 	public function generate_api_key( $user_id = 0, $regenerate = false ) {
 
-		if( empty( $user_id ) ) {
+		if ( empty( $user_id ) ) {
 			return false;
 		}
 
 		$user = get_userdata( $user_id );
 
-		if( ! $user ) {
+		if ( ! $user ) {
 			return false;
 		}
 
@@ -1898,13 +1898,13 @@ class EDD_API {
 	 */
 	public function revoke_api_key( $user_id = 0 ) {
 
-		if( empty( $user_id ) ) {
+		if ( empty( $user_id ) ) {
 			return false;
 		}
 
 		$user = get_userdata( $user_id );
 
-		if( ! $user ) {
+		if ( ! $user ) {
 			return false;
 		}
 
@@ -2055,7 +2055,7 @@ class EDD_API {
 
 		$return = $check;
 
-		switch( $meta_key ) {
+		switch ( $meta_key ) {
 			case 'edd_user_public_key':
 				$return = EDD()->api->get_user_public_key( $object_id );
 				break;

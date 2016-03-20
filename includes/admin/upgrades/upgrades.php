@@ -43,12 +43,12 @@ function edd_upgrades_screen() {
 	<div class="wrap">
 		<h2><?php _e( 'Easy Digital Downloads - Upgrades', 'easy-digital-downloads' ); ?></h2>
 
-		<?php if( ! empty( $action ) ) : ?>
+		<?php if ( ! empty( $action ) ) : ?>
 
 			<div id="edd-upgrade-status">
 				<p><?php _e( 'The upgrade process has started, please be patient. This could take several minutes. You will be automatically redirected when the upgrade is finished.', 'easy-digital-downloads' ); ?></p>
 
-				<?php if( ! empty( $total ) ) : ?>
+				<?php if ( ! empty( $total ) ) : ?>
 					<p><strong><?php printf( __( 'Step %d of approximately %d running', 'easy-digital-downloads' ), $step, $steps ); ?></strong></p>
 				<?php endif; ?>
 			</div>
@@ -69,7 +69,7 @@ function edd_upgrades_screen() {
 					// Trigger upgrades on page load
 					var data = { action: 'edd_trigger_upgrades' };
 					jQuery.post( ajaxurl, data, function (response) {
-						if( response == 'complete' ) {
+						if ( response == 'complete' ) {
 							jQuery('#edd-upgrade-loader').hide();
 							document.location.href = 'index.php?page=edd-about'; // Redirect to the welcome page
 						}
