@@ -102,8 +102,7 @@ class Client implements ClientInterface
 
 	private function checkIfFileExists($config)
 	{
-	if ( file_exists($config) )
-	{
+	if ( file_exists($config) ) {
 		$jsonString  = file_get_contents($config);
 		$configArray = json_decode($jsonString, true);
 
@@ -254,8 +253,7 @@ class Client implements ClientInterface
 
 	private function trimArray($array)
 	{
-	foreach ( $array as $key => $value )
-	{
+	foreach ( $array as $key => $value ) {
 		$array[$key] = trim($value);
 	}
 	return $array;
@@ -330,8 +328,7 @@ class Client implements ClientInterface
 
 		} else {
 			// For variables that are boolean values, strtolower them
-			if ( $this->checkIfBool($value) )
-			{
+			if ( $this->checkIfBool($value) ) {
 			$value = strtolower($value);
 			}
 
@@ -415,21 +412,18 @@ class Client implements ClientInterface
 			'currency_code' => 'CreditAmount.CurrencyCode'
 		);
 
-	foreach ( $providerCreditInfo as $key => $value )
-	 {
+	foreach ( $providerCreditInfo as $key => $value ) {
 		$value = array_change_key_case($value, CASE_LOWER);
 		$providerIndex = $providerIndex + 1;
 
-		foreach ( $value as $param => $val )
-		{
+		foreach ( $value as $param => $val ) {
 		if ( array_key_exists($param, $fieldMappings) && trim($val)!='' ) {
 			$parameters[$providerString . $providerIndex . '.' . $fieldMappings[$param]] = $val;
 		}
 		}
 
 		// If currency code is not entered take it from the config array
-		if ( empty($parameters[$providerString . $providerIndex . '.' . $fieldMappings['currency_code']]) )
-		{
+		if ( empty($parameters[$providerString . $providerIndex . '.' . $fieldMappings['currency_code']]) ) {
 		$parameters[$providerString . $providerIndex . '.' . $fieldMappings['currency_code']] = strtoupper($this->config['currency_code']);
 		}
 	}
@@ -454,21 +448,18 @@ class Client implements ClientInterface
 			'currency_code' 		=> 'CreditReversalAmount.CurrencyCode'
 		);
 
-	foreach ( $providerCreditInfo as $key => $value )
-	{
+	foreach ( $providerCreditInfo as $key => $value ) {
 		$value = array_change_key_case($value, CASE_LOWER);
 		$providerIndex = $providerIndex + 1;
 
-		foreach ( $value as $param => $val )
-		{
+		foreach ( $value as $param => $val ) {
 		if ( array_key_exists($param, $fieldMappings) && trim($val)!='' ) {
 			$parameters[$providerString . $providerIndex . '.' . $fieldMappings[$param]] = $val;
 		}
 		}
 
 		// If currency code is not entered take it from the config array
-		if ( empty($parameters[$providerString . $providerIndex . '.' . $fieldMappings['currency_code']]) )
-		{
+		if ( empty($parameters[$providerString . $providerIndex . '.' . $fieldMappings['currency_code']]) ) {
 		$parameters[$providerString . $providerIndex . '.' . $fieldMappings['currency_code']] = strtoupper($this->config['currency_code']);
 		}
 	}
@@ -1131,8 +1122,7 @@ class Client implements ClientInterface
 
 		$chargeType = '';
 
-	if ( ! empty($requestParameters['amazon_order_reference_id']) )
-	{
+	if ( ! empty($requestParameters['amazon_order_reference_id']) ) {
 		$chargeType = 'OrderReference';
 
 	} elseif ( ! empty($requestParameters['amazon_billing_agreement_id']) ) {
