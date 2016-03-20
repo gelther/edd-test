@@ -258,7 +258,7 @@ class IpnHandler implements IpnHandlerInterface
     {
         $certKey = openssl_get_publickey($this->certificate);
 
-        if ( $certKey === False ) {
+        if ( $certKey === false ) {
             throw new \Exception('Unable to extract public key from cert');
         }
 
