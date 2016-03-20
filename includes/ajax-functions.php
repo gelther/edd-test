@@ -501,7 +501,7 @@ function edd_ajax_download_search() {
 	}
 
 	$excludes = array_unique( array_map( 'absint', $excludes ) );
-	$exclude  = implode( ",", $excludes );
+	$exclude  = implode( ',', $excludes );
 
 	$results = array();
 
@@ -513,7 +513,7 @@ function edd_ajax_download_search() {
 
 	// If we have items to exclude, exclude them
 	if( ! empty( $exclude ) ) {
-		$where .= "AND `ID` NOT IN (" . $exclude . ") ";
+		$where .= 'AND `ID` NOT IN (' . $exclude . ') ';
 	}
 
 	// If the user can't edit products, limit to just published items
@@ -522,7 +522,7 @@ function edd_ajax_download_search() {
 	}
 
 	// Limit the result sets
-	$limit = "LIMIT 50";
+	$limit = 'LIMIT 50';
 
 	$sql = $select . $where . $limit;
 
@@ -577,7 +577,7 @@ function edd_ajax_customer_search() {
 		} else {
 			$where = "WHERE `name` LIKE '%$search%' OR `email` LIKE '%$search%' ";
 		}
-		$limit = "LIMIT 50";
+		$limit = 'LIMIT 50';
 
 		$customers = $wpdb->get_results( $select . $where . $limit );
 	}
