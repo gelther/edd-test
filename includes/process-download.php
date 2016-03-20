@@ -313,7 +313,7 @@ function edd_deliver_download( $file = '', $redirect = false ) {
  * @return   string
  */
 function edd_get_file_ctype( $extension ) {
-	switch ( $extension ):
+	switch ( $extension ) :
 		case 'ac'       : $ctype = 'application/pkix-attr-cert'; break;
 		case 'adp'      : $ctype = 'audio/adpcm'; break;
 		case 'ai'       : $ctype = 'application/postscript'; break;
