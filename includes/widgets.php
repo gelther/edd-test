@@ -252,7 +252,7 @@ class EDD_Product_Details_Widget extends WP_Widget {
 		echo $args['before_widget'];
 
 		// Display the widget title.
-		if( $title ) {
+		if ( $title ) {
 			echo $args['before_title'] . $title . $args['after_title'];
 		}
 
@@ -278,10 +278,10 @@ class EDD_Product_Details_Widget extends WP_Widget {
 
 		$text = '';
 
-		if( $category_list || $tag_list ) {
+		if ( $category_list || $tag_list ) {
 			$text .= '<p class="edd-meta">';
 
-			if( $category_list ) {
+			if ( $category_list ) {
 
 				$text .= '<span class="categories">%1$s: %2$s</span><br/>';
 			}
