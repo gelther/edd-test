@@ -25,7 +25,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  */
 function edd_generate_pdf( $data ) {
 
-	if( ! current_user_can( 'view_shop_reports' ) ) {
+	if ( ! current_user_can( 'view_shop_reports' ) ) {
 		wp_die( __( 'You do not have permission to generate PDF sales reports', 'easy-digital-downloads' ), __( 'Error', 'easy-digital-downloads' ), array( 'response' => 403 ) );
 	}
 
@@ -114,7 +114,7 @@ function edd_generate_pdf( $data ) {
 			$sales = edd_get_download_sales_stats( $download->ID );
 			$earnings = html_entity_decode ( edd_currency_filter( edd_get_download_earnings_stats( $download->ID ) ) );
 
-			if( function_exists( 'iconv' ) ) {
+			if ( function_exists( 'iconv' ) ) {
 				// Ensure characters like euro; are properly converted. See GithuB issue #472 and #1570
 				$price    = iconv('UTF-8', 'windows-1252', utf8_encode( $price ) );
 				$earnings = iconv('UTF-8', 'windows-1252', utf8_encode( $earnings ) );
