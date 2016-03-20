@@ -35,7 +35,7 @@ if ( is_user_logged_in() ):
 						<?php if ( $post->post_status != 'publish' ) : ?>
 						<span class="edd_purchase_status <?php echo $post->post_status; ?>"><?php echo edd_get_payment_status( $post, true ); ?></span>
 						<a href="<?php echo esc_url( add_query_arg( 'payment_key', edd_get_payment_key( $post->ID ), edd_get_success_page_uri() ) ); ?>">&raquo;</a>
-						<?php else: ?>
+						<?php else : ?>
 						<a href="<?php echo esc_url( add_query_arg( 'payment_key', edd_get_payment_key( $post->ID ), edd_get_success_page_uri() ) ); ?>"><?php _e( 'View Details and Downloads', 'easy-digital-downloads' ); ?></a>
 						<?php endif; ?>
 					</td>
