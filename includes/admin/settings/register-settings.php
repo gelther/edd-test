@@ -43,7 +43,7 @@ function edd_get_option( $key = '', $default = false ) {
 function edd_update_option( $key = '', $value = false ) {
 
 	// If no key, exit
-	if ( empty( $key ) ){
+	if ( empty( $key ) ) {
 		return false;
 	}
 
@@ -63,7 +63,7 @@ function edd_update_option( $key = '', $value = false ) {
 	$did_update = update_option( 'edd_settings', $options );
 
 	// If it updated, let's update the global variable
-	if ( $did_update ){
+	if ( $did_update ) {
 		global $edd_options;
 		$edd_options[ $key ] = $value;
 
@@ -84,7 +84,7 @@ function edd_update_option( $key = '', $value = false ) {
 function edd_delete_option( $key = '' ) {
 
 	// If no key, exit
-	if ( empty( $key ) ){
+	if ( empty( $key ) ) {
 		return false;
 	}
 
@@ -101,7 +101,7 @@ function edd_delete_option( $key = '' ) {
 	$did_update = update_option( 'edd_settings', $options );
 
 	// If it updated, let's update the global variable
-	if ( $did_update ){
+	if ( $did_update ) {
 		global $edd_options;
 		$edd_options = $options;
 	}
@@ -908,7 +908,7 @@ function edd_settings_sanitize( $input = array() ) {
 	$input = $input ? $input : array();
 
 	$input = apply_filters( 'edd_settings_' . $tab . '-' . $section . '_sanitize', $input );
-	if ( 'main' === $section )  {
+	if ( 'main' === $section ) {
 		// Check for extensions that aren't using new sections
 		$input = apply_filters( 'edd_settings_' . $tab . '_sanitize', $input );
 	}
@@ -1227,7 +1227,7 @@ function edd_multicheck_callback( $args ) {
 	global $edd_options;
 
 	if ( ! empty( $args['options'] ) ) {
-		foreach ( $args['options'] as $key => $option ):
+		foreach ( $args['options'] as $key => $option ) :
 			if ( isset( $edd_options[$args['id']][$key] ) ) { $enabled = $option; } else { $enabled = NULL; }
 			echo '<input name="edd_settings[' . edd_sanitize_key( $args['id'] ) . '][' . edd_sanitize_key( $key ) . ']" id="edd_settings[' . edd_sanitize_key( $args['id'] ) . '][' . edd_sanitize_key( $key ) . ']" type="checkbox" value="' . esc_attr( $option ) . '" ' . checked($option, $enabled, false) . '/>&nbsp;';
 			echo '<label for="edd_settings[' . edd_sanitize_key( $args['id'] ) . '][' . edd_sanitize_key( $key ) . ']">' . wp_kses_post( $option ) . '</label><br/>';
