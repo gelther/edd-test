@@ -7,7 +7,7 @@ endif;
 /**
  * This template is used to display the purchase history of the current user.
  */
-if ( is_user_logged_in() ):
+if ( is_user_logged_in() ) :
 	$purchases = edd_get_users_purchases( get_current_user_id(), 20, true, 'any' );
 	if ( $purchases ) :
 		do_action( 'edd_before_purchase_history' ); ?>
