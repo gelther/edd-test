@@ -241,8 +241,8 @@ class EDD_Graph {
 				$("#edd-graph-<?php echo $this->id; ?>").bind("plothover", function (event, pos, item) {
 					$("#x").text(pos.x.toFixed(2));
 					$("#y").text(pos.y.toFixed(2));
-					if (item) {
-						if (previousPoint != item.dataIndex) {
+					if ( item ) {
+						if ( previousPoint != item.dataIndex ) {
 							previousPoint = item.dataIndex;
 							$("#edd-flot-tooltip").remove();
 							var x = item.datapoint[0].toFixed(2),
