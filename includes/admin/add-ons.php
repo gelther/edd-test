@@ -35,7 +35,7 @@ function edd_add_ons_page() {
 		<p><?php _e( 'These extensions <em><strong>add functionality</strong></em> to your Easy Digital Downloads powered store.', 'easy-digital-downloads' ); ?></p>
 		<h2 class="nav-tab-wrapper">
 			<?php
-			foreach( $add_ons_tabs as $tab_id => $tab_name ) {
+			foreach ( $add_ons_tabs as $tab_id => $tab_name ) {
 
 				$tab_url = add_query_arg( array(
 					'settings-updated' => false,
