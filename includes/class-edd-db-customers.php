@@ -92,23 +92,23 @@ class EDD_DB_Customers extends EDD_DB  {
 
 		$args = wp_parse_args( $data, $defaults );
 
-		if( empty( $args['email'] ) ) {
+		if ( empty( $args['email'] ) ) {
 			return false;
 		}
 
-		if( ! empty( $args['payment_ids'] ) && is_array( $args['payment_ids'] ) ) {
+		if ( ! empty( $args['payment_ids'] ) && is_array( $args['payment_ids'] ) ) {
 			$args['payment_ids'] = implode( ',', array_unique( array_values( $args['payment_ids'] ) ) );
 		}
 
 		$customer = $this->get_customer_by( 'email', $args['email'] );
 
-		if( $customer ) {
+		if ( $customer ) {
 			// update an existing customer
 
 			// Update the payment IDs attached to the customer
-			if( ! empty( $args['payment_ids'] ) ) {
+			if ( ! empty( $args['payment_ids'] ) ) {
 
-				if( empty( $customer->payment_ids ) ) {
+				if ( empty( $customer->payment_ids ) ) {
 
 					$customer->payment_ids = $args['payment_ids'];
 
@@ -193,7 +193,7 @@ class EDD_DB_Customers extends EDD_DB  {
 
 		$customer = new EDD_Customer( $customer_id );
 
-		if( empty( $customer->id ) ) {
+		if ( empty( $customer->id ) ) {
 			return false;
 		}
 
@@ -212,7 +212,7 @@ class EDD_DB_Customers extends EDD_DB  {
 
 		$customer = new EDD_Customer( $customer_id );
 
-		if( ! $customer ) {
+		if ( ! $customer ) {
 			return false;
 		}
 
@@ -231,7 +231,7 @@ class EDD_DB_Customers extends EDD_DB  {
 
 		$customer = new EDD_Customer( $customer_id );
 
-		if( empty( $customer->id ) ) {
+		if ( empty( $customer->id ) ) {
 			return false;
 		}
 
@@ -252,7 +252,7 @@ class EDD_DB_Customers extends EDD_DB  {
 
 		$customer = new EDD_Customer( $customer_id );
 
-		if( ! $customer ) {
+		if ( ! $customer ) {
 			return false;
 		}
 
@@ -273,23 +273,23 @@ class EDD_DB_Customers extends EDD_DB  {
 
 		$customer = new EDD_Customer( $user_id, true );
 
-		if( ! $customer ) {
+		if ( ! $customer ) {
 			return false;
 		}
 
 		$user = get_userdata( $user_id );
 
-		if( ! empty( $user ) && $user->user_email !== $customer->email ) {
+		if ( ! empty( $user ) && $user->user_email !== $customer->email ) {
 
-			if( ! $this->get_customer_by( 'email', $user->user_email ) ) {
+			if ( ! $this->get_customer_by( 'email', $user->user_email ) ) {
 
 				$success = $this->update( $customer->id, array( 'email' => $user->user_email ) );
 
-				if( $success ) {
+				if ( $success ) {
 					// Update some payment meta if we need to
 					$payments_array = explode( ',', $customer->payment_ids );
 
-					if( ! empty( $payments_array ) ) {
+					if ( ! empty( $payments_array ) ) {
 
 						foreach ( $payments_array as $payment_id ) {
 
@@ -393,16 +393,16 @@ class EDD_DB_Customers extends EDD_DB  {
 
 		$args  = wp_parse_args( $args, $defaults );
 
-		if( $args['number'] < 1 ) {
+		if ( $args['number'] < 1 ) {
 			$args['number'] = 999999999999;
 		}
 
 		$where = ' WHERE 1=1 ';
 
 		// specific customers
-		if( ! empty( $args['id'] ) ) {
+		if ( ! empty( $args['id'] ) ) {
 
-			if( is_array( $args['id'] ) ) {
+			if ( is_array( $args['id'] ) ) {
 				$ids = implode( ',', array_map('intval', $args['id'] ) );
 			} else {
 				$ids = intval( $args['id'] );
@@ -413,9 +413,9 @@ class EDD_DB_Customers extends EDD_DB  {
 		}
 
 		// customers for specific user accounts
-		if( ! empty( $args['user_id'] ) ) {
+		if ( ! empty( $args['user_id'] ) ) {
 
-			if( is_array( $args['user_id'] ) ) {
+			if ( is_array( $args['user_id'] ) ) {
 				$user_ids = implode( ',', array_map('intval', $args['user_id'] ) );
 			} else {
 				$user_ids = intval( $args['user_id'] );
@@ -426,9 +426,9 @@ class EDD_DB_Customers extends EDD_DB  {
 		}
 
 		//specific customers by email
-		if( ! empty( $args['email'] ) ) {
+		if ( ! empty( $args['email'] ) ) {
 
-			if( is_array( $args['email'] ) ) {
+			if ( is_array( $args['email'] ) ) {
 
 				$emails_count       = count( $args['email'] );
 				$emails_placeholder = array_fill( 0, $emails_count, '%s' );
@@ -441,16 +441,16 @@ class EDD_DB_Customers extends EDD_DB  {
 		}
 
 		// specific customers by name
-		if( ! empty( $args['name'] ) ) {
+		if ( ! empty( $args['name'] ) ) {
 			$where .= $wpdb->prepare( " AND `name` LIKE '%%%%" . '%s' . "%%%%' ", $args['name'] );
 		}
 
 		// Customers created for a specific date or in a date range
-		if( ! empty( $args['date'] ) ) {
+		if ( ! empty( $args['date'] ) ) {
 
-			if( is_array( $args['date'] ) ) {
+			if ( is_array( $args['date'] ) ) {
 
-				if( ! empty( $args['date']['start'] ) ) {
+				if ( ! empty( $args['date']['start'] ) ) {
 
 					$start = date( 'Y-m-d H:i:s', strtotime( $args['date']['start'] ) );
 
@@ -458,7 +458,7 @@ class EDD_DB_Customers extends EDD_DB  {
 
 				}
 
-				if( ! empty( $args['date']['end'] ) ) {
+				if ( ! empty( $args['date']['end'] ) ) {
 
 					$end = date( 'Y-m-d H:i:s', strtotime( $args['date']['end'] ) );
 
@@ -479,7 +479,7 @@ class EDD_DB_Customers extends EDD_DB  {
 
 		$args['orderby'] = ! array_key_exists( $args['orderby'], $this->get_columns() ) ? 'id' : $args['orderby'];
 
-		if( 'purchase_value' == $args['orderby'] ) {
+		if ( 'purchase_value' == $args['orderby'] ) {
 			$args['orderby'] = 'purchase_value+0';
 		}
 
@@ -490,7 +490,7 @@ class EDD_DB_Customers extends EDD_DB  {
 		$args['orderby'] = esc_sql( $args['orderby'] );
 		$args['order']   = esc_sql( $args['order'] );
 
-		if( $customers === false ) {
+		if ( $customers === false ) {
 			$customers = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM  $this->table_name $where ORDER BY {$args['orderby']} {$args['order']} LIMIT %d,%d;", absint( $args['offset'] ), absint( $args['number'] ) ) );
 			wp_cache_set( $cache_key, $customers, 'customers', 3600 );
 		}
@@ -512,9 +512,9 @@ class EDD_DB_Customers extends EDD_DB  {
 
 		$where = ' WHERE 1=1 ';
 
-		if( ! empty( $args['date'] ) ) {
+		if ( ! empty( $args['date'] ) ) {
 
-			if( is_array( $args['date'] ) ) {
+			if ( is_array( $args['date'] ) ) {
 
 				$start = date( 'Y-m-d H:i:s', strtotime( $args['date']['start'] ) );
 				$end   = date( 'Y-m-d H:i:s', strtotime( $args['date']['end'] ) );
@@ -537,7 +537,7 @@ class EDD_DB_Customers extends EDD_DB  {
 
 		$count = wp_cache_get( $cache_key, 'customers' );
 
-		if( $count === false ) {
+		if ( $count === false ) {
 			$count = $wpdb->get_var( "SELECT COUNT($this->primary_key) FROM " . $this->table_name . "{$where};" );
 			wp_cache_set( $cache_key, $count, 'customers', 3600 );
 		}
