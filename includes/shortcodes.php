@@ -581,7 +581,7 @@ function edd_downloads_query( $atts, $content = null ) {
 		</div>
 		<?php
 		$display = ob_get_clean();
-	else:
+	else :
 		$display = sprintf( _x( 'No %s found', 'download post type name', 'easy-digital-downloads' ), edd_get_label_plural() );
 	endif;
 

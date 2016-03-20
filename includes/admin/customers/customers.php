@@ -364,7 +364,7 @@ function edd_customers_view( $customer ) {
 							</td>
 						</tr>
 					<?php endforeach; ?>
-				<?php else: ?>
+				<?php else : ?>
 					<tr><td colspan="5"><?php _e( 'No Payments Found', 'easy-digital-downloads' ); ?></td></tr>
 				<?php endif; ?>
 			</tbody>
@@ -393,7 +393,7 @@ function edd_customers_view( $customer ) {
 							</td>
 						</tr>
 					<?php endforeach; ?>
-				<?php else: ?>
+				<?php else : ?>
 					<tr><td colspan="2"><?php printf( __( 'No %s Found', 'easy-digital-downloads' ), edd_get_label_plural() ); ?></td></tr>
 				<?php endif; ?>
 			</tbody>
@@ -466,7 +466,7 @@ function edd_customer_notes_view( $customer ) {
 					</span>
 				</div>
 			<?php endforeach; ?>
-		<?php else: ?>
+		<?php else : ?>
 			<div class="edd-no-customer-notes">
 				<?php _e( 'No Customer Notes', 'easy-digital-downloads' ); ?>
 			</div>

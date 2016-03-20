@@ -359,7 +359,7 @@ class EDD_Product_Details_Widget extends WP_Widget {
 				<option <?php selected( absint( $instance['download_id'] ), $download->ID ); ?> value="<?php echo esc_attr( $download->ID ); ?>"><?php echo $download->post_title; ?></option>
 			<?php } ?>
 			</select>
-		<?php else: ?>
+		<?php else : ?>
 			<br />
 			<input type="text" value="<?php echo esc_attr( $instance['download_id'] ); ?>" placeholder="<?php printf( __( '%s ID', 'easy-digital-downloads' ), edd_get_label_singular() ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'download_id' ) ); ?>" id="<?php echo esc_attr( $this->get_field_id( 'download_id' ) ); ?>">
 		<?php endif; ?>

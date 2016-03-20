@@ -108,7 +108,7 @@ if ( is_user_logged_in() ):
 	<?php do_action( 'edd_profile_editor_after' ); ?>
 
 	<?php
-else:
+else :
 	echo '<p>' . __( 'You need to login to edit your profile.', 'easy-digital-downloads' ) . '</p>';
 	echo edd_login_form();
 endif;
