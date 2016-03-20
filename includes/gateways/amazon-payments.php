@@ -392,7 +392,7 @@ final class EDD_Amazon_Payments {
 				$base_url = 'https://static-eu.payments-amazon.com/OffAmazonPayments/uk/' . $sandbox . 'lpa/';
 			break;
 			case 'DE':
-				$base_url = 'https://static-eu.payments-amazon.com/OffAmazonPayments/de/' . $sandbox. 'lpa/';
+				$base_url = 'https://static-eu.payments-amazon.com/OffAmazonPayments/de/' . $sandbox . 'lpa/';
 			break;
 			default:
 				$base_url = 'https://static-na.payments-amazon.com/OffAmazonPayments/us/' . $sandbox;
