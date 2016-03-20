@@ -62,9 +62,9 @@ class EDD_Session {
 
 		$this->use_php_sessions = $this->use_php_sessions();
 
-		if( $this->use_php_sessions ) {
+		if ( $this->use_php_sessions ) {
 
-			if( is_multisite() ) {
+			if ( is_multisite() ) {
 
 				$this->prefix = '_' . get_current_blog_id();
 
@@ -112,7 +112,7 @@ class EDD_Session {
 	 */
 	public function init() {
 
-		if( $this->use_php_sessions ) {
+		if ( $this->use_php_sessions ) {
 			$this->session = isset( $_SESSION['edd' . $this->prefix ] ) && is_array( $_SESSION['edd' . $this->prefix ] ) ? $_SESSION['edd' . $this->prefix ] : array();
 		} else {
 			$this->session = WP_Session::get_instance();
@@ -123,7 +123,7 @@ class EDD_Session {
 		$purchase   = $this->get( 'edd_purchase' );
 
 		if ( $use_cookie ) {
-			if( ! empty( $cart ) || ! empty( $purchase ) ) {
+			if ( ! empty( $cart ) || ! empty( $purchase ) ) {
 				$this->set_cart_cookie();
 			} else {
 				$this->set_cart_cookie( false );
@@ -178,7 +178,7 @@ class EDD_Session {
 			$this->session[ $key ] = $value;
 		}
 
-		if( $this->use_php_sessions ) {
+		if ( $this->use_php_sessions ) {
 
 			$_SESSION['edd' . $this->prefix ] = $this->session;
 		}
@@ -197,8 +197,8 @@ class EDD_Session {
 	 * @return void
 	 */
 	public function set_cart_cookie( $set = true ) {
-		if( ! headers_sent() ) {
-			if( $set ) {
+		if ( ! headers_sent() ) {
+			if ( $set ) {
 				@setcookie( 'edd_items_in_cart', '1', time() + 30 * 60, COOKIEPATH, COOKIE_DOMAIN, false );
 			} else {
 				if ( isset($_COOKIE['edd_items_in_cart']) ) {
@@ -254,11 +254,11 @@ class EDD_Session {
 		if ( ! $edd_use_php_sessions ) {
 
 			// Attempt to detect if the server supports PHP sessions
-			if( function_exists( 'session_start' ) && ! ini_get( 'safe_mode' ) ) {
+			if ( function_exists( 'session_start' ) && ! ini_get( 'safe_mode' ) ) {
 
 				$this->set( 'edd_use_php_sessions', 1 );
 
-				if( $this->get( 'edd_use_php_sessions' ) ) {
+				if ( $this->get( 'edd_use_php_sessions' ) ) {
 
 					$ret = true;
 
@@ -303,7 +303,7 @@ class EDD_Session {
 	 * Starts a new session if one hasn't started yet.
 	 */
 	public function maybe_start_session() {
-		if( ! session_id() && ! headers_sent() ) {
+		if ( ! session_id() && ! headers_sent() ) {
 			session_start();
 		}
 	}
