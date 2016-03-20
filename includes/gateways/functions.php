@@ -58,7 +58,7 @@ function edd_get_enabled_payment_gateways( $sort = false ) {
 		// Reorder our gateways so the default is first
 		$default_gateway_id = edd_get_default_gateway();
 
-		if( edd_is_gateway_active( $default_gateway_id ) ) {
+		if ( edd_is_gateway_active( $default_gateway_id ) ) {
 
 			$default_gateway    = array( $default_gateway_id => $gateway_list[ $default_gateway_id ] );
 			unset( $gateway_list[ $default_gateway_id ] );
@@ -94,7 +94,7 @@ function edd_is_gateway_active( $gateway ) {
 function edd_get_default_gateway() {
 	$default = edd_get_option( 'default_gateway', 'paypal' );
 
-	if( ! edd_is_gateway_active( $default ) ) {
+	if ( ! edd_is_gateway_active( $default ) ) {
 		$gateways = edd_get_enabled_payment_gateways();
 		$gateways = array_keys( $gateways );
 		$default  = reset( $gateways );
@@ -115,8 +115,8 @@ function edd_get_gateway_admin_label( $gateway ) {
 	$label    = isset( $gateways[ $gateway ] ) ? $gateways[ $gateway ]['admin_label'] : $gateway;
 	$payment  = isset( $_GET['id'] ) ? absint( $_GET['id'] ) : false;
 
-	if( $gateway == 'manual' && $payment ) {
-		if( edd_get_payment_amount( $payment ) == 0 ) {
+	if ( $gateway == 'manual' && $payment ) {
+		if ( edd_get_payment_amount( $payment ) == 0 ) {
 			$label = __( 'Free Purchase', 'easy-digital-downloads' );
 		}
 	}
@@ -135,7 +135,7 @@ function edd_get_gateway_checkout_label( $gateway ) {
 	$gateways = edd_get_payment_gateways();
 	$label    = isset( $gateways[ $gateway ] ) ? $gateways[ $gateway ]['checkout_label'] : $gateway;
 
-	if( $gateway == 'manual' ) {
+	if ( $gateway == 'manual' ) {
 		$label = __( 'Free Purchase', 'easy-digital-downloads' );
 	}
 
@@ -178,9 +178,9 @@ function edd_shop_supports_buy_now() {
 	$gateways = edd_get_enabled_payment_gateways();
 	$ret      = false;
 
-	if( ! edd_use_taxes()  && $gateways ) {
-		foreach( $gateways as $gateway_id => $gateway ) {
-			if( edd_gateway_supports_buy_now( $gateway_id ) ) {
+	if ( ! edd_use_taxes()  && $gateways ) {
+		foreach ( $gateways as $gateway_id => $gateway ) {
+			if ( edd_gateway_supports_buy_now( $gateway_id ) ) {
 				$ret = true;
 				break;
 			}
@@ -204,11 +204,11 @@ function edd_build_straight_to_gateway_data( $download_id = 0, $options = array(
 
 	$price_options = array();
 
-	if( empty( $options ) || ! edd_has_variable_prices( $download_id ) ) {
+	if ( empty( $options ) || ! edd_has_variable_prices( $download_id ) ) {
 		$price = edd_get_download_price( $download_id );
 	} else {
 
-		if( is_array( $options['price_id'] ) ) {
+		if ( is_array( $options['price_id'] ) ) {
 			$price_id = $options['price_id'][0];
 		} else {
 			$price_id = $options['price_id'];
@@ -217,7 +217,7 @@ function edd_build_straight_to_gateway_data( $download_id = 0, $options = array(
 		$prices = edd_get_variable_prices( $download_id );
 
 		// Make sure a valid price ID was supplied
-		if( ! isset( $prices[ $price_id ] ) ) {
+		if ( ! isset( $prices[ $price_id ] ) ) {
 			wp_die( __( 'The requested price ID does not exist.', 'easy-digital-downloads' ), __( 'Error', 'easy-digital-downloads' ), array( 'response' => 404 ) );
 		}
 
@@ -254,7 +254,7 @@ function edd_build_straight_to_gateway_data( $download_id = 0, $options = array(
 		)
 	);
 
-	if( is_user_logged_in() ) {
+	if ( is_user_logged_in() ) {
 		$current_user = wp_get_current_user();
 	}
 
@@ -353,7 +353,7 @@ function edd_get_chosen_gateway() {
 
 	if ( ! empty ( $chosen ) ) {
 		$enabled_gateway = urldecode( $chosen );
-	} else if( count( $gateways ) >= 1 && ! $chosen ) {
+	} else if ( count( $gateways ) >= 1 && ! $chosen ) {
 		foreach ( $gateways as $gateway_id => $gateway ):
 			$enabled_gateway = $gateway_id;
 			if ( edd_get_cart_subtotal() <= 0 ) {
@@ -408,7 +408,7 @@ function edd_count_sales_by_gateway( $gateway_id = 'paypal', $status = 'publish'
 
 	$payments = new WP_Query( $args );
 
-	if( $payments )
+	if ( $payments )
 		$ret = $payments->post_count;
 	return $ret;
 }
