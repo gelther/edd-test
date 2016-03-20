@@ -536,7 +536,7 @@ function edd_email_tag_download_list_plain( $payment_id ) {
 			if ( ! empty( $files ) ) {
 
 				foreach ( $files as $filekey => $file ) {
-					if( $show_links ) {
+					if ( $show_links ) {
 						$download_list .= "\n";
 						$file_url = edd_get_download_file_url( $payment_data['key'], $email, $filekey, $item['id'], $price_id );
 						$download_list .= edd_get_file_name( $file ) . ': ' . $file_url . "\n";
@@ -557,7 +557,7 @@ function edd_email_tag_download_list_plain( $payment_id ) {
 					$files = edd_get_download_files( $bundle_item );
 
 					foreach ( $files as $filekey => $file ) {
-						if( $show_links ) {
+						if ( $show_links ) {
 							$file_url = edd_get_download_file_url( $payment_data['key'], $email, $filekey, $bundle_item, $price_id );
 							$download_list .= $file['name'] . ': ' . $file_url . "\n";
 						} else {
@@ -638,7 +638,7 @@ function edd_email_tag_first_name( $payment_id ) {
 	$payment   = new EDD_Payment( $payment_id );
 	$user_info = $payment->user_info;
 
-	if( empty( $user_info) ) {
+	if ( empty( $user_info) ) {
 		return '';
 	}
 
@@ -659,7 +659,7 @@ function edd_email_tag_fullname( $payment_id ) {
 	$payment   = new EDD_Payment( $payment_id );
 	$user_info = $payment->user_info;
 
-	if( empty( $user_info ) ) {
+	if ( empty( $user_info ) ) {
 		return '';
 	}
 
@@ -679,7 +679,7 @@ function edd_email_tag_username( $payment_id ) {
 	$payment   = new EDD_Payment( $payment_id );
 	$user_info = $payment->user_info;
 
-	if( empty( $user_info ) ) {
+	if ( empty( $user_info ) ) {
 		return '';
 	}
 
@@ -715,7 +715,7 @@ function edd_email_tag_billing_address( $payment_id ) {
 	$user_address = ! empty( $user_info['address'] ) ? $user_info['address'] : array( 'line1' => '', 'line2' => '', 'city' => '', 'country' => '', 'state' => '', 'zip' => '' );
 
 	$return = $user_address['line1'] . "\n";
-	if( ! empty( $user_address['line2'] ) ) {
+	if ( ! empty( $user_address['line2'] ) ) {
 		$return .= $user_address['line2'] . "\n";
 	}
 	$return .= $user_address['city'] . ' ' . $user_address['zip'] . ' ' . $user_address['state'] . "\n";
@@ -865,7 +865,7 @@ function edd_email_tag_discount_codes( $payment_id ) {
 
 	$discount_codes = '';
 
-	if( isset( $user_info['discount'] ) && $user_info['discount'] !== 'none' ) {
+	if ( isset( $user_info['discount'] ) && $user_info['discount'] !== 'none' ) {
 		$discount_codes = $user_info['discount'];
 	}
 
