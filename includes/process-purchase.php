@@ -286,7 +286,7 @@ function edd_purchase_form_validate_discounts() {
 
 		foreach ( $discounts as $discount ) {
 			// Check if valid
-			if (  ! edd_is_discount_valid( $discount, $user ) ) {
+			if ( ! edd_is_discount_valid( $discount, $user ) ) {
 				// Discount is not valid
 				$error = true;
 			}
@@ -693,7 +693,7 @@ function edd_get_purchase_form_user( $valid_data = array() ) {
 	} else if ( is_user_logged_in() ) {
 		// Set the valid user as the logged in collected data
 		$user = $valid_data['logged_in_user'];
-	} else if ( $valid_data['need_new_user'] === true || $valid_data['need_user_login'] === true  ) {
+	} else if ( $valid_data['need_new_user'] === true || $valid_data['need_user_login'] === true ) {
 		// New user registration
 		if ( $valid_data['need_new_user'] === true ) {
 			// Set user
