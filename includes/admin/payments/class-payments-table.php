@@ -134,10 +134,10 @@ class EDD_Payment_History_Table extends WP_List_Table {
 				<input type="text" id="end-date" name="end-date" class="edd_datepicker" value="<?php echo $end_date; ?>" placeholder="mm/dd/yyyy"/>
 				<input type="submit" class="button-secondary" value="<?php _e( 'Apply', 'easy-digital-downloads' ); ?>"/>
 			</span>
-			<?php if( ! empty( $status ) ) : ?>
+			<?php if ( ! empty( $status ) ) : ?>
 				<input type="hidden" name="status" value="<?php echo esc_attr( $status ); ?>"/>
 			<?php endif; ?>
-			<?php if( ! empty( $start_date ) || ! empty( $end_date ) ) : ?>
+			<?php if ( ! empty( $start_date ) || ! empty( $end_date ) ) : ?>
 				<a href="<?php echo admin_url( 'edit.php?post_type=download&page=edd-payment-history' ); ?>" class="button-secondary"><?php _e( 'Clear Filter', 'easy-digital-downloads' ); ?></a>
 			<?php endif; ?>
 			<?php $this->search_box( __( 'Search', 'easy-digital-downloads' ), 'edd-payments' ); ?>
@@ -366,7 +366,7 @@ class EDD_Payment_History_Table extends WP_List_Table {
 
 		$customer_id = edd_get_payment_customer_id( $payment->ID );
 
-		if( ! empty( $customer_id ) ) {
+		if ( ! empty( $customer_id ) ) {
 			$customer    = new EDD_Customer( $customer_id );
 			$value = '<a href="' . esc_url( admin_url( "edit.php?post_type=download&page=edd-customers&view=overview&id=$customer_id" ) ) . '">' . $customer->name . '</a>';
 		} else {
@@ -415,7 +415,7 @@ class EDD_Payment_History_Table extends WP_List_Table {
 			$ids = array( $ids );
 
 
-		if( empty( $action ) )
+		if ( empty( $action ) )
 			return;
 
 		foreach ( $ids as $id ) {
@@ -456,7 +456,7 @@ class EDD_Payment_History_Table extends WP_List_Table {
 				edd_update_payment_status( $id, 'cancelled' );
 			}
 
-			if( 'resend-receipt' === $this->current_action() ) {
+			if ( 'resend-receipt' === $this->current_action() ) {
 				edd_email_purchase_receipt( $id, false );
 			}
 
@@ -478,9 +478,9 @@ class EDD_Payment_History_Table extends WP_List_Table {
 
 		$args = array();
 
-		if( isset( $_GET['user'] ) ) {
+		if ( isset( $_GET['user'] ) ) {
 			$args['user'] = urldecode( $_GET['user'] );
-		} elseif( isset( $_GET['s'] ) ) {
+		} elseif ( isset( $_GET['s'] ) ) {
 
 			$is_user  = strpos( $_GET['s'], strtolower( 'user:' ) ) !== false;
 			if ( $is_user ) {
@@ -507,7 +507,7 @@ class EDD_Payment_History_Table extends WP_List_Table {
 		$this->revoked_count   = $payment_count->revoked;
 		$this->abandoned_count = $payment_count->abandoned;
 
-		foreach( $payment_count as $count ) {
+		foreach ( $payment_count as $count ) {
 			$this->total_count += $count;
 		}
 	}
@@ -534,7 +534,7 @@ class EDD_Payment_History_Table extends WP_List_Table {
 		$start_date = isset( $_GET['start-date'] )  ? sanitize_text_field( $_GET['start-date'] ) : null;
 		$end_date   = isset( $_GET['end-date'] )    ? sanitize_text_field( $_GET['end-date'] )   : $start_date;
 
-		if( ! empty( $search ) ) {
+		if ( ! empty( $search ) ) {
 			$status = 'any'; // Force all payment statuses when searching
 		}
 
@@ -555,7 +555,7 @@ class EDD_Payment_History_Table extends WP_List_Table {
 			'end_date'   => $end_date,
 		);
 
-		if( is_string( $search ) && false !== strpos( $search, 'txn:' ) ) {
+		if ( is_string( $search ) && false !== strpos( $search, 'txn:' ) ) {
 
 			$args['search_in_notes'] = true;
 			$args['s'] = trim( str_replace( 'txn:', '', $args['s'] ) );
