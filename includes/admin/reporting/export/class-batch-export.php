@@ -131,7 +131,7 @@ class EDD_Batch_Export extends EDD_Export {
 			wp_die( __( 'You do not have permission to export data.', 'easy-digital-downloads' ), __( 'Error', 'easy-digital-downloads' ), array( 'response' => 403 ) );
 		}
 
-		if( $this->step < 2 ) {
+		if ( $this->step < 2 ) {
 
 			// Make sure we start with a fresh file on step 1
 			@unlink( $this->file );
@@ -140,7 +140,7 @@ class EDD_Batch_Export extends EDD_Export {
 
 		$rows = $this->print_csv_rows();
 
-		if( $rows ) {
+		if ( $rows ) {
 			return true;
 		} else {
 			return false;
@@ -160,7 +160,7 @@ class EDD_Batch_Export extends EDD_Export {
 		$col_data = '';
 		$cols = $this->get_csv_cols();
 		$i = 1;
-		foreach( $cols as $col_id => $column ) {
+		foreach ( $cols as $col_id => $column ) {
 			$col_data .= '"' . addslashes( $column ) . '"';
 			$col_data .= $i == count( $cols ) ? '' : ',';
 			$i++;
@@ -186,7 +186,7 @@ class EDD_Batch_Export extends EDD_Export {
 		$data     = $this->get_data();
 		$cols     = $this->get_csv_cols();
 
-		if( $data ) {
+		if ( $data ) {
 
 			// Output each row
 			foreach ( $data as $row ) {
