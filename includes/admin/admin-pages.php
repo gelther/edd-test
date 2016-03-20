@@ -140,7 +140,7 @@ function edd_is_admin_page( $passed_page = '', $passed_view = '' ) {
 		case 'payments':
 			switch ( $passed_view ) {
 				case 'list-table':
-					if ( ( 'download' == $typenow || 'download' === $post_type ) && $pagenow == 'edit.php' && 'edd-payment-history' === $page && false === $view  ) {
+					if ( ( 'download' == $typenow || 'download' === $post_type ) && $pagenow == 'edit.php' && 'edd-payment-history' === $page && false === $view ) {
 						$found = true;
 					}
 					break;
