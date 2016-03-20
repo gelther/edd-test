@@ -155,7 +155,7 @@ function edd_register_settings() {
 	}
 
 	foreach ( edd_get_registered_settings() as $tab => $sections ) {
-		foreach ( $sections as $section => $settings) {
+		foreach ( $sections as $section => $settings ) {
 
 			// Check for backwards compatibility
 			$section_tabs = edd_get_settings_tab_sections( $tab );
