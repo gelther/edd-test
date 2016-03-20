@@ -356,7 +356,7 @@ function edd_reports_graph_of_download( $download_id = 0 ) {
 			$hour++;
 		endwhile;
 
-	} elseif( $dates['range'] == 'this_week' || $dates['range'] == 'last_week'  ) {
+	} elseif( $dates['range'] == 'this_week' || $dates['range'] == 'last_week' ) {
 
 		$num_of_days = cal_days_in_month( CAL_GREGORIAN, $dates['m_start'], $dates['year'] );
 
