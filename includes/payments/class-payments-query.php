@@ -249,7 +249,7 @@ class EDD_Payments_Query extends EDD_Stats {
 	 */
 	public function per_page() {
 
-		if ( ! isset( $this->args['number'] ) ){
+		if ( ! isset( $this->args['number'] ) ) {
 			return;
 		}
 
