@@ -109,7 +109,7 @@ function edd_logs_view_api_requests() {
 	if( ! current_user_can( 'view_shop_reports' ) ) {
 		return;
 	}
-	
+
 	include( dirname( __FILE__ ) . '/class-api-requests-logs-list-table.php' );
 
 	$logs_table = new EDD_API_Request_Log_Table();
