@@ -103,10 +103,10 @@ class EDD_Earnings_Export extends EDD_Export {
 				$m2 = $end_month;
 
 			} else {
-			
+
 				$m1 = 1;
 				$m2 = 12;
-			
+
 			}
 
 			while( $m1 <= $m2 ) {
