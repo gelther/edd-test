@@ -140,7 +140,7 @@ class EDD_API_Keys_Table extends WP_List_Table {
 
 		$actions = array();
 
-		if( apply_filters( 'edd_api_log_requests', true ) ) {
+		if ( apply_filters( 'edd_api_log_requests', true ) ) {
 			$actions['view'] = sprintf(
 				'<a href="%s">%s</a>',
 				esc_url( add_query_arg( array( 'view' => 'api_requests', 'post_type' => 'download', 'page' => 'edd-reports', 'tab' => 'logs', 's' => $item['email'] ), 'edit.php' ) ),
@@ -193,7 +193,7 @@ class EDD_API_Keys_Table extends WP_List_Table {
 		// These aren't really bulk actions but this outputs the markup in the right place
 		static $edd_api_is_bottom;
 
-		if( $edd_api_is_bottom ) {
+		if ( $edd_api_is_bottom ) {
 			return;
 		}
 		?>
@@ -234,7 +234,7 @@ class EDD_API_Keys_Table extends WP_List_Table {
 		) );
 		$keys     = array();
 
-		foreach( $users as $user ) {
+		foreach ( $users as $user ) {
 			$keys[$user->ID]['id']     = $user->ID;
 			$keys[$user->ID]['email']  = $user->user_email;
 			$keys[$user->ID]['user']   = '<a href="' . add_query_arg( 'user_id', $user->ID, 'user-edit.php' ) . '"><strong>' . $user->user_login . '</strong></a>';
@@ -259,7 +259,7 @@ class EDD_API_Keys_Table extends WP_List_Table {
 	public function total_items() {
 		global $wpdb;
 
-		if( ! get_transient( 'edd_total_api_keys' ) ) {
+		if ( ! get_transient( 'edd_total_api_keys' ) ) {
 			$total_items = $wpdb->get_var( "SELECT count(user_id) FROM $wpdb->usermeta WHERE meta_value='edd_user_secret_key'" );
 
 			set_transient( 'edd_total_api_keys', $total_items, 60 * 60 );
