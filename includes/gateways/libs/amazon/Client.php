@@ -110,7 +110,7 @@ class Client implements ClientInterface
 		$jsonError = json_last_error();
 
 		if ( $jsonError != 0 ) {
-		$errorMsg = "Error with message - content is not in json format" . $this->getErrorMessageForJsonError($jsonError) . " " . $configArray;
+		$errorMsg = 'Error with message - content is not in json format' . $this->getErrorMessageForJsonError($jsonError) . ' ' . $configArray;
 		throw new \Exception($errorMsg);
 		}
 	} else {
@@ -151,19 +151,19 @@ class Client implements ClientInterface
 	{
 		switch ( $jsonError ) {
 			case JSON_ERROR_DEPTH:
-				return " - maximum stack depth exceeded.";
+				return ' - maximum stack depth exceeded.';
 				break;
 			case JSON_ERROR_STATE_MISMATCH:
-				return " - invalid or malformed JSON.";
+				return ' - invalid or malformed JSON.';
 				break;
 			case JSON_ERROR_CTRL_CHAR:
-				return " - control character error.";
+				return ' - control character error.';
 				break;
 			case JSON_ERROR_SYNTAX:
-				return " - syntax error.";
+				return ' - syntax error.';
 				break;
 			default:
-				return ".";
+				return '.';
 				break;
 		}
 	}
@@ -1357,14 +1357,14 @@ class Client implements ClientInterface
 	private function signParameters(array $parameters)
 	{
 		$signatureVersion = $parameters['SignatureVersion'];
-		$algorithm        = "HmacSHA1";
+		$algorithm        = 'HmacSHA1';
 		$stringToSign     = null;
 		if ( 2 === $signatureVersion ) {
-			$algorithm                     = "HmacSHA256";
+			$algorithm                     = 'HmacSHA256';
 			$parameters['SignatureMethod'] = $algorithm;
 			$stringToSign                  = $this->calculateStringToSignV2($parameters);
 		} else {
-			throw new \Exception("Invalid Signature Version specified");
+			throw new \Exception('Invalid Signature Version specified');
 		}
 
 		return $this->sign($stringToSign, $algorithm);
@@ -1413,7 +1413,7 @@ class Client implements ClientInterface
 		} else if ( $algorithm === 'HmacSHA256' ) {
 			$hash = 'sha256';
 		} else {
-			throw new \Exception("Non-supported signing method specified");
+			throw new \Exception('Non-supported signing method specified');
 		}
 
 		return base64_encode(hash_hmac($hash, $data, $this->config['secret_key'], true));
@@ -1423,7 +1423,7 @@ class Client implements ClientInterface
 
 	private function getFormattedTimestamp()
 	{
-		return gmdate("Y-m-d\TH:i:s.\\0\\0\\0\\Z", time());
+		return gmdate('Y-m-d\TH:i:s.\\0\\0\\0\\Z', time());
 	}
 
 	/* invokePost takes the parameters and invokes the httpPost function to POST the parameters
