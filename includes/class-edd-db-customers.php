@@ -436,7 +436,7 @@ class EDD_DB_Customers extends EDD_DB  {
 
 				$where .= $wpdb->prepare( " AND `email` IN( $emails ) ", $args['email'] );
 			} else {
-				$where .= $wpdb->prepare( " AND `email` = %s ", $args['email'] );
+				$where .= $wpdb->prepare( ' AND `email` = %s ', $args['email'] );
 			}
 		}
 
@@ -558,7 +558,7 @@ class EDD_DB_Customers extends EDD_DB  {
 
 		require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
 
-		$sql = "CREATE TABLE " . $this->table_name . " (
+		$sql = 'CREATE TABLE ' . $this->table_name . ' (
 		id bigint(20) NOT NULL AUTO_INCREMENT,
 		user_id bigint(20) NOT NULL,
 		email varchar(50) NOT NULL,
@@ -571,7 +571,7 @@ class EDD_DB_Customers extends EDD_DB  {
 		PRIMARY KEY  (id),
 		UNIQUE KEY email (email),
 		KEY user (user_id)
-		) CHARACTER SET utf8 COLLATE utf8_general_ci;";
+		) CHARACTER SET utf8 COLLATE utf8_general_ci;';
 
 		dbDelta( $sql );
 

@@ -154,10 +154,10 @@ add_action( 'template_redirect', 'edd_display_email_template_preview' );
  * @return string $email_body Body of the email
  */
 function edd_get_email_body_content( $payment_id = 0, $payment_data = array() ) {
-	$default_email_body = __( "Dear", "easy-digital-downloads" ) . " {name},\n\n";
-	$default_email_body .= __( "Thank you for your purchase. Please click on the link(s) below to download your files.", "easy-digital-downloads" ) . "\n\n";
+	$default_email_body = __( 'Dear', 'easy-digital-downloads' ) . " {name},\n\n";
+	$default_email_body .= __( 'Thank you for your purchase. Please click on the link(s) below to download your files.', 'easy-digital-downloads' ) . "\n\n";
 	$default_email_body .= "{download_list}\n\n";
-	$default_email_body .= "{sitename}";
+	$default_email_body .= '{sitename}';
 
 	$email = edd_get_option( 'purchase_receipt', false );
 	$email = $email ? stripslashes( $email ) : $default_email_body;
@@ -212,9 +212,9 @@ function edd_get_sale_notification_body_content( $payment_id = 0, $payment_data 
 	$default_email_body = __( 'Hello', 'easy-digital-downloads' ) . "\n\n" . sprintf( __( 'A %s purchase has been made', 'easy-digital-downloads' ), edd_get_label_plural() ) . ".\n\n";
 	$default_email_body .= sprintf( __( '%s sold:', 'easy-digital-downloads' ), edd_get_label_plural() ) . "\n\n";
 	$default_email_body .= $download_list . "\n\n";
-	$default_email_body .= __( 'Purchased by: ', 'easy-digital-downloads' ) . " " . html_entity_decode( $name, ENT_COMPAT, 'UTF-8' ) . "\n";
-	$default_email_body .= __( 'Amount: ', 'easy-digital-downloads' ) . " " . html_entity_decode( edd_currency_filter( edd_format_amount( edd_get_payment_amount( $payment_id ) ) ), ENT_COMPAT, 'UTF-8' ) . "\n";
-	$default_email_body .= __( 'Payment Method: ', 'easy-digital-downloads' ) . " " . $gateway . "\n\n";
+	$default_email_body .= __( 'Purchased by: ', 'easy-digital-downloads' ) . ' ' . html_entity_decode( $name, ENT_COMPAT, 'UTF-8' ) . "\n";
+	$default_email_body .= __( 'Amount: ', 'easy-digital-downloads' ) . ' ' . html_entity_decode( edd_currency_filter( edd_format_amount( edd_get_payment_amount( $payment_id ) ) ), ENT_COMPAT, 'UTF-8' ) . "\n";
+	$default_email_body .= __( 'Payment Method: ', 'easy-digital-downloads' ) . ' ' . $gateway . "\n\n";
 	$default_email_body .= __( 'Thank you', 'easy-digital-downloads' );
 
 	$email = edd_get_option( 'sale_notification', false );
@@ -244,11 +244,11 @@ function edd_render_receipt_in_browser() {
 
 	ob_start();
 	//Disallows caching of the page
-	header("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT");
-	header("Cache-Control: no-store, no-cache, must-revalidate"); // HTTP/1.1
-	header("Cache-Control: post-check=0, pre-check=0", false);
-	header("Pragma: no-cache"); // HTTP/1.0
-	header("Expires: Sat, 23 Oct 1977 05:00:00 PST"); // Date in the past
+	header('Last-Modified: ' . gmdate('D, d M Y H:i:s') . ' GMT');
+	header('Cache-Control: no-store, no-cache, must-revalidate'); // HTTP/1.1
+	header('Cache-Control: post-check=0, pre-check=0', false);
+	header('Pragma: no-cache'); // HTTP/1.0
+	header('Expires: Sat, 23 Oct 1977 05:00:00 PST'); // Date in the past
 ?>
 <!DOCTYPE html>
 <html lang="en">

@@ -167,17 +167,17 @@ function edd_draw_chart_image() {
 	$chart = new GoogleChart( 'lc', 900, 330 );
 
 	$i = 1;
-	$earnings = "";
-	$sales = "";
+	$earnings = '';
+	$sales = '';
 
 	while ( $i <= 12 ) :
-		$earnings .= edd_get_earnings_by_date( null, $i, date('Y') ) . ",";
-		$sales .= edd_get_sales_by_date( null, $i, date('Y') ) . ",";
+		$earnings .= edd_get_earnings_by_date( null, $i, date('Y') ) . ',';
+		$sales .= edd_get_sales_by_date( null, $i, date('Y') ) . ',';
 		$i++;
 	endwhile;
 
-	$earnings_array = explode( ",", $earnings );
-	$sales_array = explode( ",", $sales );
+	$earnings_array = explode( ',', $earnings );
+	$sales_array = explode( ',', $sales );
 
 	$i = 0;
 	while ( $i <= 11 ) {

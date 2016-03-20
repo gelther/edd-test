@@ -87,7 +87,7 @@ class EDD_Tools_Recount_Download_Stats extends EDD_Batch_Export {
 			unset( $log_ids );
 
 			$payment_ids = implode( ',', $payment_ids );
-			$payments = $wpdb->get_results( "SELECT ID, post_status FROM $wpdb->posts WHERE ID IN (" . $payment_ids . ")" );
+			$payments = $wpdb->get_results( "SELECT ID, post_status FROM $wpdb->posts WHERE ID IN (" . $payment_ids . ')' );
 			unset( $payment_ids );
 
 			foreach ( $payments as $payment ) {
@@ -161,7 +161,7 @@ class EDD_Tools_Recount_Download_Stats extends EDD_Batch_Export {
 				unset( $log_ids );
 
 				$payment_ids = implode( ',', $payment_ids );
-				$payments = $wpdb->get_results( "SELECT ID, post_status FROM $wpdb->posts WHERE ID IN (" . $payment_ids . ")" );
+				$payments = $wpdb->get_results( "SELECT ID, post_status FROM $wpdb->posts WHERE ID IN (" . $payment_ids . ')' );
 				unset( $payment_ids );
 
 				foreach ( $payments as $payment ) {

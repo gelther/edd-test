@@ -353,25 +353,25 @@ function edd_currency_symbol( $currency = '' ) {
 	}
 
 	switch ( $currency ) :
-		case "GBP" :
+		case 'GBP' :
 			$symbol = '&pound;';
 			break;
-		case "BRL" :
+		case 'BRL' :
 			$symbol = 'R&#36;';
 			break;
-		case "EUR" :
+		case 'EUR' :
 			$symbol = '&euro;';
 			break;
-		case "USD" :
-		case "AUD" :
-		case "NZD" :
-		case "CAD" :
-		case "HKD" :
-		case "MXN" :
-		case "SGD" :
+		case 'USD' :
+		case 'AUD' :
+		case 'NZD' :
+		case 'CAD' :
+		case 'HKD' :
+		case 'MXN' :
+		case 'SGD' :
 			$symbol = '&#36;';
 			break;
-		case "JPY" :
+		case 'JPY' :
 			$symbol = '&yen;';
 			break;
 		default :
@@ -408,7 +408,7 @@ function edd_get_currency_name( $code = 'USD' ) {
 function edd_month_num_to_name( $n ) {
 	$timestamp = mktime( 0, 0, 0, $n, 1, 2005 );
 
-	return date_i18n( "M", $timestamp );
+	return date_i18n( 'M', $timestamp );
 }
 
 /**

@@ -115,7 +115,7 @@ function edd_scan_folders( $path = '', $return = array() ) {
 
 	if ( ! empty( $lists ) ) {
 		foreach ( $lists as $f ) {
-			if ( is_dir( $path . DIRECTORY_SEPARATOR . $f ) && $f != "." && $f != ".." ) {
+			if ( is_dir( $path . DIRECTORY_SEPARATOR . $f ) && $f != '.' && $f != '..' ) {
 				if ( ! in_array( $path . DIRECTORY_SEPARATOR . $f, $return ) )
 					$return[] = trailingslashit( $path . DIRECTORY_SEPARATOR . $f );
 
@@ -144,7 +144,7 @@ function edd_get_htaccess_rules( $method = false ) {
 
 		case 'redirect' :
 			// Prevent directory browsing
-			$rules = "Options -Indexes";
+			$rules = 'Options -Indexes';
 			break;
 
 		case 'direct' :

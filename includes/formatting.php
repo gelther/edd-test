@@ -138,17 +138,17 @@ function edd_currency_filter( $price = '', $currency = '' ) {
 
 	if ( $position == 'before' ):
 		switch ( $currency ):
-			case "GBP" :
-			case "BRL" :
-			case "EUR" :
-			case "USD" :
-			case "AUD" :
-			case "CAD" :
-			case "HKD" :
-			case "MXN" :
-			case "NZD" :
-			case "SGD" :
-			case "JPY" :
+			case 'GBP' :
+			case 'BRL' :
+			case 'EUR' :
+			case 'USD' :
+			case 'AUD' :
+			case 'CAD' :
+			case 'HKD' :
+			case 'MXN' :
+			case 'NZD' :
+			case 'SGD' :
+			case 'JPY' :
 				$formatted = $symbol . $price;
 				break;
 			default :
@@ -158,16 +158,16 @@ function edd_currency_filter( $price = '', $currency = '' ) {
 		$formatted = apply_filters( 'edd_' . strtolower( $currency ) . '_currency_filter_before', $formatted, $currency, $price );
 	else :
 		switch ( $currency ) :
-			case "GBP" :
-			case "BRL" :
-			case "EUR" :
-			case "USD" :
-			case "AUD" :
-			case "CAD" :
-			case "HKD" :
-			case "MXN" :
-			case "SGD" :
-			case "JPY" :
+			case 'GBP' :
+			case 'BRL' :
+			case 'EUR' :
+			case 'USD' :
+			case 'AUD' :
+			case 'CAD' :
+			case 'HKD' :
+			case 'MXN' :
+			case 'SGD' :
+			case 'JPY' :
 				$formatted = $price . $symbol;
 				break;
 			default :
