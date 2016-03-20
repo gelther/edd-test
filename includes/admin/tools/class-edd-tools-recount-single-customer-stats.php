@@ -76,7 +76,7 @@ class EDD_Tools_Recount_Single_Customer_Stats extends EDD_Batch_Export {
 					continue;
 				}
 
-				if( 'publish' == $payment->post_status || 'revoked' == $payment->post_status ) {
+				if ( 'publish' == $payment->post_status || 'revoked' == $payment->post_status ) {
 
 					$found_payment_ids[] = $payment->ID;
 					$payment_amount      = edd_get_payment_amount( $payment->ID );
@@ -110,11 +110,11 @@ class EDD_Tools_Recount_Single_Customer_Stats extends EDD_Batch_Export {
 
 		$percentage = 100;
 
-		if( $total > 0 ) {
+		if ( $total > 0 ) {
 			$percentage = ( ( $this->per_step * $this->step ) / $total ) * 100;
 		}
 
-		if( $percentage > 100 ) {
+		if ( $percentage > 100 ) {
 			$percentage = 100;
 		}
 
@@ -145,7 +145,7 @@ class EDD_Tools_Recount_Single_Customer_Stats extends EDD_Batch_Export {
 
 		$had_data = $this->get_data();
 
-		if( $had_data ) {
+		if ( $had_data ) {
 			$this->done = false;
 			return true;
 		} else {
@@ -157,7 +157,7 @@ class EDD_Tools_Recount_Single_Customer_Stats extends EDD_Batch_Export {
 
 			if ( ! empty( $removed_payments ) ) {
 
-				foreach( $payment_ids as $key => $payment_id ) {
+				foreach ( $payment_ids as $key => $payment_id ) {
 					if ( in_array( $payment_id, $removed_payments ) ) {
 						unset( $payment_ids[ $key ] );
 					}
