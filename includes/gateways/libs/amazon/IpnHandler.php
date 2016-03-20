@@ -40,12 +40,12 @@ class IpnHandler implements IpnHandlerInterface
 
         // Get the list of fields that we are interested in
         $this->fields = array(
-            "Timestamp" => true,
-            "Message" => true,
-            "MessageId" => true,
-            "Subject" => false,
-            "TopicArn" => true,
-            "Type" => true
+            'Timestamp' => true,
+            'Message' => true,
+            'MessageId' => true,
+            'Subject' => false,
+            'TopicArn' => true,
+            'Type' => true
         );
 
         // Validate the IPN message header [x-amz-sns-message-type]
@@ -85,7 +85,7 @@ class IpnHandler implements IpnHandlerInterface
         if ( array_key_exists(strtolower($name), $this->ipnConfig) ) {
             $this->ipnConfig[$name] = $value;
         } else {
-            throw new \Exception("Key " . $name . " is not part of the configuration", 1);
+            throw new \Exception('Key ' . $name . ' is not part of the configuration', 1);
         }
     }
 
@@ -98,7 +98,7 @@ class IpnHandler implements IpnHandlerInterface
         if ( array_key_exists(strtolower($name), $this->ipnConfig) ) {
             return $this->ipnConfig[$name];
         } else {
-            throw new \Exception("Key " . $name . " was not found in the configuration", 1);
+            throw new \Exception('Key ' . $name . ' was not found in the configuration', 1);
         }
     }
 
@@ -117,11 +117,11 @@ class IpnHandler implements IpnHandlerInterface
     {
         // Quickly check that this is a sns message
         if ( ! array_key_exists('x-amz-sns-message-type', $this->headers) ) {
-            throw new \Exception("Error with message - header " . "does not contain x-amz-sns-message-type header");
+            throw new \Exception('Error with message - header ' . 'does not contain x-amz-sns-message-type header');
         }
 
         if ( $this->headers['x-amz-sns-message-type'] !== 'Notification' ) {
-            throw new \Exception("Error with message - header x-amz-sns-message-type is not " . "Notification, is " . $this->headers['x-amz-sns-message-type']);
+            throw new \Exception('Error with message - header x-amz-sns-message-type is not ' . 'Notification, is ' . $this->headers['x-amz-sns-message-type']);
         }
     }
 
@@ -132,7 +132,7 @@ class IpnHandler implements IpnHandlerInterface
         $json_error = json_last_error();
 
         if ( $json_error != 0 ) {
-            $errorMsg = "Error with message - content is not in json format" . $this->getErrorMessageForJsonError($json_error) . " " . $this->snsMessage;
+            $errorMsg = 'Error with message - content is not in json format' . $this->getErrorMessageForJsonError($json_error) . ' ' . $this->snsMessage;
             throw new \Exception($errorMsg);
         }
     }
@@ -148,19 +148,19 @@ class IpnHandler implements IpnHandlerInterface
     {
         switch ( $json_error ) {
             case JSON_ERROR_DEPTH:
-                return " - maximum stack depth exceeded.";
+                return ' - maximum stack depth exceeded.';
                 break;
             case JSON_ERROR_STATE_MISMATCH:
-                return " - invalid or malformed JSON.";
+                return ' - invalid or malformed JSON.';
                 break;
             case JSON_ERROR_CTRL_CHAR:
-                return " - control character error.";
+                return ' - control character error.';
                 break;
             case JSON_ERROR_SYNTAX:
-                return " - syntax error.";
+                return ' - syntax error.';
                 break;
             default:
-                return ".";
+                return '.';
                 break;
         }
     }
@@ -174,13 +174,13 @@ class IpnHandler implements IpnHandlerInterface
 
     private function checkForCorrectMessageType()
     {
-        $type = $this->getMandatoryField("Type");
-        if ( strcasecmp($type, "Notification") != 0 ) {
-            throw new \Exception("Error with SNS Notification - unexpected message with Type of " . $type);
+        $type = $this->getMandatoryField('Type');
+        if ( strcasecmp($type, 'Notification') != 0 ) {
+            throw new \Exception('Error with SNS Notification - unexpected message with Type of ' . $type);
         }
 
-        if ( strcmp($this->getMandatoryField("Type"), "Notification") != 0 ) {
-            throw new \Exception("Error with signature verification - unable to verify " . $this->getMandatoryField("Type") . " message");
+        if ( strcmp($this->getMandatoryField('Type'), 'Notification') != 0 ) {
+            throw new \Exception('Error with signature verification - unable to verify ' . $this->getMandatoryField('Type') . ' message');
         } else {
 
             // Sort the fields into byte order based on the key name(A-Za-z)
@@ -223,14 +223,14 @@ class IpnHandler implements IpnHandlerInterface
 
     private function constructAndVerifySignature()
     {
-	$signature       = base64_decode($this->getMandatoryField("Signature"));
-        $certificatePath = $this->getMandatoryField("SigningCertURL");
+	$signature       = base64_decode($this->getMandatoryField('Signature'));
+        $certificatePath = $this->getMandatoryField('SigningCertURL');
 
         $this->certificate = $this->getCertificate($certificatePath);
 
         $result = $this->verifySignatureIsCorrectFromCertificate($signature);
         if ( ! $result ) {
-            throw new \Exception("Unable to match signature from remote server: signature of " . $this->getCertificate($certificatePath) . " , SigningCertURL of " . $this->getMandatoryField("SigningCertURL") . " , SignatureOf " . $this->getMandatoryField("Signature"));
+            throw new \Exception('Unable to match signature from remote server: signature of ' . $this->getCertificate($certificatePath) . ' , SigningCertURL of ' . $this->getMandatoryField('SigningCertURL') . ' , SignatureOf ' . $this->getMandatoryField('Signature'));
         }
     }
 
@@ -260,29 +260,29 @@ class IpnHandler implements IpnHandlerInterface
         $certKey = openssl_get_publickey($this->certificate);
 
         if ( $certKey === False ) {
-            throw new \Exception("Unable to extract public key from cert");
+            throw new \Exception('Unable to extract public key from cert');
         }
 
         try {
             $certInfo    = openssl_x509_parse($this->certificate, true);
-            $certSubject = $certInfo["subject"];
+            $certSubject = $certInfo['subject'];
 
             if ( is_null($certSubject) ) {
-                throw new \Exception("Error with certificate - subject cannot be found");
+                throw new \Exception('Error with certificate - subject cannot be found');
             }
         } catch (\Exception $ex) {
-            throw new \Exception("Unable to verify certificate - error with the certificate subject", null, $ex);
+            throw new \Exception('Unable to verify certificate - error with the certificate subject', null, $ex);
         }
 
-        if ( strcmp($certSubject["CN"], $this->expectedCnName) ) {
-            throw new \Exception("Unable to verify certificate issued by Amazon - error with certificate subject");
+        if ( strcmp($certSubject['CN'], $this->expectedCnName) ) {
+            throw new \Exception('Unable to verify certificate issued by Amazon - error with certificate subject');
         }
 
         $result = -1;
         try {
             $result = openssl_verify($this->signatureFields, $signature, $certKey, OPENSSL_ALGO_SHA1);
         } catch (\Exception $ex) {
-            throw new \Exception("Unable to verify signature - error with the verification algorithm", null, $ex);
+            throw new \Exception('Unable to verify signature - error with the verification algorithm', null, $ex);
         }
 
         return ($result > 0);
@@ -302,7 +302,7 @@ class IpnHandler implements IpnHandlerInterface
     {
         $value = $this->getField($fieldName);
         if ( is_null($value) ) {
-            throw new \Exception("Error with json message - mandatory field " . $fieldName . " cannot be found");
+            throw new \Exception('Error with json message - mandatory field ' . $fieldName . ' cannot be found');
         }
         return $value;
     }
