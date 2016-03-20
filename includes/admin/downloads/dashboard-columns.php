@@ -218,7 +218,7 @@ function edd_add_download_filters() {
 				echo "<option value=''>" . sprintf( __( 'Show all %s', 'easy-digital-downloads' ), strtolower( $category_labels['name'] ) ) . '</option>';
 				foreach ( $terms as $term ) {
 					$selected = isset( $_GET['download_category'] ) && $_GET['download_category'] == $term->slug ? ' selected="selected"' : '';
-					echo '<option value="' . esc_attr( $term->slug ) . '"' . $selected . '>' . esc_html( $term->name ) .' (' . $term->count .')</option>';
+					echo '<option value="' . esc_attr( $term->slug ) . '"' . $selected . '>' . esc_html( $term->name ) . ' (' . $term->count . ')</option>';
 				}
 			echo '</select>';
 		}
@@ -230,7 +230,7 @@ function edd_add_download_filters() {
 				echo "<option value=''>" . sprintf( __( 'Show all %s', 'easy-digital-downloads' ), strtolower( $tag_labels['name'] ) ) . '</option>';
 				foreach ( $terms as $term ) {
 					$selected = isset( $_GET['download_tag']) && $_GET['download_tag'] == $term->slug ? ' selected="selected"' : '';
-					echo '<option value="' . esc_attr( $term->slug ) . '"' . $selected . '>' . esc_html( $term->name ) .' (' . $term->count .')</option>';
+					echo '<option value="' . esc_attr( $term->slug ) . '"' . $selected . '>' . esc_html( $term->name ) . ' (' . $term->count . ')</option>';
 				}
 			echo '</select>';
 		}
