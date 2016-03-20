@@ -328,7 +328,7 @@ class Client implements ClientInterface
 			$parameters = $this->setProviderCreditReversalDetails($parameters,$value);
 			}
 
-		} else{
+		} else {
 			// For variables that are boolean values, strtolower them
 			if ( $this->checkIfBool($value) )
 			{
@@ -1529,7 +1529,7 @@ class Client implements ClientInterface
 				$this->profileEndpoint = $this->sandboxProfileEndpoint[$region];
 		} elseif ( array_key_exists($region, $this->liveProfileEndpoint) ) {
 		$this->profileEndpoint = $this->liveProfileEndpoint[$region];
-		} else{
+		} else {
 		throw new \Exception($region . ' is not a valid region');
 		}
 	} else {
