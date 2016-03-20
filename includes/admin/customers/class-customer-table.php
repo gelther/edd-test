@@ -254,11 +254,11 @@ class EDD_Customer_Reports_Table extends WP_List_Table {
 			'orderby' => $orderby
 		);
 
-		if( is_email( $search ) ) {
+		if ( is_email( $search ) ) {
 			$args['email'] = $search;
-		} elseif( is_numeric( $search ) ) {
+		} elseif ( is_numeric( $search ) ) {
 			$args['id']    = $search;
-		} elseif( strpos( $search, 'user:' ) !== false ) {
+		} elseif ( strpos( $search, 'user:' ) !== false ) {
 			$args['user_id'] = trim( str_replace( 'user:', '', $search ) );
 		} else {
 			$args['name']  = $search;
