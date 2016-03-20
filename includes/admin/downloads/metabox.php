@@ -535,7 +535,7 @@ function edd_render_products_field( $post_id ) {
 						</tr>
 						<?php $index++; ?>
 					<?php endforeach; ?>
-				<?php else: ?>
+				<?php else : ?>
 					<tr class="edd_repeatable_product_wrapper edd_repeatable_row" data-key="1">
 						<td>
 							<span class="edd_draghandle"></span>
