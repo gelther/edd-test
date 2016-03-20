@@ -19,7 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
  */
 function edd_process_batch_export_download() {
 
-	if( ! wp_verify_nonce( $_REQUEST['nonce'], 'edd-batch-export' ) ) {
+	if ( ! wp_verify_nonce( $_REQUEST['nonce'], 'edd-batch-export' ) ) {
 		wp_die( __( 'Nonce verification failed', 'easy-digital-downloads' ), __( 'Error', 'easy-digital-downloads' ), array( 'response' => 403 ) );
 	}
 
