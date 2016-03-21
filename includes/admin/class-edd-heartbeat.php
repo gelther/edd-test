@@ -18,7 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  * Hooks into the WP heartbeat API to update various parts of the dashboard as new sales are made
  *
  * Dashboard components that are effect:
- *	- Dashboard Summary Widget
+ * - Dashboard Summary Widget
  *
  * @since 1.8
  */
