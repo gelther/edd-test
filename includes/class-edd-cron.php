@@ -36,7 +36,7 @@ class EDD_Cron {
 	 *
 	 * @since 1.6
 	 *
-	 * @param array $schedules
+	 * @param  array $schedules
 	 * @return array
 	 */
 	public function add_schedules( $schedules = array() ) {
