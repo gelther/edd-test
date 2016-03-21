@@ -43,7 +43,7 @@ class EDD_Download_History_Export extends EDD_Export {
 			set_time_limit( 0 );
 
 		$month = isset( $_POST['month'] ) ? absint( $_POST['month'] ) : date( 'n' );
-		$year  = isset( $_POST['year']  ) ? absint( $_POST['year']  ) : date( 'Y' );
+		$year  = isset( $_POST['year'] ) ? absint( $_POST['year'] ) : date( 'Y' );
 
 		nocache_headers();
 		header( 'Content-Type: text/csv; charset=utf-8' );
