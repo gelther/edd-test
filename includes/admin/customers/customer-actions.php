@@ -62,7 +62,7 @@ function edd_edit_customer( $args ) {
 	}
 
 	// Record this for later
-	$previous_user_id  = $customer->user_id;
+	$previous_user_id = $customer->user_id;
 
 	if ( edd_get_errors() ) {
 		return;
@@ -240,10 +240,10 @@ function edd_customer_delete( $args ) {
 		return;
 	}
 
-	$customer_id   = (int)$args['customer_id'];
-	$confirm       = ! empty( $args['edd-customer-delete-confirm'] ) ? true : false;
-	$remove_data   = ! empty( $args['edd-customer-delete-records'] ) ? true : false;
-	$nonce         = $args['_wpnonce'];
+	$customer_id = (int)$args['customer_id'];
+	$confirm     = ! empty( $args['edd-customer-delete-confirm'] ) ? true : false;
+	$remove_data = ! empty( $args['edd-customer-delete-records'] ) ? true : false;
+	$nonce       = $args['_wpnonce'];
 
 	if ( ! wp_verify_nonce( $nonce, 'delete-customer' ) ) {
 		wp_die( __( 'Cheatin\' eh?!', 'easy-digital-downloads' ) );
@@ -328,8 +328,8 @@ function edd_disconnect_customer_user_id( $args ) {
 		return;
 	}
 
-	$customer_id   = (int)$args['customer_id'];
-	$nonce         = $args['_wpnonce'];
+	$customer_id = (int)$args['customer_id'];
+	$nonce       = $args['_wpnonce'];
 
 	if ( ! wp_verify_nonce( $nonce, 'edit-customer' ) ) {
 		wp_die( __( 'Cheatin\' eh?!', 'easy-digital-downloads' ) );
