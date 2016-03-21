@@ -270,13 +270,13 @@ function edd_update_payment_backwards_compat( $meta_id, $object_id, $meta_key, $
 	switch ( $meta_key ) {
 
 		case '_edd_payment_meta':
-			$meta_value   = maybe_unserialize( $meta_value );
+			$meta_value = maybe_unserialize( $meta_value );
 
 			if ( ! isset( $meta_value['tax'] ) ) {
 				return;
 			}
 
-			$tax_value    = $meta_value['tax'];
+			$tax_value = $meta_value['tax'];
 
 			$data         = array( 'meta_value' => $tax_value );
 			$where        = array( 'post_id'  => $object_id, 'meta_key' => '_edd_payment_tax' );
