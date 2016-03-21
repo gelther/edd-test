@@ -173,7 +173,7 @@ class EDD_Batch_Downloads_Export extends EDD_Batch_Export {
 
 						$terms = get_the_terms( $download->ID, 'download_tag' );
 						if ( $terms ) {
-							$terms = wp_list_pluck( $terms, 'name' );
+							$terms       = wp_list_pluck( $terms, 'name' );
 							$row[ $key ] = implode( ' | ', $terms );
 						}
 
@@ -182,7 +182,7 @@ class EDD_Batch_Downloads_Export extends EDD_Batch_Export {
 
 						$terms = get_the_terms( $download->ID, 'download_category' );
 						if ( $terms ) {
-							$terms = wp_list_pluck( $terms, 'name' );
+							$terms       = wp_list_pluck( $terms, 'name' );
 							$row[ $key ] = implode( ' | ', $terms );
 						}
 
