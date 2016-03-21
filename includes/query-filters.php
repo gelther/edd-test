@@ -76,7 +76,7 @@ function edd_unset_discount_query_arg( $query ) {
 		// if in home (because $wp->query_vars is empty) and 'show_on_front' is page
 		if ( empty( $wp->query_vars ) && get_option( 'show_on_front' ) === 'page' ) {
 
-		 	// reset and re-parse query vars
+			// reset and re-parse query vars
 			$wp->query_vars['page_id'] = get_option( 'page_on_front' );
 			$query->parse_query( $wp->query_vars );
 
