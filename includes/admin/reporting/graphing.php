@@ -383,8 +383,8 @@ function edd_reports_graph_of_download( $download_id = 0 ) {
 
 		foreach ( $report_dates as $report_date ) {
 
-			$date  = mktime( 0, 0, 0, $report_date['month'], $report_date['day'], $report_date['year'] );
-			$date_end = mktime( 23, 59, 59, $report_date['month'], $report_date['day'], $report_date['year'] );
+			$date          = mktime( 0, 0, 0, $report_date['month'], $report_date['day'], $report_date['year'] );
+			$date_end      = mktime( 23, 59, 59, $report_date['month'], $report_date['day'], $report_date['year'] );
 			$sales         = $stats->get_sales( $download_id, $date, $date_end );
 			$sales_totals += $sales;
 
