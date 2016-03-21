@@ -109,7 +109,7 @@ function edd_update_payment_details( $data ) {
 		foreach ( $deleted_downloads as $deleted_download ) {
 			$deleted_download = $deleted_download[0];
 
-			if ( empty ( $deleted_download['id'] ) ) {
+			if ( empty( $deleted_download['id'] ) ) {
 				continue;
 			}
 
