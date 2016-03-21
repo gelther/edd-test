@@ -106,16 +106,16 @@ class EDD_Batch_Export extends EDD_Export {
 	 */
 	public function __construct( $_step = 1 ) {
 
-		$upload_dir       = wp_upload_dir();
-		$this->filetype   = '.csv';
-		$this->filename   = 'edd-' . $this->export_type . $this->filetype;
-		$this->file       = trailingslashit( $upload_dir['basedir'] ) . $this->filename;
+		$upload_dir     = wp_upload_dir();
+		$this->filetype = '.csv';
+		$this->filename = 'edd-' . $this->export_type . $this->filetype;
+		$this->file     = trailingslashit( $upload_dir['basedir'] ) . $this->filename;
 
 		if ( ! is_writeable( $upload_dir['basedir'] ) ) {
 			$this->is_writable = false;
 		}
 
-		$this->step       = $_step;
+		$this->step = $_step;
 		$this->done       = false;
 	}
 
@@ -158,8 +158,8 @@ class EDD_Batch_Export extends EDD_Export {
 	public function print_csv_cols() {
 
 		$col_data = '';
-		$cols = $this->get_csv_cols();
-		$i = 1;
+		$cols     = $this->get_csv_cols();
+		$i        = 1;
 		foreach ( $cols as $col_id => $column ) {
 			$col_data .= '"' . addslashes( $column ) . '"';
 			$col_data .= $i == count( $cols ) ? '' : ',';
@@ -257,7 +257,7 @@ class EDD_Batch_Export extends EDD_Export {
 	 */
 	protected function stash_step_data( $data = '' ) {
 
-		$file = $this->get_file();
+		$file  = $this->get_file();
 		$file .= $data;
 		@file_put_contents( $this->file, $file );
 
