@@ -50,7 +50,7 @@ function edd_email_template_tags( $message, $payment_data, $payment_id, $admin_n
  * @return string $message Fully formatted message
  */
 function edd_email_preview_template_tags( $message ) {
-	$download_list = '<ul>';
+	$download_list  = '<ul>';
 	$download_list .= '<li>' . __( 'Sample Product Title', 'easy-digital-downloads' ) . '<br />';
 	$download_list .= '<div>';
 	$download_list .= '<a href="#">' . __( 'Sample Download File Name', 'easy-digital-downloads' ) . '</a> - <small>' . __( 'Optional notes about this download.', 'easy-digital-downloads' ) . '</small>';
@@ -154,7 +154,7 @@ add_action( 'template_redirect', 'edd_display_email_template_preview' );
  * @return string $email_body Body of the email
  */
 function edd_get_email_body_content( $payment_id = 0, $payment_data = array() ) {
-	$default_email_body = __( 'Dear', 'easy-digital-downloads' ) . " {name},\n\n";
+	$default_email_body  = __( 'Dear', 'easy-digital-downloads' ) . " {name},\n\n";
 	$default_email_body .= __( 'Thank you for your purchase. Please click on the link(s) below to download your files.', 'easy-digital-downloads' ) . "\n\n";
 	$default_email_body .= "{download_list}\n\n";
 	$default_email_body .= '{sitename}';
@@ -180,11 +180,11 @@ function edd_get_email_body_content( $payment_id = 0, $payment_data = array() ) 
  */
 function edd_get_sale_notification_body_content( $payment_id = 0, $payment_data = array() ) {
 	$user_info = maybe_unserialize( $payment_data['user_info'] );
-	$email = edd_get_payment_user_email( $payment_id );
+	$email     = edd_get_payment_user_email( $payment_id );
 
 	if ( isset( $user_info['id'] ) && $user_info['id'] > 0 ) {
 		$user_data = get_userdata( $user_info['id'] );
-		$name = $user_data->display_name;
+		$name      = $user_data->display_name;
 	} elseif ( isset( $user_info['first_name'] ) && isset( $user_info['last_name'] ) ) {
 		$name = $user_info['first_name'] . ' ' . $user_info['last_name'];
 	} else {
@@ -192,11 +192,11 @@ function edd_get_sale_notification_body_content( $payment_id = 0, $payment_data 
 	}
 
 	$download_list = '';
-	$downloads = maybe_unserialize( $payment_data['downloads'] );
+	$downloads     = maybe_unserialize( $payment_data['downloads'] );
 
 	if ( is_array( $downloads ) ) {
 		foreach ( $downloads as $download ) {
-			$id = isset( $payment_data['cart_details'] ) ? $download['id'] : $download;
+			$id    = isset( $payment_data['cart_details'] ) ? $download['id'] : $download;
 			$title = get_the_title( $id );
 			if ( isset( $download['options'] ) ) {
 				if ( isset( $download['options']['price_id'] ) ) {
@@ -209,7 +209,7 @@ function edd_get_sale_notification_body_content( $payment_id = 0, $payment_data 
 
 	$gateway = edd_get_gateway_admin_label( get_post_meta( $payment_id, '_edd_payment_gateway', true ) );
 
-	$default_email_body = __( 'Hello', 'easy-digital-downloads' ) . "\n\n" . sprintf( __( 'A %s purchase has been made', 'easy-digital-downloads' ), edd_get_label_plural() ) . ".\n\n";
+	$default_email_body  = __( 'Hello', 'easy-digital-downloads' ) . "\n\n" . sprintf( __( 'A %s purchase has been made', 'easy-digital-downloads' ), edd_get_label_plural() ) . ".\n\n";
 	$default_email_body .= sprintf( __( '%s sold:', 'easy-digital-downloads' ), edd_get_label_plural() ) . "\n\n";
 	$default_email_body .= $download_list . "\n\n";
 	$default_email_body .= __( 'Purchased by: ', 'easy-digital-downloads' ) . ' ' . html_entity_decode( $name, ENT_COMPAT, 'UTF-8' ) . "\n";
