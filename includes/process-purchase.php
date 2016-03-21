@@ -101,7 +101,7 @@ function edd_process_purchase_form() {
 	if ( ! $purchase_data['price'] ) {
 		// Revert to manual
 		$purchase_data['gateway'] = 'manual';
-		$_POST['edd-gateway'] = 'manual';
+		$_POST['edd-gateway']     = 'manual';
 	}
 
 	// Allow the purchase data to be modified before it is sent to the gateway
@@ -742,7 +742,7 @@ function edd_get_purchase_form_user( $valid_data = array() ) {
 	}
 
 	// Get the user's billing address details
-	$user['address'] = array();
+	$user['address']            = array();
 	$user['address']['line1']   = ! empty( $_POST['card_address']    ) ? sanitize_text_field( $_POST['card_address']    ) : false;
 	$user['address']['line2']   = ! empty( $_POST['card_address_2']  ) ? sanitize_text_field( $_POST['card_address_2']  ) : false;
 	$user['address']['city']    = ! empty( $_POST['card_city']       ) ? sanitize_text_field( $_POST['card_city']       ) : false;
@@ -791,7 +791,7 @@ function edd_purchase_form_validate_cc() {
  * @return  array
  */
 function edd_get_purchase_cc_info() {
-	$cc_info = array();
+	$cc_info                   = array();
 	$cc_info['card_name']      = isset( $_POST['card_name'] )       ? sanitize_text_field( $_POST['card_name'] )       : '';
 	$cc_info['card_number']    = isset( $_POST['card_number'] )     ? sanitize_text_field( $_POST['card_number'] )     : '';
 	$cc_info['card_cvc']       = isset( $_POST['card_cvc'] )        ? sanitize_text_field( $_POST['card_cvc'] )        : '';
