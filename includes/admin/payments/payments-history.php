@@ -19,7 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  *
  * @access      private
  * @since       1.0
- * @return      void
+ * @return void
 */
 function edd_payment_history_page() {
 	$edd_payment = get_post_type_object( 'edd_payment' );
@@ -73,8 +73,8 @@ add_action( 'edd_payments_page_bottom', 'edd_payment_history_mobile_link' );
  *
  * @since 1.6
  *
- * @param $admin_title
- * @param $title
+ * @param         $admin_title
+ * @param         $title
  * @return string
  */
 function edd_view_order_details_title( $admin_title, $title ) {
@@ -106,9 +106,9 @@ add_filter( 'admin_title', 'edd_view_order_details_title', 10, 2 );
  *
  * @since 1.8.3
  *
- * @param $url
- * @param $post_id
- * @param $context
+ * @param         $url
+ * @param         $post_id
+ * @param         $context
  * @return string
  */
 function edd_override_edit_post_for_payment_link( $url, $post_id = 0, $context ) {
