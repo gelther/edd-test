@@ -29,8 +29,7 @@ class IpnHandler implements IpnHandlerInterface
 					'proxy_password' => null);
 
 
-	public function __construct($headers, $body, $ipnConfig = null)
-	{
+	public function __construct($headers, $body, $ipnConfig = null) {
 		$this->headers = array_change_key_case($headers, CASE_LOWER);
 		$this->body    = $body;
 
@@ -61,8 +60,7 @@ class IpnHandler implements IpnHandlerInterface
 		$this->constructAndVerifySignature();
 	}
 
-	private function checkConfigKeys($ipnConfig)
-	{
+	private function checkConfigKeys($ipnConfig) {
 		$ipnConfig = array_change_key_case($ipnConfig, CASE_LOWER);
 	$ipnConfig = trimArray($ipnConfig);
 
@@ -80,8 +78,7 @@ class IpnHandler implements IpnHandlerInterface
 	 * Sets the value for the key if the key exists in ipnConfig
 	 */
 
-	public function __set($name, $value)
-	{
+	public function __set($name, $value) {
 		if ( array_key_exists(strtolower($name), $this->ipnConfig) ) {
 			$this->ipnConfig[$name] = $value;
 		} else {
@@ -93,8 +90,7 @@ class IpnHandler implements IpnHandlerInterface
 	 * Returns the value for the key if the key exists in ipnConfig
 	 */
 
-	public function __get($name)
-	{
+	public function __get($name) {
 		if ( array_key_exists(strtolower($name), $this->ipnConfig) ) {
 			return $this->ipnConfig[$name];
 		} else {
@@ -104,16 +100,14 @@ class IpnHandler implements IpnHandlerInterface
 
 	/* Trim the input Array key values */
 
-	private function trimArray($array)
-	{
+	private function trimArray($array) {
 	foreach ( $array as $key => $value ) {
 		$array[$key] = trim($value);
 	}
 	return $array;
 	}
 
-	private function validateHeaders()
-	{
+	private function validateHeaders() {
 		// Quickly check that this is a sns message
 		if ( ! array_key_exists('x-amz-sns-message-type', $this->headers) ) {
 			throw new \Exception('Error with message - header ' . 'does not contain x-amz-sns-message-type header');
@@ -124,8 +118,7 @@ class IpnHandler implements IpnHandlerInterface
 		}
 	}
 
-	private function getMessage()
-	{
+	private function getMessage() {
 		$this->snsMessage = json_decode($this->body, true);
 
 		$json_error = json_last_error();
@@ -143,8 +136,7 @@ class IpnHandler implements IpnHandlerInterface
 	 * @return string error message
 	 */
 
-	private function getErrorMessageForJsonError($json_error)
-	{
+	private function getErrorMessageForJsonError($json_error) {
 		switch ( $json_error ) {
 			case JSON_ERROR_DEPTH:
 				return ' - maximum stack depth exceeded.';
@@ -171,8 +163,7 @@ class IpnHandler implements IpnHandlerInterface
 	 * Constructs the signature string
 	 */
 
-	private function checkForCorrectMessageType()
-	{
+	private function checkForCorrectMessageType() {
 		$type = $this->getMandatoryField('Type');
 		if ( strcasecmp($type, 'Notification') != 0 ) {
 			throw new \Exception('Error with SNS Notification - unexpected message with Type of ' . $type);
@@ -220,8 +211,7 @@ class IpnHandler implements IpnHandlerInterface
 	 * @return bool true if valid
 	 */
 
-	private function constructAndVerifySignature()
-	{
+	private function constructAndVerifySignature() {
 	$signature       = base64_decode($this->getMandatoryField('Signature'));
 		$certificatePath = $this->getMandatoryField('SigningCertURL');
 
@@ -238,8 +228,7 @@ class IpnHandler implements IpnHandlerInterface
 	 * gets the certificate from the $certificatePath using Curl
 	 */
 
-	private function getCertificate($certificatePath)
-	{
+	private function getCertificate($certificatePath) {
 		$httpCurlRequest = new HttpCurl($this->ipnConfig);
 
 	$response = $httpCurlRequest->httpGet($certificatePath);
@@ -254,8 +243,7 @@ class IpnHandler implements IpnHandlerInterface
 	 * @param string $certificate     certificate object defined in Certificate.php
 	 */
 
-	public function verifySignatureIsCorrectFromCertificate($signature)
-	{
+	public function verifySignatureIsCorrectFromCertificate($signature) {
 		$certKey = openssl_get_publickey($this->certificate);
 
 		if ( $certKey === false ) {
@@ -297,8 +285,7 @@ class IpnHandler implements IpnHandlerInterface
 	 * @return string field contents if found
 	 */
 
-	private function getMandatoryField($fieldName)
-	{
+	private function getMandatoryField($fieldName) {
 		$value = $this->getField($fieldName);
 		if ( is_null($value) ) {
 			throw new \Exception('Error with json message - mandatory field ' . $fieldName . ' cannot be found');
@@ -313,8 +300,7 @@ class IpnHandler implements IpnHandlerInterface
 	 * @return string field contents if found, null otherwise
 	 */
 
-	private function getField($fieldName)
-	{
+	private function getField($fieldName) {
 		if ( array_key_exists($fieldName, $this->snsMessage) ) {
 			return $this->snsMessage[$fieldName];
 		} else {
@@ -324,8 +310,7 @@ class IpnHandler implements IpnHandlerInterface
 
 	/* returnMessage() - JSON decode the raw [Message] portion of the IPN */
 
-	public function returnMessage()
-	{
+	public function returnMessage() {
 		return json_decode($this->snsMessage['Message'], true);
 	}
 
@@ -340,8 +325,7 @@ class IpnHandler implements IpnHandlerInterface
 	 * @return response in JSON format
 	 */
 
-	public function toJson()
-	{
+	public function toJson() {
 		$response = $this->simpleXmlObject();
 
 		// Merging the remaining fields with the response
@@ -358,8 +342,7 @@ class IpnHandler implements IpnHandlerInterface
 	 * @return response in array format
 	 */
 
-	public function toArray()
-	{
+	public function toArray() {
 		$response = $this->simpleXmlObject();
 
 		// Converting the SimpleXMLElement Object to array()
@@ -384,8 +367,7 @@ class IpnHandler implements IpnHandlerInterface
 	 * @return response in array format
 	 */
 
-	private function simpleXmlObject()
-	{
+	private function simpleXmlObject() {
 		$ipnMessage = $this->returnMessage();
 
 		// Getting the Simple XML element object of the IPN XML Response Body
@@ -403,8 +385,7 @@ class IpnHandler implements IpnHandlerInterface
 	 * Gets the remaining fields of the IPN to be later appended to the return message
 	 */
 
-	private function getRemainingIpnFields()
-	{
+	private function getRemainingIpnFields() {
 		$ipnMessage = $this->returnMessage();
 
 		$remainingFields = array(
