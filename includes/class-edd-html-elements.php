@@ -241,7 +241,7 @@ class EDD_HTML_Elements {
 		}
 
 		$category_labels = edd_get_taxonomy_labels( 'download_category' );
-		$output = $this->select( array(
+		$output          = $this->select( array(
 			'name'             => $name,
 			'selected'         => $selected,
 			'options'          => $options,
@@ -264,11 +264,11 @@ class EDD_HTML_Elements {
 	 * @return string $output Year dropdown
 	 */
 	public function year_dropdown( $name = 'year', $selected = 0, $years_before = 5, $years_after = 0 ) {
-		$current     = date( 'Y' );
-		$start_year  = $current - absint( $years_before );
-		$end_year    = $current + absint( $years_after );
-		$selected    = empty( $selected ) ? date( 'Y' ) : $selected;
-		$options     = array();
+		$current    = date( 'Y' );
+		$start_year = $current - absint( $years_before );
+		$end_year   = $current + absint( $years_after );
+		$selected   = empty( $selected ) ? date( 'Y' ) : $selected;
+		$options    = array();
 
 		while ( $start_year <= $end_year ) {
 			$options[ absint( $start_year ) ] = $start_year;
@@ -296,8 +296,8 @@ class EDD_HTML_Elements {
 	 * @return string $output Month dropdown
 	 */
 	public function month_dropdown( $name = 'month', $selected = 0 ) {
-		$month   = 1;
-		$options = array();
+		$month    = 1;
+		$options  = array();
 		$selected = empty( $selected ) ? date( 'n' ) : $selected;
 
 		while ( $month <= 12 ) {
@@ -425,7 +425,7 @@ class EDD_HTML_Elements {
 
 		$args = wp_parse_args( $args, $defaults );
 
-		$class = implode( ' ', array_map( 'sanitize_html_class', explode( ' ', $args['class'] ) ) );
+		$class   = implode( ' ', array_map( 'sanitize_html_class', explode( ' ', $args['class'] ) ) );
 		$options = '';
 		if ( ! empty( $args['options']['disabled'] ) ) {
 			$options .= ' disabled="disabled"';
@@ -472,7 +472,7 @@ class EDD_HTML_Elements {
 
 		$args = wp_parse_args( $args, $defaults );
 
-		$class = implode( ' ', array_map( 'sanitize_html_class', explode( ' ', $args['class'] ) ) );
+		$class    = implode( ' ', array_map( 'sanitize_html_class', explode( ' ', $args['class'] ) ) );
 		$disabled = '';
 		if ( $args['disabled'] ) {
 			$disabled = ' disabled="disabled"';
@@ -538,7 +538,7 @@ class EDD_HTML_Elements {
 
 		$args = wp_parse_args( $args, $defaults );
 
-		$class = implode( ' ', array_map( 'sanitize_html_class', explode( ' ', $args['class'] ) ) );
+		$class    = implode( ' ', array_map( 'sanitize_html_class', explode( ' ', $args['class'] ) ) );
 		$disabled = '';
 		if ( $args['disabled'] ) {
 			$disabled = ' disabled="disabled"';
