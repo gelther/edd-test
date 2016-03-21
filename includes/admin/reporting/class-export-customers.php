@@ -129,7 +129,7 @@ class EDD_Customers_Export extends EDD_Export {
 				foreach ( $logs as $log ) {
 					$payment_id = get_post_meta( $log->ID, '_edd_log_payment_id', true );
 					$user_info  = edd_get_payment_meta_user_info( $payment_id );
-					$data[] = array(
+					$data[]     = array(
 						'first_name' => $user_info['first_name'],
 						'last_name'  => $user_info['last_name'],
 						'email'      => $user_info['email'],
