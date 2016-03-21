@@ -17,8 +17,8 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  *
  * @since	    1.8.5
  * @global		string $typenow
- * @param       string $footer_text The existing footer text
- * @return      string
+ * @param  string $footer_text The existing footer text
+ * @return string
  */
 function edd_admin_rate_us( $footer_text ) {
 	global $typenow;
