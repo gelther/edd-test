@@ -193,14 +193,14 @@ function edd_purchase_form_validate_fields() {
 	if ( is_user_logged_in() ) {
 		// Collect logged in user data
 		$valid_data['logged_in_user'] = edd_purchase_form_validate_logged_in_user();
-	} else if ( isset( $_POST['edd-purchase-var'] ) && $_POST['edd-purchase-var'] == 'needs-to-register' ) {
+	} elseif ( isset( $_POST['edd-purchase-var'] ) && $_POST['edd-purchase-var'] == 'needs-to-register' ) {
 		// Set new user registration as required
 		$valid_data['need_new_user'] = true;
 
 		// Validate new user data
 		$valid_data['new_user_data'] = edd_purchase_form_validate_new_user();
 		// Check if login validation is needed
-	} else if ( isset( $_POST['edd-purchase-var'] ) && $_POST['edd-purchase-var'] == 'needs-to-login' ) {
+	} elseif ( isset( $_POST['edd-purchase-var'] ) && $_POST['edd-purchase-var'] == 'needs-to-login' ) {
 		// Set user login as required
 		$valid_data['need_user_login'] = true;
 
@@ -261,9 +261,9 @@ function edd_purchase_form_validate_discounts() {
 	$user = '';
 	if ( isset( $_POST['edd_user_login'] ) && ! empty( $_POST['edd_user_login'] ) ) {
 		$user = sanitize_text_field( $_POST['edd_user_login'] );
-	} else if ( isset( $_POST['edd_email'] ) && ! empty($_POST['edd_email'] ) ) {
+	} elseif ( isset( $_POST['edd_email'] ) && ! empty($_POST['edd_email'] ) ) {
 		$user = sanitize_text_field( $_POST['edd_email'] );
-	} else if ( is_user_logged_in() ) {
+	} elseif ( is_user_logged_in() ) {
 		$user = wp_get_current_user()->user_email;
 	}
 
@@ -456,7 +456,7 @@ function edd_purchase_form_validate_new_user() {
 			// Username already registered
 			edd_set_error( 'username_unavailable', __( 'Username already taken', 'easy-digital-downloads' ) );
 			// Check if it's valid
-		} else if ( ! edd_validate_username( $user_login ) ) {
+		} elseif ( ! edd_validate_username( $user_login ) ) {
 				// Invalid username
 				if ( is_multisite() )
 					edd_set_error( 'username_invalid', __( 'Invalid username. Only lowercase letters (a-z) and numbers are allowed', 'easy-digital-downloads' ) );
@@ -478,7 +478,7 @@ function edd_purchase_form_validate_new_user() {
 		if ( ! is_email( $user_email ) ) {
 			edd_set_error( 'email_invalid', __( 'Invalid email', 'easy-digital-downloads' ) );
 			// Check if email exists
-		} else if ( email_exists( $user_email ) && $registering_new_user ) {
+		} elseif ( email_exists( $user_email ) && $registering_new_user ) {
 				edd_set_error( 'email_used', __( 'Email already used', 'easy-digital-downloads' ) );
 			} else {
 			// All the checks have run and it's good to go
@@ -504,7 +504,7 @@ function edd_purchase_form_validate_new_user() {
 		if ( ! $user_pass && $registering_new_user ) {
 			// The password is invalid
 			edd_set_error( 'password_empty', __( 'Enter a password', 'easy-digital-downloads' ) );
-		} else if ( ! $pass_confirm && $registering_new_user ) {
+		} elseif ( ! $pass_confirm && $registering_new_user ) {
 			// Confirmation password is invalid
 			edd_set_error( 'confirmation_empty', __( 'Enter the password confirmation', 'easy-digital-downloads' ) );
 		}
@@ -690,10 +690,10 @@ function edd_get_purchase_form_user( $valid_data = array() ) {
 	if ( $is_ajax ) {
 		// Do not create or login the user during the ajax submission (check for errors only)
 		return true;
-	} else if ( is_user_logged_in() ) {
+	} elseif ( is_user_logged_in() ) {
 		// Set the valid user as the logged in collected data
 		$user = $valid_data['logged_in_user'];
-	} else if ( $valid_data['need_new_user'] === true || $valid_data['need_user_login'] === true ) {
+	} elseif ( $valid_data['need_new_user'] === true || $valid_data['need_user_login'] === true ) {
 		// New user registration
 		if ( $valid_data['need_new_user'] === true ) {
 			// Set user
@@ -701,7 +701,7 @@ function edd_get_purchase_form_user( $valid_data = array() ) {
 			// Register and login new user
 			$user['user_id'] = edd_register_and_login_new_user( $user );
 			// User login
-		} else if ( $valid_data['need_user_login'] === true  && ! $is_ajax ) {
+		} elseif ( $valid_data['need_user_login'] === true  && ! $is_ajax ) {
 			/*
 			 * The login form is now processed in the edd_process_purchase_login() function.
 			 * This is still here for backwards compatibility.
