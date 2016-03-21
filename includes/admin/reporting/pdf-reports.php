@@ -73,7 +73,7 @@ function edd_generate_pdf( $data ) {
 	$pdf->Cell( 45, 6, utf8_decode( __( 'Number of Sales', 'easy-digital-downloads' ) ), 1, 0, 'L', true );
 	$pdf->Cell( 35, 6, utf8_decode( __( 'Earnings to Date', 'easy-digital-downloads' ) ), 1, 1, 'L', true );
 
-	$year = date('Y');
+	$year      = date('Y');
 	$downloads = get_posts( array( 'post_type' => 'download', 'year' => $year, 'posts_per_page' => -1 ) );
 
 	if ( $downloads ) :
@@ -89,8 +89,8 @@ function edd_generate_pdf( $data ) {
 				$prices = edd_get_variable_prices( $download->ID );
 
 				$first = $prices[0]['amount'];
-				$last = array_pop( $prices );
-				$last = $last['amount'];
+				$last  = array_pop( $prices );
+				$last  = $last['amount'];
 
 				if ( $first < $last ) {
 					$min = $first;
@@ -111,7 +111,7 @@ function edd_generate_pdf( $data ) {
 			$tags = get_the_term_list( $download->ID, 'download_tag', '', ', ', '' );
 			$tags = $tags ? strip_tags( $tags ) : '';
 
-			$sales = edd_get_download_sales_stats( $download->ID );
+			$sales    = edd_get_download_sales_stats( $download->ID );
 			$earnings = html_entity_decode ( edd_currency_filter( edd_get_download_earnings_stats( $download->ID ) ) );
 
 			if ( function_exists( 'iconv' ) ) {
@@ -166,18 +166,18 @@ function edd_draw_chart_image() {
 
 	$chart = new GoogleChart( 'lc', 900, 330 );
 
-	$i = 1;
+	$i        = 1;
 	$earnings = '';
-	$sales = '';
+	$sales    = '';
 
 	while ( $i <= 12 ) :
 		$earnings .= edd_get_earnings_by_date( null, $i, date('Y') ) . ',';
-		$sales .= edd_get_sales_by_date( null, $i, date('Y') ) . ',';
+		$sales    .= edd_get_sales_by_date( null, $i, date('Y') ) . ',';
 		$i++;
 	endwhile;
 
 	$earnings_array = explode( ',', $earnings );
-	$sales_array = explode( ',', $sales );
+	$sales_array    = explode( ',', $sales );
 
 	$i = 0;
 	while ( $i <= 11 ) {
