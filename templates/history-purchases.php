@@ -14,12 +14,12 @@ if ( is_user_logged_in() ) :
 		<table id="edd_user_history">
 			<thead>
 				<tr class="edd_purchase_row">
-					<?php do_action('edd_purchase_history_header_before'); ?>
-					<th class="edd_purchase_id"><?php _e('ID', 'easy-digital-downloads' ); ?></th>
-					<th class="edd_purchase_date"><?php _e('Date', 'easy-digital-downloads' ); ?></th>
-					<th class="edd_purchase_amount"><?php _e('Amount', 'easy-digital-downloads' ); ?></th>
-					<th class="edd_purchase_details"><?php _e('Details', 'easy-digital-downloads' ); ?></th>
-					<?php do_action('edd_purchase_history_header_after'); ?>
+					<?php do_action( 'edd_purchase_history_header_before' ); ?>
+					<th class="edd_purchase_id"><?php _e( 'ID', 'easy-digital-downloads' ); ?></th>
+					<th class="edd_purchase_date"><?php _e( 'Date', 'easy-digital-downloads' ); ?></th>
+					<th class="edd_purchase_amount"><?php _e( 'Amount', 'easy-digital-downloads' ); ?></th>
+					<th class="edd_purchase_details"><?php _e( 'Details', 'easy-digital-downloads' ); ?></th>
+					<?php do_action( 'edd_purchase_history_header_after' ); ?>
 				</tr>
 			</thead>
 			<?php foreach ( $purchases as $post ) : setup_postdata( $post ); ?>
@@ -27,7 +27,7 @@ if ( is_user_logged_in() ) :
 				<tr class="edd_purchase_row">
 					<?php do_action( 'edd_purchase_history_row_start', $post->ID, $purchase_data ); ?>
 					<td class="edd_purchase_id">#<?php echo edd_get_payment_number( $post->ID ); ?></td>
-					<td class="edd_purchase_date"><?php echo date_i18n( get_option('date_format'), strtotime( get_post_field( 'post_date', $post->ID ) ) ); ?></td>
+					<td class="edd_purchase_date"><?php echo date_i18n( get_option( 'date_format' ), strtotime( get_post_field( 'post_date', $post->ID ) ) ); ?></td>
 					<td class="edd_purchase_amount">
 						<span class="edd_purchase_amount"><?php echo edd_currency_filter( edd_format_amount( edd_get_payment_amount( $post->ID ) ) ); ?></span>
 					</td>
@@ -57,6 +57,6 @@ if ( is_user_logged_in() ) :
 		<?php do_action( 'edd_after_purchase_history' ); ?>
 		<?php wp_reset_postdata(); ?>
 	<?php else : ?>
-		<p class="edd-no-purchases"><?php _e('You have not made any purchases', 'easy-digital-downloads' ); ?></p>
+		<p class="edd-no-purchases"><?php _e( 'You have not made any purchases', 'easy-digital-downloads' ); ?></p>
 	<?php endif;
 endif;
