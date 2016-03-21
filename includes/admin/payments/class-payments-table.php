@@ -272,13 +272,13 @@ class EDD_Payment_History_Table extends WP_List_Table {
 	public function column_default( $payment, $column_name ) {
 		switch ( $column_name ) {
 			case 'amount' :
-				$amount  = $payment->total;
-				$amount  = ! empty( $amount ) ? $amount : 0;
-				$value   = edd_currency_filter( edd_format_amount( $amount ), edd_get_payment_currency_code( $payment->ID ) );
+				$amount = $payment->total;
+				$amount = ! empty( $amount ) ? $amount : 0;
+				$value  = edd_currency_filter( edd_format_amount( $amount ), edd_get_payment_currency_code( $payment->ID ) );
 				break;
 			case 'date' :
-				$date    = strtotime( $payment->date );
-				$value   = date_i18n( get_option( 'date_format' ), $date );
+				$date  = strtotime( $payment->date );
+				$value = date_i18n( get_option( 'date_format' ), $date );
 				break;
 			case 'status' :
 				$payment = get_post( $payment->ID );
@@ -367,8 +367,8 @@ class EDD_Payment_History_Table extends WP_List_Table {
 		$customer_id = edd_get_payment_customer_id( $payment->ID );
 
 		if ( ! empty( $customer_id ) ) {
-			$customer    = new EDD_Customer( $customer_id );
-			$value = '<a href="' . esc_url( admin_url( "edit.php?post_type=download&page=edd-customers&view=overview&id=$customer_id" ) ) . '">' . $customer->name . '</a>';
+			$customer = new EDD_Customer( $customer_id );
+			$value    = '<a href="' . esc_url( admin_url( "edit.php?post_type=download&page=edd-customers&view=overview&id=$customer_id" ) ) . '">' . $customer->name . '</a>';
 		} else {
 			$email = edd_get_payment_user_email( $payment->ID );
 			$value = '<a href="' . esc_url( admin_url( "edit.php?post_type=download&page=edd-payment-history&s=$email" ) ) . '">' . __( '(customer missing)', 'easy-digital-downloads' ) . '</a>';
@@ -482,7 +482,7 @@ class EDD_Payment_History_Table extends WP_List_Table {
 			$args['user'] = urldecode( $_GET['user'] );
 		} elseif ( isset( $_GET['s'] ) ) {
 
-			$is_user  = strpos( $_GET['s'], strtolower( 'user:' ) ) !== false;
+			$is_user = strpos( $_GET['s'], strtolower( 'user:' ) ) !== false;
 			if ( $is_user ) {
 				$args['user'] = absint( trim( str_replace( 'user:', '', strtolower( $_GET['s'] ) ) ) );
 				unset( $args['s'] );
@@ -558,11 +558,11 @@ class EDD_Payment_History_Table extends WP_List_Table {
 		if ( is_string( $search ) && false !== strpos( $search, 'txn:' ) ) {
 
 			$args['search_in_notes'] = true;
-			$args['s'] = trim( str_replace( 'txn:', '', $args['s'] ) );
+			$args['s']               = trim( str_replace( 'txn:', '', $args['s'] ) );
 
 		}
 
-		$p_query  = new EDD_Payments_Query( $args );
+		$p_query = new EDD_Payments_Query( $args );
 
 		return $p_query->get_payments();
 
