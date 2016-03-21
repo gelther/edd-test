@@ -157,7 +157,7 @@ add_action( 'edd_generate_pdf', 'edd_generate_pdf' );
  * @uses GoogleChartTextMarker
  * @uses GoogleChartAxis
  * @author Sunny Ratilal
- * @return string $chart->getUrl() URL for the Google Chart
+ * @return string $chart ->getUrl() URL for the Google Chart
  */
 function edd_draw_chart_image() {
 	require_once EDD_PLUGIN_DIR . '/includes/libraries/googlechartlib/GoogleChart.php';
