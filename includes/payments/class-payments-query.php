@@ -358,7 +358,7 @@ class EDD_Payments_Query extends EDD_Stats {
 
 		} elseif ( $is_email || strlen( $search ) == 32 ) {
 
-			$key = $is_email ? '_edd_payment_user_email' : '_edd_payment_purchase_key';
+			$key         = $is_email ? '_edd_payment_user_email' : '_edd_payment_purchase_key';
 			$search_meta = array(
 				'key'     => $key,
 				'value'   => $search,
