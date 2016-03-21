@@ -613,7 +613,7 @@ function edd_get_template_part( $slug, $name = null, $load = true ) {
  * @param string|array $template_names Template file(s) to search for, in order.
  * @param bool $load If true the template file will be loaded if it is found.
  * @param bool $require_once Whether to require_once or require. Default true.
- *   Has no effect if $load is false.
+ * Has no effect if $load is false.
  * @return string The template filename if one is located.
  */
 function edd_locate_template( $template_names, $load = false, $require_once = true ) {
