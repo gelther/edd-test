@@ -101,7 +101,7 @@ class EDD_Download_History_Export extends EDD_Export {
 				$user      = get_userdata( $user_info['id'] );
 				$user      = $user ? $user->user_login : $user_info['email'];
 
-				$data[]    = array(
+				$data[] = array(
 					'date'     => $log->post_date,
 					'user'     => $user,
 					'ip'       => get_post_meta( $log->ID, '_edd_log_ip', true ),
