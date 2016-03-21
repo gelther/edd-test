@@ -825,7 +825,7 @@ add_action( 'wp_head', 'edd_checkout_meta_tags' );
  * @since 1.4.2
  * @return void
 */
-function edd_version_in_header(){
+function edd_version_in_header() {
 	echo '<meta name="generator" content="Easy Digital Downloads v' . EDD_VERSION . '" />' . "\n";
 }
 add_action( 'wp_head', 'edd_version_in_header' );
