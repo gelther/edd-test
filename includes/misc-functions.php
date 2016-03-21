@@ -86,9 +86,9 @@ function edd_is_cc_verify_enabled() {
 
 	if ( count( $gateways ) == 1 && ! isset( $gateways['paypal'] ) && ! isset( $gateways['manual'] ) ) {
 		$ret = true;
-	} else if ( count( $gateways ) == 1 ) {
+	} elseif ( count( $gateways ) == 1 ) {
 		$ret = false;
-	} else if ( count( $gateways ) == 2 && isset( $gateways['paypal'] ) && isset( $gateways['manual'] ) ) {
+	} elseif ( count( $gateways ) == 2 && isset( $gateways['paypal'] ) && isset( $gateways['manual'] ) ) {
 		$ret = false;
 	}
 
