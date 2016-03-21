@@ -84,7 +84,7 @@ class EDD_Sales_Log_Table extends WP_List_Table {
 				break;
 
 			case 'user_id' :
-				$user = ! empty( $item['user_id'] ) ? $item['user_id'] : edd_get_payment_user_email( $item['payment_id'] );
+				$user   = ! empty( $item['user_id'] ) ? $item['user_id'] : edd_get_payment_user_email( $item['payment_id'] );
 				$return = '<a href="' . admin_url( 'edit.php?post_type=download&page=edd-payment-history&user=' . urlencode( $user ) ) . '">' . $item['user_name'] . '</a>';
 				break;
 
