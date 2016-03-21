@@ -372,7 +372,7 @@ final class EDD_Payment {
 	 * @return boolean       If the item is set or not
 	 */
 	public function __isset( $name ) {
-		if ( property_exists( $this, $name) ) {
+		if ( property_exists( $this, $name ) ) {
 			return false === empty( $this->$name );
 		} else {
 			return null;
@@ -840,7 +840,7 @@ final class EDD_Payment {
 			$merged_meta = array_merge( $meta, $new_meta );
 
 			// Only save the payment meta if it's changed
-			if ( md5( serialize( $meta ) ) !== md5( serialize( $merged_meta) ) ) {
+			if ( md5( serialize( $meta ) ) !== md5( serialize( $merged_meta ) ) ) {
 				$updated = $this->update_meta( '_edd_payment_meta', $merged_meta );
 				if ( false !== $updated ) {
 					$saved = true;
