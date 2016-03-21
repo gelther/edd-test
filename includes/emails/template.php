@@ -72,7 +72,7 @@ function edd_email_preview_template_tags( $message ) {
 
 	$sub_total = edd_currency_filter( edd_format_amount( 9.50 ) );
 
-	$payment_id = rand(1, 100);
+	$payment_id = rand( 1, 100 );
 
 	$user = wp_get_current_user();
 
@@ -244,11 +244,11 @@ function edd_render_receipt_in_browser() {
 
 	ob_start();
 	//Disallows caching of the page
-	header('Last-Modified: ' . gmdate('D, d M Y H:i:s') . ' GMT');
-	header('Cache-Control: no-store, no-cache, must-revalidate'); // HTTP/1.1
-	header('Cache-Control: post-check=0, pre-check=0', false);
-	header('Pragma: no-cache'); // HTTP/1.0
-	header('Expires: Sat, 23 Oct 1977 05:00:00 PST'); // Date in the past
+	header( 'Last-Modified: ' . gmdate( 'D, d M Y H:i:s' ) . ' GMT' );
+	header( 'Cache-Control: no-store, no-cache, must-revalidate' ); // HTTP/1.1
+	header( 'Cache-Control: post-check=0, pre-check=0', false );
+	header( 'Pragma: no-cache' ); // HTTP/1.0
+	header( 'Expires: Sat, 23 Oct 1977 05:00:00 PST' ); // Date in the past
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -261,7 +261,7 @@ function edd_render_receipt_in_browser() {
 <body class="<?php echo apply_filters('edd_receipt_page_body_class', 'edd_receipt_page' ); ?>">
 	<div id="edd_receipt_wrapper">
 		<?php do_action( 'edd_render_receipt_in_browser_before' ); ?>
-		<?php echo do_shortcode('[edd_receipt payment_key=' . $key . ']'); ?>
+		<?php echo do_shortcode( '[edd_receipt payment_key=' . $key . ']' ); ?>
 		<?php do_action( 'edd_render_receipt_in_browser_after' ); ?>
 	</div>
 <?php wp_footer(); ?>
