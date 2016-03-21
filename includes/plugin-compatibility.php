@@ -61,7 +61,7 @@ function edd_is_caching_plugin_active() {
  * This ensures the checkout page remains uncached when plugins like WP Super Cache are activated
  *
  * @since 1.4.1
- * @param array $settings Misc Settings
+ * @param  array $settings Misc Settings
  * @return array $settings Updated Misc Settings
  */
 function edd_append_no_cache_param( $settings ) {
@@ -83,7 +83,7 @@ add_filter( 'edd_settings_misc', 'edd_append_no_cache_param', -1 );
  * Show the correct language on the [downloads] short code if qTranslate is active
  *
  * @since 1.7
- * @param string $content Download content
+ * @param  string $content Download content
  * @return string $content Download content
  */
 function edd_qtranslate_content( $content ) {
@@ -98,7 +98,7 @@ add_filter( 'edd_downloads_excerpt', 'edd_qtranslate_content' );
  * Prevents qTranslate from redirecting to language-specific URL when downloading purchased files
  *
  * @since 2.5
- * @param string       $target Target URL
+ * @param  string      $target Target URL
  * @return string|bool $target Target URL. False if redirect is disabled
  */
 function edd_qtranslate_prevent_redirect( $target ) {
