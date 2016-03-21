@@ -37,10 +37,10 @@ function edd_get_download_sales_log( $download_id, $paginate = false, $number = 
 	$sales_log = get_post_meta( $download_id, '_edd_sales_log', true );
 
 	if ( $sales_log ) {
-		$sales_log = array_reverse( $sales_log );
-		$log = array();
+		$sales_log     = array_reverse( $sales_log );
+		$log           = array();
 		$log['number'] = count( $sales_log );
-		$log['sales'] = $sales_log;
+		$log['sales']  = $sales_log;
 
 		if ( $paginate ) {
 			$log['sales'] = array_slice( $sales_log, $offset, $number );
@@ -75,9 +75,9 @@ function edd_get_file_download_log( $download_id, $paginate = false, $number = 1
 	$download_log = get_post_meta( $download_id, '_edd_file_download_log', true );
 
 	if ( $download_log ) {
-		$download_log = array_reverse( $download_log );
-		$log = array();
-		$log['number'] = count( $download_log );
+		$download_log     = array_reverse( $download_log );
+		$log              = array();
+		$log['number']    = count( $download_log );
 		$log['downloads'] = $download_log;
 
 		if ( $paginate ) {
@@ -277,7 +277,7 @@ function edd_get_cart_amount( $add_taxes = true, $local_override = false ) {
 	}
 
 	if ( edd_use_taxes() && edd_is_cart_taxed() && $add_taxes ) {
-		$tax = edd_get_cart_tax();
+		$tax     = edd_get_cart_tax();
 		$amount += $tax;
 	}
 
@@ -507,8 +507,8 @@ function edd_verify_download_link( $download_id = 0, $key = '', $email = '', $ex
 					if ( $cart_item['id'] != $download_id )
 						continue;
 
-					$price_options 	= isset( $cart_item['item_number']['options'] ) ? $cart_item['item_number']['options'] : false;
-					$price_id 		= isset( $price_options['price_id'] ) ? $price_options['price_id'] : false;
+					$price_options = isset( $cart_item['item_number']['options'] ) ? $cart_item['item_number']['options'] : false;
+					$price_id      = isset( $price_options['price_id'] ) ? $price_options['price_id'] : false;
 
 					$file_condition = edd_get_file_price_condition( $cart_item['id'], $file_key );
 
