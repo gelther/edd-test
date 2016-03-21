@@ -78,9 +78,9 @@ class EDD_Tools_Recount_Single_Customer_Stats extends EDD_Batch_Export {
 
 				if ( 'publish' == $payment->post_status || 'revoked' == $payment->post_status ) {
 
-					$found_payment_ids[] = $payment->ID;
-					$payment_amount      = edd_get_payment_amount( $payment->ID );
-					$step_total         += $payment_amount;
+					$found_payment_ids[]  = $payment->ID;
+					$payment_amount       = edd_get_payment_amount( $payment->ID );
+					$step_total          += $payment_amount;
 
 				}
 
@@ -106,7 +106,7 @@ class EDD_Tools_Recount_Single_Customer_Stats extends EDD_Batch_Export {
 	public function get_percentage_complete() {
 
 		$payments = $this->get_stored_data( 'edd_recount_customer_payments_' . $this->customer_id );
-		$total       = count( $payments );
+		$total    = count( $payments );
 
 		$percentage = 100;
 
@@ -149,8 +149,8 @@ class EDD_Tools_Recount_Single_Customer_Stats extends EDD_Batch_Export {
 			$this->done = false;
 			return true;
 		} else {
-			$customer         = new EDD_Customer( $this->customer_id );
-			$payment_ids      = get_option( 'edd_stats_found_payments_' . $customer->id, array() );
+			$customer    = new EDD_Customer( $this->customer_id );
+			$payment_ids = get_option( 'edd_stats_found_payments_' . $customer->id, array() );
 			$this->delete_data( 'edd_stats_found_payments_' . $customer->id );
 
 			$removed_payments = array_unique( get_option( 'edd_stats_missing_payments' . $customer->id, array() ) );
