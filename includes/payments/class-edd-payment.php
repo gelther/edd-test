@@ -305,8 +305,8 @@ final class EDD_Payment {
 	 * Setup the EDD Payments class
 	 *
 	 * @since 2.5
-	 * @param int $payment_id A given payment
-	 * @return mixed void|false
+	 * @param  int   $payment_id A given payment
+	 * @return mixed             void|false
 	 */
 	public function __construct( $payment_id = false ) {
 
@@ -321,8 +321,8 @@ final class EDD_Payment {
 	 * Magic GET function
 	 *
 	 * @since  2.5
-	 * @param  string $key  The property
-	 * @return mixed        The value
+	 * @param  string $key The property
+	 * @return mixed       The value
 	 */
 	public function __get( $key ) {
 
@@ -346,7 +346,7 @@ final class EDD_Payment {
 	 *
 	 * @since  2.5
 	 * @param string $key   The property name
-	 * @param mixed $value  The value of the property
+	 * @param mixed  $value The value of the property
 	 */
 	public function __set( $key, $value ) {
 		$ignore = array( 'downloads', 'cart_details', 'fees', '_ID' );
@@ -383,8 +383,8 @@ final class EDD_Payment {
 	 * Setup payment properties
 	 *
 	 * @since  2.5
-	 * @param  int $payment_id The payment ID
-	 * @return bool            If the setup was successful or not
+	 * @param  int  $payment_id The payment ID
+	 * @return bool             If the setup was successful or not
 	 */
 	private function setup_payment( $payment_id ) {
 		$this->pending = array();
@@ -582,7 +582,7 @@ final class EDD_Payment {
 	/**
 	 * One items have been set, an update is needed to save them to the database.
 	 *
-	 * @return bool  True of the save occurred, false if it failed or wasn't needed
+	 * @return bool True of the save occurred, false if it failed or wasn't needed
 	 */
 	public function save() {
 		$saved = false;
@@ -862,9 +862,9 @@ final class EDD_Payment {
 	 * Add a download to a given payment
 	 *
 	 * @since 2.5
-	 * @param int   $download_id The download to add
-	 * @param array $args Other arguments to pass to the function
-	 * @param array $options List of download options
+	 * @param  int   $download_id The download to add
+	 * @param  array $args        Other arguments to pass to the function
+	 * @param  array $options     List of download options
 	 * @return void
 	 */
 	public function add_download( $download_id = 0, $args = array(), $options = array() ) {
@@ -1148,7 +1148,7 @@ final class EDD_Payment {
 	 *
 	 * @since  2.5
 	 * @param  array $args Array of arguments for the fee to add
-	 * @return bool If the fee was added
+	 * @return bool        If the fee was added
 	 */
 	public function add_fee( $args, $global = true ) {
 
@@ -1178,8 +1178,8 @@ final class EDD_Payment {
 	 * Remove a fee from the payment
 	 *
 	 * @since  2.5
-	 * @param  int $key The array key index to remove
-	 * @return bool     If the fee was removed successfully
+	 * @param  int  $key The array key index to remove
+	 * @return bool      If the fee was removed successfully
 	 */
 	public function remove_fee( $key ) {
 		$removed = false;
@@ -1195,10 +1195,10 @@ final class EDD_Payment {
 	 * Remove a fee by the defined attributed
 	 *
 	 * @since  2.5
-	 * @param  string      $key    The key to remove by
-	 * @param  int|string  $value  The value to search for
-	 * @param  boolean $global     False - removes the first value it fines, True - removes all matches
-	 * @return boolean             If the item is removed
+	 * @param  string     $key    The key to remove by
+	 * @param  int|string $value  The value to search for
+	 * @param  boolean    $global False - removes the first value it fines, True - removes all matches
+	 * @return boolean            If the item is removed
 	 */
 	public function remove_fee_by( $key, $value, $global = false ) {
 
@@ -1285,7 +1285,7 @@ final class EDD_Payment {
 	 * Add a note to a payment
 	 *
 	 * @since 2.5
-	 * @param string $note The note to add
+	 * @param  string $note The note to add
 	 * @return void
 	 */
 	public function add_note( $note = false ) {
@@ -1301,7 +1301,7 @@ final class EDD_Payment {
 	 * Increase the payment's subtotal
 	 *
 	 * @since  2.5
-	 * @param  float  $amount The amount to increase the payment subtotal by
+	 * @param  float $amount The amount to increase the payment subtotal by
 	 * @return void
 	 */
 	private function increase_subtotal( $amount = 0.00 ) {
@@ -1315,7 +1315,7 @@ final class EDD_Payment {
 	 * Decrease the payment's subtotal
 	 *
 	 * @since  2.5
-	 * @param  float  $amount The amount to decrease the payment subtotal by
+	 * @param  float $amount The amount to decrease the payment subtotal by
 	 * @return void
 	 */
 	private function decrease_subtotal( $amount = 0.00 ) {
@@ -1333,7 +1333,7 @@ final class EDD_Payment {
 	 * Increase the payment's subtotal
 	 *
 	 * @since  2.5
-	 * @param  float  $amount The amount to increase the payment subtotal by
+	 * @param  float $amount The amount to increase the payment subtotal by
 	 * @return void
 	 */
 	private function increase_fees( $amount = 0.00 ) {
@@ -1347,7 +1347,7 @@ final class EDD_Payment {
 	 * Decrease the payment's subtotal
 	 *
 	 * @since  2.5
-	 * @param  float  $amount The amount to decrease the payment subtotal by
+	 * @param  float $amount The amount to decrease the payment subtotal by
 	 * @return void
 	 */
 	private function decrease_fees( $amount = 0.00 ) {
@@ -1375,7 +1375,7 @@ final class EDD_Payment {
 	 * Increase the payment's tax by the provided amount
 	 *
 	 * @since  2.5
-	 * @param  float  $amount The amount to increase the payment tax by
+	 * @param  float $amount The amount to increase the payment tax by
 	 * @return void
 	 */
 	public function increase_tax( $amount = 0.00 ) {
@@ -1389,7 +1389,7 @@ final class EDD_Payment {
 	 * Decrease the payment's tax by the provided amount
 	 *
 	 * @since  2.5
-	 * @param  float  $amount The amount to reduce the payment tax by
+	 * @param  float $amount The amount to reduce the payment tax by
 	 * @return void
 	 */
 	public function decrease_tax( $amount = 0.00 ) {
@@ -1409,7 +1409,7 @@ final class EDD_Payment {
 	 * @since 2.5
 	 *
 	 * @param  string $status The status to set the payment to
-	 * @return bool Returns if the status was successfully updated
+	 * @return bool           Returns if the status was successfully updated
 	 */
 	public function update_status( $status = false ) {
 
@@ -1510,10 +1510,10 @@ final class EDD_Payment {
 	 * Update the post meta
 	 *
 	 * @since  2.5
-	 * @param  string $meta_key   The meta key to update
-	 * @param  string $meta_value The meta value
-	 * @param  string $prev_value Previous meta value
-	 * @return int|bool           Meta ID if the key didn't exist, true on successful update, false on failure
+	 * @param  string   $meta_key   The meta key to update
+	 * @param  string   $meta_value The meta value
+	 * @param  string   $prev_value Previous meta value
+	 * @return int|bool             Meta ID if the key didn't exist, true on successful update, false on failure
 	 */
 	public function update_meta( $meta_key = '', $meta_value = '', $prev_value = '' ) {
 		if ( empty( $meta_key ) ) {
@@ -1645,9 +1645,9 @@ final class EDD_Payment {
 	 * Used during the process of moving to refunded or pending, to decrement stats
 	 *
 	 * @since  2.5.10
-	 * @param  bool   $alter_store_earnings          If the method should alter the store earnings
-	 * @param  bool   $alter_customer_value          If the method should reduce the customer value
-	 * @param  bool   $alter_customer_purchase_count If the method should reduce the customer's purchase count
+	 * @param  bool $alter_store_earnings          If the method should alter the store earnings
+	 * @param  bool $alter_customer_value          If the method should reduce the customer value
+	 * @param  bool $alter_customer_purchase_count If the method should reduce the customer's purchase count
 	 * @return void
 	 */
 	private function maybe_alter_stats( $alter_store_earnings, $alter_customer_value, $alter_customer_purchase_count ) {
@@ -1833,7 +1833,7 @@ final class EDD_Payment {
 	 * Setup the payments discount codes
 	 *
 	 * @since  2.5
-	 * @return array               Array of discount codes on this payment
+	 * @return array Array of discount codes on this payment
 	 */
 	private function setup_discounts() {
 		$discounts = ! empty( $this->payment_meta['user_info']['discount'] ) ? $this->payment_meta['user_info']['discount'] : array();
@@ -1844,7 +1844,7 @@ final class EDD_Payment {
 	 * Setup the currency code
 	 *
 	 * @since  2.5
-	 * @return string              The currency for the payment
+	 * @return string The currency for the payment
 	 */
 	private function setup_currency() {
 		$currency = isset( $this->payment_meta['currency'] ) ? $this->payment_meta['currency'] : apply_filters( 'edd_payment_currency_default', edd_get_currency(), $this );
@@ -1855,7 +1855,7 @@ final class EDD_Payment {
 	 * Setup any fees associated with the payment
 	 *
 	 * @since  2.5
-	 * @return array               The Fees
+	 * @return array The Fees
 	 */
 	private function setup_fees() {
 		$payment_fees = isset( $this->payment_meta['fees'] ) ? $this->payment_meta['fees'] : array();
@@ -1945,7 +1945,7 @@ final class EDD_Payment {
 	 * Setup the user info
 	 *
 	 * @since  2.5
-	 * @return array               The user info associated with the payment
+	 * @return array The user info associated with the payment
 	 */
 	private function setup_user_info() {
 		$defaults = array(
@@ -1964,7 +1964,7 @@ final class EDD_Payment {
 	 * Setup the Address for the payment
 	 *
 	 * @since  2.5
-	 * @return array               The Address information for the payment
+	 * @return array The Address information for the payment
 	 */
 	private function setup_address() {
 		$address = ! empty( $this->payment_meta['user_info']['address'] ) ? $this->payment_meta['user_info']['address'] : array( 'line1' => '', 'line2' => '', 'city' => '', 'country' => '', 'state' => '', 'zip' => '' );
@@ -2010,7 +2010,7 @@ final class EDD_Payment {
 	 * Setup the cart details
 	 *
 	 * @since  2.5
-	 * @return array               The cart details
+	 * @return array The cart details
 	 */
 	private function setup_cart_details() {
 		$cart_details = isset( $this->payment_meta['cart_details'] ) ? maybe_unserialize( $this->payment_meta['cart_details'] ) : array();
@@ -2021,7 +2021,7 @@ final class EDD_Payment {
 	 * Setup the downloads array
 	 *
 	 * @since  2.5
-	 * @return array               Downloads associated with this payment
+	 * @return array Downloads associated with this payment
 	 */
 	private function setup_downloads() {
 		$downloads = isset( $this->payment_meta['downloads'] ) ? maybe_unserialize( $this->payment_meta['downloads'] ) : array();
