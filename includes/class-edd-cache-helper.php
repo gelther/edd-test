@@ -68,17 +68,17 @@ class EDD_Cache_Helper {
 
 		if ( function_exists( 'wp_suspend_cache_addition' ) ) {
 
-			add_action('edd_pre_update_discount', array( $this, 'w3tc_suspend_cache_addition_pre' ) );
-			add_action('edd_pre_insert_discount', array( $this, 'w3tc_suspend_cache_addition_pre' ) );
-			add_action('edd_pre_delete_discount', array( $this, 'w3tc_suspend_cache_addition_pre' ) );
-			add_action('edd_pre_update_discount_status', array( $this, 'w3tc_suspend_cache_addition_pre' ) );
-			add_action('edd_pre_remove_cart_discount', array( $this, 'w3tc_suspend_cache_addition_pre' ) );
+			add_action( 'edd_pre_update_discount', array( $this, 'w3tc_suspend_cache_addition_pre' ) );
+			add_action( 'edd_pre_insert_discount', array( $this, 'w3tc_suspend_cache_addition_pre' ) );
+			add_action( 'edd_pre_delete_discount', array( $this, 'w3tc_suspend_cache_addition_pre' ) );
+			add_action( 'edd_pre_update_discount_status', array( $this, 'w3tc_suspend_cache_addition_pre' ) );
+			add_action( 'edd_pre_remove_cart_discount', array( $this, 'w3tc_suspend_cache_addition_pre' ) );
 
-			add_action('edd_post_update_discount', array( $this, 'w3tc_suspend_cache_addition_post' ) );
-			add_action('edd_post_insert_discount', array( $this, 'w3tc_suspend_cache_addition_post' ) );
-			add_action('edd_post_delete_discount', array( $this, 'w3tc_suspend_cache_addition_post' ) );
-			add_action('edd_post_update_discount_status', array( $this, 'w3tc_suspend_cache_addition_post' ) );
-			add_action('edd_post_remove_cart_discount', array( $this, 'w3tc_suspend_cache_addition_post' ) );
+			add_action( 'edd_post_update_discount', array( $this, 'w3tc_suspend_cache_addition_post' ) );
+			add_action( 'edd_post_insert_discount', array( $this, 'w3tc_suspend_cache_addition_post' ) );
+			add_action( 'edd_post_delete_discount', array( $this, 'w3tc_suspend_cache_addition_post' ) );
+			add_action( 'edd_post_update_discount_status', array( $this, 'w3tc_suspend_cache_addition_post' ) );
+			add_action( 'edd_post_remove_cart_discount', array( $this, 'w3tc_suspend_cache_addition_post' ) );
 
 		}
 	}
@@ -107,7 +107,7 @@ class EDD_Cache_Helper {
 		// W3 Total Cache
 		if ( function_exists( 'w3tc_pgcache_flush' ) && function_exists( 'w3_instance' ) ) {
 
-			$config   = w3_instance('W3_Config');
+			$config   = w3_instance( 'W3_Config' );
 			$enabled  = $config->get_integer( 'dbcache.enabled' );
 			$settings = $config->get_array( 'dbcache.reject.sql' );
 
@@ -129,7 +129,7 @@ class EDD_Cache_Helper {
 	 * @return void
 	 */
 	function w3tc_suspend_cache_addition_pre() {
-		wp_suspend_cache_addition(true);
+		wp_suspend_cache_addition( true );
 	}
 
 	/**
