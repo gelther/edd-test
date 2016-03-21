@@ -13,19 +13,19 @@ interface ClientInterface
 	 * Validates the user configuation array against existing config array
 	 */
 
-	public function __construct($config = null);
+	public function __construct( $config = null );
 
 	/* Setter for sandbox
 	 * Sets the boolean value for config['sandbox'] variable
 	 */
 
-	public function setSandbox($value);
+	public function setSandbox( $value );
 
 	/* Setter for config['client_id']
 	 * Sets the  value for config['client_id'] variable
 	 */
 
-	public function setClientId($value);
+	public function setClientId( $value );
 
 	/* Setter for Proxy
 	 * input $proxy [array]
@@ -35,19 +35,19 @@ interface ClientInterface
 	 * @param $proxy['proxy_user_password'] - if your proxy required a passowrd
 	 */
 
-	public function setProxy($proxy);
+	public function setProxy( $proxy );
 
 	/* Setter for $_mwsServiceUrl
 	 * Set the URL to which the post request has to be made for unit testing
 	 */
 
-	public function setMwsServiceUrl($url);
+	public function setMwsServiceUrl( $url );
 
 	/* Getter
 	 * Gets the value for the key if the key exists in config
 	 */
 
-	public function __get($name);
+	public function __get( $name );
 
 	/* Getter for parameters string
 	 * Gets the value for the parameters string for unit testing
@@ -61,7 +61,7 @@ interface ClientInterface
 	 * @param $access_token [String]
 	 */
 
-	public function getUserInfo($access_token);
+	public function getUserInfo( $access_token );
 
 	/* GetOrderReferenceDetails API call - Returns details about the Order Reference object and its current state.
 	 * @see http://docs.developer.amazonservices.com/en_US/off_amazon_payments/OffAmazonPayments_GetOrderReferenceDetails.html
@@ -72,7 +72,7 @@ interface ClientInterface
 	 * @optional requestParameters['mws_auth_token'] - [String]
 	 */
 
-	public function getOrderReferenceDetails($requestParameters = array());
+	public function getOrderReferenceDetails( $requestParameters = array() );
 
 	/* SetOrderReferenceDetails API call - Sets order reference details such as the order total and a description for the order.
 	 * @see http://docs.developer.amazonservices.com/en_US/off_amazon_payments/OffAmazonPayments_SetOrderReferenceDetails.html
@@ -89,7 +89,7 @@ interface ClientInterface
 	 * @optional requestParameters['mws_auth_token'] - [String]
 	 */
 
-	public function setOrderReferenceDetails($requestParameters = array());
+	public function setOrderReferenceDetails( $requestParameters = array() );
 
 	/* ConfirmOrderReferenceDetails API call - Confirms that the order reference is free of constraints and all required information has been set on the order reference.
 	 * @see http://docs.developer.amazonservices.com/en_US/off_amazon_payments/OffAmazonPayments_ConfirmOrderReference.html
@@ -99,7 +99,7 @@ interface ClientInterface
 	 * @optional requestParameters['mws_auth_token'] - [String]
 	 */
 
-	public function confirmOrderReference($requestParameters = array());
+	public function confirmOrderReference( $requestParameters = array() );
 
 	/* CancelOrderReferenceDetails API call - Cancels a previously confirmed order reference.
 	 * @see http://docs.developer.amazonservices.com/en_US/off_amazon_payments/OffAmazonPayments_CancelOrderReference.html
@@ -110,7 +110,7 @@ interface ClientInterface
 	 * @optional requestParameters['mws_auth_token'] - [String]
 	 */
 
-	public function cancelOrderReference($requestParameters = array());
+	public function cancelOrderReference( $requestParameters = array() );
 
 	/* CloseOrderReferenceDetails API call - Confirms that an order reference has been fulfilled (fully or partially)
 	 * and that you do not expect to create any new authorizations on this order reference.
@@ -122,7 +122,7 @@ interface ClientInterface
 	 * @optional requestParameters['mws_auth_token'] - [String]
 	 */
 
-	public function closeOrderReference($requestParameters = array());
+	public function closeOrderReference( $requestParameters = array() );
 
 	/* CloseAuthorization API call - Closes an authorization.
 	 * @see http://docs.developer.amazonservices.com/en_US/off_amazon_payments/OffAmazonPayments_CloseOrderReference.html
@@ -133,7 +133,7 @@ interface ClientInterface
 	 * @optional requestParameters['mws_auth_token'] - [String]
 	 */
 
-	public function closeAuthorization($requestParameters = array());
+	public function closeAuthorization( $requestParameters = array() );
 
 	/* Authorize API call - Reserves a specified amount against the payment method(s) stored in the order reference.
 	 * @see http://docs.developer.amazonservices.com/en_US/off_amazon_payments/OffAmazonPayments_Authorize.html
@@ -151,7 +151,7 @@ interface ClientInterface
 	 * @optional requestParameters['mws_auth_token'] - [String]
 	 */
 
-	public function authorize($requestParameters = array());
+	public function authorize( $requestParameters = array() );
 
 	/* GetAuthorizationDetails API call - Returns the status of a particular authorization and the total amount captured on the authorization.
 	 * @see http://docs.developer.amazonservices.com/en_US/off_amazon_payments/OffAmazonPayments_GetAuthorizationDetails.html
@@ -161,7 +161,7 @@ interface ClientInterface
 	 * @optional requestParameters['mws_auth_token'] - [String]
 	 */
 
-	public function getAuthorizationDetails($requestParameters = array());
+	public function getAuthorizationDetails( $requestParameters = array() );
 
 	/* Capture API call - Captures funds from an authorized payment instrument.
 	 * @see http://docs.developer.amazonservices.com/en_US/off_amazon_payments/OffAmazonPayments_Capture.html
@@ -177,7 +177,7 @@ interface ClientInterface
 	 * @optional requestParameters['mws_auth_token'] - [String]
 	 */
 
-	public function capture($requestParameters = array());
+	public function capture( $requestParameters = array() );
 
 	/* GetCaptureDetails API call - Returns the status of a particular capture and the total amount refunded on the capture.
 	 * @see http://docs.developer.amazonservices.com/en_US/off_amazon_payments/OffAmazonPayments_GetCaptureDetails.html
@@ -187,7 +187,7 @@ interface ClientInterface
 	 * @optional requestParameters['mws_auth_token'] - [String]
 	 */
 
-	public function getCaptureDetails($requestParameters = array());
+	public function getCaptureDetails( $requestParameters = array() );
 
 	/* Refund API call - Refunds a previously captured amount.
 	 * @see http://docs.developer.amazonservices.com/en_US/off_amazon_payments/OffAmazonPayments_Refund.html
@@ -203,7 +203,7 @@ interface ClientInterface
 	 * @optional requestParameters['mws_auth_token'] - [String]
 	 */
 
-	public function refund($requestParameters = array());
+	public function refund( $requestParameters = array() );
 
 	/* GetRefundDetails API call - Returns the status of a particular refund.
 	 * @see http://docs.developer.amazonservices.com/en_US/off_amazon_payments/OffAmazonPayments_GetRefundDetails.html
@@ -213,7 +213,7 @@ interface ClientInterface
 	 * @optional requestParameters['mws_auth_token'] - [String]
 	 */
 
-	public function getRefundDetails($requestParameters = array());
+	public function getRefundDetails( $requestParameters = array() );
 
 	/* GetServiceStatus API Call - Returns the operational status of the Off-Amazon Payments API section
 	 * @see http://docs.developer.amazonservices.com/en_US/off_amazon_payments/OffAmazonPayments_GetServiceStatus.html
@@ -226,7 +226,7 @@ interface ClientInterface
 	 * @optional requestParameters['mws_auth_token'] - [String]
 	 */
 
-	public function getServiceStatus($requestParameters = array());
+	public function getServiceStatus( $requestParameters = array() );
 
 	/* CreateOrderReferenceForId API Call - Creates an order reference for the given object
 	 * @see http://docs.developer.amazonservices.com/en_US/off_amazon_payments/OffAmazonPayments_CreateOrderReferenceForId.html
@@ -244,7 +244,7 @@ interface ClientInterface
 	 * @optional requestParameters['mws_auth_token'] - [String]
 	 */
 
-	public function createOrderReferenceForId($requestParameters = array());
+	public function createOrderReferenceForId( $requestParameters = array() );
 
 	/* GetBillingAgreementDetails API Call - Returns details about the Billing Agreement object and its current state.
 	 * @see http://docs.developer.amazonservices.com/en_US/off_amazon_payments/OffAmazonPayments_GetBillingAgreementDetails.html
@@ -254,7 +254,7 @@ interface ClientInterface
 	 * @optional requestParameters['mws_auth_token'] - [String]
 	 */
 
-	public function getBillingAgreementDetails($requestParameters = array());
+	public function getBillingAgreementDetails( $requestParameters = array() );
 
 	/* SetBillingAgreementDetails API call - Sets Billing Agreement details such as a description of the agreement and other information about the seller.
 	 * @see http://docs.developer.amazonservices.com/en_US/off_amazon_payments/OffAmazonPayments_SetBillingAgreementDetails.html
@@ -271,7 +271,7 @@ interface ClientInterface
 	 * @optional requestParameters['mws_auth_token'] - [String]
 	 */
 
-	public function setBillingAgreementDetails($requestParameters = array());
+	public function setBillingAgreementDetails( $requestParameters = array() );
 
 	/* ConfirmBillingAgreement API Call - Confirms that the Billing Agreement is free of constraints and all required information has been set on the Billing Agreement.
 	 * @see http://docs.developer.amazonservices.com/en_US/off_amazon_payments/OffAmazonPayments_ConfirmBillingAgreement.html
@@ -281,7 +281,7 @@ interface ClientInterface
 	 * @optional requestParameters['mws_auth_token'] - [String]
 	 */
 
-	public function confirmBillingAgreement($requestParameters = array());
+	public function confirmBillingAgreement( $requestParameters = array() );
 
 	/* ValidateBillingAgreement API Call - Validates the status of the Billing Agreement object and the payment method associated with it.
 	 * @see http://docs.developer.amazonservices.com/en_US/off_amazon_payments/OffAmazonPayments_ValidateBillignAgreement.html
@@ -291,7 +291,7 @@ interface ClientInterface
 	 * @optional requestParameters['mws_auth_token'] - [String]
 	 */
 
-	public function validateBillingAgreement($requestParameters = array());
+	public function validateBillingAgreement( $requestParameters = array() );
 
 	/* AuthorizeOnBillingAgreement API call - Reserves a specified amount against the payment method(s) stored in the Billing Agreement.
 	 * @see http://docs.developer.amazonservices.com/en_US/off_amazon_payments/OffAmazonPayments_AuthorizeOnBillingAgreement.html
@@ -314,7 +314,7 @@ interface ClientInterface
 	 * @optional requestParameters['mws_auth_token'] - [String]
 	 */
 
-	public function authorizeOnBillingAgreement($requestParameters = array());
+	public function authorizeOnBillingAgreement( $requestParameters = array() );
 
 	/* CloseBillingAgreement API Call - Returns details about the Billing Agreement object and its current state.
 	 * @see http://docs.developer.amazonservices.com/en_US/off_amazon_payments/OffAmazonPayments_CloseBillingAgreement.html
@@ -325,7 +325,7 @@ interface ClientInterface
 	 * @optional requestParameters['mws_auth_token'] - [String]
 	 */
 
-	public function closeBillingAgreement($requestParameters = array());
+	public function closeBillingAgreement( $requestParameters = array() );
 
 	/* charge convenience method
 	 * Performs the API calls
@@ -350,7 +350,7 @@ interface ClientInterface
 	 * @optional requestParameters['mws_auth_token'] - [String]
 	 */
 
-	public function charge($requestParameters = array());
+	public function charge( $requestParameters = array() );
 
 	/* GetProviderCreditDetails API Call - Get the details of the Provider Credit.
 	 *
@@ -359,7 +359,7 @@ interface ClientInterface
 	 * @optional requestParameters['mws_auth_token'] - [String]
 	 */
 
-	public function getProviderCreditDetails($requestParameters = array());
+	public function getProviderCreditDetails( $requestParameters = array() );
 
 	/* GetProviderCreditReversalDetails API Call - Get details of the Provider Credit Reversal.
 	 *
@@ -368,7 +368,7 @@ interface ClientInterface
 	 * @optional requestParameters['mws_auth_token'] - [String]
 	 */
 
-	public function getProviderCreditReversalDetails($requestParameters = array());
+	public function getProviderCreditReversalDetails( $requestParameters = array() );
 
 	/* ReverseProviderCredit API Call - Reverse the Provider Credit.
 	 *
@@ -381,7 +381,7 @@ interface ClientInterface
 	 * @optional requestParameters['mws_auth_token'] - [String]
 	 */
 
-	public function reverseProviderCredit($requestParameters = array());
+	public function reverseProviderCredit( $requestParameters = array() );
 }
 
 /* Interface for IpnHandler.php */
@@ -392,7 +392,7 @@ interface IpnHandlerInterface
 	 * verifies that the IPN is from the right resource and has the valid data
 	 */
 
-	public function __construct($headers, $body, $ipnConfig = null);
+	public function __construct( $headers, $body, $ipnConfig = null );
 
 	/* returnMessage() - JSON decode the raw [Message] portion of the IPN */
 
@@ -426,7 +426,7 @@ interface HttpCurlInterface
 	 * Takes configuration for API call or IPN config
 	 */
 
-	public function __construct($config = null);
+	public function __construct( $config = null );
 
 	/* Set Http header for Access token for the GetUserInfo call */
 
@@ -434,7 +434,7 @@ interface HttpCurlInterface
 
 	/* Setter for  Access token to get the user info */
 
-	public function setAccessToken($accesstoken);
+	public function setAccessToken( $accesstoken );
 
 	/* POST using curl for the following situations
 	 * 1. API calls
@@ -442,14 +442,14 @@ interface HttpCurlInterface
 	 * 3. Get User Info
 	 */
 
-	public function httpPost($url, $userAgent = null, $parameters = null);
+	public function httpPost( $url, $userAgent = null, $parameters = null );
 
 	/* GET using curl for the following situations
 	 * 1. IPN certificate retrieval
 	 * 3. Get User Info
 	 */
 
-	public function httpGet($url, $userAgent = null);
+	public function httpGet( $url, $userAgent = null );
 }
 
 /* Interface for ResponseParser.php */
@@ -458,7 +458,7 @@ interface ResponseInterface
 {
 	/* Takes response from the API call */
 
-	public function __construct($response = null);
+	public function __construct( $response = null );
 
 	/* Returns the XML portion of the response */
 
@@ -478,5 +478,5 @@ interface ResponseInterface
 
 	/* Get the status of the BillingAgreement */
 
-	public function getBillingAgreementDetailsStatus($response);
+	public function getBillingAgreementDetailsStatus( $response );
 }
