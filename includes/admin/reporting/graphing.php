@@ -104,7 +104,7 @@ function edd_reports_graph() {
 			$earnings         = edd_get_earnings_by_date( $report_date['day'], $report_date['month'], $report_date['year'], null, $include_taxes );
 			$earnings_totals += $earnings;
 
-			$date            = mktime( 0, 0, 0, $report_date['month'], $report_date['day'], $report_date['year']  ) * 1000;
+			$date            = mktime( 0, 0, 0, $report_date['month'], $report_date['day'], $report_date['year'] ) * 1000;
 			$sales_data[]    = array( $date, $sales );
 			$earnings_data[] = array( $date, $earnings );
 		}
@@ -217,7 +217,7 @@ function edd_reports_graph() {
 	<div id="edd-dashboard-widgets-wrap">
 		<div class="metabox-holder" style="padding-top: 0;">
 			<div class="postbox">
-				<h3><span><?php _e('Earnings Over Time', 'easy-digital-downloads' ); ?></span></h3>
+				<h3><span><?php _e( 'Earnings Over Time', 'easy-digital-downloads' ); ?></span></h3>
 
 				<div class="inside">
 					<?php
@@ -483,7 +483,7 @@ function edd_reports_graph_of_download( $download_id = 0 ) {
 	?>
 	<div class="metabox-holder" style="padding-top: 0;">
 		<div class="postbox">
-			<h3><span><?php printf( __('Earnings Over Time for %s', 'easy-digital-downloads' ), get_the_title( $download_id ) ); ?></span></h3>
+			<h3><span><?php printf( __( 'Earnings Over Time for %s', 'easy-digital-downloads' ), get_the_title( $download_id ) ); ?></span></h3>
 
 			<div class="inside">
 				<?php
