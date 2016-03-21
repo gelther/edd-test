@@ -36,9 +36,9 @@ function edd_get_option( $key = '', $default = false ) {
  *          the key from the edd_options array.
  *
  * @since 2.3
- * @param string $key The Key to update
- * @param string|bool|int $value The value to set the key to
- * @return boolean True if updated, false if not.
+ * @param  string          $key   The Key to update
+ * @param  string|bool|int $value The value to set the key to
+ * @return boolean                True if updated, false if not.
  */
 function edd_update_option( $key = '', $value = false ) {
 
@@ -78,8 +78,8 @@ function edd_update_option( $key = '', $value = false ) {
  * Removes an edd setting value in both the db and the global variable.
  *
  * @since 2.3
- * @param string $key The Key to delete
- * @return boolean True if updated, false if not.
+ * @param  string  $key The Key to delete
+ * @return boolean      True if updated, false if not.
  */
 function edd_delete_option( $key = '' ) {
 
@@ -961,7 +961,7 @@ function edd_settings_sanitize( $input = array() ) {
  * Misc File Download Settings Sanitization
  *
  * @since 2.5
- * @param array $input The value inputted in the field
+ * @param  array  $input The value inputted in the field
  * @return string $input Sanitizied value
  */
 function edd_settings_sanitize_misc_file_downloads( $input ) {
@@ -985,7 +985,7 @@ add_filter( 'edd_settings_misc-file_downloads_sanitize', 'edd_settings_sanitize_
  * Misc Accounting Settings Sanitization
  *
  * @since 2.5
- * @param array $input The value inputted in the field
+ * @param  array  $input The value inputted in the field
  * @return string $input Sanitizied value
  */
 function edd_settings_sanitize_misc_accounting( $input ) {
@@ -1014,7 +1014,7 @@ add_filter( 'edd_settings_misc-accounting_sanitize', 'edd_settings_sanitize_misc
  * This also saves the tax rates table
  *
  * @since 1.6
- * @param array $input The value inputted in the field
+ * @param  array  $input The value inputted in the field
  * @return string $input Sanitizied value
  */
 function edd_settings_sanitize_taxes( $input ) {
@@ -1035,7 +1035,7 @@ add_filter( 'edd_settings_taxes_sanitize', 'edd_settings_sanitize_taxes' );
  * Sanitize text fields
  *
  * @since 1.8
- * @param array $input The field value
+ * @param  array  $input The field value
  * @return string $input Sanitizied value
  */
 function edd_sanitize_text_field( $input ) {
@@ -1153,7 +1153,7 @@ function edd_get_registered_settings_sections() {
  * On large sites this can be expensive, so only load if on the settings page or $force is set to true
  *
  * @since 1.9.5
- * @param bool $force Force the pages to be loaded even if not on settings
+ * @param  bool  $force         Force the pages to be loaded even if not on settings
  * @return array $pages_options An array of the pages
  */
 function edd_get_pages( $force = false ) {
@@ -1180,7 +1180,7 @@ function edd_get_pages( $force = false ) {
  * Renders the header.
  *
  * @since 1.0
- * @param array $args Arguments passed by the setting
+ * @param  array $args Arguments passed by the setting
  * @return void
  */
 function edd_header_callback( $args ) {
@@ -1506,7 +1506,7 @@ function edd_password_callback( $args ) {
  * If a function is missing for settings callbacks alert the user.
  *
  * @since 1.3.1
- * @param array $args Arguments passed by the setting
+ * @param  array $args Arguments passed by the setting
  * @return void
  */
 function edd_missing_callback( $args ) {
@@ -1833,7 +1833,7 @@ function edd_tax_rates_callback( $args ) {
  * Renders descriptive text onto the settings field.
  *
  * @since 2.1.3
- * @param array $args Arguments passed by the setting
+ * @param  array $args Arguments passed by the setting
  * @return void
  */
 function edd_descriptive_text_callback( $args ) {
@@ -2011,7 +2011,7 @@ if ( ! function_exists( 'edd_license_key_callback' ) ) {
  * Adds a do_action() hook in place of the field
  *
  * @since 1.0.8.2
- * @param array $args Arguments passed by the setting
+ * @param  array $args Arguments passed by the setting
  * @return void
  */
 function edd_hook_callback( $args ) {
