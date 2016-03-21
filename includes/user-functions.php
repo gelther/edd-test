@@ -42,7 +42,7 @@ function edd_get_users_purchases( $user = 0, $number = 20, $pagination = false, 
 
 	if ( $pagination ) {
 		if ( get_query_var( 'paged' ) )
-			$paged = get_query_var('paged');
+			$paged = get_query_var( 'paged' );
 		elseif ( get_query_var( 'page' ) )
 			$paged = get_query_var( 'page' );
 		else
@@ -495,10 +495,10 @@ function edd_new_user_notification( $user_id = 0, $user_data = array() ) {
 	$emails->__set( 'from_name', $from_name );
 	$emails->__set( 'from_email', $from_email );
 
-	$admin_subject  = sprintf( __('[%s] New User Registration', 'easy-digital-downloads' ), $from_name );
+	$admin_subject  = sprintf( __( '[%s] New User Registration', 'easy-digital-downloads' ), $from_name );
 	$admin_heading  = __( 'New user registration', 'easy-digital-downloads' );
-	$admin_message  = sprintf( __( 'Username: %s', 'easy-digital-downloads'), $user_data['user_login'] ) . "\r\n\r\n";
-	$admin_message .= sprintf( __( 'E-mail: %s', 'easy-digital-downloads'), $user_data['user_email'] ) . "\r\n";
+	$admin_message  = sprintf( __( 'Username: %s', 'easy-digital-downloads' ), $user_data['user_login'] ) . "\r\n\r\n";
+	$admin_message .= sprintf( __( 'E-mail: %s', 'easy-digital-downloads' ), $user_data['user_email'] ) . "\r\n";
 
 	$emails->__set( 'heading', $admin_heading );
 
