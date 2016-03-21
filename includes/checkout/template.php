@@ -900,7 +900,7 @@ function edd_checkout_hidden_fields() {
  * Applies filters to the success page content.
  *
  * @since 1.0
- * @param string $content Content before filters
+ * @param  string $content Content before filters
  * @return string $content Filtered content
  */
 function edd_filter_success_page_content( $content ) {
@@ -918,9 +918,9 @@ add_filter( 'the_content', 'edd_filter_success_page_content', 99999 );
  * Show a download's files in the purchase receipt
  *
  * @since  1.8.6
- * @param  int        $item_id      The download ID
- * @param  array      $receipt_args Args specified in the [edd_receipt] shortcode
- * @param  array      $item         Cart item array
+ * @param  int     $item_id      The download ID
+ * @param  array   $receipt_args Args specified in the [edd_receipt] shortcode
+ * @param  array   $item         Cart item array
  * @return boolean
  */
 function edd_receipt_show_download_files( $item_id, $receipt_args, $item = array() ) {
