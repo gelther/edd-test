@@ -20,22 +20,19 @@ class HttpCurl implements HttpCurlInterface
 	 * Takes configuration for API call or IPN config
 	 */
 
-	public function __construct($config = null)
-	{
+	public function __construct($config = null) {
 		$this->config = $config;
 	}
 
 	/* Setter for boolean header to get the user info */
 
-	public function setHttpHeader()
-	{
+	public function setHttpHeader() {
 		$this->header = true;
 	}
 
 	/* Setter for Access token to get the user info */
 
-	public function setAccessToken($accesstoken)
-	{
+	public function setAccessToken($accesstoken) {
 		$this->accessToken = $accesstoken;
 	}
 
@@ -48,8 +45,7 @@ class HttpCurl implements HttpCurlInterface
 	 * config['proxy_password']
 	 */
 
-	private  function commonCurlParams($url,$userAgent)
-	{
+	private  function commonCurlParams($url,$userAgent) {
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_URL, $url);
 		curl_setopt($ch, CURLOPT_PORT, 443);
@@ -81,8 +77,7 @@ class HttpCurl implements HttpCurlInterface
 	 * 3. Get User Info
 	 */
 
-	public function httpPost($url, $userAgent = null, $parameters = null)
-	{
+	public function httpPost($url, $userAgent = null, $parameters = null) {
 		$ch = $this->commonCurlParams($url,$userAgent);
 
 		curl_setopt($ch, CURLOPT_POST, true);
@@ -98,8 +93,7 @@ class HttpCurl implements HttpCurlInterface
 	 * 2. Get User Info
 	 */
 
-	public function httpGet($url, $userAgent = null)
-	{
+	public function httpGet($url, $userAgent = null) {
 		$ch = $this->commonCurlParams($url,$userAgent);
 
 		// Setting the HTTP header with the Access Token only for Getting user info
@@ -115,8 +109,7 @@ class HttpCurl implements HttpCurlInterface
 
 	/* Execute Curl request */
 
-	private function execute($ch)
-	{
+	private function execute($ch) {
 		$response = '';
 		if ( ! $response = curl_exec($ch) ) {
 			$error_msg = 'Unable to post request, underlying exception of ' . curl_error($ch);
