@@ -42,8 +42,8 @@ function edd_get_shop_state() {
  *
  * @since 1.6
  *
- * @param string $country
- * @return array A list of states for the selected country
+ * @param  string $country
+ * @return array           A list of states for the selected country
  */
 function edd_get_shop_states( $country = null ) {
 	if ( empty( $country ) )
@@ -401,7 +401,7 @@ function edd_get_country_list() {
  *
  * @access      public
  * @since       1.2
- * @return      array
+ * @return array
  */
 function edd_get_states_list() {
 	$states = array(
@@ -482,7 +482,7 @@ function edd_get_states_list() {
  *
  * @access      public
  * @since       1.2
- * @return      array
+ * @return array
  */
 function edd_get_provinces_list() {
 	$provinces = array(
