@@ -14,15 +14,13 @@ class ResponseParser implements ResponseInterface
 {
 	public $response = null;
 
-	public function __construct($response=null)
-	{
+	public function __construct($response=null) {
 		$this->response = $response;
 	}
 
 	/* Returns the XML portion of the response */
 
-	public function toXml()
-	{
+	public function toXml() {
 		return $this->response['ResponseBody'];
 	}
 
@@ -30,8 +28,7 @@ class ResponseParser implements ResponseInterface
 	 * @param $response [XML]
 	 */
 
-	public function toJson()
-	{
+	public function toJson() {
 		$response = $this->simpleXmlObject();
 
 		return (json_encode($response));
@@ -41,8 +38,7 @@ class ResponseParser implements ResponseInterface
 	 * @param $this->response [XML]
 	 */
 
-	public function toArray()
-	{
+	public function toArray() {
 		$response = $this->simpleXmlObject();
 
 		// Converting the SimpleXMLElement Object to array()
@@ -51,8 +47,7 @@ class ResponseParser implements ResponseInterface
 		return (json_decode($response, true));
 	}
 
-	private function simpleXmlObject()
-	{
+	private function simpleXmlObject() {
 		$response = $this->response;
 
 		// Getting the HttpResponse Status code to the output as a string
@@ -69,8 +64,7 @@ class ResponseParser implements ResponseInterface
 
 	/* Get the status of the BillingAgreement */
 
-	public function getBillingAgreementDetailsStatus($response)
-	{
+	public function getBillingAgreementDetailsStatus($response) {
 		$data       = new \SimpleXMLElement($response);
 		$namespaces = $data->getNamespaces(true);
 		foreach ( $namespaces as $key=>$value ) {
