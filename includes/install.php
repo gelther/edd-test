@@ -152,7 +152,7 @@ function edd_run_install() {
 			// Check for backwards compatibility
 			$tab_sections = edd_get_settings_tab_sections( $tab );
 			if ( ! is_array( $tab_sections ) || ! array_key_exists( $section, $tab_sections ) ) {
-				$section = 'main';
+				$section  = 'main';
 				$settings = $sections;
 			}
 
