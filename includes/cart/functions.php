@@ -954,10 +954,10 @@ function edd_remove_item_url( $cart_key ) {
  * @param string $fee_id Fee ID
  * @return string $remove_url URL to remove the cart item
  */
-function edd_remove_cart_fee_url( $fee_id = '') {
+function edd_remove_cart_fee_url( $fee_id = '' ) {
 	global $post;
 
-	if ( defined('DOING_AJAX') ) {
+	if ( defined( 'DOING_AJAX' ) ) {
 		$current_page = edd_get_checkout_uri();
 	} else {
 		$current_page = edd_get_current_page_url();
