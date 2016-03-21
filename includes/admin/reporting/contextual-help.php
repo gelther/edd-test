@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  *
  * @access      private
  * @since       1.4
- * @return      void
+ * @return void
  */
 function edd_reporting_contextual_help() {
 	$screen = get_current_screen();
