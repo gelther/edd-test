@@ -20,7 +20,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  * @since 1.0
  * @param array $download_columns Array of download columns
  * @return array $download_columns Updated array of download columns for Downloads
- *  Post Type List Table
+ * Post Type List Table
  */
 function edd_download_columns( $download_columns ) {
 	$category_labels = edd_get_taxonomy_labels( 'download_category' );

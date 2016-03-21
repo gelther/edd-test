@@ -139,10 +139,10 @@ function edd_show_upgrade_notices() {
 		}
 
 		/*
-		 *  NOTICE:
+		 * NOTICE:
 		 *
-		 *  When adding new upgrade notices, please be sure to put the action into the upgrades array during install:
-		 *  /includes/install.php @ Appox Line 156
+		 * When adding new upgrade notices, please be sure to put the action into the upgrades array during install:
+		 * /includes/install.php @ Appox Line 156
 		 *
 		 */
 

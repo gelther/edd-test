@@ -98,7 +98,7 @@ class EDD_Payments_Export extends EDD_Export {
 	 * @access public
 	 * @since 1.4.4
 	 * @global object $wpdb Used to query the database using the WordPress
-	 *   Database API
+	 * Database API
 	 * @return array $data The data for the CSV file
 	 */
 	public function get_data() {
