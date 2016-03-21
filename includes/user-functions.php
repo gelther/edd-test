@@ -120,7 +120,7 @@ function edd_get_users_purchased_products( $user = 0, $status = 'complete' ) {
 	if ( ! empty( $limit_payments ) ) {
 		$payment_ids = array_slice( $payment_ids, 0, $limit_payments );
 	}
-	$purchase_data  = array();
+	$purchase_data = array();
 
 	foreach ( $payment_ids as $payment_id ) {
 		$purchase_data[] = edd_get_payment_meta_downloads( $payment_id );
@@ -156,7 +156,7 @@ function edd_get_users_purchased_products( $user = 0, $status = 'complete' ) {
 	if ( empty ( $product_ids ) || ! isset( $product_ids[0] ) )
 		return false;
 
-	$post_type 	 = get_post_type( $product_ids[0] );
+	$post_type = get_post_type( $product_ids[0] );
 
 	$args = apply_filters( 'edd_get_users_purchased_products_args', array(
 		'include'			=> $product_ids,
@@ -358,7 +358,7 @@ function edd_count_file_downloads_of_user( $user ) {
  */
 function edd_validate_username( $username ) {
 	$sanitized = sanitize_user( $username, false );
-	$valid = ( $sanitized == $username );
+	$valid     = ( $sanitized == $username );
 	return (bool) apply_filters( 'edd_validate_username', $valid, $username );
 }
 
@@ -394,7 +394,7 @@ add_action( 'user_register', 'edd_connect_existing_customer_to_new_user', 10, 1 
  */
 function edd_add_past_purchases_to_new_user( $user_id ) {
 
-	$email    = get_the_author_meta( 'user_email', $user_id );
+	$email = get_the_author_meta( 'user_email', $user_id );
 
 	$payments = edd_get_payments( array( 's' => $email ) );
 
@@ -652,7 +652,7 @@ function edd_send_user_verification_email( $user_id = 0 ) {
 		return;
 	}
 
-	$user_data  = get_userdata( $user_id );
+	$user_data = get_userdata( $user_id );
 
 	if ( ! $user_data ) {
 		return;
@@ -673,9 +673,9 @@ function edd_send_user_verification_email( $user_id = 0 ) {
 		$url
 	);
 
-	$message    = apply_filters( 'edd_user_verification_email_message', $message, $user_id );
+	$message = apply_filters( 'edd_user_verification_email_message', $message, $user_id );
 
-	$emails     = new EDD_Emails;
+	$emails = new EDD_Emails;
 
 	$emails->__set( 'from_name', $from_name );
 	$emails->__set( 'from_email', $from_email );
@@ -704,9 +704,9 @@ function edd_send_user_verification_email( $user_id = 0 ) {
  */
 function edd_get_user_verification_token( $url = '' ) {
 
-	$args    = array();
-	$hash    = apply_filters( 'edd_get_user_verification_token_algorithm', 'sha256' );
-	$secret  = apply_filters( 'edd_get_user_verification_token_secret', hash( $hash, wp_salt() ) );
+	$args   = array();
+	$hash   = apply_filters( 'edd_get_user_verification_token_algorithm', 'sha256' );
+	$secret = apply_filters( 'edd_get_user_verification_token_secret', hash( $hash, wp_salt() ) );
 
 	/*
 	 * Add additional args to the URL for generating the token.
@@ -733,7 +733,7 @@ function edd_get_user_verification_token( $url = '' ) {
 
 			if ( in_array( 'ua', $options ) ) {
 
-				$ua = isset( $_SERVER['HTTP_USER_AGENT'] ) ? $_SERVER['HTTP_USER_AGENT'] : '';
+				$ua                 = isset( $_SERVER['HTTP_USER_AGENT'] ) ? $_SERVER['HTTP_USER_AGENT'] : '';
 				$args['user_agent'] = rawurlencode( $ua );
 
 			}
