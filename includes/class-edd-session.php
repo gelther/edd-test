@@ -276,7 +276,7 @@ class EDD_Session {
 		// Enable or disable PHP Sessions based on the EDD_USE_PHP_SESSIONS constant
 		if ( defined( 'EDD_USE_PHP_SESSIONS' ) && EDD_USE_PHP_SESSIONS ) {
 			$ret = true;
-		} else if ( defined( 'EDD_USE_PHP_SESSIONS' ) && ! EDD_USE_PHP_SESSIONS ) {
+		} elseif ( defined( 'EDD_USE_PHP_SESSIONS' ) && ! EDD_USE_PHP_SESSIONS ) {
 			$ret = false;
 		}
 
