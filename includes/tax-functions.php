@@ -71,7 +71,7 @@ function edd_get_tax_rate( $country = false, $state = false ) {
 	}
 
 	if ( ! empty( $country ) ) {
-		$tax_rates   = edd_get_tax_rates();
+		$tax_rates = edd_get_tax_rates();
 
 		if ( ! empty( $tax_rates ) ) {
 
@@ -115,8 +115,8 @@ function edd_get_tax_rate( $country = false, $state = false ) {
  * @return string Formatted rate
  */
 function edd_get_formatted_tax_rate( $country = false, $state = false ) {
-	$rate = edd_get_tax_rate( $country, $state );
-	$rate = round( $rate * 100, 4 );
+	$rate      = edd_get_tax_rate( $country, $state );
+	$rate      = round( $rate * 100, 4 );
 	$formatted = $rate .= '%';
 	return apply_filters( 'edd_formatted_tax_rate', $formatted, $rate, $country, $state );
 }
