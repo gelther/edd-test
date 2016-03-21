@@ -213,21 +213,21 @@ class EDD_Stats {
 				case 'this_week' :
 
 					$days_to_week_start = ( date( 'w', current_time( 'timestamp' ) ) - 1 ) *60*60*24;
-				 	$today              = date( 'd', current_time( 'timestamp' ) ) *60*60*24;
+					$today              = date( 'd', current_time( 'timestamp' ) ) *60*60*24;
 
-				 	if ( $today < $days_to_week_start ) {
+					if ( $today < $days_to_week_start ) {
 
-				 		if ( $month > 1 ) {
-					 		$month -= 1;
-					 	} else {
-					 		$month = 12;
-					 	}
+						if ( $month > 1 ) {
+							$month -= 1;
+						} else {
+							$month = 12;
+						}
 
-				 	}
+					}
 
 					if ( ! $end_date ) {
 
-					 	// Getting the start day
+						// Getting the start day
 
 						$day  = date( 'd', current_time( 'timestamp' ) - $days_to_week_start ) - 1;
 						$day += get_option( 'start_of_week' );
@@ -246,21 +246,21 @@ class EDD_Stats {
 				case 'last_week' :
 
 					$days_to_week_start = ( date( 'w', current_time( 'timestamp' ) ) - 1 ) *60*60*24;
-				 	$today              = date( 'd', current_time( 'timestamp' ) ) *60*60*24;
+					$today              = date( 'd', current_time( 'timestamp' ) ) *60*60*24;
 
-				 	if ( $today < $days_to_week_start ) {
+					if ( $today < $days_to_week_start ) {
 
-				 		if ( $month > 1 ) {
-					 		$month -= 1;
-					 	} else {
-					 		$month = 12;
-					 	}
+						if ( $month > 1 ) {
+							$month -= 1;
+						} else {
+							$month = 12;
+						}
 
-				 	}
+					}
 
 					if ( ! $end_date ) {
 
-					 	// Getting the start day
+						// Getting the start day
 
 						$day  = date( 'd', current_time( 'timestamp' ) - $days_to_week_start ) - 8;
 						$day += get_option( 'start_of_week' );
