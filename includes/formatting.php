@@ -43,7 +43,7 @@ function edd_sanitize_amount( $amount ) {
 		$is_negative = true;
 	}
 
-	$amount   = preg_replace( '/[^0-9\.]/', '', $amount );
+	$amount = preg_replace( '/[^0-9\.]/', '', $amount );
 
 	/**
 	 * Filter number of decimals to use for prices
@@ -86,8 +86,8 @@ function edd_format_amount( $amount, $decimals = true ) {
 
 	// Format the amount
 	if ( $decimal_sep == ',' && false !== ( $sep_found = strpos( $amount, $decimal_sep ) ) ) {
-		$whole = substr( $amount, 0, $sep_found );
-		$part = substr( $amount, $sep_found + 1, ( strlen( $amount ) - 1 ) );
+		$whole  = substr( $amount, 0, $sep_found );
+		$part   = substr( $amount, $sep_found + 1, ( strlen( $amount ) - 1 ) );
 		$amount = $whole . '.' . $part;
 	}
 
@@ -222,7 +222,7 @@ add_filter( 'edd_format_amount_decimals', 'edd_currency_decimal_filter' );
  */
 function edd_sanitize_key( $key ) {
 	$raw_key = $key;
-	$key = preg_replace( '/[^a-zA-Z0-9_\-\.\:\/]/', '', $key );
+	$key     = preg_replace( '/[^a-zA-Z0-9_\-\.\:\/]/', '', $key );
 
 	/**
 	 * Filter a sanitized key string.
