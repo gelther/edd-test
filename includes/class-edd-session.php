@@ -309,4 +309,3 @@ class EDD_Session {
 	}
 
 }
-
