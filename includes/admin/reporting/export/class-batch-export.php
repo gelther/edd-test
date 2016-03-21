@@ -262,7 +262,7 @@ class EDD_Batch_Export extends EDD_Export {
 		@file_put_contents( $this->file, $file );
 
 		// If we have no rows after this step, mark it as an empty export
-		$file_rows    = file( $this->file, FILE_SKIP_EMPTY_LINES);
+		$file_rows    = file( $this->file, FILE_SKIP_EMPTY_LINES );
 		$default_cols = $this->get_csv_cols();
 		$default_cols = empty( $default_cols ) ? 0 : 1;
 

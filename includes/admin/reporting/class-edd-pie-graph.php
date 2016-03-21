@@ -170,24 +170,24 @@ class EDD_Pie_Graph extends EDD_Graph {
 					<?php echo $this->id; ?>_options.grid.clickable = true;
 				<?php endif; ?>
 
-				jQuery( document ).ready( function($) {
-					var <?php echo $this->id; ?>Chart = $('#edd-pie-graph-<?php echo $this->id; ?>');
+				jQuery( document ).ready( function( $ ) {
+					var <?php echo $this->id; ?>Chart = $( '#edd-pie-graph-<?php echo $this->id; ?>' );
 					$.plot( <?php echo $this->id; ?>Chart, <?php echo $this->id; ?>_data, <?php echo $this->id; ?>_options );
 					<?php if ( ! wp_is_mobile() ) : ?>
-					$(<?php echo $this->id; ?>Chart).on('plothover', function (event, pos, item) {
-						$('.edd-legend-item-wrapper').css('background-color', 'inherit');
+					$( <?php echo $this->id; ?>Chart ).on( 'plothover', function ( event, pos, item ) {
+						$( '.edd-legend-item-wrapper' ).css( 'background-color', 'inherit' );
 						if ( item ) {
 							var label = item.series.label;
 							var id    = item.series.edd_vars.id;
 
-							var slug = label.toLowerCase().replace(/\s/g, '-');
+							var slug = label.toLowerCase().replace( /\s/g, '-' );
 							var legendTarget = '#' + id + slug;
 
-							$('.edd-legend-item-wrapper' + legendTarget).css('background-color', '#f0f0f0');
+							$( '.edd-legend-item-wrapper' + legendTarget ).css( 'background-color', '#f0f0f0' );
 						}
-					});
+					} );
 					<?php endif; ?>
-				});
+				} );
 
 			</script>
 			<div class="edd-pie-graph-wrap">

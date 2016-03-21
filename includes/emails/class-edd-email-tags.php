@@ -638,7 +638,7 @@ function edd_email_tag_first_name( $payment_id ) {
 	$payment   = new EDD_Payment( $payment_id );
 	$user_info = $payment->user_info;
 
-	if ( empty( $user_info) ) {
+	if ( empty( $user_info ) ) {
 		return '';
 	}
 

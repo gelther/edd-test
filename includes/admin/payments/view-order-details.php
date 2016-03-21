@@ -277,7 +277,7 @@ $currency_code  = $payment->currency;
 											<?php
 
 											// Item ID is checked if isset due to the near-1.0 cart data
-											$item_id    = isset( $cart_item['id']    )                                  ? $cart_item['id']                                 : $cart_item;
+											$item_id    = isset( $cart_item['id'] )                                  ? $cart_item['id']                                 : $cart_item;
 											$price      = isset( $cart_item['price'] )                                  ? $cart_item['price']                              : false;
 											$item_price = isset( $cart_item['item_price'] )                             ? $cart_item['item_price']                         : $price;
 											$price_id   = isset( $cart_item['item_number']['options']['price_id'] )     ? $cart_item['item_number']['options']['price_id'] : null;

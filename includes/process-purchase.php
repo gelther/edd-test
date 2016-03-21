@@ -261,7 +261,7 @@ function edd_purchase_form_validate_discounts() {
 	$user = '';
 	if ( isset( $_POST['edd_user_login'] ) && ! empty( $_POST['edd_user_login'] ) ) {
 		$user = sanitize_text_field( $_POST['edd_user_login'] );
-	} elseif ( isset( $_POST['edd_email'] ) && ! empty($_POST['edd_email'] ) ) {
+	} elseif ( isset( $_POST['edd_email'] ) && ! empty( $_POST['edd_email'] ) ) {
 		$user = sanitize_text_field( $_POST['edd_email'] );
 	} elseif ( is_user_logged_in() ) {
 		$user = wp_get_current_user()->user_email;
@@ -397,7 +397,7 @@ function edd_purchase_form_validate_logged_in_user() {
 				'user_id'    => $user_ID,
 				'user_email' => isset( $_POST['edd_email'] ) ? sanitize_email( $_POST['edd_email'] ) : $user_data->user_email,
 				'user_first' => isset( $_POST['edd_first'] ) && ! empty( $_POST['edd_first'] ) ? sanitize_text_field( $_POST['edd_first'] ) : $user_data->first_name,
-				'user_last'  => isset( $_POST['edd_last'] ) && ! empty( $_POST['edd_last']  ) ? sanitize_text_field( $_POST['edd_last']  ) : $user_data->last_name,
+				'user_last'  => isset( $_POST['edd_last'] ) && ! empty( $_POST['edd_last'] ) ? sanitize_text_field( $_POST['edd_last'] ) : $user_data->last_name,
 			);
 
 			if ( ! is_email( $valid_user_data['user_email'] ) ) {
@@ -743,12 +743,12 @@ function edd_get_purchase_form_user( $valid_data = array() ) {
 
 	// Get the user's billing address details
 	$user['address']            = array();
-	$user['address']['line1']   = ! empty( $_POST['card_address']    ) ? sanitize_text_field( $_POST['card_address']    ) : false;
-	$user['address']['line2']   = ! empty( $_POST['card_address_2']  ) ? sanitize_text_field( $_POST['card_address_2']  ) : false;
-	$user['address']['city']    = ! empty( $_POST['card_city']       ) ? sanitize_text_field( $_POST['card_city']       ) : false;
-	$user['address']['state']   = ! empty( $_POST['card_state']      ) ? sanitize_text_field( $_POST['card_state']      ) : false;
+	$user['address']['line1']   = ! empty( $_POST['card_address'] ) ? sanitize_text_field( $_POST['card_address'] ) : false;
+	$user['address']['line2']   = ! empty( $_POST['card_address_2'] ) ? sanitize_text_field( $_POST['card_address_2'] ) : false;
+	$user['address']['city']    = ! empty( $_POST['card_city'] ) ? sanitize_text_field( $_POST['card_city'] ) : false;
+	$user['address']['state']   = ! empty( $_POST['card_state'] ) ? sanitize_text_field( $_POST['card_state'] ) : false;
 	$user['address']['country'] = ! empty( $_POST['billing_country'] ) ? sanitize_text_field( $_POST['billing_country'] ) : false;
-	$user['address']['zip']     = ! empty( $_POST['card_zip']        ) ? sanitize_text_field( $_POST['card_zip']        ) : false;
+	$user['address']['zip']     = ! empty( $_POST['card_zip'] ) ? sanitize_text_field( $_POST['card_zip'] ) : false;
 
 	if ( empty( $user['address']['country'] ) )
 		$user['address'] = false; // Country will always be set if address fields are present

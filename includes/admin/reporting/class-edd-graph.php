@@ -164,9 +164,9 @@ class EDD_Graph {
 		ob_start();
 ?>
 		<script type="text/javascript">
-			jQuery( document ).ready( function($) {
+			jQuery( document ).ready( function( $ ) {
 				$.plot(
-					$("#edd-graph-<?php echo $this->id; ?>"),
+					$( "#edd-graph-<?php echo $this->id; ?>" ),
 					[
 						<?php foreach ( $this->get_data() as $label => $data ) : ?>
 						{
@@ -224,8 +224,8 @@ class EDD_Graph {
 
 				);
 
-				function edd_flot_tooltip(x, y, contents) {
-					$('<div id="edd-flot-tooltip">' + contents + '</div>').css( {
+				function edd_flot_tooltip( x, y, contents ) {
+					$( '<div id="edd-flot-tooltip">' + contents + '</div>' ).css( {
 						position: 'absolute',
 						display: 'none',
 						top: y + 5,
@@ -234,19 +234,19 @@ class EDD_Graph {
 						padding: '2px',
 						'background-color': '#fee',
 						opacity: 0.80
-					}).appendTo("body").fadeIn(200);
+					} ).appendTo( "body" ).fadeIn( 200 );
 				}
 
 				var previousPoint = null;
-				$("#edd-graph-<?php echo $this->id; ?>").bind("plothover", function (event, pos, item) {
-					$("#x").text(pos.x.toFixed(2));
-					$("#y").text(pos.y.toFixed(2));
+				$( "#edd-graph-<?php echo $this->id; ?>" ).bind( "plothover", function ( event, pos, item ) {
+					$( "#x" ).text( pos.x.toFixed( 2 ) );
+					$( "#y" ).text( pos.y.toFixed( 2 ) );
 					if ( item ) {
 						if ( previousPoint != item.dataIndex ) {
 							previousPoint = item.dataIndex;
-							$("#edd-flot-tooltip").remove();
-							var x = item.datapoint[0].toFixed(2),
-							y = item.datapoint[1].toFixed(2);
+							$( "#edd-flot-tooltip" ).remove();
+							var x = item.datapoint[0].toFixed( 2 ),
+							y = item.datapoint[1].toFixed( 2 );
 							if ( item.series.id == 'earnings' ) {
 								if ( edd_vars.currency_pos == 'before' ) {
 									edd_flot_tooltip( item.pageX, item.pageY, item.series.label + ' ' + edd_vars.currency_sign + y );
@@ -258,12 +258,12 @@ class EDD_Graph {
 							}
 						}
 					} else {
-						$("#edd-flot-tooltip").remove();
+						$( "#edd-flot-tooltip" ).remove();
 						previousPoint = null;
 					}
-				});
+				} );
 
-			});
+			} );
 
 		</script>
 		<div id="edd-graph-<?php echo $this->id; ?>" class="edd-graph" style="height: 300px;"></div>

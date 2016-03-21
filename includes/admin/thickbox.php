@@ -55,15 +55,15 @@ function edd_admin_footer_for_thickbox() {
 	if ( in_array( $pagenow, array( 'post.php', 'page.php', 'post-new.php', 'post-edit.php' ) ) && $typenow != 'download' ) { ?>
 		<script type="text/javascript">
 			function insertDownload() {
-				var id = jQuery('#products').val(),
-					direct = jQuery('#select-edd-direct').val(),
-					style = jQuery('#select-edd-style').val(),
-					color = jQuery('#select-edd-color').is(':visible') ? jQuery('#select-edd-color').val() : '',
-					text = jQuery('#edd-text').val() || '<?php _e( 'Purchase', 'easy-digital-downloads' ); ?>';
+				var id = jQuery( '#products' ).val(),
+					direct = jQuery( '#select-edd-direct' ).val(),
+					style = jQuery( '#select-edd-style' ).val(),
+					color = jQuery( '#select-edd-color' ).is( ':visible' ) ? jQuery( '#select-edd-color' ).val() : '',
+					text = jQuery( '#edd-text' ).val() || '<?php _e( 'Purchase', 'easy-digital-downloads' ); ?>';
 
 				// Return early if no download is selected
 				if ( '' === id ) {
-					alert('<?php _e( 'You must choose a download', 'easy-digital-downloads' ); ?>');
+					alert( '<?php _e( 'You must choose a download', 'easy-digital-downloads' ); ?>' );
 					return;
 				}
 
@@ -74,24 +74,24 @@ function edd_admin_footer_for_thickbox() {
 				}
 
 				// Send the shortcode to the editor
-				window.send_to_editor('[purchase_link id="' + id + '" style="' + style + '" color="' + color + '" text="' + text + '"' + direct +']');
+				window.send_to_editor( '[purchase_link id="' + id + '" style="' + style + '" color="' + color + '" text="' + text + '"' + direct +']' );
 			}
-			jQuery(document).ready(function ($) {
-				$('#select-edd-style').change(function () {
-					if ( $(this).val() === 'button' ) {
-						$('#edd-color-choice').slideDown();
+			jQuery( document ).ready( function ( $ ) {
+				$( '#select-edd-style' ).change( function () {
+					if ( $( this ).val() === 'button' ) {
+						$( '#edd-color-choice' ).slideDown();
 					} else {
-						$('#edd-color-choice').slideUp();
+						$( '#edd-color-choice' ).slideUp();
 					}
-				});
-			});
+				} );
+			} );
 		</script>
 
 		<div id="choose-download" style="display: none;">
 			<div class="wrap" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;">
 				<p><?php echo sprintf( __( 'Use the form below to insert the short code for purchasing a %s', 'easy-digital-downloads' ), edd_get_label_singular() ); ?></p>
 				<div>
-					<?php echo EDD()->html->product_dropdown( array( 'chosen' => true )); ?>
+					<?php echo EDD()->html->product_dropdown( array( 'chosen' => true ) ); ?>
 				</div>
 				<?php if ( edd_shop_supports_buy_now() ) : ?>
 					<div>
@@ -118,7 +118,7 @@ function edd_admin_footer_for_thickbox() {
 				if ( $colors ) { ?>
 				<div id="edd-color-choice" style="display: none;">
 					<select id="select-edd-color" style="clear: both; display: block; margin-bottom: 1em;">
-						<option value=""><?php _e('Choose a button color', 'easy-digital-downloads' ); ?></option>
+						<option value=""><?php _e( 'Choose a button color', 'easy-digital-downloads' ); ?></option>
 						<?php
 							foreach ( $colors as $key => $color ) {
 								echo '<option value="' . str_replace( ' ', '_', $key ) . '">' . $color['label'] . '</option>';

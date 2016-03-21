@@ -161,7 +161,7 @@ class EDD_API_Keys_Table extends WP_List_Table {
 
 		$actions = apply_filters( 'edd_api_row_actions', array_filter( $actions ) );
 
-		return sprintf('%1$s %2$s', $item['user'], $this->row_actions( $actions ) );
+		return sprintf( '%1$s %2$s', $item['user'], $this->row_actions( $actions ) );
 	}
 
 	/**

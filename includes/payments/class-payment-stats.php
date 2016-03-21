@@ -138,7 +138,7 @@ class EDD_Payment_Stats extends EDD_Stats {
 
 				if ( $sales ) {
 
-					$sales = implode( ',', array_map('intval', $sales ) );
+					$sales = implode( ',', array_map( 'intval', $sales ) );
 
 					$total_earnings = $wpdb->get_var( "SELECT SUM(meta_value) FROM $wpdb->postmeta WHERE meta_key = '_edd_payment_total' AND post_id IN ({$sales})" );
 					$total_tax      = 0;
@@ -182,7 +182,7 @@ class EDD_Payment_Stats extends EDD_Stats {
 				$earnings = 0;
 
 				if ( $log_ids ) {
-					$log_ids     = implode( ',', array_map('intval', $log_ids ) );
+					$log_ids     = implode( ',', array_map( 'intval', $log_ids ) );
 					$payment_ids = $wpdb->get_col( "SELECT DISTINCT meta_value FROM $wpdb->postmeta WHERE meta_key = '_edd_log_payment_id' AND post_id IN ($log_ids);" );
 
 					foreach ( $payment_ids as $payment_id ) {

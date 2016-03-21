@@ -53,7 +53,7 @@ function edd_upgrades_screen() {
 				<?php endif; ?>
 			</div>
 			<script type="text/javascript">
-				setTimeout(function() { document.location.href = "index.php?edd_action=<?php echo $action; ?>&step=<?php echo $step; ?>&total=<?php echo $total; ?>&custom=<?php echo $custom; ?>"; }, 250);
+				setTimeout( function() { document.location.href = "index.php?edd_action=<?php echo $action; ?>&step=<?php echo $step; ?>&total=<?php echo $total; ?>&custom=<?php echo $custom; ?>"; }, 250 );
 			</script>
 
 		<?php else : ?>
@@ -68,13 +68,13 @@ function edd_upgrades_screen() {
 				jQuery( document ).ready( function() {
 					// Trigger upgrades on page load
 					var data = { action: 'edd_trigger_upgrades' };
-					jQuery.post( ajaxurl, data, function (response) {
+					jQuery.post( ajaxurl, data, function ( response ) {
 						if ( response == 'complete' ) {
-							jQuery('#edd-upgrade-loader').hide();
+							jQuery( '#edd-upgrade-loader' ).hide();
 							document.location.href = 'index.php?page=edd-about'; // Redirect to the welcome page
 						}
-					});
-				});
+					} );
+				} );
 			</script>
 
 		<?php endif; ?>

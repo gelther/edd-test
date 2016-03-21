@@ -373,11 +373,11 @@ function edd_process_paypal_web_accept_and_cart( $data, $payment_id ) {
 
 		// Setup and store the customers's details
 		$address            = array();
-		$address['line1']   = ! empty( $data['address_street']       ) ? sanitize_text_field( $data['address_street'] )       : false;
-		$address['city']    = ! empty( $data['address_city']         ) ? sanitize_text_field( $data['address_city'] )         : false;
-		$address['state']   = ! empty( $data['address_state']        ) ? sanitize_text_field( $data['address_state'] )        : false;
+		$address['line1']   = ! empty( $data['address_street'] ) ? sanitize_text_field( $data['address_street'] )       : false;
+		$address['city']    = ! empty( $data['address_city'] ) ? sanitize_text_field( $data['address_city'] )         : false;
+		$address['state']   = ! empty( $data['address_state'] ) ? sanitize_text_field( $data['address_state'] )        : false;
 		$address['country'] = ! empty( $data['address_country_code'] ) ? sanitize_text_field( $data['address_country_code'] ) : false;
-		$address['zip']     = ! empty( $data['address_zip']          ) ? sanitize_text_field( $data['address_zip'] )          : false;
+		$address['zip']     = ! empty( $data['address_zip'] ) ? sanitize_text_field( $data['address_zip'] )          : false;
 
 		$user_info = array(
 			'id'         => '-1',

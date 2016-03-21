@@ -172,7 +172,7 @@ class EDD_Payment_History_Table extends WP_List_Table {
 			<?php do_action( 'edd_payment_history_search' ); ?>
 			<label class="screen-reader-text" for="<?php echo $input_id; ?>"><?php echo $text; ?>:</label>
 			<input type="search" id="<?php echo $input_id; ?>" name="s" value="<?php _admin_search_query(); ?>" />
-			<?php submit_button( $text, 'button', false, false, array('ID' => 'search-submit') ); ?><br/>
+			<?php submit_button( $text, 'button', false, false, array( 'ID' => 'search-submit' ) ); ?><br/>
 		</p>
 <?php
 	}
@@ -196,13 +196,13 @@ class EDD_Payment_History_Table extends WP_List_Table {
 		$revoked_count   = '&nbsp;<span class="count">(' . $this->revoked_count . ')</span>';
 
 		$views = array(
-			'all'       => sprintf( '<a href="%s"%s>%s</a>', remove_query_arg( array( 'status', 'paged' ) ), $current === 'all' || $current == '' ? ' class="current"' : '', __('All', 'easy-digital-downloads' ) . $total_count ),
-			'publish'   => sprintf( '<a href="%s"%s>%s</a>', add_query_arg( array( 'status' => 'publish', 'paged' => false ) ), $current === 'publish' ? ' class="current"' : '', __('Completed', 'easy-digital-downloads' ) . $complete_count ),
-			'pending'   => sprintf( '<a href="%s"%s>%s</a>', add_query_arg( array( 'status' => 'pending', 'paged' => false ) ), $current === 'pending' ? ' class="current"' : '', __('Pending', 'easy-digital-downloads' ) . $pending_count ),
-			'refunded'  => sprintf( '<a href="%s"%s>%s</a>', add_query_arg( array( 'status' => 'refunded', 'paged' => false ) ), $current === 'refunded' ? ' class="current"' : '', __('Refunded', 'easy-digital-downloads' ) . $refunded_count ),
-			'revoked'   => sprintf( '<a href="%s"%s>%s</a>', add_query_arg( array( 'status' => 'revoked', 'paged' => false ) ), $current === 'revoked' ? ' class="current"' : '', __('Revoked', 'easy-digital-downloads' ) . $revoked_count ),
-			'failed'    => sprintf( '<a href="%s"%s>%s</a>', add_query_arg( array( 'status' => 'failed', 'paged' => false ) ), $current === 'failed' ? ' class="current"' : '', __('Failed', 'easy-digital-downloads' ) . $failed_count ),
-			'abandoned' => sprintf( '<a href="%s"%s>%s</a>', add_query_arg( array( 'status' => 'abandoned', 'paged' => false ) ), $current === 'abandoned' ? ' class="current"' : '', __('Abandoned', 'easy-digital-downloads' ) . $abandoned_count ),
+			'all'       => sprintf( '<a href="%s"%s>%s</a>', remove_query_arg( array( 'status', 'paged' ) ), $current === 'all' || $current == '' ? ' class="current"' : '', __( 'All', 'easy-digital-downloads' ) . $total_count ),
+			'publish'   => sprintf( '<a href="%s"%s>%s</a>', add_query_arg( array( 'status' => 'publish', 'paged' => false ) ), $current === 'publish' ? ' class="current"' : '', __( 'Completed', 'easy-digital-downloads' ) . $complete_count ),
+			'pending'   => sprintf( '<a href="%s"%s>%s</a>', add_query_arg( array( 'status' => 'pending', 'paged' => false ) ), $current === 'pending' ? ' class="current"' : '', __( 'Pending', 'easy-digital-downloads' ) . $pending_count ),
+			'refunded'  => sprintf( '<a href="%s"%s>%s</a>', add_query_arg( array( 'status' => 'refunded', 'paged' => false ) ), $current === 'refunded' ? ' class="current"' : '', __( 'Refunded', 'easy-digital-downloads' ) . $refunded_count ),
+			'revoked'   => sprintf( '<a href="%s"%s>%s</a>', add_query_arg( array( 'status' => 'revoked', 'paged' => false ) ), $current === 'revoked' ? ' class="current"' : '', __( 'Revoked', 'easy-digital-downloads' ) . $revoked_count ),
+			'failed'    => sprintf( '<a href="%s"%s>%s</a>', add_query_arg( array( 'status' => 'failed', 'paged' => false ) ), $current === 'failed' ? ' class="current"' : '', __( 'Failed', 'easy-digital-downloads' ) . $failed_count ),
+			'abandoned' => sprintf( '<a href="%s"%s>%s</a>', add_query_arg( array( 'status' => 'abandoned', 'paged' => false ) ), $current === 'abandoned' ? ' class="current"' : '', __( 'Abandoned', 'easy-digital-downloads' ) . $abandoned_count ),
 		);
 
 		return apply_filters( 'edd_payments_table_views', $views );
@@ -313,7 +313,7 @@ class EDD_Payment_History_Table extends WP_List_Table {
 			$row_actions['email_links'] = '<a href="' . add_query_arg( array( 'edd-action' => 'email_links', 'purchase_id' => $payment->ID ), $this->base_url ) . '">' . __( 'Resend Purchase Receipt', 'easy-digital-downloads' ) . '</a>';
 		}
 
-		$row_actions['delete'] = '<a href="' . wp_nonce_url( add_query_arg( array( 'edd-action' => 'delete_payment', 'purchase_id' => $payment->ID ), $this->base_url ), 'edd_payment_nonce') . '">' . __( 'Delete', 'easy-digital-downloads' ) . '</a>';
+		$row_actions['delete'] = '<a href="' . wp_nonce_url( add_query_arg( array( 'edd-action' => 'delete_payment', 'purchase_id' => $payment->ID ), $this->base_url ), 'edd_payment_nonce' ) . '">' . __( 'Delete', 'easy-digital-downloads' ) . '</a>';
 
 		$row_actions = apply_filters( 'edd_payment_row_actions', $row_actions, $payment );
 

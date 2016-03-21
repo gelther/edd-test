@@ -53,10 +53,10 @@ function edd_render_download_columns( $column_name, $post_id ) {
 	if ( get_post_type( $post_id ) == 'download' ) {
 		switch ( $column_name ) {
 			case 'download_category':
-				echo get_the_term_list( $post_id, 'download_category', '', ', ', '');
+				echo get_the_term_list( $post_id, 'download_category', '', ', ', '' );
 				break;
 			case 'download_tag':
-				echo get_the_term_list( $post_id, 'download_tag', '', ', ', '');
+				echo get_the_term_list( $post_id, 'download_tag', '', ', ', '' );
 				break;
 			case 'price':
 				if ( edd_has_variable_prices( $post_id ) ) {
@@ -229,7 +229,7 @@ function edd_add_download_filters() {
 				$tag_labels = edd_get_taxonomy_labels( 'download_tag' );
 				echo "<option value=''>" . sprintf( __( 'Show all %s', 'easy-digital-downloads' ), strtolower( $tag_labels['name'] ) ) . '</option>';
 				foreach ( $terms as $term ) {
-					$selected = isset( $_GET['download_tag']) && $_GET['download_tag'] == $term->slug ? ' selected="selected"' : '';
+					$selected = isset( $_GET['download_tag'] ) && $_GET['download_tag'] == $term->slug ? ' selected="selected"' : '';
 					echo '<option value="' . esc_attr( $term->slug ) . '"' . $selected . '>' . esc_html( $term->name ) . ' (' . $term->count . ')</option>';
 				}
 			echo '</select>';
@@ -304,7 +304,7 @@ add_action( 'bulk_edit_custom_box', 'edd_price_field_quick_edit', 10, 2 );
  * @return void
  */
 function edd_price_save_quick_edit( $post_id ) {
-	if ( ! isset( $_POST['post_type']) || 'download' !== $_POST['post_type'] ) return;
+	if ( ! isset( $_POST['post_type'] ) || 'download' !== $_POST['post_type'] ) return;
 	if ( ! current_user_can( 'edit_post', $post_id ) ) return $post_id;
 	if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) return $post_id;
 

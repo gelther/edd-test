@@ -22,7 +22,7 @@ function edd_setup_edd_post_types() {
 
 	$archives = defined( 'EDD_DISABLE_ARCHIVE' ) && EDD_DISABLE_ARCHIVE ? false : true;
 	$slug     = defined( 'EDD_SLUG' ) ? EDD_SLUG : 'downloads';
-	$rewrite  = defined( 'EDD_DISABLE_REWRITE' ) && EDD_DISABLE_REWRITE ? false : array('slug' => $slug, 'with_front' => false);
+	$rewrite  = defined( 'EDD_DISABLE_REWRITE' ) && EDD_DISABLE_REWRITE ? false : array( 'slug' => $slug, 'with_front' => false );
 
 	$download_labels =  apply_filters( 'edd_download_labels', array(
 		'name'                  => _x( '%2$s', 'download post type name', 'easy-digital-downloads' ),
@@ -151,7 +151,7 @@ function edd_get_default_labels() {
  */
 function edd_get_label_singular( $lowercase = false ) {
 	$defaults = edd_get_default_labels();
-	return ($lowercase) ? strtolower( $defaults['singular'] ) : $defaults['singular'];
+	return ( $lowercase ) ? strtolower( $defaults['singular'] ) : $defaults['singular'];
 }
 
 /**
@@ -218,14 +218,14 @@ function edd_setup_download_taxonomies() {
 
 	$category_args = apply_filters( 'edd_download_category_args', array(
 			'hierarchical' => true,
-			'labels'       => apply_filters('edd_download_category_labels', $category_labels),
+			'labels'       => apply_filters( 'edd_download_category_labels', $category_labels ),
 			'show_ui'      => true,
 			'query_var'    => 'download_category',
-			'rewrite'      => array('slug' => $slug . '/category', 'with_front' => false, 'hierarchical' => true ),
+			'rewrite'      => array( 'slug' => $slug . '/category', 'with_front' => false, 'hierarchical' => true ),
 			'capabilities' => array( 'manage_terms' => 'manage_product_terms', 'edit_terms' => 'edit_product_terms', 'assign_terms' => 'assign_product_terms', 'delete_terms' => 'delete_product_terms' )
 		)
 	);
-	register_taxonomy( 'download_category', array('download'), $category_args );
+	register_taxonomy( 'download_category', array( 'download' ), $category_args );
 	register_taxonomy_for_object_type( 'download_category', 'download' );
 
 	/** Tags */
@@ -249,7 +249,7 @@ function edd_setup_download_taxonomies() {
 			'labels'       => apply_filters( 'edd_download_tag_labels', $tag_labels ),
 			'show_ui'      => true,
 			'query_var'    => 'download_tag',
-			'rewrite'      => array( 'slug' => $slug . '/tag', 'with_front' => false, 'hierarchical' => true  ),
+			'rewrite'      => array( 'slug' => $slug . '/tag', 'with_front' => false, 'hierarchical' => true ),
 			'capabilities' => array( 'manage_terms' => 'manage_product_terms', 'edit_terms' => 'edit_product_terms', 'assign_terms' => 'assign_product_terms', 'delete_terms' => 'delete_product_terms' )
 		)
 	);
@@ -314,7 +314,7 @@ function edd_register_post_type_statuses() {
 		'show_in_admin_all_list'    => true,
 		'show_in_admin_status_list' => true,
 		'label_count'               => _n_noop( 'Failed <span class="count">(%s)</span>', 'Failed <span class="count">(%s)</span>', 'easy-digital-downloads' )
-	)  );
+	) );
 	register_post_status( 'revoked', array(
 		'label'                     => _x( 'Revoked', 'Revoked payment status', 'easy-digital-downloads' ),
 		'public'                    => true,
@@ -322,7 +322,7 @@ function edd_register_post_type_statuses() {
 		'show_in_admin_all_list'    => true,
 		'show_in_admin_status_list' => true,
 		'label_count'               => _n_noop( 'Revoked <span class="count">(%s)</span>', 'Revoked <span class="count">(%s)</span>', 'easy-digital-downloads' )
-	)  );
+	) );
 	register_post_status( 'abandoned', array(
 		'label'                     => _x( 'Abandoned', 'Abandoned payment status', 'easy-digital-downloads' ),
 		'public'                    => true,
@@ -330,7 +330,7 @@ function edd_register_post_type_statuses() {
 		'show_in_admin_all_list'    => true,
 		'show_in_admin_status_list' => true,
 		'label_count'               => _n_noop( 'Abandoned <span class="count">(%s)</span>', 'Abandoned <span class="count">(%s)</span>', 'easy-digital-downloads' )
-	)  );
+	) );
 
 	// Discount Code Statuses
 	register_post_status( 'active', array(
@@ -340,7 +340,7 @@ function edd_register_post_type_statuses() {
 		'show_in_admin_all_list'    => true,
 		'show_in_admin_status_list' => true,
 		'label_count'               => _n_noop( 'Active <span class="count">(%s)</span>', 'Active <span class="count">(%s)</span>', 'easy-digital-downloads' )
-	)  );
+	) );
 	register_post_status( 'inactive', array(
 		'label'                     => _x( 'Inactive', 'Inactive discount code status', 'easy-digital-downloads' ),
 		'public'                    => true,
@@ -348,7 +348,7 @@ function edd_register_post_type_statuses() {
 		'show_in_admin_all_list'    => true,
 		'show_in_admin_status_list' => true,
 		'label_count'               => _n_noop( 'Inactive <span class="count">(%s)</span>', 'Inactive <span class="count">(%s)</span>', 'easy-digital-downloads' )
-	)  );
+	) );
 }
 add_action( 'init', 'edd_register_post_type_statuses', 2 );
 

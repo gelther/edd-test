@@ -20,7 +20,7 @@ class HttpCurl implements HttpCurlInterface
 	 * Takes configuration for API call or IPN config
 	 */
 
-	public function __construct($config = null) {
+	public function __construct( $config = null ) {
 		$this->config = $config;
 	}
 
@@ -32,7 +32,7 @@ class HttpCurl implements HttpCurlInterface
 
 	/* Setter for Access token to get the user info */
 
-	public function setAccessToken($accesstoken) {
+	public function setAccessToken( $accesstoken ) {
 		$this->accessToken = $accesstoken;
 	}
 
@@ -45,27 +45,27 @@ class HttpCurl implements HttpCurlInterface
 	 * config['proxy_password']
 	 */
 
-	private  function commonCurlParams($url, $userAgent) {
+	private  function commonCurlParams( $url, $userAgent ) {
 		$ch = curl_init();
-		curl_setopt($ch, CURLOPT_URL, $url);
-		curl_setopt($ch, CURLOPT_PORT, 443);
-		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, true);
-		curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 2);
-		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+		curl_setopt( $ch, CURLOPT_URL, $url );
+		curl_setopt( $ch, CURLOPT_PORT, 443 );
+		curl_setopt( $ch, CURLOPT_SSL_VERIFYPEER, true );
+		curl_setopt( $ch, CURLOPT_SSL_VERIFYHOST, 2 );
+		curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true );
 
-		if ( ! is_null($this->config['cabundle_file']) ) {
-			curl_setopt($ch, CURLOPT_CAINFO, $this->config['cabundle_file']);
+		if ( ! is_null( $this->config['cabundle_file'] ) ) {
+			curl_setopt( $ch, CURLOPT_CAINFO, $this->config['cabundle_file'] );
 		}
 
-		if ( ! empty($userAgent) )
-			curl_setopt($ch, CURLOPT_USERAGENT, $userAgent);
+		if ( ! empty( $userAgent ) )
+			curl_setopt( $ch, CURLOPT_USERAGENT, $userAgent );
 
 		if ( $this->config['proxy_host'] != null && $this->config['proxy_port'] != -1 ) {
-			curl_setopt($ch, CURLOPT_PROXY, $this->config['proxy_host'] . ':' . $this->config['proxy_port']);
+			curl_setopt( $ch, CURLOPT_PROXY, $this->config['proxy_host'] . ':' . $this->config['proxy_port'] );
 		}
 
 		if ( $this->config['proxy_username'] != null && $this->config['proxy_password'] != null ) {
-			curl_setopt($ch, CURLOPT_PROXYUSERPWD, $this->config['proxy_username'] . ':' . $this->config['proxy_password']);
+			curl_setopt( $ch, CURLOPT_PROXYUSERPWD, $this->config['proxy_username'] . ':' . $this->config['proxy_password'] );
 		}
 
 		return $ch;
@@ -77,14 +77,14 @@ class HttpCurl implements HttpCurlInterface
 	 * 3. Get User Info
 	 */
 
-	public function httpPost($url, $userAgent = null, $parameters = null) {
-		$ch = $this->commonCurlParams($url, $userAgent);
+	public function httpPost( $url, $userAgent = null, $parameters = null ) {
+		$ch = $this->commonCurlParams( $url, $userAgent );
 
-		curl_setopt($ch, CURLOPT_POST, true);
-		curl_setopt($ch, CURLOPT_POSTFIELDS, $parameters);
-		curl_setopt($ch, CURLOPT_HEADER, true);
+		curl_setopt( $ch, CURLOPT_POST, true );
+		curl_setopt( $ch, CURLOPT_POSTFIELDS, $parameters );
+		curl_setopt( $ch, CURLOPT_HEADER, true );
 
-		$response = $this->execute($ch);
+		$response = $this->execute( $ch );
 		return $response;
 	}
 
@@ -93,30 +93,30 @@ class HttpCurl implements HttpCurlInterface
 	 * 2. Get User Info
 	 */
 
-	public function httpGet($url, $userAgent = null) {
-		$ch = $this->commonCurlParams($url, $userAgent);
+	public function httpGet( $url, $userAgent = null ) {
+		$ch = $this->commonCurlParams( $url, $userAgent );
 
 		// Setting the HTTP header with the Access Token only for Getting user info
 		if ( $this->header ) {
-			curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+			curl_setopt( $ch, CURLOPT_HTTPHEADER, array(
 				'Authorization: bearer ' . $this->accessToken
-			));
+			) );
 		}
 
-		$response = $this->execute($ch);
+		$response = $this->execute( $ch );
 		return $response;
 	}
 
 	/* Execute Curl request */
 
-	private function execute($ch) {
+	private function execute( $ch ) {
 		$response = '';
-		if ( ! $response = curl_exec($ch) ) {
-			$error_msg = 'Unable to post request, underlying exception of ' . curl_error($ch);
-			curl_close($ch);
-			throw new \Exception($error_msg);
+		if ( ! $response = curl_exec( $ch ) ) {
+			$error_msg = 'Unable to post request, underlying exception of ' . curl_error( $ch );
+			curl_close( $ch );
+			throw new \Exception( $error_msg );
 		}
-		curl_close($ch);
+		curl_close( $ch );
 		return $response;
 	}
 }

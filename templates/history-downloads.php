@@ -76,7 +76,7 @@ if ( $purchases ) :
 
 								else : ?>
 									<span class="edd_download_payment_status">
-										<?php printf( __( 'Payment status is %s', 'easy-digital-downloads' ), edd_get_payment_status( $payment, true) ); ?>
+										<?php printf( __( 'Payment status is %s', 'easy-digital-downloads' ), edd_get_payment_status( $payment, true ) ); ?>
 									</span>
 									<?php
 								endif; // End if $download_files

@@ -320,7 +320,7 @@ class EDD_Logging {
 	 * @param array $meta_query Log meta query (default: null)
 	 * @return void
 	 */
-	public function delete_logs( $object_id = 0, $type = null, $meta_query = null  ) {
+	public function delete_logs( $object_id = 0, $type = null, $meta_query = null ) {
 		$query_args = array(
 			'post_parent'    => $object_id,
 			'post_type'      => 'edd_log',

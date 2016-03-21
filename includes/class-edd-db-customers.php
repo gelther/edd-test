@@ -403,7 +403,7 @@ class EDD_DB_Customers extends EDD_DB  {
 		if ( ! empty( $args['id'] ) ) {
 
 			if ( is_array( $args['id'] ) ) {
-				$ids = implode( ',', array_map('intval', $args['id'] ) );
+				$ids = implode( ',', array_map( 'intval', $args['id'] ) );
 			} else {
 				$ids = intval( $args['id'] );
 			}
@@ -416,7 +416,7 @@ class EDD_DB_Customers extends EDD_DB  {
 		if ( ! empty( $args['user_id'] ) ) {
 
 			if ( is_array( $args['user_id'] ) ) {
-				$user_ids = implode( ',', array_map('intval', $args['user_id'] ) );
+				$user_ids = implode( ',', array_map( 'intval', $args['user_id'] ) );
 			} else {
 				$user_ids = intval( $args['user_id'] );
 			}
