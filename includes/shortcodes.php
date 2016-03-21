@@ -487,7 +487,7 @@ function edd_downloads_query( $atts, $content = null ) {
 
 	if ( get_query_var( 'paged' ) )
 		$query['paged'] = get_query_var('paged');
-	else if ( get_query_var( 'page' ) )
+	elseif ( get_query_var( 'page' ) )
 		$query['paged'] = get_query_var( 'page' );
 	else
 		$query['paged'] = 1;
@@ -520,7 +520,7 @@ function edd_downloads_query( $atts, $content = null ) {
 						if ( $atts['excerpt'] == 'yes' && $atts['full_content'] != 'yes' ) {
 							edd_get_template_part( 'shortcode', 'content-excerpt' );
 							do_action( 'edd_download_after_content' );
-						} else if ( $atts['full_content'] == 'yes' ) {
+						} elseif ( $atts['full_content'] == 'yes' ) {
 							edd_get_template_part( 'shortcode', 'content-full' );
 							do_action( 'edd_download_after_content' );
 						}
@@ -642,7 +642,7 @@ function edd_receipt_shortcode( $atts, $content = null ) {
 	$session = edd_get_purchase_session();
 	if ( isset( $_GET['payment_key'] ) ) {
 		$payment_key = urldecode( $_GET['payment_key'] );
-	} else if ( $session ) {
+	} elseif ( $session ) {
 		$payment_key = $session['purchase_key'];
 	} elseif ( $edd_receipt_args['payment_key'] ) {
 		$payment_key = $edd_receipt_args['payment_key'];
