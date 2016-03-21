@@ -480,9 +480,9 @@ final class EDD_Payment {
 
 		if ( ! empty( $this->first_name ) && ! empty( $this->last_name ) ) {
 			$payment_title = $this->first_name . ' ' . $this->last_name;
-		} else if ( ! empty( $this->first_name ) && empty( $this->last_name ) ) {
+		} elseif ( ! empty( $this->first_name ) && empty( $this->last_name ) ) {
 			$payment_title = $this->first_name;
-		} else if ( ! empty( $this->email ) && is_email( $this->email ) ) {
+		} elseif ( ! empty( $this->email ) && is_email( $this->email ) ) {
 			$payment_title = $this->email;
 		}
 
@@ -813,7 +813,7 @@ final class EDD_Payment {
 					$customer->decrease_value( $total_change );
 					edd_decrease_total_earnings( $total_change );
 
-				} else if ( $total_change > 0 ) {
+				} elseif ( $total_change > 0 ) {
 
 					// Increase the customer's purchase stats
 					$customer->increase_value( $total_change );
@@ -1222,7 +1222,7 @@ final class EDD_Payment {
 			unset( $this->fees[ $value ] );
 			$removed = true;
 
-		} else if ( 'index' !== $key ) {
+		} elseif ( 'index' !== $key ) {
 
 			foreach ( $this->fees as $index => $fee ) {
 
@@ -1528,7 +1528,7 @@ final class EDD_Payment {
 			$meta_key   = '_edd_payment_meta';
 			$meta_value = $current_meta;
 
-		} else if ( $meta_key == 'email' || $meta_key == '_edd_payment_user_email' ) {
+		} elseif ( $meta_key == 'email' || $meta_key == '_edd_payment_user_email' ) {
 
 			$meta_value = apply_filters( 'edd_edd_update_payment_meta_' . $meta_key, $meta_value, $this->ID );
 			update_post_meta( $this->ID, '_edd_payment_user_email', $meta_value );
