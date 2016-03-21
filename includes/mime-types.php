@@ -17,8 +17,8 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  *
  * @since 1.0
  *
- * @param array $existing_mimes A list of all the existing MIME types
- * @return array A list of all the new MIME types appended
+ * @param  array $existing_mimes A list of all the existing MIME types
+ * @return array                 A list of all the new MIME types appended
  */
 function edd_allowed_mime_types( $existing_mimes = array() ) {
 	$existing_mimes['zip']  = 'application/zip';
