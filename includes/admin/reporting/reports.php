@@ -308,7 +308,7 @@ function edd_reports_taxes() {
 
 	<div class="metabox-holder" style="padding-top: 0;">
 		<div class="postbox">
-			<h3><span><?php _e('Tax Report','easy-digital-downloads' ); ?></span></h3>
+			<h3><span><?php _e('Tax Report', 'easy-digital-downloads' ); ?></span></h3>
 			<div class="inside">
 				<p><?php _e( 'This report shows the total amount collected in sales tax for the given year.', 'easy-digital-downloads' ); ?></p>
 				<form method="get" action="<?php echo admin_url( 'edit.php' ); ?>">
@@ -375,12 +375,12 @@ function edd_reports_tab_export() {
 					</div><!-- .postbox -->
 
 					<div class="postbox edd-export-payment-history">
-						<h3><span><?php _e('Export Payment History','easy-digital-downloads' ); ?></span></h3>
+						<h3><span><?php _e('Export Payment History', 'easy-digital-downloads' ); ?></span></h3>
 						<div class="inside">
 							<p><?php _e( 'Download a CSV of all payments recorded.', 'easy-digital-downloads' ); ?></p>
 							<form id="edd-export-payments" class="edd-export-form" method="post">
 								<?php echo EDD()->html->date_field( array( 'id' => 'edd-payment-export-start', 'name' => 'start', 'placeholder' => __( 'Choose start date', 'easy-digital-downloads' ) )); ?>
-								<?php echo EDD()->html->date_field( array( 'id' => 'edd-payment-export-end','name' => 'end', 'placeholder' => __( 'Choose end date', 'easy-digital-downloads' ) )); ?>
+								<?php echo EDD()->html->date_field( array( 'id' => 'edd-payment-export-end', 'name' => 'end', 'placeholder' => __( 'Choose end date', 'easy-digital-downloads' ) )); ?>
 								<select name="status">
 									<option value="any"><?php _e( 'All Statuses', 'easy-digital-downloads' ); ?></option>
 									<?php
@@ -401,7 +401,7 @@ function edd_reports_tab_export() {
 					</div><!-- .postbox -->
 
 					<div class="postbox edd-export-customers">
-						<h3><span><?php _e('Export Customers in CSV','easy-digital-downloads' ); ?></span></h3>
+						<h3><span><?php _e('Export Customers in CSV', 'easy-digital-downloads' ); ?></span></h3>
 						<div class="inside">
 							<p><?php _e( 'Download a CSV of customers.', 'easy-digital-downloads' ); ?></p>
 							<form id="edd-export-customers" class="edd-export-form" method="post">
@@ -414,7 +414,7 @@ function edd_reports_tab_export() {
 					</div><!-- .postbox -->
 
 					<div class="postbox edd-export-downloads">
-						<h3><span><?php _e('Export Download Products in CSV','easy-digital-downloads' ); ?></span></h3>
+						<h3><span><?php _e('Export Download Products in CSV', 'easy-digital-downloads' ); ?></span></h3>
 						<div class="inside">
 							<p><?php _e( 'Download a CSV of download products.', 'easy-digital-downloads' ); ?></p>
 							<form id="edd-export-file-downloads" class="edd-export-form" method="post">
@@ -426,7 +426,7 @@ function edd_reports_tab_export() {
 					</div><!-- .postbox -->
 
 					<div class="postbox edd-export-download-history">
-						<h3><span><?php _e('Export Download History in CSV','easy-digital-downloads' ); ?></span></h3>
+						<h3><span><?php _e('Export Download History in CSV', 'easy-digital-downloads' ); ?></span></h3>
 						<div class="inside">
 							<p><?php _e( 'Download a CSV of file downloads.', 'easy-digital-downloads' ); ?></p>
 							<form id="edd-export-file-downloads" class="edd-export-form" method="post">

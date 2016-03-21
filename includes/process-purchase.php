@@ -76,12 +76,12 @@ function edd_process_purchase_form() {
 	// Setup purchase information
 	$purchase_data = array(
 		'downloads'    => edd_get_cart_contents(),
-		'fees'         => edd_get_cart_fees(),        // Any arbitrary fees that have been added to the cart
-		'subtotal'     => edd_get_cart_subtotal(),    // Amount before taxes and discounts
+		'fees'         => edd_get_cart_fees(), // Any arbitrary fees that have been added to the cart
+		'subtotal'     => edd_get_cart_subtotal(), // Amount before taxes and discounts
 		'discount'     => edd_get_cart_discounted_amount(), // Discounted amount
-		'tax'          => edd_get_cart_tax(),               // Taxed amount
-		'price'        => edd_get_cart_total(),    // Amount after taxes
-		'purchase_key' => strtolower( md5( $user['user_email'] . date( 'Y-m-d H:i:s' ) . $auth_key . uniqid( 'edd', true ) ) ),  // Unique key
+		'tax'          => edd_get_cart_tax(), // Taxed amount
+		'price'        => edd_get_cart_total(), // Amount after taxes
+		'purchase_key' => strtolower( md5( $user['user_email'] . date( 'Y-m-d H:i:s' ) . $auth_key . uniqid( 'edd', true ) ) ), // Unique key
 		'user_email'   => $user['user_email'],
 		'date'         => date( 'Y-m-d H:i:s', current_time( 'timestamp' ) ),
 		'user_info'    => stripslashes_deep( $user_info ),
@@ -176,13 +176,13 @@ function edd_purchase_form_validate_fields() {
 	// Start an array to collect valid data
 	$valid_data = array(
 		'gateway'          => edd_purchase_form_validate_gateway(), // Gateway fallback
-		'discount'         => edd_purchase_form_validate_discounts(),    // Set default discount
-		'need_new_user'    => false,     // New user flag
-		'need_user_login'  => false,     // Login user flag
-		'logged_user_data' => array(),   // Logged user collected data
-		'new_user_data'    => array(),   // New user collected data
-		'login_user_data'  => array(),   // Login user collected data
-		'guest_user_data'  => array(),   // Guest user collected data
+		'discount'         => edd_purchase_form_validate_discounts(), // Set default discount
+		'need_new_user'    => false, // New user flag
+		'need_user_login'  => false, // Login user flag
+		'logged_user_data' => array(), // Logged user collected data
+		'new_user_data'    => array(), // New user collected data
+		'login_user_data'  => array(), // Login user collected data
+		'guest_user_data'  => array(), // Guest user collected data
 		'cc_info'          => edd_purchase_form_validate_cc()    // Credit card info
 	);
 

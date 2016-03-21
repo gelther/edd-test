@@ -368,7 +368,7 @@ final class Easy_Digital_Downloads {
 		$edd_lang_dir = apply_filters( 'edd_languages_directory', $edd_lang_dir );
 
 		// Traditional WordPress plugin locale filter.
-		$locale = apply_filters( 'plugin_locale',  get_locale(), 'easy-digital-downloads' );
+		$locale = apply_filters( 'plugin_locale', get_locale(), 'easy-digital-downloads' );
 		$mofile = sprintf( '%1$s-%2$s.mo', 'easy-digital-downloads', $locale );
 
 		// Look for wp-content/languages/edd/easy-digital-downloads-{lang}_{country}.mo

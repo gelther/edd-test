@@ -146,17 +146,17 @@ class EDD_API {
 			require_once EDD_PLUGIN_DIR . 'includes/api/class-edd-api-' . $version . '.php';
 		}
 
-		add_action( 'init',                     array( $this, 'add_endpoint'     ) );
-		add_action( 'wp',                       array( $this, 'process_query'    ), -1 );
-		add_filter( 'query_vars',               array( $this, 'query_vars'       ) );
-		add_action( 'show_user_profile',        array( $this, 'user_key_field'   ) );
-		add_action( 'edit_user_profile',        array( $this, 'user_key_field'   ) );
-		add_action( 'personal_options_update',  array( $this, 'update_key'       ) );
+		add_action( 'init', array( $this, 'add_endpoint'     ) );
+		add_action( 'wp', array( $this, 'process_query'    ), -1 );
+		add_filter( 'query_vars', array( $this, 'query_vars'       ) );
+		add_action( 'show_user_profile', array( $this, 'user_key_field'   ) );
+		add_action( 'edit_user_profile', array( $this, 'user_key_field'   ) );
+		add_action( 'personal_options_update', array( $this, 'update_key'       ) );
 		add_action( 'edit_user_profile_update', array( $this, 'update_key'       ) );
-		add_action( 'edd_process_api_key',      array( $this, 'process_api_key'  ) );
+		add_action( 'edd_process_api_key', array( $this, 'process_api_key'  ) );
 
 		// Setup a backwards compatibilty check for user API Keys
-		add_filter( 'get_user_metadata',        array( $this, 'api_key_backwards_copmat' ), 10, 4 );
+		add_filter( 'get_user_metadata', array( $this, 'api_key_backwards_copmat' ), 10, 4 );
 
 		// Determine if JSON_PRETTY_PRINT is available
 		$this->pretty_print = defined( 'JSON_PRETTY_PRINT' ) ? JSON_PRETTY_PRINT : null;
@@ -375,7 +375,7 @@ class EDD_API {
 			} else {
 				$user = $wpdb->get_var( $wpdb->prepare( "SELECT user_id FROM $wpdb->usermeta WHERE meta_key = 'edd_user_public_key' AND meta_value = %s LIMIT 1", $key ) );
 			}
-			set_transient( md5( 'edd_api_user_' . $key ) , $user, DAY_IN_SECONDS );
+			set_transient( md5( 'edd_api_user_' . $key ), $user, DAY_IN_SECONDS );
 		}
 
 		if ( $user != NULL ) {

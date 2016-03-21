@@ -66,7 +66,7 @@ class EDD_Export {
 	 */
 	public function csv_cols() {
 		$cols = array(
-			'id'   => __( 'ID',   'easy-digital-downloads' ),
+			'id'   => __( 'ID', 'easy-digital-downloads' ),
 			'date' => __( 'Date', 'easy-digital-downloads' )
 		);
 		return $cols;

@@ -25,7 +25,7 @@ global $post; ?>
 						<?php
 							if ( current_theme_supports( 'post-thumbnails' ) && has_post_thumbnail( $item['id'] ) ) {
 								echo '<div class="edd_cart_item_image">';
-									echo get_the_post_thumbnail( $item['id'], apply_filters( 'edd_checkout_image_size', array( 25,25 ) ) );
+									echo get_the_post_thumbnail( $item['id'], apply_filters( 'edd_checkout_image_size', array( 25, 25 ) ) );
 								echo '</div>';
 							}
 							$item_title = edd_get_cart_item_name( $item );

@@ -15,10 +15,10 @@ if ( is_user_logged_in() ) :
 			<thead>
 				<tr class="edd_purchase_row">
 					<?php do_action('edd_purchase_history_header_before'); ?>
-					<th class="edd_purchase_id"><?php _e('ID','easy-digital-downloads' ); ?></th>
-					<th class="edd_purchase_date"><?php _e('Date','easy-digital-downloads' ); ?></th>
-					<th class="edd_purchase_amount"><?php _e('Amount','easy-digital-downloads' ); ?></th>
-					<th class="edd_purchase_details"><?php _e('Details','easy-digital-downloads' ); ?></th>
+					<th class="edd_purchase_id"><?php _e('ID', 'easy-digital-downloads' ); ?></th>
+					<th class="edd_purchase_date"><?php _e('Date', 'easy-digital-downloads' ); ?></th>
+					<th class="edd_purchase_amount"><?php _e('Amount', 'easy-digital-downloads' ); ?></th>
+					<th class="edd_purchase_details"><?php _e('Details', 'easy-digital-downloads' ); ?></th>
 					<?php do_action('edd_purchase_history_header_after'); ?>
 				</tr>
 			</thead>
@@ -57,6 +57,6 @@ if ( is_user_logged_in() ) :
 		<?php do_action( 'edd_after_purchase_history' ); ?>
 		<?php wp_reset_postdata(); ?>
 	<?php else : ?>
-		<p class="edd-no-purchases"><?php _e('You have not made any purchases','easy-digital-downloads' ); ?></p>
+		<p class="edd-no-purchases"><?php _e('You have not made any purchases', 'easy-digital-downloads' ); ?></p>
 	<?php endif;
 endif;

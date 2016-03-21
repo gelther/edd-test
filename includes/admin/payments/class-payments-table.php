@@ -196,13 +196,13 @@ class EDD_Payment_History_Table extends WP_List_Table {
 		$revoked_count   = '&nbsp;<span class="count">(' . $this->revoked_count . ')</span>';
 
 		$views = array(
-			'all'       => sprintf( '<a href="%s"%s>%s</a>', remove_query_arg( array( 'status', 'paged' ) ), $current === 'all' || $current == '' ? ' class="current"' : '', __('All','easy-digital-downloads' ) . $total_count ),
-			'publish'   => sprintf( '<a href="%s"%s>%s</a>', add_query_arg( array( 'status' => 'publish', 'paged' => false ) ), $current === 'publish' ? ' class="current"' : '', __('Completed','easy-digital-downloads' ) . $complete_count ),
-			'pending'   => sprintf( '<a href="%s"%s>%s</a>', add_query_arg( array( 'status' => 'pending', 'paged' => false ) ), $current === 'pending' ? ' class="current"' : '', __('Pending','easy-digital-downloads' ) . $pending_count ),
-			'refunded'  => sprintf( '<a href="%s"%s>%s</a>', add_query_arg( array( 'status' => 'refunded', 'paged' => false ) ), $current === 'refunded' ? ' class="current"' : '', __('Refunded','easy-digital-downloads' ) . $refunded_count ),
-			'revoked'   => sprintf( '<a href="%s"%s>%s</a>', add_query_arg( array( 'status' => 'revoked', 'paged' => false ) ), $current === 'revoked' ? ' class="current"' : '', __('Revoked','easy-digital-downloads' ) . $revoked_count ),
-			'failed'    => sprintf( '<a href="%s"%s>%s</a>', add_query_arg( array( 'status' => 'failed', 'paged' => false ) ), $current === 'failed' ? ' class="current"' : '', __('Failed','easy-digital-downloads' ) . $failed_count ),
-			'abandoned' => sprintf( '<a href="%s"%s>%s</a>', add_query_arg( array( 'status' => 'abandoned', 'paged' => false ) ), $current === 'abandoned' ? ' class="current"' : '', __('Abandoned','easy-digital-downloads' ) . $abandoned_count ),
+			'all'       => sprintf( '<a href="%s"%s>%s</a>', remove_query_arg( array( 'status', 'paged' ) ), $current === 'all' || $current == '' ? ' class="current"' : '', __('All', 'easy-digital-downloads' ) . $total_count ),
+			'publish'   => sprintf( '<a href="%s"%s>%s</a>', add_query_arg( array( 'status' => 'publish', 'paged' => false ) ), $current === 'publish' ? ' class="current"' : '', __('Completed', 'easy-digital-downloads' ) . $complete_count ),
+			'pending'   => sprintf( '<a href="%s"%s>%s</a>', add_query_arg( array( 'status' => 'pending', 'paged' => false ) ), $current === 'pending' ? ' class="current"' : '', __('Pending', 'easy-digital-downloads' ) . $pending_count ),
+			'refunded'  => sprintf( '<a href="%s"%s>%s</a>', add_query_arg( array( 'status' => 'refunded', 'paged' => false ) ), $current === 'refunded' ? ' class="current"' : '', __('Refunded', 'easy-digital-downloads' ) . $refunded_count ),
+			'revoked'   => sprintf( '<a href="%s"%s>%s</a>', add_query_arg( array( 'status' => 'revoked', 'paged' => false ) ), $current === 'revoked' ? ' class="current"' : '', __('Revoked', 'easy-digital-downloads' ) . $revoked_count ),
+			'failed'    => sprintf( '<a href="%s"%s>%s</a>', add_query_arg( array( 'status' => 'failed', 'paged' => false ) ), $current === 'failed' ? ' class="current"' : '', __('Failed', 'easy-digital-downloads' ) . $failed_count ),
+			'abandoned' => sprintf( '<a href="%s"%s>%s</a>', add_query_arg( array( 'status' => 'abandoned', 'paged' => false ) ), $current === 'abandoned' ? ' class="current"' : '', __('Abandoned', 'easy-digital-downloads' ) . $abandoned_count ),
 		);
 
 		return apply_filters( 'edd_payments_table_views', $views );
@@ -385,15 +385,15 @@ class EDD_Payment_History_Table extends WP_List_Table {
 	 */
 	public function get_bulk_actions() {
 		$actions = array(
-			'delete'                 => __( 'Delete',                'easy-digital-downloads' ),
-			'set-status-publish'     => __( 'Set To Completed',      'easy-digital-downloads' ),
-			'set-status-pending'     => __( 'Set To Pending',        'easy-digital-downloads' ),
-			'set-status-refunded'    => __( 'Set To Refunded',       'easy-digital-downloads' ),
-			'set-status-revoked'     => __( 'Set To Revoked',        'easy-digital-downloads' ),
-			'set-status-failed'      => __( 'Set To Failed',         'easy-digital-downloads' ),
-			'set-status-abandoned'   => __( 'Set To Abandoned',      'easy-digital-downloads' ),
-			'set-status-preapproval' => __( 'Set To Preapproval',    'easy-digital-downloads' ),
-			'set-status-cancelled'   => __( 'Set To Cancelled',      'easy-digital-downloads' ),
+			'delete'                 => __( 'Delete', 'easy-digital-downloads' ),
+			'set-status-publish'     => __( 'Set To Completed', 'easy-digital-downloads' ),
+			'set-status-pending'     => __( 'Set To Pending', 'easy-digital-downloads' ),
+			'set-status-refunded'    => __( 'Set To Refunded', 'easy-digital-downloads' ),
+			'set-status-revoked'     => __( 'Set To Revoked', 'easy-digital-downloads' ),
+			'set-status-failed'      => __( 'Set To Failed', 'easy-digital-downloads' ),
+			'set-status-abandoned'   => __( 'Set To Abandoned', 'easy-digital-downloads' ),
+			'set-status-preapproval' => __( 'Set To Preapproval', 'easy-digital-downloads' ),
+			'set-status-cancelled'   => __( 'Set To Cancelled', 'easy-digital-downloads' ),
 			'resend-receipt'         => __( 'Resend Email Receipts', 'easy-digital-downloads' )
 		);
 

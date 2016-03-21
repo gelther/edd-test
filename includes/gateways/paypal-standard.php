@@ -247,7 +247,7 @@ function edd_process_paypal_ipn() {
 
 		if ( false !== strpos( $key, 'amp;' ) ) {
 			$new_key = str_replace( '&amp;', '&', $key );
-			$new_key = str_replace( 'amp;', '&' , $new_key );
+			$new_key = str_replace( 'amp;', '&', $new_key );
 
 			unset( $encoded_data_array[ $key ] );
 			$encoded_data_array[ $new_key ] = $value;
@@ -423,7 +423,7 @@ function edd_process_paypal_web_accept_and_cart( $data, $payment_id ) {
 
 		if ( 'completed' == $payment_status || edd_is_test_mode() ) {
 
-			edd_insert_payment_note( $payment_id, sprintf( __( 'PayPal Transaction ID: %s', 'easy-digital-downloads' ) , $data['txn_id'] ) );
+			edd_insert_payment_note( $payment_id, sprintf( __( 'PayPal Transaction ID: %s', 'easy-digital-downloads' ), $data['txn_id'] ) );
 			edd_set_payment_transaction_id( $payment_id, $data['txn_id'] );
 			edd_update_payment_status( $payment_id, 'publish' );
 

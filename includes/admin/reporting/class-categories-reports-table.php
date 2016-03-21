@@ -38,8 +38,8 @@ class EDD_Categories_Reports_Table extends WP_List_Table {
 
 		// Set parent defaults
 		parent::__construct( array(
-			'singular'  => edd_get_label_singular(),    // Singular name of the listed records
-			'plural'    => edd_get_label_plural(),    	// Plural name of the listed records
+			'singular'  => edd_get_label_singular(), // Singular name of the listed records
+			'plural'    => edd_get_label_plural(), // Plural name of the listed records
 			'ajax'      => false             			// Does this table support ajax?
 		) );
 	}

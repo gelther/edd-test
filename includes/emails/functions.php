@@ -86,9 +86,9 @@ function edd_email_test_purchase_receipt() {
 	$message = edd_do_email_tags( edd_get_email_body_content( 0, array() ), 0 );
 
 	$emails = EDD()->emails;
-	$emails->__set( 'from_name' , $from_name );
+	$emails->__set( 'from_name', $from_name );
 	$emails->__set( 'from_email', $from_email );
-	$emails->__set( 'heading'   , $heading );
+	$emails->__set( 'heading', $heading );
 
 	$headers = apply_filters( 'edd_receipt_headers', $emails->get_headers(), 0, array() );
 	$emails->__set( 'headers', $headers );

@@ -258,7 +258,7 @@ function edd_purchase_collection_shortcode( $atts, $content = null ) {
 	extract( shortcode_atts( array(
 			'taxonomy'	=> '',
 			'terms'		=> '',
-			'text'		=> __('Purchase All Items','easy-digital-downloads' ),
+			'text'		=> __('Purchase All Items', 'easy-digital-downloads' ),
 			'style'     => edd_get_option( 'button_style', 'button' ),
 			'color'     => edd_get_option( 'checkout_color', 'blue' ),
 			'class'		=> 'edd-submit'

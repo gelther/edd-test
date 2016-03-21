@@ -61,7 +61,7 @@ class EDD_Download_History_Export extends EDD_Export {
 	 */
 	public function csv_cols() {
 		$cols = array(
-			'date'     => __( 'Date',   'easy-digital-downloads' ),
+			'date'     => __( 'Date', 'easy-digital-downloads' ),
 			'user'     => __( 'Downloaded by', 'easy-digital-downloads' ),
 			'ip'       => __( 'IP Address', 'easy-digital-downloads' ),
 			'download' => __( 'Product', 'easy-digital-downloads' ),

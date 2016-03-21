@@ -308,9 +308,9 @@ class Client implements ClientInterface
 		if ( is_array($value) ) {
 			// If the parameter is a provider_credit_details or provider_credit_reversal_details, call the respective functions to set the values
 			if ( $param === 'provider_credit_details' ) {
-			$parameters = $this->setProviderCreditDetails($parameters,$value);
+			$parameters = $this->setProviderCreditDetails($parameters, $value);
 			} elseif ( $param === 'provider_credit_reversal_details' ) {
-			$parameters = $this->setProviderCreditReversalDetails($parameters,$value);
+			$parameters = $this->setProviderCreditReversalDetails($parameters, $value);
 			}
 
 		} else {

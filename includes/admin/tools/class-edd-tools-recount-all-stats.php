@@ -136,7 +136,7 @@ class EDD_Tools_Recount_All_Stats extends EDD_Batch_Export {
 		}
 
 		foreach ( $totals as $key => $stats ) {
-			update_post_meta( $key, '_edd_download_sales'   , $stats['sales'] );
+			update_post_meta( $key, '_edd_download_sales', $stats['sales'] );
 			update_post_meta( $key, '_edd_download_earnings', $stats['earnings'] );
 		}
 
@@ -308,7 +308,7 @@ class EDD_Tools_Recount_All_Stats extends EDD_Batch_Export {
 			}
 
 			$this->store_data( 'edd_temp_payment_items', $payment_items );
-			$this->store_data( 'edd_recount_all_total' , $total );
+			$this->store_data( 'edd_recount_all_total', $total );
 		}
 
 	}

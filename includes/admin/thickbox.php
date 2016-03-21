@@ -118,7 +118,7 @@ function edd_admin_footer_for_thickbox() {
 				if ( $colors ) { ?>
 				<div id="edd-color-choice" style="display: none;">
 					<select id="select-edd-color" style="clear: both; display: block; margin-bottom: 1em;">
-						<option value=""><?php _e('Choose a button color','easy-digital-downloads' ); ?></option>
+						<option value=""><?php _e('Choose a button color', 'easy-digital-downloads' ); ?></option>
 						<?php
 							foreach ( $colors as $key => $color ) {
 								echo '<option value="' . str_replace( ' ', '_', $key ) . '">' . $color['label'] . '</option>';

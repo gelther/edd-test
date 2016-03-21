@@ -145,18 +145,18 @@ final class EDD_Amazon_Payments {
 	 */
 	private function actions() {
 
-		add_action( 'wp_enqueue_scripts',                      array( $this, 'print_client' ), 10 );
-		add_action( 'wp_enqueue_scripts',                      array( $this, 'load_scripts' ), 11 );
-		add_action( 'init',                                    array( $this, 'capture_oauth' ), 9 );
-		add_action( 'init',                                    array( $this, 'signin_redirect' ) );
+		add_action( 'wp_enqueue_scripts', array( $this, 'print_client' ), 10 );
+		add_action( 'wp_enqueue_scripts', array( $this, 'load_scripts' ), 11 );
+		add_action( 'init', array( $this, 'capture_oauth' ), 9 );
+		add_action( 'init', array( $this, 'signin_redirect' ) );
 		add_action( 'edd_purchase_form_before_register_login', array( $this, 'login_form' ) );
-		add_action( 'edd_checkout_error_check',                array( $this, 'checkout_errors' ), 10, 2 );
-		add_action( 'edd_gateway_amazon',                      array( $this, 'process_purchase' ) );
-		add_action( 'wp_ajax_edd_amazon_get_address',          array( $this, 'ajax_get_address' ) );
-		add_action( 'wp_ajax_nopriv_edd_amazon_get_address',   array( $this, 'ajax_get_address' ) );
-		add_action( 'edd_pre_process_purchase',                array( $this, 'disable_address_requirement' ), 99999 );
-		add_action( 'init',                                    array( $this, 'process_ipn' ) );
-		add_action( 'edd_update_payment_status',               array( $this, 'process_refund' ), 200, 3 );
+		add_action( 'edd_checkout_error_check', array( $this, 'checkout_errors' ), 10, 2 );
+		add_action( 'edd_gateway_amazon', array( $this, 'process_purchase' ) );
+		add_action( 'wp_ajax_edd_amazon_get_address', array( $this, 'ajax_get_address' ) );
+		add_action( 'wp_ajax_nopriv_edd_amazon_get_address', array( $this, 'ajax_get_address' ) );
+		add_action( 'edd_pre_process_purchase', array( $this, 'disable_address_requirement' ), 99999 );
+		add_action( 'init', array( $this, 'process_ipn' ) );
+		add_action( 'edd_update_payment_status', array( $this, 'process_refund' ), 200, 3 );
 
 		if ( empty( $this->reference_id ) ) {
 			return;
@@ -878,7 +878,7 @@ final class EDD_Amazon_Payments {
 		} else {
 
 			// Set an error
-			edd_set_error( 'amazon_error',sprintf( __( 'There was an issue processing your payment. Amazon error: %s', 'easy-digital-downloads' ), print_r( $charge, true ) ) );
+			edd_set_error( 'amazon_error', sprintf( __( 'There was an issue processing your payment. Amazon error: %s', 'easy-digital-downloads' ), print_r( $charge, true ) ) );
 			edd_send_back_to_checkout( '?payment-mode=amazon&amazon_reference_id=' . $purchase_data['post_data']['edd_amazon_reference_id'] );
 
 		}
