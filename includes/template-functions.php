@@ -348,9 +348,9 @@ function edd_variable_price_quantity_field( $key, $price, $download_id ) {
 
 	ob_start();
 ?>
-	<div class="edd_download_quantity_wrapper edd_download_quantity_price_option_<?php echo sanitize_key( $price['name'] ) ?>">
+	<div class="edd_download_quantity_wrapper edd_download_quantity_price_option_<?php echo sanitize_key( $price['name'] ); ?>">
 		<span class="edd_price_option_sep">&nbsp;x&nbsp;</span>
-		<input type="number" min="1" step="1" name="edd_download_quantity_<?php echo esc_attr( $key ) ?>" class="edd-input edd-item-quantity" value="1" />
+		<input type="number" min="1" step="1" name="edd_download_quantity_<?php echo esc_attr( $key ); ?>" class="edd-input edd-item-quantity" value="1" />
 	</div>
 <?php
 	$quantity_input = ob_get_clean();
