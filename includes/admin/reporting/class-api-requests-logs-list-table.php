@@ -186,7 +186,7 @@ class EDD_API_Request_Log_Table extends WP_List_Table {
 			if ( filter_var( $search, FILTER_VALIDATE_IP ) ) {
 				// This is an IP address search
 				$key = '_edd_log_request_ip';
-			} else if ( is_email( $search ) ) {
+			} elseif ( is_email( $search ) ) {
 				// This is an email search
 				$userdata = get_user_by( 'email', $search );
 

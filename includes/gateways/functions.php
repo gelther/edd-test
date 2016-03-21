@@ -353,14 +353,14 @@ function edd_get_chosen_gateway() {
 
 	if ( ! empty ( $chosen ) ) {
 		$enabled_gateway = urldecode( $chosen );
-	} else if ( count( $gateways ) >= 1 && ! $chosen ) {
+	} elseif ( count( $gateways ) >= 1 && ! $chosen ) {
 		foreach ( $gateways as $gateway_id => $gateway ) :
 			$enabled_gateway = $gateway_id;
 			if ( edd_get_cart_subtotal() <= 0 ) {
 				$enabled_gateway = 'manual'; // This allows a free download by filling in the info
 			}
 		endforeach;
-	} else if ( edd_get_cart_subtotal() <= 0 ) {
+	} elseif ( edd_get_cart_subtotal() <= 0 ) {
 		$enabled_gateway = 'manual';
 	} else {
 		$enabled_gateway = edd_get_default_gateway();

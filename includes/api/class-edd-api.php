@@ -792,13 +792,13 @@ class EDD_API {
 						$dates['m_end']   = 3;
 						$dates['year']    = date( 'Y', $current_time );
 
-					} else if ( $month_now <= 6 ) {
+					} elseif ( $month_now <= 6 ) {
 
 						$dates['m_start'] = 4;
 						$dates['m_end']   = 6;
 						$dates['year']    = date( 'Y', $current_time );
 
-					} else if ( $month_now <= 9 ) {
+					} elseif ( $month_now <= 9 ) {
 
 						$dates['m_start'] = 7;
 						$dates['m_end']   = 9;
@@ -824,13 +824,13 @@ class EDD_API {
 						$dates['m_end']   = 12;
 						$dates['year']    = date( 'Y', $current_time ) - 1; // Previous year
 
-					} else if ( $month_now <= 6 ) {
+					} elseif ( $month_now <= 6 ) {
 
 						$dates['m_start'] = 1;
 						$dates['m_end']   = 3;
 						$dates['year']    = date( 'Y', $current_time );
 
-					} else if ( $month_now <= 9 ) {
+					} elseif ( $month_now <= 9 ) {
 
 						$dates['m_start'] = 4;
 						$dates['m_end']   = 6;

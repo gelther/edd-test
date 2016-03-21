@@ -292,7 +292,7 @@ class EDD_Stats {
 							$second = 59;
 						}
 
-					} else if ( $month_now <= 6 ) {
+					} elseif ( $month_now <= 6 ) {
 
 						if ( ! $end_date ) {
 							$month = 4;
@@ -304,7 +304,7 @@ class EDD_Stats {
 							$second = 59;
 						}
 
-					} else if ( $month_now <= 9 ) {
+					} elseif ( $month_now <= 9 ) {
 
 						if ( ! $end_date ) {
 							$month = 7;
@@ -349,7 +349,7 @@ class EDD_Stats {
 							$second  = 59;
 						}
 
-					} else if ( $month_now <= 6 ) {
+					} elseif ( $month_now <= 6 ) {
 
 						if ( ! $end_date ) {
 							$month = 1;
@@ -361,7 +361,7 @@ class EDD_Stats {
 							$second = 59;
 						}
 
-					} else if ( $month_now <= 9 ) {
+					} elseif ( $month_now <= 9 ) {
 
 						if ( ! $end_date ) {
 							$month = 4;
@@ -421,12 +421,12 @@ class EDD_Stats {
 			}
 
 
-		} else if ( is_numeric( $date ) ) {
+		} elseif ( is_numeric( $date ) ) {
 
 			// return $date unchanged since it is a timestamp
 			$this->timestamp = true;
 
-		} else if ( false !== strtotime( $date ) ) {
+		} elseif ( false !== strtotime( $date ) ) {
 
 			$date  = strtotime( $date, current_time( 'timestamp' ) );
 			$year  = date( 'Y', $date );

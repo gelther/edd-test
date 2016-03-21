@@ -1085,7 +1085,7 @@ function edd_get_settings_tab_sections( $tab = false ) {
 
 	if ( $tab && ! empty( $sections[ $tab ] ) ) {
 		$tabs = $sections[ $tab ];
-	} else if ( $tab ) {
+	} elseif ( $tab ) {
 		$tabs = false;
 	}
 

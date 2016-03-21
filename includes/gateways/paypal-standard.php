@@ -427,7 +427,7 @@ function edd_process_paypal_web_accept_and_cart( $data, $payment_id ) {
 			edd_set_payment_transaction_id( $payment_id, $data['txn_id'] );
 			edd_update_payment_status( $payment_id, 'publish' );
 
-		} else if ( 'pending' == $payment_status && isset( $data['pending_reason'] ) ) {
+		} elseif ( 'pending' == $payment_status && isset( $data['pending_reason'] ) ) {
 
 			// Look for possible pending reasons, such as an echeck
 

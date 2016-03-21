@@ -1400,7 +1400,7 @@ class Client implements ClientInterface
 	{
 		if ( $algorithm === 'HmacSHA1' ) {
 			$hash = 'sha1';
-		} else if ( $algorithm === 'HmacSHA256' ) {
+		} elseif ( $algorithm === 'HmacSHA256' ) {
 			$hash = 'sha256';
 		} else {
 			throw new \Exception('Non-supported signing method specified');
