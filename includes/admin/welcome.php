@@ -250,7 +250,7 @@ class EDD_Welcome {
 					</div>
 					<div class="col">
 						<h4><?php _e( 'Customer > User Synchronization', 'easy-digital-downloads' );?></h4>
-						<p><?php _e( 'Customer email addresses are now updated when the associated user account\'s email is changed.' ,'easy-digital-downloads' );?></p>
+						<p><?php _e( 'Customer email addresses are now updated when the associated user account\'s email is changed.', 'easy-digital-downloads' );?></p>
 					</div>
 					<div class="clear">
 						<div class="col">
@@ -263,7 +263,7 @@ class EDD_Welcome {
 						</div>
 						<div class="col">
 							<h4><?php _e( 'Default Gateway First', 'easy-digital-downloads' );?></h4>
-							<p><?php _e( 'The gateway selected as the default option will always be displayed first on checkout.' ,'easy-digital-downloads' );?></p>
+							<p><?php _e( 'The gateway selected as the default option will always be displayed first on checkout.', 'easy-digital-downloads' );?></p>
 						</div>
 					</div>
 				</div>
@@ -348,7 +348,7 @@ class EDD_Welcome {
 						<img src="<?php echo EDD_PLUGIN_URL . 'assets/images/screenshots/grid.png'; ?>"/>
 					</div>
 					<div class="feature-section-content">
-						<h4><?php _e( 'Flexible Product Grids','easy-digital-downloads' );?></h4>
+						<h4><?php _e( 'Flexible Product Grids', 'easy-digital-downloads' );?></h4>
 						<p><?php _e( 'The [downloads] shortcode will display a product grid that works with any theme, no matter the size. It is even responsive!', 'easy-digital-downloads' );?></p>
 
 						<h4><?php _e( 'Change the Number of Columns', 'easy-digital-downloads' );?></h4>
@@ -368,7 +368,7 @@ class EDD_Welcome {
 						<img src="<?php echo EDD_PLUGIN_URL . 'assets/images/screenshots/purchase-link.png'; ?>"/>
 					</div>
 					<div class="feature-section-content">
-						<h4><?php _e( 'The <em>[purchase_link]</em> Shortcode','easy-digital-downloads' );?></h4>
+						<h4><?php _e( 'The <em>[purchase_link]</em> Shortcode', 'easy-digital-downloads' );?></h4>
 						<p><?php _e( 'With easily accessible shortcodes to display purchase buttons, you can add a Buy Now or Add to Cart button for any product anywhere on your site in seconds.', 'easy-digital-downloads' );?></p>
 
 						<h4><?php _e( 'Buy Now Buttons', 'easy-digital-downloads' );?></h4>
@@ -381,7 +381,7 @@ class EDD_Welcome {
 				<h3><?php _e( 'Need Help?', 'easy-digital-downloads' );?></h3>
 				<div class="feature-section two-col">
 					<div class="col">
-						<h4><?php _e( 'Phenomenal Support','easy-digital-downloads' );?></h4>
+						<h4><?php _e( 'Phenomenal Support', 'easy-digital-downloads' );?></h4>
 						<p><?php _e( 'We do our best to provide the best support we can. If you encounter a problem or have a question, simply open a ticket using our <a href="https://easydigitaldownloads.com/support">support form</a>.', 'easy-digital-downloads' );?></p>
 					</div>
 					<div class="col">
@@ -395,7 +395,7 @@ class EDD_Welcome {
 				<h3><?php _e( 'Stay Up to Date', 'easy-digital-downloads' );?></h3>
 				<div class="feature-section two-col">
 					<div class="col">
-						<h4><?php _e( 'Get Notified of Extension Releases','easy-digital-downloads' );?></h4>
+						<h4><?php _e( 'Get Notified of Extension Releases', 'easy-digital-downloads' );?></h4>
 						<p><?php _e( 'New extensions that make Easy Digital Downloads even more powerful are released nearly every single week. Subscribe to the newsletter to stay up to date with our latest releases. <a href="http://eepurl.com/kaerz" target="_blank">Sign up now</a> to ensure you do not miss a release!', 'easy-digital-downloads' );?></p>
 					</div>
 					<div class="col">
@@ -409,7 +409,7 @@ class EDD_Welcome {
 				<h3><?php _e( 'Extensions for Everything', 'easy-digital-downloads' );?></h3>
 				<div class="feature-section two-col">
 					<div class="col">
-						<h4><?php _e( 'Over 250 Extensions','easy-digital-downloads' );?></h4>
+						<h4><?php _e( 'Over 250 Extensions', 'easy-digital-downloads' );?></h4>
 						<p><?php _e( 'Add-on plugins are available that greatly extend the default functionality of Easy Digital Downloads. There are extensions for payment processors, such as Stripe and PayPal, extensions for newsletter integrations, and many, many more.', 'easy-digital-downloads' );?></p>
 					</div>
 					<div class="col">
