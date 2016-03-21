@@ -297,7 +297,7 @@ function edd_ajax_apply_discount() {
 		// Allow for custom discount code handling
 		$return = apply_filters( 'edd_ajax_discount_response', $return );
 
-		echo json_encode($return);
+		echo json_encode( $return );
 	}
 	edd_die();
 }
@@ -331,7 +331,7 @@ function edd_ajax_update_cart_item_quantity() {
 		// Allow for custom cart item quantity handling
 		$return = apply_filters( 'edd_ajax_cart_item_quantity_response', $return );
 
-		echo json_encode($return);
+		echo json_encode( $return );
 	}
 	edd_die();
 }
@@ -375,7 +375,7 @@ function edd_load_checkout_login_fields() {
 	do_action( 'edd_purchase_form_login_fields' );
 	edd_die();
 }
-add_action('wp_ajax_nopriv_checkout_login', 'edd_load_checkout_login_fields');
+add_action( 'wp_ajax_nopriv_checkout_login', 'edd_load_checkout_login_fields' );
 
 /**
  * Load Checkout Register Fields via AJAX
@@ -387,7 +387,7 @@ function edd_load_checkout_register_fields() {
 	do_action( 'edd_purchase_form_register_fields' );
 	edd_die();
 }
-add_action('wp_ajax_nopriv_checkout_register', 'edd_load_checkout_register_fields');
+add_action( 'wp_ajax_nopriv_checkout_register', 'edd_load_checkout_register_fields' );
 
 /**
  * Get Download Title via AJAX (used only in WordPress Admin)
