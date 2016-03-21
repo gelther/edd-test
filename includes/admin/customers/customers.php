@@ -81,7 +81,7 @@ function edd_customers_list() {
  *
  * @since  2.3
  * @param  string $view      The View being requested
- * @param  array $callbacks  The Registered views and their callback functions
+ * @param  array  $callbacks The Registered views and their callback functions
  * @return void
  */
 function edd_render_customer_view( $view, $callbacks ) {
@@ -157,7 +157,7 @@ function edd_render_customer_view( $view, $callbacks ) {
  * View a customer
  *
  * @since  2.3
- * @param  $customer The Customer object being displayed
+ * @param       $customer The Customer object being displayed
  * @return void
  */
 function edd_customers_view( $customer ) {
@@ -412,7 +412,7 @@ function edd_customers_view( $customer ) {
  * View the notes of a customer
  *
  * @since  2.3
- * @param  $customer The Customer being displayed
+ * @param       $customer The Customer being displayed
  * @return void
  */
 function edd_customer_notes_view( $customer ) {
