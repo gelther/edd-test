@@ -154,8 +154,8 @@ function edd_get_htaccess_rules( $method = false ) {
 			$rules              = "Options -Indexes\n";
 			$rules             .= "deny from all\n";
 			$rules             .= "<FilesMatch '\.(" . implode( '|', $allowed_filetypes ) . ")$'>\n";
-			    $rules             .= "Order Allow,Deny\n";
-			    $rules             .= "Allow from all\n";
+				$rules             .= "Order Allow,Deny\n";
+				$rules             .= "Allow from all\n";
 			$rules             .= "</FilesMatch>\n";
 			break;
 
@@ -182,9 +182,9 @@ if ( ! function_exists( 'wp_is_writable' ) ) {
 	 * @return bool
 	 */
 	function wp_is_writable( $path ) {
-	        if ( 'WIN' === strtoupper( substr( PHP_OS, 0, 3 ) ) )
-	                return win_is_writable( $path );
-	        else
-	                return @is_writable( $path );
+			if ( 'WIN' === strtoupper( substr( PHP_OS, 0, 3 ) ) )
+					return win_is_writable( $path );
+			else
+					return @is_writable( $path );
 	}
 }
