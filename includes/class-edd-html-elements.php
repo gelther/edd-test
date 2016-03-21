@@ -26,7 +26,7 @@ class EDD_HTML_Elements {
 	 *
 	 * @access public
 	 * @since 1.5
-	 * @param array $args Arguments for the dropdown
+	 * @param  array  $args   Arguments for the dropdown
 	 * @return string $output Product dropdown
 	 */
 	public function product_dropdown( $args = array() ) {
@@ -117,7 +117,7 @@ class EDD_HTML_Elements {
 	 *
 	 * @access public
 	 * @since 2.2
-	 * @param array $args
+	 * @param  array  $args
 	 * @return string $output Customer dropdown
 	 */
 	public function customer_dropdown( $args = array() ) {
@@ -190,10 +190,10 @@ class EDD_HTML_Elements {
 	 *
 	 * @access public
 	 * @since 1.5.2
-	 * @param string $name Name attribute of the dropdown
-	 * @param int    $selected Discount to select automatically
-	 * @param string $status Discount post_status to retrieve
-	 * @return string $output Discount dropdown
+	 * @param  string $name     Name attribute of the dropdown
+	 * @param  int    $selected Discount to select automatically
+	 * @param  string $status   Discount post_status to retrieve
+	 * @return string $output   Discount dropdown
 	 */
 	public function discount_dropdown( $name = 'edd_discounts', $selected = 0, $status = '' ) {
 		$args = array( 'nopaging' => true );
@@ -228,9 +228,9 @@ class EDD_HTML_Elements {
 	 *
 	 * @access public
 	 * @since 1.5.2
-	 * @param string $name Name attribute of the dropdown
-	 * @param int    $selected Category to select automatically
-	 * @return string $output Category dropdown
+	 * @param  string $name     Name attribute of the dropdown
+	 * @param  int    $selected Category to select automatically
+	 * @return string $output   Category dropdown
 	 */
 	public function category_dropdown( $name = 'edd_categories', $selected = 0 ) {
 		$categories = get_terms( 'download_category', apply_filters( 'edd_category_dropdown', array() ) );
@@ -257,11 +257,11 @@ class EDD_HTML_Elements {
 	 *
 	 * @access public
 	 * @since 1.5.2
-	 * @param string $name Name attribute of the dropdown
-	 * @param int    $selected Year to select automatically
-	 * @param int    $years_before Number of years before the current year the dropdown should start with
-	 * @param int    $years_after Number of years after the current year the dropdown should finish at
-	 * @return string $output Year dropdown
+	 * @param  string $name         Name attribute of the dropdown
+	 * @param  int    $selected     Year to select automatically
+	 * @param  int    $years_before Number of years before the current year the dropdown should start with
+	 * @param  int    $years_after  Number of years after the current year the dropdown should finish at
+	 * @return string $output       Year dropdown
 	 */
 	public function year_dropdown( $name = 'year', $selected = 0, $years_before = 5, $years_after = 0 ) {
 		$current    = date( 'Y' );
@@ -291,9 +291,9 @@ class EDD_HTML_Elements {
 	 *
 	 * @access public
 	 * @since 1.5.2
-	 * @param string $name Name attribute of the dropdown
-	 * @param int    $selected Month to select automatically
-	 * @return string $output Month dropdown
+	 * @param  string $name     Name attribute of the dropdown
+	 * @param  int    $selected Month to select automatically
+	 * @return string $output   Month dropdown
 	 */
 	public function month_dropdown( $name = 'month', $selected = 0 ) {
 		$month    = 1;
@@ -443,8 +443,8 @@ class EDD_HTML_Elements {
 	 *
 	 * @since 1.5.2
 	 *
-	 * @param array $args Arguments for the text field
-	 * @return string Text field
+	 * @param  array  $args Arguments for the text field
+	 * @return string       Text field
 	 */
 	public function text( $args = array() ) {
 		// Backwards compatabliity
@@ -504,8 +504,8 @@ class EDD_HTML_Elements {
 	 *
 	 * @since 2.4
 	 *
-	 * @param array $args Arguments for the text field
-	 * @return string Datepicker field
+	 * @param  array  $args Arguments for the text field
+	 * @return string       Datepicker field
 	 */
 	public function date_field( $args = array() ) {
 
@@ -523,8 +523,8 @@ class EDD_HTML_Elements {
 	 *
 	 * @since 1.9
 	 *
-	 * @param array $args Arguments for the textarea
-	 * @return string textarea
+	 * @param  array  $args Arguments for the textarea
+	 * @return string       textarea
 	 */
 	public function textarea( $args = array() ) {
 		$defaults = array(
@@ -564,8 +564,8 @@ class EDD_HTML_Elements {
 	 *
 	 * @since 2.0
 	 *
-	 * @param array $args
-	 * @return string text field with ajax search
+	 * @param  array  $args
+	 * @return string       text field with ajax search
 	 */
 	public function ajax_user_search( $args = array() ) {
 
