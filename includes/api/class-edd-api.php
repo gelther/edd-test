@@ -146,14 +146,14 @@ class EDD_API {
 			require_once EDD_PLUGIN_DIR . 'includes/api/class-edd-api-' . $version . '.php';
 		}
 
-		add_action( 'init', array( $this, 'add_endpoint'     ) );
-		add_action( 'wp', array( $this, 'process_query'    ), -1 );
-		add_filter( 'query_vars', array( $this, 'query_vars'       ) );
-		add_action( 'show_user_profile', array( $this, 'user_key_field'   ) );
-		add_action( 'edit_user_profile', array( $this, 'user_key_field'   ) );
-		add_action( 'personal_options_update', array( $this, 'update_key'       ) );
-		add_action( 'edit_user_profile_update', array( $this, 'update_key'       ) );
-		add_action( 'edd_process_api_key', array( $this, 'process_api_key'  ) );
+		add_action( 'init', array( $this, 'add_endpoint' ) );
+		add_action( 'wp', array( $this, 'process_query' ), -1 );
+		add_filter( 'query_vars', array( $this, 'query_vars' ) );
+		add_action( 'show_user_profile', array( $this, 'user_key_field' ) );
+		add_action( 'edit_user_profile', array( $this, 'user_key_field' ) );
+		add_action( 'personal_options_update', array( $this, 'update_key' ) );
+		add_action( 'edit_user_profile_update', array( $this, 'update_key' ) );
+		add_action( 'edd_process_api_key', array( $this, 'process_api_key' ) );
 
 		// Setup a backwards compatibilty check for user API Keys
 		add_filter( 'get_user_metadata', array( $this, 'api_key_backwards_copmat' ), 10, 4 );
@@ -1389,7 +1389,7 @@ class EDD_API {
 
 				foreach ( $payment->cart_details as $key => $item ) {
 
-					$item_id  = isset( $item['id']    ) ? $item['id']    : $item;
+					$item_id  = isset( $item['id'] ) ? $item['id']    : $item;
 					$price    = isset( $item['price'] ) ? $item['price'] : false;
 					$price_id = isset( $item['item_number']['options']['price_id'] ) ? $item['item_number']['options']['price_id'] : null;
 					$quantity = isset( $item['quantity'] ) && $item['quantity'] > 0 ? $item['quantity'] : 1;
@@ -1912,8 +1912,8 @@ class EDD_API {
 		$secret_key = $this->get_user_secret_key( $user_id );
 		if ( ! empty( $public_key ) ) {
 			delete_transient( md5( 'edd_api_user_' . $public_key ) );
-			delete_transient( md5('edd_api_user_public_key' . $user_id ) );
-			delete_transient( md5('edd_api_user_secret_key' . $user_id ) );
+			delete_transient( md5( 'edd_api_user_public_key' . $user_id ) );
+			delete_transient( md5( 'edd_api_user_secret_key' . $user_id ) );
 			delete_user_meta( $user_id, $public_key );
 			delete_user_meta( $user_id, $secret_key );
 		} else {
