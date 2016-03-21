@@ -26,10 +26,10 @@ function edd_media_button() {
 	if ( in_array( $pagenow, array( 'post.php', 'page.php', 'post-new.php', 'post-edit.php' ) ) && $typenow != 'download' ) {
 		/* check current WP version */
 		if ( version_compare( $wp_version, '3.5', '<' ) ) {
-			$img = '<img src="' . EDD_PLUGIN_URL . 'assets/images/edd-media.png" alt="' . sprintf( __( 'Insert %s', 'easy-digital-downloads' ), edd_get_label_singular() ) . '"/>';
+			$img    = '<img src="' . EDD_PLUGIN_URL . 'assets/images/edd-media.png" alt="' . sprintf( __( 'Insert %s', 'easy-digital-downloads' ), edd_get_label_singular() ) . '"/>';
 			$output = '<a href="#TB_inline?width=640&inlineId=choose-download" class="thickbox" title="' . __( 'Insert Download', 'easy-digital-downloads' ) . '">' . $img . '</a>';
 		} else {
-			$img = '<span class="wp-media-buttons-icon" id="edd-media-button"></span>';
+			$img    = '<span class="wp-media-buttons-icon" id="edd-media-button"></span>';
 			$output = '<a href="#TB_inline?width=640&inlineId=choose-download" class="thickbox button edd-thickbox" title="' . sprintf( __( 'Insert %s', 'easy-digital-downloads' ), strtolower ( edd_get_label_singular() ) ) . '" style="padding-left: .4em;">' . $img . sprintf( __( 'Insert %s', 'easy-digital-downloads' ), strtolower( edd_get_label_singular() ) ) . '</a>';
 		}
 	}
