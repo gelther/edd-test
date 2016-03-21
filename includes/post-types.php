@@ -135,8 +135,8 @@ add_action( 'init', 'edd_setup_edd_post_types', 1 );
  */
 function edd_get_default_labels() {
 	$defaults = array(
-	   'singular' => __( 'Download', 'easy-digital-downloads' ),
-	   'plural'   => __( 'Downloads','easy-digital-downloads' )
+		'singular' => __( 'Download', 'easy-digital-downloads' ),
+		'plural'   => __( 'Downloads','easy-digital-downloads' )
 	);
 	return apply_filters( 'edd_default_downloads_name', $defaults );
 }
@@ -173,21 +173,21 @@ function edd_get_label_plural( $lowercase = false ) {
  * @return string $title New placeholder text
  */
 function edd_change_default_title( $title ) {
-	 // If a frontend plugin uses this filter (check extensions before changing this function)
-	 if ( ! is_admin() ) {
+		// If a frontend plugin uses this filter (check extensions before changing this function)
+		if ( ! is_admin() ) {
 		$label = edd_get_label_singular();
 		$title = sprintf( __( 'Enter %s name here', 'easy-digital-downloads' ), $label );
 		return $title;
-	 }
+		}
 
-	 $screen = get_current_screen();
+		$screen = get_current_screen();
 
-	 if ( 'download' == $screen->post_type ) {
+		if ( 'download' == $screen->post_type ) {
 		$label = edd_get_label_singular();
 		$title = sprintf( __( 'Enter %s name here', 'easy-digital-downloads' ), $label );
-	 }
+		}
 
-	 return $title;
+		return $title;
 }
 add_filter( 'enter_title_here', 'edd_change_default_title' );
 
