@@ -149,7 +149,7 @@ add_action( 'wp_enqueue_scripts', 'edd_register_styles' );
  *
  * @since 1.0
  * @global $post
- * @param string $hook Page hook
+ * @param  string $hook Page hook
  * @return void
  */
 function edd_load_admin_scripts( $hook ) {
