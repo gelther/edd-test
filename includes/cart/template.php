@@ -249,8 +249,8 @@ function edd_show_added_to_cart_messages( $download_id ) {
 			$download_id = absint( $_POST['download_id'] );
 
 		$alert = '<div class="edd_added_to_cart_alert">'
-		. sprintf( __('You have successfully added %s to your shopping cart.','easy-digital-downloads' ), get_the_title( $download_id ) )
-		. ' <a href="' . edd_get_checkout_uri() . '" class="edd_alert_checkout_link">' . __('Checkout.','easy-digital-downloads' ) . '</a>'
+		. sprintf( __('You have successfully added %s to your shopping cart.', 'easy-digital-downloads' ), get_the_title( $download_id ) )
+		. ' <a href="' . edd_get_checkout_uri() . '" class="edd_alert_checkout_link">' . __('Checkout.', 'easy-digital-downloads' ) . '</a>'
 		. '</div>';
 
 		echo apply_filters( 'edd_show_added_to_cart_messages', $alert );
