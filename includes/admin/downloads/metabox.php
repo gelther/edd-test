@@ -22,18 +22,18 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  */
 function edd_add_download_meta_box() {
 
-	$post_types = apply_filters( 'edd_download_metabox_post_types' , array( 'download' ) );
+	$post_types = apply_filters( 'edd_download_metabox_post_types', array( 'download' ) );
 
 	foreach ( $post_types as $post_type ) {
 
 		/** Product Prices **/
-		add_meta_box( 'edd_product_prices', sprintf( __( '%1$s Prices', 'easy-digital-downloads' ), edd_get_label_singular(), edd_get_label_plural() ),  'edd_render_download_meta_box', $post_type, 'normal', 'high' );
+		add_meta_box( 'edd_product_prices', sprintf( __( '%1$s Prices', 'easy-digital-downloads' ), edd_get_label_singular(), edd_get_label_plural() ), 'edd_render_download_meta_box', $post_type, 'normal', 'high' );
 
 		/** Product Files (and bundled products) **/
-		add_meta_box( 'edd_product_files', sprintf( __( '%1$s Files', 'easy-digital-downloads' ), edd_get_label_singular(), edd_get_label_plural() ),  'edd_render_files_meta_box', $post_type, 'normal', 'high' );
+		add_meta_box( 'edd_product_files', sprintf( __( '%1$s Files', 'easy-digital-downloads' ), edd_get_label_singular(), edd_get_label_plural() ), 'edd_render_files_meta_box', $post_type, 'normal', 'high' );
 
 		/** Product Settings **/
-		add_meta_box( 'edd_product_settings', sprintf( __( '%1$s Settings', 'easy-digital-downloads' ), edd_get_label_singular(), edd_get_label_plural() ),  'edd_render_settings_meta_box', $post_type, 'side', 'default' );
+		add_meta_box( 'edd_product_settings', sprintf( __( '%1$s Settings', 'easy-digital-downloads' ), edd_get_label_singular(), edd_get_label_plural() ), 'edd_render_settings_meta_box', $post_type, 'side', 'default' );
 
 		/** Product Notes */
 		add_meta_box( 'edd_product_notes', sprintf( __( '%1$s Notes', 'easy-digital-downloads' ), edd_get_label_singular(), edd_get_label_plural() ), 'edd_render_product_notes_meta_box', $post_type, 'normal', 'high' );
