@@ -29,10 +29,10 @@ class EDD_Payment_Stats extends EDD_Stats {
 	 *
 	 * @access public
 	 * @since 1.8
-	 * @param $download_id INT The download product to retrieve stats for. If false, gets stats for all products
-	 * @param $start_date string|bool The starting date for which we'd like to filter our sale stats. If false, we'll use the default start date of `this_month`
-	 * @param $end_date string|bool The end date for which we'd like to filter our sale stats. If false, we'll use the default end date of `this_month`
-	 * @param $status string|array The sale status(es) to count. Only valid when retrieving global stats
+	 * @param            $download_id INT The download product to retrieve stats for. If false, gets stats for all products
+	 * @param            $start_date  string|bool The starting date for which we'd like to filter our sale stats. If false, we'll use the default start date of `this_month`
+	 * @param            $end_date    string|bool The end date for which we'd like to filter our sale stats. If false, we'll use the default end date of `this_month`
+	 * @param            $status      string|array The sale status(es) to count. Only valid when retrieving global stats
 	 * @return float|int
 	 */
 	public function get_sales( $download_id = 0, $start_date = false, $end_date = false, $status = 'publish' ) {
@@ -86,10 +86,10 @@ class EDD_Payment_Stats extends EDD_Stats {
 	 *
 	 * @access public
 	 * @since 1.8
-	 * @param $download_id INT The download product to retrieve stats for. If false, gets stats for all products
-	 * @param $start_date string|bool The starting date for which we'd like to filter our sale stats. If false, we'll use the default start date of `this_month`
-	 * @param $end_date string|bool The end date for which we'd like to filter our sale stats. If false, we'll use the default end date of `this_month`
-	 * @param $include_taxes bool If taxes should be included in the earnings graphs
+	 * @param            $download_id   INT The download product to retrieve stats for. If false, gets stats for all products
+	 * @param            $start_date    string|bool The starting date for which we'd like to filter our sale stats. If false, we'll use the default start date of `this_month`
+	 * @param            $end_date      string|bool The end date for which we'd like to filter our sale stats. If false, we'll use the default end date of `this_month`
+	 * @param            $include_taxes bool If taxes should be included in the earnings graphs
 	 * @return float|int
 	 */
 	public function get_earnings( $download_id = 0, $start_date = false, $end_date = false, $include_taxes = true ) {
@@ -221,7 +221,7 @@ class EDD_Payment_Stats extends EDD_Stats {
 	 *
 	 * @access public
 	 * @since 1.8
-	 * @param $number int The number of results to retrieve with the default set to 10.
+	 * @param        $number int The number of results to retrieve with the default set to 10.
 	 * @return array
 	 */
 	public function get_best_selling( $number = 10 ) {
