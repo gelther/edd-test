@@ -48,9 +48,9 @@ class EDD_CLI extends WP_CLI_Command {
 	 * wp edd details
 	 *
 	 * @access		public
-	 * @param		array $args
-	 * @param		array $assoc_args
-	 * @return		void
+	 * @param  array $args
+	 * @param  array $assoc_args
+	 * @return void
 	 */
 	public function details( $args, $assoc_args ) {
 		$symlink_file_downloads = edd_get_option( 'symlink_file_downloads', false );
