@@ -14,7 +14,7 @@ class ResponseParser implements ResponseInterface
 {
 	public $response = null;
 
-	public function __construct($response=null) {
+	public function __construct( $response=null ) {
 		$this->response = $response;
 	}
 
@@ -31,7 +31,7 @@ class ResponseParser implements ResponseInterface
 	public function toJson() {
 		$response = $this->simpleXmlObject();
 
-		return (json_encode($response));
+		return ( json_encode( $response ) );
 	}
 
 	/* toArray - converts XML into associative array
@@ -42,37 +42,37 @@ class ResponseParser implements ResponseInterface
 		$response = $this->simpleXmlObject();
 
 		// Converting the SimpleXMLElement Object to array()
-		$response = json_encode($response);
+		$response = json_encode( $response );
 
-		return (json_decode($response, true));
+		return ( json_decode( $response, true ) );
 	}
 
 	private function simpleXmlObject() {
 		$response = $this->response;
 
 		// Getting the HttpResponse Status code to the output as a string
-		$status = strval($response['Status']);
+		$status = strval( $response['Status'] );
 
 		// Getting the Simple XML element object of the XML Response Body
-		$response = simplexml_load_string((string) $response['ResponseBody']);
+		$response = simplexml_load_string( (string) $response['ResponseBody'] );
 
 		// Adding the HttpResponse Status code to the output as a string
-		$response->addChild('ResponseStatus', $status);
+		$response->addChild( 'ResponseStatus', $status );
 
 		return $response;
 	}
 
 	/* Get the status of the BillingAgreement */
 
-	public function getBillingAgreementDetailsStatus($response) {
-		$data       = new \SimpleXMLElement($response);
-		$namespaces = $data->getNamespaces(true);
+	public function getBillingAgreementDetailsStatus( $response ) {
+		$data       = new \SimpleXMLElement( $response );
+		$namespaces = $data->getNamespaces( true );
 		foreach ( $namespaces as $key=>$value ) {
 			$namespace = $value;
 		}
-		$data->registerXPathNamespace('GetBA', $namespace);
-		foreach ( $data->xpath('//GetBA:BillingAgreementStatus') as $value ) {
-			$baStatus = json_decode(json_encode((array)$value), true);
+		$data->registerXPathNamespace( 'GetBA', $namespace );
+		foreach ( $data->xpath( '//GetBA:BillingAgreementStatus' ) as $value ) {
+			$baStatus = json_decode( json_encode( (array)$value ), true );
 		}
 
 		return $baStatus ;
