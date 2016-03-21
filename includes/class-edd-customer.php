@@ -181,8 +181,8 @@ class EDD_Customer {
 	 * Creates a customer
 	 *
 	 * @since  2.3
-	 * @param  array  $data Array of attributes for a customer
-	 * @return mixed        False if not a valid creation, Customer ID if user is found or valid creation
+	 * @param  array $data Array of attributes for a customer
+	 * @return mixed       False if not a valid creation, Customer ID if user is found or valid creation
 	 */
 	public function create( $data = array() ) {
 
@@ -231,8 +231,8 @@ class EDD_Customer {
 	 * Update a customer record
 	 *
 	 * @since  2.3
-	 * @param  array  $data Array of data attributes for a customer (checked via whitelist)
-	 * @return bool         If the update was successful or not
+	 * @param  array $data Array of data attributes for a customer (checked via whitelist)
+	 * @return bool        If the update was successful or not
 	 */
 	public function update( $data = array() ) {
 
@@ -264,9 +264,9 @@ class EDD_Customer {
 	 * Attach payment to the customer then triggers increasing stats
 	 *
 	 * @since  2.3
-	 * @param  int $payment_id The payment ID to attach to the customer
+	 * @param  int  $payment_id   The payment ID to attach to the customer
 	 * @param  bool $update_stats For backwards compatibility, if we should increase the stats or not
-	 * @return bool            If the attachment was successfuly
+	 * @return bool               If the attachment was successfuly
 	 */
 	public function attach_payment( $payment_id = 0, $update_stats = true ) {
 
@@ -324,9 +324,9 @@ class EDD_Customer {
 	 * Remove a payment from this customer, then triggers reducing stats
 	 *
 	 * @since  2.3
-	 * @param  integer $payment_id The Payment ID to remove
-	 * @param  bool $update_stats For backwards compatibility, if we should increase the stats or not
-	 * @return boolean             If the removal was successful
+	 * @param  integer $payment_id   The Payment ID to remove
+	 * @param  bool    $update_stats For backwards compatibility, if we should increase the stats or not
+	 * @return boolean               If the removal was successful
 	 */
 	public function remove_payment( $payment_id = 0, $update_stats = true ) {
 
@@ -445,8 +445,8 @@ class EDD_Customer {
 	 * Increase the customer's lifetime value
 	 *
 	 * @since  2.3
-	 * @param  float  $value The value to increase by
-	 * @return mixed         If successful, the new value, otherwise false
+	 * @param  float $value The value to increase by
+	 * @return mixed        If successful, the new value, otherwise false
 	 */
 	public function increase_value( $value = 0.00 ) {
 
@@ -467,8 +467,8 @@ class EDD_Customer {
 	 * Decrease a customer's lifetime value
 	 *
 	 * @since  2.3
-	 * @param  float  $value The value to decrease by
-	 * @return mixed         If successful, the new value, otherwise false
+	 * @param  float $value The value to decrease by
+	 * @return mixed        If successful, the new value, otherwise false
 	 */
 	public function decrease_value( $value = 0.00 ) {
 
@@ -494,7 +494,7 @@ class EDD_Customer {
 	 *
 	 * @since  2.3
 	 * @param  integer $length The number of notes to get
-	 * @param  integer $paged What note to start at
+	 * @param  integer $paged  What note to start at
 	 * @return array           The notes requsted
 	 */
 	public function get_notes( $length = 20, $paged = 1 ) {
@@ -530,8 +530,8 @@ class EDD_Customer {
 	 * Add a note for the customer
 	 *
 	 * @since  2.3
-	 * @param string $note The note to add
-	 * @return string|boolean The new note if added succesfully, false otherwise
+	 * @param  string         $note The note to add
+	 * @return string|boolean       The new note if added succesfully, false otherwise
 	 */
 	public function add_note( $note = '' ) {
 
