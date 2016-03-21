@@ -77,7 +77,7 @@ class EDD_Batch_Payments_Export extends EDD_Batch_Export {
 	 * @access public
 	 * @since 2.4
 	 * @global object $wpdb Used to query the database using the WordPress
-	 *   Database API
+	 * Database API
 	 * @return array $data The data for the CSV file
 	 */
 	public function get_data() {
