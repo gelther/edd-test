@@ -80,7 +80,7 @@ function edd_email_preview_template_tags( $message ) {
 	$message = str_replace( '{file_urls}', $file_urls, $message );
 	$message = str_replace( '{name}', $user->display_name, $message );
 	$message = str_replace( '{fullname}', $user->display_name, $message );
- 	$message = str_replace( '{username}', $user->user_login, $message );
+	$message = str_replace( '{username}', $user->user_login, $message );
 	$message = str_replace( '{date}', date( get_option( 'date_format' ), current_time( 'timestamp' ) ), $message );
 	$message = str_replace( '{subtotal}', $sub_total, $message );
 	$message = str_replace( '{tax}', $tax, $message );
