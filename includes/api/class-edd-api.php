@@ -879,7 +879,7 @@ class EDD_API {
 	 * @since 1.5
 	 * @author Daniel J Griffiths
 	 * @global object $wpdb Used to query the database using the WordPress
-	 *   Database API
+	 * Database API
 	 * @param int $customer Customer ID
 	 * @return array $customers Multidimensional array of the customers
 	 */
@@ -1427,7 +1427,7 @@ class EDD_API {
 	 * @access public
 	 * @since 1.6
 	 * @global object $wpdb Used to query the database using the WordPress
-	 *   Database API
+	 * Database API
 	 * @param int $discount Discount ID
 	 * @return array $discounts Multidimensional array of the discounts
 	 */
