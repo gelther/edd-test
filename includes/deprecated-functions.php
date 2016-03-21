@@ -298,22 +298,22 @@ function edd_get_cart_amount( $add_taxes = true, $local_override = false ) {
  * @return string $tags
  */
 function edd_get_purchase_receipt_template_tags() {
-	$tags = __('Enter the email that is sent to users after completing a successful purchase. HTML is accepted. Available template tags:','easy-digital-downloads' ) . '<br/>' .
-			'{download_list} - ' . __('A list of download links for each download purchased','easy-digital-downloads' ) . '<br/>' .
-			'{file_urls} - ' . __('A plain-text list of download URLs for each download purchased','easy-digital-downloads' ) . '<br/>' .
-			'{name} - ' . __('The buyer\'s first name','easy-digital-downloads' ) . '<br/>' .
-			'{fullname} - ' . __('The buyer\'s full name, first and last','easy-digital-downloads' ) . '<br/>' .
-			'{username} - ' . __('The buyer\'s user name on the site, if they registered an account','easy-digital-downloads' ) . '<br/>' .
-			'{user_email} - ' . __('The buyer\'s email address','easy-digital-downloads' ) . '<br/>' .
-			'{billing_address} - ' . __('The buyer\'s billing address','easy-digital-downloads' ) . '<br/>' .
-			'{date} - ' . __('The date of the purchase','easy-digital-downloads' ) . '<br/>' .
-			'{subtotal} - ' . __('The price of the purchase before taxes','easy-digital-downloads' ) . '<br/>' .
-			'{tax} - ' . __('The taxed amount of the purchase','easy-digital-downloads' ) . '<br/>' .
-			'{price} - ' . __('The total price of the purchase','easy-digital-downloads' ) . '<br/>' .
-			'{payment_id} - ' . __('The unique ID number for this purchase','easy-digital-downloads' ) . '<br/>' .
-			'{receipt_id} - ' . __('The unique ID number for this purchase receipt','easy-digital-downloads' ) . '<br/>' .
-			'{payment_method} - ' . __('The method of payment used for this purchase','easy-digital-downloads' ) . '<br/>' .
-			'{sitename} - ' . __('Your site name','easy-digital-downloads' ) . '<br/>' .
+	$tags = __('Enter the email that is sent to users after completing a successful purchase. HTML is accepted. Available template tags:', 'easy-digital-downloads' ) . '<br/>' .
+			'{download_list} - ' . __('A list of download links for each download purchased', 'easy-digital-downloads' ) . '<br/>' .
+			'{file_urls} - ' . __('A plain-text list of download URLs for each download purchased', 'easy-digital-downloads' ) . '<br/>' .
+			'{name} - ' . __('The buyer\'s first name', 'easy-digital-downloads' ) . '<br/>' .
+			'{fullname} - ' . __('The buyer\'s full name, first and last', 'easy-digital-downloads' ) . '<br/>' .
+			'{username} - ' . __('The buyer\'s user name on the site, if they registered an account', 'easy-digital-downloads' ) . '<br/>' .
+			'{user_email} - ' . __('The buyer\'s email address', 'easy-digital-downloads' ) . '<br/>' .
+			'{billing_address} - ' . __('The buyer\'s billing address', 'easy-digital-downloads' ) . '<br/>' .
+			'{date} - ' . __('The date of the purchase', 'easy-digital-downloads' ) . '<br/>' .
+			'{subtotal} - ' . __('The price of the purchase before taxes', 'easy-digital-downloads' ) . '<br/>' .
+			'{tax} - ' . __('The taxed amount of the purchase', 'easy-digital-downloads' ) . '<br/>' .
+			'{price} - ' . __('The total price of the purchase', 'easy-digital-downloads' ) . '<br/>' .
+			'{payment_id} - ' . __('The unique ID number for this purchase', 'easy-digital-downloads' ) . '<br/>' .
+			'{receipt_id} - ' . __('The unique ID number for this purchase receipt', 'easy-digital-downloads' ) . '<br/>' .
+			'{payment_method} - ' . __('The method of payment used for this purchase', 'easy-digital-downloads' ) . '<br/>' .
+			'{sitename} - ' . __('Your site name', 'easy-digital-downloads' ) . '<br/>' .
 			'{receipt_link} - ' . __( 'Adds a link so users can view their receipt directly on your website if they are unable to view it in the browser correctly.', 'easy-digital-downloads' );
 
 	return apply_filters( 'edd_purchase_receipt_template_tags_description', $tags );
@@ -332,21 +332,21 @@ function edd_get_purchase_receipt_template_tags() {
  */
 function edd_get_sale_notification_template_tags() {
 	$tags = __( 'Enter the email that is sent to sale notification emails after completion of a purchase. HTML is accepted. Available template tags:', 'easy-digital-downloads' ) . '<br/>' .
-			'{download_list} - ' . __('A list of download links for each download purchased','easy-digital-downloads' ) . '<br/>' .
-			'{file_urls} - ' . __('A plain-text list of download URLs for each download purchased','easy-digital-downloads' ) . '<br/>' .
-			'{name} - ' . __('The buyer\'s first name','easy-digital-downloads' ) . '<br/>' .
-			'{fullname} - ' . __('The buyer\'s full name, first and last','easy-digital-downloads' ) . '<br/>' .
-			'{username} - ' . __('The buyer\'s user name on the site, if they registered an account','easy-digital-downloads' ) . '<br/>' .
-			'{user_email} - ' . __('The buyer\'s email address','easy-digital-downloads' ) . '<br/>' .
-			'{billing_address} - ' . __('The buyer\'s billing address','easy-digital-downloads' ) . '<br/>' .
-			'{date} - ' . __('The date of the purchase','easy-digital-downloads' ) . '<br/>' .
-			'{subtotal} - ' . __('The price of the purchase before taxes','easy-digital-downloads' ) . '<br/>' .
-			'{tax} - ' . __('The taxed amount of the purchase','easy-digital-downloads' ) . '<br/>' .
-			'{price} - ' . __('The total price of the purchase','easy-digital-downloads' ) . '<br/>' .
-			'{payment_id} - ' . __('The unique ID number for this purchase','easy-digital-downloads' ) . '<br/>' .
-			'{receipt_id} - ' . __('The unique ID number for this purchase receipt','easy-digital-downloads' ) . '<br/>' .
-			'{payment_method} - ' . __('The method of payment used for this purchase','easy-digital-downloads' ) . '<br/>' .
-			'{sitename} - ' . __('Your site name','easy-digital-downloads' );
+			'{download_list} - ' . __('A list of download links for each download purchased', 'easy-digital-downloads' ) . '<br/>' .
+			'{file_urls} - ' . __('A plain-text list of download URLs for each download purchased', 'easy-digital-downloads' ) . '<br/>' .
+			'{name} - ' . __('The buyer\'s first name', 'easy-digital-downloads' ) . '<br/>' .
+			'{fullname} - ' . __('The buyer\'s full name, first and last', 'easy-digital-downloads' ) . '<br/>' .
+			'{username} - ' . __('The buyer\'s user name on the site, if they registered an account', 'easy-digital-downloads' ) . '<br/>' .
+			'{user_email} - ' . __('The buyer\'s email address', 'easy-digital-downloads' ) . '<br/>' .
+			'{billing_address} - ' . __('The buyer\'s billing address', 'easy-digital-downloads' ) . '<br/>' .
+			'{date} - ' . __('The date of the purchase', 'easy-digital-downloads' ) . '<br/>' .
+			'{subtotal} - ' . __('The price of the purchase before taxes', 'easy-digital-downloads' ) . '<br/>' .
+			'{tax} - ' . __('The taxed amount of the purchase', 'easy-digital-downloads' ) . '<br/>' .
+			'{price} - ' . __('The total price of the purchase', 'easy-digital-downloads' ) . '<br/>' .
+			'{payment_id} - ' . __('The unique ID number for this purchase', 'easy-digital-downloads' ) . '<br/>' .
+			'{receipt_id} - ' . __('The unique ID number for this purchase receipt', 'easy-digital-downloads' ) . '<br/>' .
+			'{payment_method} - ' . __('The method of payment used for this purchase', 'easy-digital-downloads' ) . '<br/>' .
+			'{sitename} - ' . __('Your site name', 'easy-digital-downloads' );
 
 	return apply_filters( 'edd_sale_notification_template_tags_description', $tags );
 }
