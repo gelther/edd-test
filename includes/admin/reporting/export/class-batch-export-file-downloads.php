@@ -159,6 +159,6 @@ class EDD_Batch_File_Downloads_Export extends EDD_Batch_Export {
 
 	public function set_properties( $request ) {
 		$this->start = isset( $request['start'] ) ? sanitize_text_field( $request['start'] ) : '';
-		$this->end   = isset( $request['end']  )  ? sanitize_text_field( $request['end']  )  : '';
+		$this->end   = isset( $request['end'] )  ? sanitize_text_field( $request['end'] )  : '';
 	}
 }
