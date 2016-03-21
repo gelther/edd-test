@@ -32,9 +32,9 @@ class EDD_Welcome {
 	 * @since 1.4
 	 */
 	public function __construct() {
-		add_action( 'admin_menu', array( $this, 'admin_menus') );
+		add_action( 'admin_menu', array( $this, 'admin_menus' ) );
 		add_action( 'admin_head', array( $this, 'admin_head' ) );
-		add_action( 'admin_init', array( $this, 'welcome'    ) );
+		add_action( 'admin_init', array( $this, 'welcome' ) );
 	}
 
 	/**
@@ -111,7 +111,7 @@ class EDD_Welcome {
 			.edd-about-wrap .feature-section-content h4 { margin: 0 0 1em; }
 			.edd-about-wrap .feature-section-media { float: right; text-align: right; margin-bottom: 20px; }
 			.edd-about-wrap .feature-section-media img { border: 1px solid #ddd; }
-			.edd-about-wrap .feature-section:not(.under-the-hood) .col { margin-top: 0; }
+			.edd-about-wrap .feature-section:not( .under-the-hood ) .col { margin-top: 0; }
 			/* responsive */
 			@media all and ( max-width: 782px ) {
 				.edd-about-wrap .feature-section-content,
