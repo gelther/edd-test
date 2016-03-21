@@ -491,9 +491,9 @@ function edd_add_cache_busting( $url = '' ) {
  * This function is to be used in every function that is deprecated.
  *
  * @uses do_action() Calls 'edd_deprecated_function_run' and passes the function name, what to use instead,
- *   and the version the function was deprecated in.
+ * and the version the function was deprecated in.
  * @uses apply_filters() Calls 'edd_deprecated_function_trigger_error' and expects boolean value of true to do
- *   trigger or false to not trigger error.
+ * trigger or false to not trigger error.
  *
  * @param string  $function    The function that was called
  * @param string  $version     The version of EDD that deprecated the function
@@ -531,9 +531,9 @@ function _edd_deprecated_function( $function, $version, $replacement = null, $ba
  * This function is to be used in every function that has an argument being deprecated.
  *
  * @uses do_action() Calls 'edd_deprecated_argument_run' and passes the argument, function name, what to use instead,
- *   and the version the function was deprecated in.
+ * and the version the function was deprecated in.
  * @uses apply_filters() Calls 'edd_deprecated_argument_trigger_error' and expects boolean value of true to do
- *   trigger or false to not trigger error.
+ * trigger or false to not trigger error.
  *
  * @param string  $argument    The arguemnt that is being deprecated
  * @param string  $function    The function that was called
