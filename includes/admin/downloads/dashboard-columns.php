@@ -23,8 +23,8 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  *  Post Type List Table
  */
 function edd_download_columns( $download_columns ) {
-	$category_labels   = edd_get_taxonomy_labels( 'download_category' );
-	$tag_labels        = edd_get_taxonomy_labels( 'download_tag' );
+	$category_labels = edd_get_taxonomy_labels( 'download_category' );
+	$tag_labels      = edd_get_taxonomy_labels( 'download_tag' );
 
 	$download_columns = array(
 		'cb'                => '<input type="checkbox"/>',
