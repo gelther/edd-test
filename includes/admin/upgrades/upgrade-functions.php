@@ -36,7 +36,7 @@ function edd_show_upgrade_notices() {
 			return; // No payment exist yet
 
 		// The payment history needs updated for version 1.2
-		$url = add_query_arg( 'edd-action', 'upgrade_payments' );
+		$url            = add_query_arg( 'edd-action', 'upgrade_payments' );
 		$upgrade_notice = sprintf( __( 'The Payment History needs to be updated. %s', 'easy-digital-downloads' ), '<a href="' . wp_nonce_url( $url, 'edd_upgrade_payments_nonce' ) . '">' . __( 'Click to Upgrade', 'easy-digital-downloads' ) . '</a>' );
 		add_settings_error( 'edd-notices', 'edd-payments-upgrade', $upgrade_notice, 'error' );
 	}
@@ -267,7 +267,7 @@ function edd_v131_upgrades() {
 		'post_status' 		=> 'publish'
 	);
 
-	$query = new WP_Query( $args );
+	$query     = new WP_Query( $args );
 	$downloads = $query->get_posts();
 
 	if ( $downloads ) {
@@ -489,8 +489,8 @@ function edd_v20_upgrade_sequential_payment_numbers() {
 		set_time_limit( 0 );
 	}
 
-	$step   = isset( $_GET['step'] )  ? absint( $_GET['step'] )  : 1;
-	$total  = isset( $_GET['total'] ) ? absint( $_GET['total'] ) : false;
+	$step  = isset( $_GET['step'] )  ? absint( $_GET['step'] )  : 1;
+	$total = isset( $_GET['total'] ) ? absint( $_GET['total'] ) : false;
 
 	if ( empty( $total ) || $total <= 1 ) {
 		$payments = edd_count_payments();
@@ -499,7 +499,7 @@ function edd_v20_upgrade_sequential_payment_numbers() {
 		}
 	}
 
-	$args   = array(
+	$args = array(
 		'number' => 100,
 		'page'   => $step,
 		'status' => 'any',
@@ -618,7 +618,7 @@ function edd_v21_upgrade_customers_db() {
 
 				}
 
-				$ids  = wp_list_pluck( $payments, 'ID' );
+				$ids = wp_list_pluck( $payments, 'ID' );
 
 				$user = get_user_by( 'email', $email );
 
@@ -684,7 +684,7 @@ function edd_v226_upgrade_payments_price_logs_db() {
 	$offset = $step == 1 ? 0 : ( $step - 1 ) * $number;
 	if ( 1 === $step ) {
 		// Check if we have any variable price products on the first step
-		$sql = "SELECT ID FROM $wpdb->posts p LEFT JOIN $wpdb->postmeta m ON p.ID = m.post_id WHERE m.meta_key = '_variable_pricing' AND m.meta_value = 1 LIMIT 1";
+		$sql          = "SELECT ID FROM $wpdb->posts p LEFT JOIN $wpdb->postmeta m ON p.ID = m.post_id WHERE m.meta_key = '_variable_pricing' AND m.meta_value = 1 LIMIT 1";
 		$has_variable = $wpdb->get_col( $sql );
 		if ( empty( $has_variable ) ) {
 			// We had no variable priced products, so go ahead and just complete
@@ -714,7 +714,7 @@ function edd_v226_upgrade_payments_price_logs_db() {
 				continue; // If there were no downloads, just fees, move along
 			}
 			// Get all Log Ids where the post parent is in the set of download IDs we found in the cart meta
-			$logs = $wpdb->get_results( "SELECT m.post_id AS log_id, p.post_parent AS download_id FROM $wpdb->postmeta m LEFT JOIN $wpdb->posts p ON m.post_id = p.ID WHERE meta_key = '_edd_log_payment_id' AND meta_value = $payment_id AND p.post_parent IN ($unique_download_ids)", ARRAY_A );
+			$logs        = $wpdb->get_results( "SELECT m.post_id AS log_id, p.post_parent AS download_id FROM $wpdb->postmeta m LEFT JOIN $wpdb->posts p ON m.post_id = p.ID WHERE meta_key = '_edd_log_payment_id' AND meta_value = $payment_id AND p.post_parent IN ($unique_download_ids)", ARRAY_A );
 			$mapped_logs = array();
 			// Go through each cart item
 			foreach ( $variable_downloads as $cart_item ) {
@@ -731,15 +731,15 @@ function edd_v226_upgrade_payments_price_logs_db() {
 				}
 			}
 			if ( ! empty( $mapped_logs ) ) {
-				$update  = "UPDATE $wpdb->postmeta SET meta_value = ";
-				$case    = 'CASE post_id ';
+				$update = "UPDATE $wpdb->postmeta SET meta_value = ";
+				$case   = 'CASE post_id ';
 				foreach ( $mapped_logs as $post_id => $value ) {
 					$case .= "WHEN $post_id THEN $value ";
 				}
-				$case   .= 'END ';
-				$log_ids = implode( ',', array_keys( $mapped_logs ) );
-				$where   = "WHERE post_id IN ($log_ids) AND meta_key = '_edd_log_price_id'";
-				$sql     = $update . $case . $where;
+				$case    .= 'END ';
+				$log_ids  = implode( ',', array_keys( $mapped_logs ) );
+				$where    = "WHERE post_id IN ($log_ids) AND meta_key = '_edd_log_price_id'";
+				$sql      = $update . $case . $where;
 				// Execute our query to update this payment
 				$wpdb->query( $sql );
 			}
@@ -783,7 +783,7 @@ function edd_v23_upgrade_payment_taxes() {
 
 	if ( $step < 2 ) {
 		// Check if we have any payments before moving on
-		$sql = "SELECT ID FROM $wpdb->posts WHERE post_type = 'edd_payment' LIMIT 1";
+		$sql          = "SELECT ID FROM $wpdb->posts WHERE post_type = 'edd_payment' LIMIT 1";
 		$has_payments = $wpdb->get_col( $sql );
 
 		if ( empty( $has_payments ) ) {
@@ -800,7 +800,7 @@ function edd_v23_upgrade_payment_taxes() {
 		$total_sql = "SELECT COUNT(ID) as total_payments FROM $wpdb->posts WHERE post_type = 'edd_payment'";
 		$results   = $wpdb->get_row( $total_sql, 0 );
 
-		$total     = $results->total_payments;
+		$total = $results->total_payments;
 	}
 
 	$payment_ids = $wpdb->get_col( $wpdb->prepare( "SELECT ID FROM $wpdb->posts WHERE post_type = 'edd_payment' ORDER BY post_date DESC LIMIT %d,%d;", $offset, $number ) );
@@ -859,7 +859,7 @@ function edd_v23_upgrade_customer_purchases() {
 
 	if ( $step < 2 ) {
 		// Check if we have any payments before moving on
-		$sql = "SELECT ID FROM $wpdb->posts WHERE post_type = 'edd_payment' LIMIT 1";
+		$sql          = "SELECT ID FROM $wpdb->posts WHERE post_type = 'edd_payment' LIMIT 1";
 		$has_payments = $wpdb->get_col( $sql );
 
 		if ( empty( $has_payments ) ) {
@@ -897,7 +897,7 @@ function edd_v23_upgrade_customer_purchases() {
 			$sql            = $select . $join . $where;
 			$found_payments = $wpdb->get_col( $sql );
 
-			$unique_payment_ids  = array_unique( array_filter( $found_payments ) );
+			$unique_payment_ids = array_unique( array_filter( $found_payments ) );
 
 			if ( ! empty( $unique_payment_ids ) ) {
 
