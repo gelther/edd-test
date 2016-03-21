@@ -39,7 +39,7 @@ if ( edd_get_option( 'uninstall_on_delete' ) ) {
 
 		if ( $items ) {
 			foreach ( $items as $item ) {
-				wp_delete_post( $item, true);
+				wp_delete_post( $item, true );
 			}
 		}
 	}
