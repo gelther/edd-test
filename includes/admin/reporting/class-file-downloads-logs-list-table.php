@@ -251,7 +251,7 @@ class EDD_File_Downloads_Log_Table extends WP_List_Table {
 				// This is an IP address search
 				$key     = '_edd_log_ip';
 				$compare = '=';
-			} else if ( is_email( $search ) ) {
+			} elseif ( is_email( $search ) ) {
 				// This is an email search. We use this to ensure it works for guest users and logged-in users
 				$key     = '_edd_log_user_info';
 				$compare = 'LIKE';
