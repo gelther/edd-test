@@ -54,7 +54,7 @@ class EDD_Batch_Customers_Export extends EDD_Batch_Export {
 	 *
 	 * @access public
 	 * @since 2.4
-	 *   Database API
+	 * Database API
 	 * @global object $edd_logs EDD Logs Object
 	 * @return array $data The data for the CSV file
 	 */
