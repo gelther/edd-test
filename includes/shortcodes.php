@@ -258,7 +258,7 @@ function edd_purchase_collection_shortcode( $atts, $content = null ) {
 	extract( shortcode_atts( array(
 			'taxonomy'	=> '',
 			'terms'		=> '',
-			'text'		=> __('Purchase All Items', 'easy-digital-downloads' ),
+			'text'		=> __( 'Purchase All Items', 'easy-digital-downloads' ),
 			'style'     => edd_get_option( 'button_style', 'button' ),
 			'color'     => edd_get_option( 'checkout_color', 'blue' ),
 			'class'		=> 'edd-submit'
@@ -486,7 +486,7 @@ function edd_downloads_query( $atts, $content = null ) {
 		$query['post__in'] = explode( ',', $atts['ids'] );
 
 	if ( get_query_var( 'paged' ) )
-		$query['paged'] = get_query_var('paged');
+		$query['paged'] = get_query_var( 'paged' );
 	elseif ( get_query_var( 'page' ) )
 		$query['paged'] = get_query_var( 'page' );
 	else
