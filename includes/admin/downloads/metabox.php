@@ -292,9 +292,9 @@ function edd_render_price_field( $post_id ) {
 	$prices             = edd_get_variable_prices( $post_id );
 	$single_option_mode = edd_single_price_option_mode( $post_id );
 
-	$price_display      = $variable_pricing ? ' style="display:none;"' : '';
-	$variable_display   = $variable_pricing ? '' : ' style="display:none;"';
-	$currency_position  = edd_get_option( 'currency_position', 'before' );
+	$price_display     = $variable_pricing ? ' style="display:none;"' : '';
+	$variable_display  = $variable_pricing ? '' : ' style="display:none;"';
+	$currency_position = edd_get_option( 'currency_position', 'before' );
 ?>
 	<p>
 		<strong><?php echo apply_filters( 'edd_price_options_heading', __( 'Pricing Options:', 'easy-digital-downloads' ) ); ?></strong>
@@ -356,7 +356,7 @@ function edd_render_price_field( $post_id ) {
 								$name   = isset( $value['name'] )   ? $value['name']   : '';
 								$amount = isset( $value['amount'] ) ? $value['amount'] : '';
 								$index  = isset( $value['index'] )  ? $value['index']  : $key;
-								$args = apply_filters( 'edd_price_row_args', compact( 'name', 'amount' ), $value );
+								$args   = apply_filters( 'edd_price_row_args', compact( 'name', 'amount' ), $value );
 								?>
 								<tr class="edd_variable_prices_wrapper edd_repeatable_row" data-key="<?php echo esc_attr( $key ); ?>">
 									<?php do_action( 'edd_render_price_row', $key, $args, $post_id, $index ); ?>
@@ -403,7 +403,7 @@ function edd_render_price_row( $key, $args = array(), $post_id, $index ) {
 
 	$args = wp_parse_args( $args, $defaults );
 
-	$default_price_id = edd_get_default_variable_price( $post_id );
+	$default_price_id  = edd_get_default_variable_price( $post_id );
 	$currency_position = edd_get_option( 'currency_position', 'before' );
 
 ?>
@@ -752,7 +752,7 @@ function edd_download_media_strings( $strings ) {
 	}
 
 	$downloads_object = get_post_type_object( 'download' );
-	$labels = $downloads_object->labels;
+	$labels           = $downloads_object->labels;
 
 	$strings['insertIntoPost'] = sprintf( __( 'Insert into %s', 'easy-digital-downloads' ), strtolower( $labels->singular_name ) );
 
@@ -777,7 +777,7 @@ function edd_render_download_limit_row( $post_id ) {
 	}
 
 	$edd_download_limit = edd_get_file_download_limit( $post_id );
-	$display = 'bundle' == edd_get_download_type( $post_id ) ? ' style="display: none;"' : '';
+	$display            = 'bundle' == edd_get_download_type( $post_id ) ? ' style="display: none;"' : '';
 ?>
 	<div id="edd_download_limit_wrap"<?php echo $display; ?>>
 		<p><strong><?php _e( 'File Download Limit:', 'easy-digital-downloads' ); ?></strong></p>
