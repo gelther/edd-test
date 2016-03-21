@@ -81,7 +81,7 @@ class EDD_Graph {
 		$this->data = $_data;
 
 		// Generate unique ID
-		$this->id   = 'a' . md5( rand() );
+		$this->id = 'a' . md5( rand() );
 
 		// Setup default options;
 		$this->options = array(
