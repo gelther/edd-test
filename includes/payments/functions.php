@@ -197,9 +197,9 @@ function edd_insert_payment( $payment_data = array() ) {
  */
 function edd_update_payment_status( $payment_id, $new_status = 'publish' ) {
 
-	$payment = new EDD_Payment( $payment_id );
+	$payment         = new EDD_Payment( $payment_id );
 	$payment->status = $new_status;
-	$updated = $payment->save();
+	$updated         = $payment->save();
 
 	return $updated;
 
@@ -222,7 +222,7 @@ function edd_update_payment_status( $payment_id, $new_status = 'publish' ) {
 function edd_delete_purchase( $payment_id = 0, $update_customer = true, $delete_download_logs = false ) {
 	global $edd_logs;
 
-	$payment   = new EDD_Payment( $payment_id );
+	$payment = new EDD_Payment( $payment_id );
 
 	// Update sale counts and earnings for all purchased products
 	edd_undo_purchase( false, $payment_id );
@@ -380,8 +380,8 @@ function edd_count_payments( $args = array() ) {
 	$args = wp_parse_args( $args, $defaults );
 
 	$select = 'SELECT p.post_status,count( * ) AS num_posts';
-	$join = '';
-	$where = "WHERE p.post_type = 'edd_payment'";
+	$join   = '';
+	$where  = "WHERE p.post_type = 'edd_payment'";
 
 	// Count payments for a specific user
 	if ( ! empty( $args['user'] ) ) {
@@ -412,7 +412,7 @@ function edd_count_payments( $args = array() ) {
 				$field = '_edd_payment_purchase_key';
 
 
-			$join = "LEFT JOIN $wpdb->postmeta m ON (p.ID = m.post_id)";
+			$join   = "LEFT JOIN $wpdb->postmeta m ON (p.ID = m.post_id)";
 			$where .= $wpdb->prepare( '
 				AND m.meta_key = %s
 				AND m.meta_value = %s',
@@ -425,15 +425,15 @@ function edd_count_payments( $args = array() ) {
 			$search = str_replace( '#:', '', $args['s'] );
 			$search = str_replace( '#', '', $search );
 
-			$select = 'SELECT p2.post_status,count( * ) AS num_posts ';
-			$join   = "LEFT JOIN $wpdb->postmeta m ON m.meta_key = '_edd_log_payment_id' AND m.post_id = p.ID ";
-			$join  .= "INNER JOIN $wpdb->posts p2 ON m.meta_value = p2.ID ";
-			$where  = "WHERE p.post_type = 'edd_log' ";
-			$where .= $wpdb->prepare( 'AND p.post_parent = %d} ', $search );
+			$select  = 'SELECT p2.post_status,count( * ) AS num_posts ';
+			$join    = "LEFT JOIN $wpdb->postmeta m ON m.meta_key = '_edd_log_payment_id' AND m.post_id = p.ID ";
+			$join   .= "INNER JOIN $wpdb->posts p2 ON m.meta_value = p2.ID ";
+			$where   = "WHERE p.post_type = 'edd_log' ";
+			$where  .= $wpdb->prepare( 'AND p.post_parent = %d} ', $search );
 
 		} elseif ( is_numeric( $args['s'] ) ) {
 
-			$join = "LEFT JOIN $wpdb->postmeta m ON (p.ID = m.post_id)";
+			$join   = "LEFT JOIN $wpdb->postmeta m ON (p.ID = m.post_id)";
 			$where .= $wpdb->prepare( "
 				AND m.meta_key = '_edd_payment_user_id'
 				AND m.meta_value = %d",
@@ -475,7 +475,7 @@ function edd_count_payments( $args = array() ) {
 		$day        = ! empty( $date_parts[1] ) && is_numeric( $date_parts[1] ) ? $date_parts[1] : 0;
 		$year       = ! empty( $date_parts[2] ) && is_numeric( $date_parts[2] ) ? $date_parts[2] : 0;
 
-		$is_date    = checkdate( $month, $day, $year );
+		$is_date = checkdate( $month, $day, $year );
 		if ( false !== $is_date ) {
 
 			$date   = new DateTime( $args['start-date'] );
@@ -494,11 +494,11 @@ function edd_count_payments( $args = array() ) {
 
 		$date_parts = explode( '/', $args['end-date'] );
 
-		$month      = ! empty( $date_parts[0] ) ? $date_parts[0] : 0;
-		$day        = ! empty( $date_parts[1] ) ? $date_parts[1] : 0;
-		$year       = ! empty( $date_parts[2] ) ? $date_parts[2] : 0;
+		$month = ! empty( $date_parts[0] ) ? $date_parts[0] : 0;
+		$day   = ! empty( $date_parts[1] ) ? $date_parts[1] : 0;
+		$year  = ! empty( $date_parts[2] ) ? $date_parts[2] : 0;
 
-		$is_date    = checkdate( $month, $day, $year );
+		$is_date = checkdate( $month, $day, $year );
 		if ( false !== $is_date ) {
 
 			$date   = new DateTime( $args['end-date'] );
@@ -679,7 +679,7 @@ function edd_get_earnings_by_date( $day = null, $month_num, $year = null, $hour 
 	$earnings = get_transient( $key );
 
 	if ( false === $earnings ) {
-		$sales = get_posts( $args );
+		$sales    = get_posts( $args );
 		$earnings = 0;
 		if ( $sales ) {
 			$sales = implode( ',', $sales );
@@ -839,8 +839,8 @@ function edd_get_total_earnings() {
 				}
 
 				if ( ! empty( $payments ) ) {
-					$payments = implode( ',', $payments );
-					$total += $wpdb->get_var( "SELECT SUM(meta_value) FROM $wpdb->postmeta WHERE meta_key = '_edd_payment_total' AND post_id IN({$payments})" );
+					$payments  = implode( ',', $payments );
+					$total    += $wpdb->get_var( "SELECT SUM(meta_value) FROM $wpdb->postmeta WHERE meta_key = '_edd_payment_total' AND post_id IN({$payments})" );
 				}
 
 			}
@@ -868,7 +868,7 @@ function edd_get_total_earnings() {
  * @return float $total Total earnings
  */
 function edd_increase_total_earnings( $amount = 0 ) {
-	$total = edd_get_total_earnings();
+	$total  = edd_get_total_earnings();
 	$total += $amount;
 	update_option( 'edd_earnings_total', $total );
 	return $total;
@@ -882,7 +882,7 @@ function edd_increase_total_earnings( $amount = 0 ) {
  * @return float $total Total earnings
  */
 function edd_decrease_total_earnings( $amount = 0 ) {
-	$total = edd_get_total_earnings();
+	$total  = edd_get_total_earnings();
 	$total -= $amount;
 	if ( $total < 0 ) {
 		$total = 0;
@@ -976,7 +976,7 @@ function edd_get_payment_meta_cart_details( $payment_id, $include_bundle_files =
 					continue;
 
 				foreach ( $products as $product_id ) {
-					$cart_details[]   = array(
+					$cart_details[] = array(
 						'id'          => $product_id,
 						'name'        => get_the_title( $product_id ),
 						'item_number' => array(
@@ -1198,7 +1198,7 @@ function edd_get_next_payment_number() {
 
 		if ( empty( $number ) ) {
 
-			$number = $start;
+			$number           = $start;
 			$increment_number = false;
 
 		}
@@ -1221,7 +1221,7 @@ function edd_get_next_payment_number() {
 
 		} else {
 
-			$number = $start;
+			$number           = $start;
 			$increment_number = false;
 		}
 
@@ -1255,7 +1255,7 @@ function edd_remove_payment_prefix_postfix( $number ) {
 	$length      = strlen( $number );
 	$postfix_pos = strrpos( $number, $postfix );
 	if ( false !== $postfix_pos ) {
-		$number      = substr_replace( $number, '', $postfix_pos, $length );
+		$number = substr_replace( $number, '', $postfix_pos, $length );
 	}
 
 	// Ensure it's a whole number
@@ -1363,7 +1363,7 @@ function edd_get_payment_tax( $payment_id = 0, $payment_meta = false ) {
  * @return float               The item tax amount
  */
 function edd_get_payment_item_tax( $payment_id = 0, $cart_key = false ) {
-	$payment = new EDD_Payment( $payment_id );
+	$payment  = new EDD_Payment( $payment_id );
 	$item_tax = 0;
 
 	$cart_details = $payment->cart_details;
@@ -1568,7 +1568,7 @@ function edd_get_payment_note_html( $note, $payment_id = 0 ) {
 		'payment_id' => $payment_id
 	) ), 'edd_delete_payment_note_' . $note->comment_ID );
 
-	$note_html = '<div class="edd-payment-note" id="edd-payment-note-' . $note->comment_ID . '">';
+	$note_html  = '<div class="edd-payment-note" id="edd-payment-note-' . $note->comment_ID . '">';
 		$note_html .='<p>';
 			$note_html .= '<strong>' . $user . '</strong>&nbsp;&ndash;&nbsp;' . date_i18n( $date_format, strtotime( $note->comment_date ) ) . '<br/>';
 			$note_html .= $note->comment_content;
@@ -1596,7 +1596,7 @@ function edd_hide_payment_notes( $query ) {
 		if ( ! is_array( $types ) ) {
 			$types = array( $types );
 		}
-		$types[] = 'edd_payment_note';
+		$types[]                           = 'edd_payment_note';
 		$query->query_vars['type__not_in'] = $types;
 	}
 }
@@ -1672,7 +1672,7 @@ function edd_remove_payment_notes_in_comment_counts( $stats, $post_id ) {
 
 	$count = $wpdb->get_results( "SELECT comment_approved, COUNT( * ) AS num_comments FROM {$wpdb->comments} {$where} GROUP BY comment_approved", ARRAY_A );
 
-	$total = 0;
+	$total    = 0;
 	$approved = array( '0' => 'moderated', '1' => 'approved', 'spam' => 'spam', 'trash' => 'trash', 'post-trashed' => 'post-trashed' );
 	foreach ( (array) $count as $row ) {
 		// Don't count post-trashed toward totals
@@ -1706,7 +1706,7 @@ add_filter( 'wp_count_comments', 'edd_remove_payment_notes_in_comment_counts', 1
 */
 function edd_filter_where_older_than_week( $where = '' ) {
 	// Payments older than one week
-	$start = date( 'Y-m-d', strtotime( '-7 days' ) );
+	$start  = date( 'Y-m-d', strtotime( '-7 days' ) );
 	$where .= " AND post_date <= '{$start}'";
 	return $where;
 }
