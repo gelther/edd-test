@@ -330,7 +330,7 @@ class IpnHandler implements IpnHandlerInterface
 
 		// Merging the remaining fields with the response
 		$remainingFields = $this->getRemainingIpnFields();
-		$responseArray   = array_merge($remainingFields,(array)$response);
+		$responseArray   = array_merge($remainingFields, (array)$response);
 
 		// Converting to JSON format
 		$response = json_encode($responseArray);
@@ -351,7 +351,7 @@ class IpnHandler implements IpnHandlerInterface
 
 		// Merging the remaining fields with the response array
 		$remainingFields = $this->getRemainingIpnFields();
-		$response        = array_merge($remainingFields,$response);
+		$response        = array_merge($remainingFields, $response);
 
 		return $response;
 	}
