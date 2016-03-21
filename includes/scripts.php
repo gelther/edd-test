@@ -71,10 +71,10 @@ function edd_load_scripts() {
 		wp_localize_script( 'edd-ajax', 'edd_scripts', apply_filters( 'edd_ajax_script_vars', array(
 			'ajaxurl'                 => edd_get_ajax_url(),
 			'position_in_cart'        => isset( $position ) ? $position : -1,
-			'already_in_cart_message' => __('You have already added this item to your cart','easy-digital-downloads' ), // Item already in the cart message
-			'empty_cart_message'      => __('Your cart is empty','easy-digital-downloads' ), // Item already in the cart message
-			'loading'                 => __('Loading','easy-digital-downloads' ) , // General loading message
-			'select_option'           => __('Please select an option','easy-digital-downloads' ) , // Variable pricing error with multi-purchase option enabled
+			'already_in_cart_message' => __('You have already added this item to your cart', 'easy-digital-downloads' ), // Item already in the cart message
+			'empty_cart_message'      => __('Your cart is empty', 'easy-digital-downloads' ), // Item already in the cart message
+			'loading'                 => __('Loading', 'easy-digital-downloads' ), // General loading message
+			'select_option'           => __('Please select an option', 'easy-digital-downloads' ), // Variable pricing error with multi-purchase option enabled
 			'ajax_loader'             => set_url_scheme( EDD_PLUGIN_URL . 'assets/images/loading.gif', 'relative' ), // Ajax loading image
 			'is_checkout'             => edd_is_checkout() ? '1' : '0',
 			'default_gateway'         => edd_get_default_gateway(),
@@ -187,7 +187,7 @@ function edd_load_admin_scripts( $hook ) {
 		'post_id'                 => isset( $post->ID ) ? $post->ID : null,
 		'edd_version'             => EDD_VERSION,
 		'add_new_download'        => __( 'Add New Download', 'easy-digital-downloads' ),
-		'use_this_file'           => __( 'Use This File','easy-digital-downloads' ),
+		'use_this_file'           => __( 'Use This File', 'easy-digital-downloads' ),
 		'quick_edit_warning'      => __( 'Sorry, not available for variable priced products.', 'easy-digital-downloads' ),
 		'delete_payment'          => __( 'Are you sure you wish to delete this payment?', 'easy-digital-downloads' ),
 		'delete_payment_note'     => __( 'Are you sure you wish to delete this note?', 'easy-digital-downloads' ),
@@ -322,7 +322,7 @@ function edd_admin_downloads_icon() {
 	</style>
 	<?php
 }
-add_action( 'admin_head','edd_admin_downloads_icon' );
+add_action( 'admin_head', 'edd_admin_downloads_icon' );
 
 
 /**
