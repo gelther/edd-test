@@ -4,7 +4,7 @@
  */
 global $edd_receipt_args;
 
-$payment   = get_post( $edd_receipt_args['id'] );
+$payment = get_post( $edd_receipt_args['id'] );
 
 if ( empty( $payment ) ) : ?>
 
@@ -16,11 +16,11 @@ if ( empty( $payment ) ) : ?>
 return;
 endif;
 
-$meta      = edd_get_payment_meta( $payment->ID );
-$cart      = edd_get_payment_meta_cart_details( $payment->ID, true );
-$user      = edd_get_payment_meta_user_info( $payment->ID );
-$email     = edd_get_payment_user_email( $payment->ID );
-$status    = edd_get_payment_status( $payment, true );
+$meta   = edd_get_payment_meta( $payment->ID );
+$cart   = edd_get_payment_meta_cart_details( $payment->ID, true );
+$user   = edd_get_payment_meta_user_info( $payment->ID );
+$email  = edd_get_payment_user_email( $payment->ID );
+$status = edd_get_payment_status( $payment, true );
 ?>
 <table id="edd_purchase_receipt">
 	<thead>
