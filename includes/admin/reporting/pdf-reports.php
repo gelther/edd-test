@@ -73,7 +73,7 @@ function edd_generate_pdf( $data ) {
 	$pdf->Cell( 45, 6, utf8_decode( __( 'Number of Sales', 'easy-digital-downloads' ) ), 1, 0, 'L', true );
 	$pdf->Cell( 35, 6, utf8_decode( __( 'Earnings to Date', 'easy-digital-downloads' ) ), 1, 1, 'L', true );
 
-	$year      = date('Y');
+	$year      = date( 'Y' );
 	$downloads = get_posts( array( 'post_type' => 'download', 'year' => $year, 'posts_per_page' => -1 ) );
 
 	if ( $downloads ) :
@@ -116,8 +116,8 @@ function edd_generate_pdf( $data ) {
 
 			if ( function_exists( 'iconv' ) ) {
 				// Ensure characters like euro; are properly converted. See GithuB issue #472 and #1570
-				$price    = iconv('UTF-8', 'windows-1252', utf8_encode( $price ) );
-				$earnings = iconv('UTF-8', 'windows-1252', utf8_encode( $earnings ) );
+				$price    = iconv( 'UTF-8', 'windows-1252', utf8_encode( $price ) );
+				$earnings = iconv( 'UTF-8', 'windows-1252', utf8_encode( $earnings ) );
 			}
 
 			$pdf->Row( array( $title, $price, $categories, $tags, $sales, $earnings ) );
@@ -131,7 +131,7 @@ function edd_generate_pdf( $data ) {
 	$pdf->Ln();
 	$pdf->SetTextColor( 50, 50, 50 );
 	$pdf->SetFont( 'Helvetica', '', 14 );
-	$pdf->Cell( 0, 10, utf8_decode( __('Graph View', 'easy-digital-downloads' ) ), 0, 2, 'L', false );
+	$pdf->Cell( 0, 10, utf8_decode( __( 'Graph View', 'easy-digital-downloads' ) ), 0, 2, 'L', false );
 	$pdf->SetFont( 'Helvetica', '', 12 );
 
 	$image = html_entity_decode( urldecode( edd_draw_chart_image() ) );
@@ -140,7 +140,7 @@ function edd_generate_pdf( $data ) {
 	$pdf->SetX( 25 );
 	$pdf->Image( $image . '&file=.png' );
 	$pdf->Ln( 7 );
-	$pdf->Output( apply_filters( 'edd_sales_earnings_pdf_export_filename', 'edd-report-' . date_i18n('Y-m-d') ) . '.pdf', 'D' );
+	$pdf->Output( apply_filters( 'edd_sales_earnings_pdf_export_filename', 'edd-report-' . date_i18n( 'Y-m-d' ) ) . '.pdf', 'D' );
 }
 add_action( 'edd_generate_pdf', 'edd_generate_pdf' );
 
@@ -171,8 +171,8 @@ function edd_draw_chart_image() {
 	$sales    = '';
 
 	while ( $i <= 12 ) :
-		$earnings .= edd_get_earnings_by_date( null, $i, date('Y') ) . ',';
-		$sales    .= edd_get_sales_by_date( null, $i, date('Y') ) . ',';
+		$earnings .= edd_get_earnings_by_date( null, $i, date( 'Y' ) ) . ',';
+		$sales    .= edd_get_sales_by_date( null, $i, date( 'Y' ) ) . ',';
 		$i++;
 	endwhile;
 
@@ -235,18 +235,18 @@ function edd_draw_chart_image() {
 	$x_axis = new GoogleChartAxis( 'x' );
 	$x_axis->setTickMarks( 5 );
 	$x_axis->setLabels( array(
-		__('Jan', 'easy-digital-downloads' ),
-		__('Feb', 'easy-digital-downloads' ),
-		__('Mar', 'easy-digital-downloads' ),
-		__('Apr', 'easy-digital-downloads' ),
-		__('May', 'easy-digital-downloads' ),
-		__('June', 'easy-digital-downloads' ),
-		__('July', 'easy-digital-downloads' ),
-		__('Aug', 'easy-digital-downloads' ),
-		__('Sept', 'easy-digital-downloads' ),
-		__('Oct', 'easy-digital-downloads' ),
-		__('Nov', 'easy-digital-downloads' ),
-		__('Dec', 'easy-digital-downloads' )
+		__( 'Jan', 'easy-digital-downloads' ),
+		__( 'Feb', 'easy-digital-downloads' ),
+		__( 'Mar', 'easy-digital-downloads' ),
+		__( 'Apr', 'easy-digital-downloads' ),
+		__( 'May', 'easy-digital-downloads' ),
+		__( 'June', 'easy-digital-downloads' ),
+		__( 'July', 'easy-digital-downloads' ),
+		__( 'Aug', 'easy-digital-downloads' ),
+		__( 'Sept', 'easy-digital-downloads' ),
+		__( 'Oct', 'easy-digital-downloads' ),
+		__( 'Nov', 'easy-digital-downloads' ),
+		__( 'Dec', 'easy-digital-downloads' )
 	) );
 	$chart->addAxis( $x_axis );
 
