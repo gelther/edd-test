@@ -32,13 +32,13 @@ function edd_update_payment_details( $data ) {
 	$payment    = new EDD_Payment( $payment_id );
 
 	// Retrieve existing payment meta
-	$meta        = $payment->get_meta();
-	$user_info   = $payment->user_info;
+	$meta      = $payment->get_meta();
+	$user_info = $payment->user_info;
 
-	$status      = $data['edd-payment-status'];
-	$unlimited   = isset( $data['edd-unlimited-downloads'] ) ? '1' : '';
-	$date        = sanitize_text_field( $data['edd-payment-date'] );
-	$hour        = sanitize_text_field( $data['edd-payment-time-hour'] );
+	$status    = $data['edd-payment-status'];
+	$unlimited = isset( $data['edd-unlimited-downloads'] ) ? '1' : '';
+	$date      = sanitize_text_field( $data['edd-payment-date'] );
+	$hour      = sanitize_text_field( $data['edd-payment-time-hour'] );
 
 	// Restrict to our high and low
 	if ( $hour > 23 ) {
@@ -47,7 +47,7 @@ function edd_update_payment_details( $data ) {
 		$hour = 00;
 	}
 
-	$minute      = sanitize_text_field( $data['edd-payment-time-min'] );
+	$minute = sanitize_text_field( $data['edd-payment-time-min'] );
 
 	// Restrict to our high and low
 	if ( $minute > 59 ) {
@@ -56,15 +56,15 @@ function edd_update_payment_details( $data ) {
 		$minute = 00;
 	}
 
-	$address     = array_map( 'trim', $data['edd-payment-address'][0] );
+	$address = array_map( 'trim', $data['edd-payment-address'][0] );
 
-	$curr_total  = edd_sanitize_amount( $payment->total );
-	$new_total   = edd_sanitize_amount( $_POST['edd-payment-total'] );
-	$tax         = isset( $_POST['edd-payment-tax'] ) ? edd_sanitize_amount( $_POST['edd-payment-tax'] ) : 0;
-	$date        = date( 'Y-m-d', strtotime( $date ) ) . ' ' . $hour . ':' . $minute . ':00';
+	$curr_total = edd_sanitize_amount( $payment->total );
+	$new_total  = edd_sanitize_amount( $_POST['edd-payment-total'] );
+	$tax        = isset( $_POST['edd-payment-tax'] ) ? edd_sanitize_amount( $_POST['edd-payment-tax'] ) : 0;
+	$date       = date( 'Y-m-d', strtotime( $date ) ) . ' ' . $hour . ':' . $minute . ':00';
 
-	$curr_customer_id  = sanitize_text_field( $data['edd-current-customer'] );
-	$new_customer_id   = sanitize_text_field( $data['customer-id'] );
+	$curr_customer_id = sanitize_text_field( $data['edd-current-customer'] );
+	$new_customer_id  = sanitize_text_field( $data['customer-id'] );
 
 	// Setup purchased Downloads and price options
 	$updated_downloads = isset( $_POST['edd-payment-details-downloads'] ) ? $_POST['edd-payment-details-downloads'] : false;
@@ -143,8 +143,8 @@ function edd_update_payment_details( $data ) {
 
 	if ( isset( $data['edd-new-customer'] ) && $data['edd-new-customer'] == '1' ) {
 
-		$email      = isset( $data['edd-new-customer-email'] ) ? sanitize_text_field( $data['edd-new-customer-email'] ) : '';
-		$names      = isset( $data['edd-new-customer-name'] ) ? sanitize_text_field( $data['edd-new-customer-name'] ) : '';
+		$email = isset( $data['edd-new-customer-email'] ) ? sanitize_text_field( $data['edd-new-customer-email'] ) : '';
+		$names = isset( $data['edd-new-customer-name'] ) ? sanitize_text_field( $data['edd-new-customer-name'] ) : '';
 
 		if ( empty( $email ) || empty( $names ) ) {
 			wp_die( __( 'New Customers require a name and email address', 'easy-digital-downloads' ) );
@@ -161,7 +161,7 @@ function edd_update_payment_details( $data ) {
 			if ( ! $customer->create( $customer_data ) ) {
 				// Failed to crete the new customer, assume the previous customer
 				$customer_changed = false;
-				$customer = new EDD_Customer( $curr_customer_id );
+				$customer         = new EDD_Customer( $curr_customer_id );
 				edd_set_error( 'edd-payment-new-customer-fail', __( 'Error creating new customer', 'easy-digital-downloads' ) );
 			}
 		}
@@ -221,21 +221,21 @@ function edd_update_payment_details( $data ) {
 	}
 
 	// Set new meta values
-	$payment->user_id        = $customer->user_id;
-	$payment->email          = $customer->email;
-	$payment->first_name     = $first_name;
-	$payment->last_name      = $last_name;
-	$payment->address        = $address;
+	$payment->user_id    = $customer->user_id;
+	$payment->email      = $customer->email;
+	$payment->first_name = $first_name;
+	$payment->last_name  = $last_name;
+	$payment->address    = $address;
 
-	$payment->total          = $new_total;
-	$payment->tax            = $tax;
+	$payment->total = $new_total;
+	$payment->tax   = $tax;
 
 	$payment->has_unlimited_downloads = $unlimited;
 
 	// Check for payment notes
 	if ( ! empty( $data['edd-payment-note'] ) ) {
 
-		$note  = wp_kses( $data['edd-payment-note'], array() );
+		$note = wp_kses( $data['edd-payment-note'], array() );
 		edd_insert_payment_note( $payment->ID, $note );
 
 	}
