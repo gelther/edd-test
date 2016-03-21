@@ -73,7 +73,7 @@ function edd_maybe_remove_adminbar_profile_link() {
 	if ( edd_user_pending_verification() ) {
 
 		global $wp_admin_bar;
-		$wp_admin_bar->remove_menu('edit-profile', 'user-actions');
+		$wp_admin_bar->remove_menu( 'edit-profile', 'user-actions' );
 
 	}
 
