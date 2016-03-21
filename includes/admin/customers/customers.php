@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  * @return void
 */
 function edd_customers_page() {
-	$default_views = edd_customer_views();
+	$default_views  = edd_customer_views();
 	$requested_view = isset( $_GET['view'] ) ? sanitize_text_field( $_GET['view'] ) : 'customers';
 	if ( array_key_exists( $requested_view, $default_views ) && function_exists( $default_views[$requested_view] ) ) {
 		edd_render_customer_view( $requested_view, $default_views );
@@ -189,7 +189,7 @@ function edd_customers_view( $customer ) {
 				<?php if ( isset( $customer->user_id ) && $customer->user_id > 0 ) : ?>
 
 					<?php
-						$address = get_user_meta( $customer->user_id, '_edd_user_address', true );
+						$address  = get_user_meta( $customer->user_id, '_edd_user_address', true );
 						$defaults = array(
 							'line1'   => '',
 							'line2'   => '',
@@ -263,16 +263,16 @@ function edd_customers_view( $customer ) {
 					<span class="customer-user-id info-item edit-item">
 						<?php
 
-						$user_id    = $customer->user_id > 0 ? $customer->user_id : '';
-						$data_atts  = array( 'key' => 'user_login', 'exclude' => $user_id );
-						$user_args  = array(
+						$user_id   = $customer->user_id > 0 ? $customer->user_id : '';
+						$data_atts = array( 'key' => 'user_login', 'exclude' => $user_id );
+						$user_args = array(
 							'name'  => 'customerinfo[user_login]',
 							'class' => 'edd-user-dropdown',
 							'data'  => $data_atts,
 						);
 
 						if ( ! empty( $user_id ) ) {
-							$userdata = get_userdata( $user_id );
+							$userdata           = get_userdata( $user_id );
 							$user_args['value'] = $userdata->user_login;
 						}
 
