@@ -38,12 +38,12 @@ class EDD_License {
 	 */
 	function __construct( $_file, $_item, $_version, $_author, $_optname = null, $_api_url = null ) {
 
-		$this->file           = $_file;
+		$this->file = $_file;
 
 		if ( is_numeric( $_item ) ) {
-			$this->item_id    = absint( $_item );
+			$this->item_id = absint( $_item );
 		} else {
-			$this->item_name  = $_item;
+			$this->item_name = $_item;
 		}
 
 		$this->item_shortname = 'edd_' . preg_replace( '/[^a-zA-Z0-9_\s]/', '', str_replace( ' ', '_', strtolower( $this->item_name ) ) );
@@ -135,7 +135,7 @@ class EDD_License {
 		);
 
 		if ( ! empty( $this->item_id ) ) {
-			$args['item_id']   = $this->item_id;
+			$args['item_id'] = $this->item_id;
 		} else {
 			$args['item_name'] = $this->item_name;
 		}
