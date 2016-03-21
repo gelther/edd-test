@@ -63,8 +63,8 @@ class EDD_Customers_Export extends EDD_Export {
 	public function csv_cols() {
 		if ( ! empty( $_POST['edd_export_download'] ) ) {
 			$cols = array(
-				'first_name' => __( 'First Name',   'easy-digital-downloads' ),
-				'last_name'  => __( 'Last Name',   'easy-digital-downloads' ),
+				'first_name' => __( 'First Name', 'easy-digital-downloads' ),
+				'last_name'  => __( 'Last Name', 'easy-digital-downloads' ),
 				'email'      => __( 'Email', 'easy-digital-downloads' ),
 				'date'       => __( 'Date Purchased', 'easy-digital-downloads' )
 			);
@@ -73,13 +73,13 @@ class EDD_Customers_Export extends EDD_Export {
 			$cols = array();
 
 			if ( 'emails' != $_POST['edd_export_option'] ) {
-				$cols['name'] = __( 'Name',   'easy-digital-downloads' );
+				$cols['name'] = __( 'Name', 'easy-digital-downloads' );
 			}
 
-			$cols['email'] = __( 'Email',   'easy-digital-downloads' );
+			$cols['email'] = __( 'Email', 'easy-digital-downloads' );
 
 			if ( 'full' == $_POST['edd_export_option'] ) {
-				$cols['purchases'] = __( 'Total Purchases',   'easy-digital-downloads' );
+				$cols['purchases'] = __( 'Total Purchases', 'easy-digital-downloads' );
 				$cols['amount']    = __( 'Total Purchased', 'easy-digital-downloads' ) . ' (' . html_entity_decode( edd_currency_filter( '' ) ) . ')';
 			}
 
