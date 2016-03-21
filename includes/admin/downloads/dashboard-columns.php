@@ -18,7 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  * Defines the custom columns and their order
  *
  * @since 1.0
- * @param array $download_columns Array of download columns
+ * @param  array $download_columns Array of download columns
  * @return array $download_columns Updated array of download columns for Downloads
  * Post Type List Table
  */
@@ -45,8 +45,8 @@ add_filter( 'manage_edit-download_columns', 'edd_download_columns' );
  * Render Download Columns
  *
  * @since 1.0
- * @param string $column_name Column name
- * @param int $post_id Download (Post) ID
+ * @param  string $column_name Column name
+ * @param  int    $post_id     Download (Post) ID
  * @return void
  */
 function edd_render_download_columns( $column_name, $post_id ) {
@@ -93,7 +93,7 @@ add_action( 'manage_posts_custom_column', 'edd_render_download_columns', 10, 2 )
  * Registers the sortable columns in the list table
  *
  * @since 1.0
- * @param array $columns Array of the columns
+ * @param  array $columns Array of the columns
  * @return array $columns Array of sortable columns
  */
 function edd_sortable_download_columns( $columns ) {
@@ -109,7 +109,7 @@ add_filter( 'manage_edit-download_sortable_columns', 'edd_sortable_download_colu
  * Sorts Columns in the Downloads List Table
  *
  * @since 1.0
- * @param array $vars Array of all the sort variables
+ * @param  array $vars Array of all the sort variables
  * @return array $vars Array of all the sort variables
  */
 function edd_sort_downloads( $vars ) {
@@ -272,8 +272,8 @@ add_filter( 'months_dropdown_results', 'edd_remove_month_filter', 99 );
  * Adds price field to Quick Edit options
  *
  * @since 1.1.3.4
- * @param string $column_name Name of the column
- * @param string $post_type Current Post Type (i.e. download)
+ * @param  string $column_name Name of the column
+ * @param  string $post_type   Current Post Type (i.e. download)
  * @return void
  */
 function edd_price_field_quick_edit( $column_name, $post_type ) {
@@ -300,7 +300,7 @@ add_action( 'bulk_edit_custom_box', 'edd_price_field_quick_edit', 10, 2 );
  * Updates price when saving post
  *
  * @since 1.1.3.4
- * @param int $post_id Download (Post) ID
+ * @param  int  $post_id Download (Post) ID
  * @return void
  */
 function edd_price_save_quick_edit( $post_id ) {
