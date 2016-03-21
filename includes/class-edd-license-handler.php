@@ -29,12 +29,12 @@ class EDD_License {
 	/**
 	 * Class constructor
 	 *
-	 * @param string  $_file
-	 * @param string  $_item_name
-	 * @param string  $_version
-	 * @param string  $_author
-	 * @param string  $_optname
-	 * @param string  $_api_url
+	 * @param string $_file
+	 * @param string $_item_name
+	 * @param string $_version
+	 * @param string $_author
+	 * @param string $_optname
+	 * @param string $_api_url
 	 */
 	function __construct( $_file, $_item, $_version, $_author, $_optname = null, $_api_url = null ) {
 
@@ -76,7 +76,7 @@ class EDD_License {
 	 * Include the updater class
 	 *
 	 * @access  private
-	 * @return  void
+	 * @return void
 	 */
 	private function includes() {
 		if ( ! class_exists( 'EDD_SL_Plugin_Updater' ) ) {
@@ -88,7 +88,7 @@ class EDD_License {
 	 * Setup hooks
 	 *
 	 * @access  private
-	 * @return  void
+	 * @return void
 	 */
 	private function hooks() {
 
@@ -124,7 +124,7 @@ class EDD_License {
 	 * Auto updater
 	 *
 	 * @access  private
-	 * @return  void
+	 * @return void
 	 */
 	public function auto_updater() {
 
@@ -153,8 +153,8 @@ class EDD_License {
 	 * Add license field to settings
 	 *
 	 * @access  public
-	 * @param array   $settings
-	 * @return  array
+	 * @param  array $settings
+	 * @return array
 	 */
 	public function settings( $settings ) {
 		$edd_license_settings = array(
@@ -177,8 +177,8 @@ class EDD_License {
 	 *
 	 * @access  public
 	 * @since   2.5
-	 * @param   string   $active_tab
-	 * @return  void
+	 * @param  string $active_tab
+	 * @return void
 	 */
 	public function license_help_text( $active_tab = '' ) {
 
@@ -206,7 +206,7 @@ class EDD_License {
 	 * Activate the license key
 	 *
 	 * @access  public
-	 * @return  void
+	 * @return void
 	 */
 	public function activate_license() {
 
@@ -289,7 +289,7 @@ class EDD_License {
 	 * Deactivate the license key
 	 *
 	 * @access  public
-	 * @return  void
+	 * @return void
 	 */
 	public function deactivate_license() {
 
@@ -349,7 +349,7 @@ class EDD_License {
 	 *
 	 * @access  public
 	 * @since   2.5
-	 * @return  void
+	 * @return void
 	 */
 	public function weekly_license_check() {
 
@@ -395,7 +395,7 @@ class EDD_License {
 	 * Admin notices for errors
 	 *
 	 * @access  public
-	 * @return  void
+	 * @return void
 	 */
 	public function notices() {
 
@@ -447,7 +447,7 @@ class EDD_License {
 	 *
 	 * @access  public
 	 * @since   2.5
-	 * @return  void
+	 * @return void
 	 */
 	public function plugin_row_license_missing( $plugin_data, $version_info ) {
 
