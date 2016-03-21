@@ -59,7 +59,7 @@ function edd_load_dashboard_sales_widget() {
 			<table>
 				<thead>
 					<tr>
-						<td colspan="2"><?php _e( 'Current Month', 'easy-digital-downloads' ) ?></td>
+						<td colspan="2"><?php _e( 'Current Month', 'easy-digital-downloads' ); ?></td>
 					</tr>
 				</thead>
 				<tbody>
@@ -77,7 +77,7 @@ function edd_load_dashboard_sales_widget() {
 			<table>
 				<thead>
 					<tr>
-						<td colspan="2"><?php _e( 'Last Month', 'easy-digital-downloads' ) ?></td>
+						<td colspan="2"><?php _e( 'Last Month', 'easy-digital-downloads' ); ?></td>
 					</tr>
 				</thead>
 				<tbody>
@@ -130,7 +130,7 @@ function edd_load_dashboard_sales_widget() {
 			<table>
 				<thead>
 					<tr>
-						<td colspan="2"><?php _e( 'Totals', 'easy-digital-downloads' ) ?></td>
+						<td colspan="2"><?php _e( 'Totals', 'easy-digital-downloads' ); ?></td>
 					</tr>
 				</thead>
 				<tbody>
@@ -172,8 +172,8 @@ function edd_load_dashboard_sales_widget() {
 						<tr>
 							<td class="edd_order_label">
 								<a href="<?php echo add_query_arg( 'id', $payment->ID, admin_url( 'edit.php?post_type=download&page=edd-payment-history&view=view-order-details' ) ); ?>" title="<?php printf( __( 'Purchase Details for Payment #%s', 'easy-digital-downloads' ), $payment->ID ); ?> ">
-									<?php echo get_the_title( $payment->ID ) ?>
-									&mdash; <?php echo $payment->user_info['email'] ?>
+									<?php echo get_the_title( $payment->ID ); ?>
+									&mdash; <?php echo $payment->user_info['email']; ?>
 								</a>
 								<?php if ( $payment->user_info['id'] > 0 ) {
 									$user = get_user_by( 'id', $payment->user_info['id'] );
