@@ -92,7 +92,7 @@ class EDD_Batch_Export extends EDD_Export {
 	public $is_writable = true;
 
 	/**
-	 *  Is the export file empty
+	 * Is the export file empty
 	 *
 	 * @since 2.4.4
 	 */
