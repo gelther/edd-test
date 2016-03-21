@@ -341,12 +341,12 @@ class EDD_Stats {
 						if ( ! $end_date ) {
 							$month = 10;
 						} else {
-							$year -= 1;
-							$month  = 12;
-							$day    = cal_days_in_month( CAL_GREGORIAN, $month, $year );
-							$hour   = 23;
-							$minute = 59;
-							$second = 59;
+							$year   -= 1;
+							$month   = 12;
+							$day     = cal_days_in_month( CAL_GREGORIAN, $month, $year );
+							$hour    = 23;
+							$minute  = 59;
+							$second  = 59;
 						}
 
 					} else if ( $month_now <= 6 ) {
