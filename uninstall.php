@@ -3,14 +3,14 @@
  * Uninstall Easy Digital Downloads
  *
  * Deletes all the plugin data i.e.
- * 		1. Custom Post types.
- * 		2. Terms & Taxonomies.
- * 		3. Plugin pages.
- * 		4. Plugin options.
- * 		5. Capabilities.
- * 		6. Roles.
- * 		7. Database tables.
- * 		8. Cron events.
+ * 1. Custom Post types.
+ * 2. Terms & Taxonomies.
+ * 3. Plugin pages.
+ * 4. Plugin options.
+ * 5. Capabilities.
+ * 6. Roles.
+ * 7. Database tables.
+ * 8. Cron events.
  *
  * @package     EDD
  * @subpackage  Uninstall
