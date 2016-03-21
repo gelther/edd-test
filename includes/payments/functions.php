@@ -27,7 +27,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  * As of EDD 1.8 this simply wraps EDD_Payments_Query
  *
  * @since 1.0
- * @param array $args Arguments passed to get payments
+ * @param  array  $args     Arguments passed to get payments
  * @return object $payments Payments retrieved from the database
  */
 function edd_get_payments( $args = array() ) {
@@ -46,9 +46,9 @@ function edd_get_payments( $args = array() ) {
  * Retrieve payment by a given field
  *
  * @since       2.0
- * @param       string $field The field to retrieve the payment with
- * @param       mixed $value The value for $field
- * @return      mixed
+ * @param  string $field The field to retrieve the payment with
+ * @param  mixed  $value The value for $field
+ * @return mixed
  */
 function edd_get_payment_by( $field = '', $value = '' ) {
 
@@ -111,8 +111,8 @@ function edd_get_payment_by( $field = '', $value = '' ) {
  * Insert Payment
  *
  * @since 1.0
- * @param array $payment_data
- * @return int|bool Payment ID if payment is inserted, false otherwise
+ * @param  array    $payment_data
+ * @return int|bool               Payment ID if payment is inserted, false otherwise
  */
 function edd_insert_payment( $payment_data = array() ) {
 
@@ -213,8 +213,8 @@ function edd_update_payment_status( $payment_id, $new_status = 'publish' ) {
  *
  * @uses EDD_Logging::delete_logs()
  *
- * @param int $payment_id Payment ID (default: 0)
- * @param bool $update_customer If we should update the customer stats (default:true)
+ * @param int  $payment_id           Payment ID (default: 0)
+ * @param bool $update_customer      If we should update the customer stats (default:true)
  * @param bool $delete_download_logs If we should remove all file download logs associated with the payment (default:false)
  *
  * @return void
@@ -293,8 +293,8 @@ function edd_delete_purchase( $payment_id = 0, $update_customer = true, $delete_
  * when refunding or deleting a purchase
  *
  * @since 1.0.8.1
- * @param int $download_id Download (Post) ID
- * @param int $payment_id Payment ID
+ * @param  int  $download_id Download (Post) ID
+ * @param  int  $payment_id  Payment ID
  * @return void
  */
 function edd_undo_purchase( $download_id = false, $payment_id ) {
@@ -362,7 +362,7 @@ function edd_undo_purchase( $download_id = false, $payment_id ) {
  * Returns the total number of payments recorded.
  *
  * @since 1.0
- * @param array $args
+ * @param  array $args
  * @return array $count Number of payments sorted by payment status
  */
 function edd_count_payments( $args = array() ) {
@@ -557,8 +557,8 @@ function edd_count_payments( $args = array() ) {
  * Check For Existing Payment
  *
  * @since 1.0
- * @param int $payment_id Payment ID
- * @return bool true if payment exists, false otherwise
+ * @param  int  $payment_id Payment ID
+ * @return bool             true if payment exists, false otherwise
  */
 function edd_check_for_existing_payment( $payment_id ) {
 	$exists  = false;
@@ -577,7 +577,7 @@ function edd_check_for_existing_payment( $payment_id ) {
  * @since 1.0
  *
  * @param WP_Post $payment
- * @param bool   $return_label Whether to return the payment status or not
+ * @param bool    $return_label Whether to return the payment status or not
  *
  * @return bool|mixed if payment status exists, false otherwise
  */
@@ -646,11 +646,11 @@ function edd_get_payment_status_keys() {
  * Get Earnings By Date
  *
  * @since 1.0
- * @param int $day Day number
- * @param int $month_num Month number
- * @param int $year Year
- * @param int $hour Hour
- * @return int $earnings Earnings
+ * @param  int $day       Day number
+ * @param  int $month_num Month number
+ * @param  int $year      Year
+ * @param  int $hour      Hour
+ * @return int $earnings  Earnings
  */
 function edd_get_earnings_by_date( $day = null, $month_num, $year = null, $hour = null, $include_taxes = true ) {
 
@@ -705,11 +705,11 @@ function edd_get_earnings_by_date( $day = null, $month_num, $year = null, $hour 
  *
  * @since 1.1.4.0
  * @author Sunny Ratilal
- * @param int $day Day number
- * @param int $month_num Month number
- * @param int $year Year
- * @param int $hour Hour
- * @return int $count Sales
+ * @param  int $day       Day number
+ * @param  int $month_num Month number
+ * @param  int $year      Year
+ * @param  int $hour      Hour
+ * @return int $count     Sales
  */
 function edd_get_sales_by_date( $day = null, $month_num = null, $year = null, $hour = null ) {
 
@@ -766,8 +766,8 @@ function edd_get_sales_by_date( $day = null, $month_num = null, $year = null, $h
  * Checks whether a payment has been marked as complete.
  *
  * @since 1.0.8
- * @param int $payment_id Payment ID to check against
- * @return bool true if complete, false otherwise
+ * @param  int  $payment_id Payment ID to check against
+ * @return bool             true if complete, false otherwise
  */
 function edd_is_payment_complete( $payment_id = 0 ) {
 	$payment = new EDD_Payment( $payment_id );
@@ -864,8 +864,8 @@ function edd_get_total_earnings() {
  * Increase the Total Earnings
  *
  * @since 1.8.4
- * @param $amount int The amount you would like to increase the total earnings by.
- * @return float $total Total earnings
+ * @param        $amount int The amount you would like to increase the total earnings by.
+ * @return float $total  Total earnings
  */
 function edd_increase_total_earnings( $amount = 0 ) {
 	$total  = edd_get_total_earnings();
@@ -878,8 +878,8 @@ function edd_increase_total_earnings( $amount = 0 ) {
  * Decrease the Total Earnings
  *
  * @since 1.8.4
- * @param $amount int The amount you would like to decrease the total earnings by.
- * @return float $total Total earnings
+ * @param        $amount int The amount you would like to decrease the total earnings by.
+ * @return float $total  Total earnings
  */
 function edd_decrease_total_earnings( $amount = 0 ) {
 	$total  = edd_get_total_earnings();
@@ -895,10 +895,10 @@ function edd_decrease_total_earnings( $amount = 0 ) {
  * Get Payment Meta for a specific Payment
  *
  * @since 1.2
- * @param int $payment_id Payment ID
- * @param string $meta_key The meta key to pull
- * @param bool $single Pull single meta entry or as an object
- * @return mixed $meta Payment Meta
+ * @param  int    $payment_id Payment ID
+ * @param  string $meta_key   The meta key to pull
+ * @param  bool   $single     Pull single meta entry or as an object
+ * @return mixed  $meta       Payment Meta
  */
 function edd_get_payment_meta( $payment_id = 0, $meta_key = '_edd_payment_meta', $single = true ) {
 	$payment = new EDD_Payment( $payment_id );
@@ -922,8 +922,8 @@ function edd_update_payment_meta( $payment_id = 0, $meta_key = '', $meta_value =
  * Get the user_info Key from Payment Meta
  *
  * @since 1.2
- * @param int $payment_id Payment ID
- * @return array $user_info User Info Meta Values
+ * @param  int   $payment_id Payment ID
+ * @return array $user_info  User Info Meta Values
  */
 function edd_get_payment_meta_user_info( $payment_id ) {
 	$payment = new EDD_Payment( $payment_id );
@@ -934,8 +934,8 @@ function edd_get_payment_meta_user_info( $payment_id ) {
  * Get the downloads Key from Payment Meta
  *
  * @since 1.2
- * @param int $payment_id Payment ID
- * @return array $downloads Downloads Meta Values
+ * @param  int   $payment_id Payment ID
+ * @return array $downloads  Downloads Meta Values
  */
 function edd_get_payment_meta_downloads( $payment_id ) {
 	$payment = new EDD_Payment( $payment_id );
@@ -946,9 +946,9 @@ function edd_get_payment_meta_downloads( $payment_id ) {
  * Get the cart_details Key from Payment Meta
  *
  * @since 1.2
- * @param int $payment_id Payment ID
- * @param bool $include_bundle_files Whether to retrieve product IDs associated with a bundled product and return them in the array
- * @return array $cart_details Cart Details Meta Values
+ * @param  int   $payment_id           Payment ID
+ * @param  bool  $include_bundle_files Whether to retrieve product IDs associated with a bundled product and return them in the array
+ * @return array $cart_details         Cart Details Meta Values
  */
 function edd_get_payment_meta_cart_details( $payment_id, $include_bundle_files = false ) {
 	$payment      = new EDD_Payment( $payment_id );
@@ -1006,8 +1006,8 @@ function edd_get_payment_meta_cart_details( $payment_id, $include_bundle_files =
  * Get the user email associated with a payment
  *
  * @since 1.2
- * @param int $payment_id Payment ID
- * @return string $email User Email
+ * @param  int    $payment_id Payment ID
+ * @return string $email      User Email
  */
 function edd_get_payment_user_email( $payment_id ) {
 	$payment = new EDD_Payment( $payment_id );
@@ -1018,8 +1018,8 @@ function edd_get_payment_user_email( $payment_id ) {
  * Is the payment provided associated with a user account
  *
  * @since  2.4.4
- * @param  int $payment_id The payment ID
- * @return bool            If the payment is associted with a user (false) or not (true)
+ * @param  int  $payment_id The payment ID
+ * @return bool             If the payment is associted with a user (false) or not (true)
  */
 function edd_is_guest_payment( $payment_id ) {
 	$payment_user_id  = edd_get_payment_user_id( $payment_id );
@@ -1032,8 +1032,8 @@ function edd_is_guest_payment( $payment_id ) {
  * Get the user ID associated with a payment
  *
  * @since 1.5.1
- * @param int $payment_id Payment ID
- * @return string $user_id User ID
+ * @param  int    $payment_id Payment ID
+ * @return string $user_id    User ID
  */
 function edd_get_payment_user_id( $payment_id ) {
 	$payment = new EDD_Payment( $payment_id );
@@ -1044,7 +1044,7 @@ function edd_get_payment_user_id( $payment_id ) {
  * Get the customer ID associated with a payment
  *
  * @since 2.1
- * @param int $payment_id Payment ID
+ * @param  int    $payment_id  Payment ID
  * @return string $customer_id Customer ID
  */
 function edd_get_payment_customer_id( $payment_id ) {
@@ -1056,7 +1056,7 @@ function edd_get_payment_customer_id( $payment_id ) {
  * Get the status of the unlimited downloads flag
  *
  * @since 2.0
- * @param int $payment_id Payment ID
+ * @param  int  $payment_id Payment ID
  * @return bool $unlimited
  */
 function edd_payment_has_unlimited_downloads( $payment_id ) {
@@ -1068,8 +1068,8 @@ function edd_payment_has_unlimited_downloads( $payment_id ) {
  * Get the IP address used to make a purchase
  *
  * @since 1.9
- * @param int $payment_id Payment ID
- * @return string $ip User IP
+ * @param  int    $payment_id Payment ID
+ * @return string $ip         User IP
  */
 function edd_get_payment_user_ip( $payment_id ) {
 	$payment = new EDD_Payment( $payment_id );
@@ -1080,8 +1080,8 @@ function edd_get_payment_user_ip( $payment_id ) {
  * Get the date a payment was completed
  *
  * @since 2.0
- * @param int $payment_id Payment ID
- * @return string $date The date the payment was completed
+ * @param  int    $payment_id Payment ID
+ * @return string $date       The date the payment was completed
  */
 function edd_get_payment_completed_date( $payment_id = 0 ) {
 	$payment = new EDD_Payment( $payment_id );
@@ -1092,8 +1092,8 @@ function edd_get_payment_completed_date( $payment_id = 0 ) {
  * Get the gateway associated with a payment
  *
  * @since 1.2
- * @param int $payment_id Payment ID
- * @return string $gateway Gateway
+ * @param  int    $payment_id Payment ID
+ * @return string $gateway    Gateway
  */
 function edd_get_payment_gateway( $payment_id ) {
 	$payment = new EDD_Payment( $payment_id );
@@ -1104,8 +1104,8 @@ function edd_get_payment_gateway( $payment_id ) {
  * Get the currency code a payment was made in
  *
  * @since 2.2
- * @param int $payment_id Payment ID
- * @return string $currency The currency code
+ * @param  int    $payment_id Payment ID
+ * @return string $currency   The currency code
  */
 function edd_get_payment_currency_code( $payment_id = 0 ) {
 	$payment = new EDD_Payment( $payment_id );
@@ -1116,8 +1116,8 @@ function edd_get_payment_currency_code( $payment_id = 0 ) {
  * Get the currency name a payment was made in
  *
  * @since 2.2
- * @param int $payment_id Payment ID
- * @return string $currency The currency name
+ * @param  int    $payment_id Payment ID
+ * @return string $currency   The currency name
  */
 function edd_get_payment_currency( $payment_id = 0 ) {
 	$currency = edd_get_payment_currency_code( $payment_id );
@@ -1128,8 +1128,8 @@ function edd_get_payment_currency( $payment_id = 0 ) {
  * Get the purchase key for a purchase
  *
  * @since 1.2
- * @param int $payment_id Payment ID
- * @return string $key Purchase key
+ * @param  int    $payment_id Payment ID
+ * @return string $key        Purchase key
  */
 function edd_get_payment_key( $payment_id = 0 ) {
 	$payment = new EDD_Payment( $payment_id );
@@ -1142,8 +1142,8 @@ function edd_get_payment_key( $payment_id = 0 ) {
  * This will return the payment ID if sequential order numbers are not enabled or the order number does not exist
  *
  * @since 2.0
- * @param int $payment_id Payment ID
- * @return string $number Payment order number
+ * @param  int    $payment_id Payment ID
+ * @return string $number     Payment order number
  */
 function edd_get_payment_number( $payment_id = 0 ) {
 	$payment = new EDD_Payment( $payment_id );
@@ -1154,8 +1154,8 @@ function edd_get_payment_number( $payment_id = 0 ) {
  * Formats the payment number with the prefix and postfix
  *
  * @since  2.4
- * @param  int $number The payment number to format
- * @return string      The formatted payment number
+ * @param  int    $number The payment number to format
+ * @return string         The formatted payment number
  */
 function edd_format_payment_number( $number ) {
 
@@ -1240,8 +1240,8 @@ function edd_get_next_payment_number() {
  * Given a given a number, remove the pre/postfix
  *
  * @since  2.4
- * @param  string $number  The formatted Current Number to increment
- * @return string          The new Payment number without prefix and postfix
+ * @param  string $number The formatted Current Number to increment
+ * @return string         The new Payment number without prefix and postfix
  */
 function edd_remove_payment_prefix_postfix( $number ) {
 
@@ -1271,8 +1271,8 @@ function edd_remove_payment_prefix_postfix( $number ) {
  * edd_format_amount() to format the amount correctly.
  *
  * @since 1.4
- * @param int $payment_id Payment ID
- * @return string $amount Fully formatted payment amount
+ * @param  int    $payment_id Payment ID
+ * @return string $amount     Fully formatted payment amount
  */
 function edd_payment_amount( $payment_id = 0 ) {
 	$amount = edd_get_payment_amount( $payment_id );
@@ -1315,8 +1315,8 @@ function edd_payment_subtotal( $payment_id = 0 ) {
  * returns a non formatted amount.
  *
  * @since 1.3.3
- * @param int $payment_id Payment ID
- * @return float $subtotal Subtotal for payment (non formatted)
+ * @param  int   $payment_id Payment ID
+ * @return float $subtotal   Subtotal for payment (non formatted)
  */
 function edd_get_payment_subtotal( $payment_id = 0 ) {
 	$payment = new EDD_Payment( $payment_id );
@@ -1330,9 +1330,9 @@ function edd_get_payment_subtotal( $payment_id = 0 ) {
  *
  * @since 1.3.3
  * @see edd_get_payment_tax()
- * @param int $payment_id Payment ID
- * @param bool $payment_meta Payment Meta provided? (default: false)
- * @return string $subtotal Fully formatted payment subtotal
+ * @param  int    $payment_id   Payment ID
+ * @param  bool   $payment_meta Payment Meta provided? (default: false)
+ * @return string $subtotal     Fully formatted payment subtotal
  */
 function edd_payment_tax( $payment_id = 0, $payment_meta = false ) {
 	$tax = edd_get_payment_tax( $payment_id, $payment_meta );
@@ -1344,9 +1344,9 @@ function edd_payment_tax( $payment_id = 0, $payment_meta = false ) {
  * Retrieves taxed amount for payment and then returns a non formatted amount
  *
  * @since 1.3.3
- * @param int $payment_id Payment ID
- * @param bool $payment_meta Get payment meta?
- * @return float $tax Tax for payment (non formatted)
+ * @param  int   $payment_id   Payment ID
+ * @param  bool  $payment_meta Get payment meta?
+ * @return float $tax          Tax for payment (non formatted)
  */
 function edd_get_payment_tax( $payment_id = 0, $payment_meta = false ) {
 	$payment = new EDD_Payment( $payment_id );
@@ -1380,9 +1380,9 @@ function edd_get_payment_item_tax( $payment_id = 0, $cart_key = false ) {
  * Retrieves arbitrary fees for the payment
  *
  * @since 1.5
- * @param int $payment_id Payment ID
- * @param string $type Fee type
- * @return mixed array if payment fees found, false otherwise
+ * @param  int    $payment_id Payment ID
+ * @param  string $type       Fee type
+ * @return mixed              array if payment fees found, false otherwise
  */
 function edd_get_payment_fees( $payment_id = 0, $type = 'all' ) {
 	$payment = new EDD_Payment( $payment_id );
@@ -1393,7 +1393,7 @@ function edd_get_payment_fees( $payment_id = 0, $type = 'all' ) {
  * Retrieves the transaction ID for the given payment
  *
  * @since  2.1
- * @param int payment_id Payment ID
+ * @param  int    payment_id Payment ID
  * @return string The Transaction ID
  */
 function edd_get_payment_transaction_id( $payment_id = 0 ) {
@@ -1405,7 +1405,7 @@ function edd_get_payment_transaction_id( $payment_id = 0 ) {
  * Sets a Transaction ID in post meta for the given Payment ID
  *
  * @since  2.1
- * @param int payment_id Payment ID
+ * @param int    payment_id Payment ID
  * @param string transaction_id The transaciton ID from the gateway
  */
 function edd_set_payment_transaction_id( $payment_id = 0, $transaction_id = '' ) {
@@ -1425,8 +1425,8 @@ function edd_set_payment_transaction_id( $payment_id = 0, $transaction_id = '' )
  * @since 1.3.2
  * @global object $wpdb Used to query the database using the WordPress
  * Database API
- * @param string $key the purchase key to search for
- * @return int $purchase Purchase ID
+ * @param  string $key      the purchase key to search for
+ * @return int    $purchase Purchase ID
  */
 function edd_get_purchase_id_by_key( $key ) {
 	global $wpdb;
@@ -1445,8 +1445,8 @@ function edd_get_purchase_id_by_key( $key ) {
  * @since 2.4
  * @global object $wpdb Used to query the database using the WordPress
  * Database API
- * @param string $key the transaction ID to search for
- * @return int $purchase Purchase ID
+ * @param  string $key      the transaction ID to search for
+ * @return int    $purchase Purchase ID
  */
 function edd_get_purchase_id_by_transaction_id( $key ) {
 	global $wpdb;
@@ -1463,9 +1463,9 @@ function edd_get_purchase_id_by_transaction_id( $key ) {
  * Retrieve all notes attached to a purchase
  *
  * @since 1.4
- * @param int $payment_id The payment ID to retrieve notes for
- * @param string $search Search for notes that contain a search term
- * @return array $notes Payment Notes
+ * @param  int    $payment_id The payment ID to retrieve notes for
+ * @param  string $search     Search for notes that contain a search term
+ * @return array  $notes      Payment Notes
  */
 function edd_get_payment_notes( $payment_id = 0, $search = '' ) {
 
@@ -1489,9 +1489,9 @@ function edd_get_payment_notes( $payment_id = 0, $search = '' ) {
  * Add a note to a payment
  *
  * @since 1.4
- * @param int $payment_id The payment ID to store a note for
- * @param string $note The note to store
- * @return int The new note ID
+ * @param  int    $payment_id The payment ID to store a note for
+ * @param  string $note       The note to store
+ * @return int                The new note ID
  */
 function edd_insert_payment_note( $payment_id = 0, $note = '' ) {
 	if ( empty( $payment_id ) )
@@ -1524,9 +1524,9 @@ function edd_insert_payment_note( $payment_id = 0, $note = '' ) {
  * Deletes a payment note
  *
  * @since 1.6
- * @param int $comment_id The comment ID to delete
- * @param int $payment_id The payment ID the note is connected to
- * @return bool True on success, false otherwise
+ * @param  int  $comment_id The comment ID to delete
+ * @param  int  $payment_id The payment ID the note is connected to
+ * @return bool             True on success, false otherwise
  */
 function edd_delete_payment_note( $comment_id = 0, $payment_id = 0 ) {
 	if ( empty( $comment_id ) )
@@ -1543,8 +1543,8 @@ function edd_delete_payment_note( $comment_id = 0, $payment_id = 0 ) {
  * Gets the payment note HTML
  *
  * @since 1.9
- * @param object|int $note The comment object or ID
- * @param int $payment_id The payment ID the note is connected to
+ * @param  object|int $note       The comment object or ID
+ * @param  int        $payment_id The payment ID the note is connected to
  * @return string
  */
 function edd_get_payment_note_html( $note, $payment_id = 0 ) {
@@ -1585,7 +1585,7 @@ function edd_get_payment_note_html( $note, $payment_id = 0 ) {
  * Comments widgets
  *
  * @since 1.4.1
- * @param obj $query WordPress Comment Query Object
+ * @param  obj  $query WordPress Comment Query Object
  * @return void
  */
 function edd_hide_payment_notes( $query ) {
@@ -1607,9 +1607,9 @@ add_action( 'pre_get_comments', 'edd_hide_payment_notes', 10 );
  * Comments widgets
  *
  * @since 2.2
- * @param array $clauses Comment clauses for comment query
- * @param obj $wp_comment_query WordPress Comment Query Object
- * @return array $clauses Updated comment clauses
+ * @param  array $clauses          Comment clauses for comment query
+ * @param  obj   $wp_comment_query WordPress Comment Query Object
+ * @return array $clauses          Updated comment clauses
  */
 function edd_hide_payment_notes_pre_41( $clauses, $wp_comment_query ) {
 	global $wpdb, $wp_version;
@@ -1626,8 +1626,8 @@ add_filter( 'comments_clauses', 'edd_hide_payment_notes_pre_41', 10, 2 );
  * Exclude notes (comments) on edd_payment post type from showing in comment feeds
  *
  * @since 1.5.1
- * @param array $where
- * @param obj $wp_comment_query WordPress Comment Query Object
+ * @param  array $where
+ * @param  obj   $wp_comment_query WordPress Comment Query Object
  * @return array $where
  */
 function edd_hide_payment_notes_from_feeds( $where, $wp_comment_query ) {
@@ -1644,9 +1644,9 @@ add_filter( 'comment_feed_where', 'edd_hide_payment_notes_from_feeds', 10, 2 );
  *
  * @access public
  * @since 1.5.2
- * @param array $stats (empty from core filter)
- * @param int $post_id Post ID
- * @return array Array of comment counts
+ * @param  array $stats   (empty from core filter)
+ * @param  int   $post_id Post ID
+ * @return array          Array of comment counts
 */
 function edd_remove_payment_notes_in_comment_counts( $stats, $post_id ) {
 	global $wpdb, $pagenow;
@@ -1701,7 +1701,7 @@ add_filter( 'wp_count_comments', 'edd_remove_payment_notes_in_comment_counts', 1
  *
  * @access public
  * @since 1.6
- * @param string $where Where clause
+ * @param  string $where Where clause
  * @return string $where Modified where clause
 */
 function edd_filter_where_older_than_week( $where = '' ) {
