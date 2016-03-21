@@ -70,8 +70,8 @@ function edd_append_no_cache_param( $settings ) {
 
 	$settings[] = array(
 		'id' => 'no_cache_checkout',
-		'name' => __('No Caching on Checkout?', 'easy-digital-downloads' ),
-		'desc' => __('Check this box in order to append a ?nocache parameter to the checkout URL to prevent caching plugins from caching the page.', 'easy-digital-downloads' ),
+		'name' => __( 'No Caching on Checkout?', 'easy-digital-downloads' ),
+		'desc' => __( 'Check this box in order to append a ?nocache parameter to the checkout URL to prevent caching plugins from caching the page.', 'easy-digital-downloads' ),
 		'type' => 'checkbox'
 	);
 
@@ -136,7 +136,7 @@ add_action( 'template_redirect', 'edd_disable_woo_ssl_on_checkout', 9 );
 function edd_disable_mandrill_nl2br() {
 	add_filter( 'mandrill_nl2br', '__return_false' );
 }
-add_action( 'edd_email_send_before', 'edd_disable_mandrill_nl2br');
+add_action( 'edd_email_send_before', 'edd_disable_mandrill_nl2br' );
 
 /**
  * Prevents the Purchase Confirmation screen from being detected as a 404 error in the 404 Redirected plugin
