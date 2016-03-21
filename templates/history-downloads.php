@@ -22,9 +22,9 @@ if ( $purchases ) :
 			</tr>
 		</thead>
 		<?php foreach ( $purchases as $payment ) :
-			$downloads      = edd_get_payment_meta_cart_details( $payment->ID, true );
-			$purchase_data  = edd_get_payment_meta( $payment->ID );
-			$email          = edd_get_payment_user_email( $payment->ID );
+			$downloads     = edd_get_payment_meta_cart_details( $payment->ID, true );
+			$purchase_data = edd_get_payment_meta( $payment->ID );
+			$email         = edd_get_payment_user_email( $payment->ID );
 
 			if ( $downloads ) :
 				foreach ( $downloads as $download ) :
@@ -35,7 +35,7 @@ if ( $purchases ) :
 
 					<tr class="edd_download_history_row">
 						<?php
-						$price_id 		= edd_get_cart_item_price_id( $download );
+						$price_id       = edd_get_cart_item_price_id( $download );
 						$download_files = edd_get_download_files( $download['id'], $price_id );
 						$name           = get_the_title( $download['id'] );
 
