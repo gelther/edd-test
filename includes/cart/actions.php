@@ -61,7 +61,7 @@ add_action( 'template_redirect', 'edd_process_cart_endpoints', 100 );
  *
  * @since 1.0
  *
- * @param $data
+ * @param  $data
  */
 function edd_process_add_to_cart( $data ) {
 	$download_id = absint( $data['download_id'] );
@@ -93,7 +93,7 @@ add_action( 'edd_add_to_cart', 'edd_process_add_to_cart' );
  *
  * @since 1.0
  *
- * @param $data
+ * @param  $data
  */
 function edd_process_remove_from_cart( $data ) {
 	$cart_key = absint( $_GET['cart_item'] );
@@ -107,7 +107,7 @@ add_action( 'edd_remove', 'edd_process_remove_from_cart' );
  *
  * @since 2.0
  *
- * @param $data
+ * @param  $data
  */
 function edd_process_remove_fee_from_cart( $data ) {
 	$fee = sanitize_text_field( $data['fee'] );
@@ -121,7 +121,7 @@ add_action( 'edd_remove_fee', 'edd_process_remove_fee_from_cart' );
  *
  * @since 1.0
  *
- * @param $data
+ * @param  $data
  */
 function edd_process_collection_purchase( $data ) {
 	$taxonomy   = urldecode( $data['taxonomy'] );
