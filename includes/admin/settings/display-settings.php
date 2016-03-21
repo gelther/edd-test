@@ -23,7 +23,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 function edd_options_page() {
 
 	$settings_tabs = edd_get_settings_tabs();
-	$settings_tabs = empty($settings_tabs) ? array() : $settings_tabs;
+	$settings_tabs = empty( $settings_tabs ) ? array() : $settings_tabs;
 	$active_tab    = isset( $_GET['tab'] ) && array_key_exists( $_GET['tab'], $settings_tabs ) ? $_GET['tab'] : 'general';
 	$sections      = edd_get_settings_tab_sections( $active_tab );
 	$key           = 'main';
@@ -123,7 +123,7 @@ function edd_options_page() {
 
 				do_settings_sections( 'edd_settings_' . $active_tab . '_' . $section );
 
-				do_action( 'edd_settings_tab_bottom_' . $active_tab . '_' . $section  );
+				do_action( 'edd_settings_tab_bottom_' . $active_tab . '_' . $section );
 
 				// For backwards compatibility
 				if ( 'main' === $section ) {
