@@ -79,7 +79,7 @@ $heading    = EDD()->emails->get_heading();
 						</div>
 					<?php endif; ?>
 					<table border="0" cellpadding="0" cellspacing="0" width="520" id="template_container" style="<?php echo $template_container; ?>">
-						<?php if ( ! empty ( $heading ) ) : ?>
+						<?php if ( ! empty( $heading ) ) : ?>
 							<tr>
 								<td align="center" valign="top">
 									<!-- Header -->

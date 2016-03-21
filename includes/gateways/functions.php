@@ -351,7 +351,7 @@ function edd_get_chosen_gateway() {
 		$chosen = preg_replace( '/[^a-zA-Z0-9-_]+/', '', $chosen );
 	}
 
-	if ( ! empty ( $chosen ) ) {
+	if ( ! empty( $chosen ) ) {
 		$enabled_gateway = urldecode( $chosen );
 	} elseif ( count( $gateways ) >= 1 && ! $chosen ) {
 		foreach ( $gateways as $gateway_id => $gateway ) :

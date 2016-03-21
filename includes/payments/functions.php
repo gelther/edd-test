@@ -490,7 +490,7 @@ function edd_count_payments( $args = array() ) {
 
 	}
 
-	if ( ! empty ( $args['end-date'] ) && false !== strpos( $args['end-date'], '/' ) ) {
+	if ( ! empty( $args['end-date'] ) && false !== strpos( $args['end-date'], '/' ) ) {
 
 		$date_parts = explode( '/', $args['end-date'] );
 

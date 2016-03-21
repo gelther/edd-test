@@ -112,7 +112,7 @@ function edd_generate_pdf( $data ) {
 			$tags = $tags ? strip_tags( $tags ) : '';
 
 			$sales    = edd_get_download_sales_stats( $download->ID );
-			$earnings = html_entity_decode ( edd_currency_filter( edd_get_download_earnings_stats( $download->ID ) ) );
+			$earnings = html_entity_decode( edd_currency_filter( edd_get_download_earnings_stats( $download->ID ) ) );
 
 			if ( function_exists( 'iconv' ) ) {
 				// Ensure characters like euro; are properly converted. See GithuB issue #472 and #1570

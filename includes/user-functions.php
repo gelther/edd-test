@@ -153,7 +153,7 @@ function edd_get_users_purchased_products( $user = 0, $status = 'complete' ) {
 	$product_ids = array_unique( $purchased_products );
 
 	// Make sure we still have some products and a first item
-	if ( empty ( $product_ids ) || ! isset( $product_ids[0] ) )
+	if ( empty( $product_ids ) || ! isset( $product_ids[0] ) )
 		return false;
 
 	$post_type = get_post_type( $product_ids[0] );
