@@ -18,7 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  * Automatically appends the purchase link to download content, if enabled.
  *
  * @since 1.0
- * @param int $download_id Download ID
+ * @param  int  $download_id Download ID
  * @return void
  */
 
@@ -43,7 +43,7 @@ add_action( 'edd_after_download_content', 'edd_append_purchase_link' );
  * $download_id = null, $link_text = null, $style = null, $color = null, $class = null
  *
  * @since 1.0
- * @param array $args Arguments for display
+ * @param  array  $args          Arguments for display
  * @return string $purchase_form
  */
 function edd_get_purchase_link( $args = array() ) {
@@ -230,7 +230,7 @@ function edd_get_purchase_link( $args = array() ) {
  * the action and adding your own custom action.
  *
  * @since 1.2.3
- * @param int $download_id Download ID
+ * @param  int  $download_id Download ID
  * @return void
  */
 function edd_purchase_variable_pricing( $download_id = 0, $args = array() ) {
@@ -284,8 +284,8 @@ add_action( 'edd_purchase_link_top', 'edd_purchase_variable_pricing', 10, 2 );
  * Display the quantity field for a variable price when multi-purchase mode is enabled
  *
  * @since 2.2
- * @param int $download_id Download ID
- * @param array $args Argument array
+ * @param  int   $download_id Download ID
+ * @param  array $args        Argument array
  * @return void
  */
 function edd_download_purchase_form_quantity_field( $download_id = 0, $args = array() ) {
@@ -331,9 +331,9 @@ add_action( 'edd_purchase_link_top', 'edd_download_purchase_form_quantity_field'
  * Display the quantity field for a variable price when multi-purchase mode is enabled
  *
  * @since 2.2
- * @param int $key Price ID
- * @param array $price price option array
- * @param int $download_id Download ID
+ * @param  int   $key         Price ID
+ * @param  array $price       price option array
+ * @param  int   $download_id Download ID
  * @return void
  */
 function edd_variable_price_quantity_field( $key, $price, $download_id ) {
@@ -368,8 +368,8 @@ add_action( 'edd_after_price_option', 'edd_variable_price_quantity_field', 10, 3
  * @since 1.0.8
  * @global $post
  *
- * @param $content The the_content field of the download object
- * @return string the content with any additional data attached
+ * @param         $content The the_content field of the download object
+ * @return string          the content with any additional data attached
  */
 function edd_before_download_content( $content ) {
 	global $post;
@@ -393,8 +393,8 @@ add_filter( 'the_content', 'edd_before_download_content' );
  * @since 1.0.8
  * @global $post
  *
- * @param $content The the_content field of the download object
- * @return string the content with any additional data attached
+ * @param         $content The the_content field of the download object
+ * @return string          the content with any additional data attached
  */
 function edd_after_download_content( $content ) {
 	global $post;
@@ -483,7 +483,7 @@ function edd_get_button_styles() {
  * This excerpt is primarily used in the [downloads] short code
  *
  * @since 1.0.8.4
- * @param string $excerpt Content before filtering
+ * @param  string $excerpt Content before filtering
  * @return string $excerpt Content after filtering
  * @return string
  */
@@ -498,7 +498,7 @@ add_filter( 'edd_downloads_excerpt', 'edd_downloads_default_excerpt' );
  * This is primarily used in the [downloads] short code
  *
  * @since 1.0.8.4
- * @param string $content Content before filtering
+ * @param  string $content Content before filtering
  * @return string $content Content after filtering
  */
 function edd_downloads_default_content( $content ) {
@@ -510,7 +510,7 @@ add_filter( 'edd_downloads_content', 'edd_downloads_default_content' );
  * Gets the download links for each item purchased
  *
  * @since 1.1.5
- * @param int $payment_id The ID of the payment to retrieve download links for
+ * @param  int    $payment_id The ID of the payment to retrieve download links for
  * @return string
  */
 function edd_get_purchase_download_links( $payment_id = 0 ) {
@@ -611,8 +611,8 @@ function edd_get_template_part( $slug, $name = null, $load = true ) {
  * @since 1.2
  *
  * @param string|array $template_names Template file(s) to search for, in order.
- * @param bool $load If true the template file will be loaded if it is found.
- * @param bool $require_once Whether to require_once or require. Default true.
+ * @param bool         $load           If true the template file will be loaded if it is found.
+ * @param bool         $require_once   Whether to require_once or require. Default true.
  * Has no effect if $load is false.
  * @return string The template filename if one is located.
  */
@@ -703,8 +703,8 @@ function edd_add_schema_microdata() {
  *
  * @since 1.5
  * @author Sunny Ratilal
- * @param string $title Post Title
- * @param int $id Post ID
+ * @param  string $title Post Title
+ * @param  int    $id    Post ID
  * @return string $title New title
  */
 function edd_microdata_title( $title, $id = 0 ) {
@@ -777,8 +777,8 @@ add_action( 'loop_end', 'edd_microdata_wrapper_close', 10 );
  * @since 1.5
  * @author Sunny Ratilal
  *
- * @param $content
- * @return mixed|void New title
+ * @param             $content
+ * @return mixed|void          New title
  */
 function edd_microdata_description( $content ) {
 	global $post;
@@ -846,8 +846,8 @@ function edd_is_purchase_history_page() {
  * Adds body classes for EDD pages
  *
  * @since 2.1
- * @param array $class current classes
- * @return array Modified array of classes
+ * @param  array $class current classes
+ * @return array        Modified array of classes
  */
 function edd_add_body_classes( $class ) {
 	$classes = (array) $class;
@@ -885,10 +885,10 @@ add_filter( 'body_class', 'edd_add_body_classes' );
  * Adds post classes for downloads
  *
  * @since 2.1
- * @param array $classes Current classes
- * @param string|array $class
- * @param int $post_id The ID of the current post
- * @return array Modified array of classes
+ * @param  array        $classes Current classes
+ * @param  string|array $class
+ * @param  int          $post_id The ID of the current post
+ * @return array                 Modified array of classes
  */
 function edd_add_download_post_classes( $classes, $class = '', $post_id = false ) {
 	if ( ! $post_id || get_post_type( $post_id ) !== 'download' || is_admin() ) {
