@@ -21,7 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  *
  * @since       1.8
  * @author      Daniel J Griffiths
- * @return      void
+ * @return void
  */
 function edd_tools_page() {
 	$active_tab = isset( $_GET['tab'] ) ? $_GET['tab'] : 'general';
@@ -60,7 +60,7 @@ function edd_tools_page() {
  * Retrieve tools tabs
  *
  * @since       2.0
- * @return      array
+ * @return array
  */
 function edd_get_tools_tabs() {
 
@@ -78,7 +78,7 @@ function edd_get_tools_tabs() {
  * Display the ban emails tab
  *
  * @since       2.0
- * @return      void
+ * @return void
  */
 function edd_tools_banned_emails_display() {
 
@@ -116,7 +116,7 @@ add_action( 'edd_tools_tab_general', 'edd_tools_banned_emails_display' );
  * Display the recount stats
  *
  * @since       2.5
- * @return      void
+ * @return void
  */
 function edd_tools_recount_stats_display() {
 
@@ -185,7 +185,7 @@ add_action( 'edd_tools_tab_general', 'edd_tools_recount_stats_display' );
  * Display the clear upgrades tab
  *
  * @since       2.3.5
- * @return      void
+ * @return void
  */
 function edd_tools_clear_doing_upgrade_display() {
 
@@ -218,7 +218,7 @@ add_action( 'edd_tools_tab_general', 'edd_tools_clear_doing_upgrade_display' );
  * Display the API Keys
  *
  * @since       2.0
- * @return      void
+ * @return void
  */
 function edd_tools_api_keys_display() {
 
@@ -252,7 +252,7 @@ add_action( 'edd_tools_tab_api_keys', 'edd_tools_api_keys_display' );
  * Save banned emails
  *
  * @since       2.0
- * @return      void
+ * @return void
  */
 function edd_tools_banned_emails_save() {
 
@@ -293,7 +293,7 @@ add_action( 'edd_save_banned_emails', 'edd_tools_banned_emails_save' );
  * Execute upgrade notice clear
  *
  * @since       2.3.5
- * @return      void
+ * @return void
  */
 function edd_tools_clear_upgrade_notice() {
 	if ( ! wp_verify_nonce( $_POST['edd_clear_upgrades_nonce'], 'edd_clear_upgrades_nonce' ) ) {
@@ -313,7 +313,7 @@ add_action( 'edd_clear_doing_upgrade', 'edd_tools_clear_upgrade_notice' );
  * Display the tools import/export tab
  *
  * @since       2.0
- * @return      void
+ * @return void
  */
 function edd_tools_import_export_display() {
 
@@ -364,7 +364,7 @@ add_action( 'edd_tools_tab_import_export', 'edd_tools_import_export_display' );
  * Process a settings export that generates a .json file of the shop settings
  *
  * @since       1.7
- * @return      void
+ * @return void
  */
 function edd_tools_import_export_process_export() {
 
@@ -438,7 +438,7 @@ add_action( 'edd_import_settings', 'edd_tools_import_export_process_import' );
  * Display the system info tab
  *
  * @since       2.0
- * @return      void
+ * @return void
  */
 function edd_tools_sysinfo_display() {
 
@@ -465,7 +465,7 @@ add_action( 'edd_tools_tab_system_info', 'edd_tools_sysinfo_display' );
  * @since       2.0
  * @access      public
  * @global      object $wpdb Used to query the database using the WordPress Database API
- * @return      string $return A string containing the info to output
+ * @return string $return A string containing the info to output
  */
 function edd_tools_sysinfo_get() {
 	global $wpdb;
@@ -762,7 +762,7 @@ function edd_tools_sysinfo_get() {
  * Generates a System Info download file
  *
  * @since       2.0
- * @return      void
+ * @return void
  */
 function edd_tools_sysinfo_download() {
 
