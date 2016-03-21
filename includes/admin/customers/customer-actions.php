@@ -7,7 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  * Processes a custom edit
  *
  * @since  2.3
- * @param  array $args The $_POST array being passeed
+ * @param  array $args   The $_POST array being passeed
  * @return array $output Response messages
  */
 function edd_edit_customer( $args ) {
