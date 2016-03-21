@@ -17,8 +17,8 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  *
  * @since 1.0
  * @global $post
- * @param string $redirect Redirect page URL
- * @return string Login form
+ * @param  string $redirect Redirect page URL
+ * @return string           Login form
 */
 function edd_login_form( $redirect = '' ) {
 	global $edd_login_redirect;
@@ -41,8 +41,8 @@ function edd_login_form( $redirect = '' ) {
  *
  * @since 2.0
  * @global $post
- * @param string $redirect Redirect page URL
- * @return string Register form
+ * @param  string $redirect Redirect page URL
+ * @return string           Register form
 */
 function edd_register_form( $redirect = '' ) {
 	global $edd_register_redirect;
@@ -66,7 +66,7 @@ function edd_register_form( $redirect = '' ) {
  * Process Login Form
  *
  * @since 1.0
- * @param array $data Data sent from the login form
+ * @param  array $data Data sent from the login form
  * @return void
 */
 function edd_process_login_form( $data ) {
@@ -101,9 +101,9 @@ add_action( 'edd_user_login', 'edd_process_login_form' );
  * Log User In
  *
  * @since 1.0
- * @param int $user_id User ID
- * @param string $user_login Username
- * @param string $user_pass Password
+ * @param  int    $user_id    User ID
+ * @param  string $user_login Username
+ * @param  string $user_pass  Password
  * @return void
 */
 function edd_log_user_in( $user_id, $user_login, $user_pass ) {
@@ -121,7 +121,7 @@ function edd_log_user_in( $user_id, $user_login, $user_pass ) {
  * Process Register Form
  *
  * @since 2.0
- * @param array $data Data sent from the register form
+ * @param  array $data Data sent from the register form
  * @return void
 */
 function edd_process_register_form( $data ) {
