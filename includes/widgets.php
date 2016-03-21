@@ -256,12 +256,12 @@ class EDD_Product_Details_Widget extends WP_Widget {
 			echo $args['before_title'] . $title . $args['after_title'];
 		}
 
-		do_action( 'edd_product_details_widget_before_title' , $instance , $download_id );
+		do_action( 'edd_product_details_widget_before_title', $instance, $download_id );
 
 		// download title.
 		echo $download_title;
 
-		do_action( 'edd_product_details_widget_before_purchase_button' , $instance , $download_id );
+		do_action( 'edd_product_details_widget_before_purchase_button', $instance, $download_id );
 		// purchase button.
 		echo $purchase_button;
 
@@ -391,7 +391,7 @@ class EDD_Product_Details_Widget extends WP_Widget {
 			<label for="<?php echo esc_attr( $this->get_field_id( 'tags' ) ); ?>"><?php printf( __( 'Show %s', 'easy-digital-downloads' ), $tag_labels['name'] ); ?></label>
 		</p>
 
-		<?php do_action( 'edd_product_details_widget_form' , $instance ); ?>
+		<?php do_action( 'edd_product_details_widget_form', $instance ); ?>
 	<?php }
 
 	/** @see WP_Widget::update */
