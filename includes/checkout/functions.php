@@ -58,7 +58,7 @@ function edd_can_checkout() {
  *
  * @access      public
  * @since       1.6
- * @return      string
+ * @return string
 */
 function edd_get_success_page_uri() {
 	$page_id = edd_get_option( 'success_page', 0 );
@@ -88,7 +88,7 @@ function edd_is_success_page() {
  * @param string $query_string
  * @access      public
  * @since       1.0
- * @return      void
+ * @return void
 */
 function edd_send_to_success_page( $query_string = null ) {
 	$redirect = edd_get_success_page_uri();
@@ -106,8 +106,8 @@ function edd_send_to_success_page( $query_string = null ) {
  * Get the URL of the Checkout page
  *
  * @since 1.0.8
- * @param array $args Extra query args to add to the URI
- * @return mixed Full URL to the checkout page, if present | null if it doesn't exist
+ * @param  array $args Extra query args to add to the URI
+ * @return mixed       Full URL to the checkout page, if present | null if it doesn't exist
  */
 function edd_get_checkout_uri( $args = array() ) {
 	$uri = edd_get_option( 'purchase_page', false );
@@ -174,7 +174,7 @@ function edd_send_back_to_checkout( $args = array() ) {
  * @param string $query_string
  * @access      public
  * @since       1.0
- * @return      string
+ * @return string
 */
 function edd_get_success_page_url( $query_string = null ) {
 	$success_page = edd_get_option( 'success_page', 0 );
@@ -190,8 +190,8 @@ function edd_get_success_page_url( $query_string = null ) {
  * Get the URL of the Transaction Failed page
  *
  * @since 1.3.4
- * @param bool $extras Extras to append to the URL
- * @return mixed|void Full URL to the Transaction Failed page, if present, home page if it doesn't exist
+ * @param  bool       $extras Extras to append to the URL
+ * @return mixed|void         Full URL to the Transaction Failed page, if present, home page if it doesn't exist
  */
 function edd_get_failed_transaction_uri( $extras = false ) {
 	$uri = edd_get_option( 'failure_page', '' );
@@ -221,7 +221,7 @@ function edd_is_failed_transaction_page() {
  *
  * @access      public
  * @since       1.9.9
- * @return      void
+ * @return void
 */
 function edd_listen_for_failed_payments() {
 
@@ -250,7 +250,7 @@ add_action( 'template_redirect', 'edd_listen_for_failed_payments' );
  * @param string $field
  * @access      public
  * @since       1.7
- * @return      bool
+ * @return bool
 */
 function edd_field_is_required( $field = '' ) {
 	$required_fields = edd_purchase_form_required_fields();
@@ -261,7 +261,7 @@ function edd_field_is_required( $field = '' ) {
  * Retrieve an array of banned_emails
  *
  * @since       2.0
- * @return      array
+ * @return array
  */
 function edd_get_banned_emails() {
 	$emails = array_map( 'trim', edd_get_option( 'banned_emails', array() ) );
@@ -273,7 +273,7 @@ function edd_get_banned_emails() {
  * Determines if an email is banned
  *
  * @since       2.0
- * @return      bool
+ * @return bool
  */
 function edd_is_email_banned( $email = '' ) {
 
@@ -306,7 +306,7 @@ function edd_is_email_banned( $email = '' ) {
  * Determines if secure checkout pages are enforced
  *
  * @since       2.0
- * @return      bool True if enforce SSL is enabled, false otherwise
+ * @return bool True if enforce SSL is enabled, false otherwise
  */
 function edd_is_ssl_enforced() {
 	$ssl_enforced = edd_get_option( 'enforce_ssl', false );
@@ -373,7 +373,7 @@ add_action( 'template_redirect', 'edd_enforced_ssl_asset_handler' );
  * Filter filters and convert http to https
  *
  * @since 2.0
- * @param mixed $content
+ * @param  mixed $content
  * @return mixed
  */
 function edd_enforced_ssl_asset_filter( $content ) {
@@ -457,7 +457,7 @@ function edd_validate_card_number_format( $number = 0 ) {
  * Validate credit card number based on the luhn algorithm
  *
  * @since  2.4
- * @param string $number
+ * @param  string $number
  * @return bool
  */
 function edd_validate_card_number_format_luhn( $number ) {
@@ -498,7 +498,7 @@ function edd_validate_card_number_format_luhn( $number ) {
  * array of data to validate the credit card number
  *
  * @since  2.4
- * @param string  $number
+ * @param  string      $number
  * @return string|bool
  */
 function edd_detect_cc_type( $number ) {
@@ -585,8 +585,8 @@ function edd_detect_cc_type( $number ) {
  * Validate credit card expiration date
  *
  * @since  2.4
- * @param string  $exp_month
- * @param string  $exp_year
+ * @param  string $exp_month
+ * @param  string $exp_year
  * @return bool
  */
 function edd_purchase_form_validate_cc_exp_date( $exp_month, $exp_year ) {
