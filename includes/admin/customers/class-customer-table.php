@@ -74,7 +74,7 @@ class EDD_Customer_Reports_Table extends WP_List_Table {
 	 * @since 1.7
 	 * @access public
 	 *
-	 * @param string $text Label for the search box
+	 * @param string $text     Label for the search box
 	 * @param string $input_id ID of the search box
 	 *
 	 * @return void
@@ -113,7 +113,7 @@ class EDD_Customer_Reports_Table extends WP_List_Table {
 	 * @access public
 	 * @since 1.5
 	 *
-	 * @param array $item Contains all the data of the customers
+	 * @param array  $item        Contains all the data of the customers
 	 * @param string $column_name The name of the column
 	 *
 	 * @return string Column Name
