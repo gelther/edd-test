@@ -107,4 +107,5 @@ if ( $purchases ) :
 	<?php do_action( 'edd_after_download_history' ); ?>
 <?php else : ?>
 	<p class="edd-no-downloads"><?php _e( 'You have not purchased any downloads', 'easy-digital-downloads' ); ?></p>
-<?php endif; ?>
+<?php endif;
+?>

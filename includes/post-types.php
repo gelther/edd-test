@@ -21,7 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 function edd_setup_edd_post_types() {
 
 	$archives = defined( 'EDD_DISABLE_ARCHIVE' ) && EDD_DISABLE_ARCHIVE ? false : true;
-	$slug = defined( 'EDD_SLUG' ) ? EDD_SLUG : 'downloads';
+	$slug     = defined( 'EDD_SLUG' ) ? EDD_SLUG : 'downloads';
 	$rewrite  = defined( 'EDD_DISABLE_REWRITE' ) && EDD_DISABLE_REWRITE ? false : array('slug' => $slug, 'with_front' => false);
 
 	$download_labels =  apply_filters( 'edd_download_labels', array(

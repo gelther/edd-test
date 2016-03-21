@@ -140,7 +140,7 @@ class EDD_Tools_Recount_Download_Stats extends EDD_Batch_Export {
 		}
 
 		$accepted_statuses = apply_filters( 'edd_recount_accepted_statuses', array( 'publish', 'revoked' ) );
-		$total   = $this->get_stored_data( 'edd_recount_total_' . $this->download_id );
+		$total             = $this->get_stored_data( 'edd_recount_total_' . $this->download_id );
 
 		if ( false === $total ) {
 			$total = 0;

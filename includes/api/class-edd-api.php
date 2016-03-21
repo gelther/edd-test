@@ -976,7 +976,7 @@ class EDD_API {
 	public function get_products( $product = null ) {
 
 		$products = array();
-		$error = array();
+		$error    = array();
 
 		if ( $product == null ) {
 			$products['products'] = array();

@@ -243,4 +243,5 @@ $status = edd_get_payment_status( $payment, true );
 		</tbody>
 
 	</table>
-<?php endif; ?>
+<?php endif;
+?>

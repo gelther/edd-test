@@ -4,4 +4,5 @@
 			<?php edd_price( get_the_ID() ); ?>
 		</div>
 	</div>
-<?php endif; ?>
+<?php endif;
+?>
