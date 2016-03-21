@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  *
  * @since 1.7
  *
- * @param $data
+ * @param  $data
  */
 function edd_process_gateway_select( $data ) {
 	if ( isset( $_POST['gateway_submit'] ) ) {
