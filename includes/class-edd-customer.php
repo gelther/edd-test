@@ -249,7 +249,7 @@ class EDD_Customer {
 		if ( $this->db->update( $this->id, $data ) ) {
 
 			$customer = $this->db->get_customer_by( 'id', $this->id );
-			$this->setup_customer( $customer);
+			$this->setup_customer( $customer );
 
 			$updated = true;
 		}
