@@ -923,7 +923,7 @@ function edd_get_peruvian_states_list() {
  * @return array $states A list of states
  */
 function edd_get_indonesian_states_list() {
-	$states  = array(
+	$states = array(
 		''   => '',
 		'AC' => 'Daerah Istimewa Aceh',
 	    'SU' => 'Sumatera Utara',
