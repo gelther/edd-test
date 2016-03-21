@@ -53,8 +53,8 @@ class EDD_Tools_Recount_All_Stats extends EDD_Batch_Export {
 	public function get_data() {
 		global $edd_logs, $wpdb;
 
-		$totals             = $this->get_stored_data( 'edd_temp_recount_all_stats'  );
-		$payment_items      = $this->get_stored_data( 'edd_temp_payment_items'      );
+		$totals             = $this->get_stored_data( 'edd_temp_recount_all_stats' );
+		$payment_items      = $this->get_stored_data( 'edd_temp_payment_items' );
 		$processed_payments = $this->get_stored_data( 'edd_temp_processed_payments' );
 		$accepted_statuses  = apply_filters( 'edd_recount_accepted_statuses', array( 'publish', 'revoked' ) );
 
