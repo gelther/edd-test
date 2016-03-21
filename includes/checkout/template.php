@@ -590,7 +590,7 @@ function edd_payment_mode_select() {
 
 				foreach ( $gateways as $gateway_id => $gateway ) :
 
-					$checked = checked( $gateway_id, edd_get_default_gateway(), false );
+					$checked       = checked( $gateway_id, edd_get_default_gateway(), false );
 					$checked_class = $checked ? ' edd-gateway-option-selected' : '';
 					echo '<label for="edd-gateway-' . esc_attr( $gateway_id ) . '" class="edd-gateway-option' . $checked_class . '" id="edd-gateway-option-' . esc_attr( $gateway_id ) . '">';
 						echo '<input type="radio" name="payment-mode" class="edd-gateway" id="edd-gateway-' . esc_attr( $gateway_id ) . '" value="' . esc_attr( $gateway_id ) . '"' . $checked . '>' . esc_html( $gateway['checkout_label'] );
@@ -660,7 +660,7 @@ function edd_show_payment_icons() {
 				if ( function_exists( 'wp_normalize_path' ) ) {
 
 					// Replaces backslashes with forward slashes for Windows systems
-					$image = wp_normalize_path( $image );
+					$image       = wp_normalize_path( $image );
 					$content_dir = wp_normalize_path( $content_dir );
 
 				}
@@ -814,9 +814,9 @@ add_action( 'edd_purchase_form_after_cc_form', 'edd_checkout_submit', 9999 );
  * @return string
  */
 function edd_checkout_button_next() {
-	$color = edd_get_option( 'checkout_color', 'blue' );
-	$color = ( $color == 'inherit' ) ? '' : $color;
-	$style = edd_get_option( 'button_style', 'button' );
+	$color         = edd_get_option( 'checkout_color', 'blue' );
+	$color         = ( $color == 'inherit' ) ? '' : $color;
+	$style         = edd_get_option( 'button_style', 'button' );
 	$purchase_page = edd_get_option( 'purchase_page', '0' );
 
 	ob_start();
