@@ -23,8 +23,8 @@ if ( ! isset( $_GET['id'] ) || ! is_numeric( $_GET['id'] ) ) {
 }
 
 // Setup the variables
-$payment_id   = absint( $_GET['id'] );
-$payment      = new EDD_Payment( $payment_id );
+$payment_id = absint( $_GET['id'] );
+$payment    = new EDD_Payment( $payment_id );
 
 // Sanity check... fail if purchase ID is invalid
 $payment_exists = $payment->ID;
