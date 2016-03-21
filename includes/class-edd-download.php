@@ -203,8 +203,8 @@ class EDD_Download {
 	 * Creates a download
 	 *
 	 * @since  2.3.6
-	 * @param  array  $data Array of attributes for a download
-	 * @return mixed  false if data isn't passed and class not instantiated for creation, or New Download ID
+	 * @param  array $data Array of attributes for a download
+	 * @return mixed       false if data isn't passed and class not instantiated for creation, or New Download ID
 	 */
 	public function create( $data = array() ) {
 
@@ -283,8 +283,8 @@ class EDD_Download {
 		 *
 		 * @since 2.2
 		 *
-		 * @param string $price The download price(s).
-		 * @param string|int $id The downloads ID.
+		 * @param string     $price The download price(s).
+		 * @param string|int $id    The downloads ID.
 		 */
 		return apply_filters( 'edd_get_download_price', $this->price, $this->ID );
 
@@ -309,8 +309,8 @@ class EDD_Download {
 		 *
 		 * @since 2.2
 		 *
-		 * @param array $prices The array of variables prices.
-		 * @param int|string The ID of the download.
+		 * @param array      $prices The array of variables prices.
+		 * @param int|string         The ID of the download.
 		 */
 		return apply_filters( 'edd_get_variable_prices', $this->prices, $this->ID );
 
@@ -331,8 +331,8 @@ class EDD_Download {
 		 *
 		 * @since 2.3
 		 *
-		 * @param bool $ret Is download in single price mode?
-		 * @param int|string The ID of the download.
+		 * @param bool       $ret Is download in single price mode?
+		 * @param int|string      The ID of the download.
 		 */
 		return (bool) apply_filters( 'edd_single_price_option_mode', $ret, $this->ID );
 
@@ -353,8 +353,8 @@ class EDD_Download {
 		 *
 		 * @since 2.3
 		 *
-		 * @param bool $ret Does download have variable prices?
-		 * @param int|string The ID of the download.
+		 * @param bool       $ret Does download have variable prices?
+		 * @param int|string      The ID of the download.
 		 */
 		return (bool) apply_filters( 'edd_has_variable_prices', $ret, $this->ID );
 
@@ -364,7 +364,7 @@ class EDD_Download {
 	 * Retrieve the file downloads
 	 *
 	 * @since 2.2
-	 * @param integer $variable_price_id
+	 * @param  integer $variable_price_id
 	 * @return array
 	 */
 	public function get_files( $variable_price_id = null ) {
@@ -607,7 +607,7 @@ class EDD_Download {
 	 * Increment the sale count by one
 	 *
 	 * @since 2.2
-	 * @param int $quantity The quantity to increase the sales by
+	 * @param  int       $quantity The quantity to increase the sales by
 	 * @return int|false
 	 */
 	public function increase_sales( $quantity = 1 ) {
@@ -630,7 +630,7 @@ class EDD_Download {
 	 * Decrement the sale count by one
 	 *
 	 * @since 2.2
-	 * @param int $quantity The quantity to decrease by
+	 * @param  int       $quantity The quantity to decrease by
 	 * @return int|false
 	 */
 	public function decrease_sales( $quantity = 1 ) {
@@ -709,7 +709,7 @@ class EDD_Download {
 	 * Decrease the earnings by the given amount
 	 *
 	 * @since 2.2
-	 * @param integer $amount
+	 * @param  integer     $amount
 	 * @return float|false
 	 */
 	public function decrease_earnings( $amount ) {
@@ -777,9 +777,9 @@ class EDD_Download {
 	 *
 	 * @since  2.3
 	 * @access private
-	 * @param  string $meta_key   The meta_key to update
+	 * @param  string              $meta_key   The meta_key to update
 	 * @param  string|array|object $meta_value The value to put into the meta
-	 * @return bool             The result of the update query
+	 * @return bool                            The result of the update query
 	 */
 	private function update_meta( $meta_key = '', $meta_value = '' ) {
 
