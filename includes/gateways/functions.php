@@ -60,7 +60,7 @@ function edd_get_enabled_payment_gateways( $sort = false ) {
 
 		if ( edd_is_gateway_active( $default_gateway_id ) ) {
 
-			$default_gateway    = array( $default_gateway_id => $gateway_list[ $default_gateway_id ] );
+			$default_gateway = array( $default_gateway_id => $gateway_list[ $default_gateway_id ] );
 			unset( $gateway_list[ $default_gateway_id ] );
 
 			$gateway_list = array_merge( $default_gateway, $gateway_list );
@@ -81,7 +81,7 @@ function edd_get_enabled_payment_gateways( $sort = false ) {
 */
 function edd_is_gateway_active( $gateway ) {
 	$gateways = edd_get_enabled_payment_gateways();
-	$ret = array_key_exists( $gateway, $gateways );
+	$ret      = array_key_exists( $gateway, $gateways );
 	return apply_filters( 'edd_is_gateway_active', $ret, $gateway, $gateways );
 }
 
@@ -164,7 +164,7 @@ function edd_get_gateway_supports( $gateway ) {
  */
 function edd_gateway_supports_buy_now( $gateway ) {
 	$supports = edd_get_gateway_supports( $gateway );
-	$ret = in_array( 'buy_now', $supports );
+	$ret      = in_array( 'buy_now', $supports );
 	return apply_filters( 'edd_gateway_supports_buy_now', $ret, $gateway );
 }
 
@@ -225,7 +225,7 @@ function edd_build_straight_to_gateway_data( $download_id = 0, $options = array(
 			'price_id' => $price_id,
 			'amount'   => $prices[ $price_id ]['amount']
 		);
-		$price  = $prices[ $price_id ]['amount'];
+		$price = $prices[ $price_id ]['amount'];
 	}
 
 	// Set up Downloads array
@@ -318,7 +318,7 @@ function edd_send_to_gateway( $gateway, $payment_data ) {
  * @return bool $show_gateways Whether or not to show the gateways
  */
 function edd_show_gateways() {
-	$gateways = edd_get_enabled_payment_gateways();
+	$gateways      = edd_get_enabled_payment_gateways();
 	$show_gateways = false;
 
 	$chosen_gateway = isset( $_GET['payment-mode'] ) ? preg_replace('/[^a-zA-Z0-9-_]+/', '', $_GET['payment-mode'] ) : false;
