@@ -19,7 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  *
  * @access      private
  * @since       1.0
- * @return      void
+ * @return void
  */
 function edd_process_download() {
 
@@ -246,9 +246,9 @@ add_action( 'init', 'edd_process_download', 100 );
  * If enabled, the file is symlinked to better support large file downloads
  *
  * @access   public
- * @param    string    $file
- * @param    bool      $redirect True if we should perform a header redirect instead of calling edd_readfile_chunked()
- * @return   void
+ * @param  string $file
+ * @param  bool   $redirect True if we should perform a header redirect instead of calling edd_readfile_chunked()
+ * @return void
  */
 function edd_deliver_download( $file = '', $redirect = false ) {
 
@@ -309,8 +309,8 @@ function edd_deliver_download( $file = '', $redirect = false ) {
  * Get the file content type
  *
  * @access   public
- * @param    string    file extension
- * @return   string
+ * @param  string file extension
+ * @return string
  */
 function edd_get_file_ctype( $extension ) {
 	switch ( $extension ) :
@@ -619,9 +619,9 @@ function edd_get_file_ctype( $extension ) {
  * See http://codeigniter.com/wiki/Download_helper_for_large_files/
  *
  * @access   public
- * @param    string  $file      The file
- * @param    boolean $retbytes  Return the bytes of file
- * @return   bool|string        If string, $status || $cnt
+ * @param  string      $file     The file
+ * @param  boolean     $retbytes Return the bytes of file
+ * @return bool|string           If string, $status || $cnt
  */
 function edd_readfile_chunked( $file, $retbytes = true ) {
 
