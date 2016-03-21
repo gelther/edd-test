@@ -78,8 +78,7 @@ class Client implements ClientInterface
 	 * Validates the user configuration array against existing config array
 	 */
 
-	public function __construct($config = null)
-	{
+	public function __construct($config = null) {
 		if ( ! is_null($config) ) {
 
 			if ( is_array($config) ) {
@@ -100,8 +99,7 @@ class Client implements ClientInterface
 
 	/* checkIfFileExists -  check if the JSON file exists in the path provided */
 
-	private function checkIfFileExists($config)
-	{
+	private function checkIfFileExists($config) {
 	if ( file_exists($config) ) {
 		$jsonString  = file_get_contents($config);
 		$configArray = json_decode($jsonString, true);
@@ -124,8 +122,7 @@ class Client implements ClientInterface
 	 * strict case match is not performed
 	 */
 
-	private function checkConfigKeys($config)
-	{
+	private function checkConfigKeys($config) {
 		$config = array_change_key_case($config, CASE_LOWER);
 	$config = $this->trimArray($config);
 
@@ -146,8 +143,7 @@ class Client implements ClientInterface
 	 * @return string error message
 	 */
 
-	private function getErrorMessageForJsonError($jsonError)
-	{
+	private function getErrorMessageForJsonError($jsonError) {
 		switch ( $jsonError ) {
 			case JSON_ERROR_DEPTH:
 				return ' - maximum stack depth exceeded.';
@@ -171,8 +167,7 @@ class Client implements ClientInterface
 	 * Sets the Boolean value for config['sandbox'] variable
 	 */
 
-	public function setSandbox($value)
-	{
+	public function setSandbox($value) {
 		if ( is_bool($value) ) {
 			$this->config['sandbox'] = $value;
 		} else {
@@ -184,8 +179,7 @@ class Client implements ClientInterface
 	 * Sets the value for config['client_id'] variable
 	 */
 
-	public function setClientId($value)
-	{
+	public function setClientId($value) {
 		if ( ! empty($value) ) {
 			$this->config['client_id'] = $value;
 		} else {
@@ -201,8 +195,7 @@ class Client implements ClientInterface
 	 * @param $proxy['proxy_user_password'] - if your proxy required a password
 	 */
 
-	public function setProxy($proxy)
-	{
+	public function setProxy($proxy) {
 	$proxy = $this->trimArray($proxy);
 
 		if ( ! empty($proxy['proxy_user_host']) )
@@ -222,8 +215,7 @@ class Client implements ClientInterface
 	 * Set the URL to which the post request has to be made for unit testing
 	 */
 
-	public function setMwsServiceUrl($url)
-	{
+	public function setMwsServiceUrl($url) {
 	$this->mwsServiceUrl = $url;
 	}
 
@@ -231,8 +223,7 @@ class Client implements ClientInterface
 	 * Gets the value for the key if the key exists in config
 	 */
 
-	public function __get($name)
-	{
+	public function __get($name) {
 		if ( array_key_exists(strtolower($name), $this->config) ) {
 			return $this->config[strtolower($name)];
 		} else {
@@ -244,15 +235,13 @@ class Client implements ClientInterface
 	 * Gets the value for the parameters string for unit testing
 	 */
 
-	public function getParameters()
-	{
+	public function getParameters() {
 	return trim($this->parameters);
 	}
 
 	/* Trim the input Array key values */
 
-	private function trimArray($array)
-	{
+	private function trimArray($array) {
 	foreach ( $array as $key => $value ) {
 		$array[$key] = trim($value);
 	}
@@ -265,8 +254,7 @@ class Client implements ClientInterface
 	 * @param $accessToken [String]
 	 */
 
-	public function getUserInfo($accessToken)
-	{
+	public function getUserInfo($accessToken) {
 		// Get the correct Profile Endpoint URL based off the country/region provided in the config['region']
 		$this->profileEndpointUrl();
 
@@ -305,8 +293,7 @@ class Client implements ClientInterface
 	 * If Provider Credit Reversal Details is present, values are set by setProviderCreditDetails
 	 */
 
-	private function setParametersAndPost($parameters, $fieldMappings, $requestParameters)
-	{
+	private function setParametersAndPost($parameters, $fieldMappings, $requestParameters) {
 	/* For loop to take all the non empty parameters in the $requestParameters and add it into the $parameters array,
 	 * if the keys are matched from $requestParameters array with the $fieldMappings array
 	 */
@@ -345,16 +332,14 @@ class Client implements ClientInterface
 
 	/* checkIfBool - checks if the input is a boolean */
 
-	private function checkIfBool($string)
-	{
+	private function checkIfBool($string) {
 	$string = strtolower($string);
 	return in_array($string, array('true', 'false'));
 	}
 
 	/* calculateSignatureAndPost - convert the Parameters array to string and curl POST the parameters to MWS */
 
-	private function calculateSignatureAndPost($parameters)
-	{
+	private function calculateSignatureAndPost($parameters) {
 	// Call the signature and Post function to perform the actions. Returns XML in array format
 		$parametersString = $this->calculateSignatureAndParametersToString($parameters);
 
@@ -374,8 +359,7 @@ class Client implements ClientInterface
 	 * else take the value from config array if set
 	 */
 
-	private function setDefaultValues($parameters, $fieldMappings, $requestParameters)
-	{
+	private function setDefaultValues($parameters, $fieldMappings, $requestParameters) {
 		if ( empty($requestParameters['merchant_id']) )
 			$parameters['SellerId'] = $this->config['merchant_id'];
 
@@ -401,8 +385,7 @@ class Client implements ClientInterface
 	 * @optional currency_code - [String]
 	 */
 
-	private function setProviderCreditDetails($parameters, $providerCreditInfo)
-	{
+	private function setProviderCreditDetails($parameters, $providerCreditInfo) {
 	$providerIndex  = 0;
 	$providerString = 'ProviderCreditList.member.';
 
@@ -437,8 +420,7 @@ class Client implements ClientInterface
 	 * @optional currency_code - [String]
 	 */
 
-	private function setProviderCreditReversalDetails($parameters, $providerCreditInfo)
-	{
+	private function setProviderCreditReversalDetails($parameters, $providerCreditInfo) {
 	$providerIndex  = 0;
 	$providerString = 'ProviderCreditReversalList.member.';
 
@@ -476,8 +458,7 @@ class Client implements ClientInterface
 	 * @optional requestParameters['mws_auth_token'] - [String]
 	 */
 
-	public function getOrderReferenceDetails($requestParameters = array())
-	{
+	public function getOrderReferenceDetails($requestParameters = array()) {
 
 		$parameters['Action'] = 'GetOrderReferenceDetails';
 		$requestParameters    = array_change_key_case($requestParameters, CASE_LOWER);
@@ -508,8 +489,7 @@ class Client implements ClientInterface
 	 * @optional requestParameters['mws_auth_token'] - [String]
 	 */
 
-	public function setOrderReferenceDetails($requestParameters = array())
-	{
+	public function setOrderReferenceDetails($requestParameters = array()) {
 		$parameters           = array();
 		$parameters['Action'] = 'SetOrderReferenceDetails';
 		$requestParameters    = array_change_key_case($requestParameters, CASE_LOWER);
@@ -540,8 +520,7 @@ class Client implements ClientInterface
 	 * @optional requestParameters['mws_auth_token'] - [String]
 	 */
 
-	public function confirmOrderReference($requestParameters = array())
-	{
+	public function confirmOrderReference($requestParameters = array()) {
 		$parameters           = array();
 		$parameters['Action'] = 'ConfirmOrderReference';
 		$requestParameters    = array_change_key_case($requestParameters, CASE_LOWER);
@@ -566,8 +545,7 @@ class Client implements ClientInterface
 	 * @optional requestParameters['mws_auth_token'] - [String]
 	 */
 
-	public function cancelOrderReference($requestParameters = array())
-	{
+	public function cancelOrderReference($requestParameters = array()) {
 		$parameters           = array();
 		$parameters['Action'] = 'CancelOrderReference';
 		$requestParameters    = array_change_key_case($requestParameters, CASE_LOWER);
@@ -594,8 +572,7 @@ class Client implements ClientInterface
 	 * @optional requestParameters['mws_auth_token'] - [String]
 	 */
 
-	public function closeOrderReference($requestParameters = array())
-	{
+	public function closeOrderReference($requestParameters = array()) {
 		$parameters           = array();
 		$parameters['Action'] = 'CloseOrderReference';
 		$requestParameters    = array_change_key_case($requestParameters, CASE_LOWER);
@@ -621,8 +598,7 @@ class Client implements ClientInterface
 	 * @optional requestParameters['mws_auth_token'] - [String]
 	 */
 
-	public function closeAuthorization($requestParameters = array())
-	{
+	public function closeAuthorization($requestParameters = array()) {
 		$parameters           = array();
 		$parameters['Action'] = 'CloseAuthorization';
 		$requestParameters    = array_change_key_case($requestParameters, CASE_LOWER);
@@ -655,8 +631,7 @@ class Client implements ClientInterface
 	 * @optional requestParameters['mws_auth_token'] - [String]
 	 */
 
-	public function authorize($requestParameters = array())
-	{
+	public function authorize($requestParameters = array()) {
 		$parameters           = array();
 		$parameters['Action'] = 'Authorize';
 		$requestParameters    = array_change_key_case($requestParameters, CASE_LOWER);
@@ -688,8 +663,7 @@ class Client implements ClientInterface
 	 * @optional requestParameters['mws_auth_token'] - [String]
 	 */
 
-	public function getAuthorizationDetails($requestParameters = array())
-	{
+	public function getAuthorizationDetails($requestParameters = array()) {
 		$parameters           = array();
 		$parameters['Action'] = 'GetAuthorizationDetails';
 		$requestParameters    = array_change_key_case($requestParameters, CASE_LOWER);
@@ -719,8 +693,7 @@ class Client implements ClientInterface
 	 * @optional requestParameters['mws_auth_token'] - [String]
 	 */
 
-	public function capture($requestParameters = array())
-	{
+	public function capture($requestParameters = array()) {
 		$parameters           = array();
 		$parameters['Action'] = 'Capture';
 		$requestParameters    = array_change_key_case($requestParameters, CASE_LOWER);
@@ -750,8 +723,7 @@ class Client implements ClientInterface
 	 * @optional requestParameters['mws_auth_token'] - [String]
 	 */
 
-	public function getCaptureDetails($requestParameters = array())
-	{
+	public function getCaptureDetails($requestParameters = array()) {
 		$parameters           = array();
 		$parameters['Action'] = 'GetCaptureDetails';
 		$requestParameters    = array_change_key_case($requestParameters, CASE_LOWER);
@@ -781,8 +753,7 @@ class Client implements ClientInterface
 	 * @optional requestParameters['mws_auth_token'] - [String]
 	 */
 
-	public function refund($requestParameters = array())
-	{
+	public function refund($requestParameters = array()) {
 		$parameters           = array();
 		$parameters['Action'] = 'Refund';
 		$requestParameters    = array_change_key_case($requestParameters, CASE_LOWER);
@@ -812,8 +783,7 @@ class Client implements ClientInterface
 	 * @optional requestParameters['mws_auth_token'] - [String]
 	 */
 
-	public function getRefundDetails($requestParameters = array())
-	{
+	public function getRefundDetails($requestParameters = array()) {
 		$parameters           = array();
 		$parameters['Action'] = 'GetRefundDetails';
 		$requestParameters    = array_change_key_case($requestParameters, CASE_LOWER);
@@ -840,8 +810,7 @@ class Client implements ClientInterface
 	 * @optional requestParameters['mws_auth_token'] - [String]
 	 */
 
-	public function getServiceStatus($requestParameters = array())
-	{
+	public function getServiceStatus($requestParameters = array()) {
 		$parameters           = array();
 		$parameters['Action'] = 'GetServiceStatus';
 		$requestParameters    = array_change_key_case($requestParameters, CASE_LOWER);
@@ -872,8 +841,7 @@ class Client implements ClientInterface
 	 * @optional requestParameters['mws_auth_token'] - [String]
 	 */
 
-	public function createOrderReferenceForId($requestParameters = array())
-	{
+	public function createOrderReferenceForId($requestParameters = array()) {
 		$parameters           = array();
 		$parameters['Action'] = 'CreateOrderReferenceForId';
 		$requestParameters    = array_change_key_case($requestParameters, CASE_LOWER);
@@ -907,8 +875,7 @@ class Client implements ClientInterface
 	 * @optional requestParameters['mws_auth_token'] - [String]
 	 */
 
-	public function getBillingAgreementDetails($requestParameters = array())
-	{
+	public function getBillingAgreementDetails($requestParameters = array()) {
 		$parameters           = array();
 		$parameters['Action'] = 'GetBillingAgreementDetails';
 		$requestParameters    = array_change_key_case($requestParameters, CASE_LOWER);
@@ -940,8 +907,7 @@ class Client implements ClientInterface
 	 * @optional requestParameters['mws_auth_token'] - [String]
 	 */
 
-	public function setBillingAgreementDetails($requestParameters = array())
-	{
+	public function setBillingAgreementDetails($requestParameters = array()) {
 		$parameters           = array();
 		$parameters['Action'] = 'SetBillingAgreementDetails';
 		$requestParameters    = array_change_key_case($requestParameters, CASE_LOWER);
@@ -970,8 +936,7 @@ class Client implements ClientInterface
 	 * @optional requestParameters['mws_auth_token'] - [String]
 	 */
 
-	public function confirmBillingAgreement($requestParameters = array())
-	{
+	public function confirmBillingAgreement($requestParameters = array()) {
 		$parameters           = array();
 		$parameters['Action'] = 'ConfirmBillingAgreement';
 		$requestParameters    = array_change_key_case($requestParameters, CASE_LOWER);
@@ -995,8 +960,7 @@ class Client implements ClientInterface
 	 * @optional requestParameters['mws_auth_token'] - [String]
 	 */
 
-	public function validateBillingAgreement($requestParameters = array())
-	{
+	public function validateBillingAgreement($requestParameters = array()) {
 		$parameters           = array();
 		$parameters['Action'] = 'ValidateBillingAgreement';
 		$requestParameters    = array_change_key_case($requestParameters, CASE_LOWER);
@@ -1033,8 +997,7 @@ class Client implements ClientInterface
 	 * @optional requestParameters['mws_auth_token'] - [String]
 	 */
 
-	public function authorizeOnBillingAgreement($requestParameters = array())
-	{
+	public function authorizeOnBillingAgreement($requestParameters = array()) {
 		$parameters           = array();
 		$parameters['Action'] = 'AuthorizeOnBillingAgreement';
 		$requestParameters    = array_change_key_case($requestParameters, CASE_LOWER);
@@ -1072,8 +1035,7 @@ class Client implements ClientInterface
 	 * @optional requestParameters['mws_auth_token'] - [String]
 	 */
 
-	public function closeBillingAgreement($requestParameters = array())
-	{
+	public function closeBillingAgreement($requestParameters = array()) {
 		$parameters           = array();
 		$parameters['Action'] = 'CloseBillingAgreement';
 		$requestParameters    = array_change_key_case($requestParameters, CASE_LOWER);
@@ -1171,8 +1133,7 @@ class Client implements ClientInterface
 
 	/* makeChargeCalls - makes API calls based off the charge type (OrderReference or BillingAgreement) */
 
-	private function makeChargeCalls($chargeType, $setParameters, $confirmParameters, $authorizeParameters)
-	{
+	private function makeChargeCalls($chargeType, $setParameters, $confirmParameters, $authorizeParameters) {
 	switch ( $chargeType ) {
 			case 'OrderReference':
 				$response = $this->setOrderReferenceDetails($setParameters);
@@ -1212,8 +1173,7 @@ class Client implements ClientInterface
 	 * @optional requestParameters['mws_auth_token'] - [String]
 	 */
 
-	public function getProviderCreditDetails($requestParameters = array())
-	{
+	public function getProviderCreditDetails($requestParameters = array()) {
 	$parameters           = array();
 		$parameters['Action'] = 'GetProviderCreditDetails';
 		$requestParameters    = array_change_key_case($requestParameters, CASE_LOWER);
@@ -1236,8 +1196,7 @@ class Client implements ClientInterface
 	 * @optional requestParameters['mws_auth_token'] - [String]
 	 */
 
-	public function getProviderCreditReversalDetails($requestParameters = array())
-	{
+	public function getProviderCreditReversalDetails($requestParameters = array()) {
 	$parameters           = array();
 		$parameters['Action'] = 'GetProviderCreditReversalDetails';
 		$requestParameters    = array_change_key_case($requestParameters, CASE_LOWER);
@@ -1264,8 +1223,7 @@ class Client implements ClientInterface
 	 * @optional requestParameters['mws_auth_token'] - [String]
 	 */
 
-	public function reverseProviderCredit($requestParameters = array())
-	{
+	public function reverseProviderCredit($requestParameters = array()) {
 	$parameters           = array();
 		$parameters['Action'] = 'ReverseProviderCredit';
 		$requestParameters    = array_change_key_case($requestParameters, CASE_LOWER);
@@ -1295,8 +1253,7 @@ class Client implements ClientInterface
 	 * @param Signature [String]
 	 */
 
-	private function calculateSignatureAndParametersToString($parameters = array())
-	{
+	private function calculateSignatureAndParametersToString($parameters = array()) {
 		$parameters['AWSAccessKeyId']   = $this->config['access_key'];
 		$parameters['Version']          = self::SERVICE_VERSION;
 		$parameters['SignatureMethod']  = 'HmacSHA256';
@@ -1344,8 +1301,7 @@ class Client implements ClientInterface
 	 *
 	 */
 
-	private function signParameters(array $parameters)
-	{
+	private function signParameters(array $parameters) {
 		$signatureVersion = $parameters['SignatureVersion'];
 		$algorithm        = 'HmacSHA1';
 		$stringToSign     = null;
@@ -1365,8 +1321,7 @@ class Client implements ClientInterface
 	 * @return String to Sign
 	 */
 
-	private function calculateStringToSignV2(array $parameters)
-	{
+	private function calculateStringToSignV2(array $parameters) {
 		$data  = 'POST';
 		$data .= "\n";
 		$data .= $this->mwsEndpointUrl;
@@ -1379,8 +1334,7 @@ class Client implements ClientInterface
 
 	/* Convert paremeters to Url encoded query string */
 
-	private function getParametersAsString(array $parameters)
-	{
+	private function getParametersAsString(array $parameters) {
 		$queryParameters = array();
 		foreach ( $parameters as $key => $value ) {
 			$queryParameters[] = $key . '=' . $this->urlEncode($value);
@@ -1389,15 +1343,13 @@ class Client implements ClientInterface
 		return implode('&', $queryParameters);
 	}
 
-	private function urlEncode($value)
-	{
+	private function urlEncode($value) {
 		return str_replace('%7E', '~', rawurlencode($value));
 	}
 
 	/* Computes RFC 2104-compliant HMAC signature */
 
-	private function sign($data, $algorithm)
-	{
+	private function sign($data, $algorithm) {
 		if ( $algorithm === 'HmacSHA1' ) {
 			$hash = 'sha1';
 		} elseif ( $algorithm === 'HmacSHA256' ) {
@@ -1411,8 +1363,7 @@ class Client implements ClientInterface
 
 	/* Formats date as ISO 8601 timestamp */
 
-	private function getFormattedTimestamp()
-	{
+	private function getFormattedTimestamp() {
 		return gmdate('Y-m-d\TH:i:s.\\0\\0\\0\\Z', time());
 	}
 
@@ -1421,8 +1372,7 @@ class Client implements ClientInterface
 	 * The response from the POST is an XML which is converted to Array
 	 */
 
-	private function invokePost($parameters)
-	{
+	private function invokePost($parameters) {
 		$response      = array();
 		$statusCode    = 200;
 		$this->success = false;
@@ -1478,8 +1428,7 @@ class Client implements ClientInterface
 	 * @throws Exception if maximum number of retries has been reached
 	 */
 
-	private function pauseOnRetry($retries, $status)
-	{
+	private function pauseOnRetry($retries, $status) {
 		if ( $retries <= self::MAX_ERROR_RETRY ) {
 			$delay = (int) (pow(4, $retries) * 100000);
 			usleep($delay);
@@ -1490,8 +1439,7 @@ class Client implements ClientInterface
 
 	/* Create MWS service URL and the Endpoint path */
 
-	private function createServiceUrl()
-	{
+	private function createServiceUrl() {
 		$this->modePath = strtolower($this->config['sandbox']) ? 'OffAmazonPayments_Sandbox' : 'OffAmazonPayments';
 
 		if ( ! empty($this->config['region']) ) {
@@ -1510,8 +1458,7 @@ class Client implements ClientInterface
 
 	/* Based on the config['region'] and config['sandbox'] values get the user profile URL */
 
-	private function profileEndpointUrl()
-	{
+	private function profileEndpointUrl() {
 		if ( ! empty($this->config['region']) ) {
 			$region = strtolower($this->config['region']);
 
@@ -1529,8 +1476,7 @@ class Client implements ClientInterface
 
 	/* Create the User Agent Header sent with the POST request */
 
-	private function constructUserAgentHeader()
-	{
+	private function constructUserAgentHeader() {
 		$this->userAgent  = $this->quoteApplicationName($this->config['application_name']) . '/' . $this->quoteApplicationVersion($this->config['application_version']);
 		$this->userAgent .= ' (';
 		$this->userAgent .= 'Language=PHP/' . phpversion();
@@ -1547,8 +1493,7 @@ class Client implements ClientInterface
 	 * @return string
 	 */
 
-	private function quoteApplicationName($s)
-	{
+	private function quoteApplicationName($s) {
 		$quotedString = preg_replace('/ {2,}|\s/', ' ', $s);
 		$quotedString = preg_replace('/\\\\/', '\\\\\\\\', $quotedString);
 		$quotedString = preg_replace('/\//', '\\/', $quotedString);
@@ -1562,8 +1507,7 @@ class Client implements ClientInterface
 	 * @return string
 	 */
 
-	private function quoteApplicationVersion($s)
-	{
+	private function quoteApplicationVersion($s) {
 		$quotedString = preg_replace('/ {2,}|\s/', ' ', $s);
 		$quotedString = preg_replace('/\\\\/', '\\\\\\\\', $quotedString);
 		$quotedString = preg_replace('/\\(/', '\\(', $quotedString);
