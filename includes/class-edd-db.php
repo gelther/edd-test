@@ -51,7 +51,7 @@ abstract class EDD_DB {
 	 *
 	 * @access  public
 	 * @since   2.1
-	 * @return  array
+	 * @return array
 	 */
 	public function get_columns() {
 		return array();
@@ -62,7 +62,7 @@ abstract class EDD_DB {
 	 *
 	 * @access  public
 	 * @since   2.1
-	 * @return  array
+	 * @return array
 	 */
 	public function get_column_defaults() {
 		return array();
@@ -73,7 +73,7 @@ abstract class EDD_DB {
 	 *
 	 * @access  public
 	 * @since   2.1
-	 * @return  object
+	 * @return object
 	 */
 	public function get( $row_id ) {
 		global $wpdb;
@@ -85,7 +85,7 @@ abstract class EDD_DB {
 	 *
 	 * @access  public
 	 * @since   2.1
-	 * @return  object
+	 * @return object
 	 */
 	public function get_by( $column, $row_id ) {
 		global $wpdb;
@@ -98,7 +98,7 @@ abstract class EDD_DB {
 	 *
 	 * @access  public
 	 * @since   2.1
-	 * @return  string
+	 * @return string
 	 */
 	public function get_column( $column, $row_id ) {
 		global $wpdb;
@@ -111,7 +111,7 @@ abstract class EDD_DB {
 	 *
 	 * @access  public
 	 * @since   2.1
-	 * @return  string
+	 * @return string
 	 */
 	public function get_column_by( $column, $column_where, $column_value ) {
 		global $wpdb;
@@ -125,7 +125,7 @@ abstract class EDD_DB {
 	 *
 	 * @access  public
 	 * @since   2.1
-	 * @return  int
+	 * @return int
 	 */
 	public function insert( $data, $type = '' ) {
 		global $wpdb;
@@ -160,7 +160,7 @@ abstract class EDD_DB {
 	 *
 	 * @access  public
 	 * @since   2.1
-	 * @return  bool
+	 * @return bool
 	 */
 	public function update( $row_id, $data = array(), $where = '' ) {
 
@@ -202,7 +202,7 @@ abstract class EDD_DB {
 	 *
 	 * @access  public
 	 * @since   2.1
-	 * @return  bool
+	 * @return bool
 	 */
 	public function delete( $row_id = 0 ) {
 
