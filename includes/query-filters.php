@@ -132,7 +132,7 @@ function edd_refresh_permalinks_on_bad_404() {
 
 	if ( false === get_transient( 'edd_refresh_404_permalinks' ) ) {
 
-		$slug  = defined( 'EDD_SLUG' ) ? EDD_SLUG : 'downloads';
+		$slug = defined( 'EDD_SLUG' ) ? EDD_SLUG : 'downloads';
 
 		$parts = explode( '/', $wp->request );
 

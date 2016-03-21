@@ -90,7 +90,7 @@ class EDD_Tools_Recount_All_Stats extends EDD_Batch_Export {
 			unset( $log_ids );
 
 			$payment_ids = implode( ',', $payment_ids );
-			$payments = $wpdb->get_results( "SELECT ID, post_status FROM $wpdb->posts WHERE ID IN (" . $payment_ids . ')' );
+			$payments    = $wpdb->get_results( "SELECT ID, post_status FROM $wpdb->posts WHERE ID IN (" . $payment_ids . ')' );
 			unset( $payment_ids );
 
 			foreach ( $payments as $payment ) {
@@ -270,7 +270,7 @@ class EDD_Tools_Recount_All_Stats extends EDD_Batch_Export {
 				$this->store_data( 'edd_temp_download_ids', $all_downloads );
 			}
 
-			$args  = apply_filters( 'edd_recount_download_stats_total_args', array(
+			$args = apply_filters( 'edd_recount_download_stats_total_args', array(
 				'post_parent__in' => $all_downloads,
 				'post_type'       => 'edd_log',
 				'post_status'     => 'publish',
@@ -287,7 +287,7 @@ class EDD_Tools_Recount_All_Stats extends EDD_Batch_Export {
 				unset( $log_ids );
 
 				$payment_ids = implode( ',', $payment_ids );
-				$payments = $wpdb->get_results( "SELECT ID, post_status FROM $wpdb->posts WHERE ID IN (" . $payment_ids . ')' );
+				$payments    = $wpdb->get_results( "SELECT ID, post_status FROM $wpdb->posts WHERE ID IN (" . $payment_ids . ')' );
 				unset( $payment_ids );
 
 				foreach ( $payments as $payment ) {
@@ -297,7 +297,7 @@ class EDD_Tools_Recount_All_Stats extends EDD_Batch_Export {
 
 					if ( ! array_key_exists( $payment->ID, $payment_items ) ) {
 
-						$items = edd_get_payment_meta_cart_details( $payment->ID );
+						$items                         = edd_get_payment_meta_cart_details( $payment->ID );
 						$payment_items[ $payment->ID ] = $items;
 
 					}

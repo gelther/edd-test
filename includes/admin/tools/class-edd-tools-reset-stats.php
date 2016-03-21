@@ -80,7 +80,7 @@ class EDD_Tools_Reset_Stats extends EDD_Batch_Export {
 						$step_ids['downloads'][] = $item['id'];
 						break;
 					default:
-						$item_type = apply_filters( 'edd_reset_item_type', 'other', $item );
+						$item_type                = apply_filters( 'edd_reset_item_type', 'other', $item );
 						$step_ids[ $item_type ][] = $item['id'];
 						break;
 				}
@@ -100,7 +100,7 @@ class EDD_Tools_Reset_Stats extends EDD_Batch_Export {
 				switch ( $type ) {
 					case 'customers':
 						$table_name = $wpdb->prefix . 'edd_customers';
-						$sql[] = "DELETE FROM $table_name WHERE id IN ($ids)";
+						$sql[]      = "DELETE FROM $table_name WHERE id IN ($ids)";
 						break;
 					case 'downloads':
 						$sql[] = "UPDATE $wpdb->postmeta SET meta_value = 0 WHERE meta_key = '_edd_download_sales' AND post_id IN ($ids)";

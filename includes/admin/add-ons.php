@@ -22,7 +22,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  */
 function edd_add_ons_page() {
 	$add_ons_tabs = apply_filters( 'edd_add_ons_tabs', array( 'popular' => 'Popular', 'new' => 'New') );
-	$active_tab = isset( $_GET['tab'] ) && array_key_exists( $_GET['tab'], $add_ons_tabs ) ? $_GET['tab'] : 'popular';
+	$active_tab   = isset( $_GET['tab'] ) && array_key_exists( $_GET['tab'], $add_ons_tabs ) ? $_GET['tab'] : 'popular';
 
 	ob_start(); ?>
 	<div class="wrap" id="edd-add-ons">

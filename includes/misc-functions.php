@@ -657,7 +657,7 @@ function edd_get_upload_dir() {
  */
 function edd_cleanup_file_symlinks() {
 	$path = edd_get_symlink_dir();
-	$dir = opendir( $path );
+	$dir  = opendir( $path );
 
 	while ( ( $file = readdir( $dir ) ) !== false ) {
 		if ( $file == '.' || $file == '..' )
@@ -753,9 +753,9 @@ function edd_set_upload_dir( $upload ) {
 	// Override the year / month being based on the post publication date, if year/month organization is enabled
 	if ( get_option( 'uploads_use_yearmonth_folders' ) ) {
 		// Generate the yearly and monthly dirs
-		$time = current_time( 'mysql' );
-		$y = substr( $time, 0, 4 );
-		$m = substr( $time, 5, 2 );
+		$time             = current_time( 'mysql' );
+		$y                = substr( $time, 0, 4 );
+		$m                = substr( $time, 5, 2 );
 		$upload['subdir'] = "/$y/$m";
 	}
 

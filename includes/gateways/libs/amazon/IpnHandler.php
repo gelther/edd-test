@@ -32,7 +32,7 @@ class IpnHandler implements IpnHandlerInterface
     public function __construct($headers, $body, $ipnConfig = null)
     {
         $this->headers = array_change_key_case($headers, CASE_LOWER);
-        $this->body = $body;
+        $this->body    = $body;
 
         if ( $ipnConfig != null ) {
             $this->checkConfigKeys($ipnConfig);
@@ -240,7 +240,7 @@ class IpnHandler implements IpnHandlerInterface
 
     private function getCertificate($certificatePath)
     {
-        $httpCurlRequest  = new HttpCurl($this->ipnConfig);
+        $httpCurlRequest = new HttpCurl($this->ipnConfig);
 
 	$response = $httpCurlRequest->httpGet($certificatePath);
 
@@ -346,7 +346,7 @@ class IpnHandler implements IpnHandlerInterface
 
         // Merging the remaining fields with the response
         $remainingFields = $this->getRemainingIpnFields();
-        $responseArray = array_merge($remainingFields,(array)$response);
+        $responseArray   = array_merge($remainingFields,(array)$response);
 
         // Converting to JSON format
         $response = json_encode($responseArray);
@@ -368,7 +368,7 @@ class IpnHandler implements IpnHandlerInterface
 
         // Merging the remaining fields with the response array
         $remainingFields = $this->getRemainingIpnFields();
-        $response = array_merge($remainingFields,$response);
+        $response        = array_merge($remainingFields,$response);
 
         return $response;
     }

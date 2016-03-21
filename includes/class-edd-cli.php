@@ -113,8 +113,8 @@ class EDD_CLI extends WP_CLI_Command {
 			$end_date   = false;
 		}
 
-		$earnings   = $stats->get_earnings( $download, $start_date, $end_date );
-		$sales      = $stats->get_sales( $download, $start_date, $end_date );
+		$earnings = $stats->get_earnings( $download, $start_date, $end_date );
+		$sales    = $stats->get_sales( $download, $start_date, $end_date );
 
 		WP_CLI::line( sprintf( __( 'Earnings: %s', 'easy-digital-downloads' ), $earnings ) );
 		WP_CLI::line( sprintf( __( 'Sales: %s', 'easy-digital-downloads' ), $sales ) );
@@ -150,13 +150,13 @@ class EDD_CLI extends WP_CLI_Command {
 
 		foreach ( $products['products'] as $product ) {
 
-			$categories	= '';
+			$categories = '';
 			$tags       = '';
 			$pricing    = array();
 
 			if ( is_array( $product['info']['category'] ) ) {
 
-				$categories	= array();
+				$categories = array();
 				foreach ( $product['info']['category'] as $category ) {
 					$categories[] = $category->name;
 				}
@@ -498,19 +498,19 @@ class EDD_CLI extends WP_CLI_Command {
 
 
 		// Setup some defaults
-		$number     = 1;
-		$status     = 'complete';
-		$id         = false;
-		$price_id   = false;
+		$number   = 1;
+		$status   = 'complete';
+		$id       = false;
+		$price_id = false;
 
 		if ( count( $assoc_args ) > 0 ) {
-			$number     = ( array_key_exists( 'number', $assoc_args ) )   ? absint( $assoc_args['number'] )             : $number;
-			$id         = ( array_key_exists( 'id', $assoc_args ) )       ? absint( $assoc_args['id'] )                 : $id;
-			$price_id   = ( array_key_exists( 'price_id', $assoc_args ) ) ? absint( $assoc_args['id'] )                 : false;
-			$tax        = ( array_key_exists( 'tax', $assoc_args ) )      ? floatval( $assoc_args['tax'] )              : 0;
-			$email      = ( array_key_exists( 'email', $assoc_args ) )    ? sanitize_email( $assoc_args['email'] )      : 'guest@local.dev';
-			$fname      = ( array_key_exists( 'fname', $assoc_args ) )    ? sanitize_text_field( $assoc_args['fname'] ) : 'Pippin';
-			$lname      = ( array_key_exists( 'lname', $assoc_args ) )    ? sanitize_text_field( $assoc_args['lname'] ) : 'Williamson';
+			$number   = ( array_key_exists( 'number', $assoc_args ) )   ? absint( $assoc_args['number'] )             : $number;
+			$id       = ( array_key_exists( 'id', $assoc_args ) )       ? absint( $assoc_args['id'] )                 : $id;
+			$price_id = ( array_key_exists( 'price_id', $assoc_args ) ) ? absint( $assoc_args['id'] )                 : false;
+			$tax      = ( array_key_exists( 'tax', $assoc_args ) )      ? floatval( $assoc_args['tax'] )              : 0;
+			$email    = ( array_key_exists( 'email', $assoc_args ) )    ? sanitize_email( $assoc_args['email'] )      : 'guest@local.dev';
+			$fname    = ( array_key_exists( 'fname', $assoc_args ) )    ? sanitize_text_field( $assoc_args['fname'] ) : 'Pippin';
+			$lname    = ( array_key_exists( 'lname', $assoc_args ) )    ? sanitize_text_field( $assoc_args['lname'] ) : 'Williamson';
 
 			// Status requires a bit more validation
 			if ( array_key_exists( 'status', $assoc_args ) ) {
@@ -583,7 +583,7 @@ class EDD_CLI extends WP_CLI_Command {
 					continue;
 				}
 
-				$options = array();
+				$options         = array();
 				$final_downloads = array();
 
 				// Deal with variable pricing
@@ -595,7 +595,7 @@ class EDD_CLI extends WP_CLI_Command {
 						$price_id = rand( 0, count( $prices ) - 1 );
 					}
 
-					$item_price = $prices[ $price_id ]['amount'];
+					$item_price          = $prices[ $price_id ]['amount'];
 					$options['price_id'] = $price_id;
 
 				} else {

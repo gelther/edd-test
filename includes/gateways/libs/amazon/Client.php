@@ -276,12 +276,12 @@ class Client implements ClientInterface
 
 		// To make sure double encoding doesn't occur decode first and encode again.
 		$accessToken = urldecode($accessToken);
-		$url 	     = $this->profileEndpoint . '/auth/o2/tokeninfo?access_token=' . urlEncode($accessToken);
+		$url         = $this->profileEndpoint . '/auth/o2/tokeninfo?access_token=' . urlEncode($accessToken);
 
 		$httpCurlRequest = new HttpCurl();
 
 		$response = $httpCurlRequest->httpGet($url);
-		$data 	  = json_decode($response);
+		$data     = json_decode($response);
 
 		if ( $data->aud != $this->config['client_id'] ) {
 			// The access token does not belong to us
@@ -337,7 +337,7 @@ class Client implements ClientInterface
 			}
 		}
 
-		$parameters = $this->setDefaultValues($parameters, $fieldMappings, $requestParameters);
+		$parameters     = $this->setDefaultValues($parameters, $fieldMappings, $requestParameters);
 	$responseObject = $this->calculateSignatureAndPost($parameters);
 
 	return $responseObject;
@@ -403,7 +403,7 @@ class Client implements ClientInterface
 
 	private function setProviderCreditDetails($parameters, $providerCreditInfo)
 	{
-	$providerIndex = 0;
+	$providerIndex  = 0;
 	$providerString = 'ProviderCreditList.member.';
 
 		$fieldMappings = array(
@@ -413,7 +413,7 @@ class Client implements ClientInterface
 		);
 
 	foreach ( $providerCreditInfo as $key => $value ) {
-		$value = array_change_key_case($value, CASE_LOWER);
+		$value         = array_change_key_case($value, CASE_LOWER);
 		$providerIndex = $providerIndex + 1;
 
 		foreach ( $value as $param => $val ) {
@@ -439,7 +439,7 @@ class Client implements ClientInterface
 
 	private function setProviderCreditReversalDetails($parameters, $providerCreditInfo)
 	{
-	$providerIndex = 0;
+	$providerIndex  = 0;
 	$providerString = 'ProviderCreditReversalList.member.';
 
 		$fieldMappings = array(
@@ -449,7 +449,7 @@ class Client implements ClientInterface
 		);
 
 	foreach ( $providerCreditInfo as $key => $value ) {
-		$value = array_change_key_case($value, CASE_LOWER);
+		$value         = array_change_key_case($value, CASE_LOWER);
 		$providerIndex = $providerIndex + 1;
 
 		foreach ( $value as $param => $val ) {
@@ -1116,7 +1116,7 @@ class Client implements ClientInterface
 	public function charge($requestParameters = array()) {
 
 	$requestParameters = array_change_key_case($requestParameters, CASE_LOWER);
-	$requestParameters= $this->trimArray($requestParameters);
+	$requestParameters = $this->trimArray($requestParameters);
 
 	$setParameters = $authorizeParameters = $confirmParameters = $requestParameters;
 
@@ -1132,17 +1132,17 @@ class Client implements ClientInterface
 			switch ( substr(strtoupper($requestParameters['amazon_reference_id']), 0, 1) ) {
 				case 'P':
 				case 'S':
-					$chargeType = 'OrderReference';
-					$setParameters['amazon_order_reference_id'] = $requestParameters['amazon_reference_id'];
+					$chargeType                                       = 'OrderReference';
+					$setParameters['amazon_order_reference_id']       = $requestParameters['amazon_reference_id'];
 					$authorizeParameters['amazon_order_reference_id'] = $requestParameters['amazon_reference_id'];
-					$confirmParameters['amazon_order_reference_id'] = $requestParameters['amazon_reference_id'];
+					$confirmParameters['amazon_order_reference_id']   = $requestParameters['amazon_reference_id'];
 					break;
 				case 'B':
 				case 'C':
-					$chargeType = 'BillingAgreement';
-					$setParameters['amazon_billing_agreement_id'] = $requestParameters['amazon_reference_id'];
+					$chargeType                                         = 'BillingAgreement';
+					$setParameters['amazon_billing_agreement_id']       = $requestParameters['amazon_reference_id'];
 					$authorizeParameters['amazon_billing_agreement_id'] = $requestParameters['amazon_reference_id'];
-					$confirmParameters['amazon_billing_agreement_id'] = $requestParameters['amazon_reference_id'];
+					$confirmParameters['amazon_billing_agreement_id']   = $requestParameters['amazon_reference_id'];
 					break;
 				default:
 					throw new \Exception('Invalid Amazon Reference ID');
@@ -1152,16 +1152,16 @@ class Client implements ClientInterface
 		}
 
 	// Set the other parameters if the values are present
-		$setParameters['amount'] = ! empty($requestParameters['charge_amount']) ? $requestParameters['charge_amount'] : '';
+		$setParameters['amount']                     = ! empty($requestParameters['charge_amount']) ? $requestParameters['charge_amount'] : '';
 		$authorizeParameters['authorization_amount'] = ! empty($requestParameters['charge_amount']) ? $requestParameters['charge_amount'] : '';
 
-		$setParameters['seller_note'] = ! empty($requestParameters['charge_note']) ? $requestParameters['charge_note'] : '';
+		$setParameters['seller_note']                     = ! empty($requestParameters['charge_note']) ? $requestParameters['charge_note'] : '';
 		$authorizeParameters['seller_authorization_note'] = ! empty($requestParameters['charge_note']) ? $requestParameters['charge_note'] : '';
-		$authorizeParameters['seller_note'] = ! empty($requestParameters['charge_note']) ? $requestParameters['charge_note'] : '';
+		$authorizeParameters['seller_note']               = ! empty($requestParameters['charge_note']) ? $requestParameters['charge_note'] : '';
 
-		$setParameters['seller_order_id'] = ! empty($requestParameters['charge_order_id']) ? $requestParameters['charge_order_id'] : '';
+		$setParameters['seller_order_id']             = ! empty($requestParameters['charge_order_id']) ? $requestParameters['charge_order_id'] : '';
 		$setParameters['seller_billing_agreement_id'] = ! empty($requestParameters['charge_order_id']) ? $requestParameters['charge_order_id'] : '';
-		$authorizeParameters['seller_order_id'] = ! empty($requestParameters['charge_order_id']) ? $requestParameters['charge_order_id'] : '';
+		$authorizeParameters['seller_order_id']       = ! empty($requestParameters['charge_order_id']) ? $requestParameters['charge_order_id'] : '';
 
 		$authorizeParameters['capture_now'] = 'true';
 
@@ -1197,7 +1197,7 @@ class Client implements ClientInterface
 				}
 				// Check the Billing Agreement status again before making the Authorization.
 				$responseObj = $this->getBillingAgreementDetails($setParameters);
-				$baStatus = $responseObj->GetBillingAgreementDetailsStatus($responseObj->toXml());
+				$baStatus    = $responseObj->GetBillingAgreementDetailsStatus($responseObj->toXml());
 				if ( $this->success && $baStatus['State'] === 'Open' ) {
 					$response = $this->AuthorizeOnBillingAgreement($authorizeParameters);
 				}
@@ -1310,7 +1310,7 @@ class Client implements ClientInterface
 		$parameters              = $this->getParametersAsString($parameters);
 
 	// Save these parameters in the parameters variable so that it can be returned for unit testing.
-	$this->parameters 	 = $parameters;
+	$this->parameters = $parameters;
 		return $parameters;
 	}
 
@@ -1367,7 +1367,7 @@ class Client implements ClientInterface
 
 	private function calculateStringToSignV2(array $parameters)
 	{
-		$data = 'POST';
+		$data  = 'POST';
 		$data .= "\n";
 		$data .= $this->mwsEndpointUrl;
 		$data .= "\n";
@@ -1423,8 +1423,8 @@ class Client implements ClientInterface
 
 	private function invokePost($parameters)
 	{
-		$response       = array();
-		$statusCode     = 200;
+		$response      = array();
+		$statusCode    = 200;
 		$this->success = false;
 
 	// Submit the request and read response body
@@ -1436,7 +1436,7 @@ class Client implements ClientInterface
 					$this->constructUserAgentHeader();
 
 					$httpCurlRequest = new HttpCurl($this->config);
-			$response = $httpCurlRequest->httpPost($this->mwsServiceUrl, $this->userAgent, $parameters);
+			$response        = $httpCurlRequest->httpPost($this->mwsServiceUrl, $this->userAgent, $parameters);
 
 			// Split the API response into Response Body and the other parts of the response into other
 					list($other, $responseBody) = explode("\r\n\r\n", $response, 2);
@@ -1451,7 +1451,7 @@ class Client implements ClientInterface
 			$statusCode = $response['Status'];
 
 			if ( $statusCode == 200 ) {
-						$shouldRetry    = false;
+						$shouldRetry   = false;
 						$this->success = true;
 					} elseif ( $statusCode == 500 || $statusCode == 503 ) {
 
@@ -1531,7 +1531,7 @@ class Client implements ClientInterface
 
 	private function constructUserAgentHeader()
 	{
-		$this->userAgent = $this->quoteApplicationName($this->config['application_name']) . '/' . $this->quoteApplicationVersion($this->config['application_version']);
+		$this->userAgent  = $this->quoteApplicationName($this->config['application_name']) . '/' . $this->quoteApplicationVersion($this->config['application_version']);
 		$this->userAgent .= ' (';
 		$this->userAgent .= 'Language=PHP/' . phpversion();
 		$this->userAgent .= '; ';

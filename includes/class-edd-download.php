@@ -455,7 +455,7 @@ class EDD_Download {
 	 */
 	public function get_file_price_condition( $file_key = 0 ) {
 
-		$files    = edd_get_download_files( $this->ID );
+		$files     = edd_get_download_files( $this->ID );
 		$condition = isset( $files[ $file_key ]['condition']) ? $files[ $file_key ]['condition'] : 'all';
 
 		return apply_filters( 'edd_get_file_price_condition', $condition, $this->ID, $files );
@@ -742,7 +742,7 @@ class EDD_Download {
 	 */
 	public function is_free( $price_id = false ) {
 
-		$is_free = false;
+		$is_free          = false;
 		$variable_pricing = edd_has_variable_prices( $this->ID );
 
 		if ( $variable_pricing && ! is_null( $price_id ) && $price_id !== false ) {

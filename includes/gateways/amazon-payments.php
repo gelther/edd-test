@@ -225,7 +225,7 @@ final class EDD_Amazon_Payments {
 	public function register_gateway( $gateways ) {
 
 		$default_amazon_info = array(
-			$this->gateway_id => array(
+			$this->gateway_id    => array(
 				'admin_label'    => __( 'Amazon', 'easy-digital-downloads' ),
 				'checkout_label' => __( 'Amazon', 'easy-digital-downloads' ),
 				'supports'       => array(),
@@ -384,8 +384,8 @@ final class EDD_Amazon_Payments {
 		);
 
 		$amazon_button_settings = apply_filters( 'edd_amazon_button_settings', $default_amazon_button_settings );
-		$base_url = '';
-		$sandbox  = $test_mode ? 'sandbox/' : '';
+		$base_url               = '';
+		$sandbox                = $test_mode ? 'sandbox/' : '';
 
 		switch ( edd_get_shop_country() ) {
 			case 'GB':
@@ -497,7 +497,7 @@ final class EDD_Amazon_Payments {
 			return;
 		}
 
-		$profile   = EDD()->session->get( 'amazon_profile' );
+		$profile = EDD()->session->get( 'amazon_profile' );
 		$reference = $_GET['amazon_reference_id'];
 
 		if ( ! is_user_logged_in() ) {
@@ -528,7 +528,7 @@ final class EDD_Amazon_Payments {
 
 					// Create a customer account if registration is not disabled
 
-					$args  = array(
+					$args = array(
 						'user_email'   => $profile['email'],
 						'user_login'   => $profile['email'],
 						'display_name' => $profile['name'],
@@ -621,7 +621,7 @@ final class EDD_Amazon_Payments {
 	 * @return void
 	 */
 	public function wallet_form() {
-		$profile   = EDD()->session->get( 'amazon_profile' );
+		$profile = EDD()->session->get( 'amazon_profile' );
 		remove_action( 'edd_purchase_form_after_cc_form', 'edd_checkout_tax_fields', 999 );
 		ob_start(); ?>
 		<fieldset id="edd_cc_fields" class="edd-amazon-fields">
@@ -977,7 +977,7 @@ final class EDD_Amazon_Payments {
 	 */
 	public function link_transaction_id( $transaction_id, $payment_id ) {
 
-		$base_url = 'https://sellercentral.amazon.com/hz/me/pmd/payment-details?orderReferenceId=';
+		$base_url        = 'https://sellercentral.amazon.com/hz/me/pmd/payment-details?orderReferenceId=';
 		$transaction_url = '<a href="' . esc_url( $base_url . $transaction_id ) . '" target="_blank">' . $transaction_id . '</a>';
 
 		return apply_filters( 'edd_' . $this->gateway_id . '_link_payment_details_transaction_id', $transaction_url );
@@ -1029,8 +1029,8 @@ final class EDD_Amazon_Payments {
 
 				case 'PaymentCapture' :
 
-					$key     = $data['CaptureDetails']['CaptureReferenceId'];
-					$status  = $data['CaptureDetails']['CaptureStatus']['State'];
+					$key    = $data['CaptureDetails']['CaptureReferenceId'];
+					$status = $data['CaptureDetails']['CaptureStatus']['State'];
 
 					if ( 'Declined' === $status ) {
 
@@ -1136,8 +1136,8 @@ final class EDD_Amazon_Payments {
 
 				case 'Declined' :
 
-					$code   = $refund['RefundResult']['RefundDetails']['RefundStatus']['ReasonCode'];
-					$note   = __( 'Refund declined in Amazon. Refund ID: %s', 'easy-digital-downloads' );
+					$code = $refund['RefundResult']['RefundDetails']['RefundStatus']['ReasonCode'];
+					$note = __( 'Refund declined in Amazon. Refund ID: %s', 'easy-digital-downloads' );
 
 					break;
 

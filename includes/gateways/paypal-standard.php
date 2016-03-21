@@ -262,7 +262,7 @@ function edd_process_paypal_ipn() {
 
 		// Validate the IPN
 
-		$remote_post_vars      = array(
+		$remote_post_vars = array(
 			'method'           => 'POST',
 			'timeout'          => 45,
 			'redirection'      => 5,
@@ -372,7 +372,7 @@ function edd_process_paypal_web_accept_and_cart( $data, $payment_id ) {
 		edd_update_payment_meta( $payment_id, '_edd_payment_user_email', $data['payer_email'] );
 
 		// Setup and store the customers's details
-		$address = array();
+		$address            = array();
 		$address['line1']   = ! empty( $data['address_street']       ) ? sanitize_text_field( $data['address_street'] )       : false;
 		$address['city']    = ! empty( $data['address_city']         ) ? sanitize_text_field( $data['address_city'] )         : false;
 		$address['state']   = ! empty( $data['address_state']        ) ? sanitize_text_field( $data['address_state'] )        : false;
@@ -623,7 +623,7 @@ add_filter( 'edd_payment_confirm_paypal', 'edd_paypal_success_page_content' );
 function edd_paypal_get_payment_transaction_id( $payment_id ) {
 
 	$transaction_id = '';
-	$notes = edd_get_payment_notes( $payment_id );
+	$notes          = edd_get_payment_notes( $payment_id );
 
 	foreach ( $notes as $note ) {
 		if ( preg_match( '/^PayPal Transaction ID: ([^\s]+)/', $note->comment_content, $match ) ) {

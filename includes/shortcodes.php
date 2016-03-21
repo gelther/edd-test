@@ -57,7 +57,7 @@ function edd_download_shortcode( $atts, $content = null ) {
 
 	if ( ! empty( $atts['sku'] ) ) {
 
-		$download = edd_get_download_by( 'sku', $atts['sku'] );
+		$download            = edd_get_download_by( 'sku', $atts['sku'] );
 		$atts['download_id'] = $download->ID;
 
 	} elseif ( isset( $atts['id'] ) ) {
@@ -497,7 +497,7 @@ function edd_downloads_query( $atts, $content = null ) {
 
 	$downloads = new WP_Query( $query );
 	if ( $downloads->have_posts() ) :
-		$i = 1;
+		$i             = 1;
 		$wrapper_class = 'edd_download_columns_' . $atts['columns'];
 		ob_start(); ?>
 		<div class="edd_downloads_list <?php echo apply_filters( 'edd_downloads_list_wrapper_class', $wrapper_class, $atts ); ?>">
@@ -558,10 +558,10 @@ function edd_downloads_query( $atts, $content = null ) {
 						'total'   => $downloads->max_num_pages
 					), $atts, $downloads, $query ) );
 				} else {
-					$big = 999999;
+					$big          = 999999;
 					$search_for   = array( $big, '#038;' );
 					$replace_with = array( '%#%', '&' );
-					$pagination = paginate_links( apply_filters( 'edd_download_pagination_args', array(
+					$pagination   = paginate_links( apply_filters( 'edd_download_pagination_args', array(
 						'base'    => str_replace( $search_for, $replace_with, get_pagenum_link( $big ) ),
 						'format'  => '?paged=%#%',
 						'current' => max( 1, $query['paged'] ),

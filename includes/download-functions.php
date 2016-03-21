@@ -274,7 +274,7 @@ function edd_get_default_variable_price( $download_id = 0 ) {
 		return false;
 	}
 
-	$prices = edd_get_variable_prices( $download_id );
+	$prices           = edd_get_variable_prices( $download_id );
 	$default_price_id = get_post_meta( $download_id, '_edd_default_price_id', true );
 
 	if ( $default_price_id === '' ||  ! isset( $prices[$default_price_id] ) ) {
@@ -295,7 +295,7 @@ function edd_get_default_variable_price( $download_id = 0 ) {
  * @return string $price_name Name of the price option
  */
 function edd_get_price_option_name( $download_id = 0, $price_id = 0, $payment_id = 0 ) {
-	$prices = edd_get_variable_prices( $download_id );
+	$prices     = edd_get_variable_prices( $download_id );
 	$price_name = '';
 
 	if ( $prices && is_array( $prices ) ) {
@@ -466,9 +466,9 @@ function edd_get_highest_price_option( $download_id = 0 ) {
  * @return string $range A fully formatted price range
  */
 function edd_price_range( $download_id = 0 ) {
-	$low   = edd_get_lowest_price_option( $download_id );
-	$high  = edd_get_highest_price_option( $download_id );
-	$range = '<span class="edd_price edd_price_range_low" id="edd_price_low_' . $download_id . '">' . edd_currency_filter( edd_format_amount( $low ) ) . '</span>';
+	$low    = edd_get_lowest_price_option( $download_id );
+	$high   = edd_get_highest_price_option( $download_id );
+	$range  = '<span class="edd_price edd_price_range_low" id="edd_price_low_' . $download_id . '">' . edd_currency_filter( edd_format_amount( $low ) ) . '</span>';
 	$range .= '<span class="edd_price_range_sep">&nbsp;&ndash;&nbsp;</span>';
 	$range .= '<span class="edd_price edd_price_range_high" id="edd_price_high_' . $download_id . '">' . edd_currency_filter( edd_format_amount( $high ) ) . '</span>';
 
@@ -727,10 +727,10 @@ function edd_decrease_earnings( $download_id = 0, $amount ) {
  * @return float $earnings Average monthly earnings
  */
 function edd_get_average_monthly_download_earnings( $download_id = 0 ) {
-	$earnings 	  = edd_get_download_earnings_stats( $download_id );
+	$earnings     = edd_get_download_earnings_stats( $download_id );
 	$release_date = get_post_field( 'post_date', $download_id );
 
-	$diff 	= abs( current_time( 'timestamp' ) - strtotime( $release_date ) );
+	$diff = abs( current_time( 'timestamp' ) - strtotime( $release_date ) );
 
 	$months = floor( $diff / ( 30 * 60 * 60 * 24 ) ); // Number of months since publication
 
@@ -749,10 +749,10 @@ function edd_get_average_monthly_download_earnings( $download_id = 0 ) {
  * @return float $sales Average monthly sales
  */
 function edd_get_average_monthly_download_sales( $download_id = 0 ) {
-	$sales          = edd_get_download_sales_stats( $download_id );
-	$release_date   = get_post_field( 'post_date', $download_id );
+	$sales        = edd_get_download_sales_stats( $download_id );
+	$release_date = get_post_field( 'post_date', $download_id );
 
-	$diff   = abs( current_time( 'timestamp' ) - strtotime( $release_date ) );
+	$diff = abs( current_time( 'timestamp' ) - strtotime( $release_date ) );
 
 	$months = floor( $diff / ( 30 * 60 * 60 * 24 ) ); // Number of months since publication
 
@@ -868,8 +868,8 @@ function edd_get_file_download_limit_override( $download_id = 0, $payment_id = 0
  * @return void
  */
 function edd_set_file_download_limit_override( $download_id = 0, $payment_id = 0 ) {
-	$override 	= edd_get_file_download_limit_override( $download_id, $payment_id );
-	$limit 		= edd_get_file_download_limit( $download_id );
+	$override = edd_get_file_download_limit_override( $download_id, $payment_id );
+	$limit    = edd_get_file_download_limit( $download_id );
 
 	if ( ! empty( $override ) ) {
 		$override = $override += 1;
@@ -915,8 +915,8 @@ function edd_is_file_at_download_limit( $download_id = 0, $payment_id = 0, $file
 		)
 	);
 
-	$ret                = false;
-	$download_count     = $logs->get_log_count( $download_id, 'file_download', $meta_query );
+	$ret            = false;
+	$download_count = $logs->get_log_count( $download_id, 'file_download', $meta_query );
 
 	$download_limit     = edd_get_file_download_limit( $download_id );
 	$unlimited_purchase = edd_payment_has_unlimited_downloads( $payment_id );
@@ -1094,7 +1094,7 @@ function edd_get_random_downloads( $num = 3, $post_ids = true ) {
 	} else {
 		$args = array( 'post_type' => 'download', 'orderby' => 'rand', 'post_count' => $num );
 	}
-	$args  = apply_filters( 'edd_get_random_downloads', $args );
+	$args = apply_filters( 'edd_get_random_downloads', $args );
 	return get_posts( $args );
 }
 
@@ -1117,9 +1117,9 @@ function edd_get_random_downloads( $num = 3, $post_ids = true ) {
  */
 function edd_get_download_token( $url = '' ) {
 
-	$args    = array();
-	$hash    = apply_filters( 'edd_get_url_token_algorithm', 'sha256' );
-	$secret  = apply_filters( 'edd_get_url_token_secret', hash( $hash, wp_salt() ) );
+	$args   = array();
+	$hash   = apply_filters( 'edd_get_url_token_algorithm', 'sha256' );
+	$secret = apply_filters( 'edd_get_url_token_secret', hash( $hash, wp_salt() ) );
 
 	/*
 	 * Add additional args to the URL for generating the token.
@@ -1146,7 +1146,7 @@ function edd_get_download_token( $url = '' ) {
 
 			if ( in_array( 'ua', $options ) ) {
 
-				$ua = isset( $_SERVER['HTTP_USER_AGENT'] ) ? $_SERVER['HTTP_USER_AGENT'] : '';
+				$ua                 = isset( $_SERVER['HTTP_USER_AGENT'] ) ? $_SERVER['HTTP_USER_AGENT'] : '';
 				$args['user_agent'] = rawurlencode( $ua );
 
 			}

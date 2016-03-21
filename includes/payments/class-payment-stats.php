@@ -127,8 +127,8 @@ class EDD_Payment_Stats extends EDD_Stats {
 				'include_taxes'          => $include_taxes,
 			);
 
-			$args     = apply_filters( 'edd_stats_earnings_args', $args );
-			$key      = 'edd_stats_' . substr( md5( serialize( $args ) ), 0, 15 );
+			$args = apply_filters( 'edd_stats_earnings_args', $args );
+			$key  = 'edd_stats_' . substr( md5( serialize( $args ) ), 0, 15 );
 
 			$earnings = get_transient( $key );
 
@@ -172,8 +172,8 @@ class EDD_Payment_Stats extends EDD_Stats {
 				'include_taxes'      => $include_taxes,
 			);
 
-			$args     = apply_filters( 'edd_stats_earnings_args', $args );
-			$key      = 'edd_stats_' . substr( md5( serialize( $args ) ), 0, 15 );
+			$args = apply_filters( 'edd_stats_earnings_args', $args );
+			$key  = 'edd_stats_' . substr( md5( serialize( $args ) ), 0, 15 );
 
 			$earnings = get_transient( $key );
 			if ( false === $earnings ) {

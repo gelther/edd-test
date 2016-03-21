@@ -22,7 +22,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 */
 function edd_reports_page() {
 	$current_page = admin_url( 'edit.php?post_type=download&page=edd-reports' );
-	$active_tab = isset( $_GET['tab'] ) ? $_GET['tab'] : 'reports';
+	$active_tab   = isset( $_GET['tab'] ) ? $_GET['tab'] : 'reports';
 	?>
 	<div class="wrap">
 		<h1 class="nav-tab-wrapper">
@@ -497,10 +497,10 @@ function edd_estimated_monthly_stats( $include_taxes = true ) {
 		$to_date_earnings = $stats->get_earnings( 0, 'this_month', null, $include_taxes );
 		$to_date_sales    = $stats->get_sales( 0, 'this_month' );
 
-		$current_day      = date( 'd', current_time( 'timestamp' ) );
-		$current_month    = date( 'n', current_time( 'timestamp' ) );
-		$current_year     = date( 'Y', current_time( 'timestamp' ) );
-		$days_in_month    = cal_days_in_month( CAL_GREGORIAN, $current_month, $current_year );
+		$current_day   = date( 'd', current_time( 'timestamp' ) );
+		$current_month = date( 'n', current_time( 'timestamp' ) );
+		$current_year  = date( 'Y', current_time( 'timestamp' ) );
+		$days_in_month = cal_days_in_month( CAL_GREGORIAN, $current_month, $current_year );
 
 		$estimated['earnings'] = ( $to_date_earnings / $current_day ) * $days_in_month;
 		$estimated['sales']    = ( $to_date_sales / $current_day ) * $days_in_month;

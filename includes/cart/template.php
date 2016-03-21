@@ -92,12 +92,12 @@ function edd_get_cart_item_template( $cart_key, $item, $ajax = false ) {
 
 	$item = ob_get_clean();
 
-	$item = str_replace( '{item_title}', $title, $item );
-	$item = str_replace( '{item_amount}', edd_currency_filter( edd_format_amount( $price ) ), $item );
-	$item = str_replace( '{cart_item_id}', absint( $cart_key ), $item );
-	$item = str_replace( '{item_id}', absint( $id ), $item );
-	$item = str_replace( '{item_quantity}', absint( $quantity ), $item );
-	$item = str_replace( '{remove_url}', $remove_url, $item );
+	$item     = str_replace( '{item_title}', $title, $item );
+	$item     = str_replace( '{item_amount}', edd_currency_filter( edd_format_amount( $price ) ), $item );
+	$item     = str_replace( '{cart_item_id}', absint( $cart_key ), $item );
+	$item     = str_replace( '{item_id}', absint( $id ), $item );
+	$item     = str_replace( '{item_quantity}', absint( $quantity ), $item );
+	$item     = str_replace( '{remove_url}', $remove_url, $item );
   	$subtotal = '';
   	if ( $ajax ) {
    	 $subtotal = edd_currency_filter( edd_format_amount( edd_get_cart_subtotal() ) ) ;

@@ -37,9 +37,9 @@ function edd_do_ajax_export() {
 
 	do_action( 'edd_batch_export_class_include', $form['edd-export-class'] );
 
-	$step     = absint( $_POST['step'] );
-	$class    = sanitize_text_field( $form['edd-export-class'] );
-	$export   = new $class( $step );
+	$step   = absint( $_POST['step'] );
+	$class  = sanitize_text_field( $form['edd-export-class'] );
+	$export = new $class( $step );
 
 	if ( ! $export->can_export() ) {
 		die( '-1' );

@@ -407,56 +407,56 @@ final class EDD_Payment {
 		do_action( 'edd_pre_setup_payment', $this, $payment_id );
 
 		// Primary Identifier
-		$this->ID              = absint( $payment_id );
+		$this->ID = absint( $payment_id );
 
 		// Protected ID that can never be changed
-		$this->_ID             = absint( $payment_id );
+		$this->_ID = absint( $payment_id );
 
 		// We have a payment, get the generic payment_meta item to reduce calls to it
-		$this->payment_meta    = $this->get_meta();
+		$this->payment_meta = $this->get_meta();
 
 		// Status and Dates
-		$this->date            = $payment->post_date;
-		$this->completed_date  = $this->setup_completed_date();
-		$this->status          = $payment->post_status;
-		$this->post_status     = $this->status;
-		$this->mode            = $this->setup_mode();
-		$this->parent_payment  = $payment->post_parent;
+		$this->date           = $payment->post_date;
+		$this->completed_date = $this->setup_completed_date();
+		$this->status         = $payment->post_status;
+		$this->post_status    = $this->status;
+		$this->mode           = $this->setup_mode();
+		$this->parent_payment = $payment->post_parent;
 
 		$all_payment_statuses  = edd_get_payment_statuses();
 		$this->status_nicename = array_key_exists( $this->status, $all_payment_statuses ) ? $all_payment_statuses[ $this->status ] : ucfirst( $this->status );
 
 
 		// Items
-		$this->fees            = $this->setup_fees();
-		$this->cart_details    = $this->setup_cart_details();
+		$this->fees         = $this->setup_fees();
+		$this->cart_details = $this->setup_cart_details();
 		$this->downloads       = $this->setup_downloads();
 
 		// Currency Based
-		$this->total           = $this->setup_total();
-		$this->tax             = $this->setup_tax();
-		$this->fees_total      = $this->setup_fees_total();
-		$this->subtotal        = $this->setup_subtotal();
-		$this->currency        = $this->setup_currency();
+		$this->total      = $this->setup_total();
+		$this->tax        = $this->setup_tax();
+		$this->fees_total = $this->setup_fees_total();
+		$this->subtotal   = $this->setup_subtotal();
+		$this->currency   = $this->setup_currency();
 
 		// Gateway based
-		$this->gateway         = $this->setup_gateway();
-		$this->transaction_id  = $this->setup_transaction_id();
+		$this->gateway        = $this->setup_gateway();
+		$this->transaction_id = $this->setup_transaction_id();
 
 		// User based
-		$this->ip              = $this->setup_ip();
-		$this->customer_id     = $this->setup_customer_id();
-		$this->user_id         = $this->setup_user_id();
-		$this->email           = $this->setup_email();
-		$this->user_info       = $this->setup_user_info();
-		$this->address         = $this->setup_address();
-		$this->discounts       = $this->user_info['discount'];
-		$this->first_name      = $this->user_info['first_name'];
-		$this->last_name       = $this->user_info['last_name'];
+		$this->ip          = $this->setup_ip();
+		$this->customer_id = $this->setup_customer_id();
+		$this->user_id     = $this->setup_user_id();
+		$this->email       = $this->setup_email();
+		$this->user_info   = $this->setup_user_info();
+		$this->address     = $this->setup_address();
+		$this->discounts   = $this->user_info['discount'];
+		$this->first_name  = $this->user_info['first_name'];
+		$this->last_name   = $this->user_info['last_name'];
 
 		// Other Identifiers
-		$this->key             = $this->setup_payment_key();
-		$this->number          = $this->setup_payment_number();
+		$this->key    = $this->setup_payment_key();
+		$this->number = $this->setup_payment_number();
 
 		// Additional Attributes
 		$this->has_unlimited_downloads = $this->setup_has_unlimited();
@@ -488,14 +488,14 @@ final class EDD_Payment {
 
 		if ( empty( $this->key ) ) {
 
-			$auth_key  = defined( 'AUTH_KEY' ) ? AUTH_KEY : '';
-			$this->key = strtolower( md5( $this->email . date( 'Y-m-d H:i:s' ) . $auth_key . uniqid( 'edd', true ) ) );  // Unique key
+			$auth_key             = defined( 'AUTH_KEY' ) ? AUTH_KEY : '';
+			$this->key            = strtolower( md5( $this->email . date( 'Y-m-d H:i:s' ) . $auth_key . uniqid( 'edd', true ) ) );  // Unique key
 			$this->pending['key'] = $this->key;
 		}
 
 		if ( empty( $this->ip ) ) {
 
-			$this->ip = edd_get_ip();
+			$this->ip            = edd_get_ip();
 			$this->pending['ip'] = $this->ip;
 
 		}
@@ -540,7 +540,7 @@ final class EDD_Payment {
 			$customer = new stdClass;
 
 			if ( did_action( 'edd_pre_process_purchase' ) && is_user_logged_in() ) {
-				$customer  = new EDD_customer( get_current_user_id(), true );
+				$customer = new EDD_customer( get_current_user_id(), true );
 			}
 
 			if ( empty( $customer->id ) ) {
@@ -572,7 +572,7 @@ final class EDD_Payment {
 			}
 
 			$this->update_meta( '_edd_payment_meta', $this->payment_meta );
-			$this->new          = true;
+			$this->new = true;
 		}
 
 		return $this->ID;
@@ -841,7 +841,7 @@ final class EDD_Payment {
 
 			// Only save the payment meta if it's changed
 			if ( md5( serialize( $meta ) ) !== md5( serialize( $merged_meta) ) ) {
-				$updated     = $this->update_meta( '_edd_payment_meta', $merged_meta );
+				$updated = $this->update_meta( '_edd_payment_meta', $merged_meta );
 				if ( false !== $updated ) {
 					$saved = true;
 				}
@@ -930,15 +930,15 @@ final class EDD_Payment {
 
 		$this->downloads[] = $new_download;
 
-		$discount   = $args['discount'];
-		$subtotal   = $amount;
-		$tax        = $args['tax'];
+		$discount = $args['discount'];
+		$subtotal = $amount;
+		$tax      = $args['tax'];
 
 		if ( edd_prices_include_tax() ) {
 			$subtotal -= round( $tax, edd_currency_decimal_filter() );
 		}
 
-		$total      = $subtotal - $discount + $tax;
+		$total = $subtotal - $discount + $tax;
 
 		// Do not allow totals to go negative
 		if ( $total < 0 ) {
@@ -965,8 +965,8 @@ final class EDD_Payment {
 			'price'       => round( $total, edd_currency_decimal_filter() ),
 		);
 
-		$added_download = end( $this->cart_details );
-		$added_download['action']  = 'add';
+		$added_download           = end( $this->cart_details );
+		$added_download['action'] = 'add';
 
 		$this->pending['downloads'][] = $added_download;
 		reset( $this->cart_details );
@@ -1100,9 +1100,9 @@ final class EDD_Payment {
 
 			$this->cart_details[ $found_cart_key ]['quantity'] -= $args['quantity'];
 
-			$item_price   = $this->cart_details[ $found_cart_key ]['item_price'];
-			$tax          = $this->cart_details[ $found_cart_key ]['tax'];
-			$discount     = ! empty( $this->cart_details[ $found_cart_key ]['discount'] ) ? $this->cart_details[ $found_cart_key ]['discount'] : 0;
+			$item_price = $this->cart_details[ $found_cart_key ]['item_price'];
+			$tax        = $this->cart_details[ $found_cart_key ]['tax'];
+			$discount   = ! empty( $this->cart_details[ $found_cart_key ]['discount'] ) ? $this->cart_details[ $found_cart_key ]['discount'] : 0;
 
 			// The total reduction quals the number removed * the item_price
 			$total_reduced = round( $item_price * $args['quantity'], edd_currency_decimal_filter() );
@@ -1161,7 +1161,7 @@ final class EDD_Payment {
 			'download_id' => 0,
 		);
 
-		$fee = wp_parse_args( $args, $default_args );
+		$fee          = wp_parse_args( $args, $default_args );
 		$this->fees[] = $fee;
 
 
@@ -1262,7 +1262,7 @@ final class EDD_Payment {
 	 * @return array        The Fees for the type specified
 	 */
 	public function get_fees( $type = 'all' ) {
-		$fees    = array();
+		$fees = array();
 
 		if ( ! empty( $this->fees ) && is_array( $this->fees ) ) {
 
@@ -1379,8 +1379,8 @@ final class EDD_Payment {
 	 * @return void
 	 */
 	public function increase_tax( $amount = 0.00 ) {
-		$amount       = (float) $amount;
-		$this->tax   += $amount;
+		$amount     = (float) $amount;
+		$this->tax += $amount;
 
 		$this->recalculate_total();
 	}
@@ -1522,22 +1522,22 @@ final class EDD_Payment {
 
 		if ( $meta_key == 'key' || $meta_key == 'date' ) {
 
-			$current_meta = $this->get_meta();
+			$current_meta              = $this->get_meta();
 			$current_meta[ $meta_key ] = $meta_value;
 
-			$meta_key     = '_edd_payment_meta';
-			$meta_value   = $current_meta;
+			$meta_key   = '_edd_payment_meta';
+			$meta_value = $current_meta;
 
 		} else if ( $meta_key == 'email' || $meta_key == '_edd_payment_user_email' ) {
 
 			$meta_value = apply_filters( 'edd_edd_update_payment_meta_' . $meta_key, $meta_value, $this->ID );
 			update_post_meta( $this->ID, '_edd_payment_user_email', $meta_value );
 
-			$current_meta = $this->get_meta();
-			$current_meta['user_info']['email']  = $meta_value;
+			$current_meta                       = $this->get_meta();
+			$current_meta['user_info']['email'] = $meta_value;
 
-			$meta_key     = '_edd_payment_meta';
-			$meta_value   = $current_meta;
+			$meta_key   = '_edd_payment_meta';
+			$meta_value = $current_meta;
 
 		}
 
@@ -1745,8 +1745,8 @@ final class EDD_Payment {
 		$amount = $this->get_meta( '_edd_payment_total', true );
 
 		if ( empty( $amount ) && '0.00' != $amount ) {
-			$meta   = $this->get_meta( '_edd_payment_meta', true );
-			$meta   = maybe_unserialize( $meta );
+			$meta = $this->get_meta( '_edd_payment_meta', true );
+			$meta = maybe_unserialize( $meta );
 
 			if ( isset( $meta['amount'] ) ) {
 				$amount = $meta['amount'];
@@ -1954,8 +1954,8 @@ final class EDD_Payment {
 			'discount'   => $this->discounts,
 		);
 
-		$user_info    = isset( $this->payment_meta['user_info'] ) ? maybe_unserialize( $this->payment_meta['user_info'] ) : array();
-		$user_info    = wp_parse_args( $user_info, $defaults );
+		$user_info = isset( $this->payment_meta['user_info'] ) ? maybe_unserialize( $this->payment_meta['user_info'] ) : array();
+		$user_info = wp_parse_args( $user_info, $defaults );
 
 		return $user_info;
 	}

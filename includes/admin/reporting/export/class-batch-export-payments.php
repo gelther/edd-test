@@ -110,13 +110,13 @@ class EDD_Batch_Payments_Export extends EDD_Batch_Export {
 		if ( $payments ) {
 
 			foreach ( $payments as $payment ) {
-				$payment_meta   = edd_get_payment_meta( $payment->ID );
-				$user_info      = edd_get_payment_meta_user_info( $payment->ID );
-				$downloads      = edd_get_payment_meta_cart_details( $payment->ID );
-				$total          = edd_get_payment_amount( $payment->ID );
-				$user_id        = isset( $user_info['id'] ) && $user_info['id'] != -1 ? $user_info['id'] : $user_info['email'];
-				$products       = '';
-				$skus           = '';
+				$payment_meta = edd_get_payment_meta( $payment->ID );
+				$user_info    = edd_get_payment_meta_user_info( $payment->ID );
+				$downloads    = edd_get_payment_meta_cart_details( $payment->ID );
+				$total        = edd_get_payment_amount( $payment->ID );
+				$user_id      = isset( $user_info['id'] ) && $user_info['id'] != -1 ? $user_info['id'] : $user_info['email'];
+				$products     = '';
+				$skus         = '';
 
 				if ( $downloads ) {
 					foreach ( $downloads as $key => $download ) {
@@ -130,7 +130,7 @@ class EDD_Batch_Payments_Export extends EDD_Batch_Export {
 						} else {
 							// If the download has variable prices, override the default price
 							$price_override = isset( $payment_meta['cart_details'] ) ? $download['price'] : null;
-							$price = edd_get_download_final_price( $id, $user_info, $price_override );
+							$price          = edd_get_download_final_price( $id, $user_info, $price_override );
 						}
 
 

@@ -71,7 +71,7 @@ class ResponseParser implements ResponseInterface
 
     public function getBillingAgreementDetailsStatus($response)
     {
-       $data= new \SimpleXMLElement($response);
+       $data       = new \SimpleXMLElement($response);
         $namespaces = $data->getNamespaces(true);
         foreach ( $namespaces as $key=>$value ) {
             $namespace = $value;

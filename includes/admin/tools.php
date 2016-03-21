@@ -482,7 +482,7 @@ function edd_tools_sysinfo_get() {
 	// Try to identify the hosting provider
 	$host = edd_get_host();
 
-	$return  = '### Begin System Info ###' . "\n\n";
+	$return = '### Begin System Info ###' . "\n\n";
 
 	// Start with the basics...
 	$return .= '-- Site Info' . "\n\n";
@@ -490,21 +490,21 @@ function edd_tools_sysinfo_get() {
 	$return .= 'Home URL:                 ' . home_url() . "\n";
 	$return .= 'Multisite:                ' . ( is_multisite() ? 'Yes' : 'No' ) . "\n";
 
-	$return  = apply_filters( 'edd_sysinfo_after_site_info', $return );
+	$return = apply_filters( 'edd_sysinfo_after_site_info', $return );
 
 	// Can we determine the site's host?
 	if ( $host ) {
 		$return .= "\n" . '-- Hosting Provider' . "\n\n";
 		$return .= 'Host:                     ' . $host . "\n";
 
-		$return  = apply_filters( 'edd_sysinfo_after_host_info', $return );
+		$return = apply_filters( 'edd_sysinfo_after_host_info', $return );
 	}
 
 	// The local users' browser information, handled by the Browser class
 	$return .= "\n" . '-- User Browser' . "\n\n";
 	$return .= $browser;
 
-	$return  = apply_filters( 'edd_sysinfo_after_user_browser', $return );
+	$return = apply_filters( 'edd_sysinfo_after_user_browser', $return );
 
 	// WordPress configuration
 	$return .= "\n" . '-- WordPress Configuration' . "\n\n";
@@ -517,7 +517,7 @@ function edd_tools_sysinfo_get() {
 	// Only show page specs if frontpage is set to 'page'
 	if ( get_option( 'show_on_front' ) == 'page' ) {
 		$front_page_id = get_option( 'page_on_front' );
-		$blog_page_id = get_option( 'page_for_posts' );
+		$blog_page_id  = get_option( 'page_for_posts' );
 
 		$return .= 'Page On Front:            ' . ( $front_page_id != 0 ? get_the_title( $front_page_id ) . ' (#' . $front_page_id . ')' : 'Unset' ) . "\n";
 		$return .= 'Page For Posts:           ' . ( $blog_page_id != 0 ? get_the_title( $blog_page_id ) . ' (#' . $blog_page_id . ')' : 'Unset' ) . "\n";
@@ -551,7 +551,7 @@ function edd_tools_sysinfo_get() {
 	$return .= 'Memory Limit:             ' . WP_MEMORY_LIMIT . "\n";
 	$return .= 'Registered Post Stati:    ' . implode( ', ', get_post_stati() ) . "\n";
 
-	$return  = apply_filters( 'edd_sysinfo_after_wordpress_config', $return );
+	$return = apply_filters( 'edd_sysinfo_after_wordpress_config', $return );
 
 	// EDD configuration
 	$return .= "\n" . '-- EDD Configuration' . "\n\n";
@@ -568,7 +568,7 @@ function edd_tools_sysinfo_get() {
 	$return .= 'Thousands Separator:      ' . edd_get_option( 'thousands_separator', ',' ) . "\n";
 	$return .= 'Upgrades Completed:       ' . implode( ',', edd_get_completed_upgrades() ) . "\n";
 
-	$return  = apply_filters( 'edd_sysinfo_after_edd_config', $return );
+	$return = apply_filters( 'edd_sysinfo_after_edd_config', $return );
 
 	// EDD pages
 	$purchase_page = edd_get_option( 'purchase_page', '' );
@@ -582,7 +582,7 @@ function edd_tools_sysinfo_get() {
 	$return .= 'Failure Page:             ' . ( ! empty( $failure_page ) ? get_permalink( $failure_page ) . "\n" : "Unset\n" );
 	$return .= 'Downloads Slug:           ' . ( defined( 'EDD_SLUG' ) ? '/' . EDD_SLUG . "\n" : "/downloads\n" );
 
-	$return  = apply_filters( 'edd_sysinfo_after_edd_pages', $return );
+	$return = apply_filters( 'edd_sysinfo_after_edd_pages', $return );
 
 	// EDD gateways
 	$return .= "\n" . '-- EDD Gateway Configuration' . "\n\n";
@@ -597,7 +597,7 @@ function edd_tools_sysinfo_get() {
 			$default_gateway = 'Test Payment';
 		}
 
-		$gateways        = array();
+		$gateways = array();
 		foreach ( $active_gateways as $gateway ) {
 			$gateways[] = $gateway['admin_label'];
 		}
@@ -608,7 +608,7 @@ function edd_tools_sysinfo_get() {
 		$return .= 'Enabled Gateways:         None' . "\n";
 	}
 
-	$return  = apply_filters( 'edd_sysinfo_after_edd_gateways', $return );
+	$return = apply_filters( 'edd_sysinfo_after_edd_gateways', $return );
 
 
 	// EDD Taxes
@@ -626,7 +626,7 @@ function edd_tools_sysinfo_get() {
 		}
 	}
 
-	$return  = apply_filters( 'edd_sysinfo_after_edd_taxes', $return );
+	$return = apply_filters( 'edd_sysinfo_after_edd_taxes', $return );
 
 	// EDD Templates
 	$dir = get_stylesheet_directory() . '/edd_templates/*';
@@ -637,7 +637,7 @@ function edd_tools_sysinfo_get() {
 			$return .= 'Filename:                 ' . basename( $file ) . "\n";
 		}
 
-		$return  = apply_filters( 'edd_sysinfo_after_edd_templates', $return );
+		$return = apply_filters( 'edd_sysinfo_after_edd_templates', $return );
 	}
 
 	// Get plugins that have an update
@@ -659,18 +659,18 @@ function edd_tools_sysinfo_get() {
 	// WordPress active plugins
 	$return .= "\n" . '-- WordPress Active Plugins' . "\n\n";
 
-	$plugins = get_plugins();
+	$plugins        = get_plugins();
 	$active_plugins = get_option( 'active_plugins', array() );
 
 	foreach ( $plugins as $plugin_path => $plugin ) {
 		if ( ! in_array( $plugin_path, $active_plugins ) )
 			continue;
 
-		$update = ( array_key_exists( $plugin_path, $updates ) ) ? ' (needs update - ' . $updates[$plugin_path]->update->new_version . ')' : '';
+		$update  = ( array_key_exists( $plugin_path, $updates ) ) ? ' (needs update - ' . $updates[$plugin_path]->update->new_version . ')' : '';
 		$return .= $plugin['Name'] . ': ' . $plugin['Version'] . $update . "\n";
 	}
 
-	$return  = apply_filters( 'edd_sysinfo_after_wordpress_plugins', $return );
+	$return = apply_filters( 'edd_sysinfo_after_wordpress_plugins', $return );
 
 	// WordPress inactive plugins
 	$return .= "\n" . '-- WordPress Inactive Plugins' . "\n\n";
@@ -679,17 +679,17 @@ function edd_tools_sysinfo_get() {
 		if ( in_array( $plugin_path, $active_plugins ) )
 			continue;
 
-		$update = ( array_key_exists( $plugin_path, $updates ) ) ? ' (needs update - ' . $updates[$plugin_path]->update->new_version . ')' : '';
+		$update  = ( array_key_exists( $plugin_path, $updates ) ) ? ' (needs update - ' . $updates[$plugin_path]->update->new_version . ')' : '';
 		$return .= $plugin['Name'] . ': ' . $plugin['Version'] . $update . "\n";
 	}
 
-	$return  = apply_filters( 'edd_sysinfo_after_wordpress_plugins_inactive', $return );
+	$return = apply_filters( 'edd_sysinfo_after_wordpress_plugins_inactive', $return );
 
 	if ( is_multisite() ) {
 		// WordPress Multisite active plugins
 		$return .= "\n" . '-- Network Active Plugins' . "\n\n";
 
-		$plugins = wp_get_active_network_plugins();
+		$plugins        = wp_get_active_network_plugins();
 		$active_plugins = get_site_option( 'active_sitewide_plugins', array() );
 
 		foreach ( $plugins as $plugin_path ) {
@@ -698,12 +698,12 @@ function edd_tools_sysinfo_get() {
 			if ( ! array_key_exists( $plugin_base, $active_plugins ) )
 				continue;
 
-			$update = ( array_key_exists( $plugin_path, $updates ) ) ? ' (needs update - ' . $updates[$plugin_path]->update->new_version . ')' : '';
+			$update  = ( array_key_exists( $plugin_path, $updates ) ) ? ' (needs update - ' . $updates[$plugin_path]->update->new_version . ')' : '';
 			$plugin  = get_plugin_data( $plugin_path );
 			$return .= $plugin['Name'] . ': ' . $plugin['Version'] . $update . "\n";
 		}
 
-		$return  = apply_filters( 'edd_sysinfo_after_wordpress_ms_plugins', $return );
+		$return = apply_filters( 'edd_sysinfo_after_wordpress_ms_plugins', $return );
 	}
 
 	// Server configuration (really just versioning)
@@ -712,7 +712,7 @@ function edd_tools_sysinfo_get() {
 	$return .= 'MySQL Version:            ' . $wpdb->db_version() . "\n";
 	$return .= 'Webserver Info:           ' . $_SERVER['SERVER_SOFTWARE'] . "\n";
 
-	$return  = apply_filters( 'edd_sysinfo_after_webserver_config', $return );
+	$return = apply_filters( 'edd_sysinfo_after_webserver_config', $return );
 
 	// PHP configs... now we're getting to the important stuff
 	$return .= "\n" . '-- PHP Configuration' . "\n\n";
@@ -725,7 +725,7 @@ function edd_tools_sysinfo_get() {
 	$return .= 'Max Input Vars:           ' . ini_get( 'max_input_vars' ) . "\n";
 	$return .= 'Display Errors:           ' . ( ini_get( 'display_errors' ) ? 'On (' . ini_get( 'display_errors' ) . ')' : 'N/A' ) . "\n";
 
-	$return  = apply_filters( 'edd_sysinfo_after_php_config', $return );
+	$return = apply_filters( 'edd_sysinfo_after_php_config', $return );
 
 	// PHP extensions and such
 	$return .= "\n" . '-- PHP Extensions' . "\n\n";
@@ -734,7 +734,7 @@ function edd_tools_sysinfo_get() {
 	$return .= 'SOAP Client:              ' . ( class_exists( 'SoapClient' ) ? 'Installed' : 'Not Installed' ) . "\n";
 	$return .= 'Suhosin:                  ' . ( extension_loaded( 'suhosin' ) ? 'Installed' : 'Not Installed' ) . "\n";
 
-	$return  = apply_filters( 'edd_sysinfo_after_php_ext', $return );
+	$return = apply_filters( 'edd_sysinfo_after_php_ext', $return );
 
 	// Session stuff
 	$return .= "\n" . '-- Session Configuration' . "\n\n";
@@ -750,7 +750,7 @@ function edd_tools_sysinfo_get() {
 		$return .= 'Use Only Cookies:         ' . ( ini_get( 'session.use_only_cookies' ) ? 'On' : 'Off' ) . "\n";
 	}
 
-	$return  = apply_filters( 'edd_sysinfo_after_session_config', $return );
+	$return = apply_filters( 'edd_sysinfo_after_session_config', $return );
 
 	$return .= "\n" . '### End System Info ###';
 

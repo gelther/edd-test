@@ -70,7 +70,7 @@ function edd_process_download() {
 		do_action( 'edd_process_verified_download', $args['download'], $args['email'], $args['payment'], $args );
 
 		// Determine the download method set in settings
-		$method  = edd_get_file_download_method();
+		$method = edd_get_file_download_method();
 
 		// Payment has been verified, setup the download
 		$download_files = edd_get_download_files( $args['download'] );
@@ -96,7 +96,7 @@ function edd_process_download() {
 		$requested_file = apply_filters( 'edd_requested_file', $requested_file, $download_files, $args['file_key'] );
 
 		// Record this file download in the log
-		$user_info = array();
+		$user_info          = array();
 		$user_info['email'] = $args['email'];
 		if ( is_user_logged_in() ) {
 			$user_data         = get_userdata( get_current_user_id() );
@@ -175,23 +175,23 @@ function edd_process_download() {
 					 * UPLOADS is always relative to ABSPATH
 					 * site_url() is the URL to where WordPress is installed
 					 */
-					$file_path  = str_replace( site_url(), '', $requested_file );
-					$file_path  = realpath( ABSPATH . $file_path );
-					$direct     = true;
+					$file_path = str_replace( site_url(), '', $requested_file );
+					$file_path = realpath( ABSPATH . $file_path );
+					$direct    = true;
 
 				} else if ( strpos( $requested_file, content_url() ) !== false ) {
 
 					/** This is a local file given by URL so we need to figure out the path */
-					$file_path  = str_replace( content_url(), WP_CONTENT_DIR, $requested_file );
-					$file_path  = realpath( $file_path );
-					$direct     = true;
+					$file_path = str_replace( content_url(), WP_CONTENT_DIR, $requested_file );
+					$file_path = realpath( $file_path );
+					$direct    = true;
 
 				} else if ( strpos( $requested_file, set_url_scheme( content_url(), 'https' ) ) !== false ) {
 
 					/** This is a local file given by an HTTPS URL so we need to figure out the path */
-					$file_path  = str_replace( set_url_scheme( content_url(), 'https' ), WP_CONTENT_DIR, $requested_file );
-					$file_path  = realpath( $file_path );
-					$direct     = true;
+					$file_path = str_replace( set_url_scheme( content_url(), 'https' ), WP_CONTENT_DIR, $requested_file );
+					$file_path = realpath( $file_path );
+					$direct    = true;
 
 				}
 
@@ -695,7 +695,7 @@ function edd_process_signed_download_url( $args ) {
 	// Bail if the token isn't valid.
 	// The request should pass through EDD, or custom handling can be enabled with the action.
 	if ( ! $valid_token ) {
-		$args['payment'] = false;
+		$args['payment']    = false;
 		$args['has_access'] = false;
 
 		return $args;
@@ -708,14 +708,14 @@ function edd_process_signed_download_url( $args ) {
 		wp_die( apply_filters( 'edd_download_limit_reached_text', __( 'Sorry but you have hit your download limit for this file.', 'easy-digital-downloads' ) ), __( 'Error', 'easy-digital-downloads' ), array( 'response' => 403 ) );
 	}
 
-	$args['expire']      = $_GET['ttl'];
-	$args['download']    = $order_parts[1];
-	$args['payment']     = $order_parts[0];
-	$args['file_key']    = $order_parts[2];
-	$args['price_id']    = $order_parts[3];
-	$args['email']       = get_post_meta( $order_parts[0], '_edd_payment_user_email', true );
-	$args['key']         = get_post_meta( $order_parts[0], '_edd_payment_purchase_key', true );
-	$args['has_access']  = true;
+	$args['expire']     = $_GET['ttl'];
+	$args['download']   = $order_parts[1];
+	$args['payment']    = $order_parts[0];
+	$args['file_key']   = $order_parts[2];
+	$args['price_id']   = $order_parts[3];
+	$args['email']      = get_post_meta( $order_parts[0], '_edd_payment_user_email', true );
+	$args['key']        = get_post_meta( $order_parts[0], '_edd_payment_purchase_key', true );
+	$args['has_access'] = true;
 
 	return $args;
 }

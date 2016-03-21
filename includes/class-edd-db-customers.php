@@ -114,9 +114,9 @@ class EDD_DB_Customers extends EDD_DB  {
 
 				} else {
 
-					$existing_ids = array_map( 'absint', explode( ',', $customer->payment_ids ) );
-					$payment_ids  = array_map( 'absint', explode( ',', $args['payment_ids'] ) );
-					$payment_ids  = array_merge( $payment_ids, $existing_ids );
+					$existing_ids          = array_map( 'absint', explode( ',', $customer->payment_ids ) );
+					$payment_ids           = array_map( 'absint', explode( ',', $args['payment_ids'] ) );
+					$payment_ids           = array_merge( $payment_ids, $existing_ids );
 					$customer->payment_ids = implode( ',', array_unique( array_values( $payment_ids ) ) );
 
 				}
@@ -391,7 +391,7 @@ class EDD_DB_Customers extends EDD_DB  {
 			'order'        => 'DESC'
 		);
 
-		$args  = wp_parse_args( $args, $defaults );
+		$args = wp_parse_args( $args, $defaults );
 
 		if ( $args['number'] < 1 ) {
 			$args['number'] = 999999999999;

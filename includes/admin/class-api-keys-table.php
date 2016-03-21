@@ -227,17 +227,17 @@ class EDD_API_Keys_Table extends WP_List_Table {
 	 * @return void
 	 */
 	public function query() {
-		$users    = get_users( array(
+		$users = get_users( array(
 			'meta_value' => 'edd_user_secret_key',
 			'number'     => $this->per_page,
 			'offset'     => $this->per_page * ( $this->get_paged() - 1 ),
 		) );
-		$keys     = array();
+		$keys = array();
 
 		foreach ( $users as $user ) {
-			$keys[$user->ID]['id']     = $user->ID;
-			$keys[$user->ID]['email']  = $user->user_email;
-			$keys[$user->ID]['user']   = '<a href="' . add_query_arg( 'user_id', $user->ID, 'user-edit.php' ) . '"><strong>' . $user->user_login . '</strong></a>';
+			$keys[$user->ID]['id']    = $user->ID;
+			$keys[$user->ID]['email'] = $user->user_email;
+			$keys[$user->ID]['user']  = '<a href="' . add_query_arg( 'user_id', $user->ID, 'user-edit.php' ) . '"><strong>' . $user->user_login . '</strong></a>';
 
 			$keys[$user->ID]['key']    = EDD()->api->get_user_public_key( $user->ID );
 			$keys[$user->ID]['secret'] = EDD()->api->get_user_secret_key( $user->ID );
@@ -278,7 +278,7 @@ class EDD_API_Keys_Table extends WP_List_Table {
 	public function prepare_items() {
 		$columns = $this->get_columns();
 
-		$hidden = array(); // No hidden columns
+		$hidden   = array(); // No hidden columns
 		$sortable = array(); // Not sortable... for now
 
 		$this->_column_headers = array( $columns, $hidden, $sortable, 'id' );

@@ -35,7 +35,7 @@ if ( edd_get_option( 'uninstall_on_delete' ) ) {
 	foreach ( $edd_post_types as $post_type ) {
 
 		$edd_taxonomies = array_merge( $edd_taxonomies, get_object_taxonomies( $post_type ) );
-		$items = get_posts( array( 'post_type' => $post_type, 'post_status' => 'any', 'numberposts' => -1, 'fields' => 'ids' ) );
+		$items          = get_posts( array( 'post_type' => $post_type, 'post_status' => 'any', 'numberposts' => -1, 'fields' => 'ids' ) );
 
 		if ( $items ) {
 			foreach ( $items as $item ) {

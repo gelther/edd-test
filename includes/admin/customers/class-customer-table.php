@@ -143,11 +143,11 @@ class EDD_Customer_Reports_Table extends WP_List_Table {
 	}
 
 	public function column_name( $item ) {
-		$name        = '#' . $item['id'] . ' ';
-		$name       .= ! empty( $item['name'] ) ? $item['name'] : '<em>' . __( 'Unnamed Customer','easy-digital-downloads' ) . '</em>';
-		$user        = ! empty( $item['user_id'] ) ? $item['user_id'] : $item['email'];
-		$view_url    = admin_url( 'edit.php?post_type=download&page=edd-customers&view=overview&id=' . $item['id'] );
-		$actions     = array(
+		$name      = '#' . $item['id'] . ' ';
+		$name     .= ! empty( $item['name'] ) ? $item['name'] : '<em>' . __( 'Unnamed Customer','easy-digital-downloads' ) . '</em>';
+		$user      = ! empty( $item['user_id'] ) ? $item['user_id'] : $item['email'];
+		$view_url  = admin_url( 'edit.php?post_type=download&page=edd-customers&view=overview&id=' . $item['id'] );
+		$actions   = array(
 			'view'   => '<a href="' . $view_url . '">' . __( 'View', 'easy-digital-downloads' ) . '</a>',
 			'logs'   => '<a href="' . admin_url( 'edit.php?post_type=download&page=edd-reports&tab=logs&user=' . urlencode( $user ) ) . '">' . __( 'Download log', 'easy-digital-downloads' ) . '</a>',
 			'delete' => '<a href="' . admin_url( 'edit.php?post_type=download&page=edd-customers&view=delete&id=' . $item['id'] ) . '">' . __( 'Delete', 'easy-digital-downloads' ) . '</a>'
@@ -247,7 +247,7 @@ class EDD_Customer_Reports_Table extends WP_List_Table {
 		$order   = isset( $_GET['order'] )   ? sanitize_text_field( $_GET['order'] )   : 'DESC';
 		$orderby = isset( $_GET['orderby'] ) ? sanitize_text_field( $_GET['orderby'] ) : 'id';
 
-		$args    = array(
+		$args = array(
 			'number'  => $this->per_page,
 			'offset'  => $offset,
 			'order'   => $order,
@@ -257,11 +257,11 @@ class EDD_Customer_Reports_Table extends WP_List_Table {
 		if ( is_email( $search ) ) {
 			$args['email'] = $search;
 		} elseif ( is_numeric( $search ) ) {
-			$args['id']    = $search;
+			$args['id'] = $search;
 		} elseif ( strpos( $search, 'user:' ) !== false ) {
 			$args['user_id'] = trim( str_replace( 'user:', '', $search ) );
 		} else {
-			$args['name']  = $search;
+			$args['name'] = $search;
 		}
 
 		$customers = EDD()->customers->get_customers( $args );

@@ -201,7 +201,7 @@ class EDD_API_Request_Log_Table extends WP_List_Table {
 			} elseif ( stristr( $search, 'token:' ) ) {
 				// Look for an API token
 				$search = str_ireplace( 'token:', '', $search );
-				$key = '_edd_log_token';
+				$key    = '_edd_log_token';
 			} else {
 				// This is (probably) a user ID search
 				$userdata = get_userdata( $search );

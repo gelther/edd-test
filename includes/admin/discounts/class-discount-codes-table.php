@@ -116,7 +116,7 @@ class EDD_Discount_Codes_Table extends WP_List_Table {
 	 * @return array $views All the views available
 	 */
 	public function get_views() {
-		$base           = admin_url('edit.php?post_type=download&page=edd-discounts');
+		$base = admin_url('edit.php?post_type=download&page=edd-discounts');
 
 		$current        = isset( $_GET['status'] ) ? $_GET['status'] : '';
 		$total_count    = '&nbsp;<span class="count">(' . $this->total_count . ')</span>';
@@ -207,8 +207,8 @@ class EDD_Discount_Codes_Table extends WP_List_Table {
 	 * @return string Data shown in the Name column
 	 */
 	function column_name( $item ) {
-		$discount     = get_post( $item['ID'] );
-		$row_actions  = array();
+		$discount    = get_post( $item['ID'] );
+		$row_actions = array();
 
 		$row_actions['edit'] = '<a href="' . add_query_arg( array( 'edd-action' => 'edit_discount', 'discount' => $discount->ID ) ) . '">' . __( 'Edit', 'easy-digital-downloads' ) . '</a>';
 

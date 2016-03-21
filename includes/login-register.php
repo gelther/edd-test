@@ -76,7 +76,7 @@ function edd_process_login_form( $data ) {
 			$user_data = get_user_by( 'email', $data['edd_user_login'] );
 		}
 		if ( $user_data ) {
-			$user_ID = $user_data->ID;
+			$user_ID    = $user_data->ID;
 			$user_email = $user_data->user_email;
 			if ( wp_check_password( $data['edd_user_pass'], $user_data->user_pass, $user_data->ID ) ) {
 				edd_log_user_in( $user_data->ID, $data['edd_user_login'], $data['edd_user_pass'] );

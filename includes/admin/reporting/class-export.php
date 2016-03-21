@@ -94,7 +94,7 @@ class EDD_Export {
 	 */
 	public function csv_cols_out() {
 		$cols = $this->get_csv_cols();
-		$i = 1;
+		$i    = 1;
 		foreach ( $cols as $col_id => $column ) {
 			echo '"' . addslashes( $column ) . '"';
 			echo $i == count( $cols ) ? '' : ',';

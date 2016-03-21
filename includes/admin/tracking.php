@@ -70,9 +70,9 @@ class EDD_Tracking {
 		$theme_data = wp_get_theme();
 		$theme      = $theme_data->Name . ' ' . $theme_data->Version;
 
-		$data['url']    = home_url();
-		$data['theme']  = $theme;
-		$data['email']  = get_bloginfo( 'admin_email' );
+		$data['url']   = home_url();
+		$data['theme'] = $theme;
+		$data['email'] = get_bloginfo( 'admin_email' );
 
 		// Retrieve current plugin information
 		if ( ! function_exists( 'get_plugins' ) ) {
@@ -92,7 +92,7 @@ class EDD_Tracking {
 		$data['active_plugins']   = $active_plugins;
 		$data['inactive_plugins'] = $plugins;
 		$data['products']         = wp_count_posts( 'download' )->publish;
-		$data['download_label'] = edd_get_label_singular( true );
+		$data['download_label']   = edd_get_label_singular( true );
 
 		$this->data = $data;
 	}

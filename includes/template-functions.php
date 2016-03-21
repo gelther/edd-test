@@ -56,7 +56,7 @@ function edd_get_purchase_link( $args = array() ) {
 		return false;
 	}
 
-	$post_id = is_object( $post ) ? $post->ID : 0;
+	$post_id         = is_object( $post ) ? $post->ID : 0;
 	$button_behavior = edd_get_download_button_behavior( $post_id );
 
 	$defaults = apply_filters( 'edd_purchase_link_defaults', array(
@@ -106,7 +106,7 @@ function edd_get_purchase_link( $args = array() ) {
 		$options['price_id'] = $args['price_id'];
 		$found_price         = isset( $prices[$price_id] ) ? $prices[$price_id]['amount'] : false;
 
-		$data_price_value    = $found_price;
+		$data_price_value = $found_price;
 
 		if ( $show_price ) {
 			$price = $found_price;
@@ -124,7 +124,7 @@ function edd_get_purchase_link( $args = array() ) {
 
 	$args['display_price'] = $data_price_value;
 
-	$data_price  = 'data-price="' . $data_price_value . '"';
+	$data_price = 'data-price="' . $data_price_value . '"';
 
 	$button_text = ! empty( $args['text'] ) ? '&nbsp;&ndash;&nbsp;' . $args['text'] : '';
 
@@ -521,10 +521,10 @@ function edd_get_purchase_download_links( $payment_id = 0 ) {
 	$links       = '<ul class="edd_download_links">';
 
 	foreach ( $downloads as $download ) {
-		$links .= '<li>';
-			$links .= '<h3 class="edd_download_link_title">' . esc_html( get_the_title( $download['id'] ) ) . '</h3>';
-			$price_id = isset( $download['options'] ) && isset( $download['options']['price_id'] ) ? $download['options']['price_id'] : null;
-			$files    = edd_get_download_files( $download['id'], $price_id );
+		$links    .= '<li>';
+			$links    .= '<h3 class="edd_download_link_title">' . esc_html( get_the_title( $download['id'] ) ) . '</h3>';
+			$price_id  = isset( $download['options'] ) && isset( $download['options']['price_id'] ) ? $download['options']['price_id'] : null;
+			$files     = edd_get_download_files( $download['id'], $price_id );
 			if ( is_array( $files ) ) {
 				foreach ( $files as $filekey => $file ) {
 					$links .= '<div class="edd_download_link_file">';
@@ -791,7 +791,7 @@ function edd_microdata_description( $content ) {
 
 	if ( $post && $post->post_type == 'download' && is_singular( 'download' ) && is_main_query() ) {
 		$microdata_description = true;
-		$content = apply_filters( 'edd_microdata_wrapper', '<div itemprop="description">' . $content . '</div>' );
+		$content               = apply_filters( 'edd_microdata_wrapper', '<div itemprop="description">' . $content . '</div>' );
 	}
 	return $content;
 }

@@ -83,7 +83,7 @@ function edd_options_page() {
 		<?php
 
 		$number_of_sections = count( $sections );
-		$number = 0;
+		$number             = 0;
 		if ( $number_of_sections > 1 ) {
 			echo '<div><ul class="subsubsub">';
 			foreach ( $sections as $section_id => $section_name ) {

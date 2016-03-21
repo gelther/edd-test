@@ -238,12 +238,12 @@ class EDD_Download_Reports_Table extends WP_List_Table {
 				break;
 
 			case 'sales' :
-				$args['orderby'] = 'meta_value_num';
+				$args['orderby']  = 'meta_value_num';
 				$args['meta_key'] = '_edd_download_sales';
 				break;
 
 			case 'earnings' :
-				$args['orderby'] = 'meta_value_num';
+				$args['orderby']  = 'meta_value_num';
 				$args['meta_key'] = '_edd_download_earnings';
 				break;
 		endswitch;

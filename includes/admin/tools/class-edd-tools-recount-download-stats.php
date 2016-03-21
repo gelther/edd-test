@@ -53,7 +53,7 @@ class EDD_Tools_Recount_Download_Stats extends EDD_Batch_Export {
 	public function get_data() {
 		global $edd_logs, $wpdb;
 
-		$accepted_statuses  = apply_filters( 'edd_recount_accepted_statuses', array( 'publish', 'revoked' ) );
+		$accepted_statuses = apply_filters( 'edd_recount_accepted_statuses', array( 'publish', 'revoked' ) );
 
 		if ( $this->step == 1 ) {
 			$this->delete_data( 'edd_temp_recount_download_stats' );
@@ -79,7 +79,7 @@ class EDD_Tools_Recount_Download_Stats extends EDD_Batch_Export {
 			'fields'         => 'ids',
 		) );
 
-		$log_ids = $edd_logs->get_connected_logs( $args, 'sale' );
+		$log_ids              = $edd_logs->get_connected_logs( $args, 'sale' );
 		$this->_log_ids_debug = array();
 		if ( $log_ids ) {
 			$log_ids     = implode( ',', $log_ids );
@@ -87,7 +87,7 @@ class EDD_Tools_Recount_Download_Stats extends EDD_Batch_Export {
 			unset( $log_ids );
 
 			$payment_ids = implode( ',', $payment_ids );
-			$payments = $wpdb->get_results( "SELECT ID, post_status FROM $wpdb->posts WHERE ID IN (" . $payment_ids . ')' );
+			$payments    = $wpdb->get_results( "SELECT ID, post_status FROM $wpdb->posts WHERE ID IN (" . $payment_ids . ')' );
 			unset( $payment_ids );
 
 			foreach ( $payments as $payment ) {
@@ -139,7 +139,7 @@ class EDD_Tools_Recount_Download_Stats extends EDD_Batch_Export {
 			$this->delete_data( 'edd_recount_total_' . $this->download_id );
 		}
 
-		$accepted_statuses  = apply_filters( 'edd_recount_accepted_statuses', array( 'publish', 'revoked' ) );
+		$accepted_statuses = apply_filters( 'edd_recount_accepted_statuses', array( 'publish', 'revoked' ) );
 		$total   = $this->get_stored_data( 'edd_recount_total_' . $this->download_id );
 
 		if ( false === $total ) {
@@ -161,7 +161,7 @@ class EDD_Tools_Recount_Download_Stats extends EDD_Batch_Export {
 				unset( $log_ids );
 
 				$payment_ids = implode( ',', $payment_ids );
-				$payments = $wpdb->get_results( "SELECT ID, post_status FROM $wpdb->posts WHERE ID IN (" . $payment_ids . ')' );
+				$payments    = $wpdb->get_results( "SELECT ID, post_status FROM $wpdb->posts WHERE ID IN (" . $payment_ids . ')' );
 				unset( $payment_ids );
 
 				foreach ( $payments as $payment ) {

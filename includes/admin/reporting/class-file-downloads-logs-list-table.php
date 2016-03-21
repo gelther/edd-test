@@ -257,7 +257,7 @@ class EDD_File_Downloads_Log_Table extends WP_List_Table {
 				$compare = 'LIKE';
 			} else {
 				// Look for a user
-				$key = '_edd_log_user_id';
+				$key     = '_edd_log_user_id';
 				$compare = 'LIKE';
 
 				if ( ! is_numeric( $search ) ) {
@@ -392,10 +392,10 @@ class EDD_File_Downloads_Log_Table extends WP_List_Table {
 				$user_id    = isset( $user_info['id'] ) ? $user_info['id'] : false;
 
 				if ( ! array_key_exists( $log->post_parent, $this->queried_files ) ) {
-					$files   = maybe_unserialize( $wpdb->get_var( $wpdb->prepare( "SELECT meta_value from $wpdb->postmeta WHERE post_id = %d and meta_key = 'edd_download_files'", $log->post_parent ) ) );
+					$files                                    = maybe_unserialize( $wpdb->get_var( $wpdb->prepare( "SELECT meta_value from $wpdb->postmeta WHERE post_id = %d and meta_key = 'edd_download_files'", $log->post_parent ) ) );
 					$this->queried_files[ $log->post_parent ] = $files;
 				} else {
-					$files   = $this->queried_files[ $log->post_parent ];
+					$files = $this->queried_files[ $log->post_parent ];
 				}
 
 				$file_id   = (int) $meta['_edd_log_file_id'][0];

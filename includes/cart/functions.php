@@ -66,14 +66,14 @@ function edd_get_cart_content_details() {
 			$subtotal -= round( $tax, edd_currency_decimal_filter() );
 		}
 
-		$total      = $subtotal - $discount + $tax;
+		$total = $subtotal - $discount + $tax;
 
 		// Do not allow totals to go negatve
 		if ( $total < 0 ) {
 			$total = 0;
 		}
 
-		$details[ $key ]  = array(
+		$details[ $key ] = array(
 			'name'        => get_the_title( $item['id'] ),
 			'id'          => $item['id'],
 			'item_number' => $item,
@@ -449,7 +449,7 @@ function edd_cart_item_price( $item_id = 0, $options = array() ) {
  */
 function edd_get_cart_item_price( $download_id = 0, $options = array() ) {
 
-	$price = 0;
+	$price           = 0;
 	$variable_prices = edd_has_variable_prices( $download_id );
 
 	if ( $variable_prices ) {

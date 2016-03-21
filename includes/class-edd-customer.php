@@ -519,7 +519,7 @@ class EDD_Customer {
 	 */
 	public function get_notes_count() {
 
-		$all_notes = $this->get_raw_notes();
+		$all_notes   = $this->get_raw_notes();
 		$notes_array = array_reverse( array_filter( explode( "\n\n", $all_notes ) ) );
 
 		return count( $notes_array );
@@ -546,9 +546,9 @@ class EDD_Customer {
 			$notes = '';
 		}
 
-		$note_string = date_i18n( 'F j, Y H:i:s', current_time( 'timestamp' ) ) . ' - ' . $note;
-		$new_note    = apply_filters( 'edd_customer_add_note_string', $note_string );
-		$notes      .= "\n\n" . $new_note;
+		$note_string  = date_i18n( 'F j, Y H:i:s', current_time( 'timestamp' ) ) . ' - ' . $note;
+		$new_note     = apply_filters( 'edd_customer_add_note_string', $note_string );
+		$notes       .= "\n\n" . $new_note;
 
 		do_action( 'edd_customer_pre_add_note', $new_note, $this->id );
 

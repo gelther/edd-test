@@ -65,7 +65,7 @@ function edd_get_discounts( $args = array() ) {
 function edd_has_active_discounts() {
 	$has_active = false;
 
-	$discounts  = edd_get_discounts();
+	$discounts = edd_get_discounts();
 
 	if ( $discounts ) {
 		foreach ( $discounts as $discount ) {
@@ -216,10 +216,10 @@ function edd_store_discount( $details, $discount_id = null ) {
 		'is_single_use'     => isset( $details['use_once'] )         ? $details['use_once']          : false,
 	);
 
-	$start_timestamp        = strtotime( $meta['start'] );
+	$start_timestamp = strtotime( $meta['start'] );
 
 	if ( ! empty( $meta['start'] ) ) {
-		$meta['start']      = date( 'm/d/Y H:i:s', $start_timestamp );
+		$meta['start'] = date( 'm/d/Y H:i:s', $start_timestamp );
 	}
 
 	if ( ! empty( $meta['expiration'] ) ) {
@@ -708,13 +708,13 @@ function edd_discount_product_reqs_met( $code_id = null ) {
 	asort( $product_reqs );
 	$product_reqs = array_values( $product_reqs );
 
-	$excluded_ps  = array_map( 'absint', $excluded_ps );
+	$excluded_ps = array_map( 'absint', $excluded_ps );
 	asort( $excluded_ps );
-	$excluded_ps  = array_values( $excluded_ps );
+	$excluded_ps = array_values( $excluded_ps );
 
-	$cart_ids     = array_map( 'absint', $cart_ids );
+	$cart_ids = array_map( 'absint', $cart_ids );
 	asort( $cart_ids );
-	$cart_ids     = array_values( $cart_ids );
+	$cart_ids = array_values( $cart_ids );
 
 	// Ensure we have requirements before proceeding
 	if ( ! $ret && ! empty( $product_reqs ) ) {
@@ -801,7 +801,7 @@ function edd_is_discount_used( $code = null, $user = '', $code_id = 0 ) {
 		if ( EDD()->customers->installed() ) {
 
 			$by_user_id = is_email( $user ) ? false : true;
-			$customer = new EDD_Customer( $user, $by_user_id );
+			$customer   = new EDD_Customer( $user, $by_user_id );
 
 			$payments = explode( ',', $customer->payment_ids );
 
@@ -954,8 +954,8 @@ function edd_get_discounted_amount( $code, $base_price ) {
 	$discount_id = edd_get_discount_id_by_code( $code );
 
 	if ( $discount_id ) {
-		$type        = edd_get_discount_type( $discount_id );
-		$rate        = edd_get_discount_amount( $discount_id );
+		$type = edd_get_discount_type( $discount_id );
+		$rate = edd_get_discount_amount( $discount_id );
 
 		if ( $type == 'flat' ) {
 			// Set amount
@@ -1075,7 +1075,7 @@ function edd_set_cart_discount( $code = '' ) {
 		}
 		$discounts[] = $code;
 	} else {
-		$discounts = array();
+		$discounts   = array();
 		$discounts[] = $code;
 	}
 
@@ -1242,8 +1242,8 @@ function edd_get_cart_item_discount_amount( $item = array() ) {
 						 * are distributed across all cart items. The discount amount is divided by the number
 						 * of items in the cart and then a portion is evenly applied to each cart item
 						 */
-						$items_subtotal    = 0.00;
-						$cart_items        = edd_get_cart_contents();
+						$items_subtotal = 0.00;
+						$cart_items     = edd_get_cart_contents();
 						foreach ( $cart_items as $cart_item ) {
 							if ( ! in_array( $cart_item['id'], $excluded_products ) ) {
 								$item_price      = edd_get_cart_item_price( $cart_item['id'], $cart_item['options'] );
@@ -1251,15 +1251,15 @@ function edd_get_cart_item_discount_amount( $item = array() ) {
 							}
 						}
 
-						$subtotal_percent  = ( ( $price * $item['quantity'] ) / $items_subtotal );
-						$code_amount       = edd_get_discount_amount( $code_id );
-						$discounted_amount = $code_amount * $subtotal_percent;
-						$discounted_price -= $discounted_amount;
+						$subtotal_percent   = ( ( $price * $item['quantity'] ) / $items_subtotal );
+						$code_amount        = edd_get_discount_amount( $code_id );
+						$discounted_amount  = $code_amount * $subtotal_percent;
+						$discounted_price  -= $discounted_amount;
 
 						$edd_flat_discount_total += round( $discounted_amount, edd_currency_decimal_filter() );
 
 						if ( $edd_is_last_cart_item && $edd_flat_discount_total < $code_amount ) {
-							$adjustment = $code_amount - $edd_flat_discount_total;
+							$adjustment        = $code_amount - $edd_flat_discount_total;
 							$discounted_price -= $adjustment;
 						}
 
@@ -1318,10 +1318,10 @@ function edd_get_cart_discounts_html( $discounts = false ) {
 	$html = '';
 
 	foreach ( $discounts as $discount ) {
-		$discount_id  = edd_get_discount_id_by_code( $discount );
-		$rate         = edd_format_discount_rate( edd_get_discount_type( $discount_id ), edd_get_discount_amount( $discount_id ) );
+		$discount_id = edd_get_discount_id_by_code( $discount );
+		$rate        = edd_format_discount_rate( edd_get_discount_type( $discount_id ), edd_get_discount_amount( $discount_id ) );
 
-		$remove_url   = add_query_arg(
+		$remove_url = add_query_arg(
 			array(
 				'edd_action'    => 'remove_cart_discount',
 				'discount_id'   => $discount_id,
@@ -1354,8 +1354,8 @@ function edd_display_cart_discount( $formatted = false, $echo = false ) {
 		return false;
 	}
 
-	$discount_id  = edd_get_discount_id_by_code( $discounts[0] );
-	$amount       = edd_format_discount_rate( edd_get_discount_type( $discount_id ), edd_get_discount_amount( $discount_id ) );
+	$discount_id = edd_get_discount_id_by_code( $discounts[0] );
+	$amount      = edd_format_discount_rate( edd_get_discount_type( $discount_id ), edd_get_discount_amount( $discount_id ) );
 
 	if ( $echo ) {
 		echo $amount;

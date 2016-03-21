@@ -92,7 +92,7 @@ class EDD_Batch_File_Downloads_Export extends EDD_Batch_Export {
 				$user      = get_userdata( $user_info['id'] );
 				$user      = $user ? $user->user_login : $user_info['email'];
 
-				$data[]    = array(
+				$data[] = array(
 					'date'     => $log->post_date,
 					'user'     => $user,
 					'ip'       => get_post_meta( $log->ID, '_edd_log_ip', true ),
