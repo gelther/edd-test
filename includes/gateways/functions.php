@@ -321,7 +321,7 @@ function edd_show_gateways() {
 	$gateways      = edd_get_enabled_payment_gateways();
 	$show_gateways = false;
 
-	$chosen_gateway = isset( $_GET['payment-mode'] ) ? preg_replace('/[^a-zA-Z0-9-_]+/', '', $_GET['payment-mode'] ) : false;
+	$chosen_gateway = isset( $_GET['payment-mode'] ) ? preg_replace( '/[^a-zA-Z0-9-_]+/', '', $_GET['payment-mode'] ) : false;
 
 	if ( count( $gateways ) > 1 && empty( $chosen_gateway ) ) {
 		$show_gateways = true;
@@ -348,7 +348,7 @@ function edd_get_chosen_gateway() {
 	$chosen   = isset( $_REQUEST['payment-mode'] ) ? $_REQUEST['payment-mode'] : false;
 
 	if ( false !== $chosen ) {
-		$chosen = preg_replace('/[^a-zA-Z0-9-_]+/', '', $chosen );
+		$chosen = preg_replace( '/[^a-zA-Z0-9-_]+/', '', $chosen );
 	}
 
 	if ( ! empty ( $chosen ) ) {
