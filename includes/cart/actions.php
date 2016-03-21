@@ -77,7 +77,7 @@ function edd_process_add_to_cart( $data ) {
 		}
 	}
 
-	$cart        = edd_add_to_cart( $download_id, $options );
+	$cart = edd_add_to_cart( $download_id, $options );
 
 	if ( edd_straight_to_checkout() && ! edd_is_checkout() ) {
 		wp_redirect( edd_get_checkout_uri(), 303 );
