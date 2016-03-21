@@ -171,7 +171,7 @@ final class EDD_Amazon_Payments {
 	 *
 	 * @access private
 	 * @since  2.4
-	 * @return PayWithAmazon\Client
+	 * @return PayWithAmazon \Client
 	 */
 	private function get_client() {
 
@@ -219,7 +219,7 @@ final class EDD_Amazon_Payments {
 	 *
 	 * @access public
 	 * @since  2.4
-	 * @param  $gateways array
+	 * @param        $gateways array
 	 * @return array
 	 */
 	public function register_gateway( $gateways ) {
@@ -271,7 +271,7 @@ final class EDD_Amazon_Payments {
 	 *
 	 * @access public
 	 * @since  2.4
-	 * @param  $gateway_settings array
+	 * @param        $gateway_settings array
 	 * @return array
 	 */
 	public function register_gateway_settings( $gateway_settings ) {
@@ -772,8 +772,8 @@ final class EDD_Amazon_Payments {
 	 *
 	 * @access public
 	 * @since  2.4
-	 * @param  $valid_data Customer / product data from checkout
-	 * @param  $post_data $_POST
+	 * @param       $valid_data Customer / product data from checkout
+	 * @param       $post_data  $_POST
 	 * @return void
 	 */
 	public function checkout_errors( $valid_data, $post_data ) {
@@ -789,7 +789,7 @@ final class EDD_Amazon_Payments {
 	 *
 	 * @access public
 	 * @since  2.4
-	 * @param  $purchase_data array Cart details
+	 * @param       $purchase_data array Cart details
 	 * @return void
 	 */
 	public function process_purchase( $purchase_data ) {
@@ -1079,9 +1079,9 @@ final class EDD_Amazon_Payments {
 	 *
 	 * @access public
 	 * @since  2.4
-	 * @param  $payment_id int The ID number of the payment being refunded
-	 * @param  $new_status string The new status assigned to the payment
-	 * @param  $old_status string The previous status of the payment
+	 * @param       $payment_id int The ID number of the payment being refunded
+	 * @param       $new_status string The new status assigned to the payment
+	 * @param       $old_status string The previous status of the payment
 	 * @return void
 	 */
 	public function process_refund( $payment_id, $new_status, $old_status ) {
@@ -1111,7 +1111,7 @@ final class EDD_Amazon_Payments {
 	 *
 	 * @access public
 	 * @since  2.4
-	 * @param  $payment_id int The ID number of the payment being refunded
+	 * @param         $payment_id int The ID number of the payment being refunded
 	 * @return string
 	 */
 	private function refund( $payment_id = 0 ) {
