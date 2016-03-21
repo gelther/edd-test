@@ -195,9 +195,9 @@ class EDD_Stats {
 						// If current month is 1
 						if ( 1 == $month ) {
 
-							$year -= 1; // Today is January 1, so skip back to last day of December
-							$month = 12;
-							$day   = cal_days_in_month( CAL_GREGORIAN, $month, $year );
+							$year  -= 1; // Today is January 1, so skip back to last day of December
+							$month  = 12;
+							$day    = cal_days_in_month( CAL_GREGORIAN, $month, $year );
 
 						} else {
 
@@ -213,7 +213,7 @@ class EDD_Stats {
 				case 'this_week' :
 
 					$days_to_week_start = ( date( 'w', current_time( 'timestamp' ) ) - 1 ) *60*60*24;
-				 	$today = date( 'd', current_time( 'timestamp' ) ) *60*60*24;
+				 	$today              = date( 'd', current_time( 'timestamp' ) ) *60*60*24;
 
 				 	if ( $today < $days_to_week_start ) {
 
@@ -229,14 +229,14 @@ class EDD_Stats {
 
 					 	// Getting the start day
 
-						$day = date( 'd', current_time( 'timestamp' ) - $days_to_week_start ) - 1;
+						$day  = date( 'd', current_time( 'timestamp' ) - $days_to_week_start ) - 1;
 						$day += get_option( 'start_of_week' );
 
 					} else {
 
 						// Getting the end day
 
-						$day = date( 'd', current_time( 'timestamp' ) - $days_to_week_start ) - 1;
+						$day  = date( 'd', current_time( 'timestamp' ) - $days_to_week_start ) - 1;
 						$day += get_option( 'start_of_week' ) + 6;
 
 					}
@@ -246,7 +246,7 @@ class EDD_Stats {
 				case 'last_week' :
 
 					$days_to_week_start = ( date( 'w', current_time( 'timestamp' ) ) - 1 ) *60*60*24;
-				 	$today = date( 'd', current_time( 'timestamp' ) ) *60*60*24;
+				 	$today              = date( 'd', current_time( 'timestamp' ) ) *60*60*24;
 
 				 	if ( $today < $days_to_week_start ) {
 
@@ -262,14 +262,14 @@ class EDD_Stats {
 
 					 	// Getting the start day
 
-						$day = date( 'd', current_time( 'timestamp' ) - $days_to_week_start ) - 8;
+						$day  = date( 'd', current_time( 'timestamp' ) - $days_to_week_start ) - 8;
 						$day += get_option( 'start_of_week' );
 
 					} else {
 
 						// Getting the end day
 
-						$day = date( 'd', current_time( 'timestamp' ) - $days_to_week_start ) - 8;
+						$day  = date( 'd', current_time( 'timestamp' ) - $days_to_week_start ) - 8;
 						$day += get_option( 'start_of_week' ) + 6;
 
 					}
@@ -285,7 +285,7 @@ class EDD_Stats {
 						if ( ! $end_date ) {
 							$month = 1;
 						} else {
-							$month = 3;
+							$month  = 3;
 							$day    = cal_days_in_month( CAL_GREGORIAN, $month, $year );
 							$hour   = 23;
 							$minute = 59;
@@ -297,7 +297,7 @@ class EDD_Stats {
 						if ( ! $end_date ) {
 							$month = 4;
 						} else {
-							$month = 6;
+							$month  = 6;
 							$day    = cal_days_in_month( CAL_GREGORIAN, $month, $year );
 							$hour   = 23;
 							$minute = 59;
@@ -309,7 +309,7 @@ class EDD_Stats {
 						if ( ! $end_date ) {
 							$month = 7;
 						} else {
-							$month = 9;
+							$month  = 9;
 							$day    = cal_days_in_month( CAL_GREGORIAN, $month, $year );
 							$hour   = 23;
 							$minute = 59;
@@ -321,7 +321,7 @@ class EDD_Stats {
 						if ( ! $end_date ) {
 							$month = 10;
 						} else {
-							$month = 12;
+							$month  = 12;
 							$day    = cal_days_in_month( CAL_GREGORIAN, $month, $year );
 							$hour   = 23;
 							$minute = 59;
@@ -342,7 +342,7 @@ class EDD_Stats {
 							$month = 10;
 						} else {
 							$year -= 1;
-							$month = 12;
+							$month  = 12;
 							$day    = cal_days_in_month( CAL_GREGORIAN, $month, $year );
 							$hour   = 23;
 							$minute = 59;
@@ -354,7 +354,7 @@ class EDD_Stats {
 						if ( ! $end_date ) {
 							$month = 1;
 						} else {
-							$month = 3;
+							$month  = 3;
 							$day    = cal_days_in_month( CAL_GREGORIAN, $month, $year );
 							$hour   = 23;
 							$minute = 59;
@@ -366,7 +366,7 @@ class EDD_Stats {
 						if ( ! $end_date ) {
 							$month = 4;
 						} else {
-							$month = 6;
+							$month  = 6;
 							$day    = cal_days_in_month( CAL_GREGORIAN, $month, $year );
 							$hour   = 23;
 							$minute = 59;
@@ -378,7 +378,7 @@ class EDD_Stats {
 						if ( ! $end_date ) {
 							$month = 7;
 						} else {
-							$month = 9;
+							$month  = 9;
 							$day    = cal_days_in_month( CAL_GREGORIAN, $month, $year );
 							$hour   = 23;
 							$minute = 59;
@@ -392,7 +392,7 @@ class EDD_Stats {
 				case 'this_year' :
 
 					if ( ! $end_date ) {
-						$month  = 1;
+						$month = 1;
 					} else {
 						$month  = 12;
 						$day    = cal_days_in_month( CAL_GREGORIAN, $month, $year );
@@ -482,7 +482,7 @@ class EDD_Stats {
 				$format = 'Y-m-d 23:59:59';
 			}
 
-			$end_date  = date( $format, $this->end_date );
+			$end_date = date( $format, $this->end_date );
 
 			$end_where = " AND p.post_date <= '{$end_date}'";
 		}
@@ -526,7 +526,7 @@ class EDD_Stats {
 				$format = 'Y-m-d 23:59:59';
 			}
 
-			$end_date  = date( $format, $this->end_date );
+			$end_date = date( $format, $this->end_date );
 
 			$end_where = " AND $wpdb->posts.post_date <= '{$end_date}'";
 		}
