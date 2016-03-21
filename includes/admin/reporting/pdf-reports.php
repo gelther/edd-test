@@ -41,7 +41,7 @@ function edd_generate_pdf( $data ) {
 	$pdf = new edd_pdf();
 	$pdf->AddPage( 'L', 'A4' );
 
-	$pdf->SetTitle( utf8_decode( __( 'Sales and earnings reports for the current year for all products','easy-digital-downloads' ) ) );
+	$pdf->SetTitle( utf8_decode( __( 'Sales and earnings reports for the current year for all products', 'easy-digital-downloads' ) ) );
 	$pdf->SetAuthor( utf8_decode( __( 'Easy Digital Downloads', 'easy-digital-downloads' ) ) );
 	$pdf->SetCreator( utf8_decode( __( 'Easy Digital Downloads', 'easy-digital-downloads' ) ) );
 
@@ -131,7 +131,7 @@ function edd_generate_pdf( $data ) {
 	$pdf->Ln();
 	$pdf->SetTextColor( 50, 50, 50 );
 	$pdf->SetFont( 'Helvetica', '', 14 );
-	$pdf->Cell( 0, 10, utf8_decode( __('Graph View','easy-digital-downloads' ) ), 0, 2, 'L', false );
+	$pdf->Cell( 0, 10, utf8_decode( __('Graph View', 'easy-digital-downloads' ) ), 0, 2, 'L', false );
 	$pdf->SetFont( 'Helvetica', '', 12 );
 
 	$image = html_entity_decode( urldecode( edd_draw_chart_image() ) );
@@ -235,18 +235,18 @@ function edd_draw_chart_image() {
 	$x_axis = new GoogleChartAxis( 'x' );
 	$x_axis->setTickMarks( 5 );
 	$x_axis->setLabels( array(
-		__('Jan','easy-digital-downloads' ),
-		__('Feb','easy-digital-downloads' ),
-		__('Mar','easy-digital-downloads' ),
-		__('Apr','easy-digital-downloads' ),
-		__('May','easy-digital-downloads' ),
-		__('June','easy-digital-downloads' ),
-		__('July','easy-digital-downloads' ),
-		__('Aug','easy-digital-downloads' ),
-		__('Sept','easy-digital-downloads' ),
-		__('Oct','easy-digital-downloads' ),
-		__('Nov','easy-digital-downloads' ),
-		__('Dec','easy-digital-downloads' )
+		__('Jan', 'easy-digital-downloads' ),
+		__('Feb', 'easy-digital-downloads' ),
+		__('Mar', 'easy-digital-downloads' ),
+		__('Apr', 'easy-digital-downloads' ),
+		__('May', 'easy-digital-downloads' ),
+		__('June', 'easy-digital-downloads' ),
+		__('July', 'easy-digital-downloads' ),
+		__('Aug', 'easy-digital-downloads' ),
+		__('Sept', 'easy-digital-downloads' ),
+		__('Oct', 'easy-digital-downloads' ),
+		__('Nov', 'easy-digital-downloads' ),
+		__('Dec', 'easy-digital-downloads' )
 	) );
 	$chart->addAxis( $x_axis );
 
