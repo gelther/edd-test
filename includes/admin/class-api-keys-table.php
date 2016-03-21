@@ -75,7 +75,7 @@ class EDD_API_Keys_Table extends WP_List_Table {
 	 * @access public
 	 * @since 2.0
 	 *
-	 * @param array $item Contains all the data of the keys
+	 * @param array  $item        Contains all the data of the keys
 	 * @param string $column_name The name of the column
 	 *
 	 * @return string Column Name
@@ -90,7 +90,7 @@ class EDD_API_Keys_Table extends WP_List_Table {
 	 * @access public
 	 * @since 2.4
 	 *
-	 * @param array $item Contains all the data of the keys
+	 * @param array  $item        Contains all the data of the keys
 	 * @param string $column_name The name of the column
 	 *
 	 * @return string Column Name
@@ -105,7 +105,7 @@ class EDD_API_Keys_Table extends WP_List_Table {
 	 * @access public
 	 * @since 2.4
 	 *
-	 * @param array $item Contains all the data of the keys
+	 * @param array  $item        Contains all the data of the keys
 	 * @param string $column_name The name of the column
 	 *
 	 * @return string Column Name
@@ -120,7 +120,7 @@ class EDD_API_Keys_Table extends WP_List_Table {
 	 * @access public
 	 * @since 2.4
 	 *
-	 * @param array $item Contains all the data of the keys
+	 * @param array  $item        Contains all the data of the keys
 	 * @param string $column_name The name of the column
 	 *
 	 * @return string Column Name

@@ -18,7 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  * Returns a sanitized amount by stripping out thousands separators.
  *
  * @since 1.0
- * @param string $amount Price amount to format
+ * @param  string $amount Price amount to format
  * @return string $amount Newly sanitized amount
  */
 function edd_sanitize_amount( $amount ) {
@@ -50,7 +50,7 @@ function edd_sanitize_amount( $amount ) {
 	 *
 	 * @since unknown
 	 *
-	 * @param int $number Number of decimals
+	 * @param int        $number Number of decimals
 	 * @param int|string $amount Price
 	 */
 	$decimals = apply_filters( 'edd_sanitize_amount_decimals', 2, $amount );
@@ -116,8 +116,8 @@ function edd_format_amount( $amount, $decimals = true ) {
  * Formats the currency display
  *
  * @since 1.0
- * @param string $price Price
- * @return array $currency Currencies displayed correctly
+ * @param  string $price    Price
+ * @return array  $currency Currencies displayed correctly
  */
 function edd_currency_filter( $price = '', $currency = '' ) {
 	if ( empty( $currency ) ) {
@@ -189,7 +189,7 @@ function edd_currency_filter( $price = '', $currency = '' ) {
  * Set the number of decimal places per currency
  *
  * @since 1.4.2
- * @param int $decimals Number of decimal places
+ * @param  int $decimals Number of decimal places
  * @return int $decimals
 */
 function edd_currency_decimal_filter( $decimals = 2 ) {
@@ -218,7 +218,7 @@ add_filter( 'edd_format_amount_decimals', 'edd_currency_decimal_filter' );
  *
  * @since  2.5.8
  * @param  string $key String key
- * @return string Sanitized key
+ * @return string      Sanitized key
  */
 function edd_sanitize_key( $key ) {
 	$raw_key = $key;

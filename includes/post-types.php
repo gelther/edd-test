@@ -146,8 +146,8 @@ function edd_get_default_labels() {
  *
  * @since 1.0.8.3
  *
- * @param bool $lowercase
- * @return string $defaults['singular'] Singular label
+ * @param  bool   $lowercase
+ * @return string $defaults  ['singular'] Singular label
  */
 function edd_get_label_singular( $lowercase = false ) {
 	$defaults = edd_get_default_labels();
@@ -158,7 +158,7 @@ function edd_get_label_singular( $lowercase = false ) {
  * Get Plural Label
  *
  * @since 1.0.8.3
- * @return string $defaults['plural'] Plural label
+ * @return string $defaults ['plural'] Plural label
  */
 function edd_get_label_plural( $lowercase = false ) {
 	$defaults = edd_get_default_labels();
@@ -169,7 +169,7 @@ function edd_get_label_plural( $lowercase = false ) {
  * Change default "Enter title here" input
  *
  * @since 1.4.0.2
- * @param string $title Default title placeholder text
+ * @param  string $title Default title placeholder text
  * @return string $title New placeholder text
  */
 function edd_change_default_title( $title ) {
@@ -358,7 +358,7 @@ add_action( 'init', 'edd_register_post_type_statuses', 2 );
  * Returns an array of with all updated messages.
  *
  * @since 1.0
- * @param array $messages Post updated message
+ * @param  array $messages Post updated message
  * @return array $messages New post updated messages
  */
 function edd_updated_messages( $messages ) {
@@ -384,8 +384,8 @@ add_filter( 'post_updated_messages', 'edd_updated_messages' );
  * Updated bulk messages
  *
  * @since 2.3
- * @param array $bulk_messages Post updated messages
- * @param array $bulk_counts Post counts
+ * @param  array $bulk_messages Post updated messages
+ * @param  array $bulk_counts   Post counts
  * @return array $bulk_messages New post updated messages
  */
 function edd_bulk_updated_messages( $bulk_messages, $bulk_counts ) {

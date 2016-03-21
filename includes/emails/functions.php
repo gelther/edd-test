@@ -17,8 +17,8 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  * customizable Purchase Receipt
  *
  * @since 1.0
- * @param int $payment_id Payment ID
- * @param bool $admin_notice Whether to send the admin email notification or not (default: true)
+ * @param  int  $payment_id   Payment ID
+ * @param  bool $admin_notice Whether to send the admin email notification or not (default: true)
  * @return void
  */
 function edd_email_purchase_receipt( $payment_id, $admin_notice = true ) {
@@ -101,8 +101,8 @@ function edd_email_test_purchase_receipt() {
  * Sends the Admin Sale Notification Email
  *
  * @since 1.4.2
- * @param int $payment_id Payment ID (default: 0)
- * @param array $payment_data Payment Meta and Data
+ * @param  int   $payment_id   Payment ID (default: 0)
+ * @param  array $payment_data Payment Meta and Data
  * @return void
  */
 function edd_admin_email_notice( $payment_id = 0, $payment_data = array() ) {
@@ -168,7 +168,7 @@ function edd_get_admin_notice_emails() {
  *
  * @since 1.5.2
  *
- * @param int $payment_id
+ * @param  int   $payment_id
  * @return mixed
  */
 function edd_admin_notices_disabled( $payment_id = 0 ) {
@@ -204,7 +204,7 @@ function edd_get_default_sale_notification_email() {
  * Get various correctly formatted names used in emails
  *
  * @since 1.9
- * @param $user_info
+ * @param  $user_info
  *
  * @return array $email_names
  */

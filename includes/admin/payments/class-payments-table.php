@@ -152,7 +152,7 @@ class EDD_Payment_History_Table extends WP_List_Table {
 	 * @since 1.4
 	 * @access public
 	 *
-	 * @param string $text Label for the search box
+	 * @param string $text     Label for the search box
 	 * @param string $input_id ID of the search box
 	 *
 	 * @return void
@@ -264,7 +264,7 @@ class EDD_Payment_History_Table extends WP_List_Table {
 	 * @access public
 	 * @since 1.4
 	 *
-	 * @param array $payment Contains all the data of the payment
+	 * @param array  $payment     Contains all the data of the payment
 	 * @param string $column_name The name of the column
 	 *
 	 * @return string Column Name
@@ -300,8 +300,8 @@ class EDD_Payment_History_Table extends WP_List_Table {
 	 *
 	 * @access public
 	 * @since 1.4
-	 * @param array $payment Contains all the data of the payment
-	 * @return string Data shown in the Email column
+	 * @param  array  $payment Contains all the data of the payment
+	 * @return string          Data shown in the Email column
 	 */
 	public function column_email( $payment ) {
 
@@ -331,8 +331,8 @@ class EDD_Payment_History_Table extends WP_List_Table {
 	 *
 	 * @access public
 	 * @since 1.4
-	 * @param array $payment Contains all the data for the checkbox column
-	 * @return string Displays a checkbox
+	 * @param  array  $payment Contains all the data for the checkbox column
+	 * @return string          Displays a checkbox
 	 */
 	public function column_cb( $payment ) {
 		return sprintf(
@@ -347,8 +347,8 @@ class EDD_Payment_History_Table extends WP_List_Table {
 	 *
 	 * @access public
 	 * @since 2.0
-	 * @param array $payment Contains all the data for the checkbox column
-	 * @return string Displays a checkbox
+	 * @param  array  $payment Contains all the data for the checkbox column
+	 * @return string          Displays a checkbox
 	 */
 	public function column_ID( $payment ) {
 		return edd_get_payment_number( $payment->ID );
@@ -359,8 +359,8 @@ class EDD_Payment_History_Table extends WP_List_Table {
 	 *
 	 * @access public
 	 * @since 2.4.3
-	 * @param array $payment Contains all the data of the payment
-	 * @return string Data shown in the User column
+	 * @param  array  $payment Contains all the data of the payment
+	 * @return string          Data shown in the User column
 	 */
 	public function column_customer( $payment ) {
 

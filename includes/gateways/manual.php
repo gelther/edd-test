@@ -25,7 +25,7 @@ add_action( 'edd_manual_cc_form', '__return_false' );
  * the transaction in the Purchase History
  *
  * @since 1.0
- * @param array $purchase_data Purchase Data
+ * @param  array $purchase_data Purchase Data
  * @return void
 */
 function edd_manual_payment( $purchase_data ) {

@@ -56,7 +56,7 @@ class EDD_API_Request_Log_Table extends WP_List_Table {
 	 * @since 1.5
 	 * @access public
 	 *
-	 * @param string $text Label for the search box
+	 * @param string $text     Label for the search box
 	 * @param string $input_id ID of the search box
 	 *
 	 * @return void
@@ -115,7 +115,7 @@ class EDD_API_Request_Log_Table extends WP_List_Table {
 	 * @access public
 	 * @since 1.5
 	 *
-	 * @param array $item Contains all the data of the api request
+	 * @param array  $item        Contains all the data of the api request
 	 * @param string $column_name The name of the column
 	 *
 	 * @return string Column Name
@@ -129,7 +129,7 @@ class EDD_API_Request_Log_Table extends WP_List_Table {
 	 *
 	 * @access public
 	 * @since 1.5
-	 * @param array $item Contains all the data of the log
+	 * @param  array $item Contains all the data of the log
 	 * @return void
 	 */
 	public function column_details( $item ) {

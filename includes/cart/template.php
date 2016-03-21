@@ -44,8 +44,8 @@ function edd_checkout_cart() {
  *
  * @since 1.0
  *
- * @param bool $echo
- * @return string Fully formatted cart
+ * @param  bool   $echo
+ * @return string       Fully formatted cart
  */
 function edd_shopping_cart( $echo = false ) {
 	ob_start();
@@ -66,10 +66,10 @@ function edd_shopping_cart( $echo = false ) {
  * Get Cart Item Template
  *
  * @since 1.0
- * @param int $cart_key Cart key
- * @param array $item Cart item
- * @param bool $ajax AJAX?
- * @return string Cart item
+ * @param  int    $cart_key Cart key
+ * @param  array  $item     Cart item
+ * @param  bool   $ajax     AJAX?
+ * @return string           Cart item
 */
 function edd_get_cart_item_template( $cart_key, $item, $ajax = false ) {
 	global $post;
@@ -240,7 +240,7 @@ add_action( 'edd_before_checkout_cart', 'edd_display_cart_messages' );
  * Show Added To Cart Messages
  *
  * @since 1.0
- * @param int $download_id Download (Post) ID
+ * @param  int  $download_id Download (Post) ID
  * @return void
  */
 function edd_show_added_to_cart_messages( $download_id ) {

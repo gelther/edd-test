@@ -55,9 +55,9 @@ add_action( 'admin_menu', 'edd_add_options_link', 10 );
  *
  * @since 1.9.6
  *
- * @param string $page Optional. Main page's slug
- * @param string $view Optional. Page view ( ex: `edit` or `delete` )
- * @return bool True if EDD admin page we're looking for or an EDD page or if $page is empty, any EDD page
+ * @param  string $page Optional. Main page's slug
+ * @param  string $view Optional. Page view ( ex: `edit` or `delete` )
+ * @return bool         True if EDD admin page we're looking for or an EDD page or if $page is empty, any EDD page
  */
 function edd_is_admin_page( $passed_page = '', $passed_view = '' ) {
 

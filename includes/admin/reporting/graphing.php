@@ -787,7 +787,7 @@ function edd_get_report_dates() {
  *
  * @since 1.3
  *
- * @param $data
+ * @param  $data
  */
 function edd_parse_report_dates( $data ) {
 	$dates = edd_get_report_dates();

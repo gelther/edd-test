@@ -19,7 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  *
  * @access      private
  * @since       1.0
- * @return      void
+ * @return void
  */
 function edd_process_purchase_form() {
 
@@ -133,7 +133,7 @@ add_action( 'wp_ajax_nopriv_edd_process_checkout', 'edd_process_purchase_form' )
  *
  * @access      private
  * @since       1.8
- * @return      void
+ * @return void
  */
 function edd_process_purchase_login() {
 
@@ -167,7 +167,7 @@ add_action( 'wp_ajax_nopriv_edd_process_checkout_login', 'edd_process_purchase_l
  *
  * @access      private
  * @since       1.0.8.1
- * @return      bool|array
+ * @return bool|array
  */
 function edd_purchase_form_validate_fields() {
 	// Check if there is $_POST
@@ -220,7 +220,7 @@ function edd_purchase_form_validate_fields() {
  *
  * @access      private
  * @since       1.0
- * @return      string
+ * @return string
  */
 function edd_purchase_form_validate_gateway() {
 
@@ -252,7 +252,7 @@ function edd_purchase_form_validate_gateway() {
  *
  * @access      private
  * @since       1.0.8.1
- * @return      string
+ * @return string
  */
 function edd_purchase_form_validate_discounts() {
 	// Retrieve the discount stored in cookies
@@ -308,7 +308,7 @@ function edd_purchase_form_validate_discounts() {
  *
  * @access      private
  * @since       1.0.8.1
- * @return      void
+ * @return void
  */
 function edd_purchase_form_validate_agree_to_terms() {
 	// Validate agree to terms
@@ -323,7 +323,7 @@ function edd_purchase_form_validate_agree_to_terms() {
  *
  * @access      private
  * @since       1.5
- * @return      array
+ * @return array
  */
 function edd_purchase_form_required_fields() {
 	$required_fields = array(
@@ -367,7 +367,7 @@ function edd_purchase_form_required_fields() {
  *
  * @access      private
  * @since       1.0
- * @return      array
+ * @return array
  */
 function edd_purchase_form_validate_logged_in_user() {
 	global $user_ID;
@@ -419,7 +419,7 @@ function edd_purchase_form_validate_logged_in_user() {
  *
  * @access      private
  * @since       1.0.8.1
- * @return      array
+ * @return array
  */
 function edd_purchase_form_validate_new_user() {
 	$registering_new_user = false;
@@ -518,7 +518,7 @@ function edd_purchase_form_validate_new_user() {
  *
  * @access      private
  * @since       1.0.8.1
- * @return      array
+ * @return array
  */
 function edd_purchase_form_validate_user_login() {
 
@@ -584,7 +584,7 @@ function edd_purchase_form_validate_user_login() {
  *
  * @access  private
  * @since  1.0.8.1
- * @return  array
+ * @return array
  */
 function edd_purchase_form_validate_guest_user() {
 	// Start an array to collect valid user data
@@ -629,11 +629,11 @@ function edd_purchase_form_validate_guest_user() {
 /**
  * Register And Login New User
  *
- * @param array   $user_data
+ * @param array $user_data
  *
  * @access  private
  * @since  1.0.8.1
- * @return  integer
+ * @return integer
  */
 function edd_register_and_login_new_user( $user_data = array() ) {
 	// Verify the array
@@ -676,11 +676,11 @@ function edd_register_and_login_new_user( $user_data = array() ) {
 /**
  * Get Purchase Form User
  *
- * @param array   $valid_data
+ * @param array $valid_data
  *
  * @access  private
  * @since  1.0.8.1
- * @return  array
+ * @return array
  */
 function edd_get_purchase_form_user( $valid_data = array() ) {
 	// Initialize user
@@ -767,7 +767,7 @@ function edd_get_purchase_form_user( $valid_data = array() ) {
  *
  * @access  private
  * @since  1.4.4
- * @return  array
+ * @return array
  */
 function edd_purchase_form_validate_cc() {
 	$card_data = edd_get_purchase_cc_info();
@@ -788,7 +788,7 @@ function edd_purchase_form_validate_cc() {
  *
  * @access  private
  * @since  1.4.4
- * @return  array
+ * @return array
  */
 function edd_get_purchase_cc_info() {
 	$cc_info                   = array();
@@ -813,8 +813,8 @@ function edd_get_purchase_cc_info() {
  *
  * @since  1.4.4
  *
- * @param int     $zip
- * @param string  $country_code
+ * @param int    $zip
+ * @param string $country_code
  *
  * @return bool|mixed|void
  */
@@ -995,7 +995,7 @@ function edd_purchase_form_validate_cc_zip( $zip = 0, $country_code = '' ) {
  * Check the purchase to ensure a banned email is not allowed through
  *
  * @since       2.0
- * @return      void
+ * @return void
  */
 function edd_check_purchase_email( $valid_data, $posted ) {
 	$is_banned = false;

@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  *
  * @access      private
  * @since       1.9
- * @return      void
+ * @return void
 */
 function edd_update_payment_details( $data ) {
 
@@ -273,7 +273,7 @@ add_action( 'edd_update_payment_details', 'edd_update_payment_details' );
  * Trigger a Purchase Deletion
  *
  * @since 1.3.4
- * @param $data Arguments passed
+ * @param       $data Arguments passed
  * @return void
  */
 function edd_trigger_purchase_delete( $data ) {
@@ -316,7 +316,7 @@ add_action( 'wp_ajax_edd_insert_payment_note', 'edd_ajax_store_payment_note' );
  * Triggers a payment note deletion without ajax
  *
  * @since 1.6
- * @param array $data Arguments passed
+ * @param  array $data Arguments passed
  * @return void
 */
 function edd_trigger_payment_note_deletion( $data ) {

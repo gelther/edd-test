@@ -26,7 +26,7 @@ add_action( 'edd_paypal_cc_form', '__return_false' );
  * Process PayPal Purchase
  *
  * @since 1.0
- * @param array   $purchase_data Purchase Data
+ * @param  array $purchase_data Purchase Data
  * @return void
  */
 function edd_process_paypal_purchase( $purchase_data ) {
@@ -322,7 +322,7 @@ add_action( 'edd_verify_paypal_ipn', 'edd_process_paypal_ipn' );
  * Process web accept (one time) payment IPNs
  *
  * @since 1.3.4
- * @param array   $data IPN Data
+ * @param  array $data IPN Data
  * @return void
  */
 function edd_process_paypal_web_accept_and_cart( $data, $payment_id ) {
@@ -507,7 +507,7 @@ add_action( 'edd_paypal_web_accept', 'edd_process_paypal_web_accept_and_cart', 1
  * Process PayPal IPN Refunds
  *
  * @since 1.3.4
- * @param array   $data IPN Data
+ * @param  array $data IPN Data
  * @return void
  */
 function edd_process_paypal_refund( $data, $payment_id = 0 ) {
@@ -541,7 +541,7 @@ function edd_process_paypal_refund( $data, $payment_id = 0 ) {
  * Get PayPal Redirect
  *
  * @since 1.0.8.2
- * @param bool    $ssl_check Is SSL?
+ * @param  bool   $ssl_check Is SSL?
  * @return string
  */
 function edd_get_paypal_redirect( $ssl_check = false ) {
@@ -617,8 +617,8 @@ add_filter( 'edd_payment_confirm_paypal', 'edd_paypal_success_page_content' );
  * Given a Payment ID, extract the transaction ID
  *
  * @since  2.1
- * @param  string $payment_id       Payment ID
- * @return string                   Transaction ID
+ * @param  string $payment_id Payment ID
+ * @return string             Transaction ID
  */
 function edd_paypal_get_payment_transaction_id( $payment_id ) {
 

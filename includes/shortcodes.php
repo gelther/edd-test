@@ -18,9 +18,9 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  * Retrieves a download and displays the purchase form.
  *
  * @since 1.0
- * @param array $atts Shortcode attributes
- * @param string $content
- * @return string Fully formatted purchase link
+ * @param  array  $atts    Shortcode attributes
+ * @param  string $content
+ * @return string          Fully formatted purchase link
  */
 function edd_download_shortcode( $atts, $content = null ) {
 	global $post;
@@ -133,8 +133,8 @@ add_shortcode( 'purchase_history', 'edd_purchase_history' );
  * Show the checkout form.
  *
  * @since 1.0
- * @param array $atts Shortcode attributes
- * @param string $content
+ * @param  array  $atts    Shortcode attributes
+ * @param  string $content
  * @return string
  */
 function edd_checkout_form_shortcode( $atts, $content = null ) {
@@ -148,8 +148,8 @@ add_shortcode( 'download_checkout', 'edd_checkout_form_shortcode' );
  * Show the shopping cart.
  *
  * @since 1.0
- * @param array $atts Shortcode attributes
- * @param string $content
+ * @param  array  $atts    Shortcode attributes
+ * @param  string $content
  * @return string
  */
 function edd_cart_shortcode( $atts, $content = null ) {
@@ -164,7 +164,7 @@ add_shortcode( 'download_cart', 'edd_cart_shortcode' );
  * calls the edd_login_form function to display the login form.
  *
  * @since 1.0
- * @param array $atts Shortcode attributes
+ * @param array  $atts    Shortcode attributes
  * @param string $content
  * @uses edd_login_form()
  * @return string
@@ -184,7 +184,7 @@ add_shortcode( 'edd_login', 'edd_login_form_shortcode' );
  * Shows a registration form allowing users to users to register for the site
  *
  * @since 2.0
- * @param array $atts Shortcode attributes
+ * @param array  $atts    Shortcode attributes
  * @param string $content
  * @uses edd_register_form()
  * @return string
@@ -205,7 +205,7 @@ add_shortcode( 'edd_register', 'edd_register_form_shortcode' );
  * from the Discount Codes admin screen.
  *
  * @since 1.0.8.2
- * @param array $atts Shortcode attributes
+ * @param array  $atts    Shortcode attributes
  * @param string $content
  * @uses edd_get_discounts()
  * @return string $discounts_lists List of all the active discount codes
@@ -250,8 +250,8 @@ add_shortcode( 'download_discounts', 'edd_discounts_shortcode' );
  * to the cart.
  *
  * @since 1.0.6
- * @param array $atts Shortcode attributes
- * @param string $content
+ * @param  array  $atts    Shortcode attributes
+ * @param  string $content
  * @return string
  */
 function edd_purchase_collection_shortcode( $atts, $content = null ) {
@@ -281,8 +281,8 @@ add_shortcode( 'purchase_collection', 'edd_purchase_collection_shortcode' );
  *
  * @since 1.0.6
  * @internal Incomplete shortcode
- * @param array $atts Shortcode attributes
- * @param string $content
+ * @param  array  $atts    Shortcode attributes
+ * @param  string $content
  * @return string $display Output generated from the downloads queried
  */
 function edd_downloads_query( $atts, $content = null ) {
@@ -595,8 +595,8 @@ add_shortcode( 'downloads', 'edd_downloads_query' );
  * Shows the price of a download.
  *
  * @since 1.1.3.3
- * @param array $atts Shortcode attributes
- * @param string $content
+ * @param  array  $atts    Shortcode attributes
+ * @param  string $content
  * @return string
  */
 function edd_download_price_shortcode( $atts, $content = null ) {
@@ -620,8 +620,8 @@ add_shortcode( 'edd_price', 'edd_download_price_shortcode' );
  * Shows an order receipt.
  *
  * @since 1.4
- * @param array $atts Shortcode attributes
- * @param string $content
+ * @param  array  $atts    Shortcode attributes
+ * @param  string $content
  * @return string
  */
 function edd_receipt_shortcode( $atts, $content = null ) {
@@ -712,9 +712,9 @@ add_shortcode( 'edd_receipt', 'edd_receipt_shortcode' );
  *
  * @author Sunny Ratilal
  *
- * @param      $atts Shortcode attributes
- * @param null $content
- * @return string Output generated from the profile editor
+ * @param         $atts    Shortcode attributes
+ * @param  null   $content
+ * @return string          Output generated from the profile editor
  */
 function edd_profile_editor_shortcode( $atts, $content = null ) {
 	ob_start();
@@ -742,7 +742,7 @@ add_shortcode( 'edd_profile_editor', 'edd_profile_editor_shortcode' );
  *
  * @since 1.4
  * @author Sunny Ratilal
- * @param array $data Data sent from the profile editor
+ * @param  array $data Data sent from the profile editor
  * @return void
  */
 function edd_process_profile_editor_updates( $data ) {

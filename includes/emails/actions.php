@@ -16,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  * Triggers Purchase Receipt to be sent after the payment status is updated
  *
  * @since 1.0.8.4
- * @param int $payment_id Payment ID
+ * @param  int  $payment_id Payment ID
  * @return void
  */
 function edd_trigger_purchase_receipt( $payment_id ) {
@@ -34,7 +34,7 @@ add_action( 'edd_complete_purchase', 'edd_trigger_purchase_receipt', 999, 1 );
  * Resend the Email Purchase Receipt. (This can be done from the Payment History page)
  *
  * @since 1.0
- * @param array $data Payment Data
+ * @param  array $data Payment Data
  * @return void
  */
 function edd_resend_purchase_receipt( $data ) {
@@ -73,7 +73,7 @@ add_action( 'edd_email_links', 'edd_resend_purchase_receipt' );
  * Trigger the sending of a Test Email
  *
  * @since 1.5
- * @param array $data Parameters sent from Settings page
+ * @param  array $data Parameters sent from Settings page
  * @return void
  */
 function edd_send_test_email( $data ) {

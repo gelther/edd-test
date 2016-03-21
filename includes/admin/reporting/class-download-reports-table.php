@@ -78,7 +78,7 @@ class EDD_Download_Reports_Table extends WP_List_Table {
 	 * @access public
 	 * @since 1.5
 	 *
-	 * @param array $item Contains all the data of the downloads
+	 * @param array  $item        Contains all the data of the downloads
 	 * @param string $column_name The name of the column
 	 *
 	 * @return string Column Name

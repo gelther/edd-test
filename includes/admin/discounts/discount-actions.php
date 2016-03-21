@@ -79,7 +79,7 @@ add_action( 'edd_add_discount', 'edd_add_discount' );
  * Saves an edited discount
  *
  * @since 1.0
- * @param array $data Discount code data
+ * @param  array $data Discount code data
  * @return void
  */
 function edd_edit_discount( $data ) {

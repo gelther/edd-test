@@ -478,7 +478,7 @@ add_action( 'edd_reports_tab_logs', 'edd_reports_tab_logs' );
  *
  * @since 1.5
  *
- * @param bool  $include_taxes If the estimated earnings should include taxes
+ * @param  bool  $include_taxes If the estimated earnings should include taxes
  * @return array
  */
 function edd_estimated_monthly_stats( $include_taxes = true ) {

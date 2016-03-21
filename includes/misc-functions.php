@@ -101,8 +101,8 @@ function edd_is_cc_verify_enabled() {
  * Checks whether an integer is odd.
  *
  * @since 1.0
- * @param int     $int The integer to check
- * @return bool Is the integer odd?
+ * @param  int  $int The integer to check
+ * @return bool      Is the integer odd?
  */
 function edd_is_odd( $int ) {
 	return (bool) ( $int & 1 );
@@ -128,8 +128,8 @@ function edd_get_file_extension( $str ) {
  * Checks if the string (filename) provided is an image URL
  *
  * @since 1.0
- * @param string  $str Filename
- * @return bool Whether or not the filename is an image
+ * @param  string $str Filename
+ * @return bool        Whether or not the filename is an image
  */
 function edd_string_is_image_url( $str ) {
 	$ext = edd_get_file_extension( $str );
@@ -223,8 +223,8 @@ function edd_get_host() {
  * Check site host
  *
  * @since 2.0
- * @param $host The host to check
- * @return bool true if host matches, false if not
+ * @param       $host The host to check
+ * @return bool       true if host matches, false if not
  */
 function edd_is_host( $host = false ) {
 
@@ -387,7 +387,7 @@ function edd_currency_symbol( $currency = '' ) {
  *
  * @since 2.2
  * @param  string $code The currency code
- * @return string The currency's name
+ * @return string       The currency's name
  */
 function edd_get_currency_name( $code = 'USD' ) {
 	$currencies = edd_get_currencies();
@@ -402,8 +402,8 @@ function edd_get_currency_name( $code = 'USD' ) {
  *
  * @since 1.0
  *
- * @param integer $n
- * @return string Short month name
+ * @param  integer $n
+ * @return string     Short month name
  */
 function edd_month_num_to_name( $n ) {
 	$timestamp = mktime( 0, 0, 0, $n, 1, 2005 );
@@ -495,10 +495,10 @@ function edd_add_cache_busting( $url = '' ) {
  * @uses apply_filters() Calls 'edd_deprecated_function_trigger_error' and expects boolean value of true to do
  * trigger or false to not trigger error.
  *
- * @param string  $function    The function that was called
- * @param string  $version     The version of EDD that deprecated the function
- * @param string  $replacement Optional. The function that should have been called
- * @param array   $backtrace   Optional. Contains stack backtrace of deprecated function
+ * @param string $function    The function that was called
+ * @param string $version     The version of EDD that deprecated the function
+ * @param string $replacement Optional. The function that should have been called
+ * @param array  $backtrace   Optional. Contains stack backtrace of deprecated function
  */
 function _edd_deprecated_function( $function, $version, $replacement = null, $backtrace = null ) {
 	do_action( 'edd_deprecated_function_run', $function, $replacement, $version );
@@ -535,11 +535,11 @@ function _edd_deprecated_function( $function, $version, $replacement = null, $ba
  * @uses apply_filters() Calls 'edd_deprecated_argument_trigger_error' and expects boolean value of true to do
  * trigger or false to not trigger error.
  *
- * @param string  $argument    The arguemnt that is being deprecated
- * @param string  $function    The function that was called
- * @param string  $version     The version of WordPress that deprecated the function
- * @param string  $replacement Optional. The function that should have been called
- * @param array   $backtrace   Optional. Contains stack backtrace of deprecated function
+ * @param string $argument    The arguemnt that is being deprecated
+ * @param string $function    The function that was called
+ * @param string $version     The version of WordPress that deprecated the function
+ * @param string $replacement Optional. The function that should have been called
+ * @param array  $backtrace   Optional. Contains stack backtrace of deprecated function
  */
 function _edd_deprected_argument( $argument, $function, $version, $replacement = null, $backtrace = null ) {
 	do_action( 'edd_deprecated_argument_run', $argument, $function, $replacement, $version );
@@ -566,8 +566,8 @@ function _edd_deprected_argument( $argument, $function, $version, $replacement =
  *
  * @since 1.3.5
  *
- * @param string  $function Name of the function.
- * @return bool Whether or not function is disabled.
+ * @param  string $function Name of the function.
+ * @return bool             Whether or not function is disabled.
  */
 function edd_is_func_disabled( $function ) {
 	$disabled = explode( ',', ini_get( 'disable_functions' ) );
@@ -584,7 +584,7 @@ function edd_is_func_disabled( $function ) {
  * @usedby edd_settings()
  * @author Chris Christoff
  *
- * @param unknown $v
+ * @param  unknown    $v
  * @return int|string
  */
 function edd_let_to_num( $v ) {
@@ -725,7 +725,7 @@ function edd_get_timezone_id() {
  *
  * @since 1.7
  *
- * @param unknown $data
+ * @param  unknown $data
  * @return array
  */
 function edd_object_to_array( $data ) {
@@ -821,9 +821,9 @@ if ( ! function_exists( 'hash_equals' ) ) :
  *
  * @since 2.2.1
  *
- * @param string $a Expected string.
- * @param string $b Actual string.
- * @return bool Whether strings are equal.
+ * @param  string $a Expected string.
+ * @param  string $b Actual string.
+ * @return bool      Whether strings are equal.
  */
 function hash_equals( $a, $b ) {
 	$a_length = strlen( $a );

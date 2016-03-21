@@ -154,8 +154,8 @@ class EDD_Fees {
 	 *
 	 * @access public
 	 * @since 1.5
-	 * @param string $type Fee type, "fee" or "item"
-	 * @param int $download_id The download ID whose fees to retrieve
+	 * @param string $type        Fee type, "fee" or "item"
+	 * @param int    $download_id The download ID whose fees to retrieve
 	 * @uses EDD_Session::get()
 	 * @return mixed array|bool
 	 */
@@ -224,7 +224,7 @@ class EDD_Fees {
 	 *
 	 * @since 1.5
 	 *
-	 * @param string $id
+	 * @param  string $id
 	 * @return bool
 	 */
 	public function get_fee( $id = '' ) {
@@ -270,8 +270,8 @@ class EDD_Fees {
 	 * @since 1.5
 	 * @uses EDD_Fees::get_fees()
 	 * @uses EDD_Fees::has_fees()
-	 * @param int $download_id The download ID whose fees to retrieve
-	 * @return float $total Total fee amount
+	 * @param  int   $download_id The download ID whose fees to retrieve
+	 * @return float $total       Total fee amount
 	 */
 	public function total( $download_id = 0 ) {
 		$fees  = $this->get_fees( 'all', $download_id );
@@ -292,8 +292,8 @@ class EDD_Fees {
 	 * @access public
 	 * @since 1.5
 	 * @uses EDD_Session::set()
-	 * @param array $payment_meta The meta data to store with the payment
-	 * @param array $payment_data The info sent from process-purchase.php
+	 * @param  array $payment_meta The meta data to store with the payment
+	 * @param  array $payment_data The info sent from process-purchase.php
 	 * @return array $payment_meta Return the payment meta with the fees added
 	*/
 	public function record_fees( $payment_meta, $payment_data ) {

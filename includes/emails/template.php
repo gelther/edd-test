@@ -31,10 +31,10 @@ function edd_get_email_templates() {
  *
  * @since 1.0
  *
- * @param string $message Message with the template tags
- * @param array $payment_data Payment Data
- * @param int $payment_id Payment ID
- * @param bool $admin_notice Whether or not this is a notification email
+ * @param string $message      Message with the template tags
+ * @param array  $payment_data Payment Data
+ * @param int    $payment_id   Payment ID
+ * @param bool   $admin_notice Whether or not this is a notification email
  *
  * @return string $message Fully formatted message
  */
@@ -46,7 +46,7 @@ function edd_email_template_tags( $message, $payment_data, $payment_id, $admin_n
  * Email Preview Template Tags
  *
  * @since 1.0
- * @param string $message Email message with template tags
+ * @param  string $message Email message with template tags
  * @return string $message Fully formatted message
  */
 function edd_email_preview_template_tags( $message ) {
@@ -149,9 +149,9 @@ add_action( 'template_redirect', 'edd_display_email_template_preview' );
  * Email Template Body
  *
  * @since 1.0.8.2
- * @param int $payment_id Payment ID
- * @param array $payment_data Payment Data
- * @return string $email_body Body of the email
+ * @param  int    $payment_id   Payment ID
+ * @param  array  $payment_data Payment Data
+ * @return string $email_body   Body of the email
  */
 function edd_get_email_body_content( $payment_id = 0, $payment_data = array() ) {
 	$default_email_body  = __( 'Dear', 'easy-digital-downloads' ) . " {name},\n\n";
@@ -174,9 +174,9 @@ function edd_get_email_body_content( $payment_id = 0, $payment_data = array() ) 
  *
  * @since 1.7
  * @author Daniel J Griffiths
- * @param int $payment_id Payment ID
- * @param array $payment_data Payment Data
- * @return string $email_body Body of the email
+ * @param  int    $payment_id   Payment ID
+ * @param  array  $payment_data Payment Data
+ * @return string $email_body   Body of the email
  */
 function edd_get_sale_notification_body_content( $payment_id = 0, $payment_data = array() ) {
 	$user_info = maybe_unserialize( $payment_data['user_info'] );

@@ -63,8 +63,8 @@ function edd_get_errors() {
  *
  * @since 1.0
  * @uses EDD_Session::get()
- * @param int $error_id ID of the error being set
- * @param string $error_message Message to store with the error
+ * @param  int    $error_id      ID of the error being set
+ * @param  string $error_message Message to store with the error
  * @return void
  */
 function edd_set_error( $error_id, $error_message ) {
@@ -92,7 +92,7 @@ function edd_clear_errors() {
  *
  * @since 1.3.4
  * @uses EDD_Session::set()
- * @param int $error_id ID of the error being set
+ * @param  int    $error_id ID of the error being set
  * @return string
  */
 function edd_unset_error( $error_id ) {

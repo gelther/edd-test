@@ -16,9 +16,9 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  * Retrieve a download by a given field
  *
  * @since       2.0
- * @param       string $field The field to retrieve the discount with
- * @param       mixed $value The value for field
- * @return      mixed
+ * @param  string $field The field to retrieve the discount with
+ * @param  mixed  $value The value for field
+ * @return mixed
  */
 function edd_get_download_by( $field = '', $value = '' ) {
 
@@ -82,7 +82,7 @@ function edd_get_download_by( $field = '', $value = '' ) {
  * Retrieves a download post object by ID or slug.
  *
  * @since 1.0
- * @param int $download Download ID
+ * @param  int     $download Download ID
  * @return WP_Post $download Entire download data
  */
 function edd_get_download( $download = 0 ) {
@@ -113,9 +113,9 @@ function edd_get_download( $download = 0 ) {
  *
  * @since 2.1
  * @author Daniel J Griffiths
- * @param int $download_id ID number of the download to check
- * @param int $price_id (Optional) ID number of a variably priced item to check
- * @return bool $is_free True if the product is free, false if the product is not free or the check fails
+ * @param  int  $download_id ID number of the download to check
+ * @param  int  $price_id    (Optional) ID number of a variably priced item to check
+ * @return bool $is_free     True if the product is free, false if the product is not free or the check fails
  */
 function edd_is_free_download( $download_id = 0, $price_id = false ) {
 
@@ -131,8 +131,8 @@ function edd_is_free_download( $download_id = 0, $price_id = false ) {
  * Returns the price of a download, but only for non-variable priced downloads.
  *
  * @since 1.0
- * @param int $download_id ID number of the download to retrieve a price for
- * @return mixed string|int Price of the download
+ * @param  int   $download_id ID number of the download to retrieve a price for
+ * @return mixed              string|int Price of the download
  */
 function edd_get_download_price( $download_id = 0 ) {
 
@@ -148,9 +148,9 @@ function edd_get_download_price( $download_id = 0 ) {
  * Displays a formatted price for a download
  *
  * @since 1.0
- * @param int $download_id ID of the download price to show
- * @param bool $echo Whether to echo or return the results
- * @param int $price_id Optional price id for variable pricing
+ * @param  int  $download_id ID of the download price to show
+ * @param  bool $echo        Whether to echo or return the results
+ * @param  int  $price_id    Optional price id for variable pricing
  * @return void
  */
 function edd_price( $download_id = 0, $echo = true, $price_id = false ) {
@@ -203,10 +203,10 @@ add_filter( 'edd_download_price', 'edd_currency_filter', 20 );
  * this price includes any necessary discounts that were applied
  *
  * @since 1.0
- * @param int $download_id ID of the download
- * @param array $user_purchase_info - an array of all information for the payment
- * @param string $amount_override a custom amount that over rides the 'edd_price' meta, used for variable prices
- * @return string - the price of the download
+ * @param  int    $download_id        ID of the download
+ * @param  array  $user_purchase_info - an array of all information for the payment
+ * @param  string $amount_override    a custom amount that over rides the 'edd_price' meta, used for variable prices
+ * @return string                     - the price of the download
  */
 function edd_get_download_final_price( $download_id = 0, $user_purchase_info, $amount_override = null ) {
 	if ( is_null( $amount_override ) ) {
@@ -230,8 +230,8 @@ function edd_get_download_final_price( $download_id = 0, $user_purchase_info, $a
  * Retrieves the variable prices for a download
  *
  * @since 1.2
- * @param int $download_id ID of the download
- * @return array Variable prices
+ * @param  int   $download_id ID of the download
+ * @return array              Variable prices
  */
 function edd_get_variable_prices( $download_id = 0 ) {
 
@@ -247,8 +247,8 @@ function edd_get_variable_prices( $download_id = 0 ) {
  * Checks to see if a download has variable prices enabled.
  *
  * @since 1.0.7
- * @param int $download_id ID number of the download to check
- * @return bool true if has variable prices, false otherwise
+ * @param  int  $download_id ID number of the download to check
+ * @return bool              true if has variable prices, false otherwise
  */
 function edd_has_variable_prices( $download_id = 0 ) {
 
@@ -289,10 +289,10 @@ function edd_get_default_variable_price( $download_id = 0 ) {
  * Retrieves the name of a variable price option
  *
  * @since 1.0.9
- * @param int $download_id ID of the download
- * @param int $price_id ID of the price option
- * @param int $payment_id optional payment ID for use in filters
- * @return string $price_name Name of the price option
+ * @param  int    $download_id ID of the download
+ * @param  int    $price_id    ID of the price option
+ * @param  int    $payment_id  optional payment ID for use in filters
+ * @return string $price_name  Name of the price option
  */
 function edd_get_price_option_name( $download_id = 0, $price_id = 0, $payment_id = 0 ) {
 	$prices     = edd_get_variable_prices( $download_id );
@@ -310,10 +310,10 @@ function edd_get_price_option_name( $download_id = 0, $price_id = 0, $payment_id
  * Retrieves the amount of a variable price option
  *
  * @since 1.8.2
- * @param int $download_id ID of the download
- * @param int $price_id ID of the price option
- * @param int @payment_id ID of the payment
- * @return float $amount Amount of the price option
+ * @param  int                $download_id   ID of the download
+ * @param  int                $price_id      ID of the price option
+ * @param  int                               @payment_id ID of the payment
+ * @return float              $amount        Amount of the price option
  */
 function edd_get_price_option_amount( $download_id = 0, $price_id = 0 ) {
 	$prices = edd_get_variable_prices( $download_id );
@@ -331,8 +331,8 @@ function edd_get_price_option_amount( $download_id = 0, $price_id = 0 ) {
  * Retrieves cheapest price option of a variable priced download
  *
  * @since 1.4.4
- * @param int $download_id ID of the download
- * @return float Amount of the lowest price
+ * @param  int   $download_id ID of the download
+ * @return float              Amount of the lowest price
  */
 function edd_get_lowest_price_option( $download_id = 0 ) {
 	if ( empty( $download_id ) )
@@ -376,8 +376,8 @@ function edd_get_lowest_price_option( $download_id = 0 ) {
  * Retrieves the ID for the cheapest price option of a variable priced download
  *
  * @since 2.2
- * @param int $download_id ID of the download
- * @return int ID of the lowest price
+ * @param  int $download_id ID of the download
+ * @return int              ID of the lowest price
  */
 function edd_get_lowest_price_id( $download_id = 0 ) {
 	if ( empty( $download_id ) )
@@ -418,8 +418,8 @@ function edd_get_lowest_price_id( $download_id = 0 ) {
  * Retrieves most expensive price option of a variable priced download
  *
  * @since 1.4.4
- * @param int $download_id ID of the download
- * @return float Amount of the highest price
+ * @param  int   $download_id ID of the download
+ * @return float              Amount of the highest price
  */
 function edd_get_highest_price_option( $download_id = 0 ) {
 
@@ -462,8 +462,8 @@ function edd_get_highest_price_option( $download_id = 0 ) {
  * Retrieves a price from from low to high of a variable priced download
  *
  * @since 1.4.4
- * @param int $download_id ID of the download
- * @return string $range A fully formatted price range
+ * @param  int    $download_id ID of the download
+ * @return string $range       A fully formatted price range
  */
 function edd_price_range( $download_id = 0 ) {
 	$low    = edd_get_lowest_price_option( $download_id );
@@ -479,7 +479,7 @@ function edd_price_range( $download_id = 0 ) {
  * Checks to see if multiple price options can be purchased at once
  *
  * @since 1.4.2
- * @param int $download_id Download ID
+ * @param  int  $download_id Download ID
  * @return bool
  */
 function edd_single_price_option_mode( $download_id = 0 ) {
@@ -519,8 +519,8 @@ function edd_get_download_types() {
  * Gets the Download type, either default or "bundled"
  *
  * @since 1.6
- * @param int $download_id Download ID
- * @return string $type Download type
+ * @param  int    $download_id Download ID
+ * @return string $type        Download type
  */
 function edd_get_download_type( $download_id = 0 ) {
 	$download = new EDD_Download( $download_id );
@@ -531,7 +531,7 @@ function edd_get_download_type( $download_id = 0 ) {
  * Determines if a product is a bundle
  *
  * @since 1.6
- * @param int $download_id Download ID
+ * @param  int  $download_id Download ID
  * @return bool
  */
 function edd_is_bundled_product( $download_id = 0 ) {
@@ -544,8 +544,8 @@ function edd_is_bundled_product( $download_id = 0 ) {
  * Retrieves the product IDs of bundled products
  *
  * @since 1.6
- * @param int $download_id Download ID
- * @return array $products Products in the bundle
+ * @param  int   $download_id Download ID
+ * @return array $products    Products in the bundle
  */
 function edd_get_bundled_products( $download_id = 0 ) {
 	$download = new EDD_Download( $download_id );
@@ -556,8 +556,8 @@ function edd_get_bundled_products( $download_id = 0 ) {
  * Returns the total earnings for a download.
  *
  * @since 1.0
- * @param int $download_id Download ID
- * @return int $earnings Earnings for a certain download
+ * @param  int $download_id Download ID
+ * @return int $earnings    Earnings for a certain download
  */
 function edd_get_download_earnings_stats( $download_id = 0 ) {
 	$download = new EDD_Download( $download_id );
@@ -568,8 +568,8 @@ function edd_get_download_earnings_stats( $download_id = 0 ) {
  * Return the sales number for a download.
  *
  * @since 1.0
- * @param int $download_id Download ID
- * @return int $sales Amount of sales for a certain download
+ * @param  int $download_id Download ID
+ * @return int $sales       Amount of sales for a certain download
  */
 function edd_get_download_sales_stats( $download_id = 0 ) {
 	$download = new EDD_Download( $download_id );
@@ -583,10 +583,10 @@ function edd_get_download_sales_stats( $download_id = 0 ) {
  *
  * @since 1.0
  * @global $edd_logs
- * @param int $download_id Download ID
- * @param int $payment_id Payment ID
- * @param bool|int $price_id Price ID, if any
- * @param string|null $sale_date The date of the sale
+ * @param  int         $download_id Download ID
+ * @param  int         $payment_id  Payment ID
+ * @param  bool|int    $price_id    Price ID, if any
+ * @param  string|null $sale_date   The date of the sale
  * @return void
 */
 function edd_record_sale_in_log( $download_id = 0, $payment_id, $price_id = false, $sale_date = null ) {
@@ -614,12 +614,12 @@ function edd_record_sale_in_log( $download_id = 0, $payment_id, $price_id = fals
  *
  * @since 1.0
  * @global $edd_logs
- * @param int $download_id Download ID
- * @param int $file_id ID of the file downloaded
- * @param array $user_info User information
- * @param string $ip IP Address
- * @param int $payment_id Payment ID
- * @param int $price_id Price ID, if any
+ * @param  int    $download_id Download ID
+ * @param  int    $file_id     ID of the file downloaded
+ * @param  array  $user_info   User information
+ * @param  string $ip          IP Address
+ * @param  int    $payment_id  Payment ID
+ * @param  int    $price_id    Price ID, if any
  * @return void
  */
 function edd_record_download_in_log( $download_id = 0, $file_id, $user_info, $ip, $payment_id, $price_id = false ) {
@@ -651,7 +651,7 @@ function edd_record_download_in_log( $download_id = 0, $file_id, $user_info, $ip
  * (Does not run when a download is trashed)
  *
  * @since 1.3.4
- * @param int $download_id Download ID
+ * @param  int  $download_id Download ID
  * @return void
  */
 function edd_remove_download_logs_on_delete( $download_id = 0 ) {
@@ -670,8 +670,8 @@ add_action( 'delete_post', 'edd_remove_download_logs_on_delete' );
  * Increases the sale count of a download.
  *
  * @since 1.0
- * @param int $download_id Download ID
- * @param int $quantity Quantity to increase purchase count by
+ * @param  int      $download_id Download ID
+ * @param  int      $quantity    Quantity to increase purchase count by
  * @return bool|int
  */
 function edd_increase_purchase_count( $download_id = 0, $quantity = 1 ) {
@@ -685,7 +685,7 @@ function edd_increase_purchase_count( $download_id = 0, $quantity = 1 ) {
  * refunded.
  *
  * @since 1.0.8.1
- * @param int $download_id Download ID
+ * @param  int      $download_id Download ID
  * @return bool|int
  */
 function edd_decrease_purchase_count( $download_id = 0, $quantity = 1 ) {
@@ -697,8 +697,8 @@ function edd_decrease_purchase_count( $download_id = 0, $quantity = 1 ) {
  * Increases the total earnings of a download.
  *
  * @since 1.0
- * @param int $download_id Download ID
- * @param int $amount Earnings
+ * @param  int      $download_id Download ID
+ * @param  int      $amount      Earnings
  * @return bool|int
  */
 function edd_increase_earnings( $download_id = 0, $amount ) {
@@ -710,8 +710,8 @@ function edd_increase_earnings( $download_id = 0, $amount ) {
  * Decreases the total earnings of a download. Primarily for when a purchase is refunded.
  *
  * @since 1.0.8.1
- * @param int $download_id Download ID
- * @param int $amount Earnings
+ * @param  int      $download_id Download ID
+ * @param  int      $amount      Earnings
  * @return bool|int
  */
 function edd_decrease_earnings( $download_id = 0, $amount ) {
@@ -723,8 +723,8 @@ function edd_decrease_earnings( $download_id = 0, $amount ) {
  * Retrieves the average monthly earnings for a specific download
  *
  * @since 1.3
- * @param int $download_id Download ID
- * @return float $earnings Average monthly earnings
+ * @param  int   $download_id Download ID
+ * @return float $earnings    Average monthly earnings
  */
 function edd_get_average_monthly_download_earnings( $download_id = 0 ) {
 	$earnings     = edd_get_download_earnings_stats( $download_id );
@@ -745,8 +745,8 @@ function edd_get_average_monthly_download_earnings( $download_id = 0 ) {
  * Retrieves the average monthly sales for a specific download
  *
  * @since 1.3
- * @param int $download_id Download ID
- * @return float $sales Average monthly sales
+ * @param  int   $download_id Download ID
+ * @return float $sales       Average monthly sales
  */
 function edd_get_average_monthly_download_sales( $download_id = 0 ) {
 	$sales        = edd_get_download_sales_stats( $download_id );
@@ -768,9 +768,9 @@ function edd_get_average_monthly_download_sales( $download_id = 0 ) {
  * Can retrieve files specific to price ID
  *
  * @since 1.0
- * @param int $download_id Download ID
- * @param int $variable_price_id Variable pricing option ID
- * @return array $files Download files
+ * @param  int   $download_id       Download ID
+ * @param  int   $variable_price_id Variable pricing option ID
+ * @return array $files             Download files
  */
 function edd_get_download_files( $download_id = 0, $variable_price_id = null ) {
 	$download = new EDD_Download( $download_id );
@@ -783,8 +783,8 @@ function edd_get_download_files( $download_id = 0, $variable_price_id = null ) {
  * Defaults to the file's actual name if no 'name' key is present
  *
  * @since 1.6
- * @param array $file File array
- * @return string The file name
+ * @param  array  $file File array
+ * @return string       The file name
  */
 function edd_get_file_name( $file = array() ) {
 	if ( empty( $file ) || ! is_array( $file ) )
@@ -798,10 +798,10 @@ function edd_get_file_name( $file = array() ) {
  * Gets the number of times a file has been downloaded for a specific purchase
  *
  * @since 1.6
- * @param int $download_id Download ID
- * @param int $file_key File key
- * @param int $payment_id The ID number of the associated payment
- * @return int Number of times the file has been downloaded for the purchase
+ * @param  int $download_id Download ID
+ * @param  int $file_key    File key
+ * @param  int $payment_id  The ID number of the associated payment
+ * @return int              Number of times the file has been downloaded for the purchase
  */
 function edd_get_file_downloaded_count( $download_id = 0, $file_key = 0, $payment_id = 0 ) {
 	global $edd_logs;
@@ -829,8 +829,8 @@ function edd_get_file_downloaded_count( $download_id = 0, $file_key = 0, $paymen
  * can be downloaded.
  *
  * @since 1.3.1
- * @param int $download_id Download ID
- * @return int $limit File download limit
+ * @param  int $download_id Download ID
+ * @return int $limit       File download limit
  */
 function edd_get_file_download_limit( $download_id = 0 ) {
 	$download = new EDD_Download( $download_id );
@@ -843,8 +843,8 @@ function edd_get_file_download_limit( $download_id = 0 ) {
  * The override allows the main file download limit to be bypassed
  *
  * @since 1.3.2
- * @param int $download_id Download ID
- * @param int $payment_id Payment ID
+ * @param  int $download_id    Download ID
+ * @param  int $payment_id     Payment ID
  * @return int $limit_override The new limit
 */
 function edd_get_file_download_limit_override( $download_id = 0, $payment_id = 0 ) {
@@ -863,8 +863,8 @@ function edd_get_file_download_limit_override( $download_id = 0, $payment_id = 0
  * If the override is already set, then it is simply incremented by 1
  *
  * @since 1.3.2
- * @param int $download_id Download ID
- * @param int $payment_id Payment ID
+ * @param  int  $download_id Download ID
+ * @param  int  $payment_id  Payment ID
  * @return void
  */
 function edd_set_file_download_limit_override( $download_id = 0, $payment_id = 0 ) {
@@ -888,11 +888,11 @@ function edd_set_file_download_limit_override( $download_id = 0, $payment_id = 0
  *
  * @since 1.3.1
  * @uses EDD_Logging::get_log_count()
- * @param int $download_id Download ID
- * @param int $payment_id Payment ID
- * @param int $file_id File ID
- * @param int $price_id Price ID
- * @return bool True if at limit, false otherwise
+ * @param  int  $download_id Download ID
+ * @param  int  $payment_id  Payment ID
+ * @param  int  $file_id     File ID
+ * @param  int  $price_id    Price ID
+ * @return bool              True if at limit, false otherwise
  */
 function edd_is_file_at_download_limit( $download_id = 0, $payment_id = 0, $file_id = 0, $price_id = false ) {
 
@@ -942,9 +942,9 @@ function edd_is_file_at_download_limit( $download_id = 0, $payment_id = 0, $file
  * Gets the Price ID that can download a file
  *
  * @since 1.0.9
- * @param int $download_id Download ID
- * @param string $file_key File Key
- * @return string - the price ID if restricted, "all" otherwise
+ * @param  int    $download_id Download ID
+ * @param  string $file_key    File Key
+ * @return string              - the price ID if restricted, "all" otherwise
  */
 function edd_get_file_price_condition( $download_id = 0, $file_key ) {
 	$download = new EDD_Download( $download_id );
@@ -958,7 +958,7 @@ function edd_get_file_price_condition( $download_id = 0, $file_key ) {
  * @since 1.0
  *
  * @param string $key
- * @param string $email Customer email address
+ * @param string $email       Customer email address
  * @param int    $filekey
  * @param int    $download_id
  * @param bool   $price_id
@@ -1021,8 +1021,8 @@ function edd_get_download_file_url( $key, $email, $filekey, $download_id = 0, $p
  * Get product notes
  *
  * @since 1.2.1
- * @param int $download_id Download ID
- * @return string $notes Product notes
+ * @param  int    $download_id Download ID
+ * @return string $notes       Product notes
  */
 function edd_get_product_notes( $download_id = 0 ) {
 	$download = new EDD_Download( $download_id );
@@ -1049,8 +1049,8 @@ function edd_get_download_sku( $download_id = 0 ) {
  *
  * @since 1.7
  *
- * @param int $download_id
- * @return mixed|void Add to Cart or Direct
+ * @param  int        $download_id
+ * @return mixed|void              Add to Cart or Direct
  */
 function edd_get_download_button_behavior( $download_id = 0 ) {
 	$download = new EDD_Download( $download_id );
@@ -1084,9 +1084,9 @@ function edd_get_random_download( $post_ids = true ) {
  *
  * @since 1.7
  * @author Chris Christoff
- * @param int $num The number of posts to return
- * @param bool $post_ids True for array of post objects, else array of ids
- * @return mixed $query Returns an array of id's or an array of post objects
+ * @param  int   $num      The number of posts to return
+ * @param  bool  $post_ids True for array of post objects, else array of ids
+ * @return mixed $query    Returns an array of id's or an array of post objects
  */
 function edd_get_random_downloads( $num = 3, $post_ids = true ) {
 	if ( $post_ids ) {
@@ -1112,8 +1112,8 @@ function edd_get_random_downloads( $num = 3, $post_ids = true ) {
  *
  * @since 2.3
  *
- * @param string $url The URL to generate a token for.
- * @return string The token for the URL.
+ * @param  string $url The URL to generate a token for.
+ * @return string      The token for the URL.
  */
 function edd_get_download_token( $url = '' ) {
 
@@ -1186,7 +1186,7 @@ function edd_get_download_token( $url = '' ) {
  *
  * @since 2.3
  *
- * @param string $url URL to test.
+ * @param  string $url URL to test.
  * @return bool
  */
 function edd_validate_url_token( $url = '' ) {
