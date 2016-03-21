@@ -39,15 +39,15 @@ class EDD_Cache_Helper {
 				return;
 			}
 
-			$page_uris   = array();
+			$page_uris = array();
 
 			// Exclude querystring when using page ID
 			$page_uris[] = 'p=' . $purchase_page;
 			$page_uris[] = 'p=' . $success_page;
 
 			// Exclude permalinks
-			$checkout_page  = get_post( $purchase_page );
-			$success_page   = get_post( $success_page );
+			$checkout_page = get_post( $purchase_page );
+			$success_page  = get_post( $success_page );
 
 			if ( ! is_null( $checkout_page ) )
 				$page_uris[] = '/' . $checkout_page->post_name;
