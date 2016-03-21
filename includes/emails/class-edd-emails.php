@@ -234,7 +234,7 @@ class EDD_Emails {
 			/**
 			 * Hooks into the template of the email
 			 *
-			 * @param string $this->template Gets the enabled email template
+			 * @param string $this ->template Gets the enabled email template
 			 * @since 2.1
 			 */
 			do_action( 'edd_email_template_' . $this->get_template() );
@@ -266,10 +266,10 @@ class EDD_Emails {
 
 	/**
 	 * Send the email
-	 * @param  string  $to               The To address to send to.
-	 * @param  string  $subject          The subject line of the email to send.
-	 * @param  string  $message          The body of the email to send.
-	 * @param  string|array $attachments Attachments to the email in a format supported by wp_mail()
+	 * @param string       $to          The To address to send to.
+	 * @param string       $subject     The subject line of the email to send.
+	 * @param string       $message     The body of the email to send.
+	 * @param string|array $attachments Attachments to the email in a format supported by wp_mail()
 	 * @since 2.1
 	 */
 	public function send( $to, $subject, $message, $attachments = '' ) {
