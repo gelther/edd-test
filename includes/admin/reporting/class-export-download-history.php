@@ -75,7 +75,7 @@ class EDD_Download_History_Export extends EDD_Export {
 	 *
 	 * @access public
 	 * @since 1.4.4
- 	 * @global object $edd_logs EDD Logs Object
+	 * @global object $edd_logs EDD Logs Object
 	 * @return array $data The data for the CSV file
 	 */
 	public function get_data() {
