@@ -510,7 +510,7 @@ function edd_get_registered_settings() {
 					'purchase_receipt' => array(
 						'id'   => 'purchase_receipt',
 						'name' => __( 'Purchase Receipt', 'easy-digital-downloads' ),
-						'desc' => __('Enter the text that is sent as purchase receipt email to users after completion of a successful purchase. HTML is accepted. Available template tags:','easy-digital-downloads' ) . '<br/>' . edd_get_emails_tags_list(),
+						'desc' => __('Enter the text that is sent as purchase receipt email to users after completion of a successful purchase. HTML is accepted. Available template tags:', 'easy-digital-downloads' ) . '<br/>' . edd_get_emails_tags_list(),
 						'type' => 'rich_editor',
 						'std'  => __( 'Dear', 'easy-digital-downloads' ) . " {name},\n\n" . __( 'Thank you for your purchase. Please click on the link(s) below to download your files.', 'easy-digital-downloads' ) . "\n\n{download_list}\n\n{sitename}",
 					),
@@ -679,8 +679,8 @@ function edd_get_registered_settings() {
 					),
 					'item_quantities' => array(
 						'id'   => 'item_quantities',
-						'name' => __('Item Quantities','easy-digital-downloads' ),
-						'desc' => __('Allow item quantities to be changed.','easy-digital-downloads' ),
+						'name' => __('Item Quantities', 'easy-digital-downloads' ),
+						'desc' => __('Allow item quantities to be changed.', 'easy-digital-downloads' ),
 						'type' => 'checkbox',
 					),
 					'uninstall_on_delete' => array(
@@ -723,8 +723,8 @@ function edd_get_registered_settings() {
 					),
 					'allow_multiple_discounts' => array(
 						'id'   => 'allow_multiple_discounts',
-						'name' => __('Multiple Discounts','easy-digital-downloads' ),
-						'desc' => __('Allow customers to use multiple discounts on the same purchase?','easy-digital-downloads' ),
+						'name' => __('Multiple Discounts', 'easy-digital-downloads' ),
+						'desc' => __('Allow customers to use multiple discounts on the same purchase?', 'easy-digital-downloads' ),
 						'type' => 'checkbox',
 					),
 					'enable_cart_saving' => array(
@@ -1980,7 +1980,7 @@ if ( ! function_exists( 'edd_license_key_callback' ) ) {
 		$html = '<input type="text" class="' . sanitize_html_class( $size ) . '-text" id="edd_settings[' . edd_sanitize_key( $args['id'] ) . ']" name="edd_settings[' . edd_sanitize_key( $args['id'] ) . ']" value="' . esc_attr( $value ) . '"/>';
 
 		if ( ( is_object( $license ) && 'valid' == $license->license ) || 'valid' == $license ) {
-			$html .= '<input type="submit" class="button-secondary" name="' . $args['id'] . '_deactivate" value="' . __( 'Deactivate License',  'easy-digital-downloads' ) . '"/>';
+			$html .= '<input type="submit" class="button-secondary" name="' . $args['id'] . '_deactivate" value="' . __( 'Deactivate License', 'easy-digital-downloads' ) . '"/>';
 		}
 
 		$html .= '<label for="edd_settings[' . edd_sanitize_key( $args['id'] ) . ']"> ' . wp_kses_post( $args['desc'] ) . '</label>';
