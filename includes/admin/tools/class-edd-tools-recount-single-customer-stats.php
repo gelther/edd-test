@@ -263,7 +263,7 @@ class EDD_Tools_Recount_Single_Customer_Stats extends EDD_Batch_Export {
 	 *
 	 * @since  2.5
 	 * @param  string $key   The option_name
-	 * @param  mixed  $value  The value to store
+	 * @param  mixed  $value The value to store
 	 * @return void
 	 */
 	private function store_data( $key, $value ) {
