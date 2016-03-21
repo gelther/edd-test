@@ -570,7 +570,7 @@ function _edd_deprected_argument( $argument, $function, $version, $replacement =
  * @return bool Whether or not function is disabled.
  */
 function edd_is_func_disabled( $function ) {
-	$disabled = explode( ',',  ini_get( 'disable_functions' ) );
+	$disabled = explode( ',', ini_get( 'disable_functions' ) );
 
 	return in_array( $function, $disabled );
 }
