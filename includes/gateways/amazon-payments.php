@@ -497,7 +497,7 @@ final class EDD_Amazon_Payments {
 			return;
 		}
 
-		$profile = EDD()->session->get( 'amazon_profile' );
+		$profile   = EDD()->session->get( 'amazon_profile' );
 		$reference = $_GET['amazon_reference_id'];
 
 		if ( ! is_user_logged_in() ) {
