@@ -1631,7 +1631,7 @@ add_filter( 'comments_clauses', 'edd_hide_payment_notes_pre_41', 10, 2 );
  * @return array $where
  */
 function edd_hide_payment_notes_from_feeds( $where, $wp_comment_query ) {
-    global $wpdb;
+	global $wpdb;
 
 	$where .= $wpdb->prepare( ' AND comment_type != %s', 'edd_payment_note' );
 	return $where;

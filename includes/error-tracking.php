@@ -31,10 +31,10 @@ function edd_print_errors() {
 			'edd_errors', 'edd-alert', 'edd-alert-error'
 		) );
 		echo '<div class="' . implode( ' ', $classes ) . '">';
-		    // Loop error codes and display errors
-		   foreach ( $errors as $error_id => $error ) {
-		        echo '<p class="edd_error" id="edd_error_' . $error_id . '"><strong>' . __( 'Error', 'easy-digital-downloads' ) . '</strong>: ' . $error . '</p>';
-		   }
+			// Loop error codes and display errors
+			foreach ( $errors as $error_id => $error ) {
+				echo '<p class="edd_error" id="edd_error_' . $error_id . '"><strong>' . __( 'Error', 'easy-digital-downloads' ) . '</strong>: ' . $error . '</p>';
+			}
 		echo '</div>';
 		edd_clear_errors();
 	}

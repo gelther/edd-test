@@ -233,7 +233,7 @@ class EDD_Customer_Reports_Table extends WP_List_Table {
 	 *
 	 * @access public
 	 * @since 1.5
-	  * @global object $wpdb Used to query the database using the WordPress
+		 * @global object $wpdb Used to query the database using the WordPress
 	 *   Database API
 	 * @return array $reports_data All the data for customer reports
 	 */

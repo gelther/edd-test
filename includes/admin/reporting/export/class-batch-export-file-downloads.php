@@ -54,7 +54,7 @@ class EDD_Batch_File_Downloads_Export extends EDD_Batch_Export {
 	 *
 	 * @access public
 	 * @since 2.4
- 	 * @global object $edd_logs EDD Logs Object
+	 * @global object $edd_logs EDD Logs Object
 	 * @return array $data The data for the CSV file
 	 */
 	public function get_data() {
