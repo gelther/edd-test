@@ -55,9 +55,9 @@ class Client implements ClientInterface
 
 	// Production profile end points to get the user information
 	private $liveProfileEndpoint = array('uk' => 'https://api.amazon.co.uk',
-					 'us' => 'https://api.amazon.com',
-					 'de' => 'https://api.amazon.de',
-					 'jp' => 'https://api.amazon.co.jp');
+						'us' => 'https://api.amazon.com',
+						'de' => 'https://api.amazon.de',
+						'jp' => 'https://api.amazon.co.jp');
 
 	// Sandbox profile end points to get the user information
 	private $sandboxProfileEndpoint = array('uk' => 'https://api.sandbox.amazon.co.uk',
