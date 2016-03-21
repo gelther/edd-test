@@ -19,9 +19,9 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  *
  * @author Michael Cannon <mc@aihr.us>
  * @since 1.8
- * @param array $links already defined action links
- * @param string $file plugin file path and name being processed
- * @return array $links
+ * @param  array  $links already defined action links
+ * @param  string $file  plugin file path and name being processed
+ * @return array  $links
  */
 function edd_plugin_action_links( $links, $file ) {
 	$settings_link = '<a href="' . admin_url( 'edit.php?post_type=download&page=edd-settings' ) . '">' . esc_html__( 'General Settings', 'easy-digital-downloads' ) . '</a>';
@@ -38,9 +38,9 @@ add_filter( 'plugin_action_links', 'edd_plugin_action_links', 10, 2 );
  *
  * @author Michael Cannon <mc@aihr.us>
  * @since 1.8
- * @param array $input already defined meta links
- * @param string $file plugin file path and name being processed
- * @return array $input
+ * @param  array  $input already defined meta links
+ * @param  string $file  plugin file path and name being processed
+ * @return array  $input
  */
 function edd_plugin_row_meta( $input, $file ) {
 	if ( $file != 'easy-digital-downloads/easy-digital-downloads.php' )
