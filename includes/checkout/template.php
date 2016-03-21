@@ -50,7 +50,7 @@ function edd_checkout_form() {
 					 *
 					 * @since 1.0
 					 */
-					do_action( 'edd_checkout_form_bottom' )
+					do_action( 'edd_checkout_form_bottom' );
 					?>
 				</form>
 				<?php do_action( 'edd_after_purchase_form' ); ?>

@@ -38,8 +38,8 @@ function edd_discounts_page() {
 			<input type="hidden" name="post_type" value="download" />
 			<input type="hidden" name="page" value="edd-discounts" />
 
-			<?php $discount_codes_table->views() ?>
-			<?php $discount_codes_table->display() ?>
+			<?php $discount_codes_table->views(); ?>
+			<?php $discount_codes_table->display(); ?>
 		</form>
 		<?php do_action( 'edd_discounts_page_bottom' ); ?>
 	</div>

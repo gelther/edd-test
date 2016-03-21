@@ -142,7 +142,7 @@ function edd_render_customer_view( $view, $callbacks ) {
 			</div>
 
 			<div id="edd-item-card-wrapper" class="edd-customer-card-wrapper" style="float: left">
-				<?php $callbacks[$view]( $customer ) ?>
+				<?php $callbacks[$view]( $customer ); ?>
 			</div>
 
 		<?php endif; ?>
@@ -258,7 +258,7 @@ function edd_customers_view( $customer ) {
 					<span class="customer-email info-item editable" data-key="email"><?php echo $customer->email; ?></span>
 					<span class="customer-since info-item">
 						<?php _e( 'Customer since', 'easy-digital-downloads' ); ?>
-						<?php echo date_i18n( get_option( 'date_format' ), strtotime( $customer->date_created ) ) ?>
+						<?php echo date_i18n( get_option( 'date_format' ), strtotime( $customer->date_created ) ); ?>
 					</span>
 					<span class="customer-user-id info-item edit-item">
 						<?php
