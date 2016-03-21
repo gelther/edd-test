@@ -43,8 +43,8 @@ function edd_get_tax_rates() {
  * Get taxation rate
  *
  * @since 1.3.3
- * @param bool $country
- * @param bool $state
+ * @param  bool       $country
+ * @param  bool       $state
  * @return mixed|void
  */
 function edd_get_tax_rate( $country = false, $state = false ) {
@@ -110,9 +110,9 @@ function edd_get_tax_rate( $country = false, $state = false ) {
  * Retrieve a fully formatted tax rate
  *
  * @since 1.9
- * @param string $country The country to retrieve a rate for
- * @param string $state The state to retrieve a rate for
- * @return string Formatted rate
+ * @param  string $country The country to retrieve a rate for
+ * @param  string $state   The state to retrieve a rate for
+ * @return string          Formatted rate
  */
 function edd_get_formatted_tax_rate( $country = false, $state = false ) {
 	$rate      = edd_get_tax_rate( $country, $state );
@@ -125,10 +125,10 @@ function edd_get_formatted_tax_rate( $country = false, $state = false ) {
  * Calculate the taxed amount
  *
  * @since 1.3.3
- * @param $amount float The original amount to calculate a tax cost
- * @param $country string The country to calculate tax for. Will use default if not passed
- * @param $state string The state to calculate tax for. Will use default if not passed
- * @return float $tax Taxed amount
+ * @param        $amount  float The original amount to calculate a tax cost
+ * @param        $country string The country to calculate tax for. Will use default if not passed
+ * @param        $state   string The state to calculate tax for. Will use default if not passed
+ * @return float $tax     Taxed amount
  */
 function edd_calculate_tax( $amount = 0, $country = false, $state = false ) {
 	$rate = edd_get_tax_rate( $country, $state );
@@ -152,7 +152,7 @@ function edd_calculate_tax( $amount = 0, $country = false, $state = false ) {
  * Returns the formatted tax amount for the given year
  *
  * @since 1.3.3
- * @param $year int The year to retrieve taxes for, i.e. 2012
+ * @param  $year int The year to retrieve taxes for, i.e. 2012
  * @uses edd_get_sales_tax_for_year()
  * @return void
 */
@@ -164,7 +164,7 @@ function edd_sales_tax_for_year( $year = null ) {
  * Gets the sales tax for the given year
  *
  * @since 1.3.3
- * @param $year int The year to retrieve taxes for, i.e. 2012
+ * @param  $year int The year to retrieve taxes for, i.e. 2012
  * @uses edd_get_payment_tax()
  * @return float $tax Sales tax
  */
