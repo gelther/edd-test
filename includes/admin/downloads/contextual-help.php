@@ -37,9 +37,9 @@ function edd_downloads_contextual_help() {
 	);
 
 	$screen->add_help_tab( array(
-		'id'	    => 'edd-download-configuration',
-		'title'	    => sprintf( __( '%s Settings', 'easy-digital-downloads' ), edd_get_label_singular() ),
-		'content'	=>
+		'id'      => 'edd-download-configuration',
+		'title'   => sprintf( __( '%s Settings', 'easy-digital-downloads' ), edd_get_label_singular() ),
+		'content' =>
 			'<p>' . __( '<strong>File Download Limit</strong> - Define how many times customers are allowed to download their purchased files. Leave at 0 for unlimited. Resending the purchase receipt will permit the customer one additional download if their limit has already been reached.', 'easy-digital-downloads' ) . '</p>' .
 
 			'<p>' . __( '<strong>Accounting Options</strong> - If enabled, define an individual SKU or product number for this download.', 'easy-digital-downloads' ) . '</p>' .
@@ -48,18 +48,18 @@ function edd_downloads_contextual_help() {
 	) );
 
 	$screen->add_help_tab( array(
-		'id'	    => 'edd-download-prices',
-		'title'	    => sprintf( __( '%s Prices', 'easy-digital-downloads' ), edd_get_label_singular() ),
-		'content'	=>
+		'id'      => 'edd-download-prices',
+		'title'   => sprintf( __( '%s Prices', 'easy-digital-downloads' ), edd_get_label_singular() ),
+		'content' =>
 			'<p>' . __( '<strong>Enable variable pricing</strong> - By enabling variable pricing, multiple download options and prices can be configured.', 'easy-digital-downloads' ) . '</p>' .
 
 			'<p>' . __( '<strong>Enable multi-option purchases</strong> - By enabling multi-option purchases customers can add multiple variable price items to their cart at once.', 'easy-digital-downloads' ) . '</p>'
 	) );
 
 	$screen->add_help_tab( array(
-		'id'	    => 'edd-download-files',
-		'title'	    => sprintf( __( '%s Files', 'easy-digital-downloads' ), edd_get_label_singular() ),
-		'content'	=>
+		'id'      => 'edd-download-files',
+		'title'   => sprintf( __( '%s Files', 'easy-digital-downloads' ), edd_get_label_singular() ),
+		'content' =>
 			'<p>' . __( '<strong>Product Type Options</strong> - Choose a default product type or a bundle. Bundled products automatically include access to other download&#39;s files when purchased.', 'easy-digital-downloads' ) . '</p>' .
 
 			'<p>' . __( '<strong>File Downloads</strong> - Define download file names and their respective file URL. Multiple files can be assigned to a single price, or variable prices.', 'easy-digital-downloads' ) . '</p>'
@@ -67,9 +67,9 @@ function edd_downloads_contextual_help() {
 
 
 	$screen->add_help_tab( array(
-		'id'	    => 'edd-product-notes',
-		'title'	    => sprintf( __( '%s Notes', 'easy-digital-downloads' ), edd_get_label_singular() ),
-		'content'	=> '<p>' . __( 'Special notes or instructions for the product. These notes will be added to the purchase receipt, and additionally may be used by some extensions or themes on the frontend.', 'easy-digital-downloads' ) . '</p>'
+		'id'      => 'edd-product-notes',
+		'title'   => sprintf( __( '%s Notes', 'easy-digital-downloads' ), edd_get_label_singular() ),
+		'content' => '<p>' . __( 'Special notes or instructions for the product. These notes will be added to the purchase receipt, and additionally may be used by some extensions or themes on the frontend.', 'easy-digital-downloads' ) . '</p>'
 	) );
 
 	$colors = array(
@@ -77,9 +77,9 @@ function edd_downloads_contextual_help() {
 	);
 
 	$screen->add_help_tab( array(
-		'id'	    => 'edd-purchase-shortcode',
-		'title'	    => __( 'Purchase Shortcode', 'easy-digital-downloads' ),
-		'content'	=>
+		'id'      => 'edd-purchase-shortcode',
+		'title'   => __( 'Purchase Shortcode', 'easy-digital-downloads' ),
+		'content' =>
 			'<p>' . __( '<strong>Purchase Shortcode</strong> - If the automatic output of the purchase button has been disabled via the Download Configuration box, a shortcode can be used to output the button or link.', 'easy-digital-downloads' ) . '</p>' .
 			'<p><code>[purchase_link id="#" price="1" text="Add to Cart" color="blue"]</code></p>' .
 			'<ul>
