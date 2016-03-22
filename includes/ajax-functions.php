@@ -119,7 +119,7 @@ function edd_is_ajax_disabled() {
  *
  * @since 1.3
  * @return string
-*/
+ */
 function edd_get_ajax_url() {
 	$scheme = defined( 'FORCE_SSL_ADMIN' ) && FORCE_SSL_ADMIN ? 'https' : 'admin';
 
@@ -382,7 +382,7 @@ add_action( 'wp_ajax_nopriv_checkout_login', 'edd_load_checkout_login_fields' );
  *
  * @since 1.0
  * @return void
-*/
+ */
 function edd_load_checkout_register_fields() {
 	do_action( 'edd_purchase_form_register_fields' );
 	edd_die();
