@@ -122,18 +122,18 @@ class EDD_Batch_File_Downloads_Export extends EDD_Batch_Export {
 		global $edd_logs;
 
 		$args = array(
-			'post_type'		   => 'edd_log',
-			'posts_per_page'   => -1,
-			'post_status'	   => 'publish',
-			'fields'           => 'ids',
-			'tax_query'        => array(
+			'post_type'      => 'edd_log',
+			'posts_per_page' => -1,
+			'post_status'    => 'publish',
+			'fields'         => 'ids',
+			'tax_query'      => array(
 				array(
-					'taxonomy' 	=> 'edd_log_type',
-					'field'		=> 'slug',
-					'terms'		=> 'file_download'
+					'taxonomy' => 'edd_log_type',
+					'field'    => 'slug',
+					'terms'    => 'file_download'
 				)
 			),
-			'date_query'        => array(
+			'date_query'     => array(
 				array(
 					'after'     => date( 'Y-n-d H:i:s', strtotime( $this->start ) ),
 					'before'    => date( 'Y-n-d H:i:s', strtotime( $this->end ) ),
