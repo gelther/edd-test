@@ -27,15 +27,15 @@ add_action( 'edd_manual_cc_form', '__return_false' );
  * @since 1.0
  * @param  array $purchase_data Purchase Data
  * @return void
-*/
+ */
 function edd_manual_payment( $purchase_data ) {
 	if ( ! wp_verify_nonce( $purchase_data['gateway_nonce'], 'edd-gateway' ) ) {
 		wp_die( __( 'Nonce verification has failed', 'easy-digital-downloads' ), __( 'Error', 'easy-digital-downloads' ), array( 'response' => 403 ) );
 	}
 
 	/**
-	* Purchase data comes in like this
-	*
+	 * Purchase data comes in like this
+	 *
 	$purchase_data = array(
 		'downloads' => array of download IDs,
 		'price' => total price of cart contents,
@@ -47,7 +47,7 @@ function edd_manual_payment( $purchase_data ) {
 		'user_info' => array of user's information and used discount code
 		'cart_details' => array of cart details,
 	);
-	*/
+	 */
 
 	$payment_data = array(
 		'price' 		=> $purchase_data['price'],
