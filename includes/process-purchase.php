@@ -702,7 +702,7 @@ function edd_get_purchase_form_user( $valid_data = array() ) {
 			$user['user_id'] = edd_register_and_login_new_user( $user );
 			// User login
 		} elseif ( $valid_data['need_user_login'] === true  && ! $is_ajax ) {
-			/*
+			/**
 			 * The login form is now processed in the edd_process_purchase_login() function.
 			 * This is still here for backwards compatibility.
 			 * This also allows the old login process to still work if a user removes the
