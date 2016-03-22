@@ -112,11 +112,11 @@ class EDD_Batch_Customers_Export extends EDD_Batch_Export {
 
 			foreach ( $customers as $customer ) {
 
-				$data[$i]['id']        = $customer->id;
-				$data[$i]['name']      = $customer->name;
-				$data[$i]['email']     = $customer->email;
-				$data[$i]['purchases'] = $customer->purchase_count;
-				$data[$i]['amount']    = edd_format_amount( $customer->purchase_value );
+				$data[ $i ]['id']        = $customer->id;
+				$data[ $i ]['name']      = $customer->name;
+				$data[ $i ]['email']     = $customer->email;
+				$data[ $i ]['purchases'] = $customer->purchase_count;
+				$data[ $i ]['amount']    = edd_format_amount( $customer->purchase_value );
 
 				$i++;
 			}
