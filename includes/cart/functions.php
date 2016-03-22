@@ -178,11 +178,11 @@ function edd_add_to_cart( $download_id, $options = array() ) {
 		foreach ( $options['price_id'] as $key => $price ) {
 
 			$items[] = array(
-				'id'           => $download_id,
-				'options'      => array(
+				'id'       => $download_id,
+				'options'  => array(
 					'price_id' => preg_replace( '/[^0-9\.-]/', '', $price )
 				),
-				'quantity'     => $quantity[ $key ],
+				'quantity' => $quantity[ $key ],
 			);
 
 		}
@@ -908,7 +908,7 @@ function edd_add_collection_to_cart( $taxonomy, $terms ) {
 	$cart_item_ids = array();
 
 	$args = array(
-		'post_type' => 'download',
+		'post_type'      => 'download',
 		'posts_per_page' => -1,
 		$taxonomy => $terms
 	);
