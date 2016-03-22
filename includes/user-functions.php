@@ -708,7 +708,7 @@ function edd_get_user_verification_token( $url = '' ) {
 	$hash   = apply_filters( 'edd_get_user_verification_token_algorithm', 'sha256' );
 	$secret = apply_filters( 'edd_get_user_verification_token_secret', hash( $hash, wp_salt() ) );
 
-	/*
+	/**
 	 * Add additional args to the URL for generating the token.
 	 * Allows for restricting access to IP and/or user agent.
 	 */
@@ -742,7 +742,7 @@ function edd_get_user_verification_token( $url = '' ) {
 
 	}
 
-	/*
+	/**
 	 * Filter to modify arguments and allow custom options to be tested.
 	 * Be sure to rawurlencode any custom options for consistent results.
 	 */
