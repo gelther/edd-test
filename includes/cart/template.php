@@ -128,7 +128,7 @@ function edd_empty_checkout_cart() {
 }
 add_action( 'edd_cart_empty', 'edd_empty_checkout_cart' );
 
-/*
+/**
  * Calculate the number of columns in the cart table dynamically.
  *
  * @since 1.8
