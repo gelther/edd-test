@@ -61,9 +61,9 @@ function edd_test_ajax_works() {
 	}
 
 	$params = array(
-		'sslverify'  => false,
-		'timeout'    => 30,
-		'body'       => array(
+		'sslverify' => false,
+		'timeout'   => 30,
+		'body'      => array(
 			'action' => 'edd_test_ajax'
 		)
 	);
@@ -459,10 +459,10 @@ function edd_ajax_get_states_field() {
 	if ( ! empty( $states ) ) {
 
 		$args = array(
-			'name'    => $_POST['field_name'],
-			'id'      => $_POST['field_name'],
-			'class'   => $_POST['field_name'] . '  edd-select',
-			'options' => $states,
+			'name'             => $_POST['field_name'],
+			'id'               => $_POST['field_name'],
+			'class'            => $_POST['field_name'] . '  edd-select',
+			'options'          => $states,
 			'show_option_all'  => false,
 			'show_option_none' => false
 		);
