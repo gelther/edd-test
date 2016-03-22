@@ -1538,16 +1538,16 @@ class EDD_API {
 				if ( $customer->id > 0 ) {
 					// Based on customer->user_id
 					$meta_query[] = array(
-						'key'    => '_edd_log_user_id',
-						'value'  => $customer->user_id,
+						'key'   => '_edd_log_user_id',
+						'value' => $customer->user_id,
 					);
 				}
 
 				// Based on customer->email
 				$meta_query[] = array(
-					'key'    => '_edd_log_user_info',
-					'value'  => $customer->email,
-					'compare'=> 'LIKE',
+					'key'     => '_edd_log_user_info',
+					'value'   => $customer->email,
+					'compare' => 'LIKE',
 				);
 			} else {
 				$invalid_customer = true;
