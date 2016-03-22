@@ -343,7 +343,7 @@ final class Easy_Digital_Downloads {
 	 */
 	public function load_textdomain() {
 
-		/*
+		/**
 		 * Due to the introduction of language packs through translate.wordpress.org, loading our textdomain is complex.
 		 *
 		 * In v2.4.6, our textdomain changed from "edd" to "easy-digital-downloads".

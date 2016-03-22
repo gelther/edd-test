@@ -76,7 +76,7 @@ function edd_process_download() {
 		$download_files = edd_get_download_files( $args['download'] );
 		$attachment_id  = ! empty( $download_files[ $args['file_key'] ]['attachment_id'] ) ? absint( $download_files[ $args['file_key'] ]['attachment_id'] ) : false;
 
-		/*
+		/**
 		 * If we have an attachment ID stored, use get_attached_file() to retrieve absolute URL
 		 * If this fails or returns a relative path, we fail back to our own absolute URL detection
 		 */
@@ -252,7 +252,7 @@ add_action( 'init', 'edd_process_download', 100 );
  */
 function edd_deliver_download( $file = '', $redirect = false ) {
 
-	/*
+	/**
 	 * If symlinks are enabled, a link to the file will be created
 	 * This symlink is used to hide the true location of the file, even when the file URL is revealed
 	 * The symlink is deleted after it is used

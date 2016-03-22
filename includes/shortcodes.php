@@ -671,7 +671,7 @@ function edd_receipt_shortcode( $atts, $content = null ) {
 		return $login_form;
 	}
 
-	/*
+	/**
 	 * Check if the user has permission to view the receipt
 	 *
 	 * If user is logged in, user ID is compared to user ID of ID stored in payment meta

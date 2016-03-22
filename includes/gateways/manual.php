@@ -33,7 +33,7 @@ function edd_manual_payment( $purchase_data ) {
 		wp_die( __( 'Nonce verification has failed', 'easy-digital-downloads' ), __( 'Error', 'easy-digital-downloads' ), array( 'response' => 403 ) );
 	}
 
-	/*
+	/**
 	* Purchase data comes in like this
 	*
 	$purchase_data = array(

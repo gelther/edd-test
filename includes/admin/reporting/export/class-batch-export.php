@@ -291,7 +291,7 @@ class EDD_Batch_Export extends EDD_Export {
 		edd_die();
 	}
 
-	/*
+	/**
 	 * Set the properties specific to the export
 	 *
 	 * @since 2.4.2
