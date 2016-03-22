@@ -50,7 +50,6 @@ add_action( 'admin_init', 'edd_change_downloads_upload_dir', 999 );
  * @param bool $force
  * @param bool $method
  */
-
 function edd_create_protection_files( $force = false, $method = false ) {
 	if ( false === get_transient( 'edd_check_protection_files' ) || $force ) {
 
