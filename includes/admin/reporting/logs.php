@@ -103,7 +103,6 @@ add_action( 'edd_logs_view_gateway_errors', 'edd_logs_view_gateway_errors' );
  * @uses EDD_API_Request_Log_Table::display()
  * @return void
  */
-
 function edd_logs_view_api_requests() {
 
 	if ( ! current_user_can( 'view_shop_reports' ) ) {
