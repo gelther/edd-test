@@ -177,8 +177,8 @@ class EDD_Gateway_Error_Log_Table extends WP_List_Table {
 		$logs_data = array();
 		$paged     = $this->get_paged();
 		$log_query = array(
-			'log_type'    => 'gateway_error',
-			'paged'       => $paged,
+			'log_type' => 'gateway_error',
+			'paged'    => $paged,
 		);
 
 		$logs = $edd_logs->get_connected_logs( $log_query );
