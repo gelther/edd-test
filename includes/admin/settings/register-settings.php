@@ -7,7 +7,7 @@
  * @copyright   Copyright (c) 2015, Pippin Williamson
  * @license     http://opensource.org/licenses/gpl-2.0.php GNU Public License
  * @since       1.0
-*/
+ */
 
 // Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) exit;
@@ -147,7 +147,7 @@ function edd_get_settings() {
  *
  * @since 1.0
  * @return void
-*/
+ */
 function edd_register_settings() {
 
 	if ( false == get_option( 'edd_settings' ) ) {
@@ -219,7 +219,7 @@ add_action( 'admin_init', 'edd_register_settings' );
  *
  * @since 1.8
  * @return array
-*/
+ */
 function edd_get_registered_settings() {
 
 	/**
