@@ -56,11 +56,11 @@ class EDD_HTML_Elements {
 		// Maybe disable bundles
 		if ( ! $args['bundles'] ) {
 			$product_args['meta_query'] = array(
-				'relation'       => 'AND',
+				'relation' => 'AND',
 				array(
-					'key'        => '_edd_product_type',
-					'value'      => 'bundle',
-					'compare'    => 'NOT EXISTS'
+					'key'     => '_edd_product_type',
+					'value'   => 'bundle',
+					'compare' => 'NOT EXISTS'
 				)
 			);
 		}
@@ -414,10 +414,10 @@ class EDD_HTML_Elements {
 	 */
 	public function checkbox( $args = array() ) {
 		$defaults = array(
-			'name'     => null,
-			'current'  => null,
-			'class'    => 'edd-checkbox',
-			'options'  => array(
+			'name'    => null,
+			'current' => null,
+			'class'   => 'edd-checkbox',
+			'options' => array(
 				'disabled' => false,
 				'readonly' => false
 			)
@@ -528,12 +528,12 @@ class EDD_HTML_Elements {
 	 */
 	public function textarea( $args = array() ) {
 		$defaults = array(
-			'name'        => 'textarea',
-			'value'       => null,
-			'label'       => null,
-			'desc'        => null,
-			'class'       => 'large-text',
-			'disabled'    => false
+			'name'     => 'textarea',
+			'value'    => null,
+			'label'    => null,
+			'desc'     => null,
+			'class'    => 'large-text',
+			'disabled' => false
 		);
 
 		$args = wp_parse_args( $args, $defaults );
@@ -570,15 +570,15 @@ class EDD_HTML_Elements {
 	public function ajax_user_search( $args = array() ) {
 
 		$defaults = array(
-			'name'        => 'user_id',
-			'value'       => null,
-			'placeholder' => __( 'Enter username', 'easy-digital-downloads' ),
-			'label'       => null,
-			'desc'        => null,
-			'class'       => '',
-			'disabled'    => false,
-			'autocomplete'=> 'off',
-			'data'        => false
+			'name'         => 'user_id',
+			'value'        => null,
+			'placeholder'  => __( 'Enter username', 'easy-digital-downloads' ),
+			'label'        => null,
+			'desc'         => null,
+			'class'        => '',
+			'disabled'     => false,
+			'autocomplete' => 'off',
+			'data'         => false
 		);
 
 		$args = wp_parse_args( $args, $defaults );
