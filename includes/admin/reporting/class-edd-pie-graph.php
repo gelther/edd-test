@@ -77,20 +77,20 @@ class EDD_Pie_Graph extends EDD_Graph {
 
 		// Setup default options;
 		$defaults = array(
-			'radius'            => 1,
-			'legend'            => true,
-			'legend_formatter'  => false,
-			'legend_columns'    => 3,
-			'legend_position'   => 's',
-			'show_labels'       => false,
-			'label_threshold'   => 0.01,
-			'label_formatter'   => 'eddLabelFormatter',
-			'label_bg_opacity'  => 0.75,
-			'label_radius'      => 1,
-			'height'            => '300',
-			'hoverable'         => true,
-			'clickable'         => false,
-			'threshold'         => false,
+			'radius'           => 1,
+			'legend'           => true,
+			'legend_formatter' => false,
+			'legend_columns'   => 3,
+			'legend_position'  => 's',
+			'show_labels'      => false,
+			'label_threshold'  => 0.01,
+			'label_formatter'  => 'eddLabelFormatter',
+			'label_bg_opacity' => 0.75,
+			'label_radius'     => 1,
+			'height'           => '300',
+			'hoverable'        => true,
+			'clickable'        => false,
+			'threshold'        => false,
 		);
 
 		$this->options = wp_parse_args( $options, $defaults );
