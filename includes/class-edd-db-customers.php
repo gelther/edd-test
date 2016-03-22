@@ -384,11 +384,11 @@ class EDD_DB_Customers extends EDD_DB  {
 		global $wpdb;
 
 		$defaults = array(
-			'number'       => 20,
-			'offset'       => 0,
-			'user_id'      => 0,
-			'orderby'      => 'id',
-			'order'        => 'DESC'
+			'number'  => 20,
+			'offset'  => 0,
+			'user_id' => 0,
+			'orderby' => 'id',
+			'order'   => 'DESC'
 		);
 
 		$args = wp_parse_args( $args, $defaults );
