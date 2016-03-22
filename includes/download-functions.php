@@ -508,8 +508,8 @@ function edd_single_price_option_mode( $download_id = 0 ) {
 function edd_get_download_types() {
 
 	$types = array(
-		'0'       => __( 'Default', 'easy-digital-downloads' ),
-		'bundle'  => __( 'Bundle', 'easy-digital-downloads' )
+		'0'      => __( 'Default', 'easy-digital-downloads' ),
+		'bundle' => __( 'Bundle', 'easy-digital-downloads' )
 	);
 
 	return apply_filters( 'edd_download_types', $types );
@@ -600,8 +600,8 @@ function edd_record_sale_in_log( $download_id = 0, $payment_id, $price_id = fals
 	);
 
 	$log_meta = array(
-		'payment_id'    => $payment_id,
-		'price_id'      => (int) $price_id
+		'payment_id' => $payment_id,
+		'price_id'   => (int) $price_id
 	);
 
 	$edd_logs->insert_log( $log_data, $log_meta );
@@ -626,19 +626,19 @@ function edd_record_download_in_log( $download_id = 0, $file_id, $user_info, $ip
 	global $edd_logs;
 
 	$log_data = array(
-		'post_parent'	=> $download_id,
-		'log_type'		=> 'file_download'
+		'post_parent' => $download_id,
+		'log_type'    => 'file_download'
 	);
 
 	$user_id = isset( $user_info['id'] ) ? $user_info['id'] : (int) -1;
 
 	$log_meta = array(
-		'user_info'	=> $user_info,
-		'user_id'	=> $user_id,
-		'file_id'	=> (int) $file_id,
-		'ip'		=> $ip,
-		'payment_id'=> $payment_id,
-		'price_id'  => (int) $price_id
+		'user_info'  => $user_info,
+		'user_id'    => $user_id,
+		'file_id'    => (int) $file_id,
+		'ip'         => $ip,
+		'payment_id' => $payment_id,
+		'price_id'   => (int) $price_id
 	);
 
 	$edd_logs->insert_log( $log_data, $log_meta );
@@ -806,13 +806,13 @@ function edd_get_file_downloaded_count( $download_id = 0, $file_key = 0, $paymen
 	global $edd_logs;
 
 	$meta_query = array(
-		'relation'	=> 'AND',
+		'relation' => 'AND',
 		array(
-			'key' 	=> '_edd_log_file_id',
+			'key'   => '_edd_log_file_id',
 			'value' => (int) $file_key
 		),
 		array(
-			'key' 	=> '_edd_log_payment_id',
+			'key'   => '_edd_log_payment_id',
 			'value' => (int) $payment_id
 		)
 	);
@@ -899,17 +899,17 @@ function edd_is_file_at_download_limit( $download_id = 0, $payment_id = 0, $file
 	$logs = new EDD_Logging();
 
 	$meta_query = array(
-		'relation'	=> 'AND',
+		'relation' => 'AND',
 		array(
-			'key' 	=> '_edd_log_file_id',
+			'key'   => '_edd_log_file_id',
 			'value' => (int) $file_id
 		),
 		array(
-			'key' 	=> '_edd_log_payment_id',
+			'key'   => '_edd_log_payment_id',
 			'value' => (int) $payment_id
 		),
 		array(
-			'key' 	=> '_edd_log_price_id',
+			'key'   => '_edd_log_price_id',
 			'value' => (int) $price_id
 		)
 	);
@@ -974,12 +974,12 @@ function edd_get_download_file_url( $key, $email, $filekey, $download_id = 0, $p
 
 	// Leaving in this array and the filter for backwards compatibility now
 	$old_args = array(
-		'download_key' 	=> rawurlencode( $key ),
-		'email'         => rawurlencode( $email ),
-		'file'          => rawurlencode( $filekey ),
-		'price_id'      => (int) $price_id,
-		'download_id'   => $download_id,
-		'expire'        => rawurlencode( $date )
+		'download_key' => rawurlencode( $key ),
+		'email'        => rawurlencode( $email ),
+		'file'         => rawurlencode( $filekey ),
+		'price_id'     => (int) $price_id,
+		'download_id'  => $download_id,
+		'expire'       => rawurlencode( $date )
 	);
 
 	$params  = apply_filters( 'edd_download_file_url_args', $old_args );
