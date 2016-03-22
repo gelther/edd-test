@@ -588,7 +588,7 @@ function edd_get_download_sales_stats( $download_id = 0 ) {
  * @param  bool|int    $price_id    Price ID, if any
  * @param  string|null $sale_date   The date of the sale
  * @return void
-*/
+ */
 function edd_record_sale_in_log( $download_id = 0, $payment_id, $price_id = false, $sale_date = null ) {
 	global $edd_logs;
 
@@ -845,7 +845,7 @@ function edd_get_file_download_limit( $download_id = 0 ) {
  * @param  int $download_id    Download ID
  * @param  int $payment_id     Payment ID
  * @return int $limit_override The new limit
-*/
+ */
 function edd_get_file_download_limit_override( $download_id = 0, $payment_id = 0 ) {
 	$limit_override = get_post_meta( $download_id, '_edd_download_limit_override_' . $payment_id, true );
 	if ( $limit_override ) {
