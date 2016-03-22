@@ -91,8 +91,8 @@ function edd_options_page() {
 				$number++;
 				$tab_url = add_query_arg( array(
 					'settings-updated' => false,
-					'tab' => $active_tab,
-					'section' => $section_id
+					'tab'              => $active_tab,
+					'section'          => $section_id
 				) );
 				$class = '';
 				if ( $section == $section_id ) {
