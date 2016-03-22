@@ -261,9 +261,9 @@ function edd_v131_upgrades() {
 		set_time_limit( 0 );
 
 	$args = array(
-		'post_type' 		=> 'download',
-		'posts_per_page' 	=> -1,
-		'post_status' 		=> 'publish'
+		'post_type'      => 'download',
+		'posts_per_page' => -1,
+		'post_status'    => 'publish'
 	);
 
 	$query     = new WP_Query( $args );
@@ -278,13 +278,13 @@ function edd_v131_upgrades() {
 			if ( $sale_logs ) {
 				foreach ( $sale_logs['sales'] as $sale ) {
 					$log_data = array(
-						'post_parent'	=> $download->ID,
-						'post_date'		=> $sale['date'],
-						'log_type'		=> 'sale'
+						'post_parent' => $download->ID,
+						'post_date'   => $sale['date'],
+						'log_type'    => 'sale'
 					);
 
 					$log_meta = array(
-						'payment_id'=> $sale['payment_id']
+						'payment_id' => $sale['payment_id']
 					);
 
 					$log = $edd_log->insert_log( $log_data, $log_meta );
@@ -297,16 +297,16 @@ function edd_v131_upgrades() {
 			if ( $file_logs ) {
 				foreach ( $file_logs['downloads'] as $log ) {
 					$log_data = array(
-						'post_parent'	=> $download->ID,
-						'post_date'		=> $log['date'],
-						'log_type'		=> 'file_download'
+						'post_parent' => $download->ID,
+						'post_date'   => $log['date'],
+						'log_type'    => 'file_download'
 
 					);
 
 					$log_meta = array(
-						'user_info'	=> $log['user_info'],
-						'file_id'	=> $log['file_id'],
-						'ip'		=> $log['ip']
+						'user_info' => $log['user_info'],
+						'file_id'   => $log['file_id'],
+						'ip'        => $log['ip']
 					);
 
 					$log = $edd_log->insert_log( $log_data, $log_meta );
@@ -379,14 +379,14 @@ function edd_v14_upgrades() {
 			) );
 
 			$meta = array(
-				'code'        => isset( $discount['code'] ) ? $discount['code'] : '',
-				'uses'        => isset( $discount['uses'] ) ? $discount['uses'] : '',
-				'max_uses'    => isset( $discount['max'] ) ? $discount['max'] : '',
-				'amount'      => isset( $discount['amount'] ) ? $discount['amount'] : '',
-				'start'       => isset( $discount['start'] ) ? $discount['start'] : '',
-				'expiration'  => isset( $discount['expiration'] ) ? $discount['expiration'] : '',
-				'type'        => isset( $discount['type'] ) ? $discount['type'] : '',
-				'min_price'   => isset( $discount['min_price'] ) ? $discount['min_price'] : ''
+				'code'       => isset( $discount['code'] ) ? $discount['code'] : '',
+				'uses'       => isset( $discount['uses'] ) ? $discount['uses'] : '',
+				'max_uses'   => isset( $discount['max'] ) ? $discount['max'] : '',
+				'amount'     => isset( $discount['amount'] ) ? $discount['amount'] : '',
+				'start'      => isset( $discount['start'] ) ? $discount['start'] : '',
+				'expiration' => isset( $discount['expiration'] ) ? $discount['expiration'] : '',
+				'type'       => isset( $discount['type'] ) ? $discount['type'] : '',
+				'min_price'  => isset( $discount['min_price'] ) ? $discount['min_price'] : ''
 			);
 
 			foreach ( $meta as $meta_key => $value ) {
