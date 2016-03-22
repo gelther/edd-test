@@ -77,7 +77,7 @@ function edd_no_redownload() {
 function edd_is_cc_verify_enabled() {
 	$ret = true;
 
-	/*
+	/**
 	 * Enable if use a single gateway other than PayPal or Manual. We have to assume it accepts credit cards
 	 * Enable if using more than one gateway if they aren't both PayPal and manual, again assuming credit card usage
 	 */
