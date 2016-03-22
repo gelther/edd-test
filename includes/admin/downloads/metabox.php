@@ -232,7 +232,6 @@ function edd_render_download_meta_box() {
 	 * Output the price fields
 	 *
 	 * Left for backwards compatibility
-	 *
 	 */
 	do_action( 'edd_meta_box_fields', $post->ID );
 

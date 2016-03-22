@@ -666,7 +666,6 @@ function edd_remove_download_logs_on_delete( $download_id = 0 ) {
 add_action( 'delete_post', 'edd_remove_download_logs_on_delete' );
 
 /**
- *
  * Increases the sale count of a download.
  *
  * @since 1.0

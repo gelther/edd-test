@@ -72,7 +72,6 @@ function edd_reports_default_views() {
  *
  * @since 1.9.6
  * @return string $view Report View
- *
  */
 function edd_get_reporting_view( $default = 'earnings' ) {
 

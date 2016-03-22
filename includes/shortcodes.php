@@ -679,7 +679,6 @@ function edd_receipt_shortcode( $atts, $content = null ) {
 	 * Or if user is logged out and purchase was made as a guest, the purchase session is checked for
 	 *
 	 * Or if user is logged in and the user can view sensitive shop data
-	 *
 	 */
 
 

@@ -64,7 +64,6 @@ class EDD_Stats {
 	public $timestamp;
 
 	/**
-	 *
 	 * @access public
 	 * @since 1.8
 	 * @return void

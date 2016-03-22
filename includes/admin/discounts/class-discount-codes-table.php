@@ -36,7 +36,6 @@ class EDD_Discount_Codes_Table extends WP_List_Table {
 	public $per_page = 30;
 
 	/**
-	 *
 	 * Total number of discounts
 	 * @var string
 	 * @since 1.4

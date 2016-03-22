@@ -87,7 +87,6 @@ class EDD_API {
 	private $data = array();
 
 	/**
-	 *
 	 * @var bool
 	 * @access private
 	 * @since 1.7
