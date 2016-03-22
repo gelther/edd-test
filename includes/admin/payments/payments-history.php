@@ -7,7 +7,7 @@
  * @copyright   Copyright (c) 2015, Pippin Williamson
  * @license     http://opensource.org/licenses/gpl-2.0.php GNU Public License
  * @since       1.0
-*/
+ */
 
 // Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) exit;
@@ -20,7 +20,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  * @access      private
  * @since       1.0
  * @return void
-*/
+ */
 function edd_payment_history_page() {
 	$edd_payment = get_post_type_object( 'edd_payment' );
 
@@ -55,7 +55,7 @@ function edd_payment_history_page() {
  *
  * @since 1.8.4
  * @return void
-*/
+ */
 function edd_payment_history_mobile_link() {
 	?>
 	<p class="edd-mobile-link">
