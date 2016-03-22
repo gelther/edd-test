@@ -602,35 +602,35 @@ class EDD_Customer {
 
 				case '%s':
 					if ( 'email' == $key ) {
-						$data[$key] = sanitize_email( $data[$key] );
+						$data[ $key ] = sanitize_email( $data[ $key ] );
 					} elseif ( 'notes' == $key ) {
-						$data[$key] = strip_tags( $data[$key] );
+						$data[ $key ] = strip_tags( $data[ $key ] );
 					} else {
-						$data[$key] = sanitize_text_field( $data[$key] );
+						$data[ $key ] = sanitize_text_field( $data[ $key ] );
 					}
 					break;
 
 				case '%d':
-					if ( ! is_numeric( $data[$key] ) || (int) $data[$key] !== absint( $data[$key] ) ) {
-						$data[$key] = $default_values[$key];
+					if ( ! is_numeric( $data[ $key ] ) || (int) $data[ $key ] !== absint( $data[ $key ] ) ) {
+						$data[ $key ] = $default_values[ $key ];
 					} else {
-						$data[$key] = absint( $data[$key] );
+						$data[ $key ] = absint( $data[ $key ] );
 					}
 					break;
 
 				case '%f':
 					// Convert what was given to a float
-					$value = floatval( $data[$key] );
+					$value = floatval( $data[ $key ] );
 
 					if ( ! is_float( $value ) ) {
-						$data[$key] = $default_values[$key];
+						$data[ $key ] = $default_values[ $key ];
 					} else {
-						$data[$key] = $value;
+						$data[ $key ] = $value;
 					}
 					break;
 
 				default:
-					$data[$key] = sanitize_text_field( $data[$key] );
+					$data[ $key ] = sanitize_text_field( $data[ $key ] );
 					break;
 
 			}

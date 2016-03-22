@@ -723,7 +723,7 @@ function edd_v226_upgrade_payments_price_logs_db() {
 					if ( (int) $log['download_id'] === (int) $cart_item['id'] ) {
 						$mapped_logs[$log['log_id']] = $cart_item['price_id'];
 						// Remove this Download/Log ID from the list, for multipurchase compatibility
-						unset( $logs[$key] );
+						unset( $logs[ $key ] );
 						// These aren't the logs we're looking for. Move Along, Move Along.
 						break;
 					}

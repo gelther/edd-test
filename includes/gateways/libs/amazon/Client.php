@@ -128,7 +128,7 @@ class Client implements ClientInterface
 
 		foreach ( $config as $key => $value ) {
 			if ( array_key_exists( $key, $this->config ) ) {
-				$this->config[$key] = $value;
+				$this->config[ $key ] = $value;
 			} else {
 				throw new \Exception( 'Key ' . $key . ' is either not part of the configuration or has incorrect Key name.
 				check the config array key names to match your key names of your config array', 1 );
@@ -225,7 +225,7 @@ class Client implements ClientInterface
 
 	public function __get( $name ) {
 		if ( array_key_exists( strtolower( $name ), $this->config ) ) {
-			return $this->config[strtolower( $name )];
+			return $this->config[ strtolower( $name ) ];
 		} else {
 			throw new \Exception( 'Key ' . $name . ' is either not a part of the configuration array config or the' . $name . 'does not match the key name in the config array', 1 );
 		}
@@ -243,7 +243,7 @@ class Client implements ClientInterface
 
 	private function trimArray( $array) {
 	foreach ( $array as $key => $value ) {
-		$array[$key] = trim( $value );
+		$array[ $key ] = trim( $value );
 	}
 	return $array;
 	}
@@ -319,7 +319,7 @@ class Client implements ClientInterface
 			$value = strtolower( $value );
 			}
 
-			$parameters[$fieldMappings[$param]] = $value;
+			$parameters[$fieldMappings[ $param ] = $value;
 		}
 			}
 		}
@@ -401,7 +401,7 @@ class Client implements ClientInterface
 
 		foreach ( $value as $param => $val ) {
 		if ( array_key_exists( $param, $fieldMappings ) && trim( $val )!='' ) {
-			$parameters[$providerString . $providerIndex . '.' . $fieldMappings[$param]] = $val;
+			$parameters[$providerString . $providerIndex . '.' . $fieldMappings[ $param ]] = $val;
 		}
 		}
 
@@ -436,7 +436,7 @@ class Client implements ClientInterface
 
 		foreach ( $value as $param => $val ) {
 		if ( array_key_exists( $param, $fieldMappings ) && trim( $val )!='' ) {
-			$parameters[$providerString . $providerIndex . '.' . $fieldMappings[$param]] = $val;
+			$parameters[$providerString . $providerIndex . '.' . $fieldMappings[ $param ]] = $val;
 		}
 		}
 
@@ -1445,7 +1445,7 @@ class Client implements ClientInterface
 		if ( ! empty( $this->config['region'] ) ) {
 			$region = strtolower( $this->config['region'] );
 			if ( array_key_exists( $region, $this->regionMappings ) ) {
-				$this->mwsEndpointUrl  = $this->mwsServiceUrls[$this->regionMappings[$region]];
+				$this->mwsEndpointUrl  = $this->mwsServiceUrls[$this->regionMappings[ $region ];
 				$this->mwsServiceUrl   = 'https://' . $this->mwsEndpointUrl . '/' . $this->modePath . '/' . self::SERVICE_VERSION;
 				$this->mwsEndpointPath = '/' . $this->modePath . '/' . self::SERVICE_VERSION;
 			} else {
@@ -1463,9 +1463,9 @@ class Client implements ClientInterface
 			$region = strtolower( $this->config['region'] );
 
 		if ( array_key_exists( $region, $this->sandboxProfileEndpoint) && $this->config['sandbox'] ) {
-				$this->profileEndpoint = $this->sandboxProfileEndpoint[$region];
+				$this->profileEndpoint = $this->sandboxProfileEndpoint[ $region ];
 		} elseif ( array_key_exists( $region, $this->liveProfileEndpoint) ) {
-		$this->profileEndpoint = $this->liveProfileEndpoint[$region];
+		$this->profileEndpoint = $this->liveProfileEndpoint[ $region ];
 		} else {
 		throw new \Exception( $region . ' is not a valid region' );
 		}

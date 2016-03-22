@@ -917,14 +917,14 @@ class EDD_API {
 					$last_name = implode( ' ', $names );
 				}
 
-				$customers['customers'][$customer_count]['info']['id']           = '';
-				$customers['customers'][$customer_count]['info']['user_id']      = '';
-				$customers['customers'][$customer_count]['info']['username']     = '';
-				$customers['customers'][$customer_count]['info']['display_name'] = '';
-				$customers['customers'][$customer_count]['info']['customer_id']  = $customer_obj->id;
-				$customers['customers'][$customer_count]['info']['first_name']   = $first_name;
-				$customers['customers'][$customer_count]['info']['last_name']    = $last_name;
-				$customers['customers'][$customer_count]['info']['email']        = $customer_obj->email;
+				$customers['customers'][ $customer_count ]['info']['id']           = '';
+				$customers['customers'][ $customer_count ]['info']['user_id']      = '';
+				$customers['customers'][ $customer_count ]['info']['username']     = '';
+				$customers['customers'][ $customer_count ]['info']['display_name'] = '';
+				$customers['customers'][ $customer_count ]['info']['customer_id']  = $customer_obj->id;
+				$customers['customers'][ $customer_count ]['info']['first_name']   = $first_name;
+				$customers['customers'][ $customer_count ]['info']['last_name']    = $last_name;
+				$customers['customers'][ $customer_count ]['info']['email']        = $customer_obj->email;
 
 				if ( ! empty( $customer_obj->user_id ) && $customer_obj->user_id > 0 ) {
 
@@ -933,16 +933,16 @@ class EDD_API {
 					// Customer with registered account
 
 					// id is going to get deprecated in the future, user user_id or customer_id instead
-					$customers['customers'][$customer_count]['info']['id']           = $customer_obj->user_id;
-					$customers['customers'][$customer_count]['info']['user_id']      = $customer_obj->user_id;
-					$customers['customers'][$customer_count]['info']['username']     = $user_data->user_login;
-					$customers['customers'][$customer_count]['info']['display_name'] = $user_data->display_name;
+					$customers['customers'][ $customer_count ]['info']['id']           = $customer_obj->user_id;
+					$customers['customers'][ $customer_count ]['info']['user_id']      = $customer_obj->user_id;
+					$customers['customers'][ $customer_count ]['info']['username']     = $user_data->user_login;
+					$customers['customers'][ $customer_count ]['info']['display_name'] = $user_data->display_name;
 
 				}
 
-				$customers['customers'][$customer_count]['stats']['total_purchases'] = $customer_obj->purchase_count;
-				$customers['customers'][$customer_count]['stats']['total_spent']     = $customer_obj->purchase_value;
-				$customers['customers'][$customer_count]['stats']['total_downloads'] = edd_count_file_downloads_of_user( $customer_obj->email );
+				$customers['customers'][ $customer_count ]['stats']['total_purchases'] = $customer_obj->purchase_count;
+				$customers['customers'][ $customer_count ]['stats']['total_spent']     = $customer_obj->purchase_value;
+				$customers['customers'][ $customer_count ]['stats']['total_downloads'] = edd_count_file_downloads_of_user( $customer_obj->email );
 
 				$customer_count++;
 
@@ -990,7 +990,7 @@ class EDD_API {
 			if ( $product_list ) {
 				$i = 0;
 				foreach ( $product_list as $product_info ) {
-					$products['products'][$i] = $this->get_product_data( $product_info );
+					$products['products'][ $i ] = $this->get_product_data( $product_info );
 					$i++;
 				}
 			}
@@ -1187,7 +1187,7 @@ class EDD_API {
 				$products = get_posts( array( 'post_type' => 'download', 'nopaging' => true ) );
 				$i        = 0;
 				foreach ( $products as $product_info ) {
-					$sales['sales'][$i] = array( $product_info->post_name => edd_get_download_sales_stats( $product_info->ID ) );
+					$sales['sales'][ $i ] = array( $product_info->post_name => edd_get_download_sales_stats( $product_info->ID ) );
 					$i++;
 				}
 			} else {
@@ -1455,21 +1455,21 @@ class EDD_API {
 
 			foreach ( $discounts as $discount ) {
 
-				$discount_list['discounts'][$count]['ID']                    = $discount->ID;
-				$discount_list['discounts'][$count]['name']                  = $discount->post_title;
-				$discount_list['discounts'][$count]['code']                  = edd_get_discount_code( $discount->ID );
-				$discount_list['discounts'][$count]['amount']                = edd_get_discount_amount( $discount->ID );
-				$discount_list['discounts'][$count]['min_price']             = edd_get_discount_min_price( $discount->ID );
-				$discount_list['discounts'][$count]['type']                  = edd_get_discount_type( $discount->ID );
-				$discount_list['discounts'][$count]['uses']                  = edd_get_discount_uses( $discount->ID );
-				$discount_list['discounts'][$count]['max_uses']              = edd_get_discount_max_uses( $discount->ID );
-				$discount_list['discounts'][$count]['start_date']            = edd_get_discount_start_date( $discount->ID );
-				$discount_list['discounts'][$count]['exp_date']              = edd_get_discount_expiration( $discount->ID );
-				$discount_list['discounts'][$count]['status']                = $discount->post_status;
-				$discount_list['discounts'][$count]['product_requirements']  = edd_get_discount_product_reqs( $discount->ID );
-				$discount_list['discounts'][$count]['requirement_condition'] = edd_get_discount_product_condition( $discount->ID );
-				$discount_list['discounts'][$count]['global_discount']       = edd_is_discount_not_global( $discount->ID );
-				$discount_list['discounts'][$count]['single_use']            = edd_discount_is_single_use( $discount->ID );
+				$discount_list['discounts'][ $count ]['ID']                    = $discount->ID;
+				$discount_list['discounts'][ $count ]['name']                  = $discount->post_title;
+				$discount_list['discounts'][ $count ]['code']                  = edd_get_discount_code( $discount->ID );
+				$discount_list['discounts'][ $count ]['amount']                = edd_get_discount_amount( $discount->ID );
+				$discount_list['discounts'][ $count ]['min_price']             = edd_get_discount_min_price( $discount->ID );
+				$discount_list['discounts'][ $count ]['type']                  = edd_get_discount_type( $discount->ID );
+				$discount_list['discounts'][ $count ]['uses']                  = edd_get_discount_uses( $discount->ID );
+				$discount_list['discounts'][ $count ]['max_uses']              = edd_get_discount_max_uses( $discount->ID );
+				$discount_list['discounts'][ $count ]['start_date']            = edd_get_discount_start_date( $discount->ID );
+				$discount_list['discounts'][ $count ]['exp_date']              = edd_get_discount_expiration( $discount->ID );
+				$discount_list['discounts'][ $count ]['status']                = $discount->post_status;
+				$discount_list['discounts'][ $count ]['product_requirements']  = edd_get_discount_product_reqs( $discount->ID );
+				$discount_list['discounts'][ $count ]['requirement_condition'] = edd_get_discount_product_condition( $discount->ID );
+				$discount_list['discounts'][ $count ]['global_discount']       = edd_is_discount_not_global( $discount->ID );
+				$discount_list['discounts'][ $count ]['single_use']            = edd_discount_is_single_use( $discount->ID );
 
 				$count++;
 			}

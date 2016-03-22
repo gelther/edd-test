@@ -53,7 +53,7 @@ class EDD_Email_Template_Tags {
 	 */
 	public function add( $tag, $description, $func ) {
 		if ( is_callable( $func ) ) {
-			$this->tags[$tag] = array(
+			$this->tags[ $tag ] = array(
 				'tag'         => $tag,
 				'description' => $description,
 				'func'        => $func
@@ -69,7 +69,7 @@ class EDD_Email_Template_Tags {
 	 * @param string $tag Email tag to remove hook from
 	 */
 	public function remove( $tag ) {
-		unset( $this->tags[$tag] );
+		unset( $this->tags[ $tag ] );
 	}
 
 	/**
@@ -141,7 +141,7 @@ class EDD_Email_Template_Tags {
 			return $m[0];
 		}
 
-		return call_user_func( $this->tags[$tag]['func'], $this->payment_id, $tag );
+		return call_user_func( $this->tags[ $tag ]['func'], $this->payment_id, $tag );
 	}
 
 }

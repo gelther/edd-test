@@ -148,15 +148,15 @@ class EDD_Customers_Export extends EDD_Export {
 			foreach ( $customers as $customer ) {
 
 				if ( 'emails' != $_POST['edd_export_option'] ) {
-					$data[$i]['name'] = $customer->name;
+					$data[ $i ]['name'] = $customer->name;
 				}
 
-				$data[$i]['email'] = $customer->email;
+				$data[ $i ]['email'] = $customer->email;
 
 				if ( 'full' == $_POST['edd_export_option'] ) {
 
-					$data[$i]['purchases'] = $customer->purchase_count;
-					$data[$i]['amount']    = edd_format_amount( $customer->purchase_value );
+					$data[ $i ]['purchases'] = $customer->purchase_count;
+					$data[ $i ]['amount']    = edd_format_amount( $customer->purchase_value );
 
 				}
 				$i++;

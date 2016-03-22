@@ -610,7 +610,7 @@ class EDD_CLI extends WP_CLI_Command {
 					'options'  => $options
 				);
 
-				$cart_details[$key] = array(
+				$cart_details[ $key ] = array(
 					'name'        => $download->post_title,
 					'id'          => $download->ID,
 					'item_number' => $item_number,
@@ -622,7 +622,7 @@ class EDD_CLI extends WP_CLI_Command {
 					'tax'         => $tax
 				);
 
-				$final_downloads[$key] = $item_number;
+				$final_downloads[ $key ] = $item_number;
 
 				$total += $item_price;
 

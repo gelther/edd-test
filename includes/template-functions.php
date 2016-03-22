@@ -103,7 +103,7 @@ function edd_get_purchase_link( $args = array() ) {
 		$price_id            = $args['price_id'];
 		$prices              = $download->prices;
 		$options['price_id'] = $args['price_id'];
-		$found_price         = isset( $prices[$price_id] ) ? $prices[$price_id]['amount'] : false;
+		$found_price         = isset( $prices[ $price_id ] ) ? $prices[ $price_id ]['amount'] : false;
 
 		$data_price_value = $found_price;
 
@@ -198,7 +198,7 @@ function edd_get_purchase_link( $args = array() ) {
 		</div><!--end .edd_purchase_submit_wrapper-->
 
 		<input type="hidden" name="download_id" value="<?php echo esc_attr( $download->ID ); ?>">
-		<?php if ( $variable_pricing && isset( $price_id ) && isset( $prices[$price_id] ) ) : ?>
+		<?php if ( $variable_pricing && isset( $price_id ) && isset( $prices[ $price_id ] ) ) : ?>
 			<input type="hidden" name="edd_options[price_id][]" id="edd_price_option_<?php echo $download->ID; ?>_1" class="edd_price_option_<?php echo $download->ID; ?>" value="<?php echo $price_id; ?>">
 		<?php endif; ?>
 		<?php if ( ! empty( $args['direct'] ) && ! $download->is_free( $args['price_id'] ) ) { ?>

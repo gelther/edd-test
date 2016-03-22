@@ -182,7 +182,7 @@ function edd_draw_chart_image() {
 	$i = 0;
 	while ( $i <= 11 ) {
 		if ( empty( $sales_array[ $i ] ) )
-			$sales_array[$i] = 0;
+			$sales_array[ $i ] = 0;
 		$i++;
 	}
 
