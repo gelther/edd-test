@@ -196,7 +196,7 @@ add_filter( 'enter_title_here', 'edd_change_default_title' );
  *
  * @since 1.0
  * @return void
-*/
+ */
 function edd_setup_download_taxonomies() {
 
 	$slug = defined( 'EDD_SLUG' ) ? EDD_SLUG : 'downloads';
