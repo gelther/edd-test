@@ -328,11 +328,11 @@ function edd_purchase_form_validate_agree_to_terms() {
 function edd_purchase_form_required_fields() {
 	$required_fields = array(
 		'edd_email' => array(
-			'error_id' => 'invalid_email',
+			'error_id'      => 'invalid_email',
 			'error_message' => __( 'Please enter a valid email address', 'easy-digital-downloads' )
 		),
 		'edd_first' => array(
-			'error_id' => 'invalid_first_name',
+			'error_id'      => 'invalid_first_name',
 			'error_message' => __( 'Please enter your first name', 'easy-digital-downloads' )
 		)
 	);
@@ -342,19 +342,19 @@ function edd_purchase_form_required_fields() {
 
 	if ( $require_address ) {
 		$required_fields['card_zip'] = array(
-			'error_id' => 'invalid_zip_code',
+			'error_id'      => 'invalid_zip_code',
 			'error_message' => __( 'Please enter your zip / postal code', 'easy-digital-downloads' )
 		);
 		$required_fields['card_city'] = array(
-			'error_id' => 'invalid_city',
+			'error_id'      => 'invalid_city',
 			'error_message' => __( 'Please enter your billing city', 'easy-digital-downloads' )
 		);
 		$required_fields['billing_country'] = array(
-			'error_id' => 'invalid_country',
+			'error_id'      => 'invalid_country',
 			'error_message' => __( 'Please select your billing country', 'easy-digital-downloads' )
 		);
 		$required_fields['card_state'] = array(
-			'error_id' => 'invalid_state',
+			'error_id'      => 'invalid_state',
 			'error_message' => __( 'Please enter billing state / province', 'easy-digital-downloads' )
 		);
 	}
@@ -427,11 +427,11 @@ function edd_purchase_form_validate_new_user() {
 	// Start an empty array to collect valid user data
 	$valid_user_data = array(
 		// Assume there will be errors
-		'user_id' => -1,
+		'user_id'    => -1,
 		// Get first name
 		'user_first' => isset( $_POST['edd_first'] ) ? sanitize_text_field( $_POST['edd_first'] ) : '',
 		// Get last name
-		'user_last' => isset( $_POST['edd_last'] ) ? sanitize_text_field( $_POST['edd_last'] ) : '',
+		'user_last'  => isset( $_POST['edd_last'] ) ? sanitize_text_field( $_POST['edd_last'] ) : '',
 	);
 
 	// Check the new user's credentials against existing ones
@@ -559,12 +559,12 @@ function edd_purchase_form_validate_user_login() {
 			} else {
 				// Repopulate the valid user data array
 				$valid_user_data = array(
-					'user_id' => $user_data->ID,
+					'user_id'    => $user_data->ID,
 					'user_login' => $user_data->user_login,
 					'user_email' => $user_data->user_email,
 					'user_first' => $user_data->first_name,
-					'user_last' => $user_data->last_name,
-					'user_pass' => $user_pass,
+					'user_last'  => $user_data->last_name,
+					'user_pass'  => $user_pass,
 				);
 			}
 		} else {
@@ -889,7 +889,7 @@ function edd_purchase_form_validate_cc_zip( $zip = 0, $country_code = '' ) {
 		'ID' => '\d{5}',
 		'IE' => '((D|DUBLIN)?([1-9]|6[wW]|1[0-8]|2[024]))?',
 		'IL' => '\d{5}',
-		'IN'=> '^[1-9][0-9][0-9][0-9][0-9][0-9]$', //india
+		'IN' => '^[1-9][0-9][0-9][0-9][0-9][0-9]$', //india
 		'IO' => 'BBND 1ZZ',
 		'IQ' => '\d{5}',
 		'IS' => '\d{3}',
