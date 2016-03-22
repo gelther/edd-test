@@ -259,7 +259,7 @@ add_action( 'admin_enqueue_scripts', 'edd_load_admin_scripts', 100 );
  * @global $post_type
  * @global $wp_version
  * @return void
-*/
+ */
 function edd_admin_downloads_icon() {
 	global $post_type, $wp_version;
 
