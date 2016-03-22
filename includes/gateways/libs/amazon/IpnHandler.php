@@ -23,8 +23,8 @@ class IpnHandler implements IpnHandlerInterface
 	private $expectedCnName = 'sns.amazonaws.com';
 
 	private $ipnConfig = array( 'cabundle_file'  => null,
-					'proxy_host' 	=> null,
-								'proxy_port' 	=> -1,
+					'proxy_host'     => null,
+								'proxy_port'     => -1,
 								'proxy_username' => null,
 					'proxy_password' => null );
 
@@ -40,11 +40,11 @@ class IpnHandler implements IpnHandlerInterface
 		// Get the list of fields that we are interested in
 		$this->fields = array(
 			'Timestamp' => true,
-			'Message' => true,
+			'Message'   => true,
 			'MessageId' => true,
-			'Subject' => false,
-			'TopicArn' => true,
-			'Type' => true
+			'Subject'   => false,
+			'TopicArn'  => true,
+			'Type'      => true
 		);
 
 		// Validate the IPN message header [x-amz-sns-message-type]
@@ -390,11 +390,11 @@ class IpnHandler implements IpnHandlerInterface
 
 		$remainingFields = array(
 							'NotificationReferenceId' =>$ipnMessage['NotificationReferenceId'],
-							'NotificationType' =>$ipnMessage['NotificationType'],
-							'IsSample' =>$ipnMessage['IsSample'],
-							'SellerId' =>$ipnMessage['SellerId'],
-							'ReleaseEnvironment' =>$ipnMessage['ReleaseEnvironment'],
-							'Version' =>$ipnMessage['Version'] );
+							'NotificationType'        =>$ipnMessage['NotificationType'],
+							'IsSample'                =>$ipnMessage['IsSample'],
+							'SellerId'                =>$ipnMessage['SellerId'],
+							'ReleaseEnvironment'      =>$ipnMessage['ReleaseEnvironment'],
+							'Version'                 =>$ipnMessage['Version'] );
 
 		return $remainingFields;
 	}
