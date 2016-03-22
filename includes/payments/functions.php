@@ -828,7 +828,7 @@ function edd_get_total_earnings() {
 			$payments = edd_get_payments( $args );
 			if ( $payments ) {
 
-				/*
+				/**
 				 * If performing a purchase, we need to skip the very last payment in the database, since it calls
 				 * edd_increase_total_earnings() on completion, which results in duplicated earnings for the very
 				 * first purchase
