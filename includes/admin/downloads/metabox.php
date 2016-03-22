@@ -222,13 +222,13 @@ function edd_metabox_save_check_blank_rows( $new ) {
 function edd_render_download_meta_box() {
 	global $post;
 
-	/*
+	/**
 	 * Output the price fields
 	 * @since 1.9
 	 */
 	do_action( 'edd_meta_box_price_fields', $post->ID );
 
-	/*
+	/**
 	 * Output the price fields
 	 *
 	 * Left for backwards compatibility
@@ -248,7 +248,7 @@ function edd_render_download_meta_box() {
 function edd_render_files_meta_box() {
 	global $post;
 
-	/*
+	/**
 	 * Output the files fields
 	 * @since 1.9
 	 */
@@ -264,7 +264,7 @@ function edd_render_files_meta_box() {
 function edd_render_settings_meta_box() {
 	global $post;
 
-	/*
+	/**
 	 * Output the files fields
 	 * @since 1.9
 	 */
