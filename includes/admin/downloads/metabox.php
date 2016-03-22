@@ -412,20 +412,20 @@ function edd_render_price_row( $key, $args = array(), $post_id, $index ) {
 	</td>
 	<td>
 		<?php echo EDD()->html->text( array(
-			'name'  => 'edd_variable_prices[' . $key . '][name]',
-			'value' => esc_attr( $args['name'] ),
+			'name'        => 'edd_variable_prices[' . $key . '][name]',
+			'value'       => esc_attr( $args['name'] ),
 			'placeholder' => __( 'Option Name', 'easy-digital-downloads' ),
-			'class' => 'edd_variable_prices_name large-text'
+			'class'       => 'edd_variable_prices_name large-text'
 		) ); ?>
 	</td>
 
 	<td>
 		<?php
 			$price_args = array(
-				'name'  => 'edd_variable_prices[' . $key . '][amount]',
-				'value' => $args['amount'],
+				'name'        => 'edd_variable_prices[' . $key . '][amount]',
+				'value'       => $args['amount'],
 				'placeholder' => edd_format_amount( 9.99 ),
-				'class' => 'edd-price-field'
+				'class'       => 'edd-price-field'
 			);
 		?>
 
@@ -902,14 +902,14 @@ function edd_render_disable_button( $post_id ) {
 	<p>
 		<label for="_edd_button_behavior">
 			<?php echo EDD()->html->select( array(
-				'name'    => '_edd_button_behavior',
-				'options' => array(
+				'name'             => '_edd_button_behavior',
+				'options'          => array(
 					'add_to_cart' => __( 'Add to Cart', 'easy-digital-downloads' ),
 					'direct'      => __( 'Buy Now', 'easy-digital-downloads' )
 				),
 				'show_option_all'  => null,
 				'show_option_none' => null,
-				'selected' => $behavior
+				'selected'         => $behavior
 			) ); ?>
 			<?php _e( 'Purchase button behavior', 'easy-digital-downloads' ); ?>
 		</label>
