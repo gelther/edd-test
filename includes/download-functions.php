@@ -310,10 +310,10 @@ function edd_get_price_option_name( $download_id = 0, $price_id = 0, $payment_id
  * Retrieves the amount of a variable price option
  *
  * @since 1.8.2
- * @param  int                $download_id   ID of the download
- * @param  int                $price_id      ID of the price option
- * @param  int                               @payment_id ID of the payment
- * @return float              $amount        Amount of the price option
+ * @param  int   $download_id ID of the download
+ * @param  int   $price_id    ID of the price option
+ * @param  int                @payment_id ID of the payment
+ * @return float $amount      Amount of the price option
  */
 function edd_get_price_option_amount( $download_id = 0, $price_id = 0 ) {
 	$prices = edd_get_variable_prices( $download_id );
