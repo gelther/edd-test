@@ -159,9 +159,9 @@ function edd_get_users_purchased_products( $user = 0, $status = 'complete' ) {
 	$post_type = get_post_type( $product_ids[0] );
 
 	$args = apply_filters( 'edd_get_users_purchased_products_args', array(
-		'include'			=> $product_ids,
-		'post_type' 		=> $post_type,
-		'posts_per_page'  	=> -1
+		'include'        => $product_ids,
+		'post_type'      => $post_type,
+		'posts_per_page' => -1
 	) );
 
 	return apply_filters( 'edd_users_purchased_products_list', get_posts( $args ) );
@@ -339,8 +339,8 @@ function edd_count_file_downloads_of_user( $user ) {
 	} else {
 		$meta_query = array(
 			array(
-				'key'     => '_edd_log_user_id',
-				'value'   => $user
+				'key'   => '_edd_log_user_id',
+				'value' => $user
 			)
 		);
 	}
