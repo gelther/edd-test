@@ -486,7 +486,7 @@ $currency_code  = $payment->currency;
 															'show_option_all'  => false,
 															'show_option_none' => false,
 															'chosen'           => true,
-															'placeholder' => __( 'Select a country', 'easy-digital-downloads' )
+															'placeholder'      => __( 'Select a country', 'easy-digital-downloads' )
 														) );
 														?>
 													</p>
@@ -502,7 +502,7 @@ $currency_code  = $payment->currency;
 																'show_option_all'  => false,
 																'show_option_none' => false,
 																'chosen'           => true,
-																'placeholder' => __( 'Select a state', 'easy-digital-downloads' )
+																'placeholder'      => __( 'Select a state', 'easy-digital-downloads' )
 															) );
 														} else { ?>
 															<input type="text" name="edd-payment-address[0][state]" value="<?php echo esc_attr( $address['state'] ); ?>" class="medium-text"/>
