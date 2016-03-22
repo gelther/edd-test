@@ -450,7 +450,7 @@ function edd_get_button_colors() {
 			'label' => __( 'Dark Gray', 'easy-digital-downloads' ),
 			'hex'   => '#363636'
 		),
-		'inherit'	=> array(
+		'inherit'   => array(
 			'label' => __( 'Inherit', 'easy-digital-downloads' ),
 			'hex'   => ''
 		)
@@ -469,8 +469,8 @@ function edd_get_button_colors() {
  */
 function edd_get_button_styles() {
 	$styles = array(
-		'button'	=> __( 'Button', 'easy-digital-downloads' ),
-		'plain'     => __( 'Plain Text', 'easy-digital-downloads' )
+		'button' => __( 'Button', 'easy-digital-downloads' ),
+		'plain'  => __( 'Plain Text', 'easy-digital-downloads' )
 	);
 
 	return apply_filters( 'edd_button_styles', $styles );
@@ -660,8 +660,8 @@ function edd_get_theme_template_paths() {
 	$template_dir = edd_get_theme_template_dir_name();
 
 	$file_paths = array(
-		1 => trailingslashit( get_stylesheet_directory() ) . $template_dir,
-		10 => trailingslashit( get_template_directory() ) . $template_dir,
+		1   => trailingslashit( get_stylesheet_directory() ) . $template_dir,
+		10  => trailingslashit( get_template_directory() ) . $template_dir,
 		100 => edd_get_templates_dir()
 	);
 
