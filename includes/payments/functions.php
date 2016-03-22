@@ -534,7 +534,7 @@ function edd_count_payments( $args = array() ) {
 	}
 
 	foreach ( $statuses as $state ) {
-		$stats[$state] = 0;
+		$stats[ $state ] = 0;
 	}
 
 	foreach ( (array) $count as $row ) {
@@ -1684,8 +1684,8 @@ function edd_remove_payment_notes_in_comment_counts( $stats, $post_id ) {
 
 	$stats['total_comments'] = $total;
 	foreach ( $approved as $key ) {
-		if ( empty( $stats[$key] ) )
-			$stats[$key] = 0;
+		if ( empty( $stats[ $key ] ) )
+			$stats[ $key ] = 0;
 	}
 
 	$stats = (object) $stats;
