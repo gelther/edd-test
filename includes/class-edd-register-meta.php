@@ -1,6 +1,5 @@
 <?php
 /**
- *
  * This class is for registering our meta
  *
  * @package     EDD
