@@ -53,10 +53,10 @@ class EDD_Tools_Recount_Customer_Stats extends EDD_Batch_Export {
 	public function get_data() {
 
 		$args = array(
-			'number'       => $this->per_step,
-			'offset'       => $this->per_step * ( $this->step - 1 ),
-			'orderby'      => 'id',
-			'order'        => 'DESC',
+			'number'  => $this->per_step,
+			'offset'  => $this->per_step * ( $this->step - 1 ),
+			'orderby' => 'id',
+			'order'   => 'DESC',
 		);
 
 		$customers = EDD()->customers->get_customers( $args );
@@ -139,9 +139,9 @@ class EDD_Tools_Recount_Customer_Stats extends EDD_Batch_Export {
 	public function get_percentage_complete() {
 
 		$args = array(
-			'number'       => -1,
-			'orderby'      => 'id',
-			'order'        => 'DESC',
+			'number'  => -1,
+			'orderby' => 'id',
+			'order'   => 'DESC',
 		);
 
 		$customers = EDD()->customers->get_customers( $args );

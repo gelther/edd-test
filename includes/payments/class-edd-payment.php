@@ -507,7 +507,7 @@ final class EDD_Payment {
 			'purchase_key' => $this->key,
 			'currency'     => $this->currency,
 			'downloads'    => $this->downloads,
-			'user_info' => array(
+			'user_info'    => array(
 				'id'         => $this->user_id,
 				'email'      => $this->email,
 				'first_name' => $this->first_name,
@@ -550,9 +550,9 @@ final class EDD_Payment {
 			if ( empty( $customer->id ) ) {
 
 				$customer_data = array(
-					'name'        => ! is_email( $payment_title ) ? $this->first_name . ' ' . $this->last_name : '',
-					'email'       => $this->email,
-					'user_id'     => $this->user_id,
+					'name'    => ! is_email( $payment_title ) ? $this->first_name . ' ' . $this->last_name : '',
+					'email'   => $this->email,
+					'user_id' => $this->user_id,
 				);
 
 				$customer->create( $customer_data );
@@ -829,11 +829,11 @@ final class EDD_Payment {
 			$this->downloads    = array_values( $this->downloads );
 
 			$new_meta = array(
-				'downloads'     => $this->downloads,
-				'cart_details'  => $this->cart_details,
-				'fees'          => $this->fees,
-				'currency'      => $this->currency,
-				'user_info'     => $this->user_info,
+				'downloads'    => $this->downloads,
+				'cart_details' => $this->cart_details,
+				'fees'         => $this->fees,
+				'currency'     => $this->currency,
+				'user_info'    => $this->user_info,
 			);
 
 			$meta        = $this->get_meta();
@@ -877,12 +877,12 @@ final class EDD_Payment {
 
 		// Set some defaults
 		$defaults = array(
-			'quantity'    => 1,
-			'price_id'    => false,
-			'item_price'  => false,
-			'discount'    => 0,
-			'tax'         => 0.00,
-			'fees'        => array(),
+			'quantity'   => 1,
+			'price_id'   => false,
+			'item_price' => false,
+			'discount'   => 0,
+			'tax'        => 0.00,
+			'fees'       => array(),
 		);
 
 		$args = wp_parse_args( apply_filters( 'edd_payment_add_download_args', $args, $download->ID ), $defaults );
@@ -947,9 +947,9 @@ final class EDD_Payment {
 
 		// Silly item_number array
 		$item_number = array(
-			'id'        => $download->ID,
-			'quantity'  => $quantity,
-			'options'   => $options,
+			'id'       => $download->ID,
+			'quantity' => $quantity,
+			'options'  => $options,
 		);
 
 		$this->cart_details[] = array(

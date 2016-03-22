@@ -830,15 +830,15 @@ function edd_is_discount_used( $code = null, $user = '', $code_id = 0 ) {
 
 			if ( $user_found ) {
 				$query_args = array(
-					'post_type'       => 'edd_payment',
-					'meta_query'      => array(
+					'post_type'  => 'edd_payment',
+					'meta_query' => array(
 						array(
 							'key'     => $key,
 							'value'   => $value,
 							'compare' => '='
 						)
 					),
-					'fields'          => 'ids'
+					'fields'     => 'ids'
 				);
 
 				$payments = get_posts( $query_args ); // Get all payments with matching email

@@ -140,10 +140,10 @@ add_action( 'edd_logs_view_api_requests', 'edd_logs_view_api_requests' );
  */
 function edd_log_default_views() {
 	$views = array(
-		'file_downloads'  => __( 'File Downloads', 'easy-digital-downloads' ),
-		'sales' 		  => __( 'Sales', 'easy-digital-downloads' ),
-		'gateway_errors'  => __( 'Payment Errors', 'easy-digital-downloads' ),
-		'api_requests'    => __( 'API Requests', 'easy-digital-downloads' )
+		'file_downloads' => __( 'File Downloads', 'easy-digital-downloads' ),
+		'sales'          => __( 'Sales', 'easy-digital-downloads' ),
+		'gateway_errors' => __( 'Payment Errors', 'easy-digital-downloads' ),
+		'api_requests'   => __( 'API Requests', 'easy-digital-downloads' )
 	);
 
 	$views = apply_filters( 'edd_log_views', $views );

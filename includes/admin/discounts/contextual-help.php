@@ -34,18 +34,18 @@ function edd_discounts_contextual_help() {
 	);
 
 	$screen->add_help_tab( array(
-		'id'	    => 'edd-discount-general',
-		'title'	    => __( 'General', 'easy-digital-downloads' ),
-		'content'	=>
+		'id'      => 'edd-discount-general',
+		'title'   => __( 'General', 'easy-digital-downloads' ),
+		'content' =>
 			'<p>' . __( 'Discount codes allow you to offer buyers special discounts by having them enter predefined codes during checkout.', 'easy-digital-downloads' ) . '</p>' .
 			'<p>' . __( 'Discount codes that are set to "inactive" cannot be redeemed.', 'easy-digital-downloads' ) . '</p>' .
 			'<p>' . __( 'Discount codes are setup to only be used only one time by each customer. If a customer attempts to use a code a second time, they will be given an error.', 'easy-digital-downloads' ) . '</p>'
 	) );
 
 	$screen->add_help_tab( array(
-		'id'	    => 'edd-discount-add',
-		'title'	    => __( 'Adding Discounts', 'easy-digital-downloads' ),
-		'content'	=>
+		'id'      => 'edd-discount-add',
+		'title'   => __( 'Adding Discounts', 'easy-digital-downloads' ),
+		'content' =>
 			'<p>' . __( 'You can create any number of discount codes easily from this page.', 'easy-digital-downloads' ) . '</p>' .
 			'<p>' . __( 'Discount codes have several options:', 'easy-digital-downloads' ) . '</p>' .
 			'<ul>' .

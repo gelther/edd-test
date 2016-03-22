@@ -145,12 +145,12 @@ class EDD_Tools_Recount_Download_Stats extends EDD_Batch_Export {
 		if ( false === $total ) {
 			$total = 0;
 			$args  = apply_filters( 'edd_recount_download_stats_total_args', array(
-				'post_parent'    => $this->download_id,
-				'post_type'      => 'edd_log',
-				'post_status'    => 'publish',
-				'log_type'       => 'sale',
-				'fields'         => 'ids',
-				'nopaging'       => true,
+				'post_parent' => $this->download_id,
+				'post_type'   => 'edd_log',
+				'post_status' => 'publish',
+				'log_type'    => 'sale',
+				'fields'      => 'ids',
+				'nopaging'    => true,
 			) );
 
 			$log_ids = $edd_logs->get_connected_logs( $args, 'sale' );

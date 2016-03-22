@@ -74,23 +74,23 @@ class EDD_Roles {
 		) );
 
 		add_role( 'shop_accountant', __( 'Shop Accountant', 'easy-digital-downloads' ), array(
-			'read'                   => true,
-			'edit_posts'             => false,
-			'delete_posts'           => false
+			'read'         => true,
+			'edit_posts'   => false,
+			'delete_posts' => false
 		) );
 
 		add_role( 'shop_worker', __( 'Shop Worker', 'easy-digital-downloads' ), array(
-			'read'                   => true,
-			'edit_posts'             => false,
-			'upload_files'           => true,
-			'delete_posts'           => false
+			'read'         => true,
+			'edit_posts'   => false,
+			'upload_files' => true,
+			'delete_posts' => false
 		) );
 
 		add_role( 'shop_vendor', __( 'Shop Vendor', 'easy-digital-downloads' ), array(
-			'read'                   => true,
-			'edit_posts'             => false,
-			'upload_files'           => true,
-			'delete_posts'           => false
+			'read'         => true,
+			'edit_posts'   => false,
+			'upload_files' => true,
+			'delete_posts' => false
 		) );
 	}
 

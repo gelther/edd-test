@@ -36,16 +36,16 @@ function edd_process_paypal_purchase( $purchase_data ) {
 
 	// Collect payment data
 	$payment_data = array(
-		'price'         => $purchase_data['price'],
-		'date'          => $purchase_data['date'],
-		'user_email'    => $purchase_data['user_email'],
-		'purchase_key'  => $purchase_data['purchase_key'],
-		'currency'      => edd_get_currency(),
-		'downloads'     => $purchase_data['downloads'],
-		'user_info'     => $purchase_data['user_info'],
-		'cart_details'  => $purchase_data['cart_details'],
-		'gateway'       => 'paypal',
-		'status'        => ! empty( $purchase_data['buy_now'] ) ? 'private' : 'pending'
+		'price'        => $purchase_data['price'],
+		'date'         => $purchase_data['date'],
+		'user_email'   => $purchase_data['user_email'],
+		'purchase_key' => $purchase_data['purchase_key'],
+		'currency'     => edd_get_currency(),
+		'downloads'    => $purchase_data['downloads'],
+		'user_info'    => $purchase_data['user_info'],
+		'cart_details' => $purchase_data['cart_details'],
+		'gateway'      => 'paypal',
+		'status'       => ! empty( $purchase_data['buy_now'] ) ? 'private' : 'pending'
 	);
 
 	// Record the pending payment
@@ -64,7 +64,7 @@ function edd_process_paypal_purchase( $purchase_data ) {
 		// Get the success url
 		$return_url = add_query_arg( array(
 				'payment-confirmation' => 'paypal',
-				'payment-id' => $payment
+				'payment-id'           => $payment
 			), get_permalink( edd_get_option( 'success_page', false ) ) );
 
 		// Get the PayPal redirect uri
@@ -263,20 +263,20 @@ function edd_process_paypal_ipn() {
 		// Validate the IPN
 
 		$remote_post_vars = array(
-			'method'           => 'POST',
-			'timeout'          => 45,
-			'redirection'      => 5,
-			'httpversion'      => '1.1',
-			'blocking'         => true,
-			'headers'          => array(
+			'method'      => 'POST',
+			'timeout'     => 45,
+			'redirection' => 5,
+			'httpversion' => '1.1',
+			'blocking'    => true,
+			'headers'     => array(
 				'host'         => 'www.paypal.com',
 				'connection'   => 'close',
 				'content-type' => 'application/x-www-form-urlencoded',
 				'post'         => '/cgi-bin/webscr HTTP/1.1',
 
 			),
-			'sslverify'        => false,
-			'body'             => $encoded_data_array
+			'sslverify'   => false,
+			'body'        => $encoded_data_array
 		);
 
 		// Get response

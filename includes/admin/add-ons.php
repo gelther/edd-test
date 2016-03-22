@@ -39,7 +39,7 @@ function edd_add_ons_page() {
 
 				$tab_url = add_query_arg( array(
 					'settings-updated' => false,
-					'tab' => $tab_id
+					'tab'              => $tab_id
 				) );
 
 				$active = $active_tab == $tab_id ? ' nav-tab-active' : '';

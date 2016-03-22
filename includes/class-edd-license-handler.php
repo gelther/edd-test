@@ -129,9 +129,9 @@ class EDD_License {
 	public function auto_updater() {
 
 		$args = array(
-			'version'   => $this->version,
-			'license'   => $this->license,
-			'author'    => $this->author
+			'version' => $this->version,
+			'license' => $this->license,
+			'author'  => $this->author
 		);
 
 		if ( ! empty( $this->item_id ) ) {
@@ -363,10 +363,10 @@ class EDD_License {
 
 		// data to send in our API request
 		$api_params = array(
-			'edd_action'=> 'check_license',
-			'license' 	=> $this->license,
-			'item_name' => urlencode( $this->item_name ),
-			'url'       => home_url()
+			'edd_action' => 'check_license',
+			'license'    => $this->license,
+			'item_name'  => urlencode( $this->item_name ),
+			'url'        => home_url()
 		);
 
 		// Call the API

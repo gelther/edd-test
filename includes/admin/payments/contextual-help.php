@@ -38,18 +38,18 @@ function edd_payments_contextual_help() {
 	);
 
 	$screen->add_help_tab( array(
-		'id'	    => 'edd-payments-overview',
-		'title'	    => __( 'Overview', 'easy-digital-downloads' ),
-		'content'	=>
+		'id'      => 'edd-payments-overview',
+		'title'   => __( 'Overview', 'easy-digital-downloads' ),
+		'content' =>
 			'<p>' . __( "This screen provides access to all of your store's transactions.", 'easy-digital-downloads' ) . '</p>' .
 			'<p>' . __( 'Payments can be searched by email address, user name, or filtered by status (completed, pending, etc.)', 'easy-digital-downloads' ) . '</p>' .
 			'<p>' . __( 'You also have the option to bulk delete payments should you wish.', 'easy-digital-downloads' ) . '</p>'
 	) );
 
 	$screen->add_help_tab( array(
-		'id'	    => 'edd-payments-search',
-		'title'	    => __( 'Search Payments', 'easy-digital-downloads' ),
-		'content'	=>
+		'id'      => 'edd-payments-search',
+		'title'   => __( 'Search Payments', 'easy-digital-downloads' ),
+		'content' =>
 			'<p>' . __( 'The payment history can be searched in several different ways:', 'easy-digital-downloads' ) . '</p>' .
 			'<ul>
 				<li>' . __( 'You can enter the customer\'s email address', 'easy-digital-downloads' ) . '</li>
@@ -63,9 +63,9 @@ function edd_payments_contextual_help() {
 	) );
 
 	$screen->add_help_tab( array(
-		'id'	    => 'edd-payments-details',
-		'title'	    => __( 'Payment Details', 'easy-digital-downloads' ),
-		'content'	=>
+		'id'      => 'edd-payments-details',
+		'title'   => __( 'Payment Details', 'easy-digital-downloads' ),
+		'content' =>
 			'<p>' . __( 'Each payment can be further inspected by clicking the corresponding <em>View Order Details</em> link. This will provide more information including:', 'easy-digital-downloads' ) . '</p>' .
 
 			'<ul>

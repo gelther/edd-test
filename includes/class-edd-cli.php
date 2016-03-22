@@ -539,11 +539,11 @@ class EDD_CLI extends WP_CLI_Command {
 
 		// Build the user info array
 		$user_info = array(
-			'id'            => 0,
-			'email'         => $email,
-			'first_name'    => $fname,
-			'last_name'     => $lname,
-			'discount'      => 'none'
+			'id'         => 0,
+			'email'      => $email,
+			'first_name' => $fname,
+			'last_name'  => $lname,
+			'discount'   => 'none'
 		);
 
 		for ( $i = 0; $i < $number; $i++ ) {
@@ -555,10 +555,10 @@ class EDD_CLI extends WP_CLI_Command {
 			if ( ! $id ) {
 
 				$products = get_posts( array(
-					'post_type'     => 'download',
-					'orderby'       => 'rand',
-					'order'         => 'ASC',
-					'posts_per_page'=> 1
+					'post_type'      => 'download',
+					'orderby'        => 'rand',
+					'order'          => 'ASC',
+					'posts_per_page' => 1
 				) );
 
 			} else {
@@ -616,7 +616,7 @@ class EDD_CLI extends WP_CLI_Command {
 					'item_number' => $item_number,
 					'item_price'  => edd_sanitize_amount( $item_price ),
 					'subtotal'    => edd_sanitize_amount( $item_price ),
-					'price'	      => edd_sanitize_amount( $item_price ),
+					'price'       => edd_sanitize_amount( $item_price ),
 					'quantity'    => 1,
 					'discount'    => 0,
 					'tax'         => $tax
@@ -629,15 +629,15 @@ class EDD_CLI extends WP_CLI_Command {
 			}
 
 			$purchase_data = array(
-				'price'	        => edd_sanitize_amount( $total ),
-				'tax'           => 0,
-				'purchase_key'  => strtolower( md5( uniqid() ) ),
-				'user_email'    => $email,
-				'user_info'     => $user_info,
-				'currency'      => edd_get_currency(),
-				'downloads'     => $final_downloads,
-				'cart_details'  => $cart_details,
-				'status'        => 'pending'
+				'price'        => edd_sanitize_amount( $total ),
+				'tax'          => 0,
+				'purchase_key' => strtolower( md5( uniqid() ) ),
+				'user_email'   => $email,
+				'user_info'    => $user_info,
+				'currency'     => edd_get_currency(),
+				'downloads'    => $final_downloads,
+				'cart_details' => $cart_details,
+				'status'       => 'pending'
 			);
 
 			$payment_id = edd_insert_payment( $purchase_data );

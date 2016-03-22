@@ -659,14 +659,14 @@ function edd_get_earnings_by_date( $day = null, $month_num, $year = null, $hour 
 	global $wpdb;
 
 	$args = array(
-		'post_type'      => 'edd_payment',
-		'nopaging'       => true,
-		'year'           => $year,
-		'monthnum'       => $month_num,
-		'post_status'    => array( 'publish', 'revoked' ),
-		'fields'         => 'ids',
+		'post_type'              => 'edd_payment',
+		'nopaging'               => true,
+		'year'                   => $year,
+		'monthnum'               => $month_num,
+		'post_status'            => array( 'publish', 'revoked' ),
+		'fields'                 => 'ids',
 		'update_post_term_cache' => false,
-		'include_taxes'  => $include_taxes,
+		'include_taxes'          => $include_taxes,
 	);
 	if ( ! empty( $day ) )
 		$args['day'] = $day;
@@ -716,11 +716,11 @@ function edd_get_sales_by_date( $day = null, $month_num = null, $year = null, $h
 	// This is getting deprecated soon. Use EDD_Payment_Stats with the get_sales() method instead
 
 	$args = array(
-		'post_type'      => 'edd_payment',
-		'nopaging'       => true,
-		'year'           => $year,
-		'fields'         => 'ids',
-		'post_status'    => array( 'publish', 'revoked' ),
+		'post_type'              => 'edd_payment',
+		'nopaging'               => true,
+		'year'                   => $year,
+		'fields'                 => 'ids',
+		'post_status'            => array( 'publish', 'revoked' ),
 		'update_post_meta_cache' => false,
 		'update_post_term_cache' => false
 	);
@@ -730,10 +730,10 @@ function edd_get_sales_by_date( $day = null, $month_num = null, $year = null, $h
 	if ( false === $show_free ) {
 		$args['meta_query'] = array(
 			array(
-				'key' => '_edd_payment_total',
-				'value' => 0,
+				'key'     => '_edd_payment_total',
+				'value'   => 0,
 				'compare' => '>',
-				'type' => 'NUMERIC',
+				'type'    => 'NUMERIC',
 			),
 		);
 	}

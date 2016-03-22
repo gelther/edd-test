@@ -28,16 +28,16 @@ function edd_download_shortcode( $atts, $content = null ) {
 	$post_id = is_object( $post ) ? $post->ID : 0;
 
 	$atts = shortcode_atts( array(
-		'id' 	        => $post_id,
-		'price_id'      => isset( $atts['price_id'] ) ? $atts['price_id'] : false,
-		'sku'			=> '',
-		'price'         => '1',
-		'direct'        => '0',
-		'text'          => '',
-		'style'         => edd_get_option( 'button_style', 'button' ),
-		'color'         => edd_get_option( 'checkout_color', 'blue' ),
-		'class'         => 'edd-submit',
-		'form_id'       => ''
+		'id'       => $post_id,
+		'price_id' => isset( $atts['price_id'] ) ? $atts['price_id'] : false,
+		'sku'      => '',
+		'price'    => '1',
+		'direct'   => '0',
+		'text'     => '',
+		'style'    => edd_get_option( 'button_style', 'button' ),
+		'color'    => edd_get_option( 'checkout_color', 'blue' ),
+		'class'    => 'edd-submit',
+		'form_id'  => ''
 	),
 	$atts, 'purchase_link' );
 
@@ -256,12 +256,12 @@ add_shortcode( 'download_discounts', 'edd_discounts_shortcode' );
  */
 function edd_purchase_collection_shortcode( $atts, $content = null ) {
 	extract( shortcode_atts( array(
-			'taxonomy'	=> '',
-			'terms'		=> '',
-			'text'		=> __( 'Purchase All Items', 'easy-digital-downloads' ),
-			'style'     => edd_get_option( 'button_style', 'button' ),
-			'color'     => edd_get_option( 'checkout_color', 'blue' ),
-			'class'		=> 'edd-submit'
+			'taxonomy' => '',
+			'terms'    => '',
+			'text'     => __( 'Purchase All Items', 'easy-digital-downloads' ),
+			'style'    => edd_get_option( 'button_style', 'button' ),
+			'color'    => edd_get_option( 'checkout_color', 'blue' ),
+			'class'    => 'edd-submit'
 		), $atts, 'purchase_collection' )
 	);
 
@@ -306,9 +306,9 @@ function edd_downloads_query( $atts, $content = null ) {
 	), $atts, 'downloads' );
 
 	$query = array(
-		'post_type'      => 'download',
-		'orderby'        => $atts['orderby'],
-		'order'          => $atts['order']
+		'post_type' => 'download',
+		'orderby'   => $atts['orderby'],
+		'order'     => $atts['order']
 	);
 
 	if ( filter_var( $atts['pagination'], FILTER_VALIDATE_BOOLEAN ) || ( ! filter_var( $atts['pagination'], FILTER_VALIDATE_BOOLEAN ) && $atts[ 'number' ] ) ) {
@@ -601,7 +601,7 @@ add_shortcode( 'downloads', 'edd_downloads_query' );
  */
 function edd_download_price_shortcode( $atts, $content = null ) {
 	extract( shortcode_atts( array(
-			'id' => NULL,
+			'id'       => NULL,
 			'price_id' => false,
 		), $atts, 'edd_price' )
 	);
@@ -628,15 +628,15 @@ function edd_receipt_shortcode( $atts, $content = null ) {
 	global $edd_receipt_args;
 
 	$edd_receipt_args = shortcode_atts( array(
-		'error'           => __( 'Sorry, trouble retrieving payment receipt.', 'easy-digital-downloads' ),
-		'price'           => true,
-		'discount'        => true,
-		'products'        => true,
-		'date'            => true,
-		'notes'           => true,
-		'payment_key'     => false,
-		'payment_method'  => true,
-		'payment_id'      => true
+		'error'          => __( 'Sorry, trouble retrieving payment receipt.', 'easy-digital-downloads' ),
+		'price'          => true,
+		'discount'       => true,
+		'products'       => true,
+		'date'           => true,
+		'notes'          => true,
+		'payment_key'    => false,
+		'payment_method' => true,
+		'payment_id'     => true
 	), $atts, 'edd_receipt' );
 
 	$session = edd_get_purchase_session();
@@ -784,12 +784,12 @@ function edd_process_profile_editor_updates( $data ) {
 
 
 	$address = array(
-		'line1'    => $line1,
-		'line2'    => $line2,
-		'city'     => $city,
-		'state'    => $state,
-		'zip'      => $zip,
-		'country'  => $country
+		'line1'   => $line1,
+		'line2'   => $line2,
+		'city'    => $city,
+		'state'   => $state,
+		'zip'     => $zip,
+		'country' => $country
 	);
 
 	do_action( 'edd_pre_update_user_profile', $user_id, $userdata );

@@ -282,7 +282,7 @@ final class EDD_Amazon_Payments {
 				'name' => '<strong>' . __( 'Amazon Payments Settings', 'easy-digital-downloads' ) . '</strong>',
 				'type' => 'header',
 			),
-			'amazon_register' => array(
+			'amazon_register'         => array(
 				'id'   => 'amazon_register',
 				'name' => __( 'Register with Amazon', 'easy-digital-downloads' ),
 				'desc' => '<p><a href="' . $this->get_registration_url() . '" class="button" target="_blank">' .
@@ -293,28 +293,28 @@ final class EDD_Amazon_Payments {
 						'</p>',
 				'type' => 'descriptive_text',
 			),
-			'amazon_seller_id' => array(
+			'amazon_seller_id'        => array(
 				'id'   => 'amazon_seller_id',
 				'name' => __( 'Seller ID', 'easy-digital-downloads' ),
 				'desc' => __( 'Found in the Integration settings. Also called a Merchant ID', 'easy-digital-downloads' ),
 				'type' => 'text',
 				'size' => 'regular',
 			),
-			'amazon_mws_access_key' => array(
+			'amazon_mws_access_key'   => array(
 				'id'   => 'amazon_mws_access_key',
 				'name' => __( 'MWS Access Key', 'easy-digital-downloads' ),
 				'desc' => __( 'Found on Seller Central in the MWS Keys section', 'easy-digital-downloads' ),
 				'type' => 'text',
 				'size' => 'regular',
 			),
-			'amazon_mws_secret_key' => array(
+			'amazon_mws_secret_key'   => array(
 				'id'   => 'amazon_mws_secret_key',
 				'name' => __( 'MWS Secret Key', 'easy-digital-downloads' ),
 				'desc' => __( 'Found on Seller Central in the MWS Keys section', 'easy-digital-downloads' ),
 				'type' => 'text',
 				'size' => 'regular',
 			),
-			'amazon_client_id' => array(
+			'amazon_client_id'        => array(
 				'id'   => 'amazon_client_id',
 				'name' => __( 'Client ID', 'easy-digital-downloads' ),
 				'desc' => __( 'The Amazon Client ID. Should look like `amzn1.application-oa2...`', 'easy-digital-downloads' ),
@@ -322,22 +322,22 @@ final class EDD_Amazon_Payments {
 				'size' => 'regular',
 			),
 			'amazon_mws_callback_url' => array(
-				'id'       => 'amazon_callback_url',
-				'name'     => __( 'Amazon MWS Callback URL', 'easy-digital-downloads' ),
-				'desc'     => __( 'The Return URL to provide in your MWS Application. Enter this under your Login and Pay &rarr; Web Settings', 'easy-digital-downloads' ),
-				'type'     => 'text',
-				'size'     => 'large',
-				'std'      => $this->get_amazon_authenticate_redirect(),
-				'faux'     => true,
+				'id'   => 'amazon_callback_url',
+				'name' => __( 'Amazon MWS Callback URL', 'easy-digital-downloads' ),
+				'desc' => __( 'The Return URL to provide in your MWS Application. Enter this under your Login and Pay &rarr; Web Settings', 'easy-digital-downloads' ),
+				'type' => 'text',
+				'size' => 'large',
+				'std'  => $this->get_amazon_authenticate_redirect(),
+				'faux' => true,
 			),
-			'amazon_mws_ipn_url' => array(
-				'id'       => 'amazon_ipn_url',
-				'name'     => __( 'Amazon Merchant IPN URL', 'easy-digital-downloads' ),
-				'desc'     => sprintf( __( 'The IPN URL to provide in your MWS account. Enter this under your <a href="%s">Integration Settings</a>', 'easy-digital-downloads' ), 'https://sellercentral.amazon.com/gp/pyop/seller/account/settings/user-settings-edit.html' ),
-				'type'     => 'text',
-				'size'     => 'large',
-				'std'      => $this->get_amazon_ipn_url(),
-				'faux'     => true,
+			'amazon_mws_ipn_url'      => array(
+				'id'   => 'amazon_ipn_url',
+				'name' => __( 'Amazon Merchant IPN URL', 'easy-digital-downloads' ),
+				'desc' => sprintf( __( 'The IPN URL to provide in your MWS account. Enter this under your <a href="%s">Integration Settings</a>', 'easy-digital-downloads' ), 'https://sellercentral.amazon.com/gp/pyop/seller/account/settings/user-settings-edit.html' ),
+				'type' => 'text',
+				'size' => 'large',
+				'std'  => $this->get_amazon_ipn_url(),
+				'faux' => true,
 			),
 		);
 
@@ -405,17 +405,17 @@ final class EDD_Amazon_Payments {
 
 			wp_enqueue_script( 'edd-amazon-widgets', $url, array( 'jquery' ), null, false );
 			wp_localize_script( 'edd-amazon-widgets', 'edd_amazon', apply_filters( 'edd_amazon_checkout_vars', array(
-				'sellerId'      => $seller_id,
-				'clientId'      => $client_id,
-				'referenceID'   => $this->reference_id,
-				'buttonType'    => $amazon_button_settings['type'],
-				'buttonColor'   => $amazon_button_settings['color'],
-				'buttonSize'    => $amazon_button_settings['size'],
-				'scope'         => $amazon_button_settings['scope'],
-				'popup'         => $amazon_button_settings['popup'],
-				'checkoutUri'   => $this->get_amazon_checkout_uri(),
-				'redirectUri'   => $this->get_amazon_authenticate_redirect(),
-				'signinUri'     => $this->get_amazon_signin_redirect(),
+				'sellerId'    => $seller_id,
+				'clientId'    => $client_id,
+				'referenceID' => $this->reference_id,
+				'buttonType'  => $amazon_button_settings['type'],
+				'buttonColor' => $amazon_button_settings['color'],
+				'buttonSize'  => $amazon_button_settings['size'],
+				'scope'       => $amazon_button_settings['scope'],
+				'popup'       => $amazon_button_settings['popup'],
+				'checkoutUri' => $this->get_amazon_checkout_uri(),
+				'redirectUri' => $this->get_amazon_authenticate_redirect(),
+				'signinUri'   => $this->get_amazon_signin_redirect(),
 			) ) );
 
 		}
@@ -837,16 +837,16 @@ final class EDD_Amazon_Payments {
 
 			// Setup payment data to be recorded
 			$payment_data = array(
-				'price'         => $purchase_data['price'],
-				'date'          => $purchase_data['date'],
-				'user_email'    => $purchase_data['user_email'],
-				'purchase_key'  => $purchase_data['purchase_key'],
-				'currency'      => edd_get_currency(),
-				'downloads'     => $purchase_data['downloads'],
-				'user_info'     => $purchase_data['user_info'],
-				'cart_details'  => $purchase_data['cart_details'],
-				'gateway'       => $this->gateway_id,
-				'status'        => 'pending',
+				'price'        => $purchase_data['price'],
+				'date'         => $purchase_data['date'],
+				'user_email'   => $purchase_data['user_email'],
+				'purchase_key' => $purchase_data['purchase_key'],
+				'currency'     => edd_get_currency(),
+				'downloads'    => $purchase_data['downloads'],
+				'user_info'    => $purchase_data['user_info'],
+				'cart_details' => $purchase_data['cart_details'],
+				'gateway'      => $this->gateway_id,
+				'status'       => 'pending',
 			);
 
 			$payment_id = edd_insert_payment( $payment_data );
@@ -1187,9 +1187,9 @@ final class EDD_Amazon_Payments {
 		}
 
 		$query_args = array(
-			'solutionProviderId' => 'A3JST9YM1SX7LB',
-			'marketplaceId'      => 'AGWSWK15IEJJ7',
-			'solutionProviderToken' => 'AAAAAQAAAAEAAAAQnngerc8vYweGDt8byl2smgAAAHBgMm923quugHaGmPi%2B3sqo93TSL1aKwU85v71Zh7EXVK8De%2FuahjCFHft3cxN3rwAF4Iwg03sDW0jnkLULmFk7M1Fr69IV2XF477m0kU1EM0Z%2FbQssHdLai%2Fzoce1jZVmw8So3F2jhiDyfTHUK2AYP',
+			'solutionProviderId'      => 'A3JST9YM1SX7LB',
+			'marketplaceId'           => 'AGWSWK15IEJJ7',
+			'solutionProviderToken'   => 'AAAAAQAAAAEAAAAQnngerc8vYweGDt8byl2smgAAAHBgMm923quugHaGmPi%2B3sqo93TSL1aKwU85v71Zh7EXVK8De%2FuahjCFHft3cxN3rwAF4Iwg03sDW0jnkLULmFk7M1Fr69IV2XF477m0kU1EM0Z%2FbQssHdLai%2Fzoce1jZVmw8So3F2jhiDyfTHUK2AYP',
 			'solutionProviderOptions' => 'lwa%3Bmws-acc%3B',
 		);
 

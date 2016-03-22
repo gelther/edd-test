@@ -39,24 +39,24 @@ class EDD_Batch_Downloads_Export extends EDD_Batch_Export {
 	public function csv_cols() {
 
 		$cols = array(
-			'ID'                       => __( 'ID', 'easy-digital-downloads' ),
-			'post_name'                => __( 'Slug', 'easy-digital-downloads' ),
-			'post_title'               => __( 'Name', 'easy-digital-downloads' ),
-			'post_date'                => __( 'Date Created', 'easy-digital-downloads' ),
-			'post_author'              => __( 'Author', 'easy-digital-downloads' ),
-			'post_content'             => __( 'Description', 'easy-digital-downloads' ),
-			'post_excerpt'             => __( 'Excerpt', 'easy-digital-downloads' ),
-			'post_status'              => __( 'Status', 'easy-digital-downloads' ),
-			'categories'               => __( 'Categories', 'easy-digital-downloads' ),
-			'tags'                     => __( 'Tags', 'easy-digital-downloads' ),
-			'edd_price'                => __( 'Price', 'easy-digital-downloads' ),
-			'_edd_files'               => __( 'Files', 'easy-digital-downloads' ),
-			'_edd_download_limit'      => __( 'File Download Limit', 'easy-digital-downloads' ),
-			'_thumbnail_id'            => __( 'Featured Image', 'easy-digital-downloads' ),
-			'edd_sku'                  => __( 'SKU', 'easy-digital-downloads' ),
-			'edd_product_notes'        => __( 'Notes', 'easy-digital-downloads' ),
-			'_edd_download_sales'      => __( 'Sales', 'easy-digital-downloads' ),
-			'_edd_download_earnings'   => __( 'Earnings', 'easy-digital-downloads' ),
+			'ID'                     => __( 'ID', 'easy-digital-downloads' ),
+			'post_name'              => __( 'Slug', 'easy-digital-downloads' ),
+			'post_title'             => __( 'Name', 'easy-digital-downloads' ),
+			'post_date'              => __( 'Date Created', 'easy-digital-downloads' ),
+			'post_author'            => __( 'Author', 'easy-digital-downloads' ),
+			'post_content'           => __( 'Description', 'easy-digital-downloads' ),
+			'post_excerpt'           => __( 'Excerpt', 'easy-digital-downloads' ),
+			'post_status'            => __( 'Status', 'easy-digital-downloads' ),
+			'categories'             => __( 'Categories', 'easy-digital-downloads' ),
+			'tags'                   => __( 'Tags', 'easy-digital-downloads' ),
+			'edd_price'              => __( 'Price', 'easy-digital-downloads' ),
+			'_edd_files'             => __( 'Files', 'easy-digital-downloads' ),
+			'_edd_download_limit'    => __( 'File Download Limit', 'easy-digital-downloads' ),
+			'_thumbnail_id'          => __( 'Featured Image', 'easy-digital-downloads' ),
+			'edd_sku'                => __( 'SKU', 'easy-digital-downloads' ),
+			'edd_product_notes'      => __( 'Notes', 'easy-digital-downloads' ),
+			'_edd_download_sales'    => __( 'Sales', 'easy-digital-downloads' ),
+			'_edd_download_earnings' => __( 'Earnings', 'easy-digital-downloads' ),
 		);
 
 		return $cols;
@@ -213,10 +213,10 @@ class EDD_Batch_Downloads_Export extends EDD_Batch_Export {
 	public function get_percentage_complete() {
 
 		$args = array(
-			'post_type'		   => 'download',
-			'posts_per_page'   => -1,
-			'post_status'	   => 'any',
-			'fields'           => 'ids',
+			'post_type'      => 'download',
+			'posts_per_page' => -1,
+			'post_status'    => 'any',
+			'fields'         => 'ids',
 		);
 
 		$downloads  = new WP_Query( $args );

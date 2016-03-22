@@ -156,10 +156,10 @@ class edd_categories_tags_widget extends WP_Widget {
 	function form( $instance ) {
 		// Set up some default widget settings.
 		$defaults = array(
-			'title'         => '',
-			'taxonomy'      => 'download_category',
-			'count'         => 'off',
-			'hide_empty'    => 'off',
+			'title'      => '',
+			'taxonomy'   => 'download_category',
+			'count'      => 'off',
+			'hide_empty' => 'off',
 		);
 
 		$instance = wp_parse_args( (array) $instance, $defaults ); ?>

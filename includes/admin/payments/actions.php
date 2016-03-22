@@ -95,9 +95,9 @@ function edd_update_payment_details( $data ) {
 
 			// Set some defaults
 			$args = array(
-				'quantity'    => $quantity,
-				'item_price'  => $item_price,
-				'price_id'    => $price_id,
+				'quantity'   => $quantity,
+				'item_price' => $item_price,
+				'price_id'   => $price_id,
 			);
 
 			$payment->add_download( $download_id, $args );

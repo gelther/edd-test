@@ -49,9 +49,9 @@ class EDD_API_Keys_Table extends WP_List_Table {
 
 		// Set parent defaults
 		parent::__construct( array(
-			'singular'  => __( 'API Key', 'easy-digital-downloads' ),
-			'plural'    => __( 'API Keys', 'easy-digital-downloads' ),
-			'ajax'      => false,
+			'singular' => __( 'API Key', 'easy-digital-downloads' ),
+			'plural'   => __( 'API Keys', 'easy-digital-downloads' ),
+			'ajax'     => false,
 		) );
 
 		$this->query();

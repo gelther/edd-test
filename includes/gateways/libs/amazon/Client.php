@@ -27,21 +27,21 @@ class Client implements ClientInterface
 	private $mwsEndpointUrl = null;
 	private $profileEndpoint = null;
 	private $config = array( 'merchant_id' 	   => null,
-				'secret_key' 	   => null,
-				'access_key' 	   => null,
-				'region' 		   => null,
-				'currency_code' 	   => null,
-				'sandbox' 		   => false,
-				'platform_id' 	   => null,
-				'cabundle_file' 	   => null,
-				'application_name'     => null,
-				'application_version'  => null,
-				'proxy_host' 	   => null,
-				'proxy_port' 	   => -1,
-				'proxy_username' 	   => null,
-				'proxy_password' 	   => null,
-				'client_id' 	   => null,
-				'handle_throttle' 	   => true
+				'secret_key'          => null,
+				'access_key'          => null,
+				'region'              => null,
+				'currency_code'       => null,
+				'sandbox'             => false,
+				'platform_id'         => null,
+				'cabundle_file'       => null,
+				'application_name'    => null,
+				'application_version' => null,
+				'proxy_host'          => null,
+				'proxy_port'          => -1,
+				'proxy_username'      => null,
+				'proxy_password'      => null,
+				'client_id'           => null,
+				'handle_throttle'     => true
 				);
 
 	private $modePath = null;
@@ -425,9 +425,9 @@ class Client implements ClientInterface
 	$providerString = 'ProviderCreditReversalList.member.';
 
 		$fieldMappings = array(
-			'provider_id' 	   	=> 'ProviderId',
-			'credit_reversal_amount' 	=> 'CreditReversalAmount.Amount',
-			'currency_code' 		=> 'CreditReversalAmount.CurrencyCode'
+			'provider_id'            => 'ProviderId',
+			'credit_reversal_amount' => 'CreditReversalAmount.Amount',
+			'currency_code'          => 'CreditReversalAmount.CurrencyCode'
 		);
 
 	foreach ( $providerCreditInfo as $key => $value ) {
@@ -464,10 +464,10 @@ class Client implements ClientInterface
 		$requestParameters    = array_change_key_case( $requestParameters, CASE_LOWER );
 
 		$fieldMappings = array(
-			'merchant_id' 		=> 'SellerId',
+			'merchant_id'               => 'SellerId',
 			'amazon_order_reference_id' => 'AmazonOrderReferenceId',
-			'address_consent_token' 	=> 'AddressConsentToken',
-			'mws_auth_token' 		=> 'MWSAuthToken'
+			'address_consent_token'     => 'AddressConsentToken',
+			'mws_auth_token'            => 'MWSAuthToken'
 		);
 
 		$responseObject = $this->setParametersAndPost( $parameters, $fieldMappings, $requestParameters );
@@ -495,16 +495,16 @@ class Client implements ClientInterface
 		$requestParameters    = array_change_key_case( $requestParameters, CASE_LOWER );
 
 		$fieldMappings = array(
-			'merchant_id' 		=> 'SellerId',
+			'merchant_id'               => 'SellerId',
 			'amazon_order_reference_id' => 'AmazonOrderReferenceId',
-			'amount' 			=> 'OrderReferenceAttributes.OrderTotal.Amount',
-			'currency_code' 		=> 'OrderReferenceAttributes.OrderTotal.CurrencyCode',
-			'platform_id' 		=> 'OrderReferenceAttributes.PlatformId',
-			'seller_note' 		=> 'OrderReferenceAttributes.SellerNote',
-			'seller_order_id' 		=> 'OrderReferenceAttributes.SellerOrderAttributes.SellerOrderId',
-			'store_name' 		=> 'OrderReferenceAttributes.SellerOrderAttributes.StoreName',
-			'custom_information'	=> 'OrderReferenceAttributes.SellerOrderAttributes.CustomInformation',
-			'mws_auth_token' 		=> 'MWSAuthToken'
+			'amount'                    => 'OrderReferenceAttributes.OrderTotal.Amount',
+			'currency_code'             => 'OrderReferenceAttributes.OrderTotal.CurrencyCode',
+			'platform_id'               => 'OrderReferenceAttributes.PlatformId',
+			'seller_note'               => 'OrderReferenceAttributes.SellerNote',
+			'seller_order_id'           => 'OrderReferenceAttributes.SellerOrderAttributes.SellerOrderId',
+			'store_name'                => 'OrderReferenceAttributes.SellerOrderAttributes.StoreName',
+			'custom_information'        => 'OrderReferenceAttributes.SellerOrderAttributes.CustomInformation',
+			'mws_auth_token'            => 'MWSAuthToken'
 		);
 
 		$responseObject = $this->setParametersAndPost( $parameters, $fieldMappings, $requestParameters );
@@ -526,9 +526,9 @@ class Client implements ClientInterface
 		$requestParameters    = array_change_key_case( $requestParameters, CASE_LOWER );
 
 		$fieldMappings = array(
-			'merchant_id' 		=> 'SellerId',
+			'merchant_id'               => 'SellerId',
 			'amazon_order_reference_id' => 'AmazonOrderReferenceId',
-			'mws_auth_token' 		=> 'MWSAuthToken'
+			'mws_auth_token'            => 'MWSAuthToken'
 		);
 
 		$responseObject = $this->setParametersAndPost( $parameters, $fieldMappings, $requestParameters );
@@ -551,10 +551,10 @@ class Client implements ClientInterface
 		$requestParameters    = array_change_key_case( $requestParameters, CASE_LOWER );
 
 		$fieldMappings = array(
-			'merchant_id' 		=> 'SellerId',
+			'merchant_id'               => 'SellerId',
 			'amazon_order_reference_id' => 'AmazonOrderReferenceId',
-			'cancelation_reason' 	=> 'CancelationReason',
-			'mws_auth_token' 		=> 'MWSAuthToken'
+			'cancelation_reason'        => 'CancelationReason',
+			'mws_auth_token'            => 'MWSAuthToken'
 		);
 
 		$responseObject = $this->setParametersAndPost( $parameters, $fieldMappings, $requestParameters );
@@ -578,10 +578,10 @@ class Client implements ClientInterface
 		$requestParameters    = array_change_key_case( $requestParameters, CASE_LOWER );
 
 		$fieldMappings = array(
-			'merchant_id' 		=> 'SellerId',
+			'merchant_id'               => 'SellerId',
 			'amazon_order_reference_id' => 'AmazonOrderReferenceId',
-			'closure_reason' 		=> 'ClosureReason',
-			'mws_auth_token' 		=> 'MWSAuthToken'
+			'closure_reason'            => 'ClosureReason',
+			'mws_auth_token'            => 'MWSAuthToken'
 		);
 
 		$responseObject = $this->setParametersAndPost( $parameters, $fieldMappings, $requestParameters );
@@ -604,10 +604,10 @@ class Client implements ClientInterface
 		$requestParameters    = array_change_key_case( $requestParameters, CASE_LOWER );
 
 		$fieldMappings = array(
-			'merchant_id' 		=> 'SellerId',
-			'amazon_authorization_id' 	=> 'AmazonAuthorizationId',
-			'closure_reason' 		=> 'ClosureReason',
-			'mws_auth_token' 		=> 'MWSAuthToken'
+			'merchant_id'             => 'SellerId',
+			'amazon_authorization_id' => 'AmazonAuthorizationId',
+			'closure_reason'          => 'ClosureReason',
+			'mws_auth_token'          => 'MWSAuthToken'
 		);
 
 		$responseObject = $this->setParametersAndPost( $parameters, $fieldMappings, $requestParameters );
@@ -637,17 +637,17 @@ class Client implements ClientInterface
 		$requestParameters    = array_change_key_case( $requestParameters, CASE_LOWER );
 
 		$fieldMappings = array(
-			'merchant_id' 		 => 'SellerId',
+			'merchant_id'                => 'SellerId',
 			'amazon_order_reference_id'  => 'AmazonOrderReferenceId',
-			'authorization_amount' 	 => 'AuthorizationAmount.Amount',
-			'currency_code' 		 => 'AuthorizationAmount.CurrencyCode',
+			'authorization_amount'       => 'AuthorizationAmount.Amount',
+			'currency_code'              => 'AuthorizationAmount.CurrencyCode',
 			'authorization_reference_id' => 'AuthorizationReferenceId',
-			'capture_now' 		 => 'CaptureNow',
-		'provider_credit_details'	 => array(),
+			'capture_now'                => 'CaptureNow',
+		'provider_credit_details'    => array(),
 			'seller_authorization_note'  => 'SellerAuthorizationNote',
-			'transaction_timeout' 	 => 'TransactionTimeout',
-			'soft_descriptor' 		 => 'SoftDescriptor',
-			'mws_auth_token' 		 => 'MWSAuthToken'
+			'transaction_timeout'        => 'TransactionTimeout',
+			'soft_descriptor'            => 'SoftDescriptor',
+			'mws_auth_token'             => 'MWSAuthToken'
 		);
 
 		$responseObject = $this->setParametersAndPost( $parameters, $fieldMappings, $requestParameters );
@@ -669,9 +669,9 @@ class Client implements ClientInterface
 		$requestParameters    = array_change_key_case( $requestParameters, CASE_LOWER );
 
 		$fieldMappings = array(
-			'merchant_id' 		=> 'SellerId',
-			'amazon_authorization_id' 	=> 'AmazonAuthorizationId',
-			'mws_auth_token' 		=> 'MWSAuthToken'
+			'merchant_id'             => 'SellerId',
+			'amazon_authorization_id' => 'AmazonAuthorizationId',
+			'mws_auth_token'          => 'MWSAuthToken'
 		);
 
 		$responseObject = $this->setParametersAndPost( $parameters, $fieldMappings, $requestParameters );
@@ -699,15 +699,15 @@ class Client implements ClientInterface
 		$requestParameters    = array_change_key_case( $requestParameters, CASE_LOWER );
 
 		$fieldMappings = array(
-			'merchant_id' 		=> 'SellerId',
-			'amazon_authorization_id' 	=> 'AmazonAuthorizationId',
-			'capture_amount' 		=> 'CaptureAmount.Amount',
-			'currency_code' 		=> 'CaptureAmount.CurrencyCode',
-			'capture_reference_id' 	=> 'CaptureReferenceId',
-		'provider_credit_details'	=> array(),
-			'seller_capture_note' 	=> 'SellerCaptureNote',
-			'soft_descriptor' 		=> 'SoftDescriptor',
-			'mws_auth_token' 		=> 'MWSAuthToken'
+			'merchant_id'             => 'SellerId',
+			'amazon_authorization_id' => 'AmazonAuthorizationId',
+			'capture_amount'          => 'CaptureAmount.Amount',
+			'currency_code'           => 'CaptureAmount.CurrencyCode',
+			'capture_reference_id'    => 'CaptureReferenceId',
+		'provider_credit_details' => array(),
+			'seller_capture_note'     => 'SellerCaptureNote',
+			'soft_descriptor'         => 'SoftDescriptor',
+			'mws_auth_token'          => 'MWSAuthToken'
 		);
 
 		$responseObject = $this->setParametersAndPost( $parameters, $fieldMappings, $requestParameters );
@@ -729,9 +729,9 @@ class Client implements ClientInterface
 		$requestParameters    = array_change_key_case( $requestParameters, CASE_LOWER );
 
 		$fieldMappings = array(
-			'merchant_id' 	=> 'SellerId',
+			'merchant_id'       => 'SellerId',
 			'amazon_capture_id' => 'AmazonCaptureId',
-			'mws_auth_token' 	=> 'MWSAuthToken'
+			'mws_auth_token'    => 'MWSAuthToken'
 		);
 
 		$responseObject = $this->setParametersAndPost( $parameters, $fieldMappings, $requestParameters );
@@ -759,15 +759,15 @@ class Client implements ClientInterface
 		$requestParameters    = array_change_key_case( $requestParameters, CASE_LOWER );
 
 		$fieldMappings = array(
-			'merchant_id' 	  		=> 'SellerId',
-			'amazon_capture_id'   		=> 'AmazonCaptureId',
-			'refund_reference_id' 		=> 'RefundReferenceId',
-			'refund_amount' 	  		=> 'RefundAmount.Amount',
-			'currency_code' 	  		=> 'RefundAmount.CurrencyCode',
-		'provider_credit_reversal_details'	=> array(),
-			'seller_refund_note'  		=> 'SellerRefundNote',
-			'soft_descriptor' 	  		=> 'SoftDescriptor',
-			'mws_auth_token' 	  		=> 'MWSAuthToken'
+			'merchant_id'                      => 'SellerId',
+			'amazon_capture_id'                => 'AmazonCaptureId',
+			'refund_reference_id'              => 'RefundReferenceId',
+			'refund_amount'                    => 'RefundAmount.Amount',
+			'currency_code'                    => 'RefundAmount.CurrencyCode',
+		'provider_credit_reversal_details' => array(),
+			'seller_refund_note'               => 'SellerRefundNote',
+			'soft_descriptor'                  => 'SoftDescriptor',
+			'mws_auth_token'                   => 'MWSAuthToken'
 		);
 
 		$responseObject = $this->setParametersAndPost( $parameters, $fieldMappings, $requestParameters );
@@ -789,9 +789,9 @@ class Client implements ClientInterface
 		$requestParameters    = array_change_key_case( $requestParameters, CASE_LOWER );
 
 		$fieldMappings = array(
-			'merchant_id' 	=> 'SellerId',
-			'amazon_refund_id'  => 'AmazonRefundId',
-			'mws_auth_token' 	=> 'MWSAuthToken'
+			'merchant_id'      => 'SellerId',
+			'amazon_refund_id' => 'AmazonRefundId',
+			'mws_auth_token'   => 'MWSAuthToken'
 		);
 
 		$responseObject = $this->setParametersAndPost( $parameters, $fieldMappings, $requestParameters );
@@ -847,19 +847,19 @@ class Client implements ClientInterface
 		$requestParameters    = array_change_key_case( $requestParameters, CASE_LOWER );
 
 		$fieldMappings = array(
-			'merchant_id' 		=> 'SellerId',
-			'id' 			=> 'Id',
-			'id_type' 			=> 'IdType',
-			'inherit_shipping_address' 	=> 'InheritShippingAddress',
-			'confirm_now' 		=> 'ConfirmNow',
-			'amount' 			=> 'OrderReferenceAttributes.OrderTotal.Amount',
-			'currency_code' 		=> 'OrderReferenceAttributes.OrderTotal.CurrencyCode',
-			'platform_id' 		=> 'OrderReferenceAttributes.PlatformId',
-			'seller_note' 		=> 'OrderReferenceAttributes.SellerNote',
-			'seller_order_id' 		=> 'OrderReferenceAttributes.SellerOrderAttributes.SellerOrderId',
-			'store_name' 		=> 'OrderReferenceAttributes.SellerOrderAttributes.StoreName',
-			'custom_information' 	=> 'OrderReferenceAttributes.SellerOrderAttributes.CustomInformation',
-			'mws_auth_token' 		=> 'MWSAuthToken'
+			'merchant_id'              => 'SellerId',
+			'id'                       => 'Id',
+			'id_type'                  => 'IdType',
+			'inherit_shipping_address' => 'InheritShippingAddress',
+			'confirm_now'              => 'ConfirmNow',
+			'amount'                   => 'OrderReferenceAttributes.OrderTotal.Amount',
+			'currency_code'            => 'OrderReferenceAttributes.OrderTotal.CurrencyCode',
+			'platform_id'              => 'OrderReferenceAttributes.PlatformId',
+			'seller_note'              => 'OrderReferenceAttributes.SellerNote',
+			'seller_order_id'          => 'OrderReferenceAttributes.SellerOrderAttributes.SellerOrderId',
+			'store_name'               => 'OrderReferenceAttributes.SellerOrderAttributes.StoreName',
+			'custom_information'       => 'OrderReferenceAttributes.SellerOrderAttributes.CustomInformation',
+			'mws_auth_token'           => 'MWSAuthToken'
 		);
 
 		$responseObject = $this->setParametersAndPost( $parameters, $fieldMappings, $requestParameters );
@@ -881,10 +881,10 @@ class Client implements ClientInterface
 		$requestParameters    = array_change_key_case( $requestParameters, CASE_LOWER );
 
 		$fieldMappings = array(
-			'merchant_id' 		  => 'SellerId',
+			'merchant_id'                 => 'SellerId',
 			'amazon_billing_agreement_id' => 'AmazonBillingAgreementId',
-			'address_consent_token' 	  => 'AddressConsentToken',
-			'mws_auth_token' 		  => 'MWSAuthToken'
+			'address_consent_token'       => 'AddressConsentToken',
+			'mws_auth_token'              => 'MWSAuthToken'
 		);
 
 		$responseObject = $this->setParametersAndPost( $parameters, $fieldMappings, $requestParameters );
@@ -913,14 +913,14 @@ class Client implements ClientInterface
 		$requestParameters    = array_change_key_case( $requestParameters, CASE_LOWER );
 
 		$fieldMappings = array(
-			'merchant_id' 		  => 'SellerId',
+			'merchant_id'                 => 'SellerId',
 			'amazon_billing_agreement_id' => 'AmazonBillingAgreementId',
-			'platform_id' 		  => 'BillingAgreementAttributes.PlatformId',
-			'seller_note' 		  => 'BillingAgreementAttributes.SellerNote',
+			'platform_id'                 => 'BillingAgreementAttributes.PlatformId',
+			'seller_note'                 => 'BillingAgreementAttributes.SellerNote',
 			'seller_billing_agreement_id' => 'BillingAgreementAttributes.SellerBillingAgreementAttributes.SellerBillingAgreementId',
-			'custom_information' 	  => 'BillingAgreementAttributes.SellerBillingAgreementAttributes.CustomInformation',
-			'store_name' 		  => 'BillingAgreementAttributes.SellerBillingAgreementAttributes.StoreName',
-			'mws_auth_token' 		  => 'MWSAuthToken'
+			'custom_information'          => 'BillingAgreementAttributes.SellerBillingAgreementAttributes.CustomInformation',
+			'store_name'                  => 'BillingAgreementAttributes.SellerBillingAgreementAttributes.StoreName',
+			'mws_auth_token'              => 'MWSAuthToken'
 		);
 
 		$responseObject = $this->setParametersAndPost( $parameters, $fieldMappings, $requestParameters );
@@ -942,9 +942,9 @@ class Client implements ClientInterface
 		$requestParameters    = array_change_key_case( $requestParameters, CASE_LOWER );
 
 		$fieldMappings = array(
-			'merchant_id' 		  => 'SellerId',
+			'merchant_id'                 => 'SellerId',
 			'amazon_billing_agreement_id' => 'AmazonBillingAgreementId',
-			'mws_auth_token' 		  => 'MWSAuthToken'
+			'mws_auth_token'              => 'MWSAuthToken'
 		);
 
 		$responseObject = $this->setParametersAndPost( $parameters, $fieldMappings, $requestParameters );
@@ -966,9 +966,9 @@ class Client implements ClientInterface
 		$requestParameters    = array_change_key_case( $requestParameters, CASE_LOWER );
 
 		$fieldMappings = array(
-			'merchant_id' 		  => 'SellerId',
+			'merchant_id'                 => 'SellerId',
 			'amazon_billing_agreement_id' => 'AmazonBillingAgreementId',
-			'mws_auth_token' 		  => 'MWSAuthToken'
+			'mws_auth_token'              => 'MWSAuthToken'
 		);
 
 		$responseObject = $this->setParametersAndPost( $parameters, $fieldMappings, $requestParameters );
@@ -1003,22 +1003,22 @@ class Client implements ClientInterface
 		$requestParameters    = array_change_key_case( $requestParameters, CASE_LOWER );
 
 		$fieldMappings = array(
-			'merchant_id' 			=> 'SellerId',
-			'amazon_billing_agreement_id' 	=> 'AmazonBillingAgreementId',
-			'authorization_reference_id' 	=> 'AuthorizationReferenceId',
-			'authorization_amount' 		=> 'AuthorizationAmount.Amount',
-			'currency_code' 			=> 'AuthorizationAmount.CurrencyCode',
-			'seller_authorization_note' 	=> 'SellerAuthorizationNote',
-			'transaction_timeout' 		=> 'TransactionTimeout',
-			'capture_now' 			=> 'CaptureNow',
-			'soft_descriptor' 			=> 'SoftDescriptor',
-			'seller_note' 			=> 'SellerNote',
-			'platform_id' 			=> 'PlatformId',
-			'custom_information' 		=> 'SellerOrderAttributes.CustomInformation',
-			'seller_order_id' 			=> 'SellerOrderAttributes.SellerOrderId',
-			'store_name' 			=> 'SellerOrderAttributes.StoreName',
-			'inherit_shipping_address' 		=> 'InheritShippingAddress',
-			'mws_auth_token' 			=> 'MWSAuthToken'
+			'merchant_id'                 => 'SellerId',
+			'amazon_billing_agreement_id' => 'AmazonBillingAgreementId',
+			'authorization_reference_id'  => 'AuthorizationReferenceId',
+			'authorization_amount'        => 'AuthorizationAmount.Amount',
+			'currency_code'               => 'AuthorizationAmount.CurrencyCode',
+			'seller_authorization_note'   => 'SellerAuthorizationNote',
+			'transaction_timeout'         => 'TransactionTimeout',
+			'capture_now'                 => 'CaptureNow',
+			'soft_descriptor'             => 'SoftDescriptor',
+			'seller_note'                 => 'SellerNote',
+			'platform_id'                 => 'PlatformId',
+			'custom_information'          => 'SellerOrderAttributes.CustomInformation',
+			'seller_order_id'             => 'SellerOrderAttributes.SellerOrderId',
+			'store_name'                  => 'SellerOrderAttributes.StoreName',
+			'inherit_shipping_address'    => 'InheritShippingAddress',
+			'mws_auth_token'              => 'MWSAuthToken'
 		);
 
 		$responseObject = $this->setParametersAndPost( $parameters, $fieldMappings, $requestParameters );
@@ -1041,10 +1041,10 @@ class Client implements ClientInterface
 		$requestParameters    = array_change_key_case( $requestParameters, CASE_LOWER );
 
 		$fieldMappings = array(
-			'merchant_id' 		  => 'SellerId',
+			'merchant_id'                 => 'SellerId',
 			'amazon_billing_agreement_id' => 'AmazonBillingAgreementId',
-			'closure_reason' 		  => 'ClosureReason',
-			'mws_auth_token' 		  => 'MWSAuthToken'
+			'closure_reason'              => 'ClosureReason',
+			'mws_auth_token'              => 'MWSAuthToken'
 		);
 
 		$responseObject = $this->setParametersAndPost( $parameters, $fieldMappings, $requestParameters );
@@ -1179,9 +1179,9 @@ class Client implements ClientInterface
 		$requestParameters    = array_change_key_case( $requestParameters, CASE_LOWER );
 
 		$fieldMappings = array(
-			'merchant_id' 		=> 'SellerId',
+			'merchant_id'               => 'SellerId',
 			'amazon_provider_credit_id' => 'AmazonProviderCreditId',
-			'mws_auth_token' 		=> 'MWSAuthToken'
+			'mws_auth_token'            => 'MWSAuthToken'
 		);
 
 		$responseObject = $this->setParametersAndPost( $parameters, $fieldMappings, $requestParameters );
@@ -1202,9 +1202,9 @@ class Client implements ClientInterface
 		$requestParameters    = array_change_key_case( $requestParameters, CASE_LOWER );
 
 		$fieldMappings = array(
-			'merchant_id' 		  	 => 'SellerId',
+			'merchant_id'                        => 'SellerId',
 			'amazon_provider_credit_reversal_id' => 'AmazonProviderCreditReversalId',
-			'mws_auth_token' 		  	 => 'MWSAuthToken'
+			'mws_auth_token'                     => 'MWSAuthToken'
 		);
 
 		$responseObject = $this->setParametersAndPost( $parameters, $fieldMappings, $requestParameters );
@@ -1229,13 +1229,13 @@ class Client implements ClientInterface
 		$requestParameters    = array_change_key_case( $requestParameters, CASE_LOWER );
 
 		$fieldMappings = array(
-			'merchant_id' 		   => 'SellerId',
+			'merchant_id'                  => 'SellerId',
 			'amazon_provider_credit_id'    => 'AmazonProviderCreditId',
 		'credit_reversal_reference_id' => 'CreditReversalReferenceId',
-		'credit_reversal_amount' 	   => 'CreditReversalAmount.Amount',
-		'currency_code' 		   => 'CreditReversalAmount.CurrencyCode',
-		'credit_reversal_note' 	   => 'CreditReversalNote',
-			'mws_auth_token' 		   => 'MWSAuthToken'
+		'credit_reversal_amount'       => 'CreditReversalAmount.Amount',
+		'currency_code'                => 'CreditReversalAmount.CurrencyCode',
+		'credit_reversal_note'         => 'CreditReversalNote',
+			'mws_auth_token'               => 'MWSAuthToken'
 		);
 
 		$responseObject = $this->setParametersAndPost( $parameters, $fieldMappings, $requestParameters );
@@ -1394,7 +1394,7 @@ class Client implements ClientInterface
 
 					list( $protocol, $code, $text ) = explode( ' ', trim( array_shift( $other ) ), 3 );
 					$response = array(
-						'Status' => (int) $code,
+						'Status'       => (int) $code,
 						'ResponseBody' => $responseBody
 					);
 

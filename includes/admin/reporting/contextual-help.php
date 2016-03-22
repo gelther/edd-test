@@ -38,15 +38,15 @@ function edd_reporting_contextual_help() {
 	);
 
 	$screen->add_help_tab( array(
-		'id'	    => 'edd-reports',
-		'title'	    => __( 'Reports', 'easy-digital-downloads' ),
-		'content'	=> '<p>' . __( 'This screen provides you with reports for your earnings, downloads, customers and taxes.', 'easy-digital-downloads' ) . '</p>'
+		'id'      => 'edd-reports',
+		'title'   => __( 'Reports', 'easy-digital-downloads' ),
+		'content' => '<p>' . __( 'This screen provides you with reports for your earnings, downloads, customers and taxes.', 'easy-digital-downloads' ) . '</p>'
 	) );
 
 	$screen->add_help_tab( array(
-		'id'	    => 'edd-reports-export',
-		'title'	    => __( 'Export', 'easy-digital-downloads' ),
-		'content'	=>
+		'id'      => 'edd-reports-export',
+		'title'   => __( 'Export', 'easy-digital-downloads' ),
+		'content' =>
 			'<p>' . __( 'This screen allows you to export your reports into a PDF or CSV format.', 'easy-digital-downloads' ) . '</p>' .
 			'<p>' . __( '<strong>Sales and Earnings</strong> - This report exports all of the sales and earnings that you have made in the current year. It includes your sales and earnings for each product as well a graphs of sales and earnings so you can compare them for each month.', 'easy-digital-downloads' ) . '</p>' .
 			'<p>' . __( '<strong>Payment History</strong> - This report exports all of the payments you have received on your EDD store in a CSV format.  It includes the contact details of the customer, the products they have purchased as well as any discount codes they have used and the final price they have paid.', 'easy-digital-downloads' ) . '</p>' .
@@ -56,9 +56,9 @@ function edd_reporting_contextual_help() {
 
 	if ( ! empty( $_GET['tab'] ) && 'logs' == $_GET['tab'] ) {
 		$screen->add_help_tab( array(
-			'id'	    => 'edd-reports-log-search',
-			'title'	    => __( 'Search File Downloads', 'easy-digital-downloads' ),
-			'content'	=>
+			'id'      => 'edd-reports-log-search',
+			'title'   => __( 'Search File Downloads', 'easy-digital-downloads' ),
+			'content' =>
 				'<p>' . __( 'The file download log can be searched in several different ways:', 'easy-digital-downloads' ) . '</p>' .
 				'<ul>
 					<li>' . __( 'You can enter the customer\'s email address', 'easy-digital-downloads' ) . '</li>

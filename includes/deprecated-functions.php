@@ -481,7 +481,7 @@ function edd_taxes_after_discounts() {
 function edd_verify_download_link( $download_id = 0, $key = '', $email = '', $expire = '', $file_key = 0 ) {
 
 	$meta_query = array(
-		'relation'  => 'AND',
+		'relation' => 'AND',
 		array(
 			'key'   => '_edd_payment_purchase_key',
 			'value' => $key

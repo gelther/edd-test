@@ -149,8 +149,8 @@ function edd_load_dashboard_sales_widget() {
 		<?php do_action( 'edd_sales_summary_widget_after_stats', $stats ); ?>
 		<?php
 		$p_query = new EDD_Payments_Query( array(
-			'number'   => 5,
-			'status'   => 'publish'
+			'number' => 5,
+			'status' => 'publish'
 		) );
 
 		$payments = $p_query->get_payments();

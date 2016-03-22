@@ -69,7 +69,7 @@ function edd_append_no_cache_param( $settings ) {
 		return $settings;
 
 	$settings[] = array(
-		'id' => 'no_cache_checkout',
+		'id'   => 'no_cache_checkout',
 		'name' => __( 'No Caching on Checkout?', 'easy-digital-downloads' ),
 		'desc' => __( 'Check this box in order to append a ?nocache parameter to the checkout URL to prevent caching plugins from caching the page.', 'easy-digital-downloads' ),
 		'type' => 'checkbox'
