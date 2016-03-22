@@ -68,7 +68,7 @@ class EDD_Logging {
 	 * @access public
 	 * @since 1.3.1
 	 * @return void
-	*/
+	 */
 	public function register_taxonomy() {
 		register_taxonomy( 'edd_log_type', 'edd_log', array( 'public' => false ) );
 	}
@@ -141,7 +141,7 @@ class EDD_Logging {
 	 * @param  string $type      Log type (default: null)
 	 * @param  int    $paged     Page number (default: null)
 	 * @return array             Array of the connected logs
-	*/
+	 */
 	public function get_logs( $object_id = 0, $type = null, $paged = null ) {
 		return $this->get_connected_logs( array( 'post_parent' => $object_id, 'paged' => $paged, 'log_type' => $type ) );
 	}

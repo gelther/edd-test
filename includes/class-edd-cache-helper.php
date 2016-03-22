@@ -11,7 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  * @copyright   Copyright (c) 2015, Pippin Williamson
  * @license     http://opensource.org/licenses/gpl-2.0.php GNU Public License
  * @since       1.7
-*/
+ */
 class EDD_Cache_Helper {
 
 	/**

@@ -70,7 +70,7 @@ function edd_shopping_cart( $echo = false ) {
  * @param  array  $item     Cart item
  * @param  bool   $ajax     AJAX?
  * @return string           Cart item
-*/
+ */
 function edd_get_cart_item_template( $cart_key, $item, $ajax = false ) {
 	global $post;
 

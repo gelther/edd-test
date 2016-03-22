@@ -7,7 +7,7 @@
  * @copyright   Copyright (c) 2015, Pippin Williamson
  * @license     http://opensource.org/licenses/gpl-2.0.php GNU Public License
  * @since       1.0
-*/
+ */
 
 // Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) exit;
@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  *
  * @since 1.3
  * @return void
-*/
+ */
 function edd_reports_graph() {
 	// Retrieve the queried dates
 	$dates = edd_get_report_dates();
@@ -285,7 +285,7 @@ function edd_reports_graph() {
  *
  * @since 1.9
  * @return void
-*/
+ */
 function edd_reports_graph_of_download( $download_id = 0 ) {
 	// Retrieve the queried dates
 	$dates = edd_get_report_dates();
@@ -509,7 +509,7 @@ function edd_reports_graph_of_download( $download_id = 0 ) {
  *
  * @since 1.3
  * @return void
-*/
+ */
 function edd_reports_graph_controls() {
 	$date_options = apply_filters( 'edd_report_date_options', array(
 		'today'        => __( 'Today', 'easy-digital-downloads' ),
@@ -611,7 +611,7 @@ function edd_reports_graph_controls() {
  *
  * @since 1.3
  * @return array
-*/
+ */
 function edd_get_report_dates() {
 	$dates = array();
 

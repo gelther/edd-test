@@ -34,7 +34,7 @@ add_action( 'init', 'edd_add_rewrite_endpoints' );
  * @since 1.3.4
  * @global $wp_query Used to access the current query that is being requested
  * @return void
-*/
+ */
 function edd_process_cart_endpoints() {
 	global $wp_query;
 

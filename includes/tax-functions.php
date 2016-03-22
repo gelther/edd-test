@@ -11,7 +11,7 @@
  * @copyright   Copyright (c) 2015, Pippin Williamson
  * @license     http://opensource.org/licenses/gpl-2.0.php GNU Public License
  * @since       1.3.3
-*/
+ */
 
 // Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) exit;
@@ -155,7 +155,7 @@ function edd_calculate_tax( $amount = 0, $country = false, $state = false ) {
  * @param  $year int The year to retrieve taxes for, i.e. 2012
  * @uses edd_get_sales_tax_for_year()
  * @return void
-*/
+ */
 function edd_sales_tax_for_year( $year = null ) {
 	echo edd_currency_filter( edd_format_amount( edd_get_sales_tax_for_year( $year ) ) );
 }
@@ -215,7 +215,7 @@ function edd_is_cart_taxed() {
  *
  * @since 1.5
  * @return bool $include_tax
-*/
+ */
 function edd_prices_include_tax() {
 	$ret = ( edd_get_option( 'prices_include_tax', false ) == 'yes' && edd_use_taxes() );
 

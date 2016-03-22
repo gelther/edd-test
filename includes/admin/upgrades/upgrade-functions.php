@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  *
  * @since 1.3.1
  * @return void
-*/
+ */
 function edd_show_upgrade_notices() {
 	if ( isset( $_GET['page'] ) && $_GET['page'] == 'edd-upgrades' )
 		return; // Don't show notices on the upgrades page
@@ -159,7 +159,7 @@ add_action( 'admin_notices', 'edd_show_upgrade_notices' );
  *
  * @since 1.3.1
  * @return void
-*/
+ */
 function edd_trigger_upgrades() {
 
 	if ( ! current_user_can( 'manage_shop_settings' ) ) {

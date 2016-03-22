@@ -295,7 +295,7 @@ class EDD_Fees {
 	 * @param  array $payment_meta The meta data to store with the payment
 	 * @param  array $payment_data The info sent from process-purchase.php
 	 * @return array $payment_meta Return the payment meta with the fees added
-	*/
+	 */
 	public function record_fees( $payment_meta, $payment_data ) {
 		if ( $this->has_fees( 'all' ) ) {
 			$payment_meta['fees'] = $this->get_fees( 'all' );

@@ -41,7 +41,7 @@ function edd_get_payment_gateways() {
  * @since 1.0
  * @param  bool  $sort         If true, the default gateway will be first
  * @return array $gateway_list All the available gateways
-*/
+ */
 function edd_get_enabled_payment_gateways( $sort = false ) {
 	$gateways = edd_get_payment_gateways();
 	$enabled  = edd_get_option( 'gateways', false );
@@ -78,7 +78,7 @@ function edd_get_enabled_payment_gateways( $sort = false ) {
  * @since 1.0
  * @param  string  $gateway Name of the gateway to check for
  * @return boolean          true if enabled, false otherwise
-*/
+ */
 function edd_is_gateway_active( $gateway ) {
 	$gateways = edd_get_enabled_payment_gateways();
 	$ret      = array_key_exists( $gateway, $gateways );
@@ -299,7 +299,7 @@ function edd_build_straight_to_gateway_data( $download_id = 0, $options = array(
  * @param  string $gateway      Name of the gateway
  * @param  array  $payment_data All the payment data to be sent to the gateway
  * @return void
-*/
+ */
 function edd_send_to_gateway( $gateway, $payment_data ) {
 
 	$payment_data['gateway_nonce'] = wp_create_nonce( 'edd-gateway' );

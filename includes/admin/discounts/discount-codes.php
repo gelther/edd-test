@@ -18,7 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  * @since 1.4
  * @author Sunny Ratilal
  * @return void
-*/
+ */
 function edd_discounts_page() {
 	if ( isset( $_GET['edd-action'] ) && $_GET['edd-action'] == 'edit_discount' ) {
 		require_once EDD_PLUGIN_DIR . 'includes/admin/discounts/edit-discount.php';

@@ -19,7 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  * @global $post
  * @param  string $redirect Redirect page URL
  * @return string           Login form
-*/
+ */
 function edd_login_form( $redirect = '' ) {
 	global $edd_login_redirect;
 
@@ -43,7 +43,7 @@ function edd_login_form( $redirect = '' ) {
  * @global $post
  * @param  string $redirect Redirect page URL
  * @return string           Register form
-*/
+ */
 function edd_register_form( $redirect = '' ) {
 	global $edd_register_redirect;
 
@@ -68,7 +68,7 @@ function edd_register_form( $redirect = '' ) {
  * @since 1.0
  * @param  array $data Data sent from the login form
  * @return void
-*/
+ */
 function edd_process_login_form( $data ) {
 	if ( wp_verify_nonce( $data['edd_login_nonce'], 'edd-login-nonce' ) ) {
 		$user_data = get_user_by( 'login', $data['edd_user_login'] );
@@ -105,7 +105,7 @@ add_action( 'edd_user_login', 'edd_process_login_form' );
  * @param  string $user_login Username
  * @param  string $user_pass  Password
  * @return void
-*/
+ */
 function edd_log_user_in( $user_id, $user_login, $user_pass ) {
 	if ( $user_id < 1 )
 		return;
@@ -123,7 +123,7 @@ function edd_log_user_in( $user_id, $user_login, $user_pass ) {
  * @since 2.0
  * @param  array $data Data sent from the register form
  * @return void
-*/
+ */
 function edd_process_register_form( $data ) {
 
 	if ( is_user_logged_in() ) {

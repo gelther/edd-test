@@ -7,7 +7,7 @@
  * @copyright   Copyright (c) 2015, Pippin Williamson
  * @license     http://opensource.org/licenses/gpl-2.0.php GNU Public License
  * @since       1.9
-*/
+ */
 
 // Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) exit;
@@ -18,7 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  * @access      private
  * @since       1.9
  * @return void
-*/
+ */
 function edd_update_payment_details( $data ) {
 
 	if ( ! current_user_can( 'edit_shop_payments', $data['edd_payment_id'] ) ) {
@@ -318,7 +318,7 @@ add_action( 'wp_ajax_edd_insert_payment_note', 'edd_ajax_store_payment_note' );
  * @since 1.6
  * @param  array $data Arguments passed
  * @return void
-*/
+ */
 function edd_trigger_payment_note_deletion( $data ) {
 
 	if ( ! wp_verify_nonce( $data['_wpnonce'], 'edd_delete_payment_note_' . $data['note_id'] ) )
@@ -341,7 +341,7 @@ add_action( 'edd_delete_payment_note', 'edd_trigger_payment_note_deletion' );
  *
  * @since 1.6
  * @return void
-*/
+ */
 function edd_ajax_delete_payment_note() {
 
 	if ( ! current_user_can( 'edit_shop_payments', $_POST['payment_id'] ) ) {
@@ -362,7 +362,7 @@ add_action( 'wp_ajax_edd_delete_payment_note', 'edd_ajax_delete_payment_note' );
  *
  * @since 2.0
  * @return string
-*/
+ */
 function edd_ajax_generate_file_download_link() {
 
 	$customer_view_role = apply_filters( 'edd_view_customers_role', 'view_shop_reports' );

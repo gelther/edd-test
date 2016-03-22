@@ -26,7 +26,7 @@ class EDD_DB_Customers extends EDD_DB  {
 	 *
 	 * @access  public
 	 * @since   2.1
-	*/
+	 */
 	public function __construct() {
 
 		global $wpdb;
@@ -44,7 +44,7 @@ class EDD_DB_Customers extends EDD_DB  {
 	 *
 	 * @access  public
 	 * @since   2.1
-	*/
+	 */
 	public function get_columns() {
 		return array(
 			'id'             => '%d',
@@ -64,7 +64,7 @@ class EDD_DB_Customers extends EDD_DB  {
 	 *
 	 * @access  public
 	 * @since   2.1
-	*/
+	 */
 	public function get_column_defaults() {
 		return array(
 			'user_id'        => 0,
@@ -83,7 +83,7 @@ class EDD_DB_Customers extends EDD_DB  {
 	 *
 	 * @access  public
 	 * @since   2.1
-	*/
+	 */
 	public function add( $data = array() ) {
 
 		$defaults = array(
@@ -145,7 +145,7 @@ class EDD_DB_Customers extends EDD_DB  {
 	 *
 	 * @access  public
 	 * @since   2.3.1
-	*/
+	 */
 	public function delete( $_id_or_email = false ) {
 
 		if ( empty( $_id_or_email ) ) {
@@ -171,7 +171,7 @@ class EDD_DB_Customers extends EDD_DB  {
 	 *
 	 * @access  public
 	 * @since   2.1
-	*/
+	 */
 	public function exists( $value = '', $field = 'email' ) {
 
 		$columns = $this->get_columns();
@@ -188,7 +188,7 @@ class EDD_DB_Customers extends EDD_DB  {
 	 *
 	 * @access  public
 	 * @since   2.1
-	*/
+	 */
 	public function attach_payment( $customer_id = 0, $payment_id = 0 ) {
 
 		$customer = new EDD_Customer( $customer_id );
@@ -207,7 +207,7 @@ class EDD_DB_Customers extends EDD_DB  {
 	 *
 	 * @access  public
 	 * @since   2.1
-	*/
+	 */
 	public function remove_payment( $customer_id = 0, $payment_id = 0 ) {
 
 		$customer = new EDD_Customer( $customer_id );
@@ -226,7 +226,7 @@ class EDD_DB_Customers extends EDD_DB  {
 	 *
 	 * @access  public
 	 * @since   2.1
-	*/
+	 */
 	public function increment_stats( $customer_id = 0, $amount = 0.00 ) {
 
 		$customer = new EDD_Customer( $customer_id );
@@ -247,7 +247,7 @@ class EDD_DB_Customers extends EDD_DB  {
 	 *
 	 * @access  public
 	 * @since   2.1
-	*/
+	 */
 	public function decrement_stats( $customer_id = 0, $amount = 0.00 ) {
 
 		$customer = new EDD_Customer( $customer_id );
@@ -268,7 +268,7 @@ class EDD_DB_Customers extends EDD_DB  {
 	 *
 	 * @access  public
 	 * @since   2.4
-	*/
+	 */
 	public function update_customer_email_on_user_update( $user_id = 0, $old_user_data ) {
 
 		$customer = new EDD_Customer( $user_id, true );
@@ -378,7 +378,7 @@ class EDD_DB_Customers extends EDD_DB  {
 	 *
 	 * @access  public
 	 * @since   2.1
-	*/
+	 */
 	public function get_customers( $args = array() ) {
 
 		global $wpdb;
@@ -505,7 +505,7 @@ class EDD_DB_Customers extends EDD_DB  {
 	 *
 	 * @access  public
 	 * @since   2.1
-	*/
+	 */
 	public function count( $args = array() ) {
 
 		global $wpdb;
@@ -551,7 +551,7 @@ class EDD_DB_Customers extends EDD_DB  {
 	 *
 	 * @access  public
 	 * @since   2.1
-	*/
+	 */
 	public function create_table() {
 
 		global $wpdb;

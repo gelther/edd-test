@@ -7,7 +7,7 @@
  * @copyright   Copyright (c) 2015, Pippin Williamson
  * @license     http://opensource.org/licenses/gpl-2.0.php GNU Public License
  * @since       1.0
-*/
+ */
 
 // Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) exit;
@@ -623,7 +623,7 @@ add_action( 'edd_payment_mode_select', 'edd_payment_mode_select' );
  *
  * @since 1.0
  * @return void
-*/
+ */
 function edd_show_payment_icons() {
 
 	if ( edd_show_gateways() && did_action( 'edd_payment_mode_top' ) ) {
@@ -693,7 +693,7 @@ add_action( 'edd_checkout_form_top', 'edd_show_payment_icons' );
  *
  * @since 1.2.2
  * @return void
-*/
+ */
 function edd_discount_field() {
 
 	if ( isset( $_GET['payment-mode'] ) && edd_is_ajax_disabled() ) {

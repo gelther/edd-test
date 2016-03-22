@@ -23,7 +23,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  * @param  string $new_status the status of the payment, probably "publish"
  * @param  string $old_status the status of the payment prior to being marked as "complete", probably "pending"
  * @return void
-*/
+ */
 function edd_complete_purchase( $payment_id, $new_status, $old_status ) {
 	if ( $old_status == 'publish' || $old_status == 'complete' ) {
 		return; // Make sure that payments are only completed once
@@ -187,7 +187,7 @@ add_action( 'edd_update_payment_status', 'edd_clear_user_history_cache', 10, 3 )
  * @since 1.2
  * @param  array $data Arguments passed
  * @return void
-*/
+ */
 function edd_update_old_payments_with_totals( $data ) {
 	if ( ! wp_verify_nonce( $data['_wpnonce'], 'edd_upgrade_payments_nonce' ) ) {
 		return;
@@ -223,7 +223,7 @@ add_action( 'edd_upgrade_payments', 'edd_update_old_payments_with_totals' );
  *
  * @since 1.6
  * @return void
-*/
+ */
 function edd_mark_abandoned_orders() {
 	$args = array(
 		'status' => 'pending',

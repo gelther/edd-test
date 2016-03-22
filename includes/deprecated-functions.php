@@ -28,7 +28,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  * @param int  $offset      Number of items to skip
  *
  * @return mixed array|bool
-*/
+ */
 function edd_get_download_sales_log( $download_id, $paginate = false, $number = 10, $offset = 0 ) {
 	$backtrace = debug_backtrace();
 
@@ -66,7 +66,7 @@ function edd_get_download_sales_log( $download_id, $paginate = false, $number = 
  * @param int  $offset      the number of items to skip
  *
  * @return mixed array|bool
-*/
+ */
 function edd_get_file_download_log( $download_id, $paginate = false, $number = 10, $offset = 0 ) {
 	$backtrace = debug_backtrace();
 
@@ -128,7 +128,7 @@ function edd_get_downloads_of_purchase( $payment_id, $payment_meta = null ) {
  * @since 1.0
  * @deprecated 1.4.4
  * @return string
-*/
+ */
 function edd_get_menu_access_level() {
 	$backtrace = debug_backtrace();
 
@@ -250,7 +250,7 @@ function edd_clear_earnings_cache( $payment, $payment_data ) {
  * @param  bool  $add_taxes      Whether to apply taxes (if enabled) (default: true)
  * @param  bool  $local_override Force the local opt-in param - used for when not reading $_POST (default: false)
  * @return float                 Total amount
-*/
+ */
 function edd_get_cart_amount( $add_taxes = true, $local_override = false ) {
 
 	$backtrace = debug_backtrace();

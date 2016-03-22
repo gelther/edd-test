@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  *
  * @since 1.3.1
  * @return void
-*/
+ */
 function edd_upgrades_screen() {
 	$action = isset( $_GET['edd-upgrade'] ) ? sanitize_text_field( $_GET['edd-upgrade'] ) : '';
 	$step   = isset( $_GET['step'] )        ? absint( $_GET['step'] )                     : 1;

@@ -10,7 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  *
  * @since  2.3
  * @return void
-*/
+ */
 function edd_customers_page() {
 	$default_views  = edd_customer_views();
 	$requested_view = isset( $_GET['view'] ) ? sanitize_text_field( $_GET['view'] ) : 'customers';

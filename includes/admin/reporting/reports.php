@@ -19,7 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  *
  * @since 1.0
  * @return void
-*/
+ */
 function edd_reports_page() {
 	$current_page = admin_url( 'edit.php?post_type=download&page=edd-reports' );
 	$active_tab   = isset( $_GET['tab'] ) ? $_GET['tab'] : 'reports';
