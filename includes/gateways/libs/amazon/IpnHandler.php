@@ -66,7 +66,7 @@ class IpnHandler implements IpnHandlerInterface
 
 		foreach ( $ipnConfig as $key => $value ) {
 			if ( array_key_exists( $key, $this->ipnConfig ) ) {
-				$this->ipnConfig[$key] = $value;
+				$this->ipnConfig[ $key ] = $value;
 			} else {
 				throw new \Exception( 'Key ' . $key . ' is either not part of the configuration or has incorrect Key name.
 				check the ipnConfig array key names to match your key names of your config array ', 1 );
@@ -80,7 +80,7 @@ class IpnHandler implements IpnHandlerInterface
 
 	public function __set( $name, $value ) {
 		if ( array_key_exists( strtolower( $name ), $this->ipnConfig ) ) {
-			$this->ipnConfig[$name] = $value;
+			$this->ipnConfig[ $name ] = $value;
 		} else {
 			throw new \Exception( 'Key ' . $name . ' is not part of the configuration', 1 );
 		}
@@ -92,7 +92,7 @@ class IpnHandler implements IpnHandlerInterface
 
 	public function __get( $name ) {
 		if ( array_key_exists( strtolower( $name ), $this->ipnConfig ) ) {
-			return $this->ipnConfig[$name];
+			return $this->ipnConfig[ $name ];
 		} else {
 			throw new \Exception( 'Key ' . $name . ' was not found in the configuration', 1 );
 		}
@@ -102,7 +102,7 @@ class IpnHandler implements IpnHandlerInterface
 
 	private function trimArray( $array) {
 	foreach ( $array as $key => $value ) {
-		$array[$key] = trim( $value );
+		$array[ $key ] = trim( $value );
 	}
 	return $array;
 	}
@@ -302,7 +302,7 @@ class IpnHandler implements IpnHandlerInterface
 
 	private function getField( $fieldName ) {
 		if ( array_key_exists( $fieldName, $this->snsMessage ) ) {
-			return $this->snsMessage[$fieldName];
+			return $this->snsMessage[ $fieldName ];
 		} else {
 			return null;
 		}
