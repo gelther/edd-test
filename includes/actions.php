@@ -19,7 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  *
  * @since 1.0
  * @return void
-*/
+ */
 function edd_get_actions() {
 	if ( isset( $_GET['edd_action'] ) ) {
 		do_action( 'edd_' . $_GET['edd_action'], $_GET );
@@ -34,7 +34,7 @@ add_action( 'init', 'edd_get_actions' );
  *
  * @since 1.0
  * @return void
-*/
+ */
 function edd_post_actions() {
 	if ( isset( $_POST['edd_action'] ) ) {
 		do_action( 'edd_' . $_POST['edd_action'], $_POST );
