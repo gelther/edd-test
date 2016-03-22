@@ -529,10 +529,10 @@ function edd_tools_sysinfo_get() {
 	$request['cmd'] = '_notify-validate';
 
 	$params = array(
-		'sslverify'     => false,
-		'timeout'       => 60,
-		'user-agent'    => 'EDD/' . EDD_VERSION,
-		'body'          => $request
+		'sslverify'  => false,
+		'timeout'    => 60,
+		'user-agent' => 'EDD/' . EDD_VERSION,
+		'body'       => $request
 	);
 
 	$response = wp_remote_post( 'https://www.paypal.com/cgi-bin/webscr', $params );
