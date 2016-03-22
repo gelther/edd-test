@@ -921,7 +921,7 @@ function edd_settings_sanitize( $input = array() ) {
 
 		if ( $type ) {
 			// Field type specific filter
-			$input[$key] = apply_filters( 'edd_settings_sanitize_' . $type, $value, $key );
+			$input[ $key ] = apply_filters( 'edd_settings_sanitize_' . $type, $value, $key );
 		}
 
 		// General filter
@@ -1228,7 +1228,7 @@ function edd_multicheck_callback( $args ) {
 
 	if ( ! empty( $args['options'] ) ) {
 		foreach ( $args['options'] as $key => $option ) :
-			if ( isset( $edd_options[$args['id']][$key] ) ) { $enabled = $option; } else { $enabled = NULL; }
+			if ( isset( $edd_options[$args['id']][ $key ] ) ) { $enabled = $option; } else { $enabled = NULL; }
 			echo '<input name="edd_settings[' . edd_sanitize_key( $args['id'] ) . '][' . edd_sanitize_key( $key ) . ']" id="edd_settings[' . edd_sanitize_key( $args['id'] ) . '][' . edd_sanitize_key( $key ) . ']" type="checkbox" value="' . esc_attr( $option ) . '" ' . checked( $option, $enabled, false ) . '/>&nbsp;';
 			echo '<label for="edd_settings[' . edd_sanitize_key( $args['id'] ) . '][' . edd_sanitize_key( $key ) . ']">' . wp_kses_post( $option ) . '</label><br/>';
 		endforeach;
@@ -1250,7 +1250,7 @@ function edd_payment_icons_callback( $args ) {
 	if ( ! empty( $args['options'] ) ) {
 		foreach ( $args['options'] as $key => $option ) {
 
-			if ( isset( $edd_options[$args['id']][$key] ) ) {
+			if ( isset( $edd_options[$args['id']][ $key ] ) ) {
 				$enabled = $option;
 			} else {
 				$enabled = NULL;
