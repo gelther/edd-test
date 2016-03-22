@@ -14,7 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 function edd_customers_page() {
 	$default_views  = edd_customer_views();
 	$requested_view = isset( $_GET['view'] ) ? sanitize_text_field( $_GET['view'] ) : 'customers';
-	if ( array_key_exists( $requested_view, $default_views ) && function_exists( $default_views[$requested_view] ) ) {
+	if ( array_key_exists( $requested_view, $default_views ) && function_exists( $default_views[ $requested_view ] ) ) {
 		edd_render_customer_view( $requested_view, $default_views );
 	} else {
 		edd_customers_list();
@@ -142,7 +142,7 @@ function edd_render_customer_view( $view, $callbacks ) {
 			</div>
 
 			<div id="edd-item-card-wrapper" class="edd-customer-card-wrapper" style="float: left">
-				<?php $callbacks[$view]( $customer ); ?>
+				<?php $callbacks[ $view ]( $customer ); ?>
 			</div>
 
 		<?php endif; ?>
