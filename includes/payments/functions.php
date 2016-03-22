@@ -1647,7 +1647,7 @@ add_filter( 'comment_feed_where', 'edd_hide_payment_notes_from_feeds', 10, 2 );
  * @param  array $stats   (empty from core filter)
  * @param  int   $post_id Post ID
  * @return array          Array of comment counts
-*/
+ */
 function edd_remove_payment_notes_in_comment_counts( $stats, $post_id ) {
 	global $wpdb, $pagenow;
 
@@ -1703,7 +1703,7 @@ add_filter( 'wp_count_comments', 'edd_remove_payment_notes_in_comment_counts', 1
  * @since 1.6
  * @param  string $where Where clause
  * @return string $where Modified where clause
-*/
+ */
 function edd_filter_where_older_than_week( $where = '' ) {
 	// Payments older than one week
 	$start  = date( 'Y-m-d', strtotime( '-7 days' ) );
