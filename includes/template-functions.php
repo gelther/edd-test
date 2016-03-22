@@ -21,7 +21,6 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  * @param  int  $download_id Download ID
  * @return void
  */
-
 function edd_append_purchase_link( $download_id ) {
 	if ( ! get_post_meta( $download_id, '_edd_hide_purchase_link', true ) ) {
 		echo edd_get_purchase_link( array( 'download_id' => $download_id ) );
