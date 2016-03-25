@@ -78,8 +78,9 @@ function edd_get_tax_rate( $country = false, $state = false ) {
 			// Locate the tax rate for this country / state, if it exists
 			foreach ( $tax_rates as $key => $tax_rate ) {
 
-				if ( $country != $tax_rate['country'] )
+				if ( $country != $tax_rate['country'] ) {
 					continue;
+				}
 
 				if ( ! empty( $tax_rate['global'] ) ) {
 					if ( ! empty( $tax_rate['rate'] ) ) {
@@ -87,8 +88,9 @@ function edd_get_tax_rate( $country = false, $state = false ) {
 					}
 				} else {
 
-					if ( empty( $tax_rate['state'] ) || strtolower( $state ) != strtolower( $tax_rate['state'] ) )
+					if ( empty( $tax_rate['state'] ) || strtolower( $state ) != strtolower( $tax_rate['state'] ) ) {
 						continue;
+					}
 
 					$state_rate = $tax_rate['rate'];
 					if ( 0 !== $state_rate || ! empty( $state_rate ) ) {
@@ -257,8 +259,9 @@ function edd_display_tax_rate() {
  */
 function edd_cart_needs_tax_address_fields() {
 
-	if ( ! edd_is_cart_taxed() )
+	if ( ! edd_is_cart_taxed() ) {
 		return false;
+	}
 
 	return ! did_action( 'edd_after_cc_fields', 'edd_default_cc_address_fields' );
 
