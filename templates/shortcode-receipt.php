@@ -222,7 +222,7 @@ $status = edd_get_payment_status( $payment, true );
 					<?php } ?>
 					<td>
 						<?php if ( empty( $item['in_bundle'] ) ) : // Only show price when product is not part of a bundle ?>
-							<?php echo edd_currency_filter( edd_format_amount( $item[ 'price' ] ) ); ?>
+							<?php echo edd_currency_filter( edd_format_amount( $item['price'] ) ); ?>
 						<?php endif; ?>
 					</td>
 				</tr>
