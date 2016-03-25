@@ -295,8 +295,9 @@ function edd_process_paypal_ipn() {
 	}
 
 	// Check if $post_data_array has been populated
-	if ( ! is_array( $encoded_data_array ) && ! empty( $encoded_data_array ) )
+	if ( ! is_array( $encoded_data_array ) && ! empty( $encoded_data_array ) ) {
 		return;
+	}
 
 	$defaults = array(
 		'txn_type'       => '',
