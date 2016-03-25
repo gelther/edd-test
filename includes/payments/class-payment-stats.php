@@ -40,12 +40,14 @@ class EDD_Payment_Stats extends EDD_Stats {
 		$this->setup_dates( $start_date, $end_date );
 
 		// Make sure start date is valid
-		if ( is_wp_error( $this->start_date ) )
+		if ( is_wp_error( $this->start_date ) ) {
 			return $this->start_date;
+		}
 
 		// Make sure end date is valid
-		if ( is_wp_error( $this->end_date ) )
+		if ( is_wp_error( $this->end_date ) ) {
 			return $this->end_date;
+		}
 
 		if ( empty( $download_id ) ) {
 
@@ -99,12 +101,14 @@ class EDD_Payment_Stats extends EDD_Stats {
 		$this->setup_dates( $start_date, $end_date );
 
 		// Make sure start date is valid
-		if ( is_wp_error( $this->start_date ) )
+		if ( is_wp_error( $this->start_date ) ) {
 			return $this->start_date;
+		}
 
 		// Make sure end date is valid
-		if ( is_wp_error( $this->end_date ) )
+		if ( is_wp_error( $this->end_date ) ) {
 			return $this->end_date;
+		}
 
 		$earnings = false;
 
