@@ -132,8 +132,9 @@ function edd_get_cart_quantity() {
 function edd_add_to_cart( $download_id, $options = array() ) {
 	$download = get_post( $download_id );
 
-	if ( 'download' != $download->post_type )
+	if ( 'download' != $download->post_type ) {
 		return; // Not a download product
+	}
 
 	if ( ! current_user_can( 'edit_post', $download->ID ) && $download->post_status != 'publish' ) {
 		return; // Do not allow draft/pending to be purchased if can't edit. Fixes #1056
@@ -208,11 +209,13 @@ function edd_add_to_cart( $download_id, $options = array() ) {
 
 	foreach ( $items as $item ) {
 		$to_add = apply_filters( 'edd_add_to_cart_item', $item );
-		if ( ! is_array( $to_add ) )
+		if ( ! is_array( $to_add ) ) {
 			return;
+		}
 
-		if ( ! isset( $to_add['id'] ) || empty( $to_add['id'] ) )
+		if ( ! isset( $to_add['id'] ) || empty( $to_add['id'] ) ) {
 			return;
+		}
 
 		if ( edd_item_in_cart( $to_add['id'], $to_add['options'] ) && edd_item_quantities_enabled() ) {
 
@@ -382,8 +385,9 @@ function edd_get_cart_item_quantity( $download_id = 0, $options = array() ) {
 	$cart     = edd_get_cart_contents();
 	$key      = edd_get_item_position_in_cart( $download_id, $options );
 	$quantity = isset( $cart[ $key ]['quantity'] ) && edd_item_quantities_enabled() ? $cart[ $key ]['quantity'] : 1;
-	if ( $quantity < 1 )
+	if ( $quantity < 1 ) {
 		$quantity = 1;
+	}
 	return apply_filters( 'edd_get_cart_item_quantity', $quantity, $download_id, $options );
 }
 
@@ -537,8 +541,9 @@ function edd_get_price_name( $download_id = 0, $options = array() ) {
 		$prices = edd_get_variable_prices( $download_id );
 		$name   = false;
 		if ( $prices ) {
-			if ( isset( $prices[ $options['price_id'] ] ) )
+			if ( isset( $prices[ $options['price_id'] ] ) ) {
 				$name = $prices[ $options['price_id'] ]['name'];
+			}
 		}
 		$return = $name;
 	}
@@ -702,8 +707,9 @@ function edd_get_cart_total( $discounts = false ) {
 	$fees      = (float) edd_get_cart_fee_total();
 	$total     = $subtotal - $discounts + $cart_tax + $fees;
 
-	if ( $total < 0 )
+	if ( $total < 0 ) {
 		$total = 0.00;
+	}
 
 	return (float) apply_filters( 'edd_get_cart_total', $total );
 }
@@ -1035,32 +1041,37 @@ function edd_is_cart_saving_disabled() {
  * @return bool
  */
 function edd_is_cart_saved() {
-	if ( edd_is_cart_saving_disabled() )
+	if ( edd_is_cart_saving_disabled() ) {
 		return false;
+	}
 
 	if ( is_user_logged_in() ) {
 
 		$saved_cart = get_user_meta( get_current_user_id(), 'edd_saved_cart', true );
 
 		// Check that a cart exists
-		if ( ! $saved_cart )
+		if ( ! $saved_cart ) {
 			return false;
+		}
 
 		// Check that the saved cart is not the same as the current cart
-		if ( $saved_cart === EDD()->session->get( 'edd_cart' ) )
+		if ( $saved_cart === EDD()->session->get( 'edd_cart' ) ) {
 			return false;
+		}
 
 		return true;
 
 	} else {
 
 		// Check that a saved cart exists
-		if ( ! isset( $_COOKIE['edd_saved_cart'] ) )
+		if ( ! isset( $_COOKIE['edd_saved_cart'] ) ) {
 			return false;
+		}
 
 		// Check that the saved cart is not the same as the current cart
-		if ( json_decode( stripslashes( $_COOKIE['edd_saved_cart'] ), true ) === EDD()->session->get( 'edd_cart' ) )
+		if ( json_decode( stripslashes( $_COOKIE['edd_saved_cart'] ), true ) === EDD()->session->get( 'edd_cart' ) ) {
 			return false;
+		}
 
 		return true;
 
@@ -1074,8 +1085,9 @@ function edd_is_cart_saved() {
  * @return bool
  */
 function edd_save_cart() {
-	if ( edd_is_cart_saving_disabled() )
+	if ( edd_is_cart_saving_disabled() ) {
 		return false;
+	}
 
 	$user_id  = get_current_user_id();
 	$cart     = EDD()->session->get( 'edd_cart' );
@@ -1098,8 +1110,9 @@ function edd_save_cart() {
 
 	$messages = EDD()->session->get( 'edd_cart_messages' );
 
-	if ( ! $messages )
+	if ( ! $messages ) {
 		$messages = array();
+	}
 
 	$messages['edd_cart_save_successful'] = sprintf(
 		'<strong>%1$s</strong>: %2$s',
@@ -1125,8 +1138,9 @@ function edd_save_cart() {
  */
 function edd_restore_cart() {
 
-	if ( edd_is_cart_saving_disabled() )
+	if ( edd_is_cart_saving_disabled() ) {
 		return false;
+	}
 
 	$user_id    = get_current_user_id();
 	$saved_cart = get_user_meta( $user_id, 'edd_saved_cart', true );
@@ -1136,8 +1150,9 @@ function edd_restore_cart() {
 
 		$messages = EDD()->session->get( 'edd_cart_messages' );
 
-		if ( ! $messages )
+		if ( ! $messages ) {
 			$messages = array();
+		}
 
 		if ( isset( $_GET['edd_cart_token'] ) && ! hash_equals( $_GET['edd_cart_token'], $token ) ) {
 
