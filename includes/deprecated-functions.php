@@ -113,8 +113,9 @@ function edd_get_downloads_of_purchase( $payment_id, $payment_meta = null ) {
 
 	$downloads = maybe_unserialize( $payment_meta['downloads'] );
 
-	if ( $downloads )
+	if ( $downloads ) {
 		return $downloads;
+	}
 
 	return false;
 }
@@ -214,8 +215,9 @@ function edd_show_has_purchased_item_message() {
 
 	global $user_ID, $post;
 
-	if ( ! isset( $post->ID ) )
+	if ( ! isset( $post->ID ) ) {
 		return;
+	}
 
 	if ( edd_has_user_purchased( $user_ID, $post->ID ) ) {
 		$alert = '<p class="edd_has_purchased">' . __( 'You have already purchased this item, but you may purchase it again.', 'easy-digital-downloads' ) . '</p>';
@@ -281,8 +283,9 @@ function edd_get_cart_amount( $add_taxes = true, $local_override = false ) {
 		$amount += $tax;
 	}
 
-	if ( $amount < 0 )
+	if ( $amount < 0 ) {
 		$amount = 0.00;
+	}
 
 	return apply_filters( 'edd_get_cart_amount', $amount, $add_taxes, $local_override );
 }
@@ -419,8 +422,9 @@ function edd_apply_email_template( $body, $payment_id, $payment_data=array() ) {
 	$template_name = apply_filters( 'edd_email_template', $template_name, $payment_id );
 
 	if ( $template_name == 'none' ) {
-		if ( is_admin() )
+		if ( is_admin() ) {
 			$body = edd_email_preview_template_tags( $body );
+		}
 
 		return $body; // Return the plain email with no template
 	}
@@ -431,8 +435,9 @@ function edd_apply_email_template( $body, $payment_id, $payment_data=array() ) {
 
 	$template = ob_get_clean();
 
-	if ( is_admin() )
+	if ( is_admin() ) {
 		$body = edd_email_preview_template_tags( $body );
+	}
 
 	$body = apply_filters( 'edd_purchase_receipt_' . $template_name, $body );
 
@@ -504,8 +509,9 @@ function edd_verify_download_link( $download_id = 0, $key = '', $email = '', $ex
 			if ( ! empty( $cart_details ) ) {
 				foreach ( $cart_details as $cart_key => $cart_item ) {
 
-					if ( $cart_item['id'] != $download_id )
+					if ( $cart_item['id'] != $download_id ) {
 						continue;
+					}
 
 					$price_options = isset( $cart_item['item_number']['options'] ) ? $cart_item['item_number']['options'] : false;
 					$price_id      = isset( $price_options['price_id'] ) ? $price_options['price_id'] : false;
@@ -513,13 +519,15 @@ function edd_verify_download_link( $download_id = 0, $key = '', $email = '', $ex
 					$file_condition = edd_get_file_price_condition( $cart_item['id'], $file_key );
 
 					// Check to see if the file download limit has been reached
-					if ( edd_is_file_at_download_limit( $cart_item['id'], $payment->ID, $file_key, $price_id ) )
+					if ( edd_is_file_at_download_limit( $cart_item['id'], $payment->ID, $file_key, $price_id ) ) {
 						wp_die( apply_filters( 'edd_download_limit_reached_text', __( 'Sorry but you have hit your download limit for this file.', 'easy-digital-downloads' ) ), __( 'Error', 'easy-digital-downloads' ), array( 'response' => 403 ) );
+					}
 
 					// If this download has variable prices, we have to confirm that this file was included in their purchase
 					if ( ! empty( $price_options ) && $file_condition != 'all' && edd_has_variable_prices( $cart_item['id'] ) ) {
-						if ( $file_condition == $price_options['price_id'] )
+						if ( $file_condition == $price_options['price_id'] ) {
 							return $payment->ID;
+						}
 					}
 
 					// Make sure the link hasn't expired
