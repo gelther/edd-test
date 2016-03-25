@@ -116,7 +116,7 @@ class EDD_Batch_Export extends EDD_Export {
 		}
 
 		$this->step = $_step;
-		$this->done       = false;
+		$this->done = false;
 	}
 
 	/**
