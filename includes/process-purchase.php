@@ -187,8 +187,9 @@ function edd_purchase_form_validate_fields() {
 	);
 
 	// Validate agree to terms
-	if ( edd_get_option( 'show_agree_to_terms', false ) )
+	if ( edd_get_option( 'show_agree_to_terms', false ) ) {
 		edd_purchase_form_validate_agree_to_terms();
+	}
 
 	if ( is_user_logged_in() ) {
 		// Collect logged in user data
@@ -458,10 +459,11 @@ function edd_purchase_form_validate_new_user() {
 			// Check if it's valid
 		} elseif ( ! edd_validate_username( $user_login ) ) {
 				// Invalid username
-				if ( is_multisite() )
+				if ( is_multisite() ) {
 					edd_set_error( 'username_invalid', __( 'Invalid username. Only lowercase letters (a-z) and numbers are allowed', 'easy-digital-downloads' ) );
-				else
+				} else {
 					edd_set_error( 'username_invalid', __( 'Invalid username', 'easy-digital-downloads' ) );
+				}
 			} else {
 			// All the checks have run and it's good to go
 			$valid_user_data['user_login'] = $user_login;
@@ -637,11 +639,13 @@ function edd_purchase_form_validate_guest_user() {
  */
 function edd_register_and_login_new_user( $user_data = array() ) {
 	// Verify the array
-	if ( empty( $user_data ) )
+	if ( empty( $user_data ) ) {
 		return -1;
+	}
 
-	if ( edd_get_errors() )
+	if ( edd_get_errors() ) {
 		return -1;
+	}
 
 	$user_args = apply_filters( 'edd_insert_user_args', array(
 		'user_login'      => isset( $user_data['user_login'] ) ? $user_data['user_login'] : '',
@@ -657,8 +661,9 @@ function edd_register_and_login_new_user( $user_data = array() ) {
 	$user_id = wp_insert_user( $user_args );
 
 	// Validate inserted user
-	if ( is_wp_error( $user_id ) )
+	if ( is_wp_error( $user_id ) ) {
 		return -1;
+	}
 
 	// Allow themes and plugins to filter the user data
 	$user_data = apply_filters( 'edd_insert_user_data', $user_data, $user_args );
@@ -750,8 +755,9 @@ function edd_get_purchase_form_user( $valid_data = array() ) {
 	$user['address']['country'] = ! empty( $_POST['billing_country'] ) ? sanitize_text_field( $_POST['billing_country'] ) : false;
 	$user['address']['zip']     = ! empty( $_POST['card_zip'] ) ? sanitize_text_field( $_POST['card_zip'] ) : false;
 
-	if ( empty( $user['address']['country'] ) )
+	if ( empty( $user['address']['country'] ) ) {
 		$user['address'] = false; // Country will always be set if address fields are present
+	}
 
 	if ( ! empty( $user['user_id'] ) && $user['user_id'] > 0 && ! empty( $user['address'] ) ) {
 		// Store the address in the user's meta so the cart can be pre-populated with it on return purchases
@@ -821,8 +827,9 @@ function edd_get_purchase_cc_info() {
 function edd_purchase_form_validate_cc_zip( $zip = 0, $country_code = '' ) {
 	$ret = false;
 
-	if ( empty( $zip ) || empty( $country_code ) )
+	if ( empty( $zip ) || empty( $country_code ) ) {
 		return $ret;
+	}
 
 	$country_code = strtoupper( $country_code );
 
@@ -984,8 +991,9 @@ function edd_purchase_form_validate_cc_zip( $zip = 0, $country_code = '' ) {
 		'ZM' => '\d{5}'
 	);
 
-	if ( ! isset( $zip_regex[ $country_code ] ) || preg_match( '/' . $zip_regex[ $country_code ] . '/i', $zip ) )
+	if ( ! isset( $zip_regex[ $country_code ] ) || preg_match( '/' . $zip_regex[ $country_code ] . '/i', $zip ) ) {
 		$ret = true;
+	}
 
 	return apply_filters( 'edd_is_zip_valid', $ret, $zip, $country_code );
 }
