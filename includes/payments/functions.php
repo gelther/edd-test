@@ -386,12 +386,13 @@ function edd_count_payments( $args = array() ) {
 	// Count payments for a specific user
 	if ( ! empty( $args['user'] ) ) {
 
-		if ( is_email( $args['user'] ) )
+		if ( is_email( $args['user'] ) ) {
 			$field = 'email';
-		elseif ( is_numeric( $args['user'] ) )
+		} elseif ( is_numeric( $args['user'] ) ) {
 			$field = 'id';
-		else
+		} else {
 			$field = '';
+		}
 
 		$join = "LEFT JOIN $wpdb->postmeta m ON (p.ID = m.post_id)";
 
@@ -406,10 +407,11 @@ function edd_count_payments( $args = array() ) {
 
 		if ( is_email( $args['s'] ) || strlen( $args['s'] ) == 32 ) {
 
-			if ( is_email( $args['s'] ) )
+			if ( is_email( $args['s'] ) ) {
 				$field = '_edd_payment_user_email';
-			else
+			} else {
 				$field = '_edd_payment_purchase_key';
+			}
 
 
 			$join   = "LEFT JOIN $wpdb->postmeta m ON (p.ID = m.post_id)";
@@ -668,11 +670,13 @@ function edd_get_earnings_by_date( $day = null, $month_num, $year = null, $hour 
 		'update_post_term_cache' => false,
 		'include_taxes'          => $include_taxes,
 	);
-	if ( ! empty( $day ) )
+	if ( ! empty( $day ) ) {
 		$args['day'] = $day;
+	}
 
-	if ( ! empty( $hour ) )
+	if ( ! empty( $hour ) ) {
 		$args['hour'] = $hour;
+	}
 
 	$args     = apply_filters( 'edd_get_earnings_by_date_args', $args );
 	$key      = 'edd_stats_' . substr( md5( serialize( $args ) ), 0, 15 );
@@ -738,14 +742,17 @@ function edd_get_sales_by_date( $day = null, $month_num = null, $year = null, $h
 		);
 	}
 
-	if ( ! empty( $month_num ) )
+	if ( ! empty( $month_num ) ) {
 		$args['monthnum'] = $month_num;
+	}
 
-	if ( ! empty( $day ) )
+	if ( ! empty( $day ) ) {
 		$args['day'] = $day;
+	}
 
-	if ( ! empty( $hour ) )
+	if ( ! empty( $hour ) ) {
 		$args['hour'] = $hour;
+	}
 
 	$args = apply_filters( 'edd_get_sales_by_date_args', $args );
 
@@ -968,12 +975,14 @@ function edd_get_payment_meta_cart_details( $payment_id, $include_bundle_files =
 
 			if ( $include_bundle_files ) {
 
-				if ( 'bundle' != edd_get_download_type( $cart_item['id'] ) )
+				if ( 'bundle' != edd_get_download_type( $cart_item['id'] ) ) {
 					continue;
+				}
 
 				$products = edd_get_bundled_products( $cart_item['id'] );
-				if ( empty( $products ) )
+				if ( empty( $products ) ) {
 					continue;
+				}
 
 				foreach ( $products as $product_id ) {
 					$cart_details[] = array(
@@ -1433,8 +1442,9 @@ function edd_get_purchase_id_by_key( $key ) {
 
 	$purchase = $wpdb->get_var( $wpdb->prepare( "SELECT post_id FROM $wpdb->postmeta WHERE meta_key = '_edd_payment_purchase_key' AND meta_value = %s LIMIT 1", $key ) );
 
-	if ( $purchase != NULL )
+	if ( $purchase != NULL ) {
 		return $purchase;
+	}
 
 	return 0;
 }
@@ -1453,8 +1463,9 @@ function edd_get_purchase_id_by_transaction_id( $key ) {
 
 	$purchase = $wpdb->get_var( $wpdb->prepare( "SELECT post_id FROM $wpdb->postmeta WHERE meta_key = '_edd_payment_transaction_id' AND meta_value = %s LIMIT 1", $key ) );
 
-	if ( $purchase != NULL )
+	if ( $purchase != NULL ) {
 		return $purchase;
+	}
 
 	return 0;
 }
@@ -1494,8 +1505,9 @@ function edd_get_payment_notes( $payment_id = 0, $search = '' ) {
  * @return int                The new note ID
  */
 function edd_insert_payment_note( $payment_id = 0, $note = '' ) {
-	if ( empty( $payment_id ) )
+	if ( empty( $payment_id ) ) {
 		return false;
+	}
 
 	do_action( 'edd_pre_insert_payment_note', $payment_id, $note );
 
@@ -1529,8 +1541,9 @@ function edd_insert_payment_note( $payment_id = 0, $note = '' ) {
  * @return bool             True on success, false otherwise
  */
 function edd_delete_payment_note( $comment_id = 0, $payment_id = 0 ) {
-	if ( empty( $comment_id ) )
+	if ( empty( $comment_id ) ) {
 		return false;
+	}
 
 	do_action( 'edd_pre_delete_payment_note', $comment_id, $payment_id );
 	$ret = wp_delete_comment( $comment_id, true );
@@ -1657,18 +1670,21 @@ function edd_remove_payment_notes_in_comment_counts( $stats, $post_id ) {
 
 	$post_id = (int) $post_id;
 
-	if ( apply_filters( 'edd_count_payment_notes_in_comments', false ) )
+	if ( apply_filters( 'edd_count_payment_notes_in_comments', false ) ) {
 		return $stats;
+	}
 
 	$stats = wp_cache_get( "comments-{$post_id}", 'counts' );
 
-	if ( false !== $stats )
+	if ( false !== $stats ) {
 		return $stats;
+	}
 
 	$where = 'WHERE comment_type != "edd_payment_note"';
 
-	if ( $post_id > 0 )
+	if ( $post_id > 0 ) {
 		$where .= $wpdb->prepare( ' AND comment_post_ID = %d', $post_id );
+	}
 
 	$count = $wpdb->get_results( "SELECT comment_approved, COUNT( * ) AS num_comments FROM {$wpdb->comments} {$where} GROUP BY comment_approved", ARRAY_A );
 
@@ -1676,16 +1692,19 @@ function edd_remove_payment_notes_in_comment_counts( $stats, $post_id ) {
 	$approved = array( '0' => 'moderated', '1' => 'approved', 'spam' => 'spam', 'trash' => 'trash', 'post-trashed' => 'post-trashed' );
 	foreach ( (array) $count as $row ) {
 		// Don't count post-trashed toward totals
-		if ( 'post-trashed' != $row['comment_approved'] && 'trash' != $row['comment_approved'] )
+		if ( 'post-trashed' != $row['comment_approved'] && 'trash' != $row['comment_approved'] ) {
 			$total += $row['num_comments'];
-		if ( isset( $approved[$row['comment_approved']] ) )
+		}
+		if ( isset( $approved[$row['comment_approved']] ) ) {
 			$stats[$approved[$row['comment_approved']]] = $row['num_comments'];
+		}
 	}
 
 	$stats['total_comments'] = $total;
 	foreach ( $approved as $key ) {
-		if ( empty( $stats[ $key ] ) )
+		if ( empty( $stats[ $key ] ) ) {
 			$stats[ $key ] = 0;
+		}
 	}
 
 	$stats = (object) $stats;
