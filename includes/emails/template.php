@@ -237,8 +237,9 @@ function edd_get_sale_notification_body_content( $payment_id = 0, $payment_data 
  * @author Sunny Ratilal
  */
 function edd_render_receipt_in_browser() {
-	if ( ! isset( $_GET['payment_key'] ) )
+	if ( ! isset( $_GET['payment_key'] ) ) {
 		wp_die( __( 'Missing purchase key.', 'easy-digital-downloads' ), __( 'Error', 'easy-digital-downloads' ) );
+	}
 
 	$key = urlencode( $_GET['payment_key'] );
 
