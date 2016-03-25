@@ -483,8 +483,9 @@ class EDD_Welcome {
 	public function contributors() {
 		$contributors = $this->get_contributors();
 
-		if ( empty( $contributors ) )
+		if ( empty( $contributors ) ) {
 			return '';
+		}
 
 		$contributor_list = '<ul class="wp-people-group">';
 
@@ -516,18 +517,21 @@ class EDD_Welcome {
 	public function get_contributors() {
 		$contributors = get_transient( 'edd_contributors' );
 
-		if ( false !== $contributors )
+		if ( false !== $contributors ) {
 			return $contributors;
+		}
 
 		$response = wp_remote_get( 'https://api.github.com/repos/easydigitaldownloads/Easy-Digital-Downloads/contributors?per_page=999', array( 'sslverify' => false ) );
 
-		if ( is_wp_error( $response ) || 200 != wp_remote_retrieve_response_code( $response ) )
+		if ( is_wp_error( $response ) || 200 != wp_remote_retrieve_response_code( $response ) ) {
 			return array();
+		}
 
 		$contributors = json_decode( wp_remote_retrieve_body( $response ) );
 
-		if ( ! is_array( $contributors ) )
+		if ( ! is_array( $contributors ) ) {
 			return array();
+		}
 
 		set_transient( 'edd_contributors', $contributors, 3600 );
 
@@ -544,15 +548,17 @@ class EDD_Welcome {
 	 */
 	public function welcome() {
 		// Bail if no activation redirect
-		if ( ! get_transient( '_edd_activation_redirect' ) )
+		if ( ! get_transient( '_edd_activation_redirect' ) ) {
 			return;
+		}
 
 		// Delete the redirect transient
 		delete_transient( '_edd_activation_redirect' );
 
 		// Bail if activating from network, or bulk
-		if ( is_network_admin() || isset( $_GET['activate-multi'] ) )
+		if ( is_network_admin() || isset( $_GET['activate-multi'] ) ) {
 			return;
+		}
 
 		$upgrade = get_option( 'edd_version_upgraded_from' );
 
