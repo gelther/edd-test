@@ -370,15 +370,15 @@ class Client implements ClientInterface
 
 		if ( array_key_exists( 'platform_id', $fieldMappings ) ) {
 		if ( empty( $requestParameters['platform_id'] ) && ! empty( $this->config['platform_id'] ) ) {
-			$parameters[$fieldMappings['platform_id']] = $this->config['platform_id'];
+			$parameters[ $fieldMappings['platform_id'] ] = $this->config['platform_id'];
 		}
 	}
 
 		if ( array_key_exists( 'currency_code', $fieldMappings ) ) {
 			if ( ! empty( $requestParameters['currency_code'] ) ) {
-		$parameters[$fieldMappings['currency_code']] = strtoupper( $requestParameters['currency_code'] );
+		$parameters[ $fieldMappings['currency_code'] ] = strtoupper( $requestParameters['currency_code'] );
 			} else {
-				$parameters[$fieldMappings['currency_code']] = strtoupper( $this->config['currency_code'] );
+				$parameters[ $fieldMappings['currency_code'] ] = strtoupper( $this->config['currency_code'] );
 			}
 		}
 
