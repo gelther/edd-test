@@ -215,8 +215,9 @@ class EDD_Logging {
 
 		if ( $log_id && ! empty( $log_meta ) ) {
 			foreach ( (array) $log_meta as $key => $meta ) {
-				if ( ! empty( $meta ) )
+				if ( ! empty( $meta ) ) {
 					update_post_meta( $log_id, '_edd_log_' . sanitize_key( $key ), $meta );
+				}
 			}
 		}
 
@@ -256,8 +257,9 @@ class EDD_Logging {
 
 		$logs = get_posts( $query_args );
 
-		if ( $logs )
+		if ( $logs ) {
 			return $logs;
+		}
 
 		// No logs found
 		return false;
