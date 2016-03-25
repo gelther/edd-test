@@ -57,8 +57,9 @@ class HttpCurl implements HttpCurlInterface
 			curl_setopt( $ch, CURLOPT_CAINFO, $this->config['cabundle_file'] );
 		}
 
-		if ( ! empty( $userAgent ) )
+		if ( ! empty( $userAgent ) ) {
 			curl_setopt( $ch, CURLOPT_USERAGENT, $userAgent );
+		}
 
 		if ( $this->config['proxy_host'] != null && $this->config['proxy_port'] != -1 ) {
 			curl_setopt( $ch, CURLOPT_PROXY, $this->config['proxy_host'] . ':' . $this->config['proxy_port'] );

@@ -99,8 +99,9 @@ function edd_reports_tab_reports() {
 	$current_view = 'earnings';
 	$views        = edd_reports_default_views();
 
-	if ( isset( $_GET['view'] ) && array_key_exists( $_GET['view'], $views ) )
+	if ( isset( $_GET['view'] ) && array_key_exists( $_GET['view'], $views ) ) {
 		$current_view = $_GET['view'];
+	}
 
 	do_action( 'edd_reports_view_' . $current_view );
 
@@ -154,8 +155,9 @@ function edd_reports_downloads_table() {
 		return;
 	}
 
-	if ( isset( $_GET['download-id'] ) )
+	if ( isset( $_GET['download-id'] ) ) {
 		return;
+	}
 
 	include( dirname( __FILE__ ) . '/class-download-reports-table.php' );
 
@@ -177,8 +179,9 @@ function edd_reports_download_details() {
 		return;
 	}
 
-	if ( ! isset( $_GET['download-id'] ) )
+	if ( ! isset( $_GET['download-id'] ) ) {
 		return;
+	}
 ?>
 	<div class="tablenav top">
 		<div class="actions bulkactions">
@@ -465,8 +468,9 @@ function edd_reports_tab_logs() {
 	$current_view = 'file_downloads';
 	$log_views    = edd_log_default_views();
 
-	if ( isset( $_GET['view'] ) && array_key_exists( $_GET['view'], $log_views ) )
+	if ( isset( $_GET['view'] ) && array_key_exists( $_GET['view'], $log_views ) ) {
 		$current_view = $_GET['view'];
+	}
 
 	do_action( 'edd_logs_view_' . $current_view );
 }

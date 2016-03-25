@@ -301,11 +301,13 @@ function edd_ajax_store_payment_note() {
 		wp_die( __( 'You do not have permission to edit this payment record', 'easy-digital-downloads' ), __( 'Error', 'easy-digital-downloads' ), array( 'response' => 403 ) );
 	}
 
-	if ( empty( $payment_id ) )
+	if ( empty( $payment_id ) ) {
 		die( '-1' );
+	}
 
-	if ( empty( $note ) )
+	if ( empty( $note ) ) {
 		die( '-1' );
+	}
 
 	$note_id = edd_insert_payment_note( $payment_id, $note );
 	die( edd_get_payment_note_html( $note_id ) );
@@ -321,8 +323,9 @@ add_action( 'wp_ajax_edd_insert_payment_note', 'edd_ajax_store_payment_note' );
  */
 function edd_trigger_payment_note_deletion( $data ) {
 
-	if ( ! wp_verify_nonce( $data['_wpnonce'], 'edd_delete_payment_note_' . $data['note_id'] ) )
+	if ( ! wp_verify_nonce( $data['_wpnonce'], 'edd_delete_payment_note_' . $data['note_id'] ) ) {
 		return;
+	}
 
 	if ( ! current_user_can( 'edit_shop_payments', $data['payment_id'] ) ) {
 		wp_die( __( 'You do not have permission to edit this payment record', 'easy-digital-downloads' ), __( 'Error', 'easy-digital-downloads' ), array( 'response' => 403 ) );
@@ -374,11 +377,13 @@ function edd_ajax_generate_file_download_link() {
 	$download_id = absint( $_POST['download_id'] );
 	$price_id    = absint( $_POST['price_id'] );
 
-	if ( empty( $payment_id ) )
+	if ( empty( $payment_id ) ) {
 		die( '-2' );
+	}
 
-	if ( empty( $download_id ) )
+	if ( empty( $download_id ) ) {
 		die( '-3' );
+	}
 
 	$payment_key = edd_get_payment_key( $payment_id );
 	$email       = edd_get_payment_user_email( $payment_id );

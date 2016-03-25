@@ -115,8 +115,9 @@ function edd_scan_folders( $path = '', $return = array() ) {
 	if ( ! empty( $lists ) ) {
 		foreach ( $lists as $f ) {
 			if ( is_dir( $path . DIRECTORY_SEPARATOR . $f ) && $f != '.' && $f != '..' ) {
-				if ( ! in_array( $path . DIRECTORY_SEPARATOR . $f, $return ) )
+				if ( ! in_array( $path . DIRECTORY_SEPARATOR . $f, $return ) ) {
 					$return[] = trailingslashit( $path . DIRECTORY_SEPARATOR . $f );
+				}
 
 				edd_scan_folders( $path . DIRECTORY_SEPARATOR . $f, $return );
 			}
@@ -136,8 +137,9 @@ function edd_scan_folders( $path = '', $return = array() ) {
  */
 function edd_get_htaccess_rules( $method = false ) {
 
-	if ( empty( $method ) )
+	if ( empty( $method ) ) {
 		$method = edd_get_file_download_method();
+	}
 
 	switch ( $method ) :
 
@@ -181,9 +183,10 @@ if ( ! function_exists( 'wp_is_writable' ) ) {
 	 * @return bool
 	 */
 	function wp_is_writable( $path ) {
-			if ( 'WIN' === strtoupper( substr( PHP_OS, 0, 3 ) ) )
+			if ( 'WIN' === strtoupper( substr( PHP_OS, 0, 3 ) ) ) {
 					return win_is_writable( $path );
-			else
+			} else {
 					return @is_writable( $path );
+			}
 	}
 }

@@ -65,8 +65,9 @@ function edd_is_caching_plugin_active() {
  * @return array $settings Updated Misc Settings
  */
 function edd_append_no_cache_param( $settings ) {
-	if ( ! edd_is_caching_plugin_active() )
+	if ( ! edd_is_caching_plugin_active() ) {
 		return $settings;
+	}
 
 	$settings[] = array(
 		'id'   => 'no_cache_checkout',
@@ -87,8 +88,9 @@ add_filter( 'edd_settings_misc', 'edd_append_no_cache_param', -1 );
  * @return string $content Download content
  */
 function edd_qtranslate_content( $content ) {
-	if ( defined( 'QT_LANGUAGE' ) )
+	if ( defined( 'QT_LANGUAGE' ) ) {
 		$content = qtrans_useCurrentLanguageIfNotFoundShowAvailable( $content );
+	}
 	return $content;
 }
 add_filter( 'edd_downloads_content', 'edd_qtranslate_content' );

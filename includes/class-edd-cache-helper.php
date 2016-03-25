@@ -49,10 +49,12 @@ class EDD_Cache_Helper {
 			$checkout_page = get_post( $purchase_page );
 			$success_page  = get_post( $success_page );
 
-			if ( ! is_null( $checkout_page ) )
+			if ( ! is_null( $checkout_page ) ) {
 				$page_uris[] = '/' . $checkout_page->post_name;
-			if ( ! is_null( $success_page ) )
+			}
+			if ( ! is_null( $success_page ) ) {
 				$page_uris[] = '/' . $success_page->post_name;
+			}
 
 			set_transient( 'edd_cache_excluded_uris', $page_uris );
 		}
@@ -90,8 +92,9 @@ class EDD_Cache_Helper {
 	 * @return void
 	 */
 	private function nocache() {
-		if ( ! defined( 'DONOTCACHEPAGE' ) )
+		if ( ! defined( 'DONOTCACHEPAGE' ) ) {
 			define( 'DONOTCACHEPAGE', 'true' );
+		}
 
 		nocache_headers();
 	}

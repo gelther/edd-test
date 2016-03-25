@@ -10,8 +10,9 @@
  * @since       2.4
  */
 // Exit if accessed directly
-if ( ! defined( 'ABSPATH' ) )
+if ( ! defined( 'ABSPATH' ) ) {
 	exit;
+}
 
 // Load WP_List_Table if not loaded
 if ( ! class_exists( 'WP_List_Table' ) ) {
@@ -98,7 +99,7 @@ class EDD_Categories_Reports_Table extends WP_List_Table {
 	 * @return int Current page number
 	 */
 	public function get_paged() {
-		return isset( $_GET[ 'paged' ] ) ? absint( $_GET[ 'paged' ] ) : 1;
+		return isset( $_GET['paged'] ) ? absint( $_GET['paged'] ) : 1;
 	}
 
 	/**
@@ -132,12 +133,12 @@ class EDD_Categories_Reports_Table extends WP_List_Table {
 		 */
 		$dates = edd_get_report_dates();
 
-		if ( ! empty( $dates[ 'year' ] ) ) {
+		if ( ! empty( $dates['year'] ) ) {
 			$date = new DateTime();
-			$date->setDate( $dates[ 'year' ], $dates[ 'm_start' ], $dates[ 'day' ] );
+			$date->setDate( $dates['year'], $dates['m_start'], $dates['day'] );
 			$start_date = $date->format( 'Y-m-d' );
 
-			$date->setDate( $dates[ 'year_end' ], $dates[ 'm_end' ], $dates[ 'day_end' ] );
+			$date->setDate( $dates['year_end'], $dates['m_end'], $dates['day_end'] );
 			$end_date          = $date->format( 'Y-m-d' );
 			$cached_report_key = 'edd_earnings_by_category_data' . $start_date . '_' . $end_date;
 		} else {
@@ -314,11 +315,11 @@ class EDD_Categories_Reports_Table extends WP_List_Table {
 		foreach ( $this->items as $item ) {
 			$total_sales += $item['total_sales_raw'];
 
-			if ( ! empty( $item[ 'is_child' ] ) || empty( $item[ 'total_sales_raw' ] ) ) {
+			if ( ! empty( $item['is_child'] ) || empty( $item['total_sales_raw'] ) ) {
 				continue;
 			}
 
-			$data[ $item[ 'label' ] ] = $item[ 'total_sales_raw' ];
+			$data[ $item['label'] ] = $item['total_sales_raw'];
 		}
 
 
@@ -355,11 +356,11 @@ class EDD_Categories_Reports_Table extends WP_List_Table {
 		foreach ( $this->items as $item ) {
 			$total_earnings += $item['total_earnings_raw'];
 
-			if ( ! empty( $item[ 'is_child' ] ) || empty( $item[ 'total_earnings_raw' ] ) ) {
+			if ( ! empty( $item['is_child'] ) || empty( $item['total_earnings_raw'] ) ) {
 				continue;
 			}
 
-			$data[ $item[ 'label' ] ] = $item[ 'total_earnings_raw' ];
+			$data[ $item['label'] ] = $item['total_earnings_raw'];
 
 		}
 

@@ -158,15 +158,18 @@ class EDD_Payment_History_Table extends WP_List_Table {
 	 * @return void
 	 */
 	public function search_box( $text, $input_id ) {
-		if ( empty( $_REQUEST['s'] ) && ! $this->has_items() )
+		if ( empty( $_REQUEST['s'] ) && ! $this->has_items() ) {
 			return;
+		}
 
 		$input_id = $input_id . '-search-input';
 
-		if ( ! empty( $_REQUEST['orderby'] ) )
+		if ( ! empty( $_REQUEST['orderby'] ) ) {
 			echo '<input type="hidden" name="orderby" value="' . esc_attr( $_REQUEST['orderby'] ) . '" />';
-		if ( ! empty( $_REQUEST['order'] ) )
+		}
+		if ( ! empty( $_REQUEST['order'] ) ) {
 			echo '<input type="hidden" name="order" value="' . esc_attr( $_REQUEST['order'] ) . '" />';
+		}
 ?>
 		<p class="search-box">
 			<?php do_action( 'edd_payment_history_search' ); ?>
@@ -411,12 +414,14 @@ class EDD_Payment_History_Table extends WP_List_Table {
 		$ids    = isset( $_GET['payment'] ) ? $_GET['payment'] : false;
 		$action = $this->current_action();
 
-		if ( ! is_array( $ids ) )
+		if ( ! is_array( $ids ) ) {
 			$ids = array( $ids );
+		}
 
 
-		if ( empty( $action ) )
+		if ( empty( $action ) ) {
 			return;
+		}
 
 		foreach ( $ids as $id ) {
 			// Detect when a bulk action is being triggered...

@@ -86,10 +86,11 @@ class EDD_Payments_Query extends EDD_Stats {
 	 * @since 1.8
 	 */
 	public function __set( $query_var, $value ) {
-		if ( in_array( $query_var, array( 'meta_query', 'tax_query' ) ) )
+		if ( in_array( $query_var, array( 'meta_query', 'tax_query' ) ) ) {
 			$this->args[ $query_var ][] = $value;
-		else
+		} else {
 			$this->args[ $query_var ] = $value;
+		}
 	}
 
 	/**
@@ -491,8 +492,9 @@ class EDD_Payments_Query extends EDD_Stats {
 	 */
 	public function download() {
 
-		if ( empty( $this->args['download'] ) )
+		if ( empty( $this->args['download'] ) ) {
 			return;
+		}
 
 		global $edd_logs;
 

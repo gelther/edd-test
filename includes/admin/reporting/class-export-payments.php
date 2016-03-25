@@ -37,8 +37,9 @@ class EDD_Payments_Export extends EDD_Export {
 	public function headers() {
 		ignore_user_abort( true );
 
-		if ( ! edd_is_func_disabled( 'set_time_limit' ) && ! ini_get( 'safe_mode' ) )
+		if ( ! edd_is_func_disabled( 'set_time_limit' ) && ! ini_get( 'safe_mode' ) ) {
 			set_time_limit( 0 );
+		}
 
 		$month = isset( $_POST['month'] ) ? absint( $_POST['month'] ) : date( 'n' );
 		$year  = isset( $_POST['year'] ) ? absint( $_POST['year'] ) : date( 'Y' );
@@ -140,8 +141,9 @@ class EDD_Payments_Export extends EDD_Export {
 					if ( edd_use_skus() ) {
 						$sku = edd_get_download_sku( $id );
 
-						if ( ! empty( $sku ) )
+						if ( ! empty( $sku ) ) {
 							$skus .= $sku;
+						}
 					}
 
 					if ( isset( $downloads[ $key ]['item_number'] ) && isset( $downloads[ $key ]['item_number']['options'] ) ) {
@@ -156,8 +158,9 @@ class EDD_Payments_Export extends EDD_Export {
 					if ( $key != ( count( $downloads ) -1 ) ) {
 						$products .= ' / ';
 
-						if ( edd_use_skus() )
+						if ( edd_use_skus() ) {
 							$skus .= ' / ';
+						}
 					}
 				}
 			}

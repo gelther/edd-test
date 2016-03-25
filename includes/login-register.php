@@ -107,8 +107,9 @@ add_action( 'edd_user_login', 'edd_process_login_form' );
  * @return void
  */
 function edd_log_user_in( $user_id, $user_login, $user_pass ) {
-	if ( $user_id < 1 )
+	if ( $user_id < 1 ) {
 		return;
+	}
 
 	wp_set_auth_cookie( $user_id );
 	wp_set_current_user( $user_id, $user_login );

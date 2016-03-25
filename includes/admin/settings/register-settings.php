@@ -1316,10 +1316,11 @@ function edd_radio_callback( $args ) {
 	foreach ( $args['options'] as $key => $option ) :
 		$checked = false;
 
-		if ( isset( $edd_options[ $args['id'] ] ) && $edd_options[ $args['id'] ] == $key )
+		if ( isset( $edd_options[ $args['id'] ] ) && $edd_options[ $args['id'] ] == $key ) {
 			$checked = true;
-		elseif ( isset( $args['std'] ) && $args['std'] == $key && ! isset( $edd_options[ $args['id'] ] ) )
+		} elseif ( isset( $args['std'] ) && $args['std'] == $key && ! isset( $edd_options[ $args['id'] ] ) ) {
 			$checked = true;
+		}
 
 		echo '<input name="edd_settings[' . edd_sanitize_key( $args['id'] ) . ']" id="edd_settings[' . edd_sanitize_key( $args['id'] ) . '][' . edd_sanitize_key( $key ) . ']" type="radio" value="' . edd_sanitize_key( $key ) . '" ' . checked( true, $checked, false ) . '/>&nbsp;';
 		echo '<label for="edd_settings[' . edd_sanitize_key( $args['id'] ) . '][' . edd_sanitize_key( $key ) . ']">' . esc_html( $option ) . '</label><br/>';
@@ -1342,10 +1343,11 @@ function edd_gateways_callback( $args ) {
 	global $edd_options;
 
 	foreach ( $args['options'] as $key => $option ) :
-		if ( isset( $edd_options['gateways'][ $key ] ) )
+		if ( isset( $edd_options['gateways'][ $key ] ) ) {
 			$enabled = '1';
-		else
+		} else {
 			$enabled = null;
+		}
 
 		echo '<input name="edd_settings[' . esc_attr( $args['id'] ) . '][' . edd_sanitize_key( $key ) . ']"" id="edd_settings[' . edd_sanitize_key( $args['id'] ) . '][' . edd_sanitize_key( $key ) . ']" type="checkbox" value="1" ' . checked( '1', $enabled, false ) . '/>&nbsp;';
 		echo '<label for="edd_settings[' . edd_sanitize_key( $args['id'] ) . '][' . edd_sanitize_key( $key ) . ']">' . esc_html( $option['admin_label'] ) . '</label><br/>';

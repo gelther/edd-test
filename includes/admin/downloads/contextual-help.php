@@ -21,8 +21,9 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 function edd_downloads_contextual_help() {
 	$screen = get_current_screen();
 
-	if ( $screen->id != 'download' )
+	if ( $screen->id != 'download' ) {
 		return;
+	}
 
 	$screen->set_help_sidebar(
 		'<p><strong>' . sprintf( __( 'For more information:', 'easy-digital-downloads' ) . '</strong></p>' .

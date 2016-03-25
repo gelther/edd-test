@@ -181,8 +181,9 @@ function edd_sanitize_bundled_products_save( $products = array() ) {
 
 	$self = array_search( $post->ID, $products );
 
-	if ( $self !== false )
+	if ( $self !== false ) {
 		unset( $products[ $self ] );
+	}
 
 	return array_values( array_unique( $products ) );
 }
@@ -201,8 +202,9 @@ add_filter( 'edd_metabox_save__edd_bundled_products', 'edd_sanitize_bundled_prod
  */
 function edd_metabox_save_check_blank_rows( $new ) {
 	foreach ( $new as $key => $value ) {
-		if ( empty( $value['name'] ) && empty( $value['amount'] ) && empty( $value['file'] ) )
+		if ( empty( $value['name'] ) && empty( $value['amount'] ) && empty( $value['file'] ) ) {
 			unset( $new[ $key ] );
+		}
 	}
 
 	return $new;

@@ -293,11 +293,13 @@ class EDD_License {
 	 */
 	public function deactivate_license() {
 
-		if ( ! isset( $_POST['edd_settings'] ) )
+		if ( ! isset( $_POST['edd_settings'] ) ) {
 			return;
+		}
 
-		if ( ! isset( $_POST['edd_settings'][ $this->item_shortname . '_license_key'] ) )
+		if ( ! isset( $_POST['edd_settings'][ $this->item_shortname . '_license_key'] ) ) {
 			return;
+		}
 
 		if ( ! wp_verify_nonce( $_REQUEST[ $this->item_shortname . '_license_key-nonce'], $this->item_shortname . '_license_key-nonce' ) ) {
 

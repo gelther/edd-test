@@ -19,8 +19,9 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  * @return void
  */
 function edd_show_upgrade_notices() {
-	if ( isset( $_GET['page'] ) && $_GET['page'] == 'edd-upgrades' )
+	if ( isset( $_GET['page'] ) && $_GET['page'] == 'edd-upgrades' ) {
 		return; // Don't show notices on the upgrades page
+	}
 
 	$edd_version = get_option( 'edd_version' );
 
@@ -32,8 +33,9 @@ function edd_show_upgrade_notices() {
 	$edd_version = preg_replace( '/[^0-9.].*/', '', $edd_version );
 
 	if ( ! get_option( 'edd_payment_totals_upgraded' ) && ! get_option( 'edd_version' ) ) {
-		if ( wp_count_posts( 'edd_payment' )->publish < 1 )
+		if ( wp_count_posts( 'edd_payment' )->publish < 1 ) {
 			return; // No payment exist yet
+		}
 
 		// The payment history needs updated for version 1.2
 		$url            = add_query_arg( 'edd-action', 'upgrade_payments' );
@@ -196,8 +198,9 @@ function edd_trigger_upgrades() {
 
 	update_option( 'edd_version', EDD_VERSION );
 
-	if ( DOING_AJAX )
+	if ( DOING_AJAX ) {
 		die( 'complete' ); // Let AJAX know that the upgrade is complete
+	}
 }
 add_action( 'wp_ajax_edd_trigger_upgrades', 'edd_trigger_upgrades' );
 
@@ -249,16 +252,19 @@ function edd_set_upgrade_complete( $upgrade_action = '' ) {
  * @return void
  */
 function edd_v131_upgrades() {
-	if ( get_option( 'edd_logs_upgraded' ) )
+	if ( get_option( 'edd_logs_upgraded' ) ) {
 		return;
+	}
 
-	if ( version_compare( get_option( 'edd_version' ), '1.3', '>=' ) )
+	if ( version_compare( get_option( 'edd_version' ), '1.3', '>=' ) ) {
 		return;
+	}
 
 	ignore_user_abort( true );
 
-	if ( ! edd_is_func_disabled( 'set_time_limit' ) && ! ini_get( 'safe_mode' ) )
+	if ( ! edd_is_func_disabled( 'set_time_limit' ) && ! ini_get( 'safe_mode' ) ) {
 		set_time_limit( 0 );
+	}
 
 	$args = array(
 		'post_type'      => 'download',
@@ -326,8 +332,9 @@ function edd_v131_upgrades() {
 function edd_v134_upgrades() {
 	$general_options = get_option( 'edd_settings_general' );
 
-	if ( isset( $general_options['failure_page'] ) )
+	if ( isset( $general_options['failure_page'] ) ) {
 		return; // Settings already updated
+	}
 
 	// Failed Purchase Page
 	$failed = wp_insert_post(

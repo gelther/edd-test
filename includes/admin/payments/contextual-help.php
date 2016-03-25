@@ -22,8 +22,9 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 function edd_payments_contextual_help() {
 	$screen = get_current_screen();
 
-	if ( $screen->id != 'download_page_edd-payment-history' )
+	if ( $screen->id != 'download_page_edd-payment-history' ) {
 		return;
+	}
 
 	$screen->set_help_sidebar(
 		'<p><strong>' . sprintf( __( 'For more information:', 'easy-digital-downloads' ) . '</strong></p>' .

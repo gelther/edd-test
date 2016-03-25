@@ -46,8 +46,9 @@ function edd_get_shop_state() {
  * @return array           A list of states for the selected country
  */
 function edd_get_shop_states( $country = null ) {
-	if ( empty( $country ) )
+	if ( empty( $country ) ) {
 		$country = edd_get_shop_country();
+	}
 
 	switch ( $country ) :
 

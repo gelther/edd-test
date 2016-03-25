@@ -88,8 +88,9 @@ function edd_get_download_by( $field = '', $value = '' ) {
 function edd_get_download( $download = 0 ) {
 	if ( is_numeric( $download ) ) {
 		$download = get_post( $download );
-		if ( ! $download || 'download' !== $download->post_type )
+		if ( ! $download || 'download' !== $download->post_type ) {
 			return null;
+		}
 		return $download;
 	}
 
@@ -216,10 +217,11 @@ function edd_get_download_final_price( $download_id = 0, $user_purchase_info, $a
 	}
 	if ( isset( $user_purchase_info['discount'] ) && $user_purchase_info['discount'] != 'none' ) {
 		// if the discount was a %, we modify the amount. Flat rate discounts are ignored
-		if ( edd_get_discount_type( edd_get_discount_id_by_code( $user_purchase_info['discount'] ) ) != 'flat' )
+		if ( edd_get_discount_type( edd_get_discount_id_by_code( $user_purchase_info['discount'] ) ) != 'flat' ) {
 			$price = edd_get_discounted_amount( $user_purchase_info['discount'], $original_price );
-		else
+		} else {
 			$price = $original_price;
+		}
 	} else {
 		$price = $original_price;
 	}
@@ -299,8 +301,9 @@ function edd_get_price_option_name( $download_id = 0, $price_id = 0, $payment_id
 	$price_name = '';
 
 	if ( $prices && is_array( $prices ) ) {
-		if ( isset( $prices[ $price_id ] ) )
+		if ( isset( $prices[ $price_id ] ) ) {
 			$price_name = $prices[ $price_id ]['name'];
+		}
 	}
 
 	return apply_filters( 'edd_get_price_option_name', $price_name, $download_id, $payment_id, $price_id );
@@ -320,8 +323,9 @@ function edd_get_price_option_amount( $download_id = 0, $price_id = 0 ) {
 	$amount = 0.00;
 
 	if ( $prices && is_array( $prices ) ) {
-		if ( isset( $prices[ $price_id ] ) )
+		if ( isset( $prices[ $price_id ] ) ) {
 			$amount = $prices[ $price_id ]['amount'];
+		}
 	}
 
 	return apply_filters( 'edd_get_price_option_amount', edd_sanitize_amount( $amount ), $download_id, $price_id );
@@ -335,8 +339,9 @@ function edd_get_price_option_amount( $download_id = 0, $price_id = 0 ) {
  * @return float              Amount of the lowest price
  */
 function edd_get_lowest_price_option( $download_id = 0 ) {
-	if ( empty( $download_id ) )
+	if ( empty( $download_id ) ) {
 		$download_id = get_the_ID();
+	}
 
 	if ( ! edd_has_variable_prices( $download_id ) ) {
 		return edd_get_download_price( $download_id );
@@ -380,8 +385,9 @@ function edd_get_lowest_price_option( $download_id = 0 ) {
  * @return int              ID of the lowest price
  */
 function edd_get_lowest_price_id( $download_id = 0 ) {
-	if ( empty( $download_id ) )
+	if ( empty( $download_id ) ) {
 		$download_id = get_the_ID();
+	}
 
 	if ( ! edd_has_variable_prices( $download_id ) ) {
 		return edd_get_download_price( $download_id );
@@ -655,8 +661,9 @@ function edd_record_download_in_log( $download_id = 0, $file_id, $user_info, $ip
  * @return void
  */
 function edd_remove_download_logs_on_delete( $download_id = 0 ) {
-	if ( 'download' !== get_post_type( $download_id ) )
+	if ( 'download' !== get_post_type( $download_id ) ) {
 		return;
+	}
 
 	global $edd_logs;
 
@@ -755,8 +762,9 @@ function edd_get_average_monthly_download_sales( $download_id = 0 ) {
 
 	$months = floor( $diff / ( 30 * 60 * 60 * 24 ) ); // Number of months since publication
 
-	if ( $months > 0 )
+	if ( $months > 0 ) {
 		$sales = ( $sales / $months );
+	}
 
 	return $sales;
 }
@@ -786,8 +794,9 @@ function edd_get_download_files( $download_id = 0, $variable_price_id = null ) {
  * @return string       The file name
  */
 function edd_get_file_name( $file = array() ) {
-	if ( empty( $file ) || ! is_array( $file ) )
+	if ( empty( $file ) || ! is_array( $file ) ) {
 		return false;
+	}
 	$name = ! empty( $file['name'] ) ? esc_html( $file['name'] ) : basename( $file['file'] );
 
 	return $name;

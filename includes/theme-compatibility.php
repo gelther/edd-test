@@ -31,11 +31,13 @@ function edd_responsive_download_post_class( $classes = array(), $class = '', $p
 		! is_post_type_archive( 'download' ) &&
 		! is_tax( 'download_category' ) &&
 		! is_tax( 'download_tag' )
-	)
+	) {
 		return $classes;
+	}
 
-	if ( ( $key = array_search( 'download', $classes ) ) )
+	if ( ( $key = array_search( 'download', $classes ) ) ) {
 		unset( $classes[ $key ] );
+	}
 
 	return $classes;
 }
