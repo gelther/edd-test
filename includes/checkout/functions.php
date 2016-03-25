@@ -93,8 +93,9 @@ function edd_is_success_page() {
 function edd_send_to_success_page( $query_string = null ) {
 	$redirect = edd_get_success_page_uri();
 
-	if ( $query_string )
+	if ( $query_string ) {
 		$redirect .= $query_string;
+	}
 
 	$gateway = isset( $_REQUEST['edd-gateway'] ) ? $_REQUEST['edd-gateway'] : '';
 
@@ -115,8 +116,9 @@ function edd_get_checkout_uri( $args = array() ) {
 
 	if ( ! empty( $args ) ) {
 		// Check for backward compatibility
-		if ( is_string( $args ) )
+		if ( is_string( $args ) ) {
 			$args = str_replace( '?', '', $args );
+		}
 
 		$args = wp_parse_args( $args );
 
@@ -154,8 +156,9 @@ function edd_send_back_to_checkout( $args = array() ) {
 
 	if ( ! empty( $args ) ) {
 		// Check for backward compatibility
-		if ( is_string( $args ) )
+		if ( is_string( $args ) ) {
 			$args = str_replace( '?', '', $args );
+		}
 
 		$args = wp_parse_args( $args );
 
@@ -180,8 +183,9 @@ function edd_get_success_page_url( $query_string = null ) {
 	$success_page = edd_get_option( 'success_page', 0 );
 	$success_page = get_permalink( $success_page );
 
-	if ( $query_string )
+	if ( $query_string ) {
 		$success_page .= $query_string;
+	}
 
 	return apply_filters( 'edd_success_page_url', $success_page );
 }
@@ -197,8 +201,9 @@ function edd_get_failed_transaction_uri( $extras = false ) {
 	$uri = edd_get_option( 'failure_page', '' );
 	$uri = ! empty( $uri ) ? trailingslashit( get_permalink( $uri ) ) : home_url();
 
-	if ( $extras )
+	if ( $extras ) {
 		$uri .= $extras;
+	}
 
 	return apply_filters( 'edd_get_failed_transaction_uri', $uri );
 }
