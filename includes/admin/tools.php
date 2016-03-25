@@ -368,22 +368,26 @@ add_action( 'edd_tools_tab_import_export', 'edd_tools_import_export_display' );
  */
 function edd_tools_import_export_process_export() {
 
-	if ( empty( $_POST['edd_export_nonce'] ) )
+	if ( empty( $_POST['edd_export_nonce'] ) ) {
 		return;
+	}
 
-	if ( ! wp_verify_nonce( $_POST['edd_export_nonce'], 'edd_export_nonce' ) )
+	if ( ! wp_verify_nonce( $_POST['edd_export_nonce'], 'edd_export_nonce' ) ) {
 		return;
+	}
 
-	if ( ! current_user_can( 'manage_shop_settings' ) )
+	if ( ! current_user_can( 'manage_shop_settings' ) ) {
 		return;
+	}
 
 	$settings = array();
 	$settings = get_option( 'edd_settings' );
 
 	ignore_user_abort( true );
 
-	if ( ! edd_is_func_disabled( 'set_time_limit' ) && ! ini_get( 'safe_mode' ) )
+	if ( ! edd_is_func_disabled( 'set_time_limit' ) && ! ini_get( 'safe_mode' ) ) {
 		set_time_limit( 0 );
+	}
 
 	nocache_headers();
 	header( 'Content-Type: application/json; charset=utf-8' );
@@ -404,14 +408,17 @@ add_action( 'edd_export_settings', 'edd_tools_import_export_process_export' );
  */
 function edd_tools_import_export_process_import() {
 
-	if ( empty( $_POST['edd_import_nonce'] ) )
+	if ( empty( $_POST['edd_import_nonce'] ) ) {
 		return;
+	}
 
-	if ( ! wp_verify_nonce( $_POST['edd_import_nonce'], 'edd_import_nonce' ) )
+	if ( ! wp_verify_nonce( $_POST['edd_import_nonce'], 'edd_import_nonce' ) ) {
 		return;
+	}
 
-	if ( ! current_user_can( 'manage_shop_settings' ) )
+	if ( ! current_user_can( 'manage_shop_settings' ) ) {
 		return;
+	}
 
 	if ( edd_get_file_extension( $_FILES['import_file']['name'] ) != 'json' ) {
 		wp_die( __( 'Please upload a valid .json file', 'easy-digital-downloads' ), __( 'Error', 'easy-digital-downloads' ), array( 'response' => 400 ) );
@@ -470,8 +477,9 @@ add_action( 'edd_tools_tab_system_info', 'edd_tools_sysinfo_display' );
 function edd_tools_sysinfo_get() {
 	global $wpdb;
 
-	if ( ! class_exists( 'Browser' ) )
+	if ( ! class_exists( 'Browser' ) ) {
 		require_once EDD_PLUGIN_DIR . 'includes/libraries/browser.php';
+	}
 
 	$browser = new Browser();
 
@@ -663,8 +671,9 @@ function edd_tools_sysinfo_get() {
 	$active_plugins = get_option( 'active_plugins', array() );
 
 	foreach ( $plugins as $plugin_path => $plugin ) {
-		if ( ! in_array( $plugin_path, $active_plugins ) )
+		if ( ! in_array( $plugin_path, $active_plugins ) ) {
 			continue;
+		}
 
 		$update  = ( array_key_exists( $plugin_path, $updates ) ) ? ' (needs update - ' . $updates[ $plugin_path ]->update->new_version . ')' : '';
 		$return .= $plugin['Name'] . ': ' . $plugin['Version'] . $update . "\n";
@@ -676,8 +685,9 @@ function edd_tools_sysinfo_get() {
 	$return .= "\n" . '-- WordPress Inactive Plugins' . "\n\n";
 
 	foreach ( $plugins as $plugin_path => $plugin ) {
-		if ( in_array( $plugin_path, $active_plugins ) )
+		if ( in_array( $plugin_path, $active_plugins ) ) {
 			continue;
+		}
 
 		$update  = ( array_key_exists( $plugin_path, $updates ) ) ? ' (needs update - ' . $updates[ $plugin_path ]->update->new_version . ')' : '';
 		$return .= $plugin['Name'] . ': ' . $plugin['Version'] . $update . "\n";
@@ -695,8 +705,9 @@ function edd_tools_sysinfo_get() {
 		foreach ( $plugins as $plugin_path ) {
 			$plugin_base = plugin_basename( $plugin_path );
 
-			if ( ! array_key_exists( $plugin_base, $active_plugins ) )
+			if ( ! array_key_exists( $plugin_base, $active_plugins ) ) {
 				continue;
+			}
 
 			$update  = ( array_key_exists( $plugin_path, $updates ) ) ? ' (needs update - ' . $updates[ $plugin_path ]->update->new_version . ')' : '';
 			$plugin  = get_plugin_data( $plugin_path );
