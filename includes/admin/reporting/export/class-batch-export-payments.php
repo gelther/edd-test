@@ -146,8 +146,9 @@ class EDD_Batch_Payments_Export extends EDD_Batch_Export {
 						if ( edd_use_skus() ) {
 							$sku = edd_get_download_sku( $id );
 
-							if ( ! empty( $sku ) )
+							if ( ! empty( $sku ) ) {
 								$skus .= $sku;
+							}
 						}
 
 						if ( isset( $downloads[ $key ]['item_number'] ) && isset( $downloads[ $key ]['item_number']['options'] ) ) {
@@ -163,8 +164,9 @@ class EDD_Batch_Payments_Export extends EDD_Batch_Export {
 						if ( $key != ( count( $downloads ) -1 ) ) {
 							$products .= ' / ';
 
-							if ( edd_use_skus() )
+							if ( edd_use_skus() ) {
 								$skus .= ' / ';
+							}
 						}
 					}
 				}
