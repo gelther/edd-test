@@ -896,7 +896,7 @@ final class EDD_Payment {
 				$prices = get_post_meta( $download->ID, 'edd_variable_prices', true );
 
 				if ( $args['price_id'] && array_key_exists( $args['price_id'], (array) $prices ) ) {
-					$item_price = $prices[$args['price_id']]['amount'];
+					$item_price = $prices[ $args['price_id'] ]['amount'];
 				} else {
 					$item_price       = edd_get_lowest_price_option( $download->ID );
 					$args['price_id'] = edd_get_lowest_price_id( $download->ID );
