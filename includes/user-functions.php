@@ -41,12 +41,13 @@ function edd_get_users_purchases( $user = 0, $number = 20, $pagination = false, 
 	$status = $status === 'complete' ? 'publish' : $status;
 
 	if ( $pagination ) {
-		if ( get_query_var( 'paged' ) )
+		if ( get_query_var( 'paged' ) ) {
 			$paged = get_query_var( 'paged' );
-		elseif ( get_query_var( 'page' ) )
+		} elseif ( get_query_var( 'page' ) ) {
 			$paged = get_query_var( 'page' );
-		else
+		} else {
 			$paged = 1;
+		}
 	}
 
 	$args = array(
@@ -79,8 +80,9 @@ function edd_get_users_purchases( $user = 0, $number = 20, $pagination = false, 
 	$purchases = edd_get_payments( apply_filters( 'edd_get_users_purchases_args', $args ) );
 
 	// No purchases
-	if ( ! $purchases )
+	if ( ! $purchases ) {
 		return false;
+	}
 
 	return $purchases;
 }
@@ -153,8 +155,9 @@ function edd_get_users_purchased_products( $user = 0, $status = 'complete' ) {
 	$product_ids = array_unique( $purchased_products );
 
 	// Make sure we still have some products and a first item
-	if ( empty( $product_ids ) || ! isset( $product_ids[0] ) )
+	if ( empty( $product_ids ) || ! isset( $product_ids[0] ) ) {
 		return false;
+	}
 
 	$post_type = get_post_type( $product_ids[0] );
 
@@ -451,23 +454,29 @@ function edd_get_customer_address( $user_id = 0 ) {
 
 	$address = get_user_meta( $user_id, '_edd_user_address', true );
 
-	if ( ! isset( $address['line1'] ) )
+	if ( ! isset( $address['line1'] ) ) {
 		$address['line1'] = '';
+	}
 
-	if ( ! isset( $address['line2'] ) )
+	if ( ! isset( $address['line2'] ) ) {
 		$address['line2'] = '';
+	}
 
-	if ( ! isset( $address['city'] ) )
+	if ( ! isset( $address['city'] ) ) {
 		$address['city'] = '';
+	}
 
-	if ( ! isset( $address['zip'] ) )
+	if ( ! isset( $address['zip'] ) ) {
 		$address['zip'] = '';
+	}
 
-	if ( ! isset( $address['country'] ) )
+	if ( ! isset( $address['country'] ) ) {
 		$address['country'] = '';
+	}
 
-	if ( ! isset( $address['state'] ) )
+	if ( ! isset( $address['state'] ) ) {
 		$address['state'] = '';
+	}
 
 	return $address;
 }
