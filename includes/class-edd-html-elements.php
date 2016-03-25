@@ -87,7 +87,7 @@ class EDD_HTML_Elements {
 			}
 		} elseif ( is_numeric( $args['selected'] ) && $args['selected'] !== 0 ) {
 			if ( ! in_array( $args['selected'], $options ) ) {
-				$options[$args['selected']] = get_the_title( $args['selected'] );
+				$options[ $args['selected'] ] = get_the_title( $args['selected'] );
 			}
 		}
 

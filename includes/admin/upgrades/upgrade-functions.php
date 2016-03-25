@@ -728,7 +728,7 @@ function edd_v226_upgrade_payments_price_logs_db() {
 				foreach ( $logs as $key => $log ) {
 					// If this Log ID is associated with this download ID give it the price_id
 					if ( (int) $log['download_id'] === (int) $cart_item['id'] ) {
-						$mapped_logs[$log['log_id']] = $cart_item['price_id'];
+						$mapped_logs[ $log['log_id'] ] = $cart_item['price_id'];
 						// Remove this Download/Log ID from the list, for multipurchase compatibility
 						unset( $logs[ $key ] );
 						// These aren't the logs we're looking for. Move Along, Move Along.
