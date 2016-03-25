@@ -121,8 +121,9 @@ class EDD_Heartbeat {
 				$(document).on( 'heartbeat-tick', function( e, data ) {
 
 					// Only proceed if our EDD data is present
-					if ( ! data['edd-total-payments'] )
+					if ( ! data['edd-total-payments'] ) {
 						return;
+					}
 
 					<?php if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) : ?>
 					console.log( 'tick' );
