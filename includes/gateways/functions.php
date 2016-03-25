@@ -408,7 +408,8 @@ function edd_count_sales_by_gateway( $gateway_id = 'paypal', $status = 'publish'
 
 	$payments = new WP_Query( $args );
 
-	if ( $payments )
+	if ( $payments ) {
 		$ret = $payments->post_count;
+	}
 	return $ret;
 }
