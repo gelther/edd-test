@@ -528,10 +528,11 @@ function edd_get_purchase_download_links( $payment_id = 0 ) {
 				foreach ( $files as $filekey => $file ) {
 					$links .= '<div class="edd_download_link_file">';
 						$links .= '<a href="' . esc_url( edd_get_download_file_url( $payment_key, $email, $filekey, $download['id'], $price_id ) ) . '">';
-							if ( isset( $file['name'] ) )
+							if ( isset( $file['name'] ) ) {
 								$links .= esc_html( $file['name'] );
-							else
+							} else {
 								$links .= esc_html( $file['file'] );
+							}
 						$links .= '</a>';
 					$links .= '</div>';
 				}
@@ -587,8 +588,9 @@ function edd_get_template_part( $slug, $name = null, $load = true ) {
 
 	// Setup possible parts
 	$templates = array();
-	if ( isset( $name ) )
+	if ( isset( $name ) ) {
 		$templates[] = $slug . '-' . $name . '.php';
+	}
 	$templates[] = $slug . '.php';
 
 	// Allow template parts to be filtered
@@ -623,8 +625,9 @@ function edd_locate_template( $template_names, $load = false, $require_once = tr
 	foreach ( (array) $template_names as $template_name ) {
 
 		// Continue if template is empty
-		if ( empty( $template_name ) )
+		if ( empty( $template_name ) ) {
 			continue;
+		}
 
 		// Trim off any slashes from the template name
 		$template_name = ltrim( $template_name, '/' );
@@ -643,8 +646,9 @@ function edd_locate_template( $template_names, $load = false, $require_once = tr
 		}
 	}
 
-	if ( ( true == $load ) && ! empty( $located ) )
+	if ( ( true == $load ) && ! empty( $located ) ) {
 		load_template( $located, $require_once );
+	}
 
 	return $located;
 }
