@@ -235,49 +235,60 @@ function edd_is_host( $host = false ) {
 
 		switch ( $host ) {
 			case 'wpengine':
-				if ( defined( 'WPE_APIKEY' ) )
+				if ( defined( 'WPE_APIKEY' ) ) {
 					$return = true;
+				}
 				break;
 			case 'pagely':
-				if ( defined( 'PAGELYBIN' ) )
+				if ( defined( 'PAGELYBIN' ) ) {
 					$return = true;
+				}
 				break;
 			case 'icdsoft':
-				if ( DB_HOST == 'localhost:/tmp/mysql5.sock' )
+				if ( DB_HOST == 'localhost:/tmp/mysql5.sock' ) {
 					$return = true;
+				}
 				break;
 			case 'networksolutions':
-				if ( DB_HOST == 'mysqlv5' )
+				if ( DB_HOST == 'mysqlv5' ) {
 					$return = true;
+				}
 				break;
 			case 'ipage':
-				if ( strpos( DB_HOST, 'ipagemysql.com' ) !== false )
+				if ( strpos( DB_HOST, 'ipagemysql.com' ) !== false ) {
 					$return = true;
+				}
 				break;
 			case 'ipower':
-				if ( strpos( DB_HOST, 'ipowermysql.com' ) !== false )
+				if ( strpos( DB_HOST, 'ipowermysql.com' ) !== false ) {
 					$return = true;
+				}
 				break;
 			case 'mediatemplegrid':
-				if ( strpos( DB_HOST, '.gridserver.com' ) !== false )
+				if ( strpos( DB_HOST, '.gridserver.com' ) !== false ) {
 					$return = true;
+				}
 				break;
 			case 'pairnetworks':
-				if ( strpos( DB_HOST, '.pair.com' ) !== false )
+				if ( strpos( DB_HOST, '.pair.com' ) !== false ) {
 					$return = true;
+				}
 				break;
 			case 'rackspacecloud':
-				if ( strpos( DB_HOST, '.stabletransit.com' ) !== false )
+				if ( strpos( DB_HOST, '.stabletransit.com' ) !== false ) {
 					$return = true;
+				}
 				break;
 			case 'sysfix.eu':
 			case 'sysfix.eupowerhosting':
-				if ( strpos( DB_HOST, '.sysfix.eu' ) !== false )
+				if ( strpos( DB_HOST, '.sysfix.eu' ) !== false ) {
 					$return = true;
+				}
 				break;
 			case 'flywheel':
-				if ( strpos( $_SERVER['SERVER_NAME'], 'Flywheel' ) !== false )
+				if ( strpos( $_SERVER['SERVER_NAME'], 'Flywheel' ) !== false ) {
 					$return = true;
+				}
 				break;
 			default:
 				$return = false;
@@ -660,12 +671,14 @@ function edd_cleanup_file_symlinks() {
 	$dir  = opendir( $path );
 
 	while ( ( $file = readdir( $dir ) ) !== false ) {
-		if ( $file == '.' || $file == '..' )
+		if ( $file == '.' || $file == '..' ) {
 			continue;
+		}
 
 		$transient = get_transient( md5( $file ) );
-		if ( $transient === false )
+		if ( $transient === false ) {
 			@unlink( $path . '/' . $file );
+		}
 	}
 }
 add_action( 'edd_cleanup_file_symlinks', 'edd_cleanup_file_symlinks' );
@@ -691,12 +704,14 @@ function edd_use_skus() {
 function edd_get_timezone_id() {
 
 	// if site timezone string exists, return it
-	if ( $timezone = get_option( 'timezone_string' ) )
+	if ( $timezone = get_option( 'timezone_string' ) ) {
 		return $timezone;
+	}
 
 	// get UTC offset, if it isn't set return UTC
-	if ( ! ( $utc_offset = 3600 * get_option( 'gmt_offset', 0 ) ) )
+	if ( ! ( $utc_offset = 3600 * get_option( 'gmt_offset', 0 ) ) ) {
 		return 'UTC';
+	}
 
 	// attempt to guess the timezone string from the UTC offset
 	$timezone = timezone_name_from_abbr( '', $utc_offset );
@@ -708,8 +723,9 @@ function edd_get_timezone_id() {
 
 		foreach ( timezone_abbreviations_list() as $abbr ) {
 			foreach ( $abbr as $city ) {
-				if ( $city['dst'] == $is_dst &&  $city['offset'] == $utc_offset )
+				if ( $city['dst'] == $is_dst &&  $city['offset'] == $utc_offset ) {
 					return $city['timezone_id'];
+				}
 			}
 		}
 	}
