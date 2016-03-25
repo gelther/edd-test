@@ -96,7 +96,7 @@ class EDD_API_Keys_Table extends WP_List_Table {
 	 * @return string Column Name
 	 */
 	public function column_key( $item ) {
-		return '<input readonly="readonly" type="text" class="large-text" value="' . esc_attr( $item[ 'key' ] ) . '"/>';
+		return '<input readonly="readonly" type="text" class="large-text" value="' . esc_attr( $item['key'] ) . '"/>';
 	}
 
 	/**
@@ -111,7 +111,7 @@ class EDD_API_Keys_Table extends WP_List_Table {
 	 * @return string Column Name
 	 */
 	public function column_token( $item ) {
-		return '<input readonly="readonly" type="text" class="large-text" value="' . esc_attr( $item[ 'token' ] ) . '"/>';
+		return '<input readonly="readonly" type="text" class="large-text" value="' . esc_attr( $item['token'] ) . '"/>';
 	}
 
 	/**
@@ -126,7 +126,7 @@ class EDD_API_Keys_Table extends WP_List_Table {
 	 * @return string Column Name
 	 */
 	public function column_secret( $item ) {
-		return '<input readonly="readonly" type="text" class="large-text" value="' . esc_attr( $item[ 'secret' ] ) . '"/>';
+		return '<input readonly="readonly" type="text" class="large-text" value="' . esc_attr( $item['secret'] ) . '"/>';
 	}
 
 	/**
