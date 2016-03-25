@@ -311,7 +311,7 @@ function edd_downloads_query( $atts, $content = null ) {
 		'order'     => $atts['order']
 	);
 
-	if ( filter_var( $atts['pagination'], FILTER_VALIDATE_BOOLEAN ) || ( ! filter_var( $atts['pagination'], FILTER_VALIDATE_BOOLEAN ) && $atts[ 'number' ] ) ) {
+	if ( filter_var( $atts['pagination'], FILTER_VALIDATE_BOOLEAN ) || ( ! filter_var( $atts['pagination'], FILTER_VALIDATE_BOOLEAN ) && $atts['number'] ) ) {
 
 		$query['posts_per_page'] = (int) $atts['number'];
 
@@ -482,15 +482,17 @@ function edd_downloads_query( $atts, $content = null ) {
 		$query['tax_query']['relation'] = 'AND';
 	}
 
-	if ( ! empty( $atts['ids'] ) )
+	if ( ! empty( $atts['ids'] ) ) {
 		$query['post__in'] = explode( ',', $atts['ids'] );
+	}
 
-	if ( get_query_var( 'paged' ) )
+	if ( get_query_var( 'paged' ) ) {
 		$query['paged'] = get_query_var( 'paged' );
-	elseif ( get_query_var( 'page' ) )
+	} elseif ( get_query_var( 'page' ) ) {
 		$query['paged'] = get_query_var( 'page' );
-	else
+	} else {
 		$query['paged'] = 1;
+	}
 
 	// Allow the query to be manipulated by other plugins
 	$query = apply_filters( 'edd_downloads_query', $query, $atts );
@@ -530,8 +532,9 @@ function edd_downloads_query( $atts, $content = null ) {
 							do_action( 'edd_download_after_price' );
 						}
 
-						if ( $atts['buy_button'] == 'yes' )
+						if ( $atts['buy_button'] == 'yes' ) {
 							edd_get_template_part( 'shortcode', 'content-cart-button' );
+						}
 
 						do_action( 'edd_download_after' );
 
