@@ -25,8 +25,9 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  */
 function edd_plugin_action_links( $links, $file ) {
 	$settings_link = '<a href="' . admin_url( 'edit.php?post_type=download&page=edd-settings' ) . '">' . esc_html__( 'General Settings', 'easy-digital-downloads' ) . '</a>';
-	if ( $file == 'easy-digital-downloads/easy-digital-downloads.php' )
+	if ( $file == 'easy-digital-downloads/easy-digital-downloads.php' ) {
 		array_unshift( $links, $settings_link );
+	}
 
 	return $links;
 }
@@ -43,8 +44,9 @@ add_filter( 'plugin_action_links', 'edd_plugin_action_links', 10, 2 );
  * @return array  $input
  */
 function edd_plugin_row_meta( $input, $file ) {
-	if ( $file != 'easy-digital-downloads/easy-digital-downloads.php' )
+	if ( $file != 'easy-digital-downloads/easy-digital-downloads.php' ) {
 		return $input;
+	}
 
 	$edd_link = esc_url( add_query_arg( array(
 			'utm_source'   => 'plugins-page',
