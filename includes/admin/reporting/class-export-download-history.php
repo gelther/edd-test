@@ -39,8 +39,9 @@ class EDD_Download_History_Export extends EDD_Export {
 	public function headers() {
 		ignore_user_abort( true );
 
-		if ( ! edd_is_func_disabled( 'set_time_limit' ) && ! ini_get( 'safe_mode' ) )
+		if ( ! edd_is_func_disabled( 'set_time_limit' ) && ! ini_get( 'safe_mode' ) ) {
 			set_time_limit( 0 );
+		}
 
 		$month = isset( $_POST['month'] ) ? absint( $_POST['month'] ) : date( 'n' );
 		$year  = isset( $_POST['year'] ) ? absint( $_POST['year'] ) : date( 'Y' );
