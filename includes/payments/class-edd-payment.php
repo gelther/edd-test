@@ -430,7 +430,7 @@ final class EDD_Payment {
 		// Items
 		$this->fees         = $this->setup_fees();
 		$this->cart_details = $this->setup_cart_details();
-		$this->downloads       = $this->setup_downloads();
+		$this->downloads    = $this->setup_downloads();
 
 		// Currency Based
 		$this->total      = $this->setup_total();
@@ -826,7 +826,7 @@ final class EDD_Payment {
 			$this->update_meta( '_edd_payment_total', $this->total );
 			$this->update_meta( '_edd_payment_tax', $this->tax );
 
-			$this->downloads    = array_values( $this->downloads );
+			$this->downloads = array_values( $this->downloads );
 
 			$new_meta = array(
 				'downloads'    => $this->downloads,
