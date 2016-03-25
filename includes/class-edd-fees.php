@@ -230,8 +230,9 @@ class EDD_Fees {
 	public function get_fee( $id = '' ) {
 		$fees = $this->get_fees( 'all' );
 
-		if ( ! isset( $fees[ $id ] ) )
+		if ( ! isset( $fees[ $id ] ) ) {
 			return false;
+		}
 
 		return $fees[ $id ];
 	}
