@@ -56,10 +56,11 @@ function edd_shopping_cart( $echo = false ) {
 
 	do_action( 'edd_after_cart' );
 
-	if ( $echo )
+	if ( $echo ) {
 		echo ob_get_clean();
-	else
+	} else {
 		return ob_get_clean();
+	}
 }
 
 /**
@@ -149,8 +150,9 @@ function edd_checkout_cart_columns() {
  * @return void
  */
 function edd_save_cart_button() {
-	if ( edd_is_cart_saving_disabled() )
+	if ( edd_is_cart_saving_disabled() ) {
 		return;
+	}
 
 	$color = edd_get_option( 'checkout_color', 'blue' );
 	$color = ( $color == 'inherit' ) ? '' : $color;
@@ -170,8 +172,9 @@ function edd_save_cart_button() {
  */
 function edd_empty_cart_restore_cart_link() {
 
-	if ( edd_is_cart_saving_disabled() )
+	if ( edd_is_cart_saving_disabled() ) {
 		return;
+	}
 
 	if ( edd_is_cart_saved() ) {
 		echo ' <a class="edd-cart-saving-link" id="edd-restore-cart-link" href="' . esc_url( add_query_arg( array( 'edd_action' => 'restore_cart', 'edd_cart_token' => edd_get_cart_token() ) ) ) . '">' . __( 'Restore Previous Cart.', 'easy-digital-downloads' ) . '</a>';
@@ -186,8 +189,9 @@ add_action( 'edd_cart_empty', 'edd_empty_cart_restore_cart_link' );
  * @return void
  */
 function edd_update_cart_button() {
-	if ( ! edd_item_quantities_enabled() )
+	if ( ! edd_item_quantities_enabled() ) {
 		return;
+	}
 
 	$color = edd_get_option( 'checkout_color', 'blue' );
 	$color = ( $color == 'inherit' ) ? '' : $color;
@@ -245,8 +249,9 @@ add_action( 'edd_before_checkout_cart', 'edd_display_cart_messages' );
  */
 function edd_show_added_to_cart_messages( $download_id ) {
 	if ( isset( $_POST['edd_action'] ) && $_POST['edd_action'] == 'add_to_cart' ) {
-		if ( $download_id != absint( $_POST['download_id'] ) )
+		if ( $download_id != absint( $_POST['download_id'] ) ) {
 			$download_id = absint( $_POST['download_id'] );
+		}
 
 		$alert = '<div class="edd_added_to_cart_alert">'
 		. sprintf( __( 'You have successfully added %s to your shopping cart.', 'easy-digital-downloads' ), get_the_title( $download_id ) )
